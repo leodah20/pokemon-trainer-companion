@@ -5,7 +5,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { calculateIvPercentage, IvCombination } from '../../domain/iv-calculator';
 import { getSpeciesById, getSpriteUrl } from '../../data/pokedex/pokedexRepository';
 import { calculateIvsForSpecies, UnknownSpeciesError } from '../../use-cases/calculateIvsForSpecies';
-import { COLORS, FONT_SIZE, PIXEL_FONT } from '../theme';
+import { Card, COLORS, DISPLAY_FONT, FONT_SIZE, RADIUS, SPACING } from '../theme';
 import { RootStackParamList } from '../navigation/types';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'IvCalculator'>;
@@ -83,74 +83,82 @@ export function IvCalculatorScreen({ route, navigation }: Props): React.JSX.Elem
       <FlatList
         data={results ?? []}
         keyExtractor={(item, index) => `${item.level}-${item.ivAttack}-${item.ivDefense}-${item.ivStamina}-${index}`}
+        contentContainerStyle={styles.listContent}
         ListHeaderComponent={
           <View style={styles.form}>
             <Text style={styles.title}>IV Calculator</Text>
 
-            <Text style={styles.label}>Species</Text>
-            <Pressable
-              style={styles.speciesPicker}
-              onPress={() => navigation.navigate('Pokedex', { pickerMode: true })}
-            >
-              {species && (
-                <Image source={{ uri: getSpriteUrl(species.id) }} style={styles.speciesSprite} resizeMode="contain" />
+            <Card style={styles.card}>
+              <Text style={styles.label}>Species</Text>
+              <Pressable
+                style={({ pressed }) => [styles.speciesPicker, pressed && styles.pressedOpacity]}
+                onPress={() => navigation.navigate('Pokedex', { pickerMode: true })}
+              >
+                {species && (
+                  <Image source={{ uri: getSpriteUrl(species.id) }} style={styles.speciesSprite} resizeMode="contain" />
+                )}
+                <Text style={styles.speciesName}>{species?.name ?? 'Unknown species'}</Text>
+                <Text style={styles.changeLabel}>Change</Text>
+              </Pressable>
+
+              <Text style={styles.label}>CP</Text>
+              <TextInput
+                style={styles.input}
+                keyboardType="number-pad"
+                value={cpInput}
+                onChangeText={setCpInput}
+                placeholder="e.g. 1256"
+                placeholderTextColor={COLORS.textMuted}
+              />
+
+              <Text style={styles.label}>HP</Text>
+              <TextInput
+                style={styles.input}
+                keyboardType="number-pad"
+                value={hpInput}
+                onChangeText={setHpInput}
+                placeholder="e.g. 111"
+                placeholderTextColor={COLORS.textMuted}
+              />
+
+              <View style={styles.levelRangeRow}>
+                <View style={styles.levelRangeField}>
+                  <Text style={styles.label}>Min level</Text>
+                  <TextInput
+                    style={styles.input}
+                    keyboardType="number-pad"
+                    value={minLevelInput}
+                    onChangeText={setMinLevelInput}
+                  />
+                </View>
+                <View style={styles.levelRangeField}>
+                  <Text style={styles.label}>Max level</Text>
+                  <TextInput
+                    style={styles.input}
+                    keyboardType="number-pad"
+                    value={maxLevelInput}
+                    onChangeText={setMaxLevelInput}
+                  />
+                </View>
+              </View>
+
+              <Pressable
+                style={({ pressed }) => [styles.calculateButton, pressed && styles.pressedOpacity]}
+                onPress={handleCalculate}
+              >
+                <Text style={styles.calculateButtonText}>Calculate</Text>
+              </Pressable>
+
+              {errorMessage !== null && <Text style={styles.error}>{errorMessage}</Text>}
+
+              {results !== null && (
+                <Text style={styles.resultsSummary}>
+                  {results.length === 0
+                    ? 'No IV combination matches those numbers for this species.'
+                    : `${results.length} possible combination${results.length === 1 ? '' : 's'}:`}
+                </Text>
               )}
-              <Text style={styles.speciesName}>{species?.name ?? 'Unknown species'}</Text>
-              <Text style={styles.changeLabel}>Change</Text>
-            </Pressable>
-
-            <Text style={styles.label}>CP</Text>
-            <TextInput
-              style={styles.input}
-              keyboardType="number-pad"
-              value={cpInput}
-              onChangeText={setCpInput}
-              placeholder="e.g. 1256"
-            />
-
-            <Text style={styles.label}>HP</Text>
-            <TextInput
-              style={styles.input}
-              keyboardType="number-pad"
-              value={hpInput}
-              onChangeText={setHpInput}
-              placeholder="e.g. 111"
-            />
-
-            <View style={styles.levelRangeRow}>
-              <View style={styles.levelRangeField}>
-                <Text style={styles.label}>Min level</Text>
-                <TextInput
-                  style={styles.input}
-                  keyboardType="number-pad"
-                  value={minLevelInput}
-                  onChangeText={setMinLevelInput}
-                />
-              </View>
-              <View style={styles.levelRangeField}>
-                <Text style={styles.label}>Max level</Text>
-                <TextInput
-                  style={styles.input}
-                  keyboardType="number-pad"
-                  value={maxLevelInput}
-                  onChangeText={setMaxLevelInput}
-                />
-              </View>
-            </View>
-
-            <Pressable style={styles.calculateButton} onPress={handleCalculate}>
-              <Text style={styles.calculateButtonText}>Calculate</Text>
-            </Pressable>
-
-            {errorMessage !== null && <Text style={styles.error}>{errorMessage}</Text>}
-
-            {results !== null && (
-              <Text style={styles.resultsSummary}>
-                {results.length === 0
-                  ? 'No IV combination matches those numbers for this species.'
-                  : `${results.length} possible combination${results.length === 1 ? '' : 's'}:`}
-              </Text>
-            )}
+            </Card>
           </View>
         }
         renderItem={({ item }) => (
@@ -169,98 +177,110 @@ export function IvCalculatorScreen({ route, navigation }: Props): React.JSX.Elem
 const styles = StyleSheet.create({
   screen: {
     flex: 1,
-    backgroundColor: COLORS.cream,
+    backgroundColor: COLORS.background,
   },
   form: {
-    padding: 16,
+    padding: SPACING.lg,
+  },
+  listContent: {
+    paddingBottom: SPACING.xl,
   },
   title: {
-    fontFamily: PIXEL_FONT,
-    fontSize: FONT_SIZE.lg,
-    color: COLORS.pokedexRed,
-    marginBottom: 16,
+    fontFamily: DISPLAY_FONT,
+    fontSize: FONT_SIZE.xl,
+    color: COLORS.brandRed,
+    marginBottom: SPACING.lg,
+  },
+  card: {
+    width: '100%',
   },
   label: {
     fontSize: 13,
     fontWeight: '600',
-    color: '#444',
-    marginTop: 12,
-    marginBottom: 4,
+    color: COLORS.textSecondary,
+    marginTop: SPACING.md,
+    marginBottom: SPACING.xs,
   },
   speciesPicker: {
     flexDirection: 'row',
     alignItems: 'center',
-    borderWidth: 2,
-    borderColor: COLORS.ink,
-    backgroundColor: COLORS.white,
-    padding: 8,
+    borderRadius: RADIUS.sm,
+    backgroundColor: COLORS.background,
+    padding: SPACING.sm,
+  },
+  pressedOpacity: {
+    opacity: 0.85,
   },
   speciesSprite: {
     width: 36,
     height: 36,
   },
   speciesName: {
-    marginLeft: 10,
+    marginLeft: SPACING.sm,
     flex: 1,
-    fontSize: 16,
+    fontSize: FONT_SIZE.md,
     fontWeight: '700',
-    color: COLORS.ink,
+    color: COLORS.textPrimary,
   },
   changeLabel: {
     fontSize: 12,
-    color: COLORS.pokedexRed,
+    color: COLORS.brandRed,
     fontWeight: '700',
   },
   input: {
-    borderWidth: 2,
-    borderColor: COLORS.ink,
-    backgroundColor: COLORS.white,
-    paddingHorizontal: 12,
-    paddingVertical: 8,
-    fontSize: 16,
+    borderRadius: RADIUS.sm,
+    backgroundColor: COLORS.background,
+    paddingHorizontal: SPACING.md,
+    paddingVertical: SPACING.sm,
+    fontSize: FONT_SIZE.md,
+    color: COLORS.textPrimary,
   },
   levelRangeRow: {
     flexDirection: 'row',
-    gap: 12,
+    gap: SPACING.md,
   },
   levelRangeField: {
     flex: 1,
   },
   calculateButton: {
-    marginTop: 20,
-    backgroundColor: COLORS.navy,
-    borderWidth: 3,
-    borderColor: COLORS.ink,
-    paddingVertical: 12,
+    marginTop: SPACING.xl,
+    backgroundColor: COLORS.textPrimary,
+    borderRadius: RADIUS.md,
+    paddingVertical: SPACING.md,
     alignItems: 'center',
   },
   calculateButtonText: {
-    fontFamily: PIXEL_FONT,
+    fontFamily: DISPLAY_FONT,
     fontSize: FONT_SIZE.sm,
-    color: COLORS.white,
+    color: COLORS.surface,
   },
   error: {
-    marginTop: 12,
-    color: '#b00020',
+    marginTop: SPACING.md,
+    color: COLORS.danger,
+    fontSize: FONT_SIZE.sm,
   },
   resultsSummary: {
-    marginTop: 16,
+    marginTop: SPACING.lg,
     fontWeight: '600',
+    color: COLORS.textPrimary,
   },
   resultRow: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    paddingHorizontal: 16,
-    paddingVertical: 10,
-    borderBottomWidth: 1,
-    borderBottomColor: '#eee',
+    marginHorizontal: SPACING.lg,
+    paddingHorizontal: SPACING.md,
+    paddingVertical: SPACING.md,
+    backgroundColor: COLORS.surface,
+    borderRadius: RADIUS.sm,
+    marginTop: SPACING.sm,
   },
   resultText: {
-    fontSize: 15,
+    fontSize: FONT_SIZE.md,
+    color: COLORS.textPrimary,
   },
   resultPercentage: {
-    fontSize: 15,
+    fontSize: FONT_SIZE.md,
     fontWeight: '700',
-    color: COLORS.pokedexRed,
+    color: COLORS.brandRed,
   },
 });

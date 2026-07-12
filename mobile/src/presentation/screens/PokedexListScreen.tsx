@@ -1,6 +1,7 @@
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import React, { useMemo, useState } from 'react';
+import React, { useMemo, useRef, useState } from 'react';
 import {
+  Animated,
   FlatList,
   Image,
   Pressable,
@@ -9,11 +10,12 @@ import {
   Text,
   TextInput,
   View,
+  ViewToken,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { PokemonSpecies } from '../../domain/pokemon-species';
 import { getAllGenerations, getAllSpecies, getAllTypes, getSpriteUrl } from '../../data/pokedex/pokedexRepository';
-import { COLORS, FONT_SIZE, getTypeColor, PIXEL_FONT, TypeBadge } from '../theme';
+import { COLORS, DISPLAY_FONT, FONT_SIZE, getTypeColor, RADIUS, SHADOW, SPACING, tintTowardWhite, TypeBadge } from '../theme';
 import { EMPTY_POKEDEX_FILTERS, filterPokedex, PokedexFilters } from '../../use-cases/filterPokedex';
 import { RootStackParamList } from '../navigation/types';
 
@@ -22,6 +24,10 @@ type Props = NativeStackScreenProps<RootStackParamList, 'Pokedex'>;
 const ALL_SPECIES = getAllSpecies();
 const ALL_GENERATIONS = getAllGenerations();
 const ALL_TYPES = getAllTypes();
+
+/** How much the scrolling background tint leans toward white — kept high so body text stays readable. */
+const BACKGROUND_TINT_WHITE_RATIO = 0.88;
+const BACKGROUND_TRANSITION_MS = 700;
 
 function formatDexNumber(id: number): string {
   return `#${String(id).padStart(3, '0')}`;
@@ -33,6 +39,40 @@ export function PokedexListScreen({ navigation, route }: Props): React.JSX.Eleme
 
   const results = useMemo(() => filterPokedex(ALL_SPECIES, filters), [filters]);
 
+  const colorProgress = useRef(new Animated.Value(0)).current;
+  const [backgroundTint, setBackgroundTint] = useState<{ from: string; to: string }>({
+    from: COLORS.background,
+    to: COLORS.background,
+  });
+
+  const viewabilityConfig = useRef({ itemVisiblePercentThreshold: 60 }).current;
+  const handleViewableItemsChanged = useRef(
+    ({ viewableItems }: { viewableItems: ViewToken[] }) => {
+      const firstVisible = viewableItems[0]?.item as PokemonSpecies | undefined;
+      if (!firstVisible) {
+        return;
+      }
+      const nextTint = tintTowardWhite(getTypeColor(firstVisible.types[0]), BACKGROUND_TINT_WHITE_RATIO);
+      setBackgroundTint((prev) => {
+        if (prev.to === nextTint) {
+          return prev;
+        }
+        colorProgress.setValue(0);
+        Animated.timing(colorProgress, {
+          toValue: 1,
+          duration: BACKGROUND_TRANSITION_MS,
+          useNativeDriver: false, // color interpolation isn't supported by the native driver
+        }).start();
+        return { from: prev.to, to: nextTint };
+      });
+    },
+  ).current;
+
+  const animatedBackgroundColor = colorProgress.interpolate({
+    inputRange: [0, 1],
+    outputRange: [backgroundTint.from, backgroundTint.to],
+  });
+
   function handleSelect(species: PokemonSpecies): void {
     if (pickerMode) {
       navigation.navigate('IvCalculator', { speciesId: species.id });
@@ -42,74 +82,95 @@ export function PokedexListScreen({ navigation, route }: Props): React.JSX.Eleme
   }
 
   return (
-    <SafeAreaView style={styles.screen} edges={['top', 'left', 'right']}>
-      <Text style={styles.title}>{pickerMode ? 'Choose a Pokemon' : 'Pokedex'}</Text>
+    <View style={styles.root}>
+      <Animated.View style={[StyleSheet.absoluteFill, { backgroundColor: animatedBackgroundColor }]} />
+      <SafeAreaView style={styles.screen} edges={['top', 'left', 'right']}>
+        <Text style={styles.title}>{pickerMode ? 'Choose a Pokemon' : 'Pokedex'}</Text>
 
-      <TextInput
-        style={styles.search}
-        placeholder="Search by name"
-        placeholderTextColor={COLORS.navyLight}
-        value={filters.searchText}
-        onChangeText={(text) => setFilters((prev) => ({ ...prev, searchText: text }))}
-      />
-
-      <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.filterRow}>
-        <FilterChip
-          label="All gens"
-          selected={filters.generation === null}
-          onPress={() => setFilters((prev) => ({ ...prev, generation: null }))}
+        <TextInput
+          style={styles.search}
+          placeholder="Search by name"
+          placeholderTextColor={COLORS.textMuted}
+          value={filters.searchText}
+          onChangeText={(text) => setFilters((prev) => ({ ...prev, searchText: text }))}
         />
-        {ALL_GENERATIONS.map((gen) => (
-          <FilterChip
-            key={gen}
-            label={`Gen ${gen}`}
-            selected={filters.generation === gen}
-            onPress={() =>
-              setFilters((prev) => ({ ...prev, generation: prev.generation === gen ? null : gen }))
-            }
-          />
-        ))}
-      </ScrollView>
 
-      <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.filterRow}>
-        <FilterChip
-          label="All types"
-          selected={filters.type === null}
-          onPress={() => setFilters((prev) => ({ ...prev, type: null }))}
-        />
-        {ALL_TYPES.map((type) => (
+        <ScrollView
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          style={styles.filterRow}
+          contentContainerStyle={styles.filterRowContent}
+        >
           <FilterChip
-            key={type}
-            label={type}
-            selected={filters.type === type}
-            color={getTypeColor(type)}
-            onPress={() => setFilters((prev) => ({ ...prev, type: prev.type === type ? null : type }))}
+            label="All gens"
+            selected={filters.generation === null}
+            onPress={() => setFilters((prev) => ({ ...prev, generation: null }))}
           />
-        ))}
-      </ScrollView>
+          {ALL_GENERATIONS.map((gen) => (
+            <FilterChip
+              key={gen}
+              label={`Gen ${gen}`}
+              selected={filters.generation === gen}
+              onPress={() =>
+                setFilters((prev) => ({ ...prev, generation: prev.generation === gen ? null : gen }))
+              }
+            />
+          ))}
+        </ScrollView>
 
-      <FlatList
-        data={results}
-        keyExtractor={(item) => String(item.id)}
-        style={styles.list}
-        initialNumToRender={16}
-        renderItem={({ item }) => (
-          <Pressable style={styles.row} onPress={() => handleSelect(item)}>
-            <Image source={{ uri: getSpriteUrl(item.id) }} style={styles.sprite} resizeMode="contain" />
-            <View style={styles.rowInfo}>
-              <Text style={styles.rowDexNumber}>{formatDexNumber(item.id)}</Text>
-              <Text style={styles.rowName}>{item.name}</Text>
-              <View style={styles.rowTypes}>
-                {item.types.map((type) => (
-                  <TypeBadge key={type} type={type} />
-                ))}
+        <ScrollView
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          style={styles.filterRow}
+          contentContainerStyle={styles.filterRowContent}
+        >
+          <FilterChip
+            label="All types"
+            selected={filters.type === null}
+            onPress={() => setFilters((prev) => ({ ...prev, type: null }))}
+          />
+          {ALL_TYPES.map((type) => (
+            <FilterChip
+              key={type}
+              label={type}
+              selected={filters.type === type}
+              color={getTypeColor(type)}
+              onPress={() => setFilters((prev) => ({ ...prev, type: prev.type === type ? null : type }))}
+            />
+          ))}
+        </ScrollView>
+
+        <FlatList
+          data={results}
+          keyExtractor={(item) => String(item.id)}
+          style={styles.list}
+          contentContainerStyle={styles.listContent}
+          initialNumToRender={16}
+          onViewableItemsChanged={handleViewableItemsChanged}
+          viewabilityConfig={viewabilityConfig}
+          renderItem={({ item }) => (
+            <Pressable
+              style={({ pressed }) => [styles.row, SHADOW.sm, pressed && styles.rowPressed]}
+              onPress={() => handleSelect(item)}
+            >
+              <View style={[styles.spriteBackdrop, { backgroundColor: `${getTypeColor(item.types[0])}22` }]}>
+                <Image source={{ uri: getSpriteUrl(item.id) }} style={styles.sprite} resizeMode="contain" />
               </View>
-            </View>
-          </Pressable>
-        )}
-        ListEmptyComponent={<Text style={styles.emptyText}>No Pokemon match these filters.</Text>}
-      />
-    </SafeAreaView>
+              <View style={styles.rowInfo}>
+                <Text style={styles.rowDexNumber}>{formatDexNumber(item.id)}</Text>
+                <Text style={styles.rowName}>{item.name}</Text>
+                <View style={styles.rowTypes}>
+                  {item.types.map((type) => (
+                    <TypeBadge key={type} type={type} />
+                  ))}
+                </View>
+              </View>
+            </Pressable>
+          )}
+          ListEmptyComponent={<Text style={styles.emptyText}>No Pokemon match these filters.</Text>}
+        />
+      </SafeAreaView>
+    </View>
   );
 }
 
@@ -124,95 +185,120 @@ function FilterChip({ label, selected, onPress, color }: FilterChipProps): React
   return (
     <Pressable
       onPress={onPress}
-      style={[
-        styles.chip,
-        selected && { backgroundColor: color ?? COLORS.pokedexRed },
-      ]}
+      style={[styles.chip, selected && { backgroundColor: color ?? COLORS.brandRed, borderColor: color ?? COLORS.brandRed }]}
     >
-      <Text style={[styles.chipText, selected && styles.chipTextSelected]}>{label}</Text>
+      <Text style={[styles.chipText, selected && styles.chipTextSelected]} numberOfLines={1}>
+        {label}
+      </Text>
     </Pressable>
   );
 }
 
 const styles = StyleSheet.create({
+  root: {
+    flex: 1,
+  },
   screen: {
     flex: 1,
-    backgroundColor: COLORS.cream,
+    backgroundColor: 'transparent',
   },
   title: {
-    fontFamily: PIXEL_FONT,
-    fontSize: FONT_SIZE.lg,
-    color: COLORS.pokedexRed,
-    paddingHorizontal: 16,
-    paddingTop: 12,
-    paddingBottom: 8,
+    fontFamily: DISPLAY_FONT,
+    fontSize: FONT_SIZE.xl,
+    color: COLORS.brandRed,
+    paddingHorizontal: SPACING.lg,
+    paddingTop: SPACING.md,
+    paddingBottom: SPACING.sm,
   },
   search: {
-    marginHorizontal: 16,
-    borderWidth: 2,
-    borderColor: COLORS.ink,
-    backgroundColor: COLORS.white,
-    paddingHorizontal: 10,
-    paddingVertical: 8,
-    fontSize: 14,
+    marginHorizontal: SPACING.lg,
+    borderRadius: RADIUS.md,
+    backgroundColor: COLORS.surface,
+    paddingHorizontal: SPACING.md,
+    paddingVertical: SPACING.sm,
+    fontSize: FONT_SIZE.md,
+    color: COLORS.textPrimary,
+    ...SHADOW.sm,
   },
   filterRow: {
-    marginTop: 10,
-    paddingLeft: 16,
+    marginTop: SPACING.md,
     flexGrow: 0,
   },
+  filterRowContent: {
+    paddingHorizontal: SPACING.lg,
+    alignItems: 'center',
+  },
   chip: {
-    borderWidth: 2,
-    borderColor: COLORS.ink,
-    backgroundColor: COLORS.white,
-    paddingVertical: 6,
-    paddingHorizontal: 10,
-    marginRight: 8,
+    flexShrink: 0,
+    borderRadius: RADIUS.full,
+    borderWidth: 1.5,
+    borderColor: COLORS.border,
+    backgroundColor: COLORS.surface,
+    paddingVertical: SPACING.sm,
+    paddingHorizontal: SPACING.md + 2,
+    marginRight: SPACING.sm,
   },
   chipText: {
-    fontSize: 11,
-    color: COLORS.ink,
+    fontSize: 12,
+    lineHeight: 16,
+    color: COLORS.textSecondary,
     fontWeight: '600',
   },
   chipTextSelected: {
-    color: COLORS.white,
+    color: COLORS.surface,
   },
   list: {
-    marginTop: 12,
+    marginTop: SPACING.lg,
+  },
+  listContent: {
+    paddingHorizontal: SPACING.lg,
+    paddingBottom: SPACING.xl,
+    gap: SPACING.sm,
   },
   row: {
     flexDirection: 'row',
     alignItems: 'center',
-    paddingHorizontal: 16,
-    paddingVertical: 8,
-    borderBottomWidth: 1,
-    borderBottomColor: '#ddd',
+    backgroundColor: COLORS.surface,
+    borderRadius: RADIUS.md,
+    padding: SPACING.sm,
+  },
+  rowPressed: {
+    opacity: 0.85,
+  },
+  spriteBackdrop: {
+    width: 56,
+    height: 56,
+    borderRadius: RADIUS.full,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   sprite: {
-    width: 48,
-    height: 48,
+    width: 44,
+    height: 44,
   },
   rowInfo: {
-    marginLeft: 12,
+    marginLeft: SPACING.md,
     flex: 1,
   },
   rowDexNumber: {
     fontSize: 11,
-    color: COLORS.navyLight,
+    color: COLORS.textMuted,
+    fontWeight: '600',
   },
   rowName: {
-    fontSize: 16,
+    fontSize: FONT_SIZE.md,
     fontWeight: '700',
-    color: COLORS.ink,
+    color: COLORS.textPrimary,
+    marginTop: 1,
   },
   rowTypes: {
     flexDirection: 'row',
-    gap: 6,
-    marginTop: 4,
+    gap: SPACING.xs,
+    marginTop: SPACING.xs,
   },
   emptyText: {
     textAlign: 'center',
     marginTop: 40,
-    color: COLORS.navyLight,
+    color: COLORS.textSecondary,
   },
 });

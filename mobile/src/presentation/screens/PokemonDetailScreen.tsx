@@ -3,22 +3,22 @@ import React, { useMemo, useState } from 'react';
 import { Image, Pressable, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { getAllSpecies, getSpeciesById, getSpriteUrl } from '../../data/pokedex/pokedexRepository';
+import { getLoreForSpecies } from '../../data/lore/loreRepository';
 import { getPowerUpSteps } from '../../data/power-up/powerUpRepository';
 import { getPvpRankingsForSpecies } from '../../data/pvp/pvpRepository';
 import { calculatePowerUpCost } from '../../domain/power-up';
 import { formatMoveName, getMetaTier, META_TIER_LABELS, PVP_LEAGUE_LABELS, PvpLeague } from '../../domain/pvp';
 import { BULK_TIER_LABELS, rankBulkPercentile } from '../../use-cases/rankBulkPercentile';
-import { COLORS, FONT_SIZE, PixelPanel, PIXEL_FONT, TypeBadge } from '../theme';
+import { Card, COLORS, DISPLAY_FONT, FONT_SIZE, getTypeColor, RADIUS, SPACING, TypeBadge } from '../theme';
 import { RootStackParamList } from '../navigation/types';
 
 const LEAGUE_ORDER: PvpLeague[] = ['great', 'ultra', 'master'];
 const ALL_SPECIES = getAllSpecies();
 const POWER_UP_STEPS = getPowerUpSteps();
-type BattleRoleView = 'attack' | 'defense';
+const MAX_BASE_STAT_FOR_BAR = 300; // Mewtwo's base attack (300) is the ceiling in our data range
 
 type Props = NativeStackScreenProps<RootStackParamList, 'PokemonDetail'>;
-
-const MAX_BASE_STAT_FOR_BAR = 300; // Mewtwo's base attack (300) is the ceiling in our seed data range
+type BattleRoleView = 'attack' | 'defense';
 
 function StatBar({ label, value }: { label: string; value: number }): React.JSX.Element {
   const widthPercentage = Math.min(100, (value / MAX_BASE_STAT_FOR_BAR) * 100);
@@ -36,6 +36,7 @@ function StatBar({ label, value }: { label: string; value: number }): React.JSX.
 export function PokemonDetailScreen({ route, navigation }: Props): React.JSX.Element {
   const species = getSpeciesById(route.params.speciesId);
   const pvpRankings = getPvpRankingsForSpecies(route.params.speciesId);
+  const lore = getLoreForSpecies(route.params.speciesId);
   const [battleRoleView, setBattleRoleView] = useState<BattleRoleView>('attack');
   const [fromLevelInput, setFromLevelInput] = useState('1');
   const [toLevelInput, setToLevelInput] = useState('40');
@@ -69,11 +70,15 @@ export function PokemonDetailScreen({ route, navigation }: Props): React.JSX.Ele
     );
   }
 
+  const accentColor = getTypeColor(species.types[0]);
+
   return (
     <SafeAreaView style={styles.screen} edges={['top', 'left', 'right']}>
       <ScrollView contentContainerStyle={styles.content}>
+        <View style={[styles.spriteBackdrop, { backgroundColor: `${accentColor}22` }]}>
+          <Image source={{ uri: getSpriteUrl(species.id) }} style={styles.sprite} resizeMode="contain" />
+        </View>
         <Text style={styles.dexNumber}>#{String(species.id).padStart(3, '0')}</Text>
-        <Image source={{ uri: getSpriteUrl(species.id) }} style={styles.sprite} resizeMode="contain" />
         <Text style={styles.name}>{species.name}</Text>
         <Text style={styles.generation}>Generation {species.generation}</Text>
 
@@ -83,14 +88,14 @@ export function PokemonDetailScreen({ route, navigation }: Props): React.JSX.Ele
           ))}
         </View>
 
-        <PixelPanel style={styles.statsPanel}>
+        <Card style={styles.card} accentColor={COLORS.brandRed}>
           <Text style={styles.panelTitle}>Base Stats</Text>
           <StatBar label="ATK" value={species.baseAttack} />
           <StatBar label="DEF" value={species.baseDefense} />
           <StatBar label="STA" value={species.baseStamina} />
-        </PixelPanel>
+        </Card>
 
-        <PixelPanel style={styles.statsPanel}>
+        <Card style={styles.card} accentColor={COLORS.brandGold}>
           <Text style={styles.panelTitle}>Best Moveset (PvP)</Text>
           {LEAGUE_ORDER.filter((league) => pvpRankings?.[league] !== undefined).map((league) => {
             const moveset = pvpRankings![league]!;
@@ -106,12 +111,12 @@ export function PokemonDetailScreen({ route, navigation }: Props): React.JSX.Ele
             );
           })}
           {pvpRankings === undefined && (
-            <Text style={styles.movesetEmpty}>Not competitively ranked in PvP.</Text>
+            <Text style={styles.emptyText}>Not competitively ranked in PvP.</Text>
           )}
-          <Text style={styles.movesetSource}>Source: PvPoke community rankings (pvpoke.com)</Text>
-        </PixelPanel>
+          <Text style={styles.sourceText}>Source: PvPoke community rankings (pvpoke.com)</Text>
+        </Card>
 
-        <PixelPanel style={styles.statsPanel}>
+        <Card style={styles.card} accentColor={COLORS.textPrimary}>
           <Text style={styles.panelTitle}>Battle Role</Text>
           <View style={styles.roleToggleRow}>
             <Pressable
@@ -151,13 +156,13 @@ export function PokemonDetailScreen({ route, navigation }: Props): React.JSX.Ele
                 : 'Bulk data unavailable.'}
             </Text>
           )}
-          <Text style={styles.movesetSource}>
+          <Text style={styles.sourceText}>
             Attack rating from PvPoke score; defense rating is a DEF+STA heuristic, not an official
             gym-defender metric.
           </Text>
-        </PixelPanel>
+        </Card>
 
-        <PixelPanel style={styles.statsPanel}>
+        <Card style={styles.card} accentColor={COLORS.brandGold}>
           <Text style={styles.panelTitle}>Power-Up Cost</Text>
           <View style={styles.levelRangeRow}>
             <View style={styles.levelRangeField}>
@@ -188,17 +193,25 @@ export function PokemonDetailScreen({ route, navigation }: Props): React.JSX.Ele
               )}
             </View>
           ) : (
-            <Text style={styles.movesetEmpty}>Enter a valid "from" level lower than "to" level.</Text>
+            <Text style={styles.emptyText}>Enter a valid "from" level lower than "to" level.</Text>
           )}
-        </PixelPanel>
+        </Card>
 
-        <PixelPanel style={styles.lorePanel} backgroundColor={COLORS.screenGreen}>
-          <Text style={styles.panelTitle}>Lore & Trivia</Text>
-          <Text style={styles.loreComingSoon}>Coming soon.</Text>
-        </PixelPanel>
+        <Card style={styles.card} backgroundColor={COLORS.retroScreenGreen} accentColor={COLORS.retroScreenGreenDark}>
+          <Text style={[styles.panelTitle, { color: COLORS.retroScreenGreenDark }]}>Lore & Trivia</Text>
+          {lore ? (
+            lore.trivia.map((fact, index) => (
+              <Text key={index} style={styles.loreFact}>
+                • {fact}
+              </Text>
+            ))
+          ) : (
+            <Text style={styles.loreFact}>No trivia written for this species yet.</Text>
+          )}
+        </Card>
 
         <Pressable
-          style={styles.calculateButton}
+          style={({ pressed }) => [styles.calculateButton, pressed && styles.calculateButtonPressed]}
           onPress={() => navigation.navigate('IvCalculator', { speciesId: species.id })}
         >
           <Text style={styles.calculateButtonText}>Calculate IV</Text>
@@ -211,180 +224,193 @@ export function PokemonDetailScreen({ route, navigation }: Props): React.JSX.Ele
 const styles = StyleSheet.create({
   screen: {
     flex: 1,
-    backgroundColor: COLORS.cream,
+    backgroundColor: COLORS.background,
   },
   content: {
     alignItems: 'center',
-    padding: 20,
+    padding: SPACING.xl,
   },
   notFound: {
     textAlign: 'center',
     marginTop: 40,
   },
-  dexNumber: {
-    fontFamily: PIXEL_FONT,
-    fontSize: FONT_SIZE.sm,
-    color: COLORS.navyLight,
+  spriteBackdrop: {
+    width: 140,
+    height: 140,
+    borderRadius: RADIUS.full,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   sprite: {
-    width: 120,
-    height: 120,
-    marginVertical: 8,
+    width: 108,
+    height: 108,
+  },
+  dexNumber: {
+    marginTop: SPACING.md,
+    fontSize: FONT_SIZE.xs,
+    color: COLORS.textMuted,
+    fontWeight: '700',
   },
   name: {
-    fontFamily: PIXEL_FONT,
-    fontSize: FONT_SIZE.lg,
-    color: COLORS.pokedexRed,
+    fontFamily: DISPLAY_FONT,
+    fontSize: FONT_SIZE.xl,
+    color: COLORS.textPrimary,
     textAlign: 'center',
+    marginTop: 2,
   },
   generation: {
-    marginTop: 6,
-    fontSize: 13,
-    color: COLORS.navyLight,
+    marginTop: SPACING.xs,
+    fontSize: FONT_SIZE.sm,
+    color: COLORS.textSecondary,
   },
   typeRow: {
     flexDirection: 'row',
-    gap: 8,
-    marginTop: 12,
+    gap: SPACING.sm,
+    marginTop: SPACING.md,
   },
-  statsPanel: {
+  card: {
     width: '100%',
-    marginTop: 24,
+    marginTop: SPACING.lg,
   },
   panelTitle: {
-    fontFamily: PIXEL_FONT,
-    fontSize: FONT_SIZE.sm,
-    color: COLORS.ink,
-    marginBottom: 12,
+    fontFamily: DISPLAY_FONT,
+    fontSize: FONT_SIZE.md,
+    color: COLORS.textPrimary,
+    marginBottom: SPACING.md,
   },
   statRow: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginBottom: 8,
+    marginBottom: SPACING.sm,
   },
   statLabel: {
     width: 36,
     fontSize: 12,
     fontWeight: '700',
-    color: COLORS.navy,
+    color: COLORS.textSecondary,
   },
   statBarTrack: {
     flex: 1,
-    height: 12,
-    backgroundColor: COLORS.white,
-    borderWidth: 2,
-    borderColor: COLORS.ink,
-    marginHorizontal: 8,
+    height: 10,
+    backgroundColor: COLORS.background,
+    borderRadius: RADIUS.full,
+    marginHorizontal: SPACING.sm,
+    overflow: 'hidden',
   },
   statBarFill: {
     height: '100%',
-    backgroundColor: COLORS.pokedexRed,
+    borderRadius: RADIUS.full,
+    backgroundColor: COLORS.brandRed,
   },
   statValue: {
     width: 32,
     fontSize: 12,
     textAlign: 'right',
-    color: COLORS.ink,
+    color: COLORS.textPrimary,
+    fontWeight: '600',
   },
   movesetRow: {
-    marginBottom: 10,
+    marginBottom: SPACING.sm,
   },
   movesetLeague: {
     fontSize: 12,
     fontWeight: '700',
-    color: COLORS.pokedexRed,
+    color: COLORS.brandRed,
   },
   movesetMoves: {
-    fontSize: 14,
-    color: COLORS.ink,
+    fontSize: FONT_SIZE.md,
+    color: COLORS.textPrimary,
     marginTop: 2,
   },
   movesetScore: {
     fontSize: 11,
-    color: COLORS.navyLight,
+    color: COLORS.textMuted,
     marginTop: 2,
   },
-  movesetEmpty: {
-    fontSize: 13,
-    color: COLORS.navyLight,
+  emptyText: {
+    fontSize: FONT_SIZE.sm,
+    color: COLORS.textSecondary,
   },
-  movesetSource: {
+  sourceText: {
     fontSize: 10,
-    color: COLORS.navyLight,
-    marginTop: 8,
+    color: COLORS.textMuted,
+    marginTop: SPACING.sm,
   },
   roleToggleRow: {
     flexDirection: 'row',
-    marginBottom: 12,
+    gap: SPACING.sm,
+    marginBottom: SPACING.md,
   },
   roleToggleButton: {
     flex: 1,
-    borderWidth: 2,
-    borderColor: COLORS.ink,
-    paddingVertical: 8,
+    borderRadius: RADIUS.md,
+    paddingVertical: SPACING.sm,
     alignItems: 'center',
-    backgroundColor: COLORS.white,
+    backgroundColor: COLORS.background,
   },
   roleToggleButtonSelected: {
-    backgroundColor: COLORS.navy,
+    backgroundColor: COLORS.textPrimary,
   },
   roleToggleText: {
     fontSize: 12,
     fontWeight: '700',
-    color: COLORS.ink,
+    color: COLORS.textSecondary,
   },
   roleToggleTextSelected: {
     fontSize: 12,
     fontWeight: '700',
-    color: COLORS.white,
+    color: COLORS.surface,
   },
   roleResultText: {
-    fontSize: 14,
-    color: COLORS.ink,
+    fontSize: FONT_SIZE.md,
+    color: COLORS.textPrimary,
   },
   label: {
     fontSize: 12,
     fontWeight: '600',
-    color: '#444',
-    marginBottom: 4,
+    color: COLORS.textSecondary,
+    marginBottom: SPACING.xs,
   },
   levelRangeRow: {
     flexDirection: 'row',
-    gap: 12,
+    gap: SPACING.md,
   },
   levelRangeField: {
     flex: 1,
   },
   levelInput: {
-    borderWidth: 2,
-    borderColor: COLORS.ink,
-    backgroundColor: COLORS.white,
-    paddingHorizontal: 10,
-    paddingVertical: 6,
-    fontSize: 15,
+    borderRadius: RADIUS.sm,
+    backgroundColor: COLORS.background,
+    paddingHorizontal: SPACING.md,
+    paddingVertical: SPACING.sm,
+    fontSize: FONT_SIZE.md,
+    color: COLORS.textPrimary,
   },
   powerUpResult: {
-    marginTop: 12,
+    marginTop: SPACING.md,
+    gap: 2,
   },
-  lorePanel: {
-    width: '100%',
-    marginTop: 16,
-  },
-  loreComingSoon: {
-    fontSize: 13,
-    color: COLORS.screenGreenDark,
+  loreFact: {
+    fontSize: FONT_SIZE.sm,
+    color: COLORS.retroScreenGreenDark,
+    marginBottom: SPACING.sm,
+    lineHeight: 20,
   },
   calculateButton: {
-    marginTop: 24,
-    backgroundColor: COLORS.navy,
-    borderWidth: 3,
-    borderColor: COLORS.ink,
-    paddingVertical: 14,
-    paddingHorizontal: 28,
+    marginTop: SPACING.xl,
+    backgroundColor: COLORS.brandRed,
+    borderRadius: RADIUS.md,
+    paddingVertical: SPACING.md,
+    paddingHorizontal: SPACING.xxl,
+    width: '100%',
+    alignItems: 'center',
+  },
+  calculateButtonPressed: {
+    opacity: 0.85,
   },
   calculateButtonText: {
-    fontFamily: PIXEL_FONT,
-    fontSize: FONT_SIZE.sm,
-    color: COLORS.white,
+    fontFamily: DISPLAY_FONT,
+    fontSize: FONT_SIZE.md,
+    color: COLORS.surface,
   },
 });

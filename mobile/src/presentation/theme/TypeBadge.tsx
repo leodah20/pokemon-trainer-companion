@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { COLORS, getTypeColor } from './colors';
-import { FONT_SIZE, PIXEL_FONT } from './typography';
+import { RADIUS, SPACING } from './spacing';
 
 interface TypeBadgeProps {
   type: string;
@@ -17,14 +17,14 @@ export function TypeBadge({ type }: TypeBadgeProps): React.JSX.Element {
 
 const styles = StyleSheet.create({
   badge: {
-    borderWidth: 2,
-    borderColor: COLORS.ink,
-    paddingHorizontal: 6,
-    paddingVertical: 3,
+    borderRadius: RADIUS.full,
+    paddingHorizontal: SPACING.md,
+    paddingVertical: SPACING.xs,
   },
   text: {
-    fontFamily: PIXEL_FONT,
-    fontSize: FONT_SIZE.xs,
-    color: COLORS.white,
+    fontSize: 11,
+    fontWeight: '700',
+    letterSpacing: 0.5,
+    color: COLORS.surface,
   },
 });

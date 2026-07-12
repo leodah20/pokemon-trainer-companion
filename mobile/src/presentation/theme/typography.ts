@@ -1,10 +1,15 @@
-export const PIXEL_FONT = 'PressStart2P-Regular';
+/** Friendly rounded display font, used for titles and brand moments only — body text stays on
+ * the system font for readability at small sizes. */
+export const DISPLAY_FONT = 'Fredoka-Regular';
 
-/** Press Start 2P is wide per character — sizes stay small compared to a normal UI font. */
+/** Small pixel font kept as a deliberate retro accent (dex numbers, tiny badges), not for body text. */
+export const RETRO_FONT = 'PressStart2P-Regular';
+
 export const FONT_SIZE = {
-  xs: 8,
-  sm: 10,
-  md: 12,
-  lg: 16,
-  xl: 22,
+  xs: 11,
+  sm: 13,
+  md: 15,
+  lg: 20,
+  xl: 26,
+  xxl: 32,
 } as const;

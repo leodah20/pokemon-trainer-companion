@@ -1,14 +1,25 @@
 export const COLORS = {
-  pokedexRed: '#DC0A2D',
-  pokedexRedDark: '#A00820',
-  screenGreen: '#9BBC0F',
-  screenGreenDark: '#0F380F',
-  navy: '#1B1F3B',
-  navyLight: '#2C315C',
-  cream: '#F4F1E8',
-  gold: '#FFCB05',
-  ink: '#0F0F0F',
-  white: '#FFFFFF',
+  // Brand
+  brandRed: '#E63950',
+  brandRedDark: '#B91C3C',
+  brandGold: '#FFCB05',
+
+  // Neutrals (modern light theme)
+  background: '#F5F6FB',
+  surface: '#FFFFFF',
+  border: '#E7E8F2',
+  textPrimary: '#1A1A2E',
+  textSecondary: '#6B7280',
+  textMuted: '#9CA3AF',
+
+  // Semantic
+  success: '#22C55E',
+  danger: '#DC2626',
+
+  // Retro accent, used sparingly (lore panel, tiny badges) to nod at the Game Boy heritage
+  retroScreenGreen: '#9BBC0F',
+  retroScreenGreenDark: '#0F380F',
+  retroInk: '#0F0F0F',
 } as const;
 
 /** Community-standard type color convention (not official Nintendo branding, widely used by fan tools). */
@@ -34,5 +45,18 @@ export const TYPE_COLORS: Record<string, string> = {
 };
 
 export function getTypeColor(type: string): string {
-  return TYPE_COLORS[type] ?? COLORS.navyLight;
+  return TYPE_COLORS[type] ?? COLORS.textSecondary;
+}
+
+/** Mixes a hex color toward white — used to turn a vivid type color into a pastel background
+ * tint that still reads as "that type's color" without fighting with dark text on top of it. */
+export function tintTowardWhite(hexColor: string, whiteRatio: number): string {
+  const hex = hexColor.replace('#', '');
+  const r = parseInt(hex.substring(0, 2), 16);
+  const g = parseInt(hex.substring(2, 4), 16);
+  const b = parseInt(hex.substring(4, 6), 16);
+
+  const mix = (channel: number) => Math.round(channel + (255 - channel) * whiteRatio);
+
+  return `rgb(${mix(r)}, ${mix(g)}, ${mix(b)})`;
 }

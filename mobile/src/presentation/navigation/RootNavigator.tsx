@@ -1,6 +1,6 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import React from 'react';
-import { COLORS, PIXEL_FONT } from '../theme';
+import { COLORS, DISPLAY_FONT } from '../theme';
 import { IvCalculatorScreen } from '../screens/IvCalculatorScreen';
 import { PokedexListScreen } from '../screens/PokedexListScreen';
 import { PokemonDetailScreen } from '../screens/PokemonDetailScreen';
@@ -12,9 +12,10 @@ export function RootNavigator(): React.JSX.Element {
   return (
     <Stack.Navigator
       screenOptions={{
-        headerStyle: { backgroundColor: COLORS.pokedexRed },
-        headerTintColor: COLORS.white,
-        headerTitleStyle: { fontFamily: PIXEL_FONT, fontSize: 12 },
+        headerStyle: { backgroundColor: COLORS.brandRed },
+        headerTintColor: COLORS.surface,
+        headerTitleStyle: { fontFamily: DISPLAY_FONT, fontSize: 16 },
+        headerShadowVisible: false,
       }}
     >
       <Stack.Screen name="Pokedex" component={PokedexListScreen} options={{ title: 'Pokedex' }} />
