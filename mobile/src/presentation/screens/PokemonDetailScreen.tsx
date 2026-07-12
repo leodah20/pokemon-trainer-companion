@@ -1,14 +1,20 @@
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import React from 'react';
-import { Image, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
+import React, { useMemo, useState } from 'react';
+import { Image, Pressable, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { getSpeciesById, getSpriteUrl } from '../../data/pokedex/pokedexRepository';
+import { getAllSpecies, getSpeciesById, getSpriteUrl } from '../../data/pokedex/pokedexRepository';
+import { getPowerUpSteps } from '../../data/power-up/powerUpRepository';
 import { getPvpRankingsForSpecies } from '../../data/pvp/pvpRepository';
-import { formatMoveName, PVP_LEAGUE_LABELS, PvpLeague } from '../../domain/pvp';
+import { calculatePowerUpCost } from '../../domain/power-up';
+import { formatMoveName, getMetaTier, META_TIER_LABELS, PVP_LEAGUE_LABELS, PvpLeague } from '../../domain/pvp';
+import { BULK_TIER_LABELS, rankBulkPercentile } from '../../use-cases/rankBulkPercentile';
 import { COLORS, FONT_SIZE, PixelPanel, PIXEL_FONT, TypeBadge } from '../theme';
 import { RootStackParamList } from '../navigation/types';
 
 const LEAGUE_ORDER: PvpLeague[] = ['great', 'ultra', 'master'];
+const ALL_SPECIES = getAllSpecies();
+const POWER_UP_STEPS = getPowerUpSteps();
+type BattleRoleView = 'attack' | 'defense';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'PokemonDetail'>;
 
@@ -30,6 +36,30 @@ function StatBar({ label, value }: { label: string; value: number }): React.JSX.
 export function PokemonDetailScreen({ route, navigation }: Props): React.JSX.Element {
   const species = getSpeciesById(route.params.speciesId);
   const pvpRankings = getPvpRankingsForSpecies(route.params.speciesId);
+  const [battleRoleView, setBattleRoleView] = useState<BattleRoleView>('attack');
+  const [fromLevelInput, setFromLevelInput] = useState('1');
+  const [toLevelInput, setToLevelInput] = useState('40');
+
+  const bestAttackScore = useMemo(() => {
+    const scores = LEAGUE_ORDER.map((league) => pvpRankings?.[league]?.score).filter(
+      (score): score is number => score !== undefined,
+    );
+    return scores.length > 0 ? Math.max(...scores) : null;
+  }, [pvpRankings]);
+
+  const bulkRanking = useMemo(
+    () => (species ? rankBulkPercentile(ALL_SPECIES, species.id) : null),
+    [species],
+  );
+
+  const powerUpResult = useMemo(() => {
+    const fromLevel = Number(fromLevelInput);
+    const toLevel = Number(toLevelInput);
+    if (!Number.isFinite(fromLevel) || !Number.isFinite(toLevel) || fromLevel >= toLevel) {
+      return null;
+    }
+    return calculatePowerUpCost(POWER_UP_STEPS, fromLevel, toLevel);
+  }, [fromLevelInput, toLevelInput]);
 
   if (!species) {
     return (
@@ -79,6 +109,87 @@ export function PokemonDetailScreen({ route, navigation }: Props): React.JSX.Ele
             <Text style={styles.movesetEmpty}>Not competitively ranked in PvP.</Text>
           )}
           <Text style={styles.movesetSource}>Source: PvPoke community rankings (pvpoke.com)</Text>
+        </PixelPanel>
+
+        <PixelPanel style={styles.statsPanel}>
+          <Text style={styles.panelTitle}>Battle Role</Text>
+          <View style={styles.roleToggleRow}>
+            <Pressable
+              style={[styles.roleToggleButton, battleRoleView === 'attack' && styles.roleToggleButtonSelected]}
+              onPress={() => setBattleRoleView('attack')}
+            >
+              <Text
+                style={battleRoleView === 'attack' ? styles.roleToggleTextSelected : styles.roleToggleText}
+              >
+                Attack
+              </Text>
+            </Pressable>
+            <Pressable
+              style={[styles.roleToggleButton, battleRoleView === 'defense' && styles.roleToggleButtonSelected]}
+              onPress={() => setBattleRoleView('defense')}
+            >
+              <Text
+                style={battleRoleView === 'defense' ? styles.roleToggleTextSelected : styles.roleToggleText}
+              >
+                Defense
+              </Text>
+            </Pressable>
+          </View>
+
+          {battleRoleView === 'attack' ? (
+            bestAttackScore !== null ? (
+              <Text style={styles.roleResultText}>
+                {META_TIER_LABELS[getMetaTier(bestAttackScore)]} — best PvP score {bestAttackScore.toFixed(1)}/100
+              </Text>
+            ) : (
+              <Text style={styles.roleResultText}>Not competitively ranked for attacking.</Text>
+            )
+          ) : (
+            <Text style={styles.roleResultText}>
+              {bulkRanking
+                ? `${BULK_TIER_LABELS[bulkRanking.tier]} — tankier than ${bulkRanking.percentile}% of all Pokemon`
+                : 'Bulk data unavailable.'}
+            </Text>
+          )}
+          <Text style={styles.movesetSource}>
+            Attack rating from PvPoke score; defense rating is a DEF+STA heuristic, not an official
+            gym-defender metric.
+          </Text>
+        </PixelPanel>
+
+        <PixelPanel style={styles.statsPanel}>
+          <Text style={styles.panelTitle}>Power-Up Cost</Text>
+          <View style={styles.levelRangeRow}>
+            <View style={styles.levelRangeField}>
+              <Text style={styles.label}>From level</Text>
+              <TextInput
+                style={styles.levelInput}
+                keyboardType="numeric"
+                value={fromLevelInput}
+                onChangeText={setFromLevelInput}
+              />
+            </View>
+            <View style={styles.levelRangeField}>
+              <Text style={styles.label}>To level</Text>
+              <TextInput
+                style={styles.levelInput}
+                keyboardType="numeric"
+                value={toLevelInput}
+                onChangeText={setToLevelInput}
+              />
+            </View>
+          </View>
+          {powerUpResult ? (
+            <View style={styles.powerUpResult}>
+              <Text style={styles.roleResultText}>Stardust: {powerUpResult.stardust.toLocaleString()}</Text>
+              <Text style={styles.roleResultText}>Candy: {powerUpResult.candy}</Text>
+              {powerUpResult.xlCandy > 0 && (
+                <Text style={styles.roleResultText}>XL Candy: {powerUpResult.xlCandy}</Text>
+              )}
+            </View>
+          ) : (
+            <Text style={styles.movesetEmpty}>Enter a valid "from" level lower than "to" level.</Text>
+          )}
         </PixelPanel>
 
         <PixelPanel style={styles.lorePanel} backgroundColor={COLORS.screenGreen}>
@@ -201,6 +312,59 @@ const styles = StyleSheet.create({
     fontSize: 10,
     color: COLORS.navyLight,
     marginTop: 8,
+  },
+  roleToggleRow: {
+    flexDirection: 'row',
+    marginBottom: 12,
+  },
+  roleToggleButton: {
+    flex: 1,
+    borderWidth: 2,
+    borderColor: COLORS.ink,
+    paddingVertical: 8,
+    alignItems: 'center',
+    backgroundColor: COLORS.white,
+  },
+  roleToggleButtonSelected: {
+    backgroundColor: COLORS.navy,
+  },
+  roleToggleText: {
+    fontSize: 12,
+    fontWeight: '700',
+    color: COLORS.ink,
+  },
+  roleToggleTextSelected: {
+    fontSize: 12,
+    fontWeight: '700',
+    color: COLORS.white,
+  },
+  roleResultText: {
+    fontSize: 14,
+    color: COLORS.ink,
+  },
+  label: {
+    fontSize: 12,
+    fontWeight: '600',
+    color: '#444',
+    marginBottom: 4,
+  },
+  levelRangeRow: {
+    flexDirection: 'row',
+    gap: 12,
+  },
+  levelRangeField: {
+    flex: 1,
+  },
+  levelInput: {
+    borderWidth: 2,
+    borderColor: COLORS.ink,
+    backgroundColor: COLORS.white,
+    paddingHorizontal: 10,
+    paddingVertical: 6,
+    fontSize: 15,
+  },
+  powerUpResult: {
+    marginTop: 12,
   },
   lorePanel: {
     width: '100%',
