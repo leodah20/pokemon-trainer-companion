@@ -205,7 +205,9 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     borderRadius: RADIUS.sm,
-    backgroundColor: COLORS.background,
+    borderWidth: 2,
+    borderColor: COLORS.outline,
+    backgroundColor: COLORS.surface,
     padding: SPACING.sm,
   },
   pressedOpacity: {
@@ -229,7 +231,9 @@ const styles = StyleSheet.create({
   },
   input: {
     borderRadius: RADIUS.sm,
-    backgroundColor: COLORS.background,
+    borderWidth: 2,
+    borderColor: COLORS.outline,
+    backgroundColor: COLORS.surface,
     paddingHorizontal: SPACING.md,
     paddingVertical: SPACING.sm,
     fontSize: FONT_SIZE.md,
@@ -244,8 +248,10 @@ const styles = StyleSheet.create({
   },
   calculateButton: {
     marginTop: SPACING.xl,
-    backgroundColor: COLORS.textPrimary,
+    backgroundColor: COLORS.brandBlue,
     borderRadius: RADIUS.md,
+    borderWidth: 3,
+    borderColor: COLORS.outline,
     paddingVertical: SPACING.md,
     alignItems: 'center',
   },
@@ -272,6 +278,8 @@ const styles = StyleSheet.create({
     paddingVertical: SPACING.md,
     backgroundColor: COLORS.surface,
     borderRadius: RADIUS.sm,
+    borderWidth: 2,
+    borderColor: COLORS.outline,
     marginTop: SPACING.sm,
   },
   resultText: {

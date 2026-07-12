@@ -1,25 +1,24 @@
 export const COLORS = {
-  // Brand
-  brandRed: '#E63950',
-  brandRedDark: '#B91C3C',
+  // Brand — bold and saturated on purpose, not a washed-out corporate palette
+  brandRed: '#EE1C25',
+  brandRedDark: '#B3121A',
+  brandBlue: '#2A75BB',
   brandGold: '#FFCB05',
 
-  // Neutrals (modern light theme)
-  background: '#F5F6FB',
+  // Cartoon-ink outline, used deliberately on cards/buttons/badges for a game-drawn feel
+  outline: '#1A1A1A',
+
+  // Neutrals
+  background: '#E9F5FF',
   surface: '#FFFFFF',
-  border: '#E7E8F2',
+  border: '#D8E6F2',
   textPrimary: '#1A1A2E',
-  textSecondary: '#6B7280',
-  textMuted: '#9CA3AF',
+  textSecondary: '#556070',
+  textMuted: '#8A93A3',
 
   // Semantic
   success: '#22C55E',
   danger: '#DC2626',
-
-  // Retro accent, used sparingly (lore panel, tiny badges) to nod at the Game Boy heritage
-  retroScreenGreen: '#9BBC0F',
-  retroScreenGreenDark: '#0F380F',
-  retroInk: '#0F0F0F',
 } as const;
 
 /** Community-standard type color convention (not official Nintendo branding, widely used by fan tools). */
@@ -48,15 +47,15 @@ export function getTypeColor(type: string): string {
   return TYPE_COLORS[type] ?? COLORS.textSecondary;
 }
 
-/** Mixes a hex color toward white — used to turn a vivid type color into a pastel background
- * tint that still reads as "that type's color" without fighting with dark text on top of it. */
-export function tintTowardWhite(hexColor: string, whiteRatio: number): string {
+function parseHex(hexColor: string): [number, number, number] {
   const hex = hexColor.replace('#', '');
-  const r = parseInt(hex.substring(0, 2), 16);
-  const g = parseInt(hex.substring(2, 4), 16);
-  const b = parseInt(hex.substring(4, 6), 16);
+  return [parseInt(hex.substring(0, 2), 16), parseInt(hex.substring(2, 4), 16), parseInt(hex.substring(4, 6), 16)];
+}
 
+/** Mixes a hex color toward white by `whiteRatio` (0 = untouched, 1 = pure white). Lower ratios
+ * keep the color bold — this app leans colorful on purpose, so most call sites use a modest ratio. */
+export function tintTowardWhite(hexColor: string, whiteRatio: number): string {
+  const [r, g, b] = parseHex(hexColor);
   const mix = (channel: number) => Math.round(channel + (255 - channel) * whiteRatio);
-
   return `rgb(${mix(r)}, ${mix(g)}, ${mix(b)})`;
 }

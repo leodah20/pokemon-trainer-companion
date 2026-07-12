@@ -15,7 +15,7 @@ import {
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { PokemonSpecies } from '../../domain/pokemon-species';
 import { getAllGenerations, getAllSpecies, getAllTypes, getSpriteUrl } from '../../data/pokedex/pokedexRepository';
-import { COLORS, DISPLAY_FONT, FONT_SIZE, getTypeColor, RADIUS, SHADOW, SPACING, tintTowardWhite, TypeBadge } from '../theme';
+import { COLORS, DISPLAY_FONT, FONT_SIZE, getTypeColor, Logo, RADIUS, SHADOW, SPACING, tintTowardWhite, TypeBadge } from '../theme';
 import { EMPTY_POKEDEX_FILTERS, filterPokedex, PokedexFilters } from '../../use-cases/filterPokedex';
 import { RootStackParamList } from '../navigation/types';
 
@@ -25,8 +25,8 @@ const ALL_SPECIES = getAllSpecies();
 const ALL_GENERATIONS = getAllGenerations();
 const ALL_TYPES = getAllTypes();
 
-/** How much the scrolling background tint leans toward white — kept high so body text stays readable. */
-const BACKGROUND_TINT_WHITE_RATIO = 0.88;
+/** How much the scrolling background tint leans toward white — low on purpose, this app is colorful. */
+const BACKGROUND_TINT_WHITE_RATIO = 0.6;
 const BACKGROUND_TRANSITION_MS = 700;
 
 function formatDexNumber(id: number): string {
@@ -85,7 +85,13 @@ export function PokedexListScreen({ navigation, route }: Props): React.JSX.Eleme
     <View style={styles.root}>
       <Animated.View style={[StyleSheet.absoluteFill, { backgroundColor: animatedBackgroundColor }]} />
       <SafeAreaView style={styles.screen} edges={['top', 'left', 'right']}>
-        <Text style={styles.title}>{pickerMode ? 'Choose a Pokemon' : 'Pokedex'}</Text>
+        {pickerMode ? (
+          <Text style={styles.title}>Choose a Pokemon</Text>
+        ) : (
+          <View style={styles.logoRow}>
+            <Logo />
+          </View>
+        )}
 
         <TextInput
           style={styles.search}
@@ -153,7 +159,12 @@ export function PokedexListScreen({ navigation, route }: Props): React.JSX.Eleme
               style={({ pressed }) => [styles.row, SHADOW.sm, pressed && styles.rowPressed]}
               onPress={() => handleSelect(item)}
             >
-              <View style={[styles.spriteBackdrop, { backgroundColor: `${getTypeColor(item.types[0])}22` }]}>
+              <View
+                style={[
+                  styles.spriteBackdrop,
+                  { backgroundColor: `${getTypeColor(item.types[0])}55`, borderColor: getTypeColor(item.types[0]) },
+                ]}
+              >
                 <Image source={{ uri: getSpriteUrl(item.id) }} style={styles.sprite} resizeMode="contain" />
               </View>
               <View style={styles.rowInfo}>
@@ -202,6 +213,11 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: 'transparent',
   },
+  logoRow: {
+    paddingHorizontal: SPACING.lg,
+    paddingTop: SPACING.md,
+    paddingBottom: SPACING.sm,
+  },
   title: {
     fontFamily: DISPLAY_FONT,
     fontSize: FONT_SIZE.xl,
@@ -213,6 +229,8 @@ const styles = StyleSheet.create({
   search: {
     marginHorizontal: SPACING.lg,
     borderRadius: RADIUS.md,
+    borderWidth: 2.5,
+    borderColor: COLORS.outline,
     backgroundColor: COLORS.surface,
     paddingHorizontal: SPACING.md,
     paddingVertical: SPACING.sm,
@@ -231,8 +249,8 @@ const styles = StyleSheet.create({
   chip: {
     flexShrink: 0,
     borderRadius: RADIUS.full,
-    borderWidth: 1.5,
-    borderColor: COLORS.border,
+    borderWidth: 2,
+    borderColor: COLORS.outline,
     backgroundColor: COLORS.surface,
     paddingVertical: SPACING.sm,
     paddingHorizontal: SPACING.md + 2,
@@ -241,8 +259,8 @@ const styles = StyleSheet.create({
   chipText: {
     fontSize: 12,
     lineHeight: 16,
-    color: COLORS.textSecondary,
-    fontWeight: '600',
+    color: COLORS.textPrimary,
+    fontWeight: '700',
   },
   chipTextSelected: {
     color: COLORS.surface,
@@ -260,6 +278,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: COLORS.surface,
     borderRadius: RADIUS.md,
+    borderWidth: 2,
+    borderColor: COLORS.outline,
     padding: SPACING.sm,
   },
   rowPressed: {
@@ -269,6 +289,7 @@ const styles = StyleSheet.create({
     width: 56,
     height: 56,
     borderRadius: RADIUS.full,
+    borderWidth: 2,
     alignItems: 'center',
     justifyContent: 'center',
   },

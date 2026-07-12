@@ -18,12 +18,14 @@ export function TypeBadge({ type }: TypeBadgeProps): React.JSX.Element {
 const styles = StyleSheet.create({
   badge: {
     borderRadius: RADIUS.full,
+    borderWidth: 2,
+    borderColor: COLORS.outline,
     paddingHorizontal: SPACING.md,
     paddingVertical: SPACING.xs,
   },
   text: {
     fontSize: 11,
-    fontWeight: '700',
+    fontWeight: '800',
     letterSpacing: 0.5,
     color: COLORS.surface,
   },

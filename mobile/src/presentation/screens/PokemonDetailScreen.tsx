@@ -75,7 +75,7 @@ export function PokemonDetailScreen({ route, navigation }: Props): React.JSX.Ele
   return (
     <SafeAreaView style={styles.screen} edges={['top', 'left', 'right']}>
       <ScrollView contentContainerStyle={styles.content}>
-        <View style={[styles.spriteBackdrop, { backgroundColor: `${accentColor}22` }]}>
+        <View style={[styles.spriteBackdrop, { backgroundColor: `${accentColor}55`, borderColor: accentColor }]}>
           <Image source={{ uri: getSpriteUrl(species.id) }} style={styles.sprite} resizeMode="contain" />
         </View>
         <Text style={styles.dexNumber}>#{String(species.id).padStart(3, '0')}</Text>
@@ -197,8 +197,8 @@ export function PokemonDetailScreen({ route, navigation }: Props): React.JSX.Ele
           )}
         </Card>
 
-        <Card style={styles.card} backgroundColor={COLORS.retroScreenGreen} accentColor={COLORS.retroScreenGreenDark}>
-          <Text style={[styles.panelTitle, { color: COLORS.retroScreenGreenDark }]}>Lore & Trivia</Text>
+        <Card style={styles.card} accentColor={COLORS.success}>
+          <Text style={styles.panelTitle}>Lore & Trivia</Text>
           {lore ? (
             lore.trivia.map((fact, index) => (
               <Text key={index} style={styles.loreFact}>
@@ -238,6 +238,7 @@ const styles = StyleSheet.create({
     width: 140,
     height: 140,
     borderRadius: RADIUS.full,
+    borderWidth: 3,
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -292,7 +293,9 @@ const styles = StyleSheet.create({
   statBarTrack: {
     flex: 1,
     height: 10,
-    backgroundColor: COLORS.background,
+    backgroundColor: COLORS.surface,
+    borderWidth: 1.5,
+    borderColor: COLORS.outline,
     borderRadius: RADIUS.full,
     marginHorizontal: SPACING.sm,
     overflow: 'hidden',
@@ -344,12 +347,14 @@ const styles = StyleSheet.create({
   roleToggleButton: {
     flex: 1,
     borderRadius: RADIUS.md,
+    borderWidth: 2,
+    borderColor: COLORS.outline,
     paddingVertical: SPACING.sm,
     alignItems: 'center',
-    backgroundColor: COLORS.background,
+    backgroundColor: COLORS.surface,
   },
   roleToggleButtonSelected: {
-    backgroundColor: COLORS.textPrimary,
+    backgroundColor: COLORS.brandBlue,
   },
   roleToggleText: {
     fontSize: 12,
@@ -380,7 +385,9 @@ const styles = StyleSheet.create({
   },
   levelInput: {
     borderRadius: RADIUS.sm,
-    backgroundColor: COLORS.background,
+    borderWidth: 2,
+    borderColor: COLORS.outline,
+    backgroundColor: COLORS.surface,
     paddingHorizontal: SPACING.md,
     paddingVertical: SPACING.sm,
     fontSize: FONT_SIZE.md,
@@ -392,7 +399,7 @@ const styles = StyleSheet.create({
   },
   loreFact: {
     fontSize: FONT_SIZE.sm,
-    color: COLORS.retroScreenGreenDark,
+    color: COLORS.textPrimary,
     marginBottom: SPACING.sm,
     lineHeight: 20,
   },
@@ -400,6 +407,8 @@ const styles = StyleSheet.create({
     marginTop: SPACING.xl,
     backgroundColor: COLORS.brandRed,
     borderRadius: RADIUS.md,
+    borderWidth: 3,
+    borderColor: COLORS.outline,
     paddingVertical: SPACING.md,
     paddingHorizontal: SPACING.xxl,
     width: '100%',
