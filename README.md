@@ -50,14 +50,29 @@ reasoning.
 | ORM | Prisma | Schema-first modeling, migrations, typed client |
 | Database | PostgreSQL | Saved teams, user accounts, Pro entitlements |
 | Cache | Redis (or on-device SQLite for the client) | Static Pokémon data (species, types, moves) cached locally; refreshed periodically from public data sources |
-| Data sources | [PokéAPI](https://pokeapi.co/) (species/lore data), [PoGo API](https://pogoapi.net/) (GO-specific data: CP multipliers, raid bosses, events) | Both are free, unofficial, community-maintained — no official Niantic public API exists |
+| Data sources | [PoGo API](https://pogoapi.net/) (base stats, types, CP multipliers), [PvPoke](https://pvpoke.com/) (PvP moveset rankings), [PokéAPI](https://pokeapi.co/) (planned: lore/flavor text) | All free, unofficial/open-source, community-maintained — no official Niantic public API exists |
 | Payments | Stripe / RevenueCat | Schema is prepared with a plan flag; billing itself is not implemented in the MVP |
+
+## Getting started
+
+See [docs/dev-setup.md](docs/dev-setup.md) for the full step-by-step local setup (dependencies,
+Docker/Postgres, Prisma migrations, running the backend + Metro together, and connecting an
+Android emulator). Quick version:
+
+```
+npm install && npm --prefix backend install && npm --prefix mobile install
+cp .env.example .env && cp backend/.env.example backend/.env
+docker compose up -d
+cd backend && npx prisma migrate dev --name init && cd ..
+npm run dev
+```
 
 ## Project status
 
-Early scaffolding stage: repo structure, documentation, and the backend/mobile skeletons are set
-up. No feature (IV calculator, overlay, Pokédex) is implemented yet — see the task list in
-[docs/use-cases.md](docs/use-cases.md) for what's planned first.
+Core IV calculator and a full national Pokédex (965 species, gens 1-9, filterable by type/
+generation) are implemented and running on Android. Overlay/OCR, PvP moveset rankings, and lore
+content are not implemented yet — see the task list in [docs/use-cases.md](docs/use-cases.md) for
+what's planned next.
 
 ## Repository layout
 

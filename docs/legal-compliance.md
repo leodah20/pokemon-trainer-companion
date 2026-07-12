@@ -38,6 +38,24 @@ Game Freak, and The Pokémon Company. This project:
   team's own words, not copied from game manuals or wikis.
 - States clearly in the README and in-app "About" screen that the project is unaffiliated fan work.
 
+## 2b. PvP moveset suggestions: PvPoke, not social media scraping
+
+An earlier draft of this feature considered analyzing player comments from Reddit/forums to back
+up moveset suggestions with "real community sentiment." That was deliberately rejected in favor of
+[PvPoke](https://pvpoke.com)'s open rankings dataset
+([GitHub: pvpoke/pvpoke](https://github.com/pvpoke/pvpoke)):
+
+- Scraping social platforms means operating under each platform's own ToS/API rate limits, plus
+  building a sentiment-analysis pipeline from scratch — a research project in itself, not a
+  reasonable scope addition to a calculator app.
+- PvPoke's rankings are already the aggregated output of community-vetted damage simulations
+  (published as plain JSON files, MIT-licensed repo), giving the same end-user value — "what's the
+  best moveset and why" — without any of the scraping risk or engineering overhead.
+- The app bundles a locally-matched, size-trimmed snapshot of this data (fast move + charged moves
+  + score per league), refreshed manually for now; a scheduled sync job (like the one described for
+  PokeAPI/PoGo API in [architecture.md](architecture.md)) is the natural next step once this data
+  needs to stay current automatically.
+
 ## 3. LGPD (Lei Geral de Proteção de Dados)
 
 Two data postures, by design:

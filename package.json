@@ -1,0 +1,10 @@
+{
+  "name": "pokemon-trainer-companion",
+  "private": true,
+  "scripts": {
+    "dev": "concurrently -n backend,mobile -c blue,green \"npm --prefix backend run start:dev\" \"npm --prefix mobile start\""
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.0"
+  }
+}
