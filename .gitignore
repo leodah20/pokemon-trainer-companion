@@ -1,0 +1,30 @@
+# Node / NestJS
+node_modules/
+dist/
+.env
+.env.*
+!.env.example
+npm-debug.log*
+
+# React Native
+mobile/ios/Pods/
+mobile/ios/build/
+mobile/android/.gradle/
+mobile/android/local.properties
+mobile/android/app/build/
+mobile/android/build/
+mobile/*.iml
+mobile/.bundle/
+mobile/vendor/bundle/
+
+# Prisma
+backend/prisma/*.db
+backend/generated/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db

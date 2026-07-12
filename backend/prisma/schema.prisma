@@ -1,0 +1,121 @@
+// Prisma schema — mirrors docs/entity-relationship-diagram.md at the repo root.
+// Keep both in sync when a model changes.
+
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+}
+
+// Prisma 7 moved the connection URL out of schema.prisma and into prisma.config.ts
+// (see backend/prisma.config.ts, which reads process.env.DATABASE_URL from .env).
+datasource db {
+  provider = "postgresql"
+}
+
+enum SubscriptionTier {
+  free
+  pro
+}
+
+enum SubscriptionProvider {
+  stripe
+  revenuecat
+}
+
+enum TeamContext {
+  raid
+  pvp_great
+  pvp_ultra
+  pvp_master
+}
+
+model Trainer {
+  id                String        @id @default(uuid())
+  email             String        @unique
+  displayName       String
+  lorePopupsEnabled Boolean       @default(true) @map("lore_popups_enabled")
+  createdAt         DateTime      @default(now()) @map("created_at")
+  subscription      Subscription?
+  savedTeams        SavedTeam[]
+
+  @@map("trainers")
+}
+
+// Only created when a trainer upgrades — its mere existence signals "Pro",
+// which keeps the free-tier data footprint at zero rows here (see legal-compliance.md).
+model Subscription {
+  id                String               @id @default(uuid())
+  trainerId         String               @unique @map("trainer_id")
+  trainer           Trainer              @relation(fields: [trainerId], references: [id], onDelete: Cascade)
+  tier              SubscriptionTier     @default(pro)
+  provider          SubscriptionProvider
+  providerReference String               @map("provider_reference")
+  startedAt         DateTime             @default(now()) @map("started_at")
+  renewsAt          DateTime?            @map("renews_at")
+  active            Boolean              @default(true)
+
+  @@map("subscriptions")
+}
+
+model SavedTeam {
+  id        String       @id @default(uuid())
+  trainerId String       @map("trainer_id")
+  trainer   Trainer      @relation(fields: [trainerId], references: [id], onDelete: Cascade)
+  name      String
+  context   TeamContext
+  createdAt DateTime     @default(now()) @map("created_at")
+  updatedAt DateTime     @updatedAt @map("updated_at")
+  members   TeamMember[]
+
+  @@map("saved_teams")
+}
+
+model TeamMember {
+  id               String         @id @default(uuid())
+  savedTeamId      String         @map("saved_team_id")
+  savedTeam        SavedTeam      @relation(fields: [savedTeamId], references: [id], onDelete: Cascade)
+  pokemonSpeciesId Int            @map("pokemon_species_id")
+  pokemonSpecies   PokemonSpecies @relation(fields: [pokemonSpeciesId], references: [id])
+  cp               Int
+  hp               Int
+  ivAttack         Int            @map("iv_attack")
+  ivDefense        Int            @map("iv_defense")
+  ivStamina        Int            @map("iv_stamina")
+  fastMove         String         @map("fast_move")
+  chargeMove       String         @map("charge_move")
+  slotOrder        Int            @map("slot_order")
+
+  @@map("team_members")
+}
+
+// Read-only cache populated by the scheduled sync job (UC-06) from PokeAPI/PoGo API.
+// The backend is the source of truth for this data — never written to from a client request.
+model PokemonSpecies {
+  id          Int                    @id
+  name        String
+  generation  Int
+  flavorText  String                 @map("flavor_text")
+  spriteUrl   String                 @map("sprite_url")
+  types       PokemonTypeOnSpecies[]
+  teamMembers TeamMember[]
+
+  @@map("pokemon_species")
+}
+
+model PokemonType {
+  id      Int                    @id
+  name    String                 @unique
+  species PokemonTypeOnSpecies[]
+
+  @@map("pokemon_types")
+}
+
+model PokemonTypeOnSpecies {
+  pokemonSpeciesId Int            @map("pokemon_species_id")
+  pokemonSpecies   PokemonSpecies @relation(fields: [pokemonSpeciesId], references: [id])
+  pokemonTypeId    Int            @map("pokemon_type_id")
+  pokemonType      PokemonType    @relation(fields: [pokemonTypeId], references: [id])
+
+  @@id([pokemonSpeciesId, pokemonTypeId])
+  @@map("pokemon_type_map")
+}
