@@ -5,6 +5,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { getAllSpecies, getSpeciesById, getSpriteUrl } from '../../data/pokedex/pokedexRepository';
 import { getLoreForSpecies } from '../../data/lore/loreRepository';
+import { LoreSection } from '../components/LoreSection';
 import { getPowerUpSteps } from '../../data/power-up/powerUpRepository';
 import { getPvpRankingsForSpecies } from '../../data/pvp/pvpRepository';
 import { calculatePowerUpCost } from '../../domain/power-up';
@@ -216,15 +217,7 @@ export function PokemonDetailScreen({ route, navigation }: Props): React.JSX.Ele
 
           <Card style={styles.card} accentColor={COLORS.success} tilt={-1}>
             <Text style={styles.panelTitle}>Lore & Trivia</Text>
-            {lore ? (
-              lore.trivia.map((fact, index) => (
-                <Text key={index} style={styles.loreFact}>
-                  • {fact}
-                </Text>
-              ))
-            ) : (
-              <Text style={styles.loreFact}>No trivia written for this species yet.</Text>
-            )}
+            <LoreSection lore={lore} />
           </Card>
 
           <Pressable
@@ -426,12 +419,6 @@ const styles = StyleSheet.create({
   powerUpResult: {
     marginTop: SPACING.md,
     gap: 2,
-  },
-  loreFact: {
-    fontSize: FONT_SIZE.sm,
-    color: COLORS.textPrimary,
-    marginBottom: SPACING.sm,
-    lineHeight: 20,
   },
   calculateButton: {
     marginTop: SPACING.xxl,

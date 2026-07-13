@@ -22,7 +22,6 @@ import {
   FONT_SIZE,
   getTypeColor,
   getTypeGradient,
-  Logo,
   RADIUS,
   SPACING,
   tintTowardWhite,
@@ -96,8 +95,10 @@ export function PokedexListScreen({ navigation, route }: Props): React.JSX.Eleme
         {pickerMode ? (
           <Text style={styles.title}>Choose a Pokemon</Text>
         ) : (
-          <View style={styles.logoRow}>
-            <Logo color={COLORS.surface} />
+          <View style={styles.actionsRow}>
+            <Pressable style={styles.overlayDemoButton} onPress={() => navigation.navigate('OverlayDemo')}>
+              <Text style={styles.overlayDemoButtonText}>Overlay Demo</Text>
+            </Pressable>
           </View>
         )}
 
@@ -218,10 +219,25 @@ const styles = StyleSheet.create({
   screen: {
     flex: 1,
   },
-  logoRow: {
+  actionsRow: {
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
     paddingHorizontal: SPACING.lg,
     paddingTop: SPACING.md,
     paddingBottom: SPACING.sm,
+  },
+  overlayDemoButton: {
+    borderRadius: RADIUS.full,
+    borderWidth: 2,
+    borderColor: COLORS.outline,
+    backgroundColor: COLORS.surface,
+    paddingVertical: SPACING.xs,
+    paddingHorizontal: SPACING.sm,
+  },
+  overlayDemoButtonText: {
+    fontSize: 11,
+    fontWeight: '700',
+    color: COLORS.textPrimary,
   },
   title: {
     fontFamily: DISPLAY_FONT,
@@ -259,15 +275,18 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderColor: COLORS.outline,
     backgroundColor: COLORS.surface,
-    paddingVertical: SPACING.sm,
+    paddingVertical: SPACING.sm + 2,
     paddingHorizontal: SPACING.lg,
     marginRight: SPACING.sm,
+    justifyContent: 'center',
+    minHeight: 40,
   },
   chipText: {
     fontSize: 13,
-    lineHeight: 17,
     color: COLORS.textPrimary,
     fontWeight: '700',
+    // No explicit lineHeight here on purpose — a value tighter than the font's natural box
+    // clips ascenders/descenders on Android (that's what caused the cut-off chip labels).
   },
   chipTextSelected: {
     color: COLORS.surface,

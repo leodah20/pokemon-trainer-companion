@@ -4,7 +4,7 @@ import { COLORS } from './colors';
 import { PokeballIcon } from './PokeballIcon';
 import { DISPLAY_FONT, FONT_SIZE } from './typography';
 
-export const APP_NAME = 'PokeBuddy';
+export const APP_NAME = 'Professor Dex';
 
 interface LogoProps {
   size?: 'sm' | 'lg';
@@ -31,5 +31,8 @@ const styles = StyleSheet.create({
   },
   wordmark: {
     fontFamily: DISPLAY_FONT,
+    textShadowColor: COLORS.outline,
+    textShadowOffset: { width: 1.5, height: 1.5 },
+    textShadowRadius: 0,
   },
 });
