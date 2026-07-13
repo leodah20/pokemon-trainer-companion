@@ -12,10 +12,22 @@ import {
   View,
   ViewToken,
 } from 'react-native';
+import LinearGradient from 'react-native-linear-gradient';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { PokemonSpecies } from '../../domain/pokemon-species';
 import { getAllGenerations, getAllSpecies, getAllTypes, getSpriteUrl } from '../../data/pokedex/pokedexRepository';
-import { COLORS, DISPLAY_FONT, FONT_SIZE, getTypeColor, Logo, RADIUS, SHADOW, SPACING, tintTowardWhite, TypeBadge } from '../theme';
+import {
+  COLORS,
+  DISPLAY_FONT,
+  FONT_SIZE,
+  getTypeColor,
+  getTypeGradient,
+  Logo,
+  RADIUS,
+  SPACING,
+  tintTowardWhite,
+  TypeBadge,
+} from '../theme';
 import { EMPTY_POKEDEX_FILTERS, filterPokedex, PokedexFilters } from '../../use-cases/filterPokedex';
 import { RootStackParamList } from '../navigation/types';
 
@@ -25,24 +37,21 @@ const ALL_SPECIES = getAllSpecies();
 const ALL_GENERATIONS = getAllGenerations();
 const ALL_TYPES = getAllTypes();
 
-/** How much the scrolling background tint leans toward white — low on purpose, this app is colorful. */
-const BACKGROUND_TINT_WHITE_RATIO = 0.6;
-const BACKGROUND_TRANSITION_MS = 700;
+const BACKGROUND_TRANSITION_MS = 600;
+const DEFAULT_GRADIENT = getTypeGradient(getTypeColor(ALL_SPECIES[0].types[0]));
 
-function formatDexNumber(id: number): string {
-  return `#${String(id).padStart(3, '0')}`;
-}
-
+// RN's AnimatedInterpolation isn't accepted where LinearGradient expects plain colors,
+// so the animated gradient is two stacked static gradients cross-fading via opacity.
 export function PokedexListScreen({ navigation, route }: Props): React.JSX.Element {
   const pickerMode = route.params?.pickerMode ?? false;
   const [filters, setFilters] = useState<PokedexFilters>(EMPTY_POKEDEX_FILTERS);
 
   const results = useMemo(() => filterPokedex(ALL_SPECIES, filters), [filters]);
 
-  const colorProgress = useRef(new Animated.Value(0)).current;
-  const [backgroundTint, setBackgroundTint] = useState<{ from: string; to: string }>({
-    from: COLORS.background,
-    to: COLORS.background,
+  const fadeProgress = useRef(new Animated.Value(1)).current;
+  const [gradients, setGradients] = useState<{ from: [string, string]; to: [string, string] }>({
+    from: DEFAULT_GRADIENT,
+    to: DEFAULT_GRADIENT,
   });
 
   const viewabilityConfig = useRef({ itemVisiblePercentThreshold: 60 }).current;
@@ -52,26 +61,21 @@ export function PokedexListScreen({ navigation, route }: Props): React.JSX.Eleme
       if (!firstVisible) {
         return;
       }
-      const nextTint = tintTowardWhite(getTypeColor(firstVisible.types[0]), BACKGROUND_TINT_WHITE_RATIO);
-      setBackgroundTint((prev) => {
-        if (prev.to === nextTint) {
+      const nextGradient = getTypeGradient(getTypeColor(firstVisible.types[0]));
+      setGradients((prev) => {
+        if (prev.to[0] === nextGradient[0] && prev.to[1] === nextGradient[1]) {
           return prev;
         }
-        colorProgress.setValue(0);
-        Animated.timing(colorProgress, {
+        fadeProgress.setValue(0);
+        Animated.timing(fadeProgress, {
           toValue: 1,
           duration: BACKGROUND_TRANSITION_MS,
-          useNativeDriver: false, // color interpolation isn't supported by the native driver
+          useNativeDriver: true,
         }).start();
-        return { from: prev.to, to: nextTint };
+        return { from: prev.to, to: nextGradient };
       });
     },
   ).current;
-
-  const animatedBackgroundColor = colorProgress.interpolate({
-    inputRange: [0, 1],
-    outputRange: [backgroundTint.from, backgroundTint.to],
-  });
 
   function handleSelect(species: PokemonSpecies): void {
     if (pickerMode) {
@@ -83,13 +87,17 @@ export function PokedexListScreen({ navigation, route }: Props): React.JSX.Eleme
 
   return (
     <View style={styles.root}>
-      <Animated.View style={[StyleSheet.absoluteFill, { backgroundColor: animatedBackgroundColor }]} />
+      <LinearGradient colors={gradients.from} style={StyleSheet.absoluteFill} />
+      <Animated.View style={[StyleSheet.absoluteFill, { opacity: fadeProgress }]}>
+        <LinearGradient colors={gradients.to} style={StyleSheet.absoluteFill} />
+      </Animated.View>
+
       <SafeAreaView style={styles.screen} edges={['top', 'left', 'right']}>
         {pickerMode ? (
           <Text style={styles.title}>Choose a Pokemon</Text>
         ) : (
           <View style={styles.logoRow}>
-            <Logo />
+            <Logo color={COLORS.surface} />
           </View>
         )}
 
@@ -154,30 +162,28 @@ export function PokedexListScreen({ navigation, route }: Props): React.JSX.Eleme
           initialNumToRender={16}
           onViewableItemsChanged={handleViewableItemsChanged}
           viewabilityConfig={viewabilityConfig}
-          renderItem={({ item }) => (
-            <Pressable
-              style={({ pressed }) => [styles.row, SHADOW.sm, pressed && styles.rowPressed]}
-              onPress={() => handleSelect(item)}
-            >
-              <View
-                style={[
-                  styles.spriteBackdrop,
-                  { backgroundColor: `${getTypeColor(item.types[0])}55`, borderColor: getTypeColor(item.types[0]) },
-                ]}
+          renderItem={({ item }) => {
+            const itemColor = getTypeColor(item.types[0]);
+            return (
+              <Pressable
+                style={({ pressed }) => [styles.row, pressed && styles.rowPressed]}
+                onPress={() => handleSelect(item)}
               >
-                <Image source={{ uri: getSpriteUrl(item.id) }} style={styles.sprite} resizeMode="contain" />
-              </View>
-              <View style={styles.rowInfo}>
-                <Text style={styles.rowDexNumber}>{formatDexNumber(item.id)}</Text>
-                <Text style={styles.rowName}>{item.name}</Text>
-                <View style={styles.rowTypes}>
-                  {item.types.map((type) => (
-                    <TypeBadge key={type} type={type} />
-                  ))}
+                <View style={[styles.spriteBackdrop, { backgroundColor: tintTowardWhite(itemColor, 0.55), borderColor: COLORS.outline }]}>
+                  <Image source={{ uri: getSpriteUrl(item.id) }} style={styles.sprite} resizeMode="contain" />
                 </View>
-              </View>
-            </Pressable>
-          )}
+                <View style={styles.rowInfo}>
+                  <Text style={styles.rowDexNumber}>#{String(item.id).padStart(3, '0')}</Text>
+                  <Text style={styles.rowName}>{item.name}</Text>
+                  <View style={styles.rowTypes}>
+                    {item.types.map((type) => (
+                      <TypeBadge key={type} type={type} />
+                    ))}
+                  </View>
+                </View>
+              </Pressable>
+            );
+          }}
           ListEmptyComponent={<Text style={styles.emptyText}>No Pokemon match these filters.</Text>}
         />
       </SafeAreaView>
@@ -196,7 +202,7 @@ function FilterChip({ label, selected, onPress, color }: FilterChipProps): React
   return (
     <Pressable
       onPress={onPress}
-      style={[styles.chip, selected && { backgroundColor: color ?? COLORS.brandRed, borderColor: color ?? COLORS.brandRed }]}
+      style={[styles.chip, selected && { backgroundColor: color ?? COLORS.brandRed }]}
     >
       <Text style={[styles.chipText, selected && styles.chipTextSelected]} numberOfLines={1}>
         {label}
@@ -211,7 +217,6 @@ const styles = StyleSheet.create({
   },
   screen: {
     flex: 1,
-    backgroundColor: 'transparent',
   },
   logoRow: {
     paddingHorizontal: SPACING.lg,
@@ -221,22 +226,24 @@ const styles = StyleSheet.create({
   title: {
     fontFamily: DISPLAY_FONT,
     fontSize: FONT_SIZE.xl,
-    color: COLORS.brandRed,
+    color: COLORS.surface,
     paddingHorizontal: SPACING.lg,
     paddingTop: SPACING.md,
     paddingBottom: SPACING.sm,
+    textShadowColor: COLORS.outline,
+    textShadowOffset: { width: 2, height: 2 },
+    textShadowRadius: 0,
   },
   search: {
     marginHorizontal: SPACING.lg,
-    borderRadius: RADIUS.md,
+    borderRadius: RADIUS.full,
     borderWidth: 2.5,
     borderColor: COLORS.outline,
     backgroundColor: COLORS.surface,
-    paddingHorizontal: SPACING.md,
-    paddingVertical: SPACING.sm,
+    paddingHorizontal: SPACING.lg,
+    paddingVertical: SPACING.sm + 2,
     fontSize: FONT_SIZE.md,
     color: COLORS.textPrimary,
-    ...SHADOW.sm,
   },
   filterRow: {
     marginTop: SPACING.md,
@@ -253,12 +260,12 @@ const styles = StyleSheet.create({
     borderColor: COLORS.outline,
     backgroundColor: COLORS.surface,
     paddingVertical: SPACING.sm,
-    paddingHorizontal: SPACING.md + 2,
+    paddingHorizontal: SPACING.lg,
     marginRight: SPACING.sm,
   },
   chipText: {
-    fontSize: 12,
-    lineHeight: 16,
+    fontSize: 13,
+    lineHeight: 17,
     color: COLORS.textPrimary,
     fontWeight: '700',
   },
@@ -271,31 +278,31 @@ const styles = StyleSheet.create({
   listContent: {
     paddingHorizontal: SPACING.lg,
     paddingBottom: SPACING.xl,
-    gap: SPACING.sm,
+    gap: SPACING.md,
   },
   row: {
     flexDirection: 'row',
     alignItems: 'center',
     backgroundColor: COLORS.surface,
-    borderRadius: RADIUS.md,
-    borderWidth: 2,
+    borderRadius: RADIUS.lg,
+    borderWidth: 2.5,
     borderColor: COLORS.outline,
     padding: SPACING.sm,
   },
   rowPressed: {
-    opacity: 0.85,
+    transform: [{ scale: 0.98 }],
   },
   spriteBackdrop: {
-    width: 56,
-    height: 56,
+    width: 60,
+    height: 60,
     borderRadius: RADIUS.full,
     borderWidth: 2,
     alignItems: 'center',
     justifyContent: 'center',
   },
   sprite: {
-    width: 44,
-    height: 44,
+    width: 48,
+    height: 48,
   },
   rowInfo: {
     marginLeft: SPACING.md,
@@ -304,13 +311,12 @@ const styles = StyleSheet.create({
   rowDexNumber: {
     fontSize: 11,
     color: COLORS.textMuted,
-    fontWeight: '600',
+    fontWeight: '700',
   },
   rowName: {
-    fontSize: FONT_SIZE.md,
-    fontWeight: '700',
+    fontSize: FONT_SIZE.lg,
+    fontFamily: DISPLAY_FONT,
     color: COLORS.textPrimary,
-    marginTop: 1,
   },
   rowTypes: {
     flexDirection: 'row',
@@ -320,6 +326,7 @@ const styles = StyleSheet.create({
   emptyText: {
     textAlign: 'center',
     marginTop: 40,
-    color: COLORS.textSecondary,
+    color: COLORS.surface,
+    fontWeight: '700',
   },
 });

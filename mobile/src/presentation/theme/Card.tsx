@@ -1,41 +1,48 @@
 import React, { PropsWithChildren } from 'react';
 import { StyleProp, StyleSheet, View, ViewStyle } from 'react-native';
-import { COLORS, tintTowardWhite } from './colors';
+import { COLORS } from './colors';
 import { RADIUS, SPACING } from './spacing';
 
 interface CardProps extends PropsWithChildren {
   style?: StyleProp<ViewStyle>;
-  /** Drives both the border color and a light tinted fill — pass a bold color, it gets tamed automatically. */
+  /** Border + title-strip color. Pass the Pokemon's type color for themed cards. */
   accentColor?: string;
+  /** Tiny alternating rotation gives a hand-placed sticker feel; 0 disables it. */
+  tilt?: number;
 }
 
 /**
- * A "sticker" card: thick cartoon-ink border, a clearly tinted (not washed-out) fill, and a hard
- * offset shadow block instead of a soft blur — soft shadows read as generic SaaS UI, a crisp
- * offset block reads more like a game/comic panel and renders identically on iOS and Android.
+ * A "sticker" panel meant to sit on top of the vivid gradient backgrounds: solid white fill so
+ * content always has contrast, a thick ink outline, a hard offset shadow, and an optional slight
+ * rotation. The shadow is drawn by an absolutely-positioned twin so the card itself keeps its
+ * natural full width (the previous wrapper-based approach broke width: '100%' on children).
  */
-export function Card({ children, style, accentColor = COLORS.brandBlue }: CardProps): React.JSX.Element {
-  const fillColor = tintTowardWhite(accentColor, 0.82);
-
+export function Card({ children, style, accentColor = COLORS.outline, tilt = 0 }: CardProps): React.JSX.Element {
   return (
-    <View style={styles.shadowBlock}>
-      <View style={[styles.card, { backgroundColor: fillColor, borderColor: accentColor }, style]}>
-        {children}
-      </View>
+    <View style={[styles.container, tilt !== 0 && { transform: [{ rotate: `${tilt}deg` }] }, style]}>
+      <View style={styles.shadowTwin} />
+      <View style={[styles.card, { borderColor: accentColor }]}>{children}</View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  shadowBlock: {
+  container: {
+    width: '100%',
+  },
+  shadowTwin: {
+    position: 'absolute',
+    top: 6,
+    left: 6,
+    right: -6,
+    bottom: -6,
     backgroundColor: COLORS.outline,
     borderRadius: RADIUS.lg,
   },
   card: {
+    backgroundColor: COLORS.surface,
     borderRadius: RADIUS.lg,
     borderWidth: 3,
     padding: SPACING.lg,
-    marginBottom: 5,
-    marginRight: 5,
   },
 });

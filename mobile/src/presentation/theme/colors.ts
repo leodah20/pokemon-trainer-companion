@@ -59,3 +59,15 @@ export function tintTowardWhite(hexColor: string, whiteRatio: number): string {
   const mix = (channel: number) => Math.round(channel + (255 - channel) * whiteRatio);
   return `rgb(${mix(r)}, ${mix(g)}, ${mix(b)})`;
 }
+
+/** Mixes a hex color toward black — used for the deep end of the type-color gradients. */
+export function shadeTowardBlack(hexColor: string, blackRatio: number): string {
+  const [r, g, b] = parseHex(hexColor);
+  const mix = (channel: number) => Math.round(channel * (1 - blackRatio));
+  return `rgb(${mix(r)}, ${mix(g)}, ${mix(b)})`;
+}
+
+/** The two stops of a vivid full-screen gradient for a given type color. */
+export function getTypeGradient(typeColor: string): [string, string] {
+  return [tintTowardWhite(typeColor, 0.15), shadeTowardBlack(typeColor, 0.35)];
+}

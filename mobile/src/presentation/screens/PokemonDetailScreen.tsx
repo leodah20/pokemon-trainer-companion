@@ -1,6 +1,7 @@
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import React, { useMemo, useState } from 'react';
 import { Image, Pressable, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
+import LinearGradient from 'react-native-linear-gradient';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { getAllSpecies, getSpeciesById, getSpriteUrl } from '../../data/pokedex/pokedexRepository';
 import { getLoreForSpecies } from '../../data/lore/loreRepository';
@@ -9,7 +10,18 @@ import { getPvpRankingsForSpecies } from '../../data/pvp/pvpRepository';
 import { calculatePowerUpCost } from '../../domain/power-up';
 import { formatMoveName, getMetaTier, META_TIER_LABELS, PVP_LEAGUE_LABELS, PvpLeague } from '../../domain/pvp';
 import { BULK_TIER_LABELS, rankBulkPercentile } from '../../use-cases/rankBulkPercentile';
-import { Card, COLORS, DISPLAY_FONT, FONT_SIZE, getTypeColor, RADIUS, SPACING, TypeBadge } from '../theme';
+import {
+  Card,
+  COLORS,
+  DISPLAY_FONT,
+  FONT_SIZE,
+  getTypeColor,
+  getTypeGradient,
+  PokeballIcon,
+  RADIUS,
+  SPACING,
+  TypeBadge,
+} from '../theme';
 import { RootStackParamList } from '../navigation/types';
 
 const LEAGUE_ORDER: PvpLeague[] = ['great', 'ultra', 'master'];
@@ -20,13 +32,13 @@ const MAX_BASE_STAT_FOR_BAR = 300; // Mewtwo's base attack (300) is the ceiling 
 type Props = NativeStackScreenProps<RootStackParamList, 'PokemonDetail'>;
 type BattleRoleView = 'attack' | 'defense';
 
-function StatBar({ label, value }: { label: string; value: number }): React.JSX.Element {
+function StatBar({ label, value, color }: { label: string; value: number; color: string }): React.JSX.Element {
   const widthPercentage = Math.min(100, (value / MAX_BASE_STAT_FOR_BAR) * 100);
   return (
     <View style={styles.statRow}>
       <Text style={styles.statLabel}>{label}</Text>
       <View style={styles.statBarTrack}>
-        <View style={[styles.statBarFill, { width: `${widthPercentage}%` }]} />
+        <View style={[styles.statBarFill, { width: `${widthPercentage}%`, backgroundColor: color }]} />
       </View>
       <Text style={styles.statValue}>{value}</Text>
     </View>
@@ -64,205 +76,220 @@ export function PokemonDetailScreen({ route, navigation }: Props): React.JSX.Ele
 
   if (!species) {
     return (
-      <SafeAreaView style={styles.screen}>
+      <SafeAreaView style={styles.fallbackScreen}>
         <Text style={styles.notFound}>Species not found.</Text>
       </SafeAreaView>
     );
   }
 
-  const accentColor = getTypeColor(species.types[0]);
+  const typeColor = getTypeColor(species.types[0]);
+  const gradient = getTypeGradient(typeColor);
 
   return (
-    <SafeAreaView style={styles.screen} edges={['top', 'left', 'right']}>
-      <ScrollView contentContainerStyle={styles.content}>
-        <View style={[styles.spriteBackdrop, { backgroundColor: `${accentColor}55`, borderColor: accentColor }]}>
+    <LinearGradient colors={gradient} style={styles.gradient}>
+      {/* Giant watermark Pokeball peeking from the corner, poster-style */}
+      <View style={styles.watermark} pointerEvents="none">
+        <PokeballIcon size={280} />
+      </View>
+
+      <SafeAreaView style={styles.screen} edges={['top', 'left', 'right']}>
+        <ScrollView contentContainerStyle={styles.content}>
           <Image source={{ uri: getSpriteUrl(species.id) }} style={styles.sprite} resizeMode="contain" />
-        </View>
-        <Text style={styles.dexNumber}>#{String(species.id).padStart(3, '0')}</Text>
-        <Text style={styles.name}>{species.name}</Text>
-        <Text style={styles.generation}>Generation {species.generation}</Text>
+          <Text style={styles.dexNumber}>#{String(species.id).padStart(3, '0')}</Text>
+          <Text style={styles.name}>{species.name}</Text>
+          <Text style={styles.generation}>Generation {species.generation}</Text>
 
-        <View style={styles.typeRow}>
-          {species.types.map((type) => (
-            <TypeBadge key={type} type={type} />
-          ))}
-        </View>
+          <View style={styles.typeRow}>
+            {species.types.map((type) => (
+              <TypeBadge key={type} type={type} />
+            ))}
+          </View>
 
-        <Card style={styles.card} accentColor={COLORS.brandRed}>
-          <Text style={styles.panelTitle}>Base Stats</Text>
-          <StatBar label="ATK" value={species.baseAttack} />
-          <StatBar label="DEF" value={species.baseDefense} />
-          <StatBar label="STA" value={species.baseStamina} />
-        </Card>
+          <Card style={styles.card} accentColor={typeColor} tilt={-1}>
+            <Text style={styles.panelTitle}>Base Stats</Text>
+            <StatBar label="ATK" value={species.baseAttack} color={typeColor} />
+            <StatBar label="DEF" value={species.baseDefense} color={typeColor} />
+            <StatBar label="STA" value={species.baseStamina} color={typeColor} />
+          </Card>
 
-        <Card style={styles.card} accentColor={COLORS.brandGold}>
-          <Text style={styles.panelTitle}>Best Moveset (PvP)</Text>
-          {LEAGUE_ORDER.filter((league) => pvpRankings?.[league] !== undefined).map((league) => {
-            const moveset = pvpRankings![league]!;
-            return (
-              <View key={league} style={styles.movesetRow}>
-                <Text style={styles.movesetLeague}>{PVP_LEAGUE_LABELS[league]}</Text>
-                <Text style={styles.movesetMoves}>
-                  {formatMoveName(moveset.fastMove)} +{' '}
-                  {moveset.chargedMoves.map(formatMoveName).join(' / ')}
+          <Card style={styles.card} accentColor={COLORS.brandGold} tilt={1}>
+            <Text style={styles.panelTitle}>Best Moveset (PvP)</Text>
+            {LEAGUE_ORDER.filter((league) => pvpRankings?.[league] !== undefined).map((league) => {
+              const moveset = pvpRankings![league]!;
+              return (
+                <View key={league} style={styles.movesetRow}>
+                  <Text style={styles.movesetLeague}>{PVP_LEAGUE_LABELS[league]}</Text>
+                  <Text style={styles.movesetMoves}>
+                    {formatMoveName(moveset.fastMove)} +{' '}
+                    {moveset.chargedMoves.map(formatMoveName).join(' / ')}
+                  </Text>
+                  <Text style={styles.movesetScore}>Score: {moveset.score.toFixed(1)}/100</Text>
+                </View>
+              );
+            })}
+            {pvpRankings === undefined && (
+              <Text style={styles.emptyText}>Not competitively ranked in PvP.</Text>
+            )}
+            <Text style={styles.sourceText}>Source: PvPoke community rankings (pvpoke.com)</Text>
+          </Card>
+
+          <Card style={styles.card} accentColor={COLORS.brandBlue} tilt={-1}>
+            <Text style={styles.panelTitle}>Battle Role</Text>
+            <View style={styles.roleToggleRow}>
+              <Pressable
+                style={[styles.roleToggleButton, battleRoleView === 'attack' && styles.roleToggleButtonSelected]}
+                onPress={() => setBattleRoleView('attack')}
+              >
+                <Text
+                  style={battleRoleView === 'attack' ? styles.roleToggleTextSelected : styles.roleToggleText}
+                >
+                  Attack
                 </Text>
-                <Text style={styles.movesetScore}>Score: {moveset.score.toFixed(1)}/100</Text>
-              </View>
-            );
-          })}
-          {pvpRankings === undefined && (
-            <Text style={styles.emptyText}>Not competitively ranked in PvP.</Text>
-          )}
-          <Text style={styles.sourceText}>Source: PvPoke community rankings (pvpoke.com)</Text>
-        </Card>
-
-        <Card style={styles.card} accentColor={COLORS.textPrimary}>
-          <Text style={styles.panelTitle}>Battle Role</Text>
-          <View style={styles.roleToggleRow}>
-            <Pressable
-              style={[styles.roleToggleButton, battleRoleView === 'attack' && styles.roleToggleButtonSelected]}
-              onPress={() => setBattleRoleView('attack')}
-            >
-              <Text
-                style={battleRoleView === 'attack' ? styles.roleToggleTextSelected : styles.roleToggleText}
+              </Pressable>
+              <Pressable
+                style={[styles.roleToggleButton, battleRoleView === 'defense' && styles.roleToggleButtonSelected]}
+                onPress={() => setBattleRoleView('defense')}
               >
-                Attack
-              </Text>
-            </Pressable>
-            <Pressable
-              style={[styles.roleToggleButton, battleRoleView === 'defense' && styles.roleToggleButtonSelected]}
-              onPress={() => setBattleRoleView('defense')}
-            >
-              <Text
-                style={battleRoleView === 'defense' ? styles.roleToggleTextSelected : styles.roleToggleText}
-              >
-                Defense
-              </Text>
-            </Pressable>
-          </View>
+                <Text
+                  style={battleRoleView === 'defense' ? styles.roleToggleTextSelected : styles.roleToggleText}
+                >
+                  Defense
+                </Text>
+              </Pressable>
+            </View>
 
-          {battleRoleView === 'attack' ? (
-            bestAttackScore !== null ? (
-              <Text style={styles.roleResultText}>
-                {META_TIER_LABELS[getMetaTier(bestAttackScore)]} — best PvP score {bestAttackScore.toFixed(1)}/100
-              </Text>
+            {battleRoleView === 'attack' ? (
+              bestAttackScore !== null ? (
+                <Text style={styles.roleResultText}>
+                  {META_TIER_LABELS[getMetaTier(bestAttackScore)]} — best PvP score {bestAttackScore.toFixed(1)}/100
+                </Text>
+              ) : (
+                <Text style={styles.roleResultText}>Not competitively ranked for attacking.</Text>
+              )
             ) : (
-              <Text style={styles.roleResultText}>Not competitively ranked for attacking.</Text>
-            )
-          ) : (
-            <Text style={styles.roleResultText}>
-              {bulkRanking
-                ? `${BULK_TIER_LABELS[bulkRanking.tier]} — tankier than ${bulkRanking.percentile}% of all Pokemon`
-                : 'Bulk data unavailable.'}
-            </Text>
-          )}
-          <Text style={styles.sourceText}>
-            Attack rating from PvPoke score; defense rating is a DEF+STA heuristic, not an official
-            gym-defender metric.
-          </Text>
-        </Card>
-
-        <Card style={styles.card} accentColor={COLORS.brandGold}>
-          <Text style={styles.panelTitle}>Power-Up Cost</Text>
-          <View style={styles.levelRangeRow}>
-            <View style={styles.levelRangeField}>
-              <Text style={styles.label}>From level</Text>
-              <TextInput
-                style={styles.levelInput}
-                keyboardType="numeric"
-                value={fromLevelInput}
-                onChangeText={setFromLevelInput}
-              />
-            </View>
-            <View style={styles.levelRangeField}>
-              <Text style={styles.label}>To level</Text>
-              <TextInput
-                style={styles.levelInput}
-                keyboardType="numeric"
-                value={toLevelInput}
-                onChangeText={setToLevelInput}
-              />
-            </View>
-          </View>
-          {powerUpResult ? (
-            <View style={styles.powerUpResult}>
-              <Text style={styles.roleResultText}>Stardust: {powerUpResult.stardust.toLocaleString()}</Text>
-              <Text style={styles.roleResultText}>Candy: {powerUpResult.candy}</Text>
-              {powerUpResult.xlCandy > 0 && (
-                <Text style={styles.roleResultText}>XL Candy: {powerUpResult.xlCandy}</Text>
-              )}
-            </View>
-          ) : (
-            <Text style={styles.emptyText}>Enter a valid "from" level lower than "to" level.</Text>
-          )}
-        </Card>
-
-        <Card style={styles.card} accentColor={COLORS.success}>
-          <Text style={styles.panelTitle}>Lore & Trivia</Text>
-          {lore ? (
-            lore.trivia.map((fact, index) => (
-              <Text key={index} style={styles.loreFact}>
-                • {fact}
+              <Text style={styles.roleResultText}>
+                {bulkRanking
+                  ? `${BULK_TIER_LABELS[bulkRanking.tier]} — tankier than ${bulkRanking.percentile}% of all Pokemon`
+                  : 'Bulk data unavailable.'}
               </Text>
-            ))
-          ) : (
-            <Text style={styles.loreFact}>No trivia written for this species yet.</Text>
-          )}
-        </Card>
+            )}
+            <Text style={styles.sourceText}>
+              Attack rating from PvPoke score; defense rating is a DEF+STA heuristic, not an
+              official gym-defender metric.
+            </Text>
+          </Card>
 
-        <Pressable
-          style={({ pressed }) => [styles.calculateButton, pressed && styles.calculateButtonPressed]}
-          onPress={() => navigation.navigate('IvCalculator', { speciesId: species.id })}
-        >
-          <Text style={styles.calculateButtonText}>Calculate IV</Text>
-        </Pressable>
-      </ScrollView>
-    </SafeAreaView>
+          <Card style={styles.card} accentColor={COLORS.brandGold} tilt={1}>
+            <Text style={styles.panelTitle}>Power-Up Cost</Text>
+            <View style={styles.levelRangeRow}>
+              <View style={styles.levelRangeField}>
+                <Text style={styles.label}>From level</Text>
+                <TextInput
+                  style={styles.levelInput}
+                  keyboardType="numeric"
+                  value={fromLevelInput}
+                  onChangeText={setFromLevelInput}
+                />
+              </View>
+              <View style={styles.levelRangeField}>
+                <Text style={styles.label}>To level</Text>
+                <TextInput
+                  style={styles.levelInput}
+                  keyboardType="numeric"
+                  value={toLevelInput}
+                  onChangeText={setToLevelInput}
+                />
+              </View>
+            </View>
+            {powerUpResult ? (
+              <View style={styles.powerUpResult}>
+                <Text style={styles.roleResultText}>Stardust: {powerUpResult.stardust.toLocaleString()}</Text>
+                <Text style={styles.roleResultText}>Candy: {powerUpResult.candy}</Text>
+                {powerUpResult.xlCandy > 0 && (
+                  <Text style={styles.roleResultText}>XL Candy: {powerUpResult.xlCandy}</Text>
+                )}
+              </View>
+            ) : (
+              <Text style={styles.emptyText}>Enter a valid "from" level lower than "to" level.</Text>
+            )}
+          </Card>
+
+          <Card style={styles.card} accentColor={COLORS.success} tilt={-1}>
+            <Text style={styles.panelTitle}>Lore & Trivia</Text>
+            {lore ? (
+              lore.trivia.map((fact, index) => (
+                <Text key={index} style={styles.loreFact}>
+                  • {fact}
+                </Text>
+              ))
+            ) : (
+              <Text style={styles.loreFact}>No trivia written for this species yet.</Text>
+            )}
+          </Card>
+
+          <Pressable
+            style={({ pressed }) => [styles.calculateButton, pressed && styles.calculateButtonPressed]}
+            onPress={() => navigation.navigate('IvCalculator', { speciesId: species.id })}
+          >
+            <Text style={styles.calculateButtonText}>Calculate IV</Text>
+          </Pressable>
+        </ScrollView>
+      </SafeAreaView>
+    </LinearGradient>
   );
 }
 
 const styles = StyleSheet.create({
+  gradient: {
+    flex: 1,
+  },
   screen: {
     flex: 1,
+  },
+  fallbackScreen: {
+    flex: 1,
     backgroundColor: COLORS.background,
+  },
+  watermark: {
+    position: 'absolute',
+    top: -70,
+    right: -90,
+    opacity: 0.14,
   },
   content: {
     alignItems: 'center',
     padding: SPACING.xl,
+    paddingBottom: SPACING.xxl,
   },
   notFound: {
     textAlign: 'center',
     marginTop: 40,
   },
-  spriteBackdrop: {
-    width: 140,
-    height: 140,
-    borderRadius: RADIUS.full,
-    borderWidth: 3,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
   sprite: {
-    width: 108,
-    height: 108,
+    width: 170,
+    height: 170,
   },
   dexNumber: {
-    marginTop: SPACING.md,
-    fontSize: FONT_SIZE.xs,
-    color: COLORS.textMuted,
-    fontWeight: '700',
+    marginTop: SPACING.sm,
+    fontSize: FONT_SIZE.sm,
+    color: COLORS.surface,
+    fontWeight: '800',
+    opacity: 0.85,
   },
   name: {
     fontFamily: DISPLAY_FONT,
-    fontSize: FONT_SIZE.xl,
-    color: COLORS.textPrimary,
+    fontSize: FONT_SIZE.xxl,
+    color: COLORS.surface,
     textAlign: 'center',
-    marginTop: 2,
+    textShadowColor: COLORS.outline,
+    textShadowOffset: { width: 2, height: 2 },
+    textShadowRadius: 0,
   },
   generation: {
     marginTop: SPACING.xs,
     fontSize: FONT_SIZE.sm,
-    color: COLORS.textSecondary,
+    color: COLORS.surface,
+    opacity: 0.9,
   },
   typeRow: {
     flexDirection: 'row',
@@ -270,12 +297,11 @@ const styles = StyleSheet.create({
     marginTop: SPACING.md,
   },
   card: {
-    width: '100%',
-    marginTop: SPACING.lg,
+    marginTop: SPACING.xl,
   },
   panelTitle: {
     fontFamily: DISPLAY_FONT,
-    fontSize: FONT_SIZE.md,
+    fontSize: FONT_SIZE.lg,
     color: COLORS.textPrimary,
     marginBottom: SPACING.md,
   },
@@ -287,14 +313,14 @@ const styles = StyleSheet.create({
   statLabel: {
     width: 36,
     fontSize: 12,
-    fontWeight: '700',
+    fontWeight: '800',
     color: COLORS.textSecondary,
   },
   statBarTrack: {
     flex: 1,
-    height: 10,
-    backgroundColor: COLORS.surface,
-    borderWidth: 1.5,
+    height: 12,
+    backgroundColor: COLORS.background,
+    borderWidth: 2,
     borderColor: COLORS.outline,
     borderRadius: RADIUS.full,
     marginHorizontal: SPACING.sm,
@@ -303,27 +329,29 @@ const styles = StyleSheet.create({
   statBarFill: {
     height: '100%',
     borderRadius: RADIUS.full,
-    backgroundColor: COLORS.brandRed,
   },
   statValue: {
     width: 32,
     fontSize: 12,
     textAlign: 'right',
     color: COLORS.textPrimary,
-    fontWeight: '600',
+    fontWeight: '700',
   },
   movesetRow: {
     marginBottom: SPACING.sm,
   },
   movesetLeague: {
     fontSize: 12,
-    fontWeight: '700',
+    fontWeight: '800',
     color: COLORS.brandRed,
+    textTransform: 'uppercase',
+    letterSpacing: 0.5,
   },
   movesetMoves: {
     fontSize: FONT_SIZE.md,
     color: COLORS.textPrimary,
     marginTop: 2,
+    fontWeight: '600',
   },
   movesetScore: {
     fontSize: 11,
@@ -346,8 +374,8 @@ const styles = StyleSheet.create({
   },
   roleToggleButton: {
     flex: 1,
-    borderRadius: RADIUS.md,
-    borderWidth: 2,
+    borderRadius: RADIUS.full,
+    borderWidth: 2.5,
     borderColor: COLORS.outline,
     paddingVertical: SPACING.sm,
     alignItems: 'center',
@@ -357,22 +385,23 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.brandBlue,
   },
   roleToggleText: {
-    fontSize: 12,
-    fontWeight: '700',
-    color: COLORS.textSecondary,
+    fontSize: 13,
+    fontWeight: '800',
+    color: COLORS.textPrimary,
   },
   roleToggleTextSelected: {
-    fontSize: 12,
-    fontWeight: '700',
+    fontSize: 13,
+    fontWeight: '800',
     color: COLORS.surface,
   },
   roleResultText: {
     fontSize: FONT_SIZE.md,
     color: COLORS.textPrimary,
+    fontWeight: '600',
   },
   label: {
     fontSize: 12,
-    fontWeight: '600',
+    fontWeight: '700',
     color: COLORS.textSecondary,
     marginBottom: SPACING.xs,
   },
@@ -392,6 +421,7 @@ const styles = StyleSheet.create({
     paddingVertical: SPACING.sm,
     fontSize: FONT_SIZE.md,
     color: COLORS.textPrimary,
+    fontWeight: '700',
   },
   powerUpResult: {
     marginTop: SPACING.md,
@@ -404,22 +434,21 @@ const styles = StyleSheet.create({
     lineHeight: 20,
   },
   calculateButton: {
-    marginTop: SPACING.xl,
+    marginTop: SPACING.xxl,
     backgroundColor: COLORS.brandRed,
-    borderRadius: RADIUS.md,
+    borderRadius: RADIUS.full,
     borderWidth: 3,
     borderColor: COLORS.outline,
-    paddingVertical: SPACING.md,
-    paddingHorizontal: SPACING.xxl,
+    paddingVertical: SPACING.md + 2,
     width: '100%',
     alignItems: 'center',
   },
   calculateButtonPressed: {
-    opacity: 0.85,
+    transform: [{ scale: 0.97 }],
   },
   calculateButtonText: {
     fontFamily: DISPLAY_FONT,
-    fontSize: FONT_SIZE.md,
+    fontSize: FONT_SIZE.lg,
     color: COLORS.surface,
   },
 });
