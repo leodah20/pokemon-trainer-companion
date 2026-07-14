@@ -2,8 +2,9 @@
 // Keep both in sync when a model changes.
 
 generator client {
-  provider = "prisma-client"
-  output   = "../generated/prisma"
+  provider     = "prisma-client"
+  output       = "../generated/prisma"
+  moduleFormat = "cjs"
 }
 
 // Prisma 7 moved the connection URL out of schema.prisma and into prisma.config.ts
