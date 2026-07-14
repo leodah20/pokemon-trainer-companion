@@ -2,33 +2,47 @@ import React, { PropsWithChildren } from 'react';
 import { StyleProp, StyleSheet, View, ViewStyle } from 'react-native';
 import { COLORS } from './colors';
 import { RADIUS, SPACING } from './spacing';
-import { SHADOW } from './shadows';
 
 interface CardProps extends PropsWithChildren {
   style?: StyleProp<ViewStyle>;
-  backgroundColor?: string;
-  /** A thin accent bar along the top edge — used to color-code a card without a heavy border. */
+  /** Border + title-strip color. Pass the Pokemon's type color for themed cards. */
   accentColor?: string;
+  /** Tiny alternating rotation gives a hand-placed sticker feel; 0 disables it. */
+  tilt?: number;
 }
 
-export function Card({ children, style, backgroundColor = COLORS.surface, accentColor }: CardProps): React.JSX.Element {
+/**
+ * A "sticker" panel meant to sit on top of the vivid gradient backgrounds: solid white fill so
+ * content always has contrast, a thick ink outline, a hard offset shadow, and an optional slight
+ * rotation. The shadow is drawn by an absolutely-positioned twin so the card itself keeps its
+ * natural full width (the previous wrapper-based approach broke width: '100%' on children).
+ */
+export function Card({ children, style, accentColor = COLORS.outline, tilt = 0 }: CardProps): React.JSX.Element {
   return (
-    <View style={[styles.card, { backgroundColor }, SHADOW.md, style]}>
-      {accentColor !== undefined && <View style={[styles.accentBar, { backgroundColor: accentColor }]} />}
-      <View style={styles.content}>{children}</View>
+    <View style={[styles.container, tilt !== 0 && { transform: [{ rotate: `${tilt}deg` }] }, style]}>
+      <View style={styles.shadowTwin} />
+      <View style={[styles.card, { borderColor: accentColor }]}>{children}</View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  card: {
+  container: {
+    width: '100%',
+  },
+  shadowTwin: {
+    position: 'absolute',
+    top: 6,
+    left: 6,
+    right: -6,
+    bottom: -6,
+    backgroundColor: COLORS.outline,
     borderRadius: RADIUS.lg,
-    overflow: 'hidden',
   },
-  accentBar: {
-    height: 5,
-  },
-  content: {
+  card: {
+    backgroundColor: COLORS.surface,
+    borderRadius: RADIUS.lg,
+    borderWidth: 3,
     padding: SPACING.lg,
   },
 });
