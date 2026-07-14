@@ -94,6 +94,9 @@ model PokemonSpecies {
   id          Int                    @id
   name        String
   generation  Int
+  baseAttack  Int                    @map("base_attack")
+  baseDefense Int                    @map("base_defense")
+  baseStamina Int                    @map("base_stamina")
   flavorText  String                 @map("flavor_text")
   spriteUrl   String                 @map("sprite_url")
   types       PokemonTypeOnSpecies[]
