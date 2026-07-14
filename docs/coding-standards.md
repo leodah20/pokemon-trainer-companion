@@ -26,31 +26,49 @@ Both the mobile app and backend follow the same dependency rule: **inner layers 
 outer layers.**
 
 ```
-domain/       <- entities + business rules (IV math, type effectiveness, subscription rules)
-              plain Dart/TypeScript, no Flutter widgets, no NestJS decorators, no HTTP/SQL
+domain/       <- entities + business rules (IV math, type effectiveness, bulk calculation)
+                plain TypeScript, no React Native imports, no NestJS decorators, no HTTP/SQL
 use-cases/    <- application-specific orchestration of domain logic
-data/         <- repository implementations (PokeAPI client, Postgres access, local DB access)
-presentation/ <- UI (Flutter widgets) or delivery (NestJS controllers)
+data/         <- repository implementations (JSON file readers, Prisma service, API clients)
+presentation/ <- UI components (React Native screens) or delivery (NestJS controllers)
 ```
 
 Concretely:
 
-- Domain code (e.g. the IV calculator) has zero imports from Flutter, NestJS, or any specific
+- Domain code (e.g. the IV calculator) has zero imports from React Native, NestJS, or any specific
   database driver — it can be unit tested with plain values in and plain values out.
-- Repository interfaces live in the domain/use-case layer; concrete implementations (PokeAPI HTTP
-  client, Postgres repository) live in the data layer and are injected, so swapping a data source
-  never touches business logic.
-- Controllers/widgets only orchestrate: they call a use case and render its result, they don't
+- Repository interfaces live in the domain/use-case layer; concrete implementations (JSON file
+  readers, Prisma service, HTTP clients) live in the data layer and are injected, so swapping a
+  data source never touches business logic.
+- Controllers / screens only orchestrate: they call a use case and render its result, they don't
   contain business rules themselves.
+
+## TypeScript specifics
+
+- Use `readonly` on arrays and object properties that shouldn't be mutated.
+- Prefer `interface` over `type` for object shapes; use `type` for unions and primitives.
+- Use `as const` for literal constants (colors, spacing, enums).
+- Avoid `any`. Use `unknown` when the type isn't known, then narrow it.
+
+## File structure per feature
+
+Keep files small and focused:
+
+- One exported function or component per file (except barrel `index.ts` exports).
+- Test files live next to their source file with a `.test.ts` suffix.
+- Use barrel exports (`index.ts`) to simplify imports from each module.
 
 ## Formatting
 
-- Mobile (Dart): `dart format`, enforced via `flutter analyze` in CI.
-- Backend (TypeScript): Prettier + ESLint, enforced via a pre-commit hook and CI.
+- **Mobile (TypeScript/React Native):** Prettier + ESLint (see `.prettierrc.js` and `.eslintrc.js`)
+- **Backend (TypeScript/NestJS):** Prettier + ESLint (see `backend/.prettierrc` and `backend/eslint.config.mjs`)
 - No unformatted code is merged — formatting is automatic, not a review comment.
 
 ## Tests
 
-- Domain and use-case layers require unit tests (they're pure functions, so this should be cheap).
-- Repository implementations get integration tests against a real (containerized) database, not
-  mocks, for anything involving data migrations or query correctness.
+- **Domain and use-case layers** require unit tests (they're pure functions, so this should be
+  cheap).
+- **Repository implementations** get integration tests against the real bundled JSON data (mobile)
+  or a containerized database (backend).
+- Test files use the pattern `*.test.ts` and are colocated with their source.
+- Use `describe`/`it`/`expect` blocks following Jest conventions. Each test covers one scenario.

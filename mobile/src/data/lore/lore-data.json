@@ -1,0 +1,1512 @@
+[
+  {
+    "speciesId": 1,
+    "origin": "Bulbasaur foi inspirado em sapos e plantas bulbosas. Seu nome combina 'bulb' (bulbo) com 'saur' (lagarto em grego). É o unico starter inicial com vantagem contra o primeiro gym da regiao (Brock).",
+    "goRelevance": "Comum em eventos de inicio de temporada e aniversarios do Pokemon GO. Venusaur e um otimo counter Grass para raids de Agua e Terra, especialmente com Frenzy Plant.",
+    "battleTip": "Typing Grass/Poison da 5 resistencias (Agua, Eletrico, Fada, Lutador, Grama) mas tambem 4 fraquezas: Fogo, Gelo, Voador e Psiquico. Cuidado com Mewtwo e Rayquaza na Master League.",
+    "easterEgg": "Bulbasaur e o #001 na National Dex, mas nao foi o primeiro Pokemon criado — esse titulo vai para Rhydon, que foi modelado primeiro pelos designers.",
+    "goDifference": "Nos jogos principais, Bulbasaur aprende Frenzy Plant ao evoluir. No GO, Frenzy Plant e um move exclusivo de Community Day — sem Elite TM nao tem como obter.",
+    "evolutionCost": "25 candy para Ivysaur + 100 candy para Venusaur = 125 total. Buddy 3km/candy. Precisa de 296 XL candy para maxar do level 40 ao 50.",
+    "shinyRate": "Shiny disponivel (taxa padrao ~1/500). Teve Community Day em 2018, entao e comum entre jogadores veteranos."
+  },
+  {
+    "speciesId": 2,
+    "origin": "Ivysaur e a forma intermediaria de Bulbasaur. O bulbo nas costas comeca a florescer, indicando que esta proximo da evolucao. O nome mistura 'ivy' (hera) com 'saur'.",
+    "goRelevance": "Raramente usado em batalhas por ser uma forma intermediaria. Aparece em eventos de evolucao como dust bonus ou XP bonus.",
+    "battleTip": "Com ATK 151 e DEF 143, Ivysaur e estatisticamente inferior a Venusaur em todos os aspectos. Nao vale o investimento de poeira estelar.",
+    "easterEgg": "Ivysaur e Venusaur sao os unicos Pokemon da linha Bulbasaur que aparecem no jogo Super Smash Bros. como trofeus assistencia.",
+    "goDifference": "Nos jogos principais Ivysaur aprende Razor Leaf no level 22. No GO, os moves sao definidos ao capturar ou evoluir, sem nivel de aprendizado.",
+    "evolutionCost": "100 candy para evoluir para Venusaur. 3km por candy de buddy. Receber candy XL ao andar com ele como buddy (chance baixa).",
+    "shinyRate": "Shiny disponivel — evolua um Bulbasaur shiny para obter Ivysaur shiny. Nao aparece selvagem como shiny."
+  },
+  {
+    "speciesId": 3,
+    "origin": "Venusaur e inspirado no sapo-venenoso e uma flor gigante em flor. O nome vem de 'Venus' (Venus, deusas das flores) + 'saur'. E a forma final do starter de Kanto.",
+    "goRelevance": "Um dos melhores Grass-types do GO. Rankeado #43 na Master League pelo PvPoke com Frenzy Plant. Excelente counter para Kyogre, Groudon e Swampert.",
+    "battleTip": "Com Frenzy Plant (Community Day move), Venusaur tem um dos melhores DPS entre Grass-types. Sem ele, cai significativamente no ranking — use Elite TM se perdeu o CD.",
+    "easterEgg": "A flor de Venusaur e inspirada na Rafflesia arnoldii, a maior flor do mundo, que cheira a carne podre. Por sorte, a do Venusaur nao tem cheiro.",
+    "goDifference": "Nos jogos principais Venusaur pode aprender Earthquake e Sludge Bomb por TM. No GO, ele so aprende moves do tipo Grama e Veneno — sem cobertura de solo.",
+    "evolutionCost": "100 candy para evoluir de Ivysaur. 3km/candy buddy. 296 XL candy para chegar ao level 50.",
+    "shinyRate": "Shiny verde-limao disponivel. Teve Community Day classico em 2018 e re-lancamento em 2022. Taxa shiny CD ~1/25 durante o evento."
+  },
+  {
+    "speciesId": 4,
+    "origin": "Charmander e inspirado em lagartixas e dragoes. A chama na ponta do rabo indica sua saude e emocao — se apagar, ele morre. Nome vem de 'char' (queimar) + 'salamander'.",
+    "goRelevance": "Starter iconico com Community Day proprio. Charizard e um dos Fire-types mais versateis do GO, com acesso a Blast Burn e as duas Megas.",
+    "battleTip": "Apesar de ser Fire, Charizard ganha tipo Voador ao evoluir. Isso da fraqueza 4x a Rock — Cuidado com Tyranitar e Rhyperior nas raids.",
+    "easterEgg": "Charmander foi o Pokemon favorito do criador da franquia, Satoshi Tajiri. O nome do protagonista Ash em japones e Satoshi em sua homenagem.",
+    "goDifference": "Nos jogos originais, Charmander evolve no level 36. No GO, voce decide quando evoluir — sem restricao de nivel do treinador.",
+    "evolutionCost": "25 candy para Charmeleon + 100 candy para Charizard = 125 total. Buddy 3km/candy.",
+    "shinyRate": "Shiny dourado disponivel. Community Day em 2018. Taxa CD ~1/25. Shiny Charmander e um dos mais populares por sua cor amarela."
+  },
+  {
+    "speciesId": 5,
+    "origin": "Charmeleon e a forma intermediaria de Charmander. Quando irritado, a chama na cauda fica azulada. Nome mistura 'char' com 'chameleon' (camaleao).",
+    "goRelevance": "Forma intermediaria sem utilidade pratica em batalhas. Serve apenas para completar a dex e como passo para Charizard.",
+    "battleTip": "Com ATK 158 e STA 151, Charmeleon tem stats decentes para sua categoria, mas e superado por muitos Fire-types intermediarios.",
+    "easterEgg": "Na serie original, o Charmander de Ash se recusou a evoluir por um tempo, tornando Charmeleon um dos poucos Pokemon a ter ciumes do treinador.",
+    "goDifference": "Nos jogos principais, Charmeleon e obtido no level 16. No GO, ele pode ser obtido em qualquer nivel desde que voce tenha 25 candy de Charmander.",
+    "evolutionCost": "100 candy para evoluir para Charizard. 3km/candy buddy.",
+    "shinyRate": "Shiny disponivel via evolucao de Charmander shiny. Cor amarelo-claro."
+  },
+  {
+    "speciesId": 6,
+    "origin": "Charizard e inspirado em dragoes europeus. Apesar da aparencia draconica, nao e do tipo Dragon — um dos maiores erros de typing da historia ate hoje.",
+    "goRelevance": "Fire/Flying versatil com acesso a Blast Burn (CD). Possui duas Mega Evolucoes (Mega X Fire/Dragon e Mega Y Fire/Flying). Top counter para ferro, aco, gelo.",
+    "battleTip": "Mega Charizard X ganha tipo Dragon, perdendo fraqueza 4x a Rock mas ganhando fraqueza a Dragon, Fada e Gelo. Escolha a Mega baseada no oponente.",
+    "easterEgg": "Charizard e o unico Pokemon a estar na capa de dois jogos diferentes: Red/Green (japones) e FireRed/LeafGreen, 8 anos depois.",
+    "goDifference": "Nos jogos principais, Charizard nao pode aprender Fly ate a Geracao 6 (via HM). No GO, ele simplesmente tem Wing Attack como fast move disponivel.",
+    "evolutionCost": "100 candy de Charmeleon. 3km/candy buddy. 296 XL candy para maxar. Charizard XL candy e dificil de obter por ser raro em spawns selvagens.",
+    "shinyRate": "Shiny preto iconico. Um dos mais cobicados do jogo. Community Day 2018 + re-lancamento 2022. Mega Charizard shiny X e Y disponiveis."
+  },
+  {
+    "speciesId": 7,
+    "origin": "Squirtle e inspirado em tartarugas marinhas. O nome vem de 'squirt' (esguichar) + 'turtle' (tartaruga). Consegue soltar jatos d'agua pela boca com precisao cirurgica.",
+    "goRelevance": "Starter de Agua mais defensivo dos tres. Blastoise com Hydro Cannon e um solid Water-type para raids, embora superado por Kyogre e Swampert.",
+    "battleTip": "Blastoise tem DEF 207, uma das maiores entre Water-types. Otimo gym defender se tiver Hydro Cannon ou Ice Beam para cobertura.",
+    "easterEgg": "Squirtle tem a famosa Squirtle Squad — um grupo de Squirtle com oculos escuros que aparecem no anime como bombeiros, liderados por um Squirtle que virou o braco direito do Officer Jenny.",
+    "goDifference": "Nos jogos principais, Blastoise aprende Hydro Pump no level 42. No GO, Hydro Cannon e move exclusivo de CD — sem ele, Blastoise perde muito valor.",
+    "evolutionCost": "25 candy para Wartortle + 100 candy para Blastoise = 125 total. Buddy 3km/candy.",
+    "shinyRate": "Shiny disponivel. Community Day 2018. Shiny Blastoise e roxo-claro. CD classico re-lancado em 2023."
+  },
+  {
+    "speciesId": 8,
+    "origin": "Wartortle e a forma intermediaria de Squirtle. Suas orelhas peludas e cauda felpuda sao caracteristicas que desaparecem ao virar Blastoise. Nome vem de 'war' (guerra) + 'turtle'.",
+    "goRelevance": "Forma intermediaria sem relevancia competitiva. Usado apenas para coleta de dex e como step evolutivo.",
+    "battleTip": "Com DEF 155, Wartortle e mais defensivo que muitos Water-types basicos, mas ainda fraco comparado a Blastoise.",
+    "easterEgg": "Wartortle e um dos poucos Pokemon que perde caracteristicas ao evoluir — a cauda felpuda some completamente no Blastoise.",
+    "goDifference": "Nos jogos principais obtem-se Wartortle no level 16. No GO, e uma evolucao de 25 candy a qualquer momento.",
+    "evolutionCost": "100 candy para Blastoise. 3km/candy buddy.",
+    "shinyRate": "Shiny via evolucao. Cor azul mais escuro que o normal."
+  },
+  {
+    "speciesId": 9,
+    "origin": "Blastoise e inspirado em tartarugas canhoes. Os canhoes d'agua nos ombros podem perfurar aco. Nome vem de 'blast' (explosao) + 'turtle'. E o final mais defensivo dos tres starters de Kanto.",
+    "goRelevance": "Water-type solido com Hydro Cannon (CD). Perde para Kyogre e Swampert em DPS, mas tem DEF excepcional. Usado em Great League como tank (rank #118 PvPoke).",
+    "battleTip": "Blastoise com Ice Beam cobre contra Grass-types, sua maior fraqueza. Skull Bash como charged move da boost de DEF, mas e previsivel.",
+    "easterEgg": "Blastoise pode disparar agua a pressao suficiente para perfurar aco grosso. Essa caracteristica o torna um dos Pokemon mais poderosos de Kanto em termos de forca bruta.",
+    "goDifference": "Nos jogos principais Blastoise pode aprender Aura Sphere e Dragon Pulse. No GO seu pool de moves e limitado a Agua, Gelo e Normal.",
+    "evolutionCost": "100 candy de Wartortle. 3km/candy buddy. 296 XL candy para maxar.",
+    "shinyRate": "Shiny roxo-claro. Community Day 2018. Mega Blastoise shiny com canhoes roxos disponivel."
+  },
+  {
+    "speciesId": 10,
+    "origin": "Caterpie e inspirado na lagarta da borboleta-monarca. Seu nome vem de 'caterpillar' (lagarta) simplificado. E um dos Pokemon mais fracos ja criados, com ATK base de apenas 55.",
+    "goRelevance": "Comum em areas urbanas e parques. Spawn frequente com tempo Nublado (Partly Cloudy). Usado para mass evolve e ganhar XP.",
+    "battleTip": "Com ATK 55, Caterpie e um dos piores Pokemon para batalha. Nao vale o investimento de poeira estelar em hipotese alguma.",
+    "easterEgg": "Caterpie foi o primeiro Pokemon capturado por Ash na serie original (excluindo Pikachu). Ele o capturou no episodio 3.",
+    "goDifference": "Nos jogos principais Caterpie aprende Tackle e String Shot. No GO ele tem Bug Bite e Struggle — moves muito fracos que so servem para gyms fracas.",
+    "evolutionCost": "12 candy para Metapod + 50 candy para Butterfree = 62 total. Buddy 1km/candy. Extremamente rapido de evoluir.",
+    "shinyRate": "Shiny disponivel (verde claro). Relativamente comum entre jogadores dedicados por ser um Pokemon de spawn frequente."
+  },
+  {
+    "speciesId": 11,
+    "origin": "Metapod e inspirado no casulo da borboleta. Fica completamente imovel enquanto se prepara para a metamorfose. Nome vem de 'metamorphosis' (metamorfose) + 'pod' (casulo).",
+    "goRelevance": "Praticamente irrelevante em batalhas. O menor CP de captura possivel entre todos os Pokemon. Usado apenas como step para Butterfree.",
+    "battleTip": "Com ATK base 45, Metapod e literalmente um dos Pokemon mais fracos do jogo. Seu unico move viavel e Struggle.",
+    "easterEgg": "O Metapod de Ash e famoso por usar apenas Harden (Endurecer) em batalha, virando um meme entre os fas.",
+    "goDifference": "Nas main series, Metapod aprende Harden no level 1 e nada mais. No GO ele tem Tackle como fast move.",
+    "evolutionCost": "50 candy para Butterfree. Buddy 1km/candy.",
+    "shinyRate": "Shiny disponivel via evolucao (tonalidade ligeiramente diferente). Raramente encontrado shiny na natureza."
+  },
+  {
+    "speciesId": 12,
+    "origin": "Butterfree e inspirado na borboleta-monarca. Sua capacidade de localizar flores a 10km de distancia e uma referencia as migracoes reais de borboletas. Nome vem de 'butterfly' + 'free'.",
+    "goRelevance": "Razoavel em batalhas PvP na Little League (CP baixo). Tem acesso a Confusion + Psychic que surpreendem oponentes desavisados.",
+    "battleTip": "Butterfree com Confusion causa dano Psiquico que cobre contra tipos Poison e Fighting. Bom para Great League se o CP estiver no limite.",
+    "easterEgg": "Butterfree foi o primeiro Pokemon que Ash soltou na natureza (episodio 21), ao lado de uma Butterfree rosa — uma das cenas mais emocionantes do anime.",
+    "goDifference": "Nas main series Butterfree aprende Sleep Powder e Stun Spore. No GO, o status (dormir/envenenar) nao existe, entao esses moves foram substituidos por dano direto.",
+    "evolutionCost": "50 candy de Metapod. Buddy 1km/candy — muito facil de farmar candy.",
+    "shinyRate": "Shiny rosa disponivel (como a Butterfree do anime). Taxa padrao ~1/500. Diferente da do anime que era so uma variacao de cor."
+  },
+  {
+    "speciesId": 13,
+    "origin": "Weedle e inspirado em lagartas com ferrinho. Seu nome vem de 'weed' (erva) + 'needle' (agulha), referindo-se ao ferrinho na cabeca. E do tipo Bug/Veneno.",
+    "goRelevance": "Comum ao extremo. Junto com Caterpie e Wurmple, forma o trio de '12 candy evolves' que jogadores usam para mass evolve com Lucky Egg.",
+    "battleTip": "Pior que Caterpie em stats — ATK base de apenas 63. Nem considere para batalhas.",
+    "easterEgg": "Weedle e Kakuna sao os unicos Pokemon que podem ser encontrados como shiny na natureza APENAS em eventos especiais, fora isso, so via research task.",
+    "goDifference": "Nas main series Weedle aprende Poison Sting no level 1. No GO o mesmo move existe mas com mecanica diferente (gera energia em vez de envenenar).",
+    "evolutionCost": "12 candy para Kakuna + 50 candy para Beedrill = 62 total. Buddy 1km/candy.",
+    "shinyRate": "Shiny disponivel. Cor dourada. Mais facil de obter por ser spawn muito comum."
+  },
+  {
+    "speciesId": 14,
+    "origin": "Kakuna e o casulo de Weedle. Se parece com uma casca de ovo ou pupa. Nome vem de 'cocoon' (casulo) adaptado. Fica completamente parado no processo de metamorfose.",
+    "goRelevance": "Nenhuma relevancia alem de step evolutivo. Um dos piores Pokemon do jogo.",
+    "battleTip": "ATK base 46 — o segundo menor do jogo. So pior que o proprio Metapod (45).",
+    "easterEgg": "Kakuna e Metapod sao os unicos Pokemon que tem EXATAMENTE os mesmos moves em GO: Bug Bite + Struggle.",
+    "goDifference": "Nas main series Kakuna so aprende Harden. No GO tem Tackle como fast move.",
+    "evolutionCost": "50 candy para Beedrill. Buddy 1km/candy.",
+    "shinyRate": "Shiny dourado via evolucao."
+  },
+  {
+    "speciesId": 15,
+    "origin": "Beedrill e inspirado em vespas e abelhas carniceiras. Seus ferrinhos triplos sao capazes de injetar veneno. Nome vem de 'bee' (abelha) + 'needle' (agulha).",
+    "goRelevance": "Teve Mega Evolucao adicionada em 2021, o que o tornou viavel novamente. Mega Beedrill e um otimo Poison-type para raids de Fada.",
+    "battleTip": "Mega Beedrill e fragil (DEF 130) mas tem ATK alto (303 com Mega). Use com cuidado — ele da dano mas morre rapido.",
+    "easterEgg": "Kakuna e Metapod sao os unicos Pokemon que tem EXATAMENTE os mesmos moves em GO: Bug Bite + Struggle.",
+    "goDifference": "Nas main series Beedrill aprende Twineedle no level 20. No GO esse move nao existe — foi substituido por Fury Cutter.",
+    "evolutionCost": "50 candy de Kakuna. Buddy 1km/candy. Mega Beedrill precisa de 200 Mega Energy para primeira ativacao.",
+    "shinyRate": "Shiny dourado brilhante. Mega Beedrill shiny com detalhes dourados e muito bonito."
+  },
+  {
+    "speciesId": 16,
+    "origin": "Pidgey e inspirado em pombos e pardais. Seu nome e uma simplificacao de 'pigeon' (pombo). E possivelmente o Pokemon mais comum de Kanto, equivalente ao que pombos sao em cidades reais.",
+    "goRelevance": "Extremamente comum. Pidgey e o rei dos mass evolves — custa apenas 12 candy para Pidgeotto e 50 para Pidgeot. Jogadores usam milhares desses para XP.",
+    "battleTip": "Pidgeot tem acesso a Gust + Brave Bird, moves decentes para um Normal/Flying. Nao competitivo mas divertido para usar em batalhas casuais.",
+    "easterEgg": "Pidgeot de Ash e um dos poucos Pokemon que ele ja soltou (deixou com um amigo para proteger outros Pidgey). Reapareceu anos depois no anime.",
+    "goDifference": "Nas main series a linha Pidgey aprende Quick Attack e Gust. No GO, Gust e um move de vento que so Pidgeot tem como fast move (legacy).",
+    "evolutionCost": "12 candy para Pidgeotto + 50 candy para Pidgeot = 62 total. Buddy 1km/candy. Um dos mais faceis de evoluir.",
+    "shinyRate": "Shiny disponivel (cor clara). Extremamente comum por ser um dos spawns mais frequentes."
+  },
+  {
+    "speciesId": 17,
+    "origin": "Pidgeotto e a forma intermediaria de Pidgey. Tem garras afiadas para capturar presas e uma envergadura de asas impressionante. Nome vem de 'pigeon' aumentativo.",
+    "goRelevance": "Forma intermediaria. Raramente mantido sem evoluir a menos que seja por nostalgia.",
+    "battleTip": "Pidgeotto e um dos poucos Pokemon intermediarios que aparece como chefe de GYM em algumas versoes do jogo.",
+    "easterEgg": "O Pidgeotto de Ash era seu pokemon mais confiavel nas primeiras temporadas, usado para reconhecimento aereo e entregas.",
+    "goDifference": "Nas main series, Pidgeotto evolve no level 36. No GO, a evolucao depende de candy, nao de nivel.",
+    "evolutionCost": "50 candy para Pidgeot. Buddy 1km/candy.",
+    "shinyRate": "Shiny via evolucao. Tom mais claro que o original."
+  },
+  {
+    "speciesId": 18,
+    "origin": "Pidgeot e inspirado em falcoes e aguias majestosas. Sua plumagem cria padroes hipnotizantes quando voa. Nome vem de 'pigeon' com sufixo que sugere grandiosidade.",
+    "goRelevance": "Ganhou um momento de gloria com a Mega Evolucao em 2021. Mega Pidgeot e o melhor Flying-type para raids no quesito DPS puro.",
+    "battleTip": "Mega Pidgeot com Gust + Brave Bird causa dano massivo. A desvantagem e que Brave Bird da debuff de DEF a cada uso — tenha switch para sacar ele.",
+    "easterEgg": "Pidgeot tem o maior CP maximo entre todos os Normal/Flying types que nao sao lendarios, mas ainda assim e superado por Staraptor.",
+    "goDifference": "Nas main series Pidgeot pode aprender Heat Wave e Steel Wing. No GO, seu pool de moves e limitado a Normal e Voador.",
+    "evolutionCost": "50 candy de Pidgeotto. Buddy 1km/candy. Mega Pidgeot: 200 Mega Energy.",
+    "shinyRate": "Shiny rosa claro. Mega Pidgeot shiny tem detalhes rosados nas penas."
+  },
+  {
+    "speciesId": 19,
+    "origin": "Rattata e inspirado em ratos e roedores urbanos. E famoso por dizer 'Top percentage Rattata' — uma referencia a um personagem do anime que se vangloriava de seu Rattata. O nome vem de 'rat' (rato).",
+    "goRelevance": "Comum em areas urbanas. Tem uma variacao regional em Alola (Dark/Normal). Usado para mass evolves (25 candy).",
+    "battleTip": "Raticate com Bite + Hyper Fang e decente para batalhas de CP baixo. Nada competitivo, mas divertido.",
+    "easterEgg": "Frases 'Top percentage Rattata' e 'Youngster Joey' sao o maior meme classico da comunidade Pokemon. Rattata e famoso apenas por isso.",
+    "goDifference": "Nas main series Rattata aprende Hyper Fang no level 14. No GO, Hyper Fang e um charged move que qualquer Raticate pode aprender.",
+    "evolutionCost": "25 candy para Raticate. Buddy 1km/candy. Muito facil.",
+    "shinyRate": "Shiny dourado. Relativamente comum por spawn frequente."
+  },
+  {
+    "speciesId": 20,
+    "origin": "Raticate e a forma evoluida de Rattata. Seus dentes crescem continuamente e ele roe pedras para desgasta-los. Nome vem de 'rat' aumentativo. Tem uma variante Alola Dark/Normal.",
+    "goRelevance": "Raramente usado em batalhas. Raticate Alola tem melhor uso por ser Dark-type contra Ghost e Psychic.",
+    "battleTip": "Raticate Alola (Dark/Normal) e interessante porque o tipo Normal da imunidade a Ghost, algo que nenhum Dark-type puro tem.",
+    "easterEgg": "Raticate e o centro de uma teoria de que o Pokemon de Ash morreu e foi substituido — mas isso foi desmentido pelos criadores.",
+    "goDifference": "Nas main series Raticate pode aprender Dig e Ice Beam via TM. No GO, seu pool de moves e bem mais limitado.",
+    "evolutionCost": "25 candy de Rattata. Buddy 1km/candy.",
+    "shinyRate": "Shiny disponivel. Tonalidade mais clara/saturada que o original."
+  },
+  {
+    "speciesId": 21,
+    "origin": "Spearow e inspirado em pardais e passaros agressivos. Diferente de Pidgey, Spearow tem uma atitude agressiva desde o primeiro contato. Nome vem de 'spear' (lanca) + 'sparrow' (pardal).",
+    "goRelevance": "Menos comum que Pidgey. Spawns em areas de montanha e campos. Usado principalmente como mass evolve.",
+    "battleTip": "Fearow tem ATK 182, maior que Pidgeot (166). Em termos de ataque puro, Fearow e o melhor dos dois.",
+    "easterEgg": "Spearow foi o primeiro Pokemon que Ash encontrou em sua jornada (episodio 1). Um bando deles perseguiu ele e Pikachu.",
+    "goDifference": "Fearow pode aprender Drill Run nas main series. No GO, ele nao tem moves de solo apesar do bico parecido com uma furadeira.",
+    "evolutionCost": "50 candy para Fearow. Buddy 1km/candy.",
+    "shinyRate": "Shiny disponivel. Cor levemente alterada (tom mais escuro)."
+  },
+  {
+    "speciesId": 22,
+    "origin": "Fearow e a forma evoluida de Spearow, inspirado em aguias e falcoes de rapina. Seu bico longo e pontiagudo pode perfurar presas. Nome vem de 'fear' (medo) + 'sparrow'.",
+    "goRelevance": "Nicho muito especifico: supera Pidgeot em ATK (182 vs 166) mas perde em DEF e STA. Raramente usado, mas tem seus fas.",
+    "battleTip": "Fearow com Drill Run e Sky Attack cobre bem tipos Electric e Rock, suas fraquezas naturais.",
+    "easterEgg": "Fearow foi o Pokemon que o Guarda Florestal usava para perseguir Ash no inicio do anime. Um dos primeiros antagonistas da serie.",
+    "goDifference": "Nas main series Fearow aprende Drill Peck naturalmente. No GO, o move Drill Peck existe mas Fearow nao aprende — ele aprende Sky Attack.",
+    "evolutionCost": "50 candy de Spearow. Buddy 1km/candy.",
+    "shinyRate": "Shiny disponivel. Coloração levemente diferente."
+  },
+  {
+    "speciesId": 23,
+    "origin": "Ekans e inspirado em cobras e serpentes. A palavra 'Ekans' e 'snake' (cobra) escrito ao contrario. Sua habilidade de trocar de pele e baseada em cobras reais.",
+    "goRelevance": "Comum em areas gramadas e com clima Ensolarado. Spawn medio. Arbok e solidario em Great League PvP.",
+    "battleTip": "Arbok com Dragon Tail + Gunk Shot e Dark Pulse cobre bem contra tipos Psiquico e Fada — suas ameacas principais.",
+    "easterEgg": "Ekans e 'snake' ao contrario. Arbok e 'kobra' ao contrario (quase — cobra e 'kobra' em algumas linguas). Mesmo padrao de nomenclatura.",
+    "goDifference": "Nas main series Ekans aprende Glare e Intimidate. No GO, status effects nao existem, entao esses mecanismos foram perdidos.",
+    "evolutionCost": "50 candy para Arbok. Buddy 3km/candy.",
+    "shinyRate": "Shiny disponivel. Cor dourada/amarelada."
+  },
+  {
+    "speciesId": 24,
+    "origin": "Arbok e inspirado em cobras-reais e na mitologia de cobras gigantes. O padrao em sua barriga se assemelha a um rosto intimidador. Nome vem de 'kobra' ao contrario.",
+    "goRelevance": "Surge ocasionalmente como mini-boss de equipe Rocket. Tem uso limitado em Great League PvP (rank #207 PvPoke).",
+    "battleTip": "Arbok com Gunk Shot pode surpreender Fairy-types na Great League. Mas existem opcoes melhores no mesmo CP.",
+    "easterEgg": "O padrao no peito de Arbok muda de acordo com a regiao no anime — sao 4 designs diferentes para evitar problemas de censura.",
+    "goDifference": "Nas main series Arbok pode aprender Earthquake. No GO, seu pool de moves nao inclui solo, limitando sua cobertura.",
+    "evolutionCost": "50 candy de Ekans. Buddy 3km/candy.",
+    "shinyRate": "Shiny amarelado disponivel."
+  },
+  {
+    "speciesId": 25,
+    "origin": "Pikachu e inspirado em esquilos (nao em ratos, como muitos pensam). As bochechas eletricas armazenam eletricidade. Foi desenhado por Atsuko Nishida e se tornou o mascote mundial da franquia.",
+    "goRelevance": "Mascote do Pokemon GO. Eventos exclusivos com Pikachu de chapeu (12+ variantes). Tem Community Day proprio com Surf. Kanto Cup favorito.",
+    "battleTip": "Pikachu com Surf (CD 2018) e muito mais versatil que Pikachu normal. Mas Raichu com Wild Charge e superior em DPS.",
+    "easterEgg": "Pikachu deveria ser o Pokemon inicial padrao em todos os jogos, mas Satoshi Tajiri escolheu Clefairy primeiro. Pikachu so virou mascote por causa do anime.",
+    "goDifference": "Nas main series, Pikachu pode usar Light Ball para dobrar ATK e SP ATK. No GO, nao existe item segurar — Pikachu e simplesmente fraco.",
+    "evolutionCost": "50 candy para Raichu. Buddy 1km/candy. Raichu de Alola precisa de 50 candy + item especial em outras regioes, mas no GO e so 50 candy + Sun Stone.",
+    "shinyRate": "Shiny laranja disponivel. Taxa ~1/500. Variantes de chapeu shiny sao EXTREMAMENTE raras e so aparecem durante eventos."
+  },
+  {
+    "speciesId": 26,
+    "origin": "Raichu e a forma evoluida de Pikachu. Sua cauda funciona como um para-raios, acumulando carga. No GO existe Raichu de Alola (Electric/Psychic). Nome vem de 'rai' (trovoada) + 'chu' (som de guinchado).",
+    "goRelevance": "Raichu normal tem Wild Charge como move forte. Raichu de Alola (Electric/Psychic) e mais usado por ter typing unico que ninguem mais tem.",
+    "battleTip": "Raichu de Alola e uma otima escolha para Great League — seu typing cobre contra Fighting e Psychic ao mesmo tempo, algo raro.",
+    "easterEgg": "O criador de Pokemon veementemente odeia Raichu — ele acha que a evolução tira a fofura de Pikachu. Por isso o anime nunca mostrou um Raichu de Ash.",
+    "goDifference": "Nas main series Raichu aprende Thunderbolt naturalmente. No GO e um charged move via TM.",
+    "evolutionCost": "50 candy de Pikachu. Buddy 1km/candy. Raichu Alola: 50 candy (sem Sun Stone necessaria no GO).",
+    "shinyRate": "Shiny laranja. Raichu Alola shiny e cinza escuro."
+  },
+  {
+    "speciesId": 27,
+    "origin": "Sandshrew e inspirado em tatus e pangolins. Sua pele e seca e resistente, permitindo que role em uma bola para defesa. Tem variante Alola (Ice/Steel). Nome vem de 'sand' (areia) + 'shrew' (musaranho).",
+    "goRelevance": "Comum em areas de deserto e clima Ensolarado. Sandslash e um Ground-type solido. A variante Alola e muito mais popular por ser Ice/Steel.",
+    "battleTip": "Sandslash Alola (Ice/Steel) e um dos melhores counters para Dragon e Flying-types gracas ao seu typing unico.",
+    "easterEgg": "Sandshrew de Alola sobrevive na neve porque sua pele virou uma casca de gelo. E o unico caso em que uma variante regional muda completamente o tipo.",
+    "goDifference": "Nas main series Sandshrew aprende Sand Attack por criacao. No GO, mud moves tem efeitos diferentes — Sand Attack gera energia.",
+    "evolutionCost": "50 candy para Sandslash. Buddy 3km/candy. Sandshrew Alola: 50 candy.",
+    "shinyRate": "Shiny disponivel. Cor azulada (diferente do marrom original)."
+  },
+  {
+    "speciesId": 28,
+    "origin": "Sandslash e a forma evoluida de Sandshrew. Suas garras sao usadas para cavar tuneis e escalam arvores. Nome vem de 'sand' + 'slash' (cortada). Variante Alola e Ice/Steel.",
+    "goRelevance": "Ground-type solido com Night Slash para cobertura. A variante Alola e mais requisitada por ser Ice/Steel — counter natural para Dragon-types.",
+    "battleTip": "Sandslash Alola com Powder Snow + Ice Punch + Gyro Ball e otimo para Great e Ultra League. Fragil mas rapido.",
+    "easterEgg": "Sandslash Alola foi introduzido como um dos poucos casos onde uma variante regional perde seu tipo original completamente (Ground → Ice/Steel).",
+    "goDifference": "Nas main series Sandslash aprende Slash e Earthquake. No GO, Earthquake e um charged move que compete com Drill Run.",
+    "evolutionCost": "50 candy de Sandshrew. Buddy 3km/candy.",
+    "shinyRate": "Shiny azulado. Sandslash Alola shiny e rosa claro."
+  },
+  {
+    "speciesId": 29,
+    "origin": "Nidoran♀ e inspirado em ouricos e roedores com chifres pequenos. A linha Nidoran tem a peculiaridade de ter generos diferentes com numeros de dex diferentes. Nome vem de 'needle' (agulha) + 'doran'.",
+    "goRelevance": "Comum em areas gramadas. Evolui para Nidorina com 25 candy e depois Nidoqueen com 100 candy. Usado em mass evolves.",
+    "battleTip": "Nidoqueen e um Poison/Ground com Poison Jab + Earth Power — boa cobertura para Fairy e Electric-types.",
+    "easterEgg": "Nidoran♀ e Nidoran♂ sao os unicos Pokemon que tem numeros de Pokedex diferentes apesar de serem a mesma especie com generos diferentes.",
+    "goDifference": "Nas main series, Nidoran♀ aprende Poison Sting naturalmente. No GO os moves sao independentes de nivel.",
+    "evolutionCost": "25 candy para Nidorina + 100 candy para Nidoqueen = 125 total. Buddy 3km/candy.",
+    "shinyRate": "Shiny disponivel. Cor levemente azulada."
+  },
+  {
+    "speciesId": 30,
+    "origin": "Nidorina e a forma intermediaria feminina de Nidoran. Os espinhos nas costas comecam a ficar maiores. Nome e uma variacao de Nidoran com sufixo feminino.",
+    "goRelevance": "Usada apenas como step para Nidoqueen.",
+    "battleTip": "Nidorina e raramente usada em batalhas. Nidoqueen e que tem valor competitivo.",
+    "easterEgg": "Diferente de Nidorino, Nidorina nao pode procriar no daycare das main series — uma peculiaridade do jogo que gera confusao ate hoje.",
+    "goDifference": "Nas main series Nidorina obtem-se usando Moon Stone. No GO, sao candy, nao pedras de evolucao.",
+    "evolutionCost": "100 candy para Nidoqueen. Buddy 3km/candy.",
+    "shinyRate": "Shiny via evolucao."
+  },
+  {
+    "speciesId": 31,
+    "origin": "Nidoqueen e a forma final feminina da linha Nidoran. Tem uma natureza protetora com sua familia. Seus espinhos liberam veneno quando esta irritada. Nome vem de 'needle' + 'queen'.",
+    "goRelevance": "Boa opcao para Great e Ultra League PvP. Poison/Ground com Poison Jab + Earth Power cobre bem contra Fairy e Electric.",
+    "battleTip": "Na Great League, Nidoqueen com Earth Power e Stone Edge surpreende Flying-types como Altaria e Skarmory.",
+    "easterEgg": "Nidoqueen nunca pode aprender ou usar a Moon Stone para nada, apesar de sua pre-evolucao Nidorina precisar dela nas main series.",
+    "goDifference": "Nas main series Nidoqueen aprende Superpower e Aqua Tail por TM. No GO ela nao tem acesso a esses moves.",
+    "evolutionCost": "100 candy de Nidorina. Buddy 3km/candy. Nidoqueen nao evolui mais.",
+    "shinyRate": "Shiny azulado. Relativamente raro por ser uma evolucao."
+  },
+  {
+    "speciesId": 32,
+    "origin": "Nidoran♂ e a versao masculina de Nidoran. Tem chifres maiores que a versao feminina. Seu nome vem de 'needle' + 'doran' com sufixo masculino.",
+    "goRelevance": "Comum em areas gramadas. Evolui para Nidorino (25 candy) e depois Nidoking (100 candy).",
+    "battleTip": "Nidoking tem ATK 204 — maior que Nidoqueen (180). Melhor para ataques ofensivos.",
+    "easterEgg": "Nidoran♂ e Nidoran♀ sao os precursores do sistema de genero que se tornou padrao em geracoes futuras.",
+    "goDifference": "Nas main series Nidoran♂ aprende Horn Attack. No GO, Horn Attack nao existe como move.",
+    "evolutionCost": "25 candy para Nidorino + 100 candy para Nidoking = 125 total. Buddy 3km/candy.",
+    "shinyRate": "Shiny azulado."
+  },
+  {
+    "speciesId": 33,
+    "origin": "Nidorino e a forma intermediaria masculina de Nidoran. Seu chifre e mais longo e afiado que o de Nidoran♂.",
+    "goRelevance": "Step evolutivo. Sem relevancia competitiva.",
+    "battleTip": "Nidorino tem stats medianos — ATK 137, DEF 111. Nada especial.",
+    "easterEgg": "Nidorino aparece na abertura original do jogo Pokemon Red/Blue lutando contra Gengar — uma das cenas mais iconicas da franquia.",
+    "goDifference": "Nas main series Nidorino pode aprender Fury Attack. No GO, Fury Cutter e parecido mas Bug-type.",
+    "evolutionCost": "100 candy para Nidoking. Buddy 3km/candy.",
+    "shinyRate": "Shiny via evolucao."
+  },
+  {
+    "speciesId": 34,
+    "origin": "Nidoking e a forma final masculina da linha Nidoran. Inspirado em dinossauros teropodes com chifres. Sua cauda pode quebrar arvores. Nome de 'needle' + 'king'.",
+    "goRelevance": "Melhor que Nidoqueen em ATK (204 vs 180), mas menos defensivo. Usado em Ultra League e raids como Poison/Ground.",
+    "battleTip": "Nidoking com Fury Cutter + Earth Power + Megahorn e um dos melhores 'shield breakers' por gerar energia muito rapido.",
+    "easterEgg": "Nidoking pode aprender Ice Beam e Thunderbolt nas main series, algo que sua contraparte feminina Nidoqueen nao pode.",
+    "goDifference": "Nas main series Nidoking tem acesso a um pool enorme de TMs (mais de 70 moves). No GO, seu pool e limitado a uns 10 moves.",
+    "evolutionCost": "100 candy de Nidorino. Buddy 3km/candy.",
+    "shinyRate": "Shiny azul. Nidoking shiny e sutil mas elegante."
+  },
+  {
+    "speciesId": 35,
+    "origin": "Clefairy e inspirado em fadas e duendes da mitologia europeia. Originalmente era do tipo Normal, mas mudou para Fairy na Geracao 6. Nome vem de 'clef' (clave de sol) + 'fairy'.",
+    "goRelevance": "Aparece em raids de 1 estrela. Clefable e um otimo Fairy-type para raids de Dragon e Dark, especialmente com Charm + Dazzling Gleam.",
+    "battleTip": "Clefable com Charm + Dazzling Gleam + Meteor Mash (CD) e top-tier Fairy. Charm e um dos melhores fast moves do jogo.",
+    "easterEgg": "Clefairy iria ser o mascote da franquia em vez de Pikachu! O merchandising inicial era todo baseado em Clefairy, mas Pikachu roubou a cena com o anime.",
+    "goDifference": "Nas main series Clefable aprende Moonblast naturalmente. No GO, Moonblast e um charged move via Elite TM raramente disponivel.",
+    "evolutionCost": "50 candy para Clefable. Buddy 1km/candy. Precisa de Moon Stone nas main series, mas no GO e so candy.",
+    "shinyRate": "Shiny disponivel. Clefairy shiny tem orelhas azuis. Clefable shiny e similar."
+  },
+  {
+    "speciesId": 36,
+    "origin": "Clefable e a forma evoluida de Clefairy. Diz a lenda que Clefable vem da lua em naves espaciais. Seu ouvido e agudo o suficiente para ouvir som de agulha caindo a 1km.",
+    "goRelevance": "Excelente Fairy-type para raids e PvP. Charm + Dazzling Gleam destroi Dragon-types. Rankeado #33 na Master League pelo PvPoke.",
+    "battleTip": "Clefable com Charm + Meteor Mash (CD 2020) + Dazzling Gleam cobre contra Steel-types (que resistem Fairy).",
+    "easterEgg": "No Monte Lua (Mt. Moon), Clefairy dançam sob a luz da lua cheia — uma referencia as lendas de fadas que dançam em circulos.",
+    "goDifference": "Nas main series Clefable pode aprender Stealth Rock e Light Screen. No GO, moves de status nao existem da mesma forma.",
+    "evolutionCost": "50 candy de Clefairy. Buddy 1km/candy.",
+    "shinyRate": "Shiny disponivel. Diferenca sutil."
+  },
+  {
+    "speciesId": 37,
+    "origin": "Vulpix e inspirado em raposas e kitsunes (raposas mitologicas japonesas). Suas seis caudas sao uma referencia as raposas de multiplas caudas do folclore. Nome de 'vulpes' (raposa em latim) + 'six'.",
+    "goRelevance": "Aparece raids de 1 estrela. Ninetales e um Fire-type solido. A variante Alola (Ice/Fairy) e muito mais popular para PvP.",
+    "battleTip": "Ninetales Alola com Charm + Weather Ball (Ice) + Dazzling Gleam e top-tier em Great League — muito versatil.",
+    "easterEgg": "Vulpix de Alola e branco como a neve, inspirado nas raposas do artico. E uma das variantes regionais mais bonitas do jogo.",
+    "goDifference": "Nas main series, Vulpix so evolui com Fire Stone. No GO, sao 50 candy — sem precisar de pedra.",
+    "evolutionCost": "50 candy para Ninetales. Buddy 3km/candy. Vulpix Alola: 50 candy para Ninetales Alola.",
+    "shinyRate": "Shiny cinza claro. Ninetales shiny e cinza/prateado — muito bonito."
+  },
+  {
+    "speciesId": 38,
+    "origin": "Ninetales e inspirado no kitsune de nove caudas do folclore japones. Viver 1000 anos lhe da 9 caudas com poderes psiquicos e de fogo. Nome de 'nine' + 'tales' (caudas).",
+    "goRelevance": "Fire-type solido com Incinerate + Weather Ball (Fire) + Overheat. Variante Alola (Ice/Fairy) domina Great e Ultra League.",
+    "battleTip": "Ninetales Alola e rank #20 na Great League. Charm + Weather Ball (Ice) derrete Dragon, Flying e Ground-types.",
+    "easterEgg": "Diz a lenda que cada uma das 9 caudas de Ninetales possui um poder diferente e que vive 1000 anos.",
+    "goDifference": "Nas main series Ninetales pode aprender Will-O-Wisp e Confuse Ray. No GO, moves de status foram convertidos para dano.",
+    "evolutionCost": "50 candy de Vulpix. Buddy 3km/candy.",
+    "shinyRate": "Shiny cinza/prateado. Muito elegante e procurado."
+  },
+  {
+    "speciesId": 39,
+    "origin": "Jigglypuff e inspirado em baloes e marshmallows. Originalmente Normal, ganhou tipo Fairy na Geracao 6. O nome vem de 'jiggle' (balancar) + 'puff' (sopro).",
+    "goRelevance": "Spawn relativamente comum. Wigglytuff e um otimo Fairy-type para Great League com Charm + Play Rough + Ice Beam.",
+    "battleTip": "Wigglytuff com Charm derrete Dark-types. Ice Beam cobre contra Flying e Grass — cobertura que Charm nao alcanca.",
+    "easterEgg": "O Jigglypuff do anime pega um microfone e canta ate todos dormirem. Depois desenha nos rostos das pessoas com caneta. E um dos personagens mais memoraveis.",
+    "goDifference": "Nas main series Jigglypuff aprende Sing no level 1 e Hypnosis. No GO, status sleep nao existe, entao Sing e so um move de dano (Disarming Voice).",
+    "evolutionCost": "50 candy para Wigglytuff. Buddy 1km/candy.",
+    "shinyRate": "Shiny verde-claro. Wigglytuff shiny tem olhos verdes."
+  },
+  {
+    "speciesId": 40,
+    "origin": "Wigglytuff e a forma evoluida de Jigglypuff. Sua pele e extremamente elastica e macia. O nome vem de 'wiggly' (que balanca) + 'tuff' (topete).",
+    "goRelevance": "Great League PvP staple. Charm + Play Rough + Ice Beam da cobertura ampla. STA 295 e enorme — tank que nao morre facil.",
+    "battleTip": "Com STA 295 e DEF 90, Wigglytuff e um 'sponge' — absorve dano enquanto da Charm. Mas Steel-types como Registeel sao counter duro.",
+    "easterEgg": "Wigglytuff tem a maior STA base entre todos os Normal ou Fairy-types que nao sao lendarios, perdendo apenas para Blissey e Chansey.",
+    "goDifference": "Nas main series Wigglytuff pode aprender Hyper Voice. No GO, Hyper Voice e move exclusivo de alguns poucos Pokemon.",
+    "evolutionCost": "50 candy de Jigglypuff. Buddy 1km/candy.",
+    "shinyRate": "Shiny verde-claro. Diferenca sutil."
+  },
+  {
+    "speciesId": 41,
+    "origin": "Zubat e inspirado em morcegos-vampiros. Tem olhos atrofiados por viver em cavernas escuras e usa ecolocalizacao para navegar. O nome vem de 'zub' (som de passagem rapida) + 'bat' (morcego).",
+    "goRelevance": "Extremamente comum em cavernas e a noite. Golbat e Crobat (Gen 2) sao rapidos em PvP. Crobat e um dos melhores Poison/Flying com Wing Attack + Sludge Bomb.",
+    "battleTip": "Crobat e rank #104 na Great League. Wing Attack gera energia rapido e Sludge Bomb da dano pesado a Fairy-types. Esquive de Rock-types.",
+    "easterEgg": "Zubat e famoso por ser o Pokemon mais odiado por jogadores dos jogos principais — aparece em TODA caverna, sem excecao, a cada 3 passos.",
+    "goDifference": "Nas main series Zubat precisa de alta amizade para evoluir para Crobat. No GO, e so 100 candy + Sinnoh Stone.",
+    "evolutionCost": "25 candy para Golbat + 100 candy + Sinnoh Stone para Crobat. Buddy 1km/candy.",
+    "shinyRate": "Shiny verde. Crobat shiny tem asas rosadas."
+  },
+  {
+    "speciesId": 42,
+    "origin": "Golbat e a forma evoluida de Zubat. Sua boca e maior e pode sugar sangue de presas grandes. Voce pode ouvir o bater de suas asas a 200m de distancia.",
+    "goRelevance": "Step evolutivo para Crobat. Golbat puro raramente e usado — Crobat e sempre superior.",
+    "battleTip": "Golbat tem ATK 161 e STA 181 — decente para PvP mas Crobat e melhor em tudo.",
+    "easterEgg": "Golbat aparece como um dos primeiros Pokemon encontrados em quase todos os jogos da serie principal, herdando a fama irritante de Zubat.",
+    "goDifference": "Nas main series Golbat evolve com alta amizade a noite. No GO, e com item Sinnoh Stone.",
+    "evolutionCost": "100 candy + Sinnoh Stone para Crobat. Buddy 1km/candy.",
+    "shinyRate": "Shiny verde. Sutil."
+  },
+  {
+    "speciesId": 43,
+    "origin": "Oddish e inspirado em plantas com raizes e mandragoras. Durante o dia enterra-se no solo e a noite vagueia para dispersar sementes. Nome vem de 'odd' (estranho) + 'radish' (rabanete).",
+    "goRelevance": "Relativamente comum em clima Ensolarado e Nublado. Vileplume e Bellossom (Gen 2) sao Grass-types solidos para raids.",
+    "battleTip": "Vileplume com Razor Leaf + Sludge Bomb + Moonblast cobre bem contra tipos Fairy, Water e Ground.",
+    "easterEgg": "Oddish tem uma das linhas evolutivas mais versateis — pode virar Vileplume (Grass/Poison) OU Bellossom (puro Grass) com Sun Stone.",
+    "goDifference": "Nas main series Oddish evolve no level 21. No GO, sao 25 candy para Gloom.",
+    "evolutionCost": "25 candy para Gloom + 100 candy para Vileplume OU 100 candy + Sun Stone para Bellossom. Buddy 3km/candy.",
+    "shinyRate": "Shiny azul. Vileplume shiny azul e lindo."
+  },
+  {
+    "speciesId": 44,
+    "origin": "Gloom e a forma intermediaria de Oddish. Saliva um nectar fedorento que atrai Pokemon insetos. Quanto pior o cheiro, mais forte o nectar.",
+    "goRelevance": "Usada como step para Vileplume ou Bellossom. Nao tem uso competitivo proprio.",
+    "battleTip": "Gloom pode aprender Moonblast como charged move, que cobre contra Dark-types.",
+    "easterEgg": "Gloom e considerado um dos Pokemon mais feios ja desenhados, mas sai ganhando com duas evolucoes possiveis.",
+    "goDifference": "Nas main series, Bellossom precisa de Sun Stone sobre Gloom. No GO, precisa de 100 candy + Sun Stone.",
+    "evolutionCost": "100 candy para Vileplume OU 100 candy + Sun Stone para Bellossom. Buddy 3km/candy.",
+    "shinyRate": "Shiny azul."
+  },
+  {
+    "speciesId": 45,
+    "origin": "Vileplume e inspirado na Rafflesia, a maior flor do mundo, que cheira a carne podre. Suas petalas sao as maiores do mundo Pokemon. Nome vem de 'vile' (vil) + 'plume' (pluma/flor).",
+    "goRelevance": "Razoavel como Grass/Poison em raids. Razor Leaf + Sludge Bomb. Perde para Venusaur com Frenzy Plant em DPS.",
+    "battleTip": "Vileplume com Razor Leaf + Moonblast cobre contra Dark e Dragon-types. Seu ATK 202 e decente, mas DEF 167 e fragil para raids.",
+    "easterEgg": "Vileplume, Bellossom e Roselia sao as unicas formas finais de linha evolutiva que compartilham a mesma pre-evolucao (Oddish).",
+    "goDifference": "Nas main series Vileplume pode aprender Petal Dance. No GO, Petal Blizzard e o charged move mais proximo.",
+    "evolutionCost": "100 candy de Gloom. Buddy 3km/candy.",
+    "shinyRate": "Shiny azul escuro. As petalas mudam de vermelho para azul."
+  },
+  {
+    "speciesId": 46,
+    "origin": "Paras e inspirado em fungos e insetos parasitas. Os cogumelos nas costas sao os verdadeiros controladores do corpo — eles extraem nutrientes do Paras. Nome de 'parasite' (parasita).",
+    "goRelevance": "Comum em florestas e parques. Parasect e o unico Bug/Grass do jogo, typing que da fraqueza 4x a Fire (8 fraquezas no total).",
+    "battleTip": "Parasect e FRAGIL — 8 fraquezas. So use contra Water, Ground ou Psychic puro, e com cuidado.",
+    "easterEgg": "Os cogumelos de Paras sao baseados no Cordyceps, um fungo real que infecta insetos e controla seus corpos — terror real.",
+    "goDifference": "Nas main series Paras aprende Spore (100% accuracy sleep) no level 22 — um dos melhores moves do jogo. No GO, Spore nao existe.",
+    "evolutionCost": "50 candy para Parasect. Buddy 3km/candy.",
+    "shinyRate": "Shiny com cogumelos azuis em vez de laranja."
+  },
+  {
+    "speciesId": 47,
+    "origin": "Parasect e a forma evoluida de Paras. O cogumelo tomou controle TOTAL do corpo do inseto — Parasect esta tecnicamente morto, controlado pelo fungo. Assustador.",
+    "goRelevance": "Bug/Grass fragil. Sem utilidade competitiva em nenhuma liga. Evite para raids e PvP.",
+    "battleTip": "Parasect tem 8 fraquezas e 0 imunidades. O pior typing defensivo do jogo. Fugra 4x de Fire e 2x de 6 outros tipos.",
+    "easterEgg": "A Pokedex diz: 'Parasect e controlado pelo cogumelo. Se o cogumelo for separado, Parasect morre.' — um dos textos mais macabros da franquia.",
+    "goDifference": "Nas main series Parasect e lento e fraco. No GO e igualmente ruim — um dos piores Pokemon do jogo.",
+    "evolutionCost": "50 candy de Paras. Buddy 3km/candy.",
+    "shinyRate": "Shiny com cogumelo azul. Parasect shiny e facil de notar."
+  },
+  {
+    "speciesId": 48,
+    "origin": "Venonat e inspirado em insetos com olhos compostos grandes e pelos por todo o corpo. Tem excelente visao noturna e detecta presas pelo cheiro. Nome de 'venom' (veneno) + 'gnat' (mosquito).",
+    "goRelevance": "Menos comum que outros Bug-types. Venomoth e decente na Little League (CP baixo) mas raramente usado.",
+    "battleTip": "Venomoth com Confusion + Psychic + Poison Fang surpreende Fighting e Poison-types gracas ao Psychic coverage.",
+    "easterEgg": "Venonat tem uma semelhanca suspeita com Caterpie. Alguns fas teorizam que Venonat era o design original de Butterfree.",
+    "goDifference": "Nas main series Venonat aprende Stun Spore e Sleep Powder. No GO, moves de status nao existem da mesma forma.",
+    "evolutionCost": "50 candy para Venomoth. Buddy 3km/candy.",
+    "shinyRate": "Shiny com corpo azul em vez de roxo."
+  },
+  {
+    "speciesId": 49,
+    "origin": "Venomoth e a forma evoluida de Venonat, inspirado em mariposas venenosas. Suas escamas liberam poeira toxica quando agitadas. Nome de 'venom' + 'moth' (mariposa).",
+    "goRelevance": "Tem um nicho especifico em PvP: com Confusion + Psychic, countera Fighting e Poison-types na Great League. Rank #137.",
+    "battleTip": "Venomoth com Silver Wind pode aumentar todos os stats (efeito raro). Mas Confusion + Poison Fang e mais consistente.",
+    "easterEgg": "Venomoth e Confusion sempre foram moves Psiquicos, apesar de Venomoth ser Bug/Poison. Poucos Pokemon tem esse tipo de cobertura.",
+    "goDifference": "Nas main series Venomoth aprende Quiver Dance — move que aumenta Special Attack, Speed e Special Defense. No GO, nao existe.",
+    "evolutionCost": "50 candy de Venonat. Buddy 3km/candy.",
+    "shinyRate": "Shiny verde/amarelado."
+  },
+  {
+    "speciesId": 50,
+    "origin": "Diglett e inspirado em toupeiras. So se ve sua cabeca — o resto do corpo nunca foi mostrado oficialmente. Ha decadas de teorias sobre como e o corpo de Diglett. Nome vem de 'dig' (cavar).",
+    "goRelevance": "Comum em areas de praia e deserto. Dugtrio usa Mud Shot + Earthquake — bom para raids e PvP, mas extremamente fragil (STA 67).",
+    "battleTip": "STA base 67 — a segunda menor do jogo. Dugtrio morre com um sopro. Use Mud Shot para gerar energia rapido antes de ser nocauteado.",
+    "easterEgg": "O corpo de Diglett nunca foi mostrado. Nos jogos, se voce usar um move que levanta o solo (como Fissure), o Diglett segue la. Um misterio ate hoje.",
+    "goDifference": "Nas main series Diglett tem a habilidade Arena Trap que impede fuga. No GO, habilidades nao existem, entao essa mecanica se perdeu.",
+    "evolutionCost": "50 candy para Dugtrio. Buddy 3km/candy.",
+    "shinyRate": "Shiny com cabeca rosada em vez de marrom."
+  },
+  {
+    "speciesId": 51,
+    "origin": "Dugtrio e a forma evoluida de Diglett — tres Diglett compartilhando o mesmo buraco. Inspirado na ideia de multiplas cabecas como a hidra mitologica. Nome de 'dig' + 'trio'.",
+    "goRelevance": "Mud Shot + Earthquake da DPS rapido. Fragil (STA 111) mas ataca primeiro em muitos matchups PvP. Bom para Great League.",
+    "battleTip": "Dugtrio com Mud Shot + Earthquake + Stone Edge (legacy) e otimo para counterar Fire, Electric, Steel e Rock-types.",
+    "easterEgg": "Pokemon Company ja confirmou que os tres Diglett sao IRMAOS, nao uma criatura de tres cabecas. Cada um tem seu proprio corpo no mesmo buraco.",
+    "goDifference": "Nas main series Dugtrio pode aprender Sucker Punch e Aerial Ace. No GO, nao tem acesso a moves Dark ou Voador.",
+    "evolutionCost": "50 candy de Diglett. Buddy 3km/candy.",
+    "shinyRate": "Shiny com cabecas rosadas. Mais facil de notar que o normal."
+  },
+  {
+    "speciesId": 52,
+    "origin": "Meowth e inspirado em gatos domados que gostam de objetos brilhantes. Tem a peculiaridade de ser obcecado por moedas. Habilidade unica: Pay Day (joga moedas). Nome de 'meow' (miau) + 'mouth' (boca). Variante Alola (Dark) e Galar (Steel).",
+    "goRelevance": "Comum em areas urbanas. Persian e decente em Great League pelo acesso a Scratch + Play Rough. Variante Alola (Dark) e melhor por typing.",
+    "battleTip": "Persian Alola com Bite + Play Rough + Dark Pulse cobre bem contra Psychic e Ghost-types.",
+    "easterEgg": "O Team Rocket tem um Meowth que FALA — unico Pokemon confirmado na serie que aprendeu a falar humanos (nao por telepatia).",
+    "goDifference": "Nas main series Meowth aprende Pay Day como signature move. No GO, Pay Day existe como charged move que da stardust extra ao ser usado.",
+    "evolutionCost": "50 candy para Persian. Buddy 3km/candy. Meowth Alola e Galar: 50 candy para suas formas.",
+    "shinyRate": "Shiny cinza. Persian shiny tem corpo prateado. Meowth Galar shiny bronze."
+  },
+  {
+    "speciesId": 53,
+    "origin": "Persian e a forma evoluida de Meowth, inspirado em gatos persas elegantes. Sua testa tem uma joia que brilha quando ataca. Nome vem de 'Persian cat' (gato persa).",
+    "goRelevance": "Usado em PvP Great League (rank #202). Variante Alola (Dark) e melhor com Dark Pulse + Play Rough.",
+    "battleTip": "Persian normal com Scratch + Play Rough + Foul Play surpreende Fighting-types. Mas existem opcoes melhores.",
+    "easterEgg": "Persian e o Pokemon favorito de Giovanni, lider do Team Rocket. Seu Persian tem garras de 5cm e e tratado como rei.",
+    "goDifference": "Nas main series Persian tem alta Speed (115). No GO, Speed nao e stat direto — ele se reflete indiretamente nos moves.",
+    "evolutionCost": "50 candy de Meowth. Buddy 3km/candy.",
+    "shinyRate": "Shiny prateado. Distincao sutil."
+  },
+  {
+    "speciesId": 54,
+    "origin": "Psyduck e inspirado em patos com poderes psiquicos que ele mesmo nao controla. Quando tem enxaqueca, seus poderes explodem. Nome de 'psychic' (psiquico) + 'duck' (pato).",
+    "goRelevance": "Relativamente comum perto de lagos e rios. Golduck e Water-type solido com Confusion + Psychic como coverage moves raros para agua.",
+    "battleTip": "Golduck com Confusion + Psychic + Hydro Pump surpreende oponentes que esperam moves de agua puros. Cobertura Psiquico e raro em Water-types.",
+    "easterEgg": "No anime, o Psyduck de Misty e uma piada recorrente — aparece em momentos aleatorios com dor de cabeca e explode com poder psiquico descontrolado.",
+    "goDifference": "Nas main series Psyduck aprende Confusion e Zen Headbutt. No GO, Confusion e um dos melhores fast moves Psiquicos.",
+    "evolutionCost": "50 candy para Golduck. Buddy 3km/candy.",
+    "shinyRate": "Shiny azul claro. Golduck shiny azul celeste."
+  },
+  {
+    "speciesId": 55,
+    "origin": "Golduck e a forma evoluida de Psyduck. A joia na testa brilha quando usa poderes psiquicos. Nome de 'gold' (ouro) + 'duck'. Apesar da aparencia, e puramente Water, nao Water/Psychic.",
+    "goRelevance": "Water-type solido com Confusion + Psychic — coverage raro. Bom para raids de Fire e Ground. Supera Starmie em STA (190 vs 155).",
+    "battleTip": "Golduck e um dos poucos Water-types com moves Psiquicos. Use Confusion + Psychic contra Fighting ou Poison-types que esperam moves de agua.",
+    "easterEgg": "Apesar da aparencia claramente psiquica (joia na testa, nome com 'psi'), Golduck e puramente Water. Um dos maiores erros de typing percebidos.",
+    "goDifference": "Nas main series Golduck aprende Zen Headbutt naturalmente. No GO, e um move via TM.",
+    "evolutionCost": "50 candy de Psyduck. Buddy 3km/candy.",
+    "shinyRate": "Shiny azul celeste. Elegante."
+  },
+  {
+    "speciesId": 56,
+    "origin": "Mankey e inspirado em macacos-prego e sua natureza agressiva. Fica furioso com facilidade e sua frieza aumenta com tempo frio. Nome de 'man' (homem) + 'monkey' (macaco).",
+    "goRelevance": "Comum em areas montanhosas e clima Nublado. Primeape e Fighting-type agressivo com Counter + Close Combat. Evolui para Annihilape em Paldea.",
+    "battleTip": "Primeape com Counter + Close Combat + Ice Punch cobre contra Flying e Grass-types. ATK 207 e alto para seu CP.",
+    "easterEgg": "Mankey pode ser encontrado lutando com arvores no anime, confundindo-as com Pokemon. E uma referencia a agressividade dos macacos-prego reais.",
+    "goDifference": "Nas main series Mankey aprende Karate Chop. No GO, Karate Chop e um fast move que poucos Pokemon tem.",
+    "evolutionCost": "50 candy para Primeape. Buddy 3km/candy.",
+    "shinyRate": "Shiny dourado. Sutil."
+  },
+  {
+    "speciesId": 57,
+    "origin": "Primeape e a forma evoluida de Mankey. Sua frieza so aumenta, nunca diminui. Nao para de lutar ate ser nocauteado ou nocautear o oponente.",
+    "goRelevance": "Fighting-type decente para Great League. Agora tem evolucao para Annihilape em GO, que e muito superior em PvP.",
+    "battleTip": "Primeape com Counter + Close Combat + Night Slash cobre contra Ghost-types (fraqueza de Fighting). Gera energia rapido.",
+    "easterEgg": "Primeape evolve para Annihilape depois de usar Rage Fist 20 vezes nas main series. No GO, e 100 candy (sem requisito especial).",
+    "goDifference": "Nas main series Primeape tem Anger Point que maximiza ATK ao receber critical hit. No GO, habilidades passivas nao existem.",
+    "evolutionCost": "50 candy de Mankey + 100 candy para Annihilape. Buddy 3km/candy.",
+    "shinyRate": "Shiny dourado. Annihilape shiny e roxo."
+  },
+  {
+    "speciesId": 58,
+    "origin": "Growlithe e inspirado em caezinhos da raca Shiba Inu e Akita. E leal ao treinador como um cao de guarda. Nome de 'growl' (rosnar) + 'lithe' (agil).",
+    "goRelevance": "Comum em areas secas e clima Ensolarado. Arcanine e um dos Fire-types mais fortes (ATK 227). Chamado de 'Pokemon Lendario' na Pokedex original.",
+    "battleTip": "Arcanine com Fire Fang + Wild Charge + Flamethrower cobre contra Water-types (fraqueza de Fire). Mas cuidado com Rock-types.",
+    "easterEgg": "Na Pokedex original, Arcanine e descrito como 'Pokemon Lendario' — e o unico nao-lendario com esse titulo. Provavelmente foi planejado para ser lendario.",
+    "goDifference": "Nas main series Arcanine aprende Extreme Speed como move de assinatura. No GO, Extreme Speed e um move raro que Arcanine so tem via Legacy.",
+    "evolutionCost": "50 candy para Arcanine. Buddy 3km/candy.",
+    "shinyRate": "Shiny dourado. Arcanine shiny e laranja claro — muito bonito."
+  },
+  {
+    "speciesId": 59,
+    "origin": "Arcanine e a forma evoluida de Growlithe, inspirado em caes mitologicos como o Foo Dog chines e o Shisa de Okinawa. Tem uma presenca majestosa. Nome de 'arcane' (arcano/ misterioso) + 'canine' (canino).",
+    "goRelevance": "Fire-type top-tier com ATK 227. Fire Fang + Wild Charge da cobertura contra Water. Usado em Master League e raids de ferro/aco.",
+    "battleTip": "Arcanine com Wild Charge surpreende Water-types que entram esperando resistir a Fire. Da dano massivo mas baixa sua DEF.",
+    "easterEgg": "Arcanine corre tao rapido que pode percorrer 10km em um minuto. E uma das maiores velocidades registradas entre todos os Pokemon.",
+    "goDifference": "Nas main series Arcanine tem Flash Fire (imunidade a Fire) como habilidade. No GO, nao existe mecanismo de imunidade completa.",
+    "evolutionCost": "50 candy de Growlithe. Buddy 3km/candy. 296 XL candy para maxar ao level 50.",
+    "shinyRate": "Shiny laranja claro. Sutil mas elegante."
+  },
+  {
+    "speciesId": 60,
+    "origin": "Poliwag e inspirado em girinos. A pele espiralada no ventre e uma representacao dos orgaos internos visiveis por transparencia. Nome de 'polliwog' (girino em ingles arcaico) + 'wag'.",
+    "goRelevance": "Comum perto de lagos e rios. Poliwrath e um otimo Water/Fighting para raids e PvP. Politoad (Gen 2) e Water-type com Weather Ball.",
+    "battleTip": "Poliwrath com Mud Shot + Dynamic Punch + Ice Punch cobre contra Grass e Dragon-types. Countera Steel-types como Registeel na Great League.",
+    "easterEgg": "A espiral de Poliwag e o que se ve quando se olha dentro de sua barriga transparente — os orgaos em formato espiral.",
+    "goDifference": "Nas main series Poliwag evolve no level 25. No GO, sao 25 candy para Poliwhirl.",
+    "evolutionCost": "25 candy para Poliwhirl + 100 candy para Poliwrath OU 100 candy + King's Rock para Politoad. Buddy 3km/candy.",
+    "shinyRate": "Shiny azul claro. Politoed shiny verde claro."
+  },
+  {
+    "speciesId": 61,
+    "origin": "Poliwhirl e a forma intermediaria de Poliwag. A espiral no ventre fica mais definida. Tem grande forca nos bracos e pernas.",
+    "goRelevance": "Step evolutivo. Nao usado em batalhas serias.",
+    "battleTip": "Poliwhirl pode aprender Mud Shot + Scald, moves decentes para sua categoria.",
+    "easterEgg": "Poliwhirl e o mascote nao-oficial da OAKAY, empresa irmã da Creatures Inc. que gerencia a parte de merchandise de Pokemon.",
+    "goDifference": "Nas main series Poliwhirl precisa de Water Stone para virar Poliwrath. No GO, sao 100 candy.",
+    "evolutionCost": "100 candy para Poliwrath OU 100 candy + King's Rock para Politoad. Buddy 3km/candy.",
+    "shinyRate": "Shiny azul claro."
+  },
+  {
+    "speciesId": 62,
+    "origin": "Poliwrath e uma das formas finais de Poliwag, combinando Water com Fighting. E um lutador que domina tecnicas de Water-type. Nome de 'polliwog' + 'wrath' (ira).",
+    "goRelevance": "Excelente Water/Fighting para Great e Ultra League. Mud Shot + Dynamic Punch + Ice Pump sao moves de alta pressao. Rank #64 PvPoke Great League.",
+    "battleTip": "Poliwrath e counter direto para Registeel, Bastiodon e Stunfisk na Great League. Mud Shot gera energia muito rapido.",
+    "easterEgg": "Poliwrath e um dos poucos Water/Fighting types do jogo. Só ele, Keldeo (lendario) e Urshifu Rapid Strike tem esse typing.",
+    "goDifference": "Nas main series Poliwrath pode aprender Mind Reader + Dynamic Punch combo. No GO, Mind Reader nao existe.",
+    "evolutionCost": "100 candy de Poliwhirl. Buddy 3km/candy.",
+    "shinyRate": "Shiny azul claro. Sutil."
+  },
+  {
+    "speciesId": 63,
+    "origin": "Abra e inspirado em criaturas psiquicas e telepates. Dorme 18 horas por dia e usa telepatia para sentir perigo enquanto dorme. Nome de 'abracadabra' (palavra magica) abreviado.",
+    "goRelevance": "Comum em areas urbanas e clima Ventado. Alakazam e um dos Psychic-types mais rapidos. Otimo para raids de Fighting e Poison.",
+    "battleTip": "Alakazam com Confusion + Psychic + Shadow Ball cobre contra Ghost-types. Mas ele e MUITO fragil (DEF 167, STA 146).",
+    "easterEgg": "Abra e o unico Pokemon que usa Teleport como unico move — mesmo nos jogos principais. Ele foge de batalhas selvagens instantaneamente.",
+    "goDifference": "Nas main series Abra precisa ser trocado (trade) para evoluir para Alakazam. No GO, sao 25 + 100 candy — sem precisar de trade.",
+    "evolutionCost": "25 candy para Kadabra + 100 candy para Alakazam = 125 total. Buddy 3km/candy.",
+    "shinyRate": "Shiny dourado. Alakazam shiny tem colher e bigode dourados."
+  },
+  {
+    "speciesId": 64,
+    "origin": "Kadabra e a forma intermediaria de Abra. Emite ondas alfa que causam dor de cabeca em humanos proximos. Nome de 'kadabra' da palavra magica 'abracadabra'.",
+    "goRelevance": "Step evolutivo. Kadabra puro e raramente usado — Alakazam e sempre superior.",
+    "battleTip": "Kadabra com Confusion + Psychic e decente ate voce conseguir candy suficiente para Alakazam.",
+    "easterEgg": "Ha uma controversia real: Uri Geller, um famoso 'psiquico', processou a Nintendo porque Kadabra parecia com ele curvando uma colher. O processo so foi retirado em 2020.",
+    "goDifference": "Nas main series Kadabra e obtido no level 16. No GO, sao 25 candy.",
+    "evolutionCost": "100 candy para Alakazam. Buddy 3km/candy.",
+    "shinyRate": "Shiny dourado."
+  },
+  {
+    "speciesId": 65,
+    "origin": "Alakazam e inspirado em magos e mentalistas. Seu QI e de 5000 — o maior entre todos os Pokemon. As duas colheres sao amplificadores de poder psiquico. Nome de 'abracadabra' + 'zam'.",
+    "goRelevance": "Psychic-type ofensivo top-tier (ATK 271, o maior entre Psychic puros). Confusion + Psychic da DPS massivo. Fragil mas letal.",
+    "battleTip": "Alakazam com Counter + Confusion + Psychic + Shadow Ball e imprevisivel. Counter surpreende Dark-types que seriam counters naturais.",
+    "easterEgg": "Bigode de Alakazam — ele nao tem bigode na verdade, sao protuberancias de pele. Mas os primeiros sprites pareciam bigode, virando marca registrada.",
+    "goDifference": "Nas main series Alakazam mega evolve (Mega Alakazam). No GO, Mega Alakazam foi adicionado em 2022 com ATK absurdo de 367.",
+    "evolutionCost": "100 candy de Kadabra. Buddy 3km/candy. 296 XL candy para maxar.",
+    "shinyRate": "Shiny dourado. Mega Alakazam shiny dourado escuro."
+  },
+  {
+    "speciesId": 66,
+    "origin": "Machop e inspirado em lutadores de artes marciais e fisiculturistas. Seu corpo e todo musculo, sem gordura. Nome de 'macho' (macho/forte) + 'chop' (golpe).",
+    "goRelevance": "Comum em areas urbanas e clima Nublado. Machamp e Fighting-type classico com Counter + Dynamic Punch. Otimo para raids de Normal e Steel.",
+    "battleTip": "Machamp com Counter + Dynamic Punch + Rock Slide cobre contra Flying-types. Um dos Fighting-types mais versateis.",
+    "easterEgg": "Machop consegue levantar pesos equivalentes a 100 vezes seu proprio peso, mesmo sendo um dos menores Pokemon da linha.",
+    "goDifference": "Nas main series Machop precisa de trade para virar Machamp. No GO, sao 25+100 candy sem trade.",
+    "evolutionCost": "25 candy para Machoke + 100 candy para Machamp = 125 total. Buddy 3km/candy.",
+    "shinyRate": "Shiny cinza. Machamp shiny tem pele mais clara."
+  },
+  {
+    "speciesId": 67,
+    "origin": "Machoke e a forma intermediaria de Machop. Usa uma cinta de poder que limita sua forca — sem ela, seria incontrolavel. Nome de 'macho' + 'choke' (sufocar).",
+    "goRelevance": "Step para Machamp. Machoke pode ser usado em Great League como alternativa mais barata, mas Machamp e melhor.",
+    "battleTip": "Machoke com Karate Chop + Cross Chop e decente em Little/Great League, mas inferior a Machamp em DPS.",
+    "easterEgg": "Machoke trabalha frequentemente como ajudante em construcoes civis, movendo vigas e concreto. E um dos Pokemon mais uteis para seres humanos.",
+    "goDifference": "Nas main series Machoke e obtido no level 28. No GO, sao 25 candy de Machop.",
+    "evolutionCost": "100 candy para Machamp. Buddy 3km/candy.",
+    "shinyRate": "Shiny cinza."
+  },
+  {
+    "speciesId": 68,
+    "origin": "Machamp e a forma final de Machop com 4 bracos. Pode dar socos tao rapidos que parecem mil bracos. Inspirado no deus hindu Shiva e em fisiculturistas. Nome de 'macho' + 'champion'.",
+    "goRelevance": "Fighting-type classico. Counter + Dynamic Punch e combo solido. Superado por Lucario e Conkeldurr em DPS mas ainda viavel. Rank #157 Master League.",
+    "battleTip": "Machamp com Cross Chop (move de CD) gera energia mais rapido que Dynamic Punch. Se tiver, use Cross Chop para pressao constante.",
+    "easterEgg": "A Pokedex diz que Machamp pode dar 1000 socos em 2 segundos — isso e 500 socos por segundo. Fisicamente impossivel mas impressionante.",
+    "goDifference": "Nas main series Machamp tem No Guard (moves nunca erram) como habilidade. No GO, sem habilidades, essa vantagem se perde.",
+    "evolutionCost": "100 candy de Machoke. Buddy 3km/candy. 296 XL candy para maxar.",
+    "shinyRate": "Shiny cinza. Mais escuro que o normal."
+  },
+  {
+    "speciesId": 69,
+    "origin": "Bellsprout e inspirado em plantas carnívoras como a Dionéia. A cabeca funciona como uma armadilha que se fecha ao detectar presas. Nome de 'bell' (sino) + 'sprout' (broto).",
+    "goRelevance": "Comum em areas gramadas e clima Ensolarado. Victreebel e Grass/Poison solido com Razor Leaf + Leaf Blade.",
+    "battleTip": "Victreebel com Razor Leaf + Leaf Blade + Sludge Bomb cobre contra Fairy e Steel-types. Leaf Blade e move de alta geracao de energia.",
+    "easterEgg": "Bellsprout tem uma das menores DEF base (61) entre todos os Pokemon — e incrivelmente fragil.",
+    "goDifference": "Nas main series Bellsprout pode aprender Vine Whip. No GO, Vine Whip e um fast move que Bellsprout aprende naturalmente.",
+    "evolutionCost": "25 candy para Weepinbell + 100 candy para Victreebel = 125 total. Buddy 3km/candy.",
+    "shinyRate": "Shiny dourado. Victreebel shiny amarelado."
+  },
+  {
+    "speciesId": 70,
+    "origin": "Weepinbell e a forma intermediaria de Bellsprout. Quando tem sede, o sino na cabeca murcha. Gotas de mel escorrem pela boca para atrair presas.",
+    "goRelevance": "Step evolutivo. Nao usado em batalhas.",
+    "battleTip": "Weepinbell com Razor Leaf e decente para batalhas de CP baixo.",
+    "easterEgg": "Weepinbell e um dos poucos Pokemon que evolui por Leaf Stone nas main series e por candy no GO.",
+    "goDifference": "Nas main series, Weepinbell precisa de Leaf Stone. No GO sao 100 candy.",
+    "evolutionCost": "100 candy para Victreebel. Buddy 3km/candy.",
+    "shinyRate": "Shiny dourado."
+  },
+  {
+    "speciesId": 71,
+    "origin": "Victreebel e a forma final de Bellsprout. Engole presas inteiras vivas e as dissolve em acido estomacal. Uma das Pokedex mais macabras. Nome de 'victory' (vitoria) + 'bell'.",
+    "goRelevance": "Grass/Poison solido para raids e PvP. Razor Leaf + Leaf Blade + Sludge Bomb. Superado por Venusaur mas ainda decente.",
+    "battleTip": "Victreebel com Acid + Leaf Blade + Sludge Bomb e mais rapido que Razor Leaf. Acid gera energia mais rapido que Razor Leaf.",
+    "easterEgg": "Victreebel e conhecido por ser o Pokemon de James (Team Rocket) no anime — e sempre tenta comer ele, mas ele insiste em mante-lo.",
+    "goDifference": "Nas main series Victreebel pode aprender Swords Dance. No GO, buffs de stats sao menos impactantes que nas main series.",
+    "evolutionCost": "100 candy de Weepinbell. Buddy 3km/candy.",
+    "shinyRate": "Shiny amarelado."
+  },
+  {
+    "speciesId": 72,
+    "origin": "Tentacool e inspirado em aguas-vivas e caravelas-portuguesas. Seus tentaculos sao invisiveis na agua. Nome de 'tentacle' (tentaculo) + 'cool' (legal/frio).",
+    "goRelevance": "Comum em areas costeiras e clima Chuvoso. Tentacruel e um dos melhores Water/Poison para Great League PvP.",
+    "battleTip": "Tentacruel com Poison Jab + Hydro Pump + Blizzard e imprevisivel e cobre contra Grass, Ground e Dragon-types.",
+    "easterEgg": "Tentacool e conhecido por causar acidentes maritimos — navios colidem com cardumes deles. Uma referencia a perigos reais de aguas-vivas.",
+    "goDifference": "Nas main series Tentacool aprende Barrier e Wrap. No GO, Barrier nao existe como move.",
+    "evolutionCost": "50 candy para Tentacruel. Buddy 3km/candy.",
+    "shinyRate": "Shiny roxo claro. Tentacruel shiny violeta."
+  },
+  {
+    "speciesId": 73,
+    "origin": "Tentacruel e a forma evoluida de Tentacool. Tem 80 tentaculos que se regeneram se cortados. Os olhos vermelhos brilham no escuro do oceano. Nome de 'tentacle' + 'cruel'.",
+    "goRelevance": "Top-tier Great League PvP. Poison Jab + Hydro Pump + Blizzard. DEF 209 e enorme — um dos Water-types mais defensivos. Rank #68 PvPoke.",
+    "battleTip": "Tentacruel com Blizzard surpreende Altaria e Dragonite na Great League — moves de gelo sao raros em Water-types.",
+    "easterEgg": "No anime, um Tentacruel gigante ataca uma cidade e sequestra pessoas — um dos episodios mais memoraveis e tensos da primeira temporada.",
+    "goDifference": "Nas main series Tentacruel aprende Hydro Pump naturalmente. No GO, Hydro Pump e charged move com alta energia requerida.",
+    "evolutionCost": "50 candy de Tentacool. Buddy 3km/candy.",
+    "shinyRate": "Shiny violeta."
+  },
+  {
+    "speciesId": 74,
+    "origin": "Geodude e inspirado em rochas e pedregulhos. Tem a aparencia de uma pedra amontoada de ira. Diz a lenda que Geodude sao pedras que ganharam vida. Nome de 'geo' (terra) + 'dude' (cara).",
+    "goRelevance": "Comum em areas montanhosas e cavernas. Golem e Rock/Ground solido para raids de Fire e Flying. Mas fraco para agua e grama.",
+    "battleTip": "Golem com Rock Throw + Rock Slide + Earthquake e otimo para raids. Mas fuja de Water e Grass-types — fraqueza 4x.",
+    "easterEgg": "Geodude e um dos poucos Pokemon que pode ser encontrado ao chutar pedras no chao nos jogos principais. A pedra 'acorda' e luta.",
+    "goDifference": "Nas main series Geodude evolve no level 25. No GO, sao 25 candy para Graveler.",
+    "evolutionCost": "25 candy para Graveler + 100 candy para Golem = 125 total. Buddy 1km/candy.",
+    "shinyRate": "Shiny dourado. Golem shiny e dourado."
+  },
+  {
+    "speciesId": 75,
+    "origin": "Graveler e a forma intermediaria de Geodude. Solta pedras enquanto rola montanha abaixo. So rola para baixo — nunca para cima. Nome de 'gravel' (cascalho) + -er.",
+    "goRelevance": "Step para Golem. Raramente usado puro.",
+    "battleTip": "Graveler tem DEF 164 e ATK 164 — stats perfeitamente equilibrados, mas inexpressivos.",
+    "easterEgg": "Graveler e Golem sao os unicos Pokemon que trocam de typing ao evoluir? Nao — mas eles mantem Rock/Ground em todos os estagios.",
+    "goDifference": "Nas main series Graveler precisa de trade para virar Golem. No GO sao 100 candy, sem trade.",
+    "evolutionCost": "100 candy para Golem. Buddy 1km/candy.",
+    "shinyRate": "Shiny dourado."
+  },
+  {
+    "speciesId": 76,
+    "origin": "Golem e a forma final de Geodude. Sua carapaca e dura como diamante. Quando explode de raiva, pedacos de rocha voam para todos os lados. Nome de 'go' + 'lem' (de gollem da mitologia).",
+    "goRelevance": "Rock/Ground solido para raids. Rock Throw + Rock Slide da bom DPS em raids de Fire, Flying e Ice. Mas fraqueza 4x a Water e Grass e fatal.",
+    "battleTip": "Golem perde para qualquer Water ou Grass-type. Nunca deixe ele contra Kyogre, Gyarados ou Venusaur.",
+    "easterEgg": "Golem tem variante Alola (Rock/Electric) introduzida em Sun/Moon. No GO, Geodude Alola evolve para Golem Alola com typing diferente.",
+    "goDifference": "Nas main series Golem pode aprender Fire Punch e Thunder Punch. No GO, nao tem acesso a moves de punch.",
+    "evolutionCost": "100 candy de Graveler. Buddy 1km/candy. Golem Alola: 100 candy de Graveler Alola.",
+    "shinyRate": "Shiny dourado. Golem Alola shiny azul escuro."
+  },
+  {
+    "speciesId": 77,
+    "origin": "Ponyta e inspirado em pôneis e cavalos mitologicos com crina de fogo. Sua crina queima mas nao machuca quem confia nele. Nome de 'pony' (pônei) + 'ta' (som de trote).",
+    "goRelevance": "Comum em areas secas e clima Ensolarado. Rapidash e Fire-type veloz com Fire Spin + Flame Charge. Variante Galar (Psychic) e mais rara.",
+    "battleTip": "Rapidash com Drill Run + Flame Charge + Body Slam cobre contra Rock e Water-types. Flame Charge aumenta sua Speed.",
+    "easterEgg": "Na mitologia grega, Pegasus e um cavalo alado. Ponyta nao tem asas, mas sua crina de fogo o faz parecer magico.",
+    "goDifference": "Nas main series Ponyta pode ser montado como cavalo. No GO, montaria nao existe.",
+    "evolutionCost": "50 candy para Rapidash. Buddy 3km/candy. Ponyta Galar: 50 candy para Rapidash Galar.",
+    "shinyRate": "Shiny com crina cinza clara. Rapidash Galar shiny violeta."
+  },
+  {
+    "speciesId": 78,
+    "origin": "Rapidash e a forma evoluida de Ponyta. Corre tao rapido que seus cascos mal tocam o chao. Dizem que consegue saltar o Tokyo Tower. Nome de 'rapid' (rapido) + 'dash' (arrancada).",
+    "goRelevance": "Fire-type decente com Fire Spin + Drill Run para raids. Superado por Chandelure, Darmanitan e Reshiram em DPS.",
+    "battleTip": "Rapidash com Drill Run cobre contra Rock-types — algo que a maioria dos Fire-types nao tem.",
+    "easterEgg": "Rapidash Galar (Psychic/Fairy) e uma versao unicornio, com chifre roxo e crina em tons pastel. E unicamente bela.",
+    "goDifference": "Nas main series Rapidash aprende Agility e Stomp. No GO, Agility foi convertido em Flame Charge (move de fogo que aumenta ATK).",
+    "evolutionCost": "50 candy de Ponyta. Buddy 3km/candy.",
+    "shinyRate": "Shiny cinza claro. Rapidash Galar shiny violeta escuro."
+  },
+  {
+    "speciesId": 79,
+    "origin": "Slowpoke e inspirado em bichos-preguica e salamandras. Sua cauda tem um gosto que as pessoas gostam de comer na regiao de Alola. E conhecido por ser extremamente lerdo. Nome de 'slow' (lento) + 'poke'.",
+    "goRelevance": "Relativamente comum perto de lagos. Slowbro e Slowking sao Water/Psychic defensivos. Slowbro com Galarian Slowbro (Poison/Psychic).",
+    "battleTip": "Slowbro com Water Gun + Ice Beam + Psychic e um tank defensivo. DEF 180 + STA 216 — dificil de nocautear.",
+    "easterEgg": "Slowpoke e tão lerdo que leva 5 segundos para processar que foi machucado. A cauda cai e cresce de novo como a de lagartixas.",
+    "goDifference": "Nas main series Slowpoke pode aprender Surf e Strength (HMs). No GO, essas mecanicas nao existem.",
+    "evolutionCost": "50 candy para Slowbro OU 50 candy + King's Rock para Slowking. Buddy 3km/candy. Slowpoke Galar: mesma regra para Slowbro-G e Slowking-G.",
+    "shinyRate": "Shiny rosa claro. Slowbro shiny rosa."
+  },
+  {
+    "speciesId": 80,
+    "origin": "Slowbro e a forma evoluida de Slowpoke. Um Shellder mordeu sua cauda e virou parte dele. Se o Shellder soltar, Slowbro regride para Slowpoke. Nome de 'slow' + 'bro'.",
+    "goRelevance": "Bom Water/Psychic defensivo para Great e Ultra League. Water Gun + Psychic + Ice Beam. Rank #150 em Great League PvPoke.",
+    "battleTip": "Slowbro com Ice Beam cobre contra Grass e Dragon-types — ameacas naturais para Water/Psychic. Galarian Slowbro (Poison/Psychic) e diferente.",
+    "easterEgg": "A mordida do Shellder nas costas de Slowbro e uma das poucas 'evolucoes por parceria' onde dois Pokemon se fundem. Outro caso e Magneton.",
+    "goDifference": "Nas main series Slowbro mega evolve (Mega Slowbro). No GO, Mega Slowbro com DEF massiva e excelente tank.",
+    "evolutionCost": "50 candy de Slowpoke. Buddy 3km/candy.",
+    "shinyRate": "Shiny rosa. Shellder nas costas tambem fica rosa."
+  },
+  {
+    "speciesId": 81,
+    "origin": "Magnemite e inspirado em imas e orbes metalicas. Flutua usando campos magneticos. Atrai objetos metalicos para seu corpo. Nome de 'magnet' (ima) + 'mite' (acaro/pequeno).",
+    "goRelevance": "Comum em areas industriais e clima Ventado. Magneton e Magneton (e Magnezone Gen 4) sao otimos Electric/Steel para raids e PvP.",
+    "battleTip": "Magnezone com Spark + Wild Charge + Mirror Shot e top-tier. Resistencia a Steel da immunidade a Poison e 11 outras resistencias.",
+    "easterEgg": "Magnemite e constituido de parafusos e imas — e inspirado em lixo eletronico e sucata que ganhou vida.",
+    "goDifference": "Nas main series Magnemite evolve no level 30. No GO, sao 25 candy para Magneton.",
+    "evolutionCost": "25 candy para Magneton + 100 candy + Magnetic Lure Module para Magnezone. Buddy 3km/candy.",
+    "shinyRate": "Shiny azul escuro (lado esquerdo fica azul). Sutil."
+  },
+  {
+    "speciesId": 82,
+    "origin": "Magneton e a forma de tres Magnemite unidos por um forte campo magnetico. E impossivel separa-los. Nome de 'magnet' + 'ton' (tonelada/forca).",
+    "goRelevance": "Step para Magnezone. Magneton puro e decente para Great League com Spark + Discharge.",
+    "battleTip": "Magneton com Mirror Shot da chance de baixar ATK do oponente — efeito util em PvP.",
+    "easterEgg": "Magneton e uma das primeiras 'fusao' de multiplos Pokemon. Diferente de Dugtrio que sao irmaos, Magneton e uma fusao literal.",
+    "goDifference": "Nas main series Magneton precisa de um local magnetico especial (Mt. Coronet) para virar Magnezone. No GO, e Magnetic Lure Module.",
+    "evolutionCost": "100 candy + Magnetic Lure Module para Magnezone. Buddy 3km/candy.",
+    "shinyRate": "Shiny azul escuro em um dos tres imas."
+  },
+  {
+    "speciesId": 83,
+    "origin": "Farfetch'd e inspirado em patos selvagens que carregam alho-poro — uma referencia a um provérbio japones 'kamo ga negi o shotte kuru' (um pato chega carregando alho-poro).",
+    "goRelevance": "Raro em algumas regioes. Teve uma evolucao adicionada em Gen 8: Sirfetch'd (Lutador). No GO, Farfetch'd Galar evolve ao causar 10 critical hits.",
+    "battleTip": "Sirfetch'd com Counter + Leaf Blade + Brave Bird e um otimo Fighting-type para Ultra League.",
+    "easterEgg": "Farfetch'd carrega um alho-poro porque, no Japao, dizer que 'um pato veio com alho-poro' significa que algo veio preparado para ser usado.",
+    "goDifference": "Nas main series Farfetch'd segura o alho-poro como item. No GO, o alho-poro e um move (Meteor Assault) exclusivo de Sirfetch'd.",
+    "evolutionCost": "50 candy + 10 Excellent Throws para Sirfetch'd (requisito especial no GO). Buddy 3km/candy.",
+    "shinyRate": "Shiny com alho-poro azul. Sirfetch'd shiny e mais escuro."
+  },
+  {
+    "speciesId": 84,
+    "origin": "Doduo e inspirado em avestruzes com duas cabecas. Uma cabeca dorme enquanto a outra fica vigiando. As duas cabecas tem pensamentos diferentes. Nome de 'dodo' (ave extinta) + 'duo' (dois).",
+    "goRelevance": "Comum em areas gramadas e clima Ensolarado. Dodrio e Normal/Flying com ATK 218 — surpreendentemente alto.",
+    "battleTip": "Dodrio com Quick Attack + Drill Peck + Brave Bird tem ATK 218 — maior que muitos tipos que parecem mais fortes.",
+    "easterEgg": "Doduo e Dodrio sao baseados no Dodô, ave extinta. Mas o Dodô tinha UMA cabeca — a piada e que cada 'era' adicionava uma cabeca.",
+    "goDifference": "Nas main series Doduo pode aprender Fly (HM). No GO, o equivalente e Drill Peck como charged move.",
+    "evolutionCost": "50 candy para Dodrio. Buddy 3km/candy.",
+    "shinyRate": "Shiny verde claro. Dodrio shiny com tom esverdeado."
+  },
+  {
+    "speciesId": 85,
+    "origin": "Dodrio e a forma evoluida de Doduo com 3 cabecas. Cada cabeca tem sua propria personalidade e pensa por si. Nome de 'dodo' + 'trio'. Sao avestruzes de tres cabecas.",
+    "goRelevance": "ATK 218 — maior que muitos tipos 'fortes'. Quick Attack + Drill Peck e decente para Great League. STA 155 e baixo.",
+    "battleTip": "Dodrio com Brave Bird da dano massivo mas debuffa DEF. Use Drill Peck quando precisar de consistencia.",
+    "easterEgg": "As 3 cabecas de Dodrio representam alegria, tristeza e raiva. Elas discutem entre si constantemente sobre o que fazer.",
+    "goDifference": "Nas main series Dodrio pode aprender Tri Attack (ataque de 3 tipos). No GO, Tri Attack e um charged move que alguns Pokemon tem.",
+    "evolutionCost": "50 candy de Doduo. Buddy 3km/candy.",
+    "shinyRate": "Shiny esverdeado. Sutil."
+  },
+  {
+    "speciesId": 86,
+    "origin": "Seel e inspirado em focas e leoest-marinhos. O chifre na cabeca e feito de gelo e quebra facilmente. Nome de 'seal' (foca). Vivem em aguas geladas.",
+    "goRelevance": "Comum em areas costeiras e clima com Neve. Dewgong e Water/Ice com typing defensivo interessante. Raramente usado.",
+    "battleTip": "Dewgong com Ice Shard + Icy Wind + Drill Run cobre contra Rock, Fire e Electric-types.",
+    "easterEgg": "Seel e Dewgong sao baseados em focas e dugongos reais. Apesar do nome 'Dewgong', ele e mais parecido com morsa.",
+    "goDifference": "Nas main series Seel aprende Aurora Beam naturalmente. No GO, o move existe mas e menos impactante que Ice Beam.",
+    "evolutionCost": "50 candy para Dewgong. Buddy 3km/candy.",
+    "shinyRate": "Shiny rosa claro. Dewgong shiny rosa."
+  },
+  {
+    "speciesId": 87,
+    "origin": "Dewgong e a forma evoluida de Seel, inspirada em dugongos e sereias. Tem um corpo aerodinamico para nadar em aguas gelidas. Nome de 'dew' (orvalho) + 'dugong'.",
+    "goRelevance": "Water/Ice decente para Great League com Ice Shard + Icy Wind. O buff de Icy Wind (baixa ATK do oponente) e util.",
+    "battleTip": "Dewgong com Icy Wind e um dos melhores 'debuffer' do PvP — baixa ATK do oponente em cada uso. Acumula vantagem ao longo da luta.",
+    "easterEgg": "Dewgong pode aprender Aqua Jet nas main series. No GO, Aqua Jet existe mas e um move mediano de agua.",
+    "goDifference": "Nas main series Dewgong aprende Sheer Cold — move 1-hit-KO. No GO, moves de OHKO nao existem.",
+    "evolutionCost": "50 candy de Seel. Buddy 3km/candy.",
+    "shinyRate": "Shiny rosa."
+  },
+  {
+    "speciesId": 88,
+    "origin": "Grimer e inspirado em lama toxica e poluicao industrial. Surgiu quando lama de esgoto foi exposta a radiacao. Nome de 'grime' (sujeira/encardido). Variante Alola (Poison/Dark) e mais escura.",
+    "goRelevance": "Comum em areas urbanas e poluídas. Muk e Poison-type puro com ATK 190 e DEF 172 — solido para PvP.",
+    "battleTip": "Muk com Poison Jab + Dark Pulse + Sludge Wave cobre contra Psychic-types. E um dos melhores Poison-types para Master League.",
+    "easterEgg": "Grimer foi inspirado pela poluicao na Baia de Tóquio. E uma critica ambiental sutil — a poluicao criou vida mutante.",
+    "goDifference": "Nas main series Grimer pode aprender Minimize (evasao aumenta). No GO, Minimize nao existe da mesma forma.",
+    "evolutionCost": "50 candy para Muk. Buddy 3km/candy. Grimer Alola: 50 candy para Muk Alola.",
+    "shinyRate": "Shiny verde escuro. Muk Alola shiny e roxo mais escuro."
+  },
+  {
+    "speciesId": 89,
+    "origin": "Muk e a forma evoluida de Grimer. Seu odor e tao forte que causa desmaio em humanos. Feito de toxinas concentradas. Nome de 'muck' (lama/sujeira grossa). Variante Alola (Poison/Dark).",
+    "goRelevance": "Excelente Poison-type para Great, Ultra e Master League. Poison Jab + Dark Pulse + Sludge Wave. Rank #46 Master League PvPoke. STA 233 e enorme.",
+    "battleTip": "Muk com Dark Pulse cobre contra Ghost e Psychic-types que counteriam Poison. Um dos melhores tanks Poison do jogo.",
+    "easterEgg": "Muk de Alola e Poison/Dark — uma melhoria significativa porque Dark cobre a fraqueza a Psychic que Poison puro tem.",
+    "goDifference": "Nas main series Muk pode aprender Gunk Shot e Explosion. No GO, Explosion e um move Normal-type que Muk nao aprende.",
+    "evolutionCost": "50 candy de Grimer. Buddy 3km/candy.",
+    "shinyRate": "Shiny verde claro. Muk shiny verde lima."
+  },
+  {
+    "speciesId": 90,
+    "origin": "Shellder e inspirado em bivalves e ameijoas. Sua concha e tao dura que nem bombas conseguem quebra-la. A lingua e roxa e comprida. Nome de 'shell' (concha) + 'elder' (mais velho).",
+    "goRelevance": "Comum em areas costeiras e praias. Cloyster e um Water/Ice defensivo com DEF 256 — uma das maiores do jogo.",
+    "battleTip": "Cloyster tem a quinta maior DEF base do jogo (256). Ice Shard + Avalanche e otimo para raids de Dragon e Flying.",
+    "easterEgg": "Shellder e a concha que morde Slowpoke e vira parte de Slowbro. Em algumas edicoes, a entrada de Shellder na Pokedex menciona que tem medo de Slowpoke.",
+    "goDifference": "Nas main series Shellder precisa de Water Stone para virar Cloyster. No GO, sao 50 candy.",
+    "evolutionCost": "50 candy para Cloyster. Buddy 3km/candy.",
+    "shinyRate": "Shiny roxo claro. Cloyster shiny com concha roxa."
+  },
+  {
+    "speciesId": 91,
+    "origin": "Cloyster e a forma evoluida de Shellder. Sua concha e dura como diamante e os espinhos sao feitos de gelo puro. Nome de 'cloister' (clausura) + 'oyster' (ostra).",
+    "goRelevance": "DEF 256 — a quinta maior do jogo. Ice Shard + Avalanche e top-tier contra Dragon e Flying-types. Otimo para raids de Rayquaza, Dragonite, Salamence.",
+    "battleTip": "Cloyster com Ice Shard + Avalanche + Hydro Pump cobre contra Fire-types que ameacariam um Ice-type puro.",
+    "easterEgg": "Cloyster pode aprender Spike Cannon, move exclusivo que dispara espinhos. Nas main series, era seu signature move por geracoes.",
+    "goDifference": "Nas main series Cloyster tem Skill Link + Icicle Spear (ataque de 5 hits). No GO, multi-hit moves nao funcionam igual.",
+    "evolutionCost": "50 candy de Shellder. Buddy 3km/candy.",
+    "shinyRate": "Shiny roxo."
+  },
+  {
+    "speciesId": 92,
+    "origin": "Gastly e inspirado em gas toxico e almas penadas. E composto de gas venenoso que pode solidificar se quiser. Nao tem forma corporea solida. Nome de 'ghastly' (horripilante).",
+    "goRelevance": "Comum em cemiterios e a noite. Gengar e um dos Ghost-types mais iconicos e fortes do jogo. ATK 261 — altissimo.",
+    "battleTip": "Gengar com Shadow Claw + Shadow Ball + Sludge Bomb e letal. ATK 261 e um dos maiores. Mas DEF 149 e STA 155 — fragil.",
+    "easterEgg": "Gengar e a sombra de Clefable — diz a lenda que Gengar e a sombra de Clefable que ganhou vida propria.",
+    "goDifference": "Nas main series Gastly precisa de trade para virar Gengar. No GO, sao 25 + 100 candy, sem trade. Precisa de trade? Nao.",
+    "evolutionCost": "25 candy para Haunter + 100 candy para Gengar = 125 total. Buddy 3km/candy.",
+    "shinyRate": "Shiny branco. Gengar shiny e branco — um dos mais bonitos."
+  },
+  {
+    "speciesId": 93,
+    "origin": "Haunter e a forma intermediaria de Gastly. Tem maos geladas que causam arrepios. Se a lingua tocar alguem, a pessoa treme sem parar. Nome de 'haunt' (assombrar) + 'er'.",
+    "goRelevance": "Step para Gengar. Haunter puro pode ser usado em Little/Great League como alternativa, mas Gengar e sempre melhor.",
+    "battleTip": "Haunter com Shadow Claw + Shadow Ball + Sludge Bomb e versao mais fraca de Gengar. Use se nao tiver candy suficiente.",
+    "easterEgg": "Haunter e o unico Pokemon que aparece no episodio 'Ghost of Maiden's Peak' no anime — um dos episodios mais assustadores da serie original.",
+    "goDifference": "Nas main series Haunter precisa de trade para virar Gengar. No GO, sao 100 candy.",
+    "evolutionCost": "100 candy para Gengar. Buddy 3km/candy.",
+    "shinyRate": "Shiny branco."
+  },
+  {
+    "speciesId": 94,
+    "origin": "Gengar e a forma final de Gastly. Sua aparencia e inspirada em sombras urbanas e assombracoes. Dizem que espreita os mais fracos para sugar sua energia vital. Nome de 'gangster' + 'phantom'.",
+    "goRelevance": "Ghost-type TOP-tier. Shadow Claw + Shadow Ball + Sludge Bomb. ATK 261. Mega Gengar e o melhor Ghost do jogo com ATK 349. Rank #6 Master League.",
+    "battleTip": "Gengar com Legacy move Lick + Shadow Ball e ainda melhor que Shadow Claw. Se tiver um com Lick, e tesouro. Mega Gengar e fragil mas mortal.",
+    "easterEgg": "Gengar e a sombra de Clefable! Compare os designs — mesma forma, orelhas pontudas, corpo arredondado. Gengar e a versao 'sombria'.",
+    "goDifference": "Nas main series Gengar mega evolve. No GO, Mega Gengar foi adicionado e e o Ghost-type mais forte do jogo.",
+    "evolutionCost": "100 candy de Haunter. Buddy 3km/candy. 296 XL candy para maxar. Mega Gengar: 200 Mega Energy.",
+    "shinyRate": "Shiny branco. Mega Gengar shiny branco com olhos vermelhos — assustador e lindo."
+  },
+  {
+    "speciesId": 95,
+    "origin": "Onix e inspirado em cobras de pedra e minerais. Seu corpo e feito de rochas gigantes que se atraem magneticamente. Nome de 'onyx' (onix, uma pedra preciosa).",
+    "goRelevance": "Comum em cavernas. Onix tem DEF 232 mas ATK 85 — um dos maiores desequilibrios ATK/DEF do jogo. Evolui para Steelix com Metal Coat.",
+    "battleTip": "Steelix (Gen 2) com Dragon Tail + Crunch + Earthquake e otimo tank para Great League. DEF 333 (Mega) — quase impenetravel.",
+    "easterEgg": "Onix tem 8.8 metros de comprimento — um dos Pokemon mais longos. Mas pesa apenas 210kg, leve para seu tamanho.",
+    "goDifference": "Nas main series Onix precisa de Metal Coat por trade para virar Steelix. No GO, sao 50 candy + Metal Coat (item especial).",
+    "evolutionCost": "50 candy + Metal Coat para Steelix. Buddy 5km/candy.",
+    "shinyRate": "Shiny verde claro. Steelix shiny dourado."
+  },
+  {
+    "speciesId": 96,
+    "origin": "Drowzee e inspirado em hipopotamos e no Baku (criatura mitologica japonesa que come pesadelos). Dorme o tempo todo. Nome de 'drowse' (sonolencia) + 'zee' (zzz de sono).",
+    "goRelevance": "Comum em areas urbanas. Hypno e Psychic-type defensivo com boa Great League presencia. Hypnosis + Psychic + Shadow Ball.",
+    "battleTip": "Hypno com Confusion + Thunder Punch + Shadow Ball cobre contra Dark e Ghost-types. Shadow Ball surpreende oponentes.",
+    "easterEgg": "Drowzee e Baku — o Baku e uma criatura do folclore japones que come pesadelos. Drowzee come sonhos, nao pesadelos.",
+    "goDifference": "Nas main series Drowzee aprende Hypnosis no level 1. No GO, Hypnosis e um fast move que Drowzee aprende.",
+    "evolutionCost": "50 candy para Hypno. Buddy 3km/candy.",
+    "shinyRate": "Shiny rosa claro. Hypno shiny rosa."
+  },
+  {
+    "speciesId": 97,
+    "origin": "Hypno e a forma evoluida de Drowzee. Segura um pendulo para hipnotizar pessoas. Diz a lenda que levou criancas para lugares desconhecidos. Nome de 'hypnosis' (hipnose) + 'no'.",
+    "goRelevance": "Psychic-type defensivo popular em Great League PvP. Confusion + Thunder Punch + Shadow Ball cobre contra quase tudo. Rank #162 PvPoke.",
+    "battleTip": "Hypno com Thunder Punch e Fire Punch cobre contra Steel e Dark-types. Seu moveset versatil e a principal vantagem.",
+    "easterEgg": "Na Pokededex dos jogos, Hypno e descrito como sequestrador de criancas — um dos textos mais perturbadores da franquia Nintendo.",
+    "goDifference": "Nas main series Hypno aprende Dream Eater e Nightmare. No GO, esses moves nao existem porque status effects sao diferentes.",
+    "evolutionCost": "50 candy de Drowzee. Buddy 3km/candy.",
+    "shinyRate": "Shiny rosa."
+  },
+  {
+    "speciesId": 98,
+    "origin": "Krabby e inspirado em caranguejos violinistas. Suas pinças crescem de novo se arrancadas. Nome de 'crab' (caranguejo) + 'by'. Um dos caranguejos mais classidos do design Pokemon.",
+    "goRelevance": "Comum em praias e areas costeiras. Kingler e Water-type com ATK 240 — altissimo para sua categoria. Metal Claw + X-Scissor + Crabhammer.",
+    "battleTip": "Kingler com Mud Shot + Crabhammer + X-Scissor gera energia extremamente rapido. ATK 240 e devastador em Great League.",
+    "easterEgg": "Krabby foi um dos Pokemon de Ash no Orange Islands — um dos raros casos onde Ash capturou algo que nao era do tipo Normal ou voador.",
+    "goDifference": "Nas main series Krabby pode aprender Guillotine (OHKO move). No GO, moves OHKO nao existem.",
+    "evolutionCost": "50 candy para Kingler. Buddy 3km/candy.",
+    "shinyRate": "Shiny azul claro. Kingler shiny azul escuro."
+  },
+  {
+    "speciesId": 99,
+    "origin": "Kingler e a forma evoluida de Krabby. Sua pinça direita e descomunalmente grande. Tem forca suficiente para quebrar rochas. Nome de 'king' (rei) + 'crab' (caranguejo) + 'ler'.",
+    "goRelevance": "ATK 240 — maior que muitos Water-types 'fortes'. Mud Shot + Crabhammer + X-Scissor e combo de alta pressao. Vicel em Great League.",
+    "battleTip": "Kingler com Mud Shot + Crabhammer + X-Scissor cobre contra Grass-types (fraqueza de Water) e Psychic-types.",
+    "easterEgg": "Kingler Gigantamax (Gen 8) tem uma pinça de 30 metros que funciona como guarda-sol. Gigantamax Kingler e um dos designs mais absurdos.",
+    "goDifference": "Nas main series Kingler aprende Vice Grip e Crabhammer. No GO, Crabhammer e um charged move Water-type forte.",
+    "evolutionCost": "50 candy de Krabby. Buddy 3km/candy.",
+    "shinyRate": "Shiny azul escuro."
+  },
+  {
+    "speciesId": 100,
+    "origin": "Voltorb e inspirado em Poke Balls que ganharam vida. Diz a lenda que foram criados quando uma Poke Ball foi atingida por um raio. Nome de 'volt' (voltagem) + 'orb' (orbe). Variante Hisui (Electric/Grass).",
+    "goRelevance": "Comum em areas industriais e urbanas. Electrode e Electric-type puro com stats equilibrados. Raramente usado em PvP.",
+    "battleTip": "Electrode com Volt Switch + Foul Play + Thunderbolt cobre contra Dark-types e Ghost-types.",
+    "easterEgg": "Voltorb e Electrode sao conhecidos por explodirem quando irritados. Nas main series, tem Self-Destruct como move signature.",
+    "goDifference": "Nas main series Voltorb pode aprender Self-Destruct e Explosion. No GO, esses moves seriam suicidas — entao foram omitidos.",
+    "evolutionCost": "50 candy para Electrode. Buddy 3km/candy.",
+    "shinyRate": "Shiny vermelho (igual a PokeBall invertida). Muito bonito."
+  },
+  {
+    "speciesId": 101,
+    "origin": "Electrode e a forma evoluida de Voltorb. Tem uma aparencia de PokeBall invertida. E conhecido por ser instavel e explodir. Nome de 'electrode' (eletrodo).",
+    "goRelevance": "Electric-type rapido com Volt Switch + Foul Play. Razoavel para Great League mas superado por Galvantula e Lanturn.",
+    "battleTip": "Electrode com Foul Play surpreende oponentes que esperam moves Electric puros. Cobertura Dark e rara em Electric-types.",
+    "easterEgg": "Electrode e o Pokemon mais rapido dos primeiros jogos (Speed base 140 em main series). No GO, Speed nao e stat direto.",
+    "goDifference": "Nas main series Electrode explode (Self-Destruct). No GO, ele simplemente nao tem Explosion como move viavel.",
+    "evolutionCost": "50 candy de Voltorb. Buddy 3km/candy.",
+    "shinyRate": "Shiny vermelho escuro."
+  },
+  {
+    "speciesId": 102,
+    "origin": "Exeggcute e inspirado em uma ninhada de ovos (6 ovos). Apesar de parecerem ovos, sao SEMENTES que se parecem com ovos. Um dos conceitos mais confusos do design Pokemon. Nome de 'egg' + 'execute' (executar)?",
+    "goRelevance": "Comum em areas gramadas e clima Ensolarado. Exeggutor e Grass/Psychic com ATK 233 — muito alto. Variante Alola (Grass/Dragon) e popular.",
+    "battleTip": "Exeggutor Alola (Grass/Dragon) e unico. Fraqueza 4x a Ice, Ice e Ice. Mas ATK alto e moves como Bullet Seed + Draco Meteor sao bons.",
+    "easterEgg": "Exeggcute nao sao ovos. Sao sementes que PARECEM ovos. A Pokedex insiste nisso. Ninguem aceita. Continuamos chamando de ovos.",
+    "goDifference": "Nas main series Exeggcute precisa de Leaf Stone. No GO, sao 50 candy.",
+    "evolutionCost": "50 candy para Exeggutor. Buddy 3km/candy. Exeggcute Alola: 50 candy + Leaf Stone? Nao — 50 candy para Exeggutor Alola em GO.",
+    "shinyRate": "Shiny rosa claro. Exeggutor shiny rosa."
+  },
+  {
+    "speciesId": 103,
+    "origin": "Exeggutor e a forma evoluida de Exeggcute. Uma das cabecas e a lider e as outras tres seguem. A variante Alola e uma palmeira DRAGON de 10 metros de altura. Nome de 'egg' + 'executor'.",
+    "goRelevance": "Grass/Psychic com ATK 233. Bullet Seed + Seed Bomb + Psychic. Variante Alola (Grass/Dragon) e melhor para raids por typing unico.",
+    "battleTip": "Exeggutor Alola e o Pokemon mais alto do jogo (10.9m). Fraqueza 4x a Ice, mas Bullet Seed + Draco Meteor da DPS alto contra raids.",
+    "easterEgg": "Exeggutor Alola tem 10.9 metros de altura. No anime, aparece tao alto que passa do topo da tela. E uma piada visual intencional.",
+    "goDifference": "Nas main series Exeggutor pode aprender Stomp e Egg Bomb. No GO, Egg Bomb foi substituido por Seed Bomb.",
+    "evolutionCost": "50 candy de Exeggcute. Buddy 3km/candy.",
+    "shinyRate": "Shiny rosa. Exeggutor Alola shiny dourado."
+  },
+  {
+    "speciesId": 104,
+    "origin": "Cubone e inspirado em filhotes que usam o cranio da mae falecida como capacete. Uma das historias mais tristes do universo Pokemon. As lagrimas formam a marca no cranio. Nome de 'cub' (filhote) + 'bone' (osso).",
+    "goRelevance": "Comum em areas secas e montanhosas. Marowak e Ground-type com Bone Club + Bonemerang. Variante Alola (Fire/Ghost) e bem mais popular.",
+    "battleTip": "Marowak Alola com Fire Spin + Shadow Bone + Bone Club e top-tier em Great e Ultra League. Shadow Bone e move exclusivo excelente.",
+    "easterEgg": "A historia de Cubone e confirmadamente triste: a mae morre e ele usa o cranio. Mas alguns dizem que e o cranio de Kangaskhan — teoria popular.",
+    "goDifference": "Nas main series Cubone evolve no level 28. No GO, sao 50 candy.",
+    "evolutionCost": "50 candy para Marowak. Buddy 3km/candy. Cubone Alola: 50 candy para Marowak Alola.",
+    "shinyRate": "Shiny verde claro. Marowak Alola shiny roxo escuro."
+  },
+  {
+    "speciesId": 105,
+    "origin": "Marowak e a forma evoluida de Cubone. Superou a perda da mae e agora e um guerreiro feroz. A variante Alola (Fire/Ghost) e um espirito flamejante. Nome de 'marrow' (medula) + 'wak' (de boomerang? ou 'whack'?",
+    "goRelevance": "Ground-type medio. Marowak Alola e o verdadeiro destaque — Fire/Ghost com Shadow Bone exclusivo. Top-tier Great League PvP.",
+    "battleTip": "Marowak Alola com Fire Spin + Shadow Bone + Bone Club cobre contra Ghost, Psychic, Steel e Grass-types. Muito versatil.",
+    "easterEgg": "A variante Alola de Marowak e Fire/Ghost porque a lua cheia de Alola fez o espirito da mae proteger o filho com fogo.",
+    "goDifference": "Nas main series Marowak pode aprender Thrash e Double-Edge. No GO, Thrash nao existe como move.",
+    "evolutionCost": "50 candy de Cubone. Buddy 3km/candy.",
+    "shinyRate": "Shiny mais claro. Marowak Alola shiny azul escuro com chama roxa."
+  },
+  {
+    "speciesId": 106,
+    "origin": "Hitmonlee e inspirado em lutadores de kickboxing e Bruce Lee. Suas pernas sao como molas que esticam para dar chutes. Nome de 'hit' + 'mon' (monster) + 'lee' (Bruce Lee).",
+    "goRelevance": "Raro — obtido de Tyrogue (Gen 2). Fighting-type com Low Kick + Close Combat + Stone Edge. Usado em Great League.",
+    "battleTip": "Hitmonlee com Low Kick + Close Combat + Stone Edge cobre contra Flying-types. ATK 224 e alto — mas DEF 181 e STA 137 sao medios.",
+    "easterEgg": "Hitmonlee e Hitmonchan sao uma homenagem a Bruce Lee (Lee) e Jackie Chan (Chan). HitmonTOP e a homenagem ao actor de Hong Kong.",
+    "goDifference": "Nas main series Hitmonlee precisa de Tyrogue com ATK > DEF para evoluir. No GO, Tyrogue evolve baseado em qual stat e maior.",
+    "evolutionCost": "25 candy de Tyrogue. Tyrogue obtido de eggs de 5km. Buddy 5km/candy.",
+    "shinyRate": "Shiny verde claro. Sutil."
+  },
+  {
+    "speciesId": 107,
+    "origin": "Hitmonchan e inspirado em boxeadores e Jackie Chan. Seus punhos sao como dinamite. Pode dar socos em velocidades supersônicas. Nome de 'hit' + 'mon' + 'chan' (Jackie Chan).",
+    "goRelevance": "Fighting-type com Counter + Ice Punch + Thunder Punch. Cobertura elementar excelente. Usado em Great League.",
+    "battleTip": "Hitmonchan com Ice Punch + Thunder Punch + Fire Punch cobre contra Flying, Water, Grass, Ice e Steel-types. Raro ter tanta cobertura.",
+    "easterEgg": "A franja de Hitmonchan esconde parte de seu rosto — e inspirada nos cortes de cabelo dos lutadores de boxe japoneses.",
+    "goDifference": "Nas main series Hitmonchan pode aprender Bulk Up e Mach Punch. No GO, moves de status como Bulk Up sao menos impactantes.",
+    "evolutionCost": "25 candy de Tyrogue. Buddy 5km/candy.",
+    "shinyRate": "Shiny verde claro."
+  },
+  {
+    "speciesId": 108,
+    "origin": "Lickitung e inspirado em lagartos e tamanduas com linguas compridas. Sua lingua tem 2 metros e pode ser usada como chibata. E pegajosa e flexivel. Nome de 'lick' (lamber) + 'tongue' (lingua).",
+    "goRelevance": "Comum em areas urbanas. Lickitung evolui para Lickilicky (Gen 4) com Sinnoh Stone. Lickilicky e Normal-type decente para Great League.",
+    "battleTip": "Lickilicky com Lick + Body Slam + Earthquake cobre contra Steel, Fire e Electric-types. STA 207 e alto.",
+    "easterEgg": "Lickitung pode ser ensinado a 'lamber' em vez de andar como animacao no Pokemon Amie. Uma das animacoes mais estranhas.",
+    "goDifference": "Nas main series Lickitung aprende Rollout (move Rock). No GO, Rollout existe como fast move Rock-type.",
+    "evolutionCost": "50 candy + Sinnoh Stone para Lickilicky. Buddy 3km/candy.",
+    "shinyRate": "Shiny rosa claro."
+  },
+  {
+    "speciesId": 109,
+    "origin": "Koffing e inspirado em gases toxicos e baloes de poluicao. As esferas nascem em lixos quimicos e flutuam. Nome de 'coffin' (caixao) + 'fuming' (fumegante).",
+    "goRelevance": "Comum em areas urbanas e industriais. Weezing e Poison-type decente. Variante Galar (Fairy) e mais usada em PvP.",
+    "battleTip": "Weezing com Tackle + Sludge Bomb + Dark Pulse cobre contra Psychic-types que counteriam Poison puro.",
+    "easterEgg": "Koffing e o Pokemon do Team Rocket desde o inicio. James e Meowth costumam ser derrotados por ele tambem.",
+    "goDifference": "Nas main series Koffing pode aprender Self-Destruct e Explosion. No GO, esses moves nao estao disponiveis para ele.",
+    "evolutionCost": "50 candy para Weezing. Buddy 3km/candy. Koffing Galar: 50 candy para Weezing Galar.",
+    "shinyRate": "Shiny azul claro. Weezing shiny azul."
+  },
+  {
+    "speciesId": 110,
+    "origin": "Weezing e a forma evoluida de Koffing — dois Koffing unidos. Diz a lenda que Koffing raramente evoluem naturalmente a nao ser que estejam em ambientes muito poluidos. Nome de 'wheeze' (chiado no peito). Variante Galar (Fairy).",
+    "goRelevance": "Poison-type decente para PvP. Weezing Galar (Fairy) e usado por typing unico Fairy/Poison — interessante contra Dragon e Fighting.",
+    "battleTip": "Weezing Galar com Fairy Wind + Play Rough + Sludge Bomb cobre contra Fighting, Dark e Dragon-types.",
+    "easterEgg": "Weezing Galar tem chaminés que emitem fumaça rosa — mas o fumo na verdade e poluicao que virou fada. Uma critica ambiental.",
+    "goDifference": "Nas main series Weezing aprende Smokescreen (accuracy down). No GO, debuffs de accuracy nao existem.",
+    "evolutionCost": "50 candy de Koffing. Buddy 3km/candy.",
+    "shinyRate": "Shiny azul. Weezing Galar shiny azul escuro."
+  },
+  {
+    "speciesId": 111,
+    "origin": "Rhyhorn e inspirado em rinocerontes com armadura de rocha. Tem cerebro muito pequeno e age por instinto. Nome de 'rhino' (rinoceronte) + 'horn' (chifre).",
+    "goRelevance": "Comum em areas secas e montanhosas. Rhyperior (Gen 4) e Ground/Rock com ATK 241 e DEF 224 — tank ofensivo poderoso.",
+    "battleTip": "Rhyperior com Mud-Slap + Rock Wrecker + Earthquake e devastador. Rock Wrecker e move exclusivo (CD 2021). Mas fraqueza 4x a Water e Grass.",
+    "easterEgg": "Rhyhorn pode aprender Horn Drill (OHKO move) nas main series. Eh conhecido por ter uma das menores inteligencia entre todos os Pokemon.",
+    "goDifference": "Nas main series Rhyhorn evolve no level 42. No GO, sao 50 candy para Rhydon.",
+    "evolutionCost": "50 candy para Rhydon + 100 candy + Sinnoh Stone para Rhyperior. Buddy 3km/candy.",
+    "shinyRate": "Shiny cinza escuro. Rhyperior shiny dourado."
+  },
+  {
+    "speciesId": 112,
+    "origin": "Rhydon e a forma intermediaria de Rhyhorn. Consegue perfurar rochas com sua broca no chifre. Tem pele de pedra e e quase impenetravel. Nome de 'rhino' + 'don' (senhor).",
+    "goRelevance": "Step para Rhyperior. Rhydon pode ser usado como Ground/Rock com Earthquake + Stone Edge. Mas Rhyperior e muito melhor.",
+    "battleTip": "Rhydon com Mud-Slap + Earthquake + Surf cobre contra Fire e Ground-types. Surf e coverage raro para Rock/Ground.",
+    "easterEgg": "Rhydon foi o PRIMEIRO Pokemon a ser criado pelos designers da Game Freak. O Pokemon #001 na ordem de criacao.",
+    "goDifference": "Nas main series Rhydon precisa de trade com Protector para virar Rhyperior. No GO, sao 100 candy + Sinnoh Stone.",
+    "evolutionCost": "100 candy + Sinnoh Stone para Rhyperior. Buddy 3km/candy.",
+    "shinyRate": "Shiny cinza escuro."
+  },
+  {
+    "speciesId": 113,
+    "origin": "Chansey e inspirado em enfermeiras de Pokemon Centers e ovos. Carrega um ovo que compartilha com quem precisa. Nome de 'chance' (sorte) + 'sey' (de nurse).",
+    "goRelevance": "Rara. Blissey (Gen 2) tem a maior STA do jogo (496). A melhor gym defender do Pokemon GO. Coloque Blissey em qualquer gym e ninguem tira.",
+    "battleTip": "Chansey com STA 487 e a segunda maior do jogo (perde para Blissey com 496). Blissey com Zen Headbutt + Dazzling Gleam + Psychic e gym defender suprema.",
+    "easterEgg": "Chansey e o Pokemon que as enfermeiras Joy usam nos Pokemon Centers. O ovo de Chansey e altamente nutritivo e rejuvenescedor.",
+    "goDifference": "Nas main series Chansey precisa de amizade para virar Blissey. No GO, sao 50 candy.",
+    "evolutionCost": "50 candy para Blissey. Buddy 5km/candy. Raro — Chansey spawna muito pouco.",
+    "shinyRate": "Shiny verde claro. Blissey shiny verde."
+  },
+  {
+    "speciesId": 114,
+    "origin": "Tangela e inspirado em algas marinhas e cipós emaranhados. Os vinis azuis cobrem todo seu corpo. So se veem seus olhos vermelhos por entre os cipós. Nome de 'tangle' (emaranhado).",
+    "goRelevance": "Comum perto de lagos. Evolui para Tangrowth (Gen 4) com 50 candy + TMs? No GO, sao 100 candy + move Ancient Power.",
+    "battleTip": "Tangrowth com Vine Whip + Power Whip + Rock Slide cobre contra Fire e Flying-types. ATK 183 e decente para Grass.",
+    "easterEgg": "Os cipós de Tangela sao extremamente resistentes e podem ser usados como cordas. Mas se quebrados, liberam um latex pegajoso.",
+    "goDifference": "Nas main series Tangela precisa aprender Ancient Power e subir um nivel para virar Tangrowth. No GO, sao 100 candy + Ancient Power.",
+    "evolutionCost": "100 candy + saber Ancient Power para Tangrowth. Buddy 3km/candy.",
+    "shinyRate": "Shiny roxo claro. Tangrowth shiny azulado."
+  },
+  {
+    "speciesId": 115,
+    "origin": "Kangaskhan e inspirado em cangurus com filhote na bolsa. O filhote luta junto com a mae mesmo sem sair da bolsa. Nome de 'kangaroo' + 'khan' (lider). Exclusivo de raids na regiao de Australasia.",
+    "goRelevance": "Regional (Asia-Pacific). Normal-type com ATK 181 e STA 233. Tem Mega Evolucao com Parental Bond que ataca duas vezes.",
+    "battleTip": "Mega Kangaskhan com Mud Slap + Power-Up Punch + Return e otima para raids e PvP. O Parental Bond faz cada ataque acertar duas vezes.",
+    "easterEgg": "Kangaskhan e um dos primeiros Pokemon regionais — no Pokemon GO, e exclusivo de algumas regioes do mundo (Oceania).",
+    "goDifference": "Nas main series Kangaskhan mega evolve. No GO, Mega Kangaskhan foi adicionado e e um dos melhores Normal-types.",
+    "evolutionCost": "Nao evolui. Buddy 3km/candy. Kangaskhan filhote? O bebe na bolsa nunca sai — diferente de Cubone que perde a mae.",
+    "shinyRate": "Shiny verde claro. Mega Kangaskhan shiny azulado."
+  },
+  {
+    "speciesId": 116,
+    "origin": "Horsea e inspirado em cavalos-marinhos e dragoes aquaticos. Pode disparar tinta preta para fugir. Nome de 'horse' (cavalo) + 'sea' (mar).",
+    "goRelevance": "Comum em areas costeiras. Kingdra (Gen 2) e Water/Dragon com typing defensivo excelente (fraca apenas a Dragon e Fairy).",
+    "battleTip": "Kingdra com Dragon Breath + Hydro Pump + Octazooka cobre contra Steel e Fire-types. Water/Dragon e um dos melhores typings do jogo.",
+    "easterEgg": "Horsea pode disparar tinta preta para escapar de predadores. Tambem pode mudar de cor, como camaleoes.",
+    "goDifference": "Nas main series Horsea evolve no level 32. No GO, sao 50 candy.",
+    "evolutionCost": "50 candy para Seadra + 100 candy + Dragon Scale para Kingdra. Buddy 3km/candy.",
+    "shinyRate": "Shiny azul claro. Kingdra shiny roxo."
+  },
+  {
+    "speciesId": 117,
+    "origin": "Seadra e a forma intermediaria de Horsea. Tem espinhos venenosos que causam paralisia. Nome de 'sea' (mar) + 'dragon' (dragao) + 'adra' (hydra?).",
+    "goRelevance": "Step para Kingdra. Seadra puro e raramente usado — Kingdra e sempre preferivel.",
+    "battleTip": "Seadra com Water Gun + Hydro Pump + Blizzard cobre contra Grass e Dragon-types.",
+    "easterEgg": "Seadra e baseado em cavalos-marinhos reais que sao venenosos. Os espinhos de Seadra podem causar tontura.",
+    "goDifference": "Nas main series Seadra precisa de trade com Dragon Scale para virar Kingdra. No GO, sao 100 candy + Dragon Scale.",
+    "evolutionCost": "100 candy + Dragon Scale para Kingdra. Buddy 3km/candy.",
+    "shinyRate": "Shiny azul claro."
+  },
+  {
+    "speciesId": 118,
+    "origin": "Goldeen e inspirado em peixes-dourados e carpas ornamentais. Sua barbatanas sao elegantes como leques. O chifre na cabeca e usado em rituais de acasalamento. Nome de 'gold' (ouro) + 'deen' (de queen? realeza?).",
+    "goRelevance": "Comum em lagos e rios com agua limpa. Seaking e Water-type medio com Poison Jab + Drill Run.",
+    "battleTip": "Seaking com Poison Jab + Drill Run + Megahorn cobre contra Grass e Electric-types. Cobertura rara para Water.",
+    "easterEgg": "Goldeen no anime foi mostrada como um peixe muito elegante e gracioso. Misty tinha uma que usava em concursos de beleza.",
+    "goDifference": "Nas main series Goldeen pode aprender Waterfall (HM). No GO, Waterfall e um fast move que Goldeen aprende.",
+    "evolutionCost": "50 candy para Seaking. Buddy 3km/candy.",
+    "shinyRate": "Shiny rosa claro. Seaking shiny verde oliva."
+  },
+  {
+    "speciesId": 119,
+    "origin": "Seaking e a forma evoluida de Goldeen. No outono, seu chifre fica mais colorido para atrais parceiros. Nome de 'sea' (mar) + 'king' (rei).",
+    "goRelevance": "Water-type medio com Poison Jab + Drill Run. Raramente usado em batalhas serias.",
+    "battleTip": "Seaking com Megahorn surpreende Grass-types. Cobertura Bug e rara em Water-types.",
+    "easterEgg": "Seaking pode aprender Water Pulse nas main series. E conhecido por ter uma das maiores variedades de moves entre Water-types em GO.",
+    "goDifference": "Nas main series Seaking aprende Horn Drill (OHKO). No GO, moves OHKO nao existem.",
+    "evolutionCost": "50 candy de Goldeen. Buddy 3km/candy.",
+    "shinyRate": "Shiny verde oliva."
+  },
+  {
+    "speciesId": 120,
+    "origin": "Staryu e inspirado em estrelas-do-mar. Se o corpo for cortado, regenera. A joia no centro e seu orgao vital. Nome de 'star' (estrela) + 'yu' (de 'you' — voce?).",
+    "goRelevance": "Comum em areas costeiras. Starmie e Water/Psychic com ATK 210 — otimo para raids e PvP. Um dos melhores Water-types da Gen 1.",
+    "battleTip": "Starmie com Water Gun + Hydro Pump + Psychic cobre contra Fighting e Poison-types. Veloz e versatil.",
+    "easterEgg": "Staryu e Starmie compartilham design com a estrela-do-mar e o simbolo de estrela. A joia central e um 'nucleo' que brilha no escuro.",
+    "goDifference": "Nas main series Staryu precisa de Water Stone. No GO, sao 50 candy para Starmie.",
+    "evolutionCost": "50 candy para Starmie. Buddy 3km/candy.",
+    "shinyRate": "Shiny azul claro. Starmie shiny roxo claro."
+  },
+  {
+    "speciesId": 121,
+    "origin": "Starmie e a forma evoluida de Staryu. O nucleo brilha em 7 cores diferentes. E conhecida por sua velocidade e inteligencia. A gemas sao usadas como joias caras. Nome de 'star' + 'mie' (de 'me').",
+    "goRelevance": "Water/Psychic versatil. Water Gun + Hydro Pump + Psychic. ATK 210 e velocidade alta. Bom para raids e Great League.",
+    "battleTip": "Starmie com Thunderbolt cobre contra Water e Flying-types. Cobertura eletrica e rara em Water-types.",
+    "easterEgg": "A gema de Starmie vale muito dinheiro. Diz a lenda que pescadores que encontram Starmie ficam ricos vendendo suas gemas.",
+    "goDifference": "Nas main series Starmie pode aprender Cosmic Power e Light Screen. No GO, moves defensivos funcionam diferente.",
+    "evolutionCost": "50 candy de Staryu. Buddy 3km/candy.",
+    "shinyRate": "Shiny roxo claro."
+  },
+  {
+    "speciesId": 122,
+    "origin": "Mr. Mime e inspirado em mimos e palhacos de rua. E um mestre da mímica que pode criar barreiras invisíveis. Nome de 'mister' + 'mime' (mimo). Variante Galar (Ice/Psychic).",
+    "goRelevance": "Regional (Europa). Psychic/Fairy com Confusion + Psychic + Shadow Ball. Mime Jr. (Gen 4) e obtido de eggs. Galarian Mr. Mime evolve para Mr. Rime.",
+    "battleTip": "Mr. Mime com Confusion + Psychic + Shadow Ball cobre contra Ghost-types. DEF 205 e alto — bom tank Psychic.",
+    "easterEgg": "Mr. Mime e um dos poucos Pokemon que TEM GENERO no nome ('Mr.') mas pode ser femea — contradicao que a Game Freak nunca explicou.",
+    "goDifference": "Nas main series Mr. Mime aprende Barrier e Light Screen. No GO, Barrier nao existe — Mr. Mime usa Psychic como charged move.",
+    "evolutionCost": "50 candy de Mime Jr. (egg 5km). Mr. Mime nao evolui. Mr. Rime (Galar): 50 candy de Mr. Mime Galar. Buddy 5km/candy.",
+    "shinyRate": "Shiny cinza. Mr. Mime Galar shiny azul escuro."
+  },
+  {
+    "speciesId": 123,
+    "origin": "Scyther e inspirado em louva-a-deus e samurais. Suas foices cortam ate arvores grossas. Nome de 'scythe' (foice) + 'er' (agente).",
+    "goRelevance": "Comum em areas gramadas. Evolui para Scizor (Gen 4, Steel/Bug) com Metal Coat. Scizor e um dos melhores Bug/Steel do jogo.",
+    "battleTip": "Scizor com Fury Cutter + Bullet Punch + Iron Head e otimo para raids e PvP. Resistencia a 10 tipos diferentes.",
+    "easterEgg": "Scyther e um dos poucos Pokemon que troca de tipo ao evoluir (Bug/Flying → Bug/Steel). Perde fraqueza a Rock (4x → 2x).",
+    "goDifference": "Nas main series Scyther precisa de Metal Coat por trade. No GO, sao 50 candy + Metal Coat.",
+    "evolutionCost": "50 candy + Metal Coat para Scizor. Buddy 5km/candy. Mega Scizor: 200 Mega Energy.",
+    "shinyRate": "Shiny verde claro. Scizor shiny verde claro."
+  },
+  {
+    "speciesId": 124,
+    "origin": "Jynx e inspirado em cantoras de opera e divas. Veste um vestido vermelho e dança para hipnotizar. Nome de 'jinx' (mau agouro).",
+    "goRelevance": "Rara em areas de gelo. Ice/Psychic com Confusion + Psychic + Avalanche. Usada em raids de Dragon e Flying.",
+    "battleTip": "Jynx com Confusion + Avalanche + Psychic cobre contra Fighting, Dragon e Poison-types. ATK 223 e alto.",
+    "easterEgg": "Jynx foi redesenhada em 2002 porque seu design original (pele preta, labios grandes) foi acusado de blackface. Agora tem pele roxa.",
+    "goDifference": "Nas main series Jynx evolui de Smoochum (Gen 2). No GO, Smoochum sai de eggs de 5km e evolve com 25 candy.",
+    "evolutionCost": "25 candy de Smoochum (egg 5km). Buddy 5km/candy. Jynx nao evolui mais.",
+    "shinyRate": "Shiny cinza claro. Sutil."
+  },
+  {
+    "speciesId": 125,
+    "origin": "Electabuzz e inspirado em demonios eletricos e yetis. Gera eletricidade estaica que faz seus pelos ficarem arrepiados. Nome de 'electric' + 'tabuzz' (de 'buzz' — zumbido).",
+    "goRelevance": "Comum em areas urbanas. Electivire (Gen 4) e Electric-type com Thunder Shock + Wild Charge + Ice Punch. Otimo para raids.",
+    "battleTip": "Electivire com Ice Punch cobre contra Ground e Dragon-types — cobertura que Electric puro nao tem. Use como cobertura.",
+    "easterEgg": "Electabuzz aparece em centros de distribuicao de energia. Quando falta luz perto de uma subestacao, pode ter um Electabuzz por perto.",
+    "goDifference": "Nas main series Electabuzz precisa de trade com Electirizer. No GO, sao 100 candy + Sinnoh Stone para Electivire.",
+    "evolutionCost": "25 candy de Elekid (egg 5km) + 100 candy + Sinnoh Stone para Electivire. Buddy 5km/candy.",
+    "shinyRate": "Shiny dourado. Electivire shiny dourado escuro."
+  },
+  {
+    "speciesId": 126,
+    "origin": "Magmar e inspirado em demonios de fogo e salamandras. Sua temperatura corporal e de 1200 graus. O ar ao redor distorce pelo calor. Nome de 'magma' + 'mar' (de 'mare' — lagoa?).",
+    "goRelevance": "Comum em areas vulcanicas. Magmortar (Gen 4) e Fire-type com Fire Spin + Fire Punch + Thunderbolt.",
+    "battleTip": "Magmortar com Thunderbolt cobre contra Water-types. Cobertura eletrica e rara em Fire-types.",
+    "easterEgg": "Magmar aparece no anime como o Pokemon que queimou o rosto do pai de um personagem. Cena seria que virou meme anos depois.",
+    "goDifference": "Nas main series Magmar precisa de trade com Magmarizer. No GO, sao 100 candy + Sinnoh Stone para Magmortar.",
+    "evolutionCost": "25 candy de Magby (egg 5km) + 100 candy + Sinnoh Stone para Magmortar. Buddy 5km/candy.",
+    "shinyRate": "Shiny rosa claro. Magmortar shiny rosa."
+  },
+  {
+    "speciesId": 127,
+    "origin": "Pinsir e inspirado em besouros e escaravelhos. Suas pinças tem forca suficiente para cortar troncos. Nome de 'pincer' (pinça) + 'sir' (senhor).",
+    "goRelevance": "Comum em areas gramadas. Bug-type com Fury Cutter + Close Combat + X-Scissor. Mega Pinsir (Bug/Flying) e melhor.",
+    "battleTip": "Mega Pinsir com Fury Cutter + Close Combat + X-Scissor cobre contra Steel e Rock-types. ATK mega e 305.",
+    "easterEgg": "Pinsir e Heracross sao os 'rivais' tipo besouro — um Bug puro, outro Bug/Fighting. Pinsir e exclusivo de algumas regioes.",
+    "goDifference": "Nas main series Pinsir pode aprender Guillotine (OHKO). No GO, nao ha OHKO moves.",
+    "evolutionCost": "Nao evolui. Buddy 3km/candy. Mega Pinsir: 200 Mega Energy.",
+    "shinyRate": "Shiny azul escuro. Mega Pinsir shiny azul."
+  },
+  {
+    "speciesId": 128,
+    "origin": "Tauros e inspirado em touros. Corre em manadas e e muito agressivo. Nome de 'tauros' (touro em grego/touro em latim). Variante regional em Paldea (3 formas: Fighting, Dark, Water).",
+    "goRelevance": "Regional (America do Norte). Normal-type com ATK 198 e DEF 183. Razoavel para Great League com Body Slam + Earthquake.",
+    "battleTip": "Tauros com Body Slam + Earthquakes cobre contra Steel e Rock-types. Body Slam e um dos melhores charged moves Normal tipo.",
+    "easterEgg": "Tauros e regional exclusivo do Pokemon GO na America do Norte. Variantes de Paldea sao encontradas em outras regioes.",
+    "goDifference": "Nas main series Tauros pode aprender Thrash naturalmente. No GO, Thrash nao existe como move.",
+    "evolutionCost": "Nao evolui. Buddy 3km/candy.",
+    "shinyRate": "Shiny azul claro. Variantes shiny e Azul tambem."
+  },
+  {
+    "speciesId": 129,
+    "origin": "Magikarp e inspirado em carpas comuns. E famoso por ser completamente inutil em batalha — so aprende Splash (nada). A historia de 'pequeno peixe que vira dragao' e do folclore chines. Nome de 'magic' + 'carp'.",
+    "goRelevance": "Extremamente comum perto de agua. Gyarados e um dos Water/Flying mais fortes. Magikarp e usado para completar a missao 'Evolua um Magikarp' (400 candy).",
+    "battleTip": "Magikarp e inutil. So serve para virar Gyarados (400 candy). Nao use Magikarp em batalha em hipotese alguma.",
+    "easterEgg": "Magikarp e baseado na lenda chinesa de que carpas que saltam o 'Portao do Dragao' viram dragoes. A prova? Magikarp → Gyarados (Water/Dragon? Nao, Water/Flying).",
+    "goDifference": "Nas main series Magikarp so aprende Splash (sem efeito). No GO, Splash e um fast move que realmente existe! Causa 0 de dano.",
+    "evolutionCost": "400 candy para Gyarados. Buddy 1km/candy. A evolucao mais cara do jogo em candy.",
+    "shinyRate": "Shiny dourado brilhante. Gyarados shiny VERMELHO — um dos mais bonitos."
+  },
+  {
+    "speciesId": 130,
+    "origin": "Gyarados e a forma evoluida de Magikarp. Inspirado na lenda chinesa de carpas que viram dragoes. Tem um temperamento destrutivo e aterroriza cidades costeiras. Nome de 'gyrate' (giratorio) + 'rados' (?).",
+    "goRelevance": "Water/Flying com ATK 237 e DEF 186. Dragon Breath + Aqua Tail + Crunch. Top-tier para Master League e raids. Mega Gyarados (Dark) e excelente.",
+    "battleTip": "Gyarados com Dragon Breath + Aqua Tail + Crunch cobre contra Dragon, Ghost e Psychic-types. Mega Gyarados (Dark) cobre ainda melhor.",
+    "easterEgg": "Gyarados NAO e Dragon-type — e Water/Flying. Maior erro de expectativa de typing da historia. Deveria ser Water/Dragon.",
+    "goDifference": "Nas main series Gyarados mega evolve (Mega Gyarados Dark). No GO, Mega Gyarados e Dark/Water — otimo para raids de Psychic e Ghost.",
+    "evolutionCost": "400 candy de Magikarp. Buddy 1km/candy. 296 XL candy para maxar. Mega Gyarados: 200 Mega Energy.",
+    "shinyRate": "Shiny VERMELHO VIVO. Extremamente popular. Gyarados shiny vermelho e um dos mais famosos da franquia."
+  },
+  {
+    "speciesId": 131,
+    "origin": "Lapras e inspirado em plesiossauros e monstros do Lago Ness. Tem uma carapaca azul e canta melodias que acalmam o mar. Nome de 'la' (nota musical) + 'pras' (?).",
+    "goRelevance": "Raro em areas de gelo. Water/Ice com Ice Shard + Surf + Ice Beam. Otimo para raids de Dragon. STA 277 e alto.",
+    "battleTip": "Lapras e um tank Water/Ice. Ice Shard + Surf + Ice Beam cobre contra Dragon, Grass e Ground-types. Bom para Master League.",
+    "easterEgg": "Lapras e a inspiracao para o monstro do Lago Ness. No anime, Ash ajudou uma crianca a devolver Lapras a familia deles.",
+    "goDifference": "Nas main series Lapras pode aprender Perish Song (todos desmaiam em 3 turnos). No GO, Perish Song nao existe.",
+    "evolutionCost": "Nao evolui. Buddy 5km/candy. Raro — aparece em raids de 3 estrelas e incubacao de 10km eggs.",
+    "shinyRate": "Shiny roxo claro. Muito bonito."
+  },
+  {
+    "speciesId": 132,
+    "origin": "Ditto e inspirado em masse de modelar e amebas. Pode transformar-se em QUALQUER Pokemon copiando seu DNA. Nome de 'ditto' (idem, o mesmo).",
+    "goRelevance": "Raro — disfarcado como outros Pokemon no mapa. Essencial para fazer trades de Pokemon shiny lendarios e para breeding nas main series.",
+    "battleTip": "Ditto com Transform copia os moves e stats do oponente. So e util se o oponente for forte — contra oponentes fracos, Ditto tambem e fraco.",
+    "easterEgg": "Ditto pode ser encontrado disfarcado como outros Pokemon no Pokemon GO. Aparicoes suspeitas de um Pokemon 'fora do normal' podem ser Ditto.",
+    "goDifference": "Nas main series Ditto e essencial para breeding. No GO, breeding nao existe. Ditto e usado para Transformar em raids.",
+    "evolutionCost": "Nao evolui. Buddy 3km/candy. Nao pode ser encontrado como shiny em GO (apesar de shiny existir nas main series).",
+    "shinyRate": "Shiny azul claro. No GO, NAO esta disponivel como shiny (atualmente)."
+  },
+  {
+    "speciesId": 133,
+    "origin": "Eevee e inspirado em raposas e coelhos. E geneticamente instavel, permitindo multiplas evolucoes. Seu nome vem de 'eev' (de 'evolution') + 'ee'. O Pokemon mais versatil da franquia.",
+    "goRelevance": "Relativamente comum. Tem 8 evolucoes possiveis (Vaporeon, Jolteon, Flareon, Espeon, Umbreon, Leafeon, Glaceon, Sylveon). Cada uma com typing diferente.",
+    "battleTip": "Cada Eeveelution tem um proposito diferente: Vaporeon (Water tank), Jolteon (Electric ATK), Umbreon (Dark PvP tank), Sylveon (Fairy DPS). Escolha baseado na sua necessidade.",
+    "easterEgg": "Eevee e o unico Pokemon com 8 evolucoes. Nao ha nenhum outro Pokemon com tantas opcoes evolutivas. E o recordista absoluto.",
+    "goDifference": "Nas main series Eevee evolve com pedras elementares, amizade ou localizacao. No GO, precisa de 25 candy + nome do move ou Lure Module especifico.",
+    "evolutionCost": "25 candy para qualquer Eeveelution. Buddy 3km/candy. Para Espeon/Umbreon: andar 10km juntos e evoluir de dia/noite.",
+    "shinyRate": "Shiny cinza claro. Cada Eeveelution shiny tem cor diferente e todas sao procuradas."
+  },
+  {
+    "speciesId": 134,
+    "origin": "Vaporeon e a evolucao Water de Eevee. Composto principalmente de agua. Pode se fundir com corpos d'agua. Nome de 'vapor' (vapor) + 'eon' (era, sufixo de Eeveelutions).",
+    "goRelevance": "Water-type com ATK 205 e STA 277 — enorme reserva de HP. Water Gun + Aqua Tail + Hydro Pump. Bom para raids e PvP.",
+    "battleTip": "Vaporeon com STA 277 e otimo tank Water. Aqua Tail gera energia mais rapido que Hydro Pump. Use em Master League.",
+    "easterEgg": "Vaporeon foi o centro de um dos memes mais difundidos e inapropriados da comunidade Pokemon (Nao pesquisem).",
+    "goDifference": "Nas main series Vaporeon pode aprender Acid Armor (aumenta DEF). No GO, Acid Armor nao existe.",
+    "evolutionCost": "25 candy de Eevee. Buddy 3km/candy.",
+    "shinyRate": "Shiny roxo claro. Vaporeon shiny tons de lilas."
+  },
+  {
+    "speciesId": 135,
+    "origin": "Jolteon e a evolucao Electric de Eevee. Sua pele acumula cargas eletricas. Os pelos sao como agulhas que disparam eletricidade. Nome de 'jolt' (sacudida) + 'eon'.",
+    "goRelevance": "Electric-type com ATK 232. Thunder Shock + Thunderbolt + Volt Switch. Bom DPS contra Water e Flying-types.",
+    "battleTip": "Jolteon com ATK 232 e um dos Electric-types mais ofensivos. Mas DEF 182 e STA 163 — fragil. Gera energia muito rapido com Thunder Shock.",
+    "easterEgg": "Jolteon e o favorito de muitos fas por seu design 'animal ouricado' — uma raposa coberta de espinhos eletricos.",
+    "goDifference": "Nas main series Jolteon pode aprender Pin Missile e Agility. No GO, Pin Missile existe mas nao e top-tier.",
+    "evolutionCost": "25 candy de Eevee. Buddy 3km/candy.",
+    "shinyRate": "Shiny verde claro. Jolteon shiny amarelo neon."
+  },
+  {
+    "speciesId": 136,
+    "origin": "Flareon e a evolucao Fire de Eevee. Armazena chamas numa bolsa interna e as libera pela boca. Nome de 'flare' (chama) + 'eon'.",
+    "goRelevance": "Fire-type com ATK 246 — MUITO alto. Fire Spin + Flamethrower + Overheat. Bom DPS para raids de ferro e aco.",
+    "battleTip": "Flareon tem ATK 246, o maior entre Eeveelutions. Fire Spin + Overheat da dano massivo. Mas Overheat baixa ATK — tenha um segundo charged move.",
+    "easterEgg": "Flareon e a 'prima pobre' das Eeveelutions em GO por ter moves limitados comparado a outros Fire-types.",
+    "goDifference": "Nas main series Flareon pode aprender Will-O-Wisp e Fire Fang. No GO, Fire Fang e o fast move Fire mais forte.",
+    "evolutionCost": "25 candy de Eevee. Buddy 3km/candy.",
+    "shinyRate": "Shiny laranja claro. Sutil."
+  },
+  {
+    "speciesId": 137,
+    "origin": "Porygon e um Pokemon artificial feito de dados e codigo. Criado por cientistas como prototipo de Pokemon digital. Pode habitar ciberespaco. Nome de 'polygon' (poligono) + 'ory' (de 'laboratory'?).",
+    "goRelevance": "Raro. Evolui para Porygon2 (Gen 2) com Up-Grade e Porygon-Z (Gen 4) com Sinnoh Stone + Dubious Disc. Porygon-Z e Normal-type com ATK 264.",
+    "battleTip": "Porygon-Z com Lock-On + Zap Cannon e combo devastador. Lock-On garante que Zap Cannon acerte. Porygon2 com Tri Attack + Discharge e otimo tank.",
+    "easterEgg": "Porygon e INFAME por causar convulsoes epilepticas no episodio 'Denno Senshi Porygon' no Japao — 685 criancas hospitalizadas. O episodio nunca mais foi ao ar.",
+    "goDifference": "Nas main series Porygon precisa de Up-Grade e Dubious Disc (por trade). No GO, sao 25 + 100 candy + 100 candy + Sinnoh Stone + Unova Stone.",
+    "evolutionCost": "25 candy + Up-Grade para Porygon2 + 100 candy + Sinnoh Stone para Porygon-Z. Buddy 3km/candy.",
+    "shinyRate": "Shiny azul escuro. Porygon-Z shiny roxo."
+  },
+  {
+    "speciesId": 138,
+    "origin": "Omanyte e inspirado em amonites fosses. E um Pokemon fossil que foi revivido de um espiral fossil. Nome de 'Oma' (de 'ammonite') + 'nyte' (de 'night'?).",
+    "goRelevance": "Obtido de fosséis (Helix Fossil). Omastar e Rock/Water com ATK 207 e DEF 201. Usado em Great League PvP.",
+    "battleTip": "Omastar com Mud Shot + Rock Slide + Hydro Pump cobre contra Fire e Rock-types. Rock Slide e move de alta geracao de energia.",
+    "easterEgg": "Omanyte (e o Helix Fossil) se tornaram o centro de uma lenda no Twitch Plays Pokemon — o 'Helix Fossil' era cultuado como divindade.",
+    "goDifference": "Nas main series Omanyte e revivido de fossil. No GO, e obtido de 7km eggs, raids e pesquisa de campo.",
+    "evolutionCost": "50 candy para Omastar. Buddy 5km/candy.",
+    "shinyRate": "Shiny azul claro. Omastar shiny roxo."
+  },
+  {
+    "speciesId": 139,
+    "origin": "Omastar e a forma evoluida de Omanyte. Usava seus tentaculos para capturar presas. Foi extinto porque sua concha ficou pesada demais. Nome de 'Oma' + 'star' (estrela).",
+    "goRelevance": "Rock/Water com ATK 207 e DEF 201 — stats equilibrados. Mud Shot + Rock Slide + Hydro Pump. Usado em Great League.",
+    "battleTip": "Omastar com Legacy move Rock Throw + Rock Slide e melhor que Mud Shot. Se tiver um com Rock Throw, guarde.",
+    "easterEgg": "Omastar foi extinto por causa da propria concha — ficou pesada e ele nao conseguia mais se mover. Autodestruicao evolutiva.",
+    "goDifference": "Nas main series Omastar pode aprender Spike Cannon (move exclusivo). No GO, nao tem Spike Cannon.",
+    "evolutionCost": "50 candy de Omanyte. Buddy 5km/candy.",
+    "shinyRate": "Shiny roxo escuro."
+  },
+  {
+    "speciesId": 140,
+    "origin": "Kabuto e inspirado em trilobites fosses e caranguejos ferradura. Revivido de fossil Dome Fossil. Tem olhos que brilham no escuro. Nome de 'kabuto' (capacete samurai em japones).",
+    "goRelevance": "Obtido de Dome Fossil. Kabutops e Rock/Water com ATK 220 e DEF 186. Razoavel para raids e Great League.",
+    "battleTip": "Kabutops com Fury Cutter + Aqua Tail + Rock Slide cobre contra Fire e Rock-types. Fury Cutter gera energia muito rapido.",
+    "easterEgg": "Kabutops e um dos Pokemon fossil mais antigos — baseado em trilobites que viveram ha 500 milhoes de anos.",
+    "goDifference": "Nas main series Kabuto e revivido de fossil. No GO, vem de 7km eggs e raids.",
+    "evolutionCost": "50 candy para Kabutops. Buddy 5km/candy.",
+    "shinyRate": "Shiny rosa claro. Kabutops shiny dourado."
+  },
+  {
+    "speciesId": 141,
+    "origin": "Kabutops e a forma evoluida de Kabuto. Suas lâminas nos bracos funcionam como foices. Cacava presas na agua. Nome de 'kabuto' + 'tops' (topo/fim).",
+    "goRelevance": "Rock/Water com ATK 220. Fury Cutter + Aqua Tail + Rock Slide. Razoavel para PvP pela rapidez de geracao de energia.",
+    "battleTip": "Kabutops com Legacy move Mud Shot + Stone Edge era muito melhor. Se tiver um com Mud Shot, e valioso.",
+    "easterEgg": "Kabutops se parece com um esqueleto fossilizado vivo. Diz a lenda que Kabutops foi uma inspiracao para o design de Scyther.",
+    "goDifference": "Nas main series Kabutops pode aprender Slash e Swords Dance. No GO, Swords Dance e buff move que Kabutops nao tem acesso.",
+    "evolutionCost": "50 candy de Kabuto. Buddy 5km/candy.",
+    "shinyRate": "Shiny dourado."
+  },
+  {
+    "speciesId": 142,
+    "origin": "Aerodactyl e inspirado em pterodactilos e pterossauros. E um Pokemon fossil revivido de Amber. Sua mordida e poderosa o suficiente para quebrar rochas. Nome de 'aero' (ar) + 'dactyl' (dedo, de pterodactilo).",
+    "goRelevance": "Rock/Flying com ATK 221. Rock Throw + Rock Slide + Iron Head. Tem Mega Evolucao (Rock/Dark) excelente para raids. Otimo counter para Flying e Ice-types.",
+    "battleTip": "Mega Aerodactyl com Rock Throw + Rock Slide + Earthquakes e top-tier para raids. Rock/Dark e typing agressivo que cobre contra Psic e Ghost.",
+    "easterEgg": "Aerodactyl e revivido de um fossil de AMBAR (Old Amber) — diferente de outros fossils que sao conchas ou ossos. E ambar preservou DNA.",
+    "goDifference": "Nas main series Aerodactyl mega evolve (Mega Aerodactyl). No GO, Mega Aerodactyl e um dos melhores Rock-types.",
+    "evolutionCost": "Nao evolui. Buddy 5km/candy. Obtido de 7km eggs, raids de 3 estrelas e pesquisa de campo. Mega Aerodactyl: 200 Mega Energy.",
+    "shinyRate": "Shiny rosa claro. Mega Aerodactyl shiny vinho."
+  },
+  {
+    "speciesId": 143,
+    "origin": "Snorlax e inspirado em ursos hibernantes e em sumo wrestlers. Dorme o tempo todo e so acorda para comer (450kg de comida por dia). Nome de 'snore' (roncar) + 'lax' (relaxado).",
+    "goRelevance": "Raro. Normal-type com STA 330 — a maior entre nao-evolucoes. Lick + Body Slam + Earthquake. Mega Snorlax e top-tier. Excelente gym defender.",
+    "battleTip": "Snorlax com Lick + Body Slam (Legacy) + Superpower e top-tier Master League. Body Slam gera pressao constante. Superpower cobre contra Steel.",
+    "easterEgg": "Snorlax bloqueia passagens nos jogos principais (os famosos 'Snorlax blocking the road'). Precisa de Poke Flute para acordar.",
+    "goDifference": "Nas main series Snorlax mega evolve. No GO, Mega Snorlax tem STA massiva e e otimo tank.",
+    "evolutionCost": "25 candy de Munchlax (egg 5km). Buddy 5km/candy. 296 XL candy para maxar Snorlax ao level 50.",
+    "shinyRate": "Shiny azul escuro. Munchlax shiny azul."
+  },
+  {
+    "speciesId": 144,
+    "origin": "Articuno e inspirado em fenixes de gelo da mitologia e aves articas. Congela a agua por onde voa. Nome de 'arctic' (artico) + 'uno' (um, em espanhol). Um dos tres passaros lendarios.",
+    "goRelevance": "Lendario. Ice/Flying com Ice Shard + Ice Beam + Hurricane. Bom para raids de Dragon e Flying. Galarian Articuno (Psychic/Flying) e diferente.",
+    "battleTip": "Articuno com Icy Wind e otimo debuffer em PvP. Baixa ATK do oponente. Galarian Articuno e raro e so pode ser encontrado na Incense Diaria.",
+    "easterEgg": "Articuno e o primeiro lendario que Ash encontra no anime (no Seafoam Islands). E uma das cenas mais iconicas.",
+    "goDifference": "Nas main series Articuno pode aprender Sheer Cold (OHKO). No GO, nao ha OHKO similar.",
+    "evolutionCost": "Nao evolui. Buddy 20km/candy. Aparece em raids de 5 estrelas (rotacao). XL candy: 296 para maxar.",
+    "shinyRate": "Shiny roxo escuro. Galarian Articuno shiny roxo claro."
+  },
+  {
+    "speciesId": 145,
+    "origin": "Zapdos e inspirado em aves de trovao da mitologia indigena americana. Suas asas geram relampagos quando bate. Nome de 'zap' (choque) + 'dos' (dois). Segundo dos tres passaros lendarios.",
+    "goRelevance": "Lendario. Electric/Flying com Thunder Shock + Thunderbolt + Drill Peck. ATK 253 — altissimo. Galarian Zapdos (Fighting/Flying) e regional de batalha.",
+    "battleTip": "Zapdos com Thunder Shock + Thunderbolt + Drill Peck cobre contra Grass e Fighting-types. Galarian Zapdos e Fighting/Flying e melee puro.",
+    "easterEgg": "Zapdos e considerado o mais forte dos tres passaros lendarios de Kanto por sua cobertura de typing e ATK alto.",
+    "goDifference": "Nas main series Zapdos pode aprender Light Screen e Rain Dance. No GO, moves de clima nao sao implementados igual.",
+    "evolutionCost": "Nao evolui. Buddy 20km/candy. Raids de 5 estrelas. Galarian Zapdos: Incense Diaria (chance muito baixa, foge).",
+    "shinyRate": "Shiny dourado claro. Galarian Zapdos shiny dourado escuro."
+  },
+  {
+    "speciesId": 146,
+    "origin": "Moltres e inspirado na Fenix mitologica. Renasce das cinzas quando morre. Sua chama e tao quente que derrete rochas. Nome de 'molten' (derretido) + 'tres' (tres).",
+    "goRelevance": "Lendario. Fire/Flying com Fire Spin + Sky Attack + Overheat. ATK 251. Galarian Moltres (Dark/Flying) e um dos melhores Dark-types de PvP.",
+    "battleTip": "Moltres com Sky Attack cobre contra Rock e Water-types. Galarian Moltres com Snarl + Fiery Wrath + Brave Bird e top-tier Ultra League.",
+    "easterEgg": "Moltres renasce das cinzas quando ferido — uma clara referencia a Fenix. O nome 'Moltres' combina 'molten' (derretido) com 'tres'.",
+    "goDifference": "Nas main series Moltres pode aprender Sunny Day e Will-O-Wisp. No GO, Sunny Day nao existe como move.",
+    "evolutionCost": "Nao evolui. Buddy 20km/candy. Raids de 5 estrelas. Galarian Moltres: Incense Diaria (foge).",
+    "shinyRate": "Shiny laranja claro. Galarian Moltres shiny roxo escuro."
+  },
+  {
+    "speciesId": 147,
+    "origin": "Dratini e inspirado em dragoes e serpentes marinhas mitologicas. E chamado de 'Mirage Pokemon' por ser raro e esquivo. Nome de 'dragon' (dragao) + 'tiny' (pequeno).",
+    "goRelevance": "Raro perto de agua. Dragonite e Dragon/Flying com ATK 263 — altissimo. Dragon Tail + Draco Meteor + Superpower. Um dos melhores dragoes.",
+    "battleTip": "Dragonite com Dragon Breath + Dragon Claw + Superpower e versatil. Dragon Claw e barato de energia. Superpower cobre contra Steel-types.",
+    "easterEgg": "Dratini era tao raro nos jogos originais que era vendido por dinheiro real em sites de leilao. Um dos primeiros 'shinies' cobicados.",
+    "goDifference": "Nas main series Dratini aparece pescando com Super Rod. No GO, aparece perto de agua mas e raro.",
+    "evolutionCost": "25 candy para Dragonair + 100 candy para Dragonite = 125 total. Buddy 5km/candy.",
+    "shinyRate": "Shiny rosa claro. Dragonite shiny verde."
+  },
+  {
+    "speciesId": 148,
+    "origin": "Dragonair e a forma intermediaria de Dratini. Tem uma aura mística e pode controlar o clima. As esferas azuis no corpo contem energia draconica. Nome de 'dragon' + 'air' (ar).",
+    "goRelevance": "Step para Dragonite. Raramente usada pura, mas tem fas por sua beleza. Dragonair e um dos designs mais amados.",
+    "battleTip": "Dragonair e estatisticamente inferior a Dragonite. Sempre evolua para Dragonite se puder.",
+    "easterEgg": "Dragonair e frequentemente considerado o design mais bonito entre as formas intermediarias. Muitos fas preferem Dragonair a Dragonite em aparencia.",
+    "goDifference": "Nas main series Dragonair pode aprender Water Pulse naturalmente. No GO, Water Pulse e charged move que Dragonair tem acesso.",
+    "evolutionCost": "100 candy para Dragonite. Buddy 5km/candy.",
+    "shinyRate": "Shiny rosa claro."
+  },
+  {
+    "speciesId": 149,
+    "origin": "Dragonite e a forma final de Dratini. Inspirado em dragoes europeus. Apesar de parecer amigavel, e extremamente poderoso. Nome de 'dragon' + 'knight'? 'nite' (noite)?",
+    "goRelevance": "Dragon/Flying com ATK 263. Dragon Breath + Dragon Claw + Superpower. Top-tier Master League e raids. Melhor dragon por versatilidade.",
+    "battleTip": "Dragonite com Draco Meteor + Dragon Claw e combo classico. Draco Meteor para nukar, Dragon Claw para pressao. Cuidado com Ice-types — fraqueza 4x.",
+    "easterEgg": "Dragonite e amigavel e salva marinheiros de naufragios. Mas sua forca e lendaria — pode dar a volta no mundo em 16 horas.",
+    "goDifference": "Nas main series Dragonite aprende Hyper Beam e Fly. No GO, Hyper Beam e Normal-type — Draco Meteor e melhor para STAB Dragon.",
+    "evolutionCost": "100 candy de Dragonair. Buddy 5km/candy. 296 XL candy para maxar ao level 50.",
+    "shinyRate": "Shiny verde claro. Dragonite shiny verde escuro."
+  },
+  {
+    "speciesId": 150,
+    "origin": "Mewtwo e inspirado em experimentos geneticos e no filme 'Alien'. Foi clonado de Mew em um laboratorio. É o Pokemon mais poderoso de Kanto. Nome de 'mew' (som de gato) + 'two' (dois).",
+    "goRelevance": "Lendario. Psychic-type com ATK 300 — o maior de toda a Gen 1. Confusion + Psychic + Shadow Ball. Duas Mega Evolucoes: Mega X (Psychic/Fighting) e Mega Y (Psychic).",
+    "battleTip": "Mewtwo com Psycho Cut + Psystrike (Legacy) e o melhor set. Psystrike e move exclusivo poderoso. Mega Mewtwo Y tem ATK 392 — o maior do jogo.",
+    "easterEgg": "Mewtwo e um dos poucos Pokemon que tem DUAS Mega Evolucoes. Mega X e Fighting/Psychic, Mega Y e Psychic puro com ATK maximo.",
+    "goDifference": "Nas main series Mewtwo e obtido na Cerulean Cave. No GO, aparece em EX Raids e raids de 5 estrelas com rotacao especial.",
+    "evolutionCost": "Nao evolui. Buddy 20km/candy. 296 XL candy para maxar. Mega Mewtwo: 200 Mega Energy cada forma.",
+    "shinyRate": "Shiny verde claro. Sutil mas cobiçado."
+  },
+  {
+    "speciesId": 151,
+    "origin": "Mew e inspirado na criatura mitica que contem o DNA de todos os Pokemon. E rosa, felina e flutua. Foi descoberto na America do Sul. Nome de 'mew' (som de gato).",
+    "goRelevance": "Mitico. Psychic-type com ATK 210 e DEF 210 — stats perfeitamente equilibrados. Shadow Claw + Psychic + Ice Beam ou Surf. Extremamente versatil.",
+    "battleTip": "Mew e o Pokemon mais versatil do GO — pode aprender dezenas de charged moves diferentes. Shadow Claw + Wild Charge + Flame Thrower e combo popular.",
+    "easterEgg": "Mew era um segredo tao bem guardado nos jogos originais que a Nintendo negava sua existencia. So foi descoberto via glitch (Mew Truck, Mew glitch).",
+    "goDifference": "Nas main series Mew e obtido via eventos especiais. No GO, foi distribuido em pesquisa especial (A Mythical Discovery) e eventos.",
+    "evolutionCost": "Nao evolui. Buddy 20km/candy. 296 XL candy para maxar. Nao pode ser colocado em gyms.",
+    "shinyRate": "Shiny azul claro. EXTREMAMENTE raro — so apareceu em eventos especiais no GO."
+  }
+]

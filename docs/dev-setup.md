@@ -1,18 +1,18 @@
 # Local Development Setup
 
 Step-by-step guide to get the whole stack running from a fresh clone: backend API, PostgreSQL,
-and the mobile app on an Android emulator.
+and the mobile app on an Android emulator or physical device.
 
 ## Prerequisites
 
 - Node.js 22+ and npm
 - [Docker Desktop](https://www.docker.com/products/docker-desktop/) (for PostgreSQL)
-- Android SDK + JDK, with `ANDROID_HOME` and `JAVA_HOME` set, and an Android emulator (AVD)
-  created — see the Android section below if this isn't set up yet.
+- Android SDK + JDK, with `ANDROID_HOME` and `JAVA_HOME` set
+- For physical device: USB debugging enabled on your phone
 
 ## 1. Install dependencies
 
-```
+```bash
 npm install                    # repo root — installs concurrently
 npm --prefix backend install
 npm --prefix mobile install
@@ -20,120 +20,164 @@ npm --prefix mobile install
 
 ## 2. Configure environment variables
 
-```
+```bash
 cp .env.example .env                     # repo root — Postgres credentials for Docker
 cp backend/.env.example backend/.env     # backend — DATABASE_URL for Prisma
 ```
 
 The `POSTGRES_*` values in the root `.env` and the `DATABASE_URL` in `backend/.env` must describe
-the same user/password/database/port — the defaults in both `.env.example` files already match,
-so you only need to edit them if you intentionally change one.
+the same user/password/database/port — the defaults in both `.env.example` files already match.
 
 ## 3. Start PostgreSQL
 
-```
+```bash
 docker compose up -d
 ```
 
-This starts Postgres on port 5432 (or whatever `POSTGRES_PORT` is set to) with a persistent
-volume, so data survives container restarts.
+This starts Postgres on port 5432 (default) with a persistent volume.
 
 ## 4. Run Prisma migrations
 
-```
+```bash
 cd backend
 npx prisma migrate dev --name init
 ```
 
-This creates the tables described in `backend/prisma/schema.prisma` (see
-`../docs/entity-relationship-diagram.md` for the model). Re-run `npx prisma migrate dev` any time
-`schema.prisma` changes.
-
-**Note:** the backend doesn't have a `PrismaService` wired into the NestJS DI container yet — that
-lands with the first feature that actually needs the database. Migrations and Prisma Studio work
-independently of that.
+This creates the tables from `backend/prisma/schema.prisma`. Re-run any time the schema changes.
 
 ## 5. Run backend + Metro bundler together
 
 From the repo root:
 
-```
+```bash
 npm run dev
 ```
 
 This runs the backend (`start:dev`, watch mode) and the Metro bundler side by side via
-`concurrently`, each with its own colored prefix in the terminal so you can tell their logs apart.
+`concurrently`, each with its own colored prefix.
 
-## 6. Run the mobile app on an Android emulator
+## 6. Run the mobile app
+
+### Option A: Android emulator
 
 In a separate terminal, with an emulator already running:
 
+```bash
+cd mobile
+npx react-native run-android
 ```
-npm --prefix mobile run android
-```
 
-This builds the debug APK and installs it on whichever emulator/device is connected, then connects
-to the Metro bundler already running from step 5 for the JS bundle.
+The first time the emulator doesn't exist:
 
-### Setting up the Android emulator (first time only)
-
-If you don't have an AVD yet: open Android Studio's Device Manager and create one (any recent
-Pixel profile + a `google_apis` system image works), or use the command-line tools:
-
-```
+```bash
 sdkmanager --install "system-images;android-36;google_apis;x86_64"
-avdmanager create avd --name pokemon_trainer_companion --package "system-images;android-36;google_apis;x86_64" --device pixel_6
+avdmanager create avd --name pokemon_trainer_companion \
+  --package "system-images;android-36;google_apis;x86_64" --device pixel_6
 emulator -avd pokemon_trainer_companion
 ```
 
-## 7. Prisma Studio (inspect/edit the database in the browser)
+### Option B: Physical Android device (USB debugging)
 
-```
+1. **Enable Developer Options** on your phone:
+   - Settings → About Phone → Tap "Build Number" 7 times
+
+2. **Enable USB Debugging**:
+   - Settings → Developer Options → USB Debugging → ON
+
+3. **Connect the phone** via USB cable.
+
+4. **Verify connection**:
+   ```bash
+   adb devices
+   ```
+   You should see a device serial (e.g. `7D7L5POBUGXWR8XO`) with status `device`.
+
+5. **If the device shows as `offline`**:
+   ```bash
+   adb kill-server
+   adb start-server
+   adb devices
+   ```
+   Reconnect the USB cable if it's still offline.
+
+6. **Set up the reverse port forwarding** (required so the phone can reach Metro):
+   ```bash
+   adb -s YOUR_SERIAL reverse tcp:8081 tcp:8081
+   ```
+   Replace `YOUR_SERIAL` with the serial from step 4 (e.g. `7D7L5POBUGXWR8XO`).
+
+7. **Build and install**:
+   ```bash
+   cd mobile
+   npx react-native run-android --deviceId YOUR_SERIAL
+   ```
+
+   > **Note:** If you see a warning about `@react-native-community/cli`, it's benign — the
+   > package is already installed. The `--deviceId` flag is deprecated but still works. For
+   > newer RN versions, use `--device "device_name"` instead.
+
+8. **Hot-reload**: Once running, edit any file in `mobile/src/` and save — the app updates
+   automatically in 1–2 seconds without reinstalling.
+
+### Troubleshooting ADB issues
+
+| Symptom | Fix |
+|---------|-----|
+| `device offline` | `adb kill-server && adb start-server && adb devices` |
+| `unauthorized` | Check phone screen — accept the RSA key prompt |
+| `no devices/emulators found` | Check USB cable, try another port, enable USB debugging |
+| `grep: command not found` | The `--list-devices` flag uses `grep` internally on Git Bash. Use `--deviceId` instead. |
+
+## 7. Prisma Studio (inspect database in browser)
+
+```bash
 cd backend
 npx prisma studio
 ```
 
-Opens a local web UI (default `http://localhost:5555`) to browse and edit rows directly — useful
-for checking what a migration actually created, or seeding data by hand while a feature is mid-way.
+Opens a local web UI (default `http://localhost:5555`) to browse and edit rows.
 
 ## Inspecting the mobile app: adb logcat
 
-With the emulator running and the app installed:
+With the app installed and running:
 
-```
-# All logs from just this app's process
-adb logcat --pid=$(adb shell pidof -s com.pokemontrainercompanionmobile)
-
-# Only JS console.log/warn/error output from the React Native bundle
+```bash
+# Only JS console.log/warn/error from the React Native bundle
 adb logcat -s ReactNativeJS
 
-# Only errors, across the whole device
+# All logs from this app's process
+adb logcat --pid=$(adb shell pidof -s com.pokemontrainercompanionmobile)
+
+# Only errors across the whole device
 adb logcat *:E
 
-# Clear the buffer before reproducing an issue, so logs start clean
+# Clear buffer before reproducing an issue
 adb logcat -c
 ```
 
-## Inspecting HTTP requests from the mobile app: Flipper
+## Summary: first-time setup
 
-[Flipper](https://fbflipper.com/) is the standard desktop tool for inspecting a running React
-Native app: network requests, layout inspector, and more, all in one place. Install it separately
-and connect it to the running debug build to see every request the app makes to the backend.
-Flipper support varies by React Native version — if it doesn't auto-detect the app, check the
-[React Native Flipper docs](https://reactnative.dev/docs/debugging) for the version-specific setup
-step, since this has changed across recent RN releases.
-
-## Summary: first-time setup, in order
-
-```
+```bash
+# 1. Install everything
 npm install
 npm --prefix backend install
 npm --prefix mobile install
+
+# 2. Configure environment
 cp .env.example .env
 cp backend/.env.example backend/.env
+
+# 3. Start database
 docker compose up -d
+
+# 4. Run migrations
 cd backend && npx prisma migrate dev --name init && cd ..
-npm run dev                        # keep running in this terminal
-# --- in a second terminal, with an emulator already running ---
-npm --prefix mobile run android
+
+# 5. Start backend + Metro (keep running in this terminal)
+npm run dev
+
+# 6. In another terminal, build + install on device
+cd mobile
+npx react-native run-android            # emulator
+npx react-native run-android --deviceId SERIAL  # physical device
 ```
