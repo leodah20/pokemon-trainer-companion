@@ -74,7 +74,7 @@ cards) are intentionally out of scope for this beta — see "Post-beta scope" be
 
 <!-- ==================== PROGRESS OVERVIEW ==================== -->
 
-Progress: 88% █████████████████░░░ (23 / 26 features)
+Progress: 89% █████████████████░░░ (24 / 27 features)
 
 | Category | Feature | Status | Tests |
 |----------|---------|--------|-------|
@@ -100,7 +100,9 @@ Progress: 88% █████████████████░░░ (23 /
 | | Raid counters with DPS estimates | ✅ Done | ✅ |
 | | Evolution chain viewer with costs | ✅ Done | ✅ |
 | | In-app Companion widget (avatar + speech bubble, rule-based + optional AI) | ✅ Done | — |
+| | i18n (English/Portuguese/Spanish) — core app chrome | ✅ Done | — |
 | **Future** | OCR engine + rule-based smart suggestions (gallery screenshot → species/CP/HP → evolve/PvP/raid/gym advice) | ✅ Done | ✅ |
+| | i18n coverage for the remaining screens + lore content translation | 🔄 Planned | — |
 | | Scraped knowledge base (Bulbapedia/PokeAPI) feeding the AI prompt | ❌ Not started | — |
 | | Floating overlay (native Android module, auto-capture instead of gallery picker) | ❌ Not started | — |
 | | Cross-device sync + authentication | ❌ Not started | — |
@@ -120,7 +122,12 @@ Deliberately deferred past this beta — not gaps, just not yet prioritized:
   `GEMINI_API_KEY`. Not yet backed by a scraped knowledge base — it only knows what the backend's
   own species/type/PvP/raid data already contains (Bulbapedia/PokeAPI ingestion is the next step)
 - **Cross-device sync + auth** — backend schema exists (`Trainer`, `SavedTeam`), no endpoints yet
-- **i18n / translation** — UI is English-only by design for now (tracked, see task list)
+- **i18n coverage** — infrastructure + core chrome (nav, Pokedex, Tools hub, More, Companion) done
+  for English/Portuguese/Spanish. Remaining screens (IV Calculator, Comparison, Type Chart,
+  Rankings, Raid Counters, Evolution Chain, Quiz, Overlay Demo) and the lore-data.json content
+  itself (currently Portuguese-only) still need translating — the latter is a good candidate for
+  batch-translating via the Gemini integration already in place, rather than hand-translating
+  ~150 species × 7 fields
 - **Dark mode** — `useColorScheme` is read in `App.tsx` but not wired into the theme yet
 - **Extra content cards** (Fase 5 of the original roadmap) — Rarity & Spawn, Best PvP League +
   IV spread, Buddy & Candy distance, Legacy Moves — need new data sources, not just UI work
@@ -132,6 +139,18 @@ Deliberately deferred past this beta — not gaps, just not yet prioritized:
 ### Last implemented features
 
 > <time datetime="2026-07-15">2026-07-15</time>
+>
+> **i18n infrastructure — English, Portuguese, Spanish:**
+> - New lightweight system in `mobile/src/i18n/` — a typed dictionary + React Context, not a new
+>   dependency like i18next. `TranslationKeys` is a compile-time-enforced interface, so a missing
+>   key in any of the 3 language files fails the build instead of silently falling back at runtime.
+> - Translated: bottom tab labels, Pokedex (title, search, filter chips, empty state), Tools hub
+>   (all 4 tool cards), More (title, Overlay Demo card, footer + new language switcher), and the
+>   Companion widget (Ask AI states, species picker).
+> - No device-locale auto-detection (would need a new native dependency); defaults to English,
+>   remembered for the session only.
+> - Deliberately not in this pass: the remaining screens and the lore content itself — see
+>   "Post-beta scope".
 >
 > **Fixed a real bug: OCR never matched CP/HP on an actual Pokemon GO screen:**
 > - Found via a real device screenshot's OCR debug output. Two separate bugs: (1) CP regex only
