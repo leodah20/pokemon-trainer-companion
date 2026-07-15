@@ -15,7 +15,8 @@ const DEFAULT_LANGUAGE: SupportedLanguage = 'en';
 interface LanguageContextValue {
   language: SupportedLanguage;
   setLanguage: (language: SupportedLanguage) => void;
-  t: (key: keyof TranslationKeys) => string;
+  /** Looks up `key` and replaces any `{{param}}` tokens with `params[param]`. */
+  t: (key: keyof TranslationKeys, params?: Record<string, string | number>) => string;
 }
 
 const LanguageContext = createContext<LanguageContextValue | null>(null);
@@ -34,7 +35,16 @@ export function LanguageProvider({ children }: { children: React.ReactNode }): R
     () => ({
       language,
       setLanguage,
-      t: (key) => DICTIONARIES[language][key],
+      t: (key, params) => {
+        const template = DICTIONARIES[language][key];
+        if (!params) {
+          return template;
+        }
+        return Object.entries(params).reduce(
+          (result, [paramKey, paramValue]) => result.replaceAll(`{{${paramKey}}}`, String(paramValue)),
+          template,
+        );
+      },
     }),
     [language],
   );

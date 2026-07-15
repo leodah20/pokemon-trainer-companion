@@ -7,8 +7,9 @@ import { getLoreWithFallback } from '../../data/lore/loreRepository';
 import { getPowerUpSteps } from '../../data/power-up/powerUpRepository';
 import { getPvpRankingsForSpecies } from '../../data/pvp/pvpRepository';
 import { calculatePowerUpCost } from '../../domain/power-up';
-import { formatMoveName, getMetaTier, META_TIER_LABELS, PVP_LEAGUE_LABELS, PvpLeague } from '../../domain/pvp';
-import { BULK_TIER_LABELS, rankBulkPercentile } from '../../use-cases/rankBulkPercentile';
+import { formatMoveName, getMetaTier, PvpLeague } from '../../domain/pvp';
+import { rankBulkPercentile } from '../../use-cases/rankBulkPercentile';
+import { useTranslation } from '../../i18n';
 import {
   Card,
   COLORS,
@@ -46,6 +47,7 @@ function StatBar({ label, value, color }: { label: string; value: number; color:
 }
 
 export function PokemonDetailScreen({ route, navigation }: Props): React.JSX.Element {
+  const { t } = useTranslation();
   const species = getSpeciesById(route.params.speciesId);
   const pvpRankings = getPvpRankingsForSpecies(route.params.speciesId);
   const lore = getLoreWithFallback(species);
@@ -77,7 +79,7 @@ export function PokemonDetailScreen({ route, navigation }: Props): React.JSX.Ele
   if (!species) {
     return (
       <SafeAreaView style={styles.fallbackScreen}>
-        <Text style={styles.notFound}>Species not found.</Text>
+        <Text style={styles.notFound}>{t('detail.speciesNotFound')}</Text>
       </SafeAreaView>
     );
   }
@@ -97,7 +99,7 @@ export function PokemonDetailScreen({ route, navigation }: Props): React.JSX.Ele
           <Image source={{ uri: getSpriteUrl(species.id) }} style={styles.sprite} resizeMode="contain" />
           <Text style={styles.dexNumber}>#{String(species.id).padStart(3, '0')}</Text>
           <Text style={styles.name}>{species.name}</Text>
-          <Text style={styles.generation}>Generation {species.generation}</Text>
+          <Text style={styles.generation}>{t('detail.generation', { n: species.generation })}</Text>
 
           <View style={styles.typeRow}>
             {species.types.map((type) => (
@@ -106,19 +108,19 @@ export function PokemonDetailScreen({ route, navigation }: Props): React.JSX.Ele
           </View>
 
           <Card style={styles.card} accentColor={typeColor} tilt={-1}>
-            <Text style={styles.panelTitle}>Base Stats</Text>
+            <Text style={styles.panelTitle}>{t('detail.baseStats')}</Text>
             <StatBar label="ATK" value={species.baseAttack} color={typeColor} />
             <StatBar label="DEF" value={species.baseDefense} color={typeColor} />
             <StatBar label="STA" value={species.baseStamina} color={typeColor} />
           </Card>
 
           <Card style={styles.card} accentColor={COLORS.brandGold} tilt={1}>
-            <Text style={styles.panelTitle}>Best Moveset (PvP)</Text>
+            <Text style={styles.panelTitle}>{t('detail.bestMoveset')}</Text>
             {LEAGUE_ORDER.filter((league) => pvpRankings?.[league] !== undefined).map((league) => {
               const moveset = pvpRankings![league]!;
               return (
                 <View key={league} style={styles.movesetRow}>
-                  <Text style={styles.movesetLeague}>{PVP_LEAGUE_LABELS[league]}</Text>
+                  <Text style={styles.movesetLeague}>{t(`pvpLeague.${league}`)}</Text>
                   <Text style={styles.movesetMoves}>
                     {formatMoveName(moveset.fastMove)} +{' '}
                     {moveset.chargedMoves.map(formatMoveName).join(' / ')}
@@ -128,13 +130,13 @@ export function PokemonDetailScreen({ route, navigation }: Props): React.JSX.Ele
               );
             })}
             {pvpRankings === undefined && (
-              <Text style={styles.emptyText}>Not competitively ranked in PvP.</Text>
+              <Text style={styles.emptyText}>{t('detail.notRankedPvp')}</Text>
             )}
-            <Text style={styles.sourceText}>Source: PvPoke community rankings (pvpoke.com)</Text>
+            <Text style={styles.sourceText}>{t('detail.pvpSource')}</Text>
           </Card>
 
           <Card style={styles.card} accentColor={COLORS.brandBlue} tilt={-1}>
-            <Text style={styles.panelTitle}>Battle Role</Text>
+            <Text style={styles.panelTitle}>{t('detail.battleRole')}</Text>
             <View style={styles.roleToggleRow}>
               <Pressable
                 style={[styles.roleToggleButton, battleRoleView === 'attack' && styles.roleToggleButtonSelected]}
@@ -143,7 +145,7 @@ export function PokemonDetailScreen({ route, navigation }: Props): React.JSX.Ele
                 <Text
                   style={battleRoleView === 'attack' ? styles.roleToggleTextSelected : styles.roleToggleText}
                 >
-                  Attack
+                  {t('detail.attack')}
                 </Text>
               </Pressable>
               <Pressable
@@ -153,7 +155,7 @@ export function PokemonDetailScreen({ route, navigation }: Props): React.JSX.Ele
                 <Text
                   style={battleRoleView === 'defense' ? styles.roleToggleTextSelected : styles.roleToggleText}
                 >
-                  Defense
+                  {t('detail.defense')}
                 </Text>
               </Pressable>
             </View>
@@ -161,29 +163,32 @@ export function PokemonDetailScreen({ route, navigation }: Props): React.JSX.Ele
             {battleRoleView === 'attack' ? (
               bestAttackScore !== null ? (
                 <Text style={styles.roleResultText}>
-                  {META_TIER_LABELS[getMetaTier(bestAttackScore)]} — best PvP score {bestAttackScore.toFixed(1)}/100
+                  {t('detail.bestPvpScore', {
+                    tier: t(`metaTier.${getMetaTier(bestAttackScore)}`),
+                    score: bestAttackScore.toFixed(1),
+                  })}
                 </Text>
               ) : (
-                <Text style={styles.roleResultText}>Not competitively ranked for attacking.</Text>
+                <Text style={styles.roleResultText}>{t('detail.notRankedAttacking')}</Text>
               )
             ) : (
               <Text style={styles.roleResultText}>
                 {bulkRanking
-                  ? `${BULK_TIER_LABELS[bulkRanking.tier]} — tankier than ${bulkRanking.percentile}% of all Pokemon`
-                  : 'Bulk data unavailable.'}
+                  ? t('detail.tankierThan', {
+                      tier: t(`bulkTier.${bulkRanking.tier}`),
+                      percentile: bulkRanking.percentile,
+                    })
+                  : t('detail.bulkUnavailable')}
               </Text>
             )}
-          <Text style={styles.sourceText}>
-            Attack rating from PvPoke score; defense rating is a DEF+STA heuristic, not an official
-            gym-defender metric.
-          </Text>
+          <Text style={styles.sourceText}>{t('detail.roleSourceNote')}</Text>
         </Card>
 
           <Card style={styles.card} accentColor={COLORS.brandGold}>
-            <Text style={styles.panelTitle}>Power-Up Cost</Text>
+            <Text style={styles.panelTitle}>{t('detail.powerUpCost')}</Text>
             <View style={styles.levelRangeRow}>
               <View style={styles.levelRangeField}>
-                <Text style={styles.label}>From level</Text>
+                <Text style={styles.label}>{t('detail.fromLevel')}</Text>
                 <TextInput
                   style={styles.levelInput}
                   keyboardType="numeric"
@@ -192,7 +197,7 @@ export function PokemonDetailScreen({ route, navigation }: Props): React.JSX.Ele
                 />
               </View>
               <View style={styles.levelRangeField}>
-                <Text style={styles.label}>To level</Text>
+                <Text style={styles.label}>{t('detail.toLevel')}</Text>
                 <TextInput
                   style={styles.levelInput}
                   keyboardType="numeric"
@@ -203,44 +208,46 @@ export function PokemonDetailScreen({ route, navigation }: Props): React.JSX.Ele
             </View>
             {powerUpResult ? (
               <View style={styles.powerUpResult}>
-                <Text style={styles.roleResultText}>Stardust: {powerUpResult.stardust.toLocaleString()}</Text>
-                <Text style={styles.roleResultText}>Candy: {powerUpResult.candy}</Text>
+                <Text style={styles.roleResultText}>
+                  {t('detail.stardust', { n: powerUpResult.stardust.toLocaleString() })}
+                </Text>
+                <Text style={styles.roleResultText}>{t('detail.candy', { n: powerUpResult.candy })}</Text>
                 {powerUpResult.xlCandy > 0 && (
-                  <Text style={styles.roleResultText}>XL Candy: {powerUpResult.xlCandy}</Text>
+                  <Text style={styles.roleResultText}>{t('detail.xlCandy', { n: powerUpResult.xlCandy })}</Text>
                 )}
               </View>
             ) : (
-              <Text style={styles.emptyText}>Enter a valid "from" level lower than "to" level.</Text>
+              <Text style={styles.emptyText}>{t('detail.powerUpHint')}</Text>
             )}
           </Card>
 
           <Card style={styles.card} backgroundColor={COLORS.retroScreenGreen} accentColor={COLORS.retroScreenGreenDark}>
             <Text style={[styles.panelTitle, { color: COLORS.retroScreenGreenDark }]}>
-              Lore & Trivia
+              {t('detail.loreTitle')}
               {lore.isAutoGenerated && (
-                <Text style={styles.autoGenLabel}> (auto-gerado)</Text>
+                <Text style={styles.autoGenLabel}> {t('detail.autoGenerated')}</Text>
               )}
             </Text>
 
-            <Text style={styles.loreCategoryLabel}>Origem & Inspiração</Text>
+            <Text style={styles.loreCategoryLabel}>{t('detail.lore.origin')}</Text>
             <Text style={styles.loreFact}>{lore.origin}</Text>
 
-            <Text style={styles.loreCategoryLabel}>Relevância no Pokémon GO</Text>
+            <Text style={styles.loreCategoryLabel}>{t('detail.lore.goRelevance')}</Text>
             <Text style={styles.loreFact}>{lore.goRelevance}</Text>
 
-            <Text style={styles.loreCategoryLabel}>Dica de Batalha</Text>
+            <Text style={styles.loreCategoryLabel}>{t('detail.lore.battleTip')}</Text>
             <Text style={styles.loreFact}>{lore.battleTip}</Text>
 
-            <Text style={styles.loreCategoryLabel}>Easter Egg / Curiosidade</Text>
+            <Text style={styles.loreCategoryLabel}>{t('detail.lore.easterEgg')}</Text>
             <Text style={styles.loreFact}>{lore.easterEgg}</Text>
 
-            <Text style={styles.loreCategoryLabel}>Diferença: GO vs Main Series</Text>
+            <Text style={styles.loreCategoryLabel}>{t('detail.lore.goDifference')}</Text>
             <Text style={styles.loreFact}>{lore.goDifference}</Text>
 
-            <Text style={styles.loreCategoryLabel}>Custo de Evolução</Text>
+            <Text style={styles.loreCategoryLabel}>{t('detail.lore.evolutionCost')}</Text>
             <Text style={styles.loreFact}>{lore.evolutionCost}</Text>
 
-            <Text style={styles.loreCategoryLabel}>Shiny Rate</Text>
+            <Text style={styles.loreCategoryLabel}>{t('detail.lore.shinyRate')}</Text>
             <Text style={styles.loreFact}>{lore.shinyRate}</Text>
           </Card>
 
@@ -248,14 +255,14 @@ export function PokemonDetailScreen({ route, navigation }: Props): React.JSX.Ele
             style={({ pressed }) => [styles.secondaryButton, pressed && styles.calculateButtonPressed]}
             onPress={() => navigation.navigate('EvolutionChain', { speciesId: species.id })}
           >
-            <Text style={styles.secondaryButtonText}>Evolution Chain</Text>
+            <Text style={styles.secondaryButtonText}>{t('detail.evolutionChainButton')}</Text>
           </Pressable>
 
           <Pressable
             style={({ pressed }) => [styles.calculateButton, pressed && styles.calculateButtonPressed]}
             onPress={() => navigation.navigate('IvCalculator', { speciesId: species.id })}
           >
-            <Text style={styles.calculateButtonText}>Calculate IV</Text>
+            <Text style={styles.calculateButtonText}>{t('detail.calculateIvButton')}</Text>
           </Pressable>
         </ScrollView>
       </SafeAreaView>
