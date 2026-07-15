@@ -133,6 +133,17 @@ Deliberately deferred past this beta — not gaps, just not yet prioritized:
 
 > <time datetime="2026-07-15">2026-07-15</time>
 >
+> **Companion AI grounded in real screen data (not a generic default):**
+> - Until now, "Ask AI" only lived on the Companion widget and talked about whichever species the
+>   trainer manually picked as their buddy, with a hardcoded `general` context — completely
+>   disconnected from anything actually on screen.
+> - `OverlayDemoScreen` now has its own "Ask AI" flow: after OCR reads a screenshot, the trainer
+>   picks a context (raid/battle/capture/levelup/general) and the AI call uses the **species and
+>   stats that screenshot actually extracted** (CP/HP/best IV match, via new
+>   `buildCompanionExtraContext.ts`) — so the answer is about the real scanned Pokémon, grounded
+>   in real numbers, not generic or disconnected advice.
+> - 3 new tests (61/61 mobile passing).
+>
 > **Fixed a real bug: every backend route was double-prefixed (`/api/api/...`):**
 > - Every controller declared `@Controller('api/xxx')` on top of `main.ts`'s global `api` prefix
 >   — the actual served path was `/api/api/species`, `/api/api/companion/suggest`, etc. Went
