@@ -140,6 +140,21 @@ Deliberately deferred past this beta — not gaps, just not yet prioritized:
 
 > <time datetime="2026-07-15">2026-07-15</time>
 >
+> **PokemonDetailScreen fully translated (EN/PT-BR/ES):**
+> - Fixed the exact gap a user found: the "Lore & Trivia" card's category labels (Origem &
+>   Inspiração, Dica de Batalha, etc.) were hardcoded Portuguese no matter the selected language.
+>   Now every string on the screen is translated — stats, PvP moveset, battle role toggle,
+>   power-up cost, all 7 lore categories, both buttons — via 30+ new i18n keys.
+> - `PVP_LEAGUE_LABELS` / `META_TIER_LABELS` / `BULK_TIER_LABELS` moved out of hardcoded domain
+>   constants into the i18n dictionaries (`pvpLeague.*`, `metaTier.*`, `bulkTier.*`), so they
+>   translate too instead of always showing English.
+> - `t()` now supports basic `{{param}}` interpolation (level numbers, percentages, scores).
+> - **Still not translated:** the lore CONTENT itself (`lore-data.json`, ~150 species × 7 fields
+>   of hand-written Portuguese text) and the remaining screens (IV Calculator, Comparison, Type
+>   Chart, Rankings, Raid Counters, Evolution Chain, Quiz, Overlay Demo). Both are the next i18n
+>   step — see "Post-beta scope".
+> - 63/63 mobile tests passing, zero TypeScript errors.
+>
 > **i18n infrastructure — English, Portuguese, Spanish:**
 > - New lightweight system in `mobile/src/i18n/` — a typed dictionary + React Context, not a new
 >   dependency like i18next. `TranslationKeys` is a compile-time-enforced interface, so a missing
