@@ -100,6 +100,17 @@ Progress: 87% █████████████████░░░ (20 /
 
 > <time datetime="2026-07-15">2026-07-15</time>
 >
+> **Design: PTC rebrand + Pokedex chrome polish:**
+> - New in-app logo wordmark "PTC" (gold, thick outline shadow) replaces "Professor Dex"
+>   everywhere: header logo, Pokedex screen title, Android launcher label, More screen footer.
+>   Full name "Pokemon Trainer Companion" kept for docs/store copy (`APP_FULL_NAME` in
+>   `theme/Logo.tsx`)
+> - Tightened the header-to-search-bar gap and shrunk the Gen/Type filter chips further
+>   (smaller padding/font/height) so more fit per row and the edge-peek cutoff is less jarring
+> - Softened the bottom tab bar to a translucent glass panel (was solid white) and gave the
+>   Pokedex list generous extra bottom padding, so the last row scrolling near the tab bar
+>   doesn't look hard-clipped by an opaque bar anymore
+>
 > **Design: app-wide glassmorphism restyle:**
 > - Fixed the real bug behind "cards disappear while barely scrolling" on the Pokedex screen:
 >   the scroll-fade math used a hardcoded row-height guess (88px) that didn't match the actual
