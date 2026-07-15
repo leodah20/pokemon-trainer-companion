@@ -74,7 +74,7 @@ cards) are intentionally out of scope for this beta — see "Post-beta scope" be
 
 <!-- ==================== PROGRESS OVERVIEW ==================== -->
 
-Progress: 87% █████████████████░░░ (20 / 23 features)
+Progress: 88% █████████████████░░░ (21 / 24 features)
 
 | Category | Feature | Status | Tests |
 |----------|---------|--------|-------|
@@ -98,14 +98,21 @@ Progress: 87% █████████████████░░░ (20 /
 | | Quiz / trivia mode | ✅ Done | ✅ |
 | | Raid counters with DPS estimates | ✅ Done | ✅ |
 | | Evolution chain viewer with costs | ✅ Done | ✅ |
-| **Future** | Overlay OCR (native Android module + ML Kit) | ❌ Not started | — |
+| **Future** | OCR engine + rule-based smart suggestions (gallery screenshot → species/CP/HP → evolve/PvP/raid/gym advice) | ✅ Done | ✅ |
+| | Floating overlay (native Android module, auto-capture instead of gallery picker) | ❌ Not started | — |
 | | Cross-device sync + authentication | ❌ Not started | — |
 
 ### Post-beta scope
 
 Deliberately deferred past this beta — not gaps, just not yet prioritized:
 
-- **Overlay OCR** (Fase 6) — needs a native Android Kotlin module; biggest remaining chunk of work
+- **Floating overlay** (rest of Fase 6) — the OCR engine itself works today (gallery screenshot →
+  species/CP/HP → full analysis); auto-capture via a native Android Kotlin module
+  (SYSTEM_ALERT_WINDOW + MediaProjection) is the only piece left, and it's the riskiest native
+  work in the project — deliberately deferred rather than rushed
+- **LLM-based suggestions** — considered and explicitly declined (see `generateSmartSuggestions.ts`);
+  would add cost, a network dependency, and send screen data off-device for what deterministic
+  rules already handle for free
 - **Cross-device sync + auth** — backend schema exists (`Trainer`, `SavedTeam`), no endpoints yet
 - **i18n / translation** — UI is English-only by design for now (tracked, see task list)
 - **Dark mode** — `useColorScheme` is read in `App.tsx` but not wired into the theme yet
@@ -119,6 +126,25 @@ Deliberately deferred past this beta — not gaps, just not yet prioritized:
 ### Last implemented features
 
 > <time datetime="2026-07-15">2026-07-15</time>
+>
+> **OCR pipeline: rule-based smart suggestions (no LLM):**
+> - New `generateSmartSuggestions.ts` — turns a scanned Pokemon into actionable advice: evolve
+>   for +X ATK (with candy cost), best PvP league + meta tier, which raid-boss types it counters,
+>   whether it's gym-defender material — all derived from data the app already computes (type
+>   chart, PvP scores, bulk percentile, evolution chain)
+> - Explicitly chosen over a real LLM integration: no API key, no per-call cost, no network
+>   request, no screen data leaving the device — keeps the app's offline-first design intact
+> - Wired into `analyzeScreenshot.ts` and surfaced in `OverlayDemoScreen` under a new
+>   "WHAT TO DO WITH IT" section
+> - 6 new tests (58/58 mobile tests passing), verified the screen renders without crashing on
+>   the Android emulator; full species-recognition verification needs a real Pokemon GO
+>   screenshot, which requires the user's phone
+> - The floating overlay (auto-capture instead of picking from gallery) is still native Android
+>   work not yet started — see "Post-beta scope"
+>
+> **Local dev: Android emulator as default target:**
+> - Documented and started using the `pokemon_trainer_companion` AVD that existed but was never
+>   actually used — installs and runs the full app without needing a physical phone connected
 >
 > **v1.0 Beta cut — final bug pass:**
 > - Fixed a real bug in the IV Calculator: level range inputs rejected every decimal (`25.5`),
