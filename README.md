@@ -100,6 +100,21 @@ Progress: 87% █████████████████░░░ (20 /
 
 > <time datetime="2026-07-15">2026-07-15</time>
 >
+> **Design: app-wide glassmorphism restyle:**
+> - Fixed the real bug behind "cards disappear while barely scrolling" on the Pokedex screen:
+>   the scroll-fade math used a hardcoded row-height guess (88px) that didn't match the actual
+>   rendered row height, so items were treated as scrolled-past far too early. Now measured live
+>   via `onLayout` on the first row; no fade applied until the real height is known.
+> - Replaced the thick black ink-outline + hard offset "sticker" shadow look with a translucent
+>   glass style everywhere: the shared `Card` and `TypeBadge` components, and every screen's
+>   buttons/inputs/chips/rows (`PokemonDetailScreen`, `IvCalculatorScreen`, `ComparisonScreen`,
+>   `TypeChartScreen`, `TopRankingsScreen`, `QuizScreen`, `RaidCountersScreen`,
+>   `EvolutionChainScreen`, the bottom tab bar) — translucent `glassSurface` fill, thin
+>   `glassBorder`, soft diffuse `SHADOW.{sm,md,lg}` instead of a 1px-offset hard shadow twin
+> - Verified on the physical device across 5 screens after the restyle (Pokedex scroll-fade,
+>   Top Rankings, Tools hub, Raid Counters, Pokemon detail) — no regressions, 52/52 tests still
+>   passing, zero TypeScript errors
+>
 > **Design: Pokémon GO-style Quick Actions HUD + spring bottom sheet:**
 > - New `QuickActionsFab` — a floating circular Poke Ball button (thumb-zone, bottom-right) with
 >   a continuous "breathing" pulse (`Animated.loop`, scale 1 → 1.08 → 1) and a press scale-down
