@@ -7,15 +7,30 @@ import { calculateIvPercentage } from '../../domain/iv-calculator';
 import { formatMoveName, getMetaTier, META_TIER_LABELS, PVP_LEAGUE_LABELS, PvpLeague } from '../../domain/pvp';
 import { BULK_TIER_LABELS } from '../../use-cases/rankBulkPercentile';
 import { analyzeScreenshot, ScreenshotAnalysis } from '../../use-cases/analyzeScreenshot';
+import { buildCompanionExtraContext } from '../../use-cases/buildCompanionExtraContext';
+import { CompanionAiContext, CompanionApiError, fetchCompanionSuggestion } from '../../data/companion/companionApiClient';
 import { Card, COLORS, DISPLAY_FONT, FONT_SIZE, RADIUS, SHADOW, SPACING } from '../theme';
 
 const LEAGUE_ORDER: PvpLeague[] = ['great', 'ultra', 'master'];
+const AI_CONTEXTS: readonly { value: CompanionAiContext; label: string }[] = [
+  { value: 'raid', label: 'Raid' },
+  { value: 'battle', label: 'Battle' },
+  { value: 'capture', label: 'Capture' },
+  { value: 'levelup', label: 'Level up' },
+  { value: 'general', label: 'General' },
+];
 
 type Status = 'idle' | 'loading' | 'error';
+type AiState = 'idle' | 'loading' | 'error';
 
 export function OverlayDemoScreen(): React.JSX.Element {
   const [status, setStatus] = useState<Status>('idle');
   const [analysis, setAnalysis] = useState<ScreenshotAnalysis | null>(null);
+
+  const [aiContext, setAiContext] = useState<CompanionAiContext>('general');
+  const [aiState, setAiState] = useState<AiState>('idle');
+  const [aiText, setAiText] = useState<string | null>(null);
+  const [aiError, setAiError] = useState<string | null>(null);
 
   async function handlePickImage(): Promise<void> {
     const result = await launchImageLibrary({ mediaType: 'photo' });
@@ -25,12 +40,32 @@ export function OverlayDemoScreen(): React.JSX.Element {
     }
 
     setStatus('loading');
+    setAiState('idle');
+    setAiText(null);
+    setAiError(null);
     try {
       const nextAnalysis = await analyzeScreenshot(uri);
       setAnalysis(nextAnalysis);
       setStatus('idle');
     } catch {
       setStatus('error');
+    }
+  }
+
+  async function handleAskAi(): Promise<void> {
+    if (!analysis?.species || aiState === 'loading') {
+      return;
+    }
+    setAiState('loading');
+    setAiError(null);
+    try {
+      // Grounded in the species AND stats this screenshot actually read — not a generic default.
+      const suggestion = await fetchCompanionSuggestion(analysis.species.id, aiContext, buildCompanionExtraContext(analysis));
+      setAiText(suggestion);
+      setAiState('idle');
+    } catch (error) {
+      setAiState('error');
+      setAiError(error instanceof CompanionApiError ? error.message : 'Something went wrong.');
     }
   }
 
@@ -112,6 +147,34 @@ export function OverlayDemoScreen(): React.JSX.Element {
                       ))}
                     </>
                   )}
+
+                  <Text style={styles.suggestionsLabel}>ASK AI ABOUT THIS SCAN</Text>
+                  <View style={styles.contextRow}>
+                    {AI_CONTEXTS.map((option) => (
+                      <Pressable
+                        key={option.value}
+                        style={[styles.contextChip, option.value === aiContext && styles.contextChipSelected]}
+                        onPress={() => setAiContext(option.value)}
+                      >
+                        <Text style={[styles.contextChipText, option.value === aiContext && styles.contextChipTextSelected]}>
+                          {option.label}
+                        </Text>
+                      </Pressable>
+                    ))}
+                  </View>
+
+                  {aiState === 'error' && aiError && <Text style={styles.aiErrorText}>{aiError}</Text>}
+                  {aiText && aiState === 'idle' && <Text style={styles.aiResultText}>{aiText}</Text>}
+
+                  <Pressable style={styles.askAiButton} onPress={handleAskAi} disabled={aiState === 'loading'}>
+                    {aiState === 'loading' ? (
+                      <ActivityIndicator size="small" color={COLORS.surface} />
+                    ) : (
+                      <Text style={styles.askAiButtonText}>
+                        {aiState === 'error' ? 'Retry Ask AI ✨' : aiText ? 'Ask again ✨' : 'Ask AI ✨'}
+                      </Text>
+                    )}
+                  </Pressable>
                 </>
               ) : (
                 <Text style={styles.sectionText}>
@@ -218,6 +281,56 @@ const styles = StyleSheet.create({
     color: COLORS.textPrimary,
     marginTop: SPACING.xs,
     lineHeight: 19,
+  },
+  contextRow: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    gap: SPACING.xs,
+    marginTop: SPACING.sm,
+  },
+  contextChip: {
+    borderRadius: RADIUS.full,
+    borderWidth: 1,
+    borderColor: COLORS.glassBorder,
+    backgroundColor: COLORS.glassSurface,
+    paddingVertical: SPACING.xs,
+    paddingHorizontal: SPACING.sm,
+  },
+  contextChipSelected: {
+    backgroundColor: COLORS.brandBlue,
+    borderColor: COLORS.brandBlue,
+  },
+  contextChipText: {
+    fontSize: 11,
+    fontWeight: '700',
+    color: COLORS.textPrimary,
+  },
+  contextChipTextSelected: {
+    color: COLORS.surface,
+  },
+  aiErrorText: {
+    marginTop: SPACING.sm,
+    fontSize: 11,
+    color: COLORS.danger,
+  },
+  aiResultText: {
+    marginTop: SPACING.sm,
+    fontSize: FONT_SIZE.sm,
+    color: COLORS.textPrimary,
+    lineHeight: 19,
+    fontStyle: 'italic',
+  },
+  askAiButton: {
+    marginTop: SPACING.md,
+    backgroundColor: COLORS.mintDark,
+    borderRadius: RADIUS.full,
+    paddingVertical: SPACING.sm,
+    alignItems: 'center',
+  },
+  askAiButtonText: {
+    fontSize: FONT_SIZE.sm,
+    fontWeight: '700',
+    color: COLORS.surface,
   },
   rawTextLabel: {
     marginTop: SPACING.lg,
