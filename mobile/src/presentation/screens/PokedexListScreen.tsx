@@ -28,6 +28,8 @@ import {
 } from '../theme';
 import { EMPTY_POKEDEX_FILTERS, filterPokedex, PokedexFilters } from '../../use-cases/filterPokedex';
 import { TabScreenProps } from '../navigation/types';
+import { BottomSheetMenu, BottomSheetMenuItem } from '../components/BottomSheetMenu';
+import { QuickActionsFab } from '../components/QuickActionsFab';
 
 type Props = TabScreenProps<'Pokedex'>;
 
@@ -50,6 +52,7 @@ const AnimatedFlatList = Animated.createAnimatedComponent(FlatList<PokemonSpecie
 export function PokedexListScreen({ navigation, route }: Props): React.JSX.Element {
   const pickerMode = route.params?.pickerMode ?? false;
   const [filters, setFilters] = useState<PokedexFilters>(EMPTY_POKEDEX_FILTERS);
+  const [quickActionsVisible, setQuickActionsVisible] = useState(false);
 
   const results = useMemo(() => filterPokedex(ALL_SPECIES, filters), [filters]);
 
@@ -83,6 +86,15 @@ export function PokedexListScreen({ navigation, route }: Props): React.JSX.Eleme
       });
     },
   ).current;
+
+  const quickActions: readonly BottomSheetMenuItem[] = [
+    { key: 'iv', emoji: '🧮', label: 'IV Calculator', onPress: () => navigation.navigate('IvCalculator') },
+    { key: 'compare', emoji: '⚖️', label: 'Compare', onPress: () => navigation.navigate('Comparison') },
+    { key: 'types', emoji: '🔥', label: 'Type Chart', onPress: () => navigation.navigate('TypeChart') },
+    { key: 'raids', emoji: '⚔️', label: 'Raid Counters', onPress: () => navigation.navigate('RaidCounters') },
+    { key: 'rankings', emoji: '🏆', label: 'Rankings', onPress: () => navigation.navigate('Rankings') },
+    { key: 'quiz', emoji: '❓', label: 'Quiz', onPress: () => navigation.navigate('Quiz') },
+  ];
 
   function handleSelect(species: PokemonSpecies): void {
     if (pickerMode) {
@@ -203,6 +215,18 @@ export function PokedexListScreen({ navigation, route }: Props): React.JSX.Eleme
           }}
           ListEmptyComponent={<Text style={styles.emptyText}>No Pokemon match these filters.</Text>}
         />
+
+        {!pickerMode && (
+          <>
+            <QuickActionsFab onPress={() => setQuickActionsVisible(true)} />
+            <BottomSheetMenu
+              visible={quickActionsVisible}
+              onClose={() => setQuickActionsVisible(false)}
+              title="Quick Actions"
+              items={quickActions}
+            />
+          </>
+        )}
       </SafeAreaView>
     </View>
   );

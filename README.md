@@ -26,6 +26,8 @@ product needs before it ships to app stores.
 - Raid counters — top 10 estimated counters per boss (11 Gen 1 bosses, tiers 1/3/5), with
   optional weather-boost adjustment
 - Evolution chain viewer — full chain with stats and heuristic candy costs (Gen 1-2 coverage)
+- Quick Actions HUD — pulsing floating action button (Pokédex screen) opens a spring-physics
+  bottom sheet with shortcuts to every tool, staggered fade-in per item
 
 **Partner Pokédex (implemented)**
 - Pokémon detail screen with 8 lore categories: origin & inspiration, GO relevance, battle tips, easter eggs, GO vs main series differences, evolution costs, shiny rates
@@ -97,6 +99,27 @@ Progress: 87% █████████████████░░░ (20 /
 ### Last implemented features
 
 > <time datetime="2026-07-15">2026-07-15</time>
+>
+> **Design: Pokémon GO-style Quick Actions HUD + spring bottom sheet:**
+> - New `QuickActionsFab` — a floating circular Poke Ball button (thumb-zone, bottom-right) with
+>   a continuous "breathing" pulse (`Animated.loop`, scale 1 → 1.08 → 1) and a press scale-down
+>   that composes with the pulse via `Animated.multiply`, so pressing doesn't interrupt the loop
+> - New `BottomSheetMenu` — reusable, generic (title + item list) slide-up sheet: `Animated.spring`
+>   on `translateY` gives a slight overshoot-and-settle bounce on open, a plain `Animated.timing`
+>   slide-down on close (no bounce needed on the way out), backdrop fades independently. Each menu
+>   item fades + slides in with a per-index delay (staggered entrance)
+> - Wired into `PokedexListScreen` (the app's Home) as a "Quick Actions" launcher — IV Calculator,
+>   Compare, Type Chart, Raid Counters, Rankings, Quiz — hidden in picker mode
+> - New theme tokens: `mint`/`turquoise` energetic accents, `glassSurface`/`glassBorder` (a
+>   translucent white for the sheet), `scrimBackdrop`; `Card` already supported pill/rounded
+>   shapes and soft shadows, reused as-is
+> - **Deliberately built on RN core `Animated`, not Reanimated** — user confirmed via
+>   `AskUserQuestion` to keep it that way, since Reanimated needs a native rebuild and this app's
+>   Android build has a fragile history this session (see `docs/dev-setup.md`). Both animated
+>   values still run on the native thread (`useNativeDriver: true`), so this isn't a JS-thread
+>   fallback — just no third-party animation library.
+> - Mobile suite still 52/52 passing, zero TypeScript errors app-wide (no new tests — these are
+>   pure animation/presentation components with no extractable logic to unit test)
 >
 > **Mobile: Raid Counters and Evolution Chain viewer (Fase 3.4-3.5):**
 > - New `RaidCountersScreen` — pick a boss (grouped by tier: 1★/3★/5★) and an optional weather

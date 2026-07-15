@@ -23,6 +23,16 @@ export const COLORS = {
   // Retro CRT-screen look, used for the lore/trivia card
   retroScreenGreen: '#C8E6C9',
   retroScreenGreenDark: '#1B4D1F',
+
+  // Energetic HUD accents — mint/turquoise, for floating action buttons and glassy overlays
+  mint: '#00E5A0',
+  mintDark: '#00A876',
+  turquoise: '#00C2D1',
+
+  // Translucent "glass" surfaces for cards/sheets floating over vivid backgrounds
+  glassSurface: 'rgba(255, 255, 255, 0.82)',
+  glassBorder: 'rgba(255, 255, 255, 0.5)',
+  scrimBackdrop: 'rgba(15, 23, 42, 0.45)',
 } as const;
 
 /** Community-standard type color convention (not official Nintendo branding, widely used by fan tools). */
