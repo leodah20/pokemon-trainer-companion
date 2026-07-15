@@ -33,12 +33,7 @@ export function TypeChartScreen(): React.JSX.Element {
     <SafeAreaView style={styles.screen} edges={['left', 'right', 'bottom']}>
       <Text style={styles.hint}>Pick an attacking type to see what it's strong and weak against.</Text>
 
-      <ScrollView
-        horizontal
-        showsHorizontalScrollIndicator={false}
-        style={styles.typeRow}
-        contentContainerStyle={styles.typeRowContent}
-      >
+      <View style={styles.typeRow}>
         {ALL_TYPE_NAMES.map((type) => (
           <Pressable
             key={type}
@@ -53,7 +48,7 @@ export function TypeChartScreen(): React.JSX.Element {
             </Text>
           </Pressable>
         ))}
-      </ScrollView>
+      </View>
 
       <ScrollView contentContainerStyle={styles.resultsContent}>
         {BUCKET_ORDER.map((bucket) => {
@@ -95,25 +90,27 @@ const styles = StyleSheet.create({
     paddingTop: SPACING.md,
   },
   typeRow: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
     marginTop: SPACING.md,
-    flexGrow: 0,
-  },
-  typeRowContent: {
     paddingHorizontal: SPACING.lg,
     gap: SPACING.sm,
   },
   typeChip: {
-    borderRadius: RADIUS.full,
+    borderRadius: RADIUS.sm,
     borderWidth: 2,
     borderColor: COLORS.outline,
     paddingVertical: SPACING.sm,
-    paddingHorizontal: SPACING.lg,
+    paddingHorizontal: SPACING.md,
     justifyContent: 'center',
+    alignItems: 'center',
+    minHeight: 36,
   },
   typeChipText: {
     fontSize: FONT_SIZE.sm,
     fontWeight: '700',
     color: COLORS.textPrimary,
+    textAlign: 'center',
   },
   typeChipTextSelected: {
     color: COLORS.surface,

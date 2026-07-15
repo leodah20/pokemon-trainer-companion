@@ -95,12 +95,7 @@ export function PokedexListScreen({ navigation, route }: Props): React.JSX.Eleme
         {pickerMode ? (
           <Text style={styles.title}>Choose a Pokemon</Text>
         ) : (
-          <ScrollView
-            horizontal
-            showsHorizontalScrollIndicator={false}
-            style={styles.actionsRow}
-            contentContainerStyle={styles.actionsRowContent}
-          >
+          <View style={styles.actionsRow}>
             <Pressable style={styles.overlayDemoButton} onPress={() => navigation.navigate('Quiz')}>
               <Text style={styles.overlayDemoButtonText}>Quiz</Text>
             </Pressable>
@@ -116,7 +111,7 @@ export function PokedexListScreen({ navigation, route }: Props): React.JSX.Eleme
             <Pressable style={styles.overlayDemoButton} onPress={() => navigation.navigate('OverlayDemo')}>
               <Text style={styles.overlayDemoButtonText}>Overlay Demo</Text>
             </Pressable>
-          </ScrollView>
+          </View>
         )}
 
         <TextInput
@@ -237,26 +232,31 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   actionsRow: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
     marginTop: SPACING.md,
     marginBottom: SPACING.sm,
-    flexGrow: 0,
-  },
-  actionsRowContent: {
     paddingHorizontal: SPACING.lg,
     gap: SPACING.sm,
   },
   overlayDemoButton: {
-    borderRadius: RADIUS.full,
+    borderRadius: RADIUS.sm,
     borderWidth: 2,
     borderColor: COLORS.outline,
     backgroundColor: COLORS.surface,
-    paddingVertical: SPACING.xs,
-    paddingHorizontal: SPACING.sm,
+    paddingVertical: SPACING.sm,
+    paddingHorizontal: SPACING.md,
+    justifyContent: 'center',
+    alignItems: 'center',
+    minHeight: 36,
   },
   overlayDemoButtonText: {
-    fontSize: 11,
+    fontSize: 12,
     fontWeight: '700',
     color: COLORS.textPrimary,
+    textAlign: 'center',
+    // No explicit lineHeight on purpose — a value tighter than the font's natural box clips
+    // ascenders/descenders on Android (same issue as the filter chips below).
   },
   title: {
     fontFamily: DISPLAY_FONT,

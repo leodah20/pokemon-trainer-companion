@@ -1,6 +1,6 @@
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import React, { useMemo, useState } from 'react';
-import { FlatList, Image, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { FlatList, Image, Pressable, StyleSheet, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { getAllSpecies, getSpriteUrl } from '../../data/pokedex/pokedexRepository';
 import { getTopRanking, RANKING_CATEGORIES, RankingCategory } from '../../use-cases/rankTopPokemon';
@@ -19,12 +19,7 @@ export function TopRankingsScreen({ navigation }: Props): React.JSX.Element {
 
   return (
     <SafeAreaView style={styles.screen} edges={['left', 'right', 'bottom']}>
-      <ScrollView
-        horizontal
-        showsHorizontalScrollIndicator={false}
-        style={styles.categoryRow}
-        contentContainerStyle={styles.categoryRowContent}
-      >
+      <View style={styles.categoryRow}>
         {RANKING_CATEGORIES.map((option) => (
           <Pressable
             key={option.category}
@@ -38,7 +33,7 @@ export function TopRankingsScreen({ navigation }: Props): React.JSX.Element {
             </Text>
           </Pressable>
         ))}
-      </ScrollView>
+      </View>
 
       <FlatList
         data={rankings}
@@ -83,21 +78,22 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.background,
   },
   categoryRow: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
     marginTop: SPACING.md,
-    flexGrow: 0,
-  },
-  categoryRowContent: {
     paddingHorizontal: SPACING.lg,
     gap: SPACING.sm,
   },
   categoryChip: {
-    borderRadius: RADIUS.full,
+    borderRadius: RADIUS.sm,
     borderWidth: 2,
     borderColor: COLORS.outline,
     backgroundColor: COLORS.surface,
     paddingVertical: SPACING.sm,
-    paddingHorizontal: SPACING.lg,
+    paddingHorizontal: SPACING.md,
     justifyContent: 'center',
+    alignItems: 'center',
+    minHeight: 36,
   },
   categoryChipSelected: {
     backgroundColor: COLORS.brandRed,
@@ -106,6 +102,7 @@ const styles = StyleSheet.create({
     fontSize: FONT_SIZE.sm,
     fontWeight: '700',
     color: COLORS.textPrimary,
+    textAlign: 'center',
   },
   categoryChipTextSelected: {
     color: COLORS.surface,
