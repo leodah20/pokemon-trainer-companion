@@ -75,8 +75,6 @@ const styles = StyleSheet.create({
     height: 64,
     borderRadius: 32,
     backgroundColor: COLORS.surface,
-    borderWidth: 3,
-    borderColor: COLORS.outline,
     alignItems: 'center',
     justifyContent: 'center',
     ...SHADOW.lg,

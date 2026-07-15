@@ -198,8 +198,6 @@ const styles = StyleSheet.create({
     height: 56,
     borderRadius: RADIUS.full,
     backgroundColor: COLORS.surface,
-    borderWidth: 2,
-    borderColor: COLORS.outline,
     alignItems: 'center',
     justifyContent: 'center',
     ...SHADOW.md,

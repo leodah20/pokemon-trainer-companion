@@ -1,7 +1,7 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import React from 'react';
 import { StyleSheet, Text } from 'react-native';
-import { COLORS, DISPLAY_FONT, Logo } from '../theme';
+import { COLORS, DISPLAY_FONT, Logo, SHADOW } from '../theme';
 import { MoreScreen } from '../screens/MoreScreen';
 import { PokedexListScreen } from '../screens/PokedexListScreen';
 import { QuizScreen } from '../screens/QuizScreen';
@@ -63,11 +63,11 @@ const styles = StyleSheet.create({
   },
   tabBar: {
     backgroundColor: COLORS.surface,
-    borderTopWidth: 2,
-    borderTopColor: COLORS.outline,
+    borderTopWidth: 0,
     height: 60,
     paddingBottom: 8,
     paddingTop: 6,
+    ...SHADOW.lg,
   },
   tabBarLabel: {
     fontSize: 11,

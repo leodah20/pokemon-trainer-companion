@@ -4,7 +4,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { getAllSpecies, getSpriteUrl } from '../../data/pokedex/pokedexRepository';
 import { getEvolutionChain } from '../../use-cases/getEvolutionChain';
 import { EvolutionChainLink } from '../../domain/evolution/types';
-import { COLORS, DISPLAY_FONT, FONT_SIZE, RADIUS, SPACING, TypeBadge } from '../theme';
+import { COLORS, DISPLAY_FONT, FONT_SIZE, RADIUS, SHADOW, SPACING, TypeBadge } from '../theme';
 import { RootStackScreenProps } from '../navigation/types';
 
 type Props = RootStackScreenProps<'EvolutionChain'>;
@@ -111,12 +111,13 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     width: '100%',
-    backgroundColor: COLORS.surface,
-    borderRadius: RADIUS.lg,
-    borderWidth: 2.5,
-    borderColor: COLORS.outline,
+    backgroundColor: COLORS.glassSurface,
+    borderRadius: RADIUS.lg + 6,
+    borderWidth: 1,
+    borderColor: COLORS.glassBorder,
     padding: SPACING.md,
     gap: SPACING.md,
+    ...SHADOW.md,
   },
   sprite: {
     width: 64,

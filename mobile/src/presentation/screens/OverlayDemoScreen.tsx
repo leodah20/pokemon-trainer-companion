@@ -7,7 +7,7 @@ import { calculateIvPercentage } from '../../domain/iv-calculator';
 import { formatMoveName, getMetaTier, META_TIER_LABELS, PVP_LEAGUE_LABELS, PvpLeague } from '../../domain/pvp';
 import { BULK_TIER_LABELS } from '../../use-cases/rankBulkPercentile';
 import { analyzeScreenshot, ScreenshotAnalysis } from '../../use-cases/analyzeScreenshot';
-import { Card, COLORS, DISPLAY_FONT, FONT_SIZE, RADIUS, SPACING } from '../theme';
+import { Card, COLORS, DISPLAY_FONT, FONT_SIZE, RADIUS, SHADOW, SPACING } from '../theme';
 
 const LEAGUE_ORDER: PvpLeague[] = ['great', 'ultra', 'master'];
 
@@ -141,10 +141,9 @@ const styles = StyleSheet.create({
     marginTop: SPACING.xl,
     backgroundColor: COLORS.brandBlue,
     borderRadius: RADIUS.full,
-    borderWidth: 3,
-    borderColor: COLORS.outline,
     paddingVertical: SPACING.md,
     alignItems: 'center',
+    ...SHADOW.lg,
   },
   pickButtonPressed: {
     transform: [{ scale: 0.97 }],

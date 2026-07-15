@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { COLORS, getTypeColor } from './colors';
 import { RADIUS, SPACING } from './spacing';
+import { SHADOW } from './shadows';
 
 interface TypeBadgeProps {
   type: string;
@@ -18,10 +19,9 @@ export function TypeBadge({ type }: TypeBadgeProps): React.JSX.Element {
 const styles = StyleSheet.create({
   badge: {
     borderRadius: RADIUS.full,
-    borderWidth: 2,
-    borderColor: COLORS.outline,
     paddingHorizontal: SPACING.md,
     paddingVertical: SPACING.xs,
+    ...SHADOW.sm,
   },
   text: {
     fontSize: 11,

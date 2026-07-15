@@ -2,55 +2,50 @@ import React, { PropsWithChildren } from 'react';
 import { StyleProp, StyleSheet, View, ViewStyle } from 'react-native';
 import { COLORS } from './colors';
 import { RADIUS, SPACING } from './spacing';
+import { SHADOW } from './shadows';
 
 interface CardProps extends PropsWithChildren {
   style?: StyleProp<ViewStyle>;
-  /** Border + title-strip color. Pass the Pokemon's type color for themed cards. */
+  /** Thin border accent color. Pass the Pokemon's type color for themed cards. */
   accentColor?: string;
-  /** Fill color override — defaults to COLORS.surface (white). */
+  /** Fill color override — defaults to a translucent glass white. */
   backgroundColor?: string;
-  /** Tiny alternating rotation gives a hand-placed sticker feel; 0 disables it. */
+  /** Tiny alternating rotation gives a hand-placed feel; 0 (default) keeps it flat, matching the app's glass HUD look. */
   tilt?: number;
 }
 
 /**
- * A "sticker" panel meant to sit on top of the vivid gradient backgrounds: solid white fill so
- * content always has contrast, a thick ink outline, a hard offset shadow, and an optional slight
- * rotation. The shadow is drawn by an absolutely-positioned twin so the card itself keeps its
- * natural full width (the previous wrapper-based approach broke width: '100%' on children).
+ * A glass panel meant to float over the vivid gradient backgrounds: translucent fill, a thin
+ * tinted border, and a soft diffuse shadow (SHADOW.lg) instead of the old hard cartoon-sticker
+ * offset shadow — matches the Pokemon GO-style HUD redesign, not the earlier thick-ink-outline look.
  */
 export function Card({
   children,
   style,
-  accentColor = COLORS.outline,
-  backgroundColor = COLORS.surface,
+  accentColor = COLORS.glassBorder,
+  backgroundColor = COLORS.glassSurface,
   tilt = 0,
 }: CardProps): React.JSX.Element {
   return (
-    <View style={[styles.container, tilt !== 0 && { transform: [{ rotate: `${tilt}deg` }] }, style]}>
-      <View style={styles.shadowTwin} />
-      <View style={[styles.card, { borderColor: accentColor, backgroundColor }]}>{children}</View>
+    <View
+      style={[
+        styles.card,
+        { borderColor: accentColor, backgroundColor },
+        tilt !== 0 && { transform: [{ rotate: `${tilt}deg` }] },
+        style,
+      ]}
+    >
+      {children}
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    width: '100%',
-  },
-  shadowTwin: {
-    position: 'absolute',
-    top: 6,
-    left: 6,
-    right: -6,
-    bottom: -6,
-    backgroundColor: COLORS.outline,
-    borderRadius: RADIUS.lg,
-  },
   card: {
-    backgroundColor: COLORS.surface,
-    borderRadius: RADIUS.lg,
-    borderWidth: 3,
+    width: '100%',
+    borderRadius: RADIUS.lg + 6,
+    borderWidth: 1,
     padding: SPACING.lg,
+    ...SHADOW.lg,
   },
 });

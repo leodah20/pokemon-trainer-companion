@@ -6,7 +6,7 @@ import { getCurrentRaidBosses } from '../../data/raids/raidsRepository';
 import { getAllSpecies, getSpriteUrl } from '../../data/pokedex/pokedexRepository';
 import { getRaidCounters } from '../../use-cases/getRaidCounters';
 import { WEATHER_BOOSTS } from '../../data/type-effectiveness/weatherBoosts';
-import { COLORS, DISPLAY_FONT, FONT_SIZE, RADIUS, SPACING, TypeBadge } from '../theme';
+import { COLORS, DISPLAY_FONT, FONT_SIZE, RADIUS, SHADOW, SPACING, TypeBadge } from '../theme';
 
 const ALL_SPECIES = getAllSpecies();
 const BOSSES = getCurrentRaidBosses();
@@ -122,13 +122,14 @@ const styles = StyleSheet.create({
   bossChip: {
     flexDirection: 'row',
     alignItems: 'center',
-    borderRadius: RADIUS.sm,
-    borderWidth: 2,
-    borderColor: COLORS.outline,
-    backgroundColor: COLORS.surface,
+    borderRadius: RADIUS.full,
+    borderWidth: 1,
+    borderColor: COLORS.glassBorder,
+    backgroundColor: COLORS.glassSurface,
     paddingVertical: SPACING.xs,
     paddingHorizontal: SPACING.sm,
     gap: SPACING.xs,
+    ...SHADOW.sm,
   },
   bossChipSelected: {
     backgroundColor: COLORS.brandRed,
@@ -151,14 +152,15 @@ const styles = StyleSheet.create({
     gap: SPACING.sm,
   },
   weatherChip: {
-    borderRadius: RADIUS.sm,
-    borderWidth: 2,
-    borderColor: COLORS.outline,
-    backgroundColor: COLORS.surface,
+    borderRadius: RADIUS.full,
+    borderWidth: 1,
+    borderColor: COLORS.glassBorder,
+    backgroundColor: COLORS.glassSurface,
     paddingVertical: SPACING.sm,
     paddingHorizontal: SPACING.md,
     minHeight: 36,
     justifyContent: 'center',
+    ...SHADOW.sm,
   },
   weatherChipSelected: {
     backgroundColor: COLORS.brandBlue,
@@ -181,12 +183,13 @@ const styles = StyleSheet.create({
   counterRow: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: COLORS.surface,
-    borderRadius: RADIUS.lg,
-    borderWidth: 2.5,
-    borderColor: COLORS.outline,
+    backgroundColor: COLORS.glassSurface,
+    borderRadius: RADIUS.lg + 6,
+    borderWidth: 1,
+    borderColor: COLORS.glassBorder,
     padding: SPACING.sm,
     gap: SPACING.sm,
+    ...SHADOW.md,
   },
   counterRank: {
     fontSize: FONT_SIZE.sm,

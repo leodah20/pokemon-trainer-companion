@@ -3,7 +3,7 @@ import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { EffectivenessBucket, TypeMatchup } from '../../domain/type-effectiveness/types';
 import { ALL_TYPE_NAMES, getMatchupsForAttacker } from '../../data/type-effectiveness/typeEffectivenessRepository';
-import { COLORS, FONT_SIZE, getTypeColor, RADIUS, SPACING, TypeBadge } from '../theme';
+import { COLORS, FONT_SIZE, getTypeColor, RADIUS, SHADOW, SPACING, TypeBadge } from '../theme';
 
 const BUCKET_LABELS: Record<EffectivenessBucket, string> = {
   superEffective: 'Super effective',
@@ -40,7 +40,7 @@ export function TypeChartScreen(): React.JSX.Element {
             onPress={() => setAttackerType(type)}
             style={[
               styles.typeChip,
-              { backgroundColor: type === attackerType ? getTypeColor(type) : COLORS.surface },
+              { backgroundColor: type === attackerType ? getTypeColor(type) : COLORS.glassSurface },
             ]}
           >
             <Text style={[styles.typeChipText, type === attackerType && styles.typeChipTextSelected]}>
@@ -97,14 +97,15 @@ const styles = StyleSheet.create({
     gap: SPACING.sm,
   },
   typeChip: {
-    borderRadius: RADIUS.sm,
-    borderWidth: 2,
-    borderColor: COLORS.outline,
+    borderRadius: RADIUS.full,
+    borderWidth: 1,
+    borderColor: COLORS.glassBorder,
     paddingVertical: SPACING.sm,
     paddingHorizontal: SPACING.md,
     justifyContent: 'center',
     alignItems: 'center',
     minHeight: 36,
+    ...SHADOW.sm,
   },
   typeChipText: {
     fontSize: FONT_SIZE.sm,

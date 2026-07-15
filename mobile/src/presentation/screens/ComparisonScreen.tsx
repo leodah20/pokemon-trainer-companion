@@ -4,7 +4,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { PokemonSpecies } from '../../domain/pokemon-species';
 import { getAllSpecies, getSpriteUrl } from '../../data/pokedex/pokedexRepository';
 import { compareSpecies, ComparisonWinner, StatComparison } from '../../use-cases/comparePokemon';
-import { Card, COLORS, DISPLAY_FONT, FONT_SIZE, getTypeColor, RADIUS, SPACING, TypeBadge } from '../theme';
+import { Card, COLORS, DISPLAY_FONT, FONT_SIZE, getTypeColor, RADIUS, SHADOW, SPACING, TypeBadge } from '../theme';
 
 const ALL_SPECIES = getAllSpecies();
 const MAX_SEARCH_RESULTS = 6;
@@ -154,20 +154,22 @@ const styles = StyleSheet.create({
   },
   searchInput: {
     borderRadius: RADIUS.full,
-    borderWidth: 2.5,
-    borderColor: COLORS.outline,
-    backgroundColor: COLORS.surface,
+    borderWidth: 1,
+    borderColor: COLORS.glassBorder,
+    backgroundColor: COLORS.glassSurface,
     paddingHorizontal: SPACING.lg,
     paddingVertical: SPACING.sm + 2,
     fontSize: FONT_SIZE.md,
     color: COLORS.textPrimary,
+    ...SHADOW.md,
   },
   resultsList: {
     borderRadius: RADIUS.md,
-    borderWidth: 2,
-    borderColor: COLORS.outline,
-    backgroundColor: COLORS.surface,
+    borderWidth: 1,
+    borderColor: COLORS.glassBorder,
+    backgroundColor: COLORS.glassSurface,
     overflow: 'hidden',
+    ...SHADOW.sm,
   },
   resultRow: {
     flexDirection: 'row',
@@ -191,11 +193,12 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     borderRadius: RADIUS.md,
-    borderWidth: 2.5,
-    borderColor: COLORS.outline,
-    backgroundColor: COLORS.surface,
+    borderWidth: 1,
+    borderColor: COLORS.glassBorder,
+    backgroundColor: COLORS.glassSurface,
     padding: SPACING.sm,
     gap: SPACING.sm,
+    ...SHADOW.sm,
   },
   selectedSprite: {
     width: 48,

@@ -3,7 +3,7 @@ import { FlatList, Image, Pressable, StyleSheet, Text, View } from 'react-native
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { getAllSpecies, getSpriteUrl } from '../../data/pokedex/pokedexRepository';
 import { getTopRanking, RANKING_CATEGORIES, RankingCategory } from '../../use-cases/rankTopPokemon';
-import { COLORS, FONT_SIZE, RADIUS, SPACING, TypeBadge } from '../theme';
+import { COLORS, FONT_SIZE, RADIUS, SHADOW, SPACING, TypeBadge } from '../theme';
 import { TabScreenProps } from '../navigation/types';
 
 const ALL_SPECIES = getAllSpecies();
@@ -84,15 +84,16 @@ const styles = StyleSheet.create({
     gap: SPACING.sm,
   },
   categoryChip: {
-    borderRadius: RADIUS.sm,
-    borderWidth: 2,
-    borderColor: COLORS.outline,
-    backgroundColor: COLORS.surface,
+    borderRadius: RADIUS.full,
+    borderWidth: 1,
+    borderColor: COLORS.glassBorder,
+    backgroundColor: COLORS.glassSurface,
     paddingVertical: SPACING.sm,
     paddingHorizontal: SPACING.md,
     justifyContent: 'center',
     alignItems: 'center',
     minHeight: 36,
+    ...SHADOW.sm,
   },
   categoryChipSelected: {
     backgroundColor: COLORS.brandRed,
@@ -113,12 +114,13 @@ const styles = StyleSheet.create({
   row: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: COLORS.surface,
-    borderRadius: RADIUS.lg,
-    borderWidth: 2.5,
-    borderColor: COLORS.outline,
+    backgroundColor: COLORS.glassSurface,
+    borderRadius: RADIUS.lg + 6,
+    borderWidth: 1,
+    borderColor: COLORS.glassBorder,
     padding: SPACING.sm,
     marginBottom: SPACING.sm,
+    ...SHADOW.md,
   },
   rank: {
     width: 34,

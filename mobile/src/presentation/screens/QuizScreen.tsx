@@ -3,7 +3,7 @@ import { Pressable, StyleSheet, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { getAllSpecies } from '../../data/pokedex/pokedexRepository';
 import { generateQuiz } from '../../use-cases/generateQuiz';
-import { Card, COLORS, DISPLAY_FONT, FONT_SIZE, RADIUS, SPACING } from '../theme';
+import { Card, COLORS, DISPLAY_FONT, FONT_SIZE, RADIUS, SHADOW, SPACING } from '../theme';
 
 const ALL_SPECIES = getAllSpecies();
 const QUESTION_COUNT = 10;
@@ -169,11 +169,12 @@ const styles = StyleSheet.create({
   },
   optionButton: {
     borderRadius: RADIUS.md,
-    borderWidth: 2.5,
-    borderColor: COLORS.outline,
-    backgroundColor: COLORS.surface,
+    borderWidth: 1,
+    borderColor: COLORS.glassBorder,
+    backgroundColor: COLORS.glassSurface,
     paddingVertical: SPACING.md,
     paddingHorizontal: SPACING.lg,
+    ...SHADOW.sm,
   },
   optionCorrect: {
     backgroundColor: COLORS.success,
@@ -197,10 +198,9 @@ const styles = StyleSheet.create({
     marginTop: SPACING.xl,
     backgroundColor: COLORS.brandRed,
     borderRadius: RADIUS.full,
-    borderWidth: 3,
-    borderColor: COLORS.outline,
     paddingVertical: SPACING.md,
     alignItems: 'center',
+    ...SHADOW.lg,
   },
   primaryButtonText: {
     fontFamily: DISPLAY_FONT,

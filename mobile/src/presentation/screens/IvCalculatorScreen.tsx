@@ -4,7 +4,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { calculateIvPercentage, IvCombination } from '../../domain/iv-calculator';
 import { getSpeciesById, getSpriteUrl } from '../../data/pokedex/pokedexRepository';
 import { calculateIvsForSpecies, UnknownSpeciesError } from '../../use-cases/calculateIvsForSpecies';
-import { Card, COLORS, DISPLAY_FONT, FONT_SIZE, RADIUS, SPACING } from '../theme';
+import { Card, COLORS, DISPLAY_FONT, FONT_SIZE, RADIUS, SHADOW, SPACING } from '../theme';
 import { RootStackScreenProps } from '../navigation/types';
 
 type Props = RootStackScreenProps<'IvCalculator'>;
@@ -203,10 +203,10 @@ const styles = StyleSheet.create({
   speciesPicker: {
     flexDirection: 'row',
     alignItems: 'center',
-    borderRadius: RADIUS.sm,
-    borderWidth: 2,
-    borderColor: COLORS.outline,
-    backgroundColor: COLORS.surface,
+    borderRadius: RADIUS.md,
+    borderWidth: 1,
+    borderColor: COLORS.glassBorder,
+    backgroundColor: COLORS.glassSurface,
     padding: SPACING.sm,
   },
   pressedOpacity: {
@@ -229,10 +229,10 @@ const styles = StyleSheet.create({
     fontWeight: '700',
   },
   input: {
-    borderRadius: RADIUS.sm,
-    borderWidth: 2,
-    borderColor: COLORS.outline,
-    backgroundColor: COLORS.surface,
+    borderRadius: RADIUS.md,
+    borderWidth: 1,
+    borderColor: COLORS.glassBorder,
+    backgroundColor: COLORS.glassSurface,
     paddingHorizontal: SPACING.md,
     paddingVertical: SPACING.sm,
     fontSize: FONT_SIZE.md,
@@ -248,11 +248,10 @@ const styles = StyleSheet.create({
   calculateButton: {
     marginTop: SPACING.xl,
     backgroundColor: COLORS.brandBlue,
-    borderRadius: RADIUS.md,
-    borderWidth: 3,
-    borderColor: COLORS.outline,
+    borderRadius: RADIUS.full,
     paddingVertical: SPACING.md,
     alignItems: 'center',
+    ...SHADOW.lg,
   },
   calculateButtonText: {
     fontFamily: DISPLAY_FONT,
@@ -275,11 +274,12 @@ const styles = StyleSheet.create({
     marginHorizontal: SPACING.lg,
     paddingHorizontal: SPACING.md,
     paddingVertical: SPACING.md,
-    backgroundColor: COLORS.surface,
-    borderRadius: RADIUS.sm,
-    borderWidth: 2,
-    borderColor: COLORS.outline,
+    backgroundColor: COLORS.glassSurface,
+    borderRadius: RADIUS.md,
+    borderWidth: 1,
+    borderColor: COLORS.glassBorder,
     marginTop: SPACING.sm,
+    ...SHADOW.sm,
   },
   resultText: {
     fontSize: FONT_SIZE.md,
