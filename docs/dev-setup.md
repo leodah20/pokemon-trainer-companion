@@ -60,14 +60,27 @@ This runs the backend (`start:dev`, watch mode) and the Metro bundler side by si
 
 ### Option A: Android emulator
 
-In a separate terminal, with an emulator already running:
+An AVD named `pokemon_trainer_companion` already exists on this machine — this is the
+recommended default for day-to-day work, since it doesn't depend on a physical phone staying
+connected over USB.
 
 ```bash
-cd mobile
-npx react-native run-android
+# Start the emulator (headless-friendly; drop -no-window to see it)
+"$ANDROID_HOME/emulator/emulator" -avd pokemon_trainer_companion &
+
+# Wait for it to finish booting before installing
+adb wait-for-device shell 'while [[ -z $(getprop sys.boot_completed) ]]; do sleep 1; done'
+
+cd mobile/android
+./gradlew installDebug   # or: npx react-native run-android, from mobile/
+
+# adb reverse is technically not required for emulators (they resolve localhost:8081 via
+# 10.0.2.2 automatically), but running it is harmless and keeps the same command working for
+# both emulator and physical device:
+adb -s emulator-5554 reverse tcp:8081 tcp:8081
 ```
 
-The first time the emulator doesn't exist:
+If the AVD doesn't exist yet (fresh machine):
 
 ```bash
 sdkmanager --install "system-images;android-36;google_apis;x86_64"
