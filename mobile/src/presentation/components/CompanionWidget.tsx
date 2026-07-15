@@ -1,5 +1,17 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
-import { ActivityIndicator, Animated, Image, Modal, Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
+import {
+  ActivityIndicator,
+  Animated,
+  Dimensions,
+  Image,
+  Modal,
+  PanResponder,
+  Pressable,
+  StyleSheet,
+  Text,
+  TextInput,
+  View,
+} from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { getAllSpecies, getSpeciesById, getSpriteUrl } from '../../data/pokedex/pokedexRepository';
 import { getLoreWithFallback } from '../../data/lore/loreRepository';
@@ -11,6 +23,9 @@ const DEFAULT_COMPANION_ID = 25; // Pikachu — the iconic "pick a buddy" defaul
 const BOUNCE_DISTANCE = 7;
 const BOUNCE_DURATION_MS = 900;
 const MAX_PICKER_RESULTS = 8;
+const AVATAR_SIZE = 56;
+const DRAG_THRESHOLD = 6; // px of movement before a touch counts as a drag, not a tap
+const SCREEN_MARGIN = 8;
 
 interface DialogueEntry {
   label: string;
@@ -42,6 +57,44 @@ export function CompanionWidget(): React.JSX.Element {
   const [bubbleVisible, setBubbleVisible] = useState(false);
   const [dialogueIndex, setDialogueIndex] = useState(0);
   const [pickerVisible, setPickerVisible] = useState(false);
+
+  // Draggable position — starts bottom-left (roughly where it used to be pinned), draggable
+  // anywhere after that. A ref (kept in sync via Animated's listener) tracks the live value so
+  // release-time clamping doesn't need to reach into Animated's private internals.
+  const screen = useMemo(() => Dimensions.get('window'), []);
+  const initialPosition = useRef({
+    x: SCREEN_MARGIN + 12,
+    y: screen.height - insets.bottom - 24 - AVATAR_SIZE,
+  }).current;
+  const pan = useRef(new Animated.ValueXY(initialPosition)).current;
+  const currentPosition = useRef(initialPosition);
+  useEffect(() => {
+    const id = pan.addListener((value) => {
+      currentPosition.current = value;
+    });
+    return () => pan.removeListener(id);
+  }, [pan]);
+
+  const panResponder = useRef(
+    PanResponder.create({
+      onStartShouldSetPanResponder: () => false,
+      onMoveShouldSetPanResponder: (_event, gesture) =>
+        Math.abs(gesture.dx) > DRAG_THRESHOLD || Math.abs(gesture.dy) > DRAG_THRESHOLD,
+      onPanResponderGrant: () => {
+        pan.setOffset(currentPosition.current);
+        pan.setValue({ x: 0, y: 0 });
+      },
+      onPanResponderMove: Animated.event([null, { dx: pan.x, dy: pan.y }], { useNativeDriver: false }),
+      onPanResponderRelease: () => {
+        pan.flattenOffset();
+        const maxX = screen.width - AVATAR_SIZE - SCREEN_MARGIN;
+        const maxY = screen.height - AVATAR_SIZE - SCREEN_MARGIN;
+        const clampedX = Math.min(Math.max(currentPosition.current.x, SCREEN_MARGIN), maxX);
+        const clampedY = Math.min(Math.max(currentPosition.current.y, SCREEN_MARGIN), maxY);
+        Animated.spring(pan, { toValue: { x: clampedX, y: clampedY }, useNativeDriver: false, friction: 7 }).start();
+      },
+    }),
+  ).current;
 
   const [aiState, setAiState] = useState<'idle' | 'loading' | 'error'>('idle');
   const [aiText, setAiText] = useState<string | null>(null);
@@ -115,7 +168,7 @@ export function CompanionWidget(): React.JSX.Element {
   }
 
   return (
-    <View style={[styles.wrapper, { bottom: insets.bottom + 24 }]}>
+    <Animated.View style={[styles.wrapper, { transform: pan.getTranslateTransform() }]}>
       {bubbleVisible && currentLine && (
         <Pressable style={styles.bubble} onPress={handleNextLine}>
           <View style={styles.bubbleHeaderRow}>
@@ -156,13 +209,14 @@ export function CompanionWidget(): React.JSX.Element {
 
       <View style={styles.avatarRow}>
         <Animated.View
+          {...panResponder.panHandlers}
           style={{ transform: [{ translateY: bounce.interpolate({ inputRange: [0, 1], outputRange: [0, -BOUNCE_DISTANCE] }) }] }}
         >
           <Pressable
             style={styles.avatarButton}
             onPress={handleAvatarPress}
             onLongPress={() => setPickerVisible(true)}
-            accessibilityLabel={`${species.name} companion, tap for tips, hold to change`}
+            accessibilityLabel={`${species.name} companion, tap for tips, hold to change, drag to move`}
           >
             <Image source={{ uri: getSpriteUrl(species.id) }} style={styles.avatarSprite} resizeMode="contain" />
           </Pressable>
@@ -170,7 +224,7 @@ export function CompanionWidget(): React.JSX.Element {
       </View>
 
       <CompanionPicker visible={pickerVisible} onClose={() => setPickerVisible(false)} onPick={handlePickSpecies} />
-    </View>
+    </Animated.View>
   );
 }
 
@@ -216,12 +270,11 @@ function CompanionPicker({ visible, onClose, onPick }: CompanionPickerProps): Re
   );
 }
 
-const AVATAR_SIZE = 56;
-
 const styles = StyleSheet.create({
   wrapper: {
     position: 'absolute',
-    left: 20,
+    top: 0,
+    left: 0,
     alignItems: 'flex-start',
   },
   avatarRow: {

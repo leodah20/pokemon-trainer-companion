@@ -133,6 +133,17 @@ Deliberately deferred past this beta — not gaps, just not yet prioritized:
 
 > <time datetime="2026-07-15">2026-07-15</time>
 >
+> **Companion widget: draggable avatar:**
+> - The floating avatar can now be dragged anywhere on screen (RN core `PanResponder`, no new
+>   dependency — same "avoid Reanimated/gesture-handler unless needed" call as the rest of the
+>   redesign). Starts bottom-left, clamped to stay fully on-screen on release, with a small
+>   spring settle.
+> - A plain tap still opens the speech bubble normally — `onMoveShouldSetPanResponder` only
+>   claims the gesture once the touch moves past a small threshold, so short taps pass through
+>   to the avatar's `Pressable` untouched. Verified on the physical device: both tap-to-open and
+>   drag-to-reposition work correctly (a synthetic `adb shell input swipe` test was inconclusive
+>   — too few intermediate touch samples for RN's responder system — real-finger testing confirmed it).
+>
 > **Mobile ↔ Companion AI wiring:**
 > - `CompanionWidget`'s speech bubble now has an "Ask AI ✨" button — calls the backend's
 >   `POST /api/companion/suggest` and appends the result as a new page in the dialogue cycle
