@@ -21,12 +21,16 @@ jobs: data sync).
 
 ## UC-02 — Get a raid/gym counter recommendation
 
-1. Trainer selects the raid boss (or gym defender) from a list.
-2. Trainer optionally filters by "Pokémon I own" (using locally saved team data).
-3. System ranks counters by type effectiveness and moveset DPS.
-4. Trainer views the ranked list with recommended fast/charge moves.
+1. Trainer selects the raid boss from a list (grouped by tier: 1★/3★/5★).
+2. Trainer optionally selects the current weather for a boost-adjusted ranking.
+3. System ranks counters by type effectiveness × STAB × weather boost (an estimated DPS score,
+   not a full moveset simulation — the app doesn't have a fast/charge move
+   power+energy+duration database yet).
+4. Trainer views the top 10 ranked list.
 
-**Status:** 🔄 Planned (blocked by backend species API)
+**Status:** ✅ Done — `RaidCountersScreen` (mobile, offline) + `GET /api/raids/current`,
+`GET /api/raids/:id/counters` (backend, not yet consumed by mobile). "Pokémon I own" filtering
+and recommended fast/charge moves are not implemented — would need the move database above.
 
 ---
 

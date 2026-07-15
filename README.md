@@ -23,6 +23,9 @@ product needs before it ships to app stores.
 - PvP move rankings — PvPoke-sourced moveset scores for Great / Ultra / Master League
 - Bulk percentile ranking — tankiness comparison (DEF + STA heuristic) against all 965 species
 - Meta tier classification — scores classified as Top / Viable / Niche
+- Raid counters — top 10 estimated counters per boss (11 Gen 1 bosses, tiers 1/3/5), with
+  optional weather-boost adjustment
+- Evolution chain viewer — full chain with stats and heuristic candy costs (Gen 1-2 coverage)
 
 **Partner Pokédex (implemented)**
 - Pokémon detail screen with 8 lore categories: origin & inspiration, GO relevance, battle tips, easter eggs, GO vs main series differences, evolution costs, shiny rates
@@ -64,7 +67,7 @@ reasoning.
 
 <!-- ==================== PROGRESS OVERVIEW ==================== -->
 
-Progress: 78% ███████████████░░░░░ (18 / 23 features)
+Progress: 87% █████████████████░░░ (20 / 23 features)
 
 | Category | Feature | Status | Tests |
 |----------|---------|--------|-------|
@@ -86,14 +89,29 @@ Progress: 78% ███████████████░░░░░ (18 /
 | | Pokémon comparison tool (side-by-side stats) | ✅ Done | ✅ |
 | | Top rankings (ATK/DEF/STA/Bulk/Max CP/PvP by league) | ✅ Done | ✅ |
 | | Quiz / trivia mode | ✅ Done | ✅ |
-| | Raid counters with DPS estimates | 🔄 Planned | — |
-| | Evolution chain viewer with costs | 🔄 Planned | — |
+| | Raid counters with DPS estimates | ✅ Done | ✅ |
+| | Evolution chain viewer with costs | ✅ Done | ✅ |
 | **Future** | Overlay OCR (native Android module + ML Kit) | ❌ Not started | — |
 | | Cross-device sync + authentication | ❌ Not started | — |
 
 ### Last implemented features
 
 > <time datetime="2026-07-15">2026-07-15</time>
+>
+> **Mobile: Raid Counters and Evolution Chain viewer (Fase 3.4-3.5):**
+> - New `RaidCountersScreen` — pick a boss (grouped by tier: 1★/3★/5★) and an optional weather
+>   condition, see the top 10 estimated counters. Reachable from the Tools hub.
+> - New `EvolutionChainScreen` — full evolution chain (sprites, types, stats, heuristic candy
+>   cost between stages), reachable from a new "Evolution Chain" button on the Pokémon detail
+>   screen. Coverage is Gen 1-2 (same range the evolution family data has).
+> - Both screens are offline-first, mirroring the existing Type Chart pattern: raid boss data,
+>   weather boosts, and evolution families were ported into `mobile/src/data/` as separate
+>   copies of the same backend data, not live API calls (see `docs/architecture.md`)
+> - New pure use-cases `getRaidCounters.ts` and `getEvolutionChain.ts`, unit tested (4 + 2 tests)
+> - Fixed two pre-existing, unrelated TS errors left over from an earlier lore-system merge:
+>   `Card` now accepts a `backgroundColor` prop, and `COLORS.retroScreenGreen`/`retroScreenGreenDark`
+>   are now defined; deleted the dead, broken `LoreSection.tsx` (unused, not imported anywhere)
+> - Mobile suite: **52/52 tests passing**, zero TypeScript errors app-wide
 >
 > **Backend: Type Chart, PvP, and Raids modules (Fase 2.3-2.5 of the content roadmap):**
 > - `GET /api/type-chart` — full 18×18 attacker→defender multiplier matrix

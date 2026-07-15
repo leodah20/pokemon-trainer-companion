@@ -10,6 +10,8 @@ export type RootStackParamList = {
   IvCalculator: { speciesId?: number } | undefined;
   Comparison: undefined;
   TypeChart: undefined;
+  RaidCounters: undefined;
+  EvolutionChain: { speciesId: number };
   OverlayDemo: undefined;
 };
 

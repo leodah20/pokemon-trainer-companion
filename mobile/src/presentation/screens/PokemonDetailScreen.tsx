@@ -244,6 +244,13 @@ export function PokemonDetailScreen({ route, navigation }: Props): React.JSX.Ele
           </Card>
 
           <Pressable
+            style={({ pressed }) => [styles.secondaryButton, pressed && styles.calculateButtonPressed]}
+            onPress={() => navigation.navigate('EvolutionChain', { speciesId: species.id })}
+          >
+            <Text style={styles.secondaryButtonText}>Evolution Chain</Text>
+          </Pressable>
+
+          <Pressable
             style={({ pressed }) => [styles.calculateButton, pressed && styles.calculateButtonPressed]}
             onPress={() => navigation.navigate('IvCalculator', { speciesId: species.id })}
           >
@@ -463,8 +470,23 @@ const styles = StyleSheet.create({
     marginBottom: SPACING.sm,
     lineHeight: 20,
   },
-  calculateButton: {
+  secondaryButton: {
     marginTop: SPACING.xxl,
+    backgroundColor: COLORS.surface,
+    borderRadius: RADIUS.full,
+    borderWidth: 3,
+    borderColor: COLORS.outline,
+    paddingVertical: SPACING.md + 2,
+    width: '100%',
+    alignItems: 'center',
+  },
+  secondaryButtonText: {
+    fontFamily: DISPLAY_FONT,
+    fontSize: FONT_SIZE.lg,
+    color: COLORS.textPrimary,
+  },
+  calculateButton: {
+    marginTop: SPACING.md,
     backgroundColor: COLORS.brandRed,
     borderRadius: RADIUS.full,
     borderWidth: 3,

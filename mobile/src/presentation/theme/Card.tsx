@@ -7,6 +7,8 @@ interface CardProps extends PropsWithChildren {
   style?: StyleProp<ViewStyle>;
   /** Border + title-strip color. Pass the Pokemon's type color for themed cards. */
   accentColor?: string;
+  /** Fill color override — defaults to COLORS.surface (white). */
+  backgroundColor?: string;
   /** Tiny alternating rotation gives a hand-placed sticker feel; 0 disables it. */
   tilt?: number;
 }
@@ -17,11 +19,17 @@ interface CardProps extends PropsWithChildren {
  * rotation. The shadow is drawn by an absolutely-positioned twin so the card itself keeps its
  * natural full width (the previous wrapper-based approach broke width: '100%' on children).
  */
-export function Card({ children, style, accentColor = COLORS.outline, tilt = 0 }: CardProps): React.JSX.Element {
+export function Card({
+  children,
+  style,
+  accentColor = COLORS.outline,
+  backgroundColor = COLORS.surface,
+  tilt = 0,
+}: CardProps): React.JSX.Element {
   return (
     <View style={[styles.container, tilt !== 0 && { transform: [{ rotate: `${tilt}deg` }] }, style]}>
       <View style={styles.shadowTwin} />
-      <View style={[styles.card, { borderColor: accentColor }]}>{children}</View>
+      <View style={[styles.card, { borderColor: accentColor, backgroundColor }]}>{children}</View>
     </View>
   );
 }

@@ -19,6 +19,10 @@ export const COLORS = {
   // Semantic
   success: '#22C55E',
   danger: '#DC2626',
+
+  // Retro CRT-screen look, used for the lore/trivia card
+  retroScreenGreen: '#C8E6C9',
+  retroScreenGreenDark: '#1B4D1F',
 } as const;
 
 /** Community-standard type color convention (not official Nintendo branding, widely used by fan tools). */

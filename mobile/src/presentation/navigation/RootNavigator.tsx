@@ -2,9 +2,11 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import React from 'react';
 import { COLORS, DISPLAY_FONT } from '../theme';
 import { ComparisonScreen } from '../screens/ComparisonScreen';
+import { EvolutionChainScreen } from '../screens/EvolutionChainScreen';
 import { IvCalculatorScreen } from '../screens/IvCalculatorScreen';
 import { OverlayDemoScreen } from '../screens/OverlayDemoScreen';
 import { PokemonDetailScreen } from '../screens/PokemonDetailScreen';
+import { RaidCountersScreen } from '../screens/RaidCountersScreen';
 import { TypeChartScreen } from '../screens/TypeChartScreen';
 import { BottomTabNavigator } from './BottomTabNavigator';
 import { RootStackParamList } from './types';
@@ -29,6 +31,8 @@ export function RootNavigator(): React.JSX.Element {
       <Stack.Screen name="IvCalculator" component={IvCalculatorScreen} options={{ title: 'IV Calculator' }} />
       <Stack.Screen name="Comparison" component={ComparisonScreen} options={{ title: 'Compare' }} />
       <Stack.Screen name="TypeChart" component={TypeChartScreen} options={{ title: 'Type Chart' }} />
+      <Stack.Screen name="RaidCounters" component={RaidCountersScreen} options={{ title: 'Raid Counters' }} />
+      <Stack.Screen name="EvolutionChain" component={EvolutionChainScreen} options={{ title: 'Evolution Chain' }} />
       <Stack.Screen name="OverlayDemo" component={OverlayDemoScreen} options={{ title: 'Overlay Demo' }} />
     </Stack.Navigator>
   );

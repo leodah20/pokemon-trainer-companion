@@ -32,6 +32,12 @@ const TOOLS: readonly ToolEntry[] = [
     description: 'Pick an attacking type and see everything it’s strong or weak against.',
     onPress: (navigation) => navigation.navigate('TypeChart'),
   },
+  {
+    emoji: '⚔️',
+    title: 'Raid Counters',
+    description: 'Pick a raid boss and see the top estimated counters, with weather boosts.',
+    onPress: (navigation) => navigation.navigate('RaidCounters'),
+  },
 ];
 
 export function ToolsHubScreen({ navigation }: Props): React.JSX.Element {
