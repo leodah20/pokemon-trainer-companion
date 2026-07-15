@@ -67,6 +67,11 @@ reasoning.
 
 ## Project status
 
+**v1.0 Beta.** Every planned battle-stat calculator, PvP tool, and reference screen (type chart,
+rankings, raid counters, evolution chain, quiz) is implemented, tested, and verified on a physical
+device. Overlay OCR, cross-device sync, and deeper content (dark mode, i18n, extra lore/PvP-IV
+cards) are intentionally out of scope for this beta — see "Post-beta scope" below.
+
 <!-- ==================== PROGRESS OVERVIEW ==================== -->
 
 Progress: 87% █████████████████░░░ (20 / 23 features)
@@ -96,9 +101,36 @@ Progress: 87% █████████████████░░░ (20 /
 | **Future** | Overlay OCR (native Android module + ML Kit) | ❌ Not started | — |
 | | Cross-device sync + authentication | ❌ Not started | — |
 
+### Post-beta scope
+
+Deliberately deferred past this beta — not gaps, just not yet prioritized:
+
+- **Overlay OCR** (Fase 6) — needs a native Android Kotlin module; biggest remaining chunk of work
+- **Cross-device sync + auth** — backend schema exists (`Trainer`, `SavedTeam`), no endpoints yet
+- **i18n / translation** — UI is English-only by design for now (tracked, see task list)
+- **Dark mode** — `useColorScheme` is read in `App.tsx` but not wired into the theme yet
+- **Extra content cards** (Fase 5 of the original roadmap) — Rarity & Spawn, Best PvP League +
+  IV spread, Buddy & Candy distance, Legacy Moves — need new data sources, not just UI work
+- **Raid boss rotation / PvP rankings** are curated mocks (documented in-code), not live-synced —
+  Fase 2.6's scheduled sync job was never built
+- **AsyncStorage persistence** (e.g. last IV Calculator result) — skipped to avoid adding a new
+  native dependency this late in the beta; safe to add post-beta
+
 ### Last implemented features
 
 > <time datetime="2026-07-15">2026-07-15</time>
+>
+> **v1.0 Beta cut — final bug pass:**
+> - Fixed a real bug in the IV Calculator: level range inputs rejected every decimal (`25.5`),
+>   even though Pokemon levels legitimately go in 0.5 increments — `Number.isInteger` was too
+>   strict. New `parseLevel()` accepts positive multiples of 0.5; CP/HP fields are unaffected
+>   (those are always whole numbers). Switched the level fields to a `decimal-pad` keyboard.
+> - Verified `cpMultiplier.ts`'s table (levels 1-45) is actually complete, not an unfinished gap:
+>   fetched the cited source (PoGo API) directly and confirmed it doesn't publish 45.5-50 either —
+>   `findIndividualValueCombinations` already bounds its search to known levels, so this was
+>   never a crash risk, just a documentation clarification.
+> - Backend + mobile: **66/66 tests passing** (14 backend, 52 mobile), zero TypeScript errors.
+> - Declared this the v1.0 Beta cut — see "Post-beta scope" above for what's deliberately deferred.
 >
 > **Design: PTC rebrand + Pokedex chrome polish:**
 > - New in-app logo wordmark "PTC" (gold, thick outline shadow) replaces "Professor Dex"
