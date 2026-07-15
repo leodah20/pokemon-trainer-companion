@@ -21,6 +21,16 @@ function parsePositiveInt(value: string): number | null {
   return parsed;
 }
 
+/** Pokemon levels go in 0.5 increments (half-levels are real, e.g. 25.5) — parsePositiveInt
+ * rejected all of them, which was a real bug: entering "25.5" as a level always failed. */
+function parseLevel(value: string): number | null {
+  const parsed = Number(value);
+  if (!Number.isFinite(parsed) || parsed <= 0 || Math.round(parsed * 2) !== parsed * 2) {
+    return null;
+  }
+  return parsed;
+}
+
 export function IvCalculatorScreen({ route, navigation }: Props): React.JSX.Element {
   const [speciesId, setSpeciesId] = useState(route.params?.speciesId ?? DEFAULT_SPECIES_ID);
   const [cpInput, setCpInput] = useState('');
@@ -43,11 +53,17 @@ export function IvCalculatorScreen({ route, navigation }: Props): React.JSX.Elem
   function handleCalculate(): void {
     const cp = parsePositiveInt(cpInput);
     const hp = parsePositiveInt(hpInput);
-    const minLevel = parsePositiveInt(minLevelInput);
-    const maxLevel = parsePositiveInt(maxLevelInput);
+    const minLevel = parseLevel(minLevelInput);
+    const maxLevel = parseLevel(maxLevelInput);
 
-    if (cp === null || hp === null || minLevel === null || maxLevel === null) {
-      setErrorMessage('Enter valid positive whole numbers for CP, HP, and level range.');
+    if (cp === null || hp === null) {
+      setErrorMessage('Enter valid positive whole numbers for CP and HP.');
+      setResults(null);
+      return;
+    }
+
+    if (minLevel === null || maxLevel === null) {
+      setErrorMessage('Level must be a positive number in steps of 0.5 (e.g. 1, 1.5, 25.5).');
       setResults(null);
       return;
     }
@@ -125,7 +141,7 @@ export function IvCalculatorScreen({ route, navigation }: Props): React.JSX.Elem
                   <Text style={styles.label}>Min level</Text>
                   <TextInput
                     style={styles.input}
-                    keyboardType="number-pad"
+                    keyboardType="decimal-pad"
                     value={minLevelInput}
                     onChangeText={setMinLevelInput}
                   />
@@ -134,7 +150,7 @@ export function IvCalculatorScreen({ route, navigation }: Props): React.JSX.Elem
                   <Text style={styles.label}>Max level</Text>
                   <TextInput
                     style={styles.input}
-                    keyboardType="number-pad"
+                    keyboardType="decimal-pad"
                     value={maxLevelInput}
                     onChangeText={setMaxLevelInput}
                   />

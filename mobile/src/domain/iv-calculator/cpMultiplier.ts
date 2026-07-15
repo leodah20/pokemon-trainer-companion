@@ -3,6 +3,12 @@
  * table is sourced from PoGo API (https://pogoapi.net/api/v1/cp_multiplier.json), the same
  * community-maintained dataset docs/architecture.md designates as the sync source for this data.
  * Levels above 40 only apply to buddy-boosted or weather-boosted Pokemon.
+ *
+ * This table is complete as of the cited source — PoGo API's own dataset stops at level 45
+ * (verified 2026-07-15), it does not publish 45.5-50. Don't extrapolate those levels from an
+ * unofficial source without updating the citation above; findIndividualValueCombinations already
+ * bounds its search to whatever levels are actually in this table, so a level range that reaches
+ * past 45 just naturally yields no matches above it instead of crashing.
  */
 export interface CpMultiplierEntry {
   level: number;
