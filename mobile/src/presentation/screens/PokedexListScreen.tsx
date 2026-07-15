@@ -22,6 +22,7 @@ import {
   getTypeColor,
   getTypeGradient,
   RADIUS,
+  SHADOW,
   SPACING,
   tintTowardWhite,
   TypeBadge,
@@ -40,9 +41,6 @@ const ALL_TYPES = getAllTypes();
 const BACKGROUND_TRANSITION_MS = 600;
 const DEFAULT_GRADIENT = getTypeGradient(getTypeColor(ALL_SPECIES[0].types[0]));
 
-// Approximate height of one list row + its gap (sprite 60 + vertical padding 16 + list gap 12) —
-// used only to estimate where each row sits for the scroll-fade effect below, not for layout.
-const ROW_SLOT_HEIGHT = 88;
 const FADE_DISTANCE = 90;
 
 const AnimatedFlatList = Animated.createAnimatedComponent(FlatList<PokemonSpecies>);
@@ -53,6 +51,10 @@ export function PokedexListScreen({ navigation, route }: Props): React.JSX.Eleme
   const pickerMode = route.params?.pickerMode ?? false;
   const [filters, setFilters] = useState<PokedexFilters>(EMPTY_POKEDEX_FILTERS);
   const [quickActionsVisible, setQuickActionsVisible] = useState(false);
+  // Measured from the first rendered row's actual on-screen height (see onLayout below) instead
+  // of a hardcoded guess — a guessed height that's too small was the root cause of cards fading
+  // out far too early ("everything disappears" while barely scrolled).
+  const [measuredRowHeight, setMeasuredRowHeight] = useState<number | null>(null);
 
   const results = useMemo(() => filterPokedex(ALL_SPECIES, filters), [filters]);
 
@@ -182,22 +184,36 @@ export function PokedexListScreen({ navigation, route }: Props): React.JSX.Eleme
           renderItem={({ item: species, index }) => {
             const itemColor = getTypeColor(species.types[0]);
             // Cards fade out as they scroll past the top of the list. The exit point is where
-            // the item's bottom edge would align with the viewport top (index+1 row heights of
+            // the item's bottom edge would align with the viewport top (index+1 row slots of
             // scroll) — using the item's own top (index * height) instead made item 0 start
             // pre-faded, since its top already sits at scrollY 0 before any scrolling happens.
-            const itemExitPoint = (index + 1) * ROW_SLOT_HEIGHT;
-            const opacity = scrollY.interpolate({
-              inputRange: [itemExitPoint - FADE_DISTANCE, itemExitPoint],
-              outputRange: [1, 0],
-              extrapolate: 'clamp',
-            });
+            // Before the first row has reported its real height, skip the fade entirely rather
+            // than guess — a wrong guess is what caused cards to disappear far too early.
+            const opacity =
+              measuredRowHeight === null
+                ? 1
+                : scrollY.interpolate({
+                    inputRange: [
+                      (index + 1) * (measuredRowHeight + SPACING.md) - FADE_DISTANCE,
+                      (index + 1) * (measuredRowHeight + SPACING.md),
+                    ],
+                    outputRange: [1, 0],
+                    extrapolate: 'clamp',
+                  });
             return (
-              <Animated.View style={{ opacity }}>
+              <Animated.View
+                style={{ opacity }}
+                onLayout={
+                  index === 0
+                    ? (event) => setMeasuredRowHeight((prev) => prev ?? event.nativeEvent.layout.height)
+                    : undefined
+                }
+              >
                 <Pressable
                   style={({ pressed }) => [styles.row, pressed && styles.rowPressed]}
                   onPress={() => handleSelect(species)}
                 >
-                  <View style={[styles.spriteBackdrop, { backgroundColor: tintTowardWhite(itemColor, 0.55), borderColor: COLORS.outline }]}>
+                  <View style={[styles.spriteBackdrop, { backgroundColor: tintTowardWhite(itemColor, 0.55) }]}>
                     <Image source={{ uri: getSpriteUrl(species.id) }} style={styles.sprite} resizeMode="contain" />
                   </View>
                   <View style={styles.rowInfo}>
@@ -273,13 +289,14 @@ const styles = StyleSheet.create({
   search: {
     marginHorizontal: SPACING.lg,
     borderRadius: RADIUS.full,
-    borderWidth: 2.5,
-    borderColor: COLORS.outline,
-    backgroundColor: COLORS.surface,
+    borderWidth: 1,
+    borderColor: COLORS.glassBorder,
+    backgroundColor: COLORS.glassSurface,
     paddingHorizontal: SPACING.lg,
-    paddingVertical: SPACING.sm + 2,
+    paddingVertical: SPACING.sm + 4,
     fontSize: FONT_SIZE.md,
     color: COLORS.textPrimary,
+    ...SHADOW.md,
   },
   filterRow: {
     marginTop: SPACING.md,
@@ -292,14 +309,15 @@ const styles = StyleSheet.create({
   chip: {
     flexShrink: 0,
     borderRadius: RADIUS.full,
-    borderWidth: 2,
-    borderColor: COLORS.outline,
-    backgroundColor: COLORS.surface,
+    borderWidth: 1,
+    borderColor: COLORS.glassBorder,
+    backgroundColor: COLORS.glassSurface,
     paddingVertical: SPACING.sm + 2,
     paddingHorizontal: SPACING.lg,
     marginRight: SPACING.sm,
     justifyContent: 'center',
     minHeight: 40,
+    ...SHADOW.sm,
   },
   chipText: {
     fontSize: 13,
@@ -322,11 +340,12 @@ const styles = StyleSheet.create({
   row: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: COLORS.surface,
-    borderRadius: RADIUS.lg,
-    borderWidth: 2.5,
-    borderColor: COLORS.outline,
-    padding: SPACING.sm,
+    backgroundColor: COLORS.glassSurface,
+    borderRadius: RADIUS.lg + 6,
+    borderWidth: 1,
+    borderColor: COLORS.glassBorder,
+    padding: SPACING.md,
+    ...SHADOW.md,
   },
   rowPressed: {
     transform: [{ scale: 0.98 }],
@@ -335,9 +354,9 @@ const styles = StyleSheet.create({
     width: 60,
     height: 60,
     borderRadius: RADIUS.full,
-    borderWidth: 2,
     alignItems: 'center',
     justifyContent: 'center',
+    ...SHADOW.sm,
   },
   sprite: {
     width: 48,
