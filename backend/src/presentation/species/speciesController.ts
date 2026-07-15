@@ -10,7 +10,7 @@ import {
 } from './dto/speciesResponseDto';
 
 @ApiTags('Species')
-@Controller('api/species')
+@Controller('species')
 export class SpeciesController {
   constructor(private readonly speciesService: SpeciesService) {}
 

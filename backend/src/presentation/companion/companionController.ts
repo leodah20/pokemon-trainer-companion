@@ -6,7 +6,7 @@ import { COMPANION_CONTEXTS } from '../../domain/companion/types';
 import { CompanionSuggestRequestDto, CompanionSuggestResponseDto } from './dto/companionRequestDto';
 
 @ApiTags('Companion AI')
-@Controller('api/companion')
+@Controller('companion')
 export class CompanionController {
   constructor(private readonly companionService: CompanionService) {}
 

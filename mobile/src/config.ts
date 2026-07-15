@@ -1,10 +1,10 @@
 /**
  * Backend base URL for the (optional) Companion AI endpoint. Every other feature in this app is
- * fully offline and never touches this — see docs/architecture.md. Defaults to the Android
- * emulator's host-loopback alias (10.0.2.2), which reaches a backend running on your dev machine.
+ * fully offline and never touches this — see docs/architecture.md.
  *
- * Testing on a physical device instead of the emulator? Change this to your dev machine's LAN IP
- * (e.g. 'http://192.168.1.42:3000/api') — the phone and your computer must be on the same
- * Wi-Fi network, and the backend must actually be running (`npm run dev` from the repo root).
+ * Uses `localhost`, same as the Metro bundler (port 8081) — both the Android emulator and a
+ * physical device over USB reach it via `adb reverse tcp:3000 tcp:3000`, which forwards the
+ * device's localhost:3000 to your dev machine's localhost:3000. Re-run that command after every
+ * USB reconnect/emulator restart, same as the Metro one (see docs/dev-setup.md).
  */
-export const BACKEND_BASE_URL = 'http://10.0.2.2:3000/api';
+export const BACKEND_BASE_URL = 'http://localhost:3000/api';

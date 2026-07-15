@@ -5,7 +5,7 @@ import { PvpRankingDto } from '../species/dto/speciesResponseDto';
 import { PvpLeague } from '../../data/pvp/pvpRankingsRepository';
 
 @ApiTags('PvP')
-@Controller('api/pvp')
+@Controller('pvp')
 export class PvpController {
   constructor(private readonly pvpService: PvpService) {}
 

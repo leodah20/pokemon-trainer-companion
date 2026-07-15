@@ -42,11 +42,15 @@ Without it, the endpoint returns a clean `503` instead of crashing — nothing e
 affected.
 
 **Testing from the mobile app:** it needs to reach the backend over the network, which is new —
-every other mobile feature is offline. Check `mobile/src/config.ts`:
-- Android emulator: default `http://10.0.2.2:3000/api` already works (10.0.2.2 is the emulator's
-  alias for your dev machine's `localhost`).
-- Physical device: change it to your dev machine's LAN IP (e.g. `http://192.168.1.42:3000/api`)
-  — phone and computer must be on the same Wi-Fi, and `npm run dev` must be running.
+every other mobile feature is offline. `mobile/src/config.ts` points at `localhost:3000`, the
+same pattern as Metro's port 8081 — forward it the same way, for both emulator and physical device:
+
+```bash
+adb reverse tcp:3000 tcp:3000
+```
+
+Re-run this after every USB reconnect/emulator restart (same requirement as the `tcp:8081`
+reverse for Metro — see the troubleshooting table below).
 
 ## 3. Start PostgreSQL
 

@@ -4,7 +4,7 @@ import { RaidsService, UnknownRaidBossError } from '../../use-cases/raids/raidsS
 import { RaidBossDto, RaidCounterDto } from './dto/raidsResponseDto';
 
 @ApiTags('Raids')
-@Controller('api/raids')
+@Controller('raids')
 export class RaidsController {
   constructor(private readonly raidsService: RaidsService) {}
 

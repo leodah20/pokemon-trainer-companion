@@ -4,7 +4,7 @@ import { TypeChartService, UnknownTypeError } from '../../use-cases/type-effecti
 import { TypeChartEntryDto, WeatherBoostDto } from './dto/typeChartResponseDto';
 
 @ApiTags('Type Chart')
-@Controller('api/type-chart')
+@Controller('type-chart')
 export class TypeChartController {
   constructor(private readonly typeChartService: TypeChartService) {}
 
