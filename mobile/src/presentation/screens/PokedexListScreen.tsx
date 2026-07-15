@@ -16,6 +16,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { PokemonSpecies } from '../../domain/pokemon-species';
 import { getAllGenerations, getAllSpecies, getAllTypes, getSpriteUrl } from '../../data/pokedex/pokedexRepository';
 import {
+  APP_NAME,
   COLORS,
   DISPLAY_FONT,
   FONT_SIZE,
@@ -114,7 +115,7 @@ export function PokedexListScreen({ navigation, route }: Props): React.JSX.Eleme
       </Animated.View>
 
       <SafeAreaView style={styles.screen} edges={['top', 'left', 'right']}>
-        <Text style={styles.title}>{pickerMode ? 'Choose a Pokemon' : 'Pokedex'}</Text>
+        <Text style={styles.title}>{pickerMode ? 'Choose a Pokemon' : APP_NAME}</Text>
 
         <TextInput
           style={styles.search}
@@ -280,8 +281,8 @@ const styles = StyleSheet.create({
     fontSize: FONT_SIZE.xl,
     color: COLORS.surface,
     paddingHorizontal: SPACING.lg,
-    paddingTop: SPACING.md,
-    paddingBottom: SPACING.sm,
+    paddingTop: SPACING.xs,
+    paddingBottom: SPACING.xs,
     textShadowColor: COLORS.outline,
     textShadowOffset: { width: 2, height: 2 },
     textShadowRadius: 0,
@@ -315,15 +316,15 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: COLORS.glassBorder,
     backgroundColor: COLORS.glassSurface,
-    paddingVertical: SPACING.xs + 2,
-    paddingHorizontal: SPACING.md,
+    paddingVertical: SPACING.xs,
+    paddingHorizontal: SPACING.sm + 2,
     marginRight: SPACING.xs,
     justifyContent: 'center',
-    minHeight: 32,
+    minHeight: 28,
     ...SHADOW.sm,
   },
   chipText: {
-    fontSize: 12,
+    fontSize: 11,
     color: COLORS.textPrimary,
     fontWeight: '700',
     // No explicit lineHeight here on purpose — a value tighter than the font's natural box
@@ -337,7 +338,7 @@ const styles = StyleSheet.create({
   },
   listContent: {
     paddingHorizontal: SPACING.lg,
-    paddingBottom: SPACING.xl,
+    paddingBottom: SPACING.xxl * 2,
     gap: SPACING.md,
   },
   row: {

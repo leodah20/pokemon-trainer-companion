@@ -1,7 +1,7 @@
 import React from 'react';
 import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { Card, COLORS, DISPLAY_FONT, FONT_SIZE, SPACING } from '../theme';
+import { APP_FULL_NAME, Card, COLORS, DISPLAY_FONT, FONT_SIZE, SPACING } from '../theme';
 import { TabScreenProps } from '../navigation/types';
 
 type Props = TabScreenProps<'More'>;
@@ -26,7 +26,7 @@ export function MoreScreen({ navigation }: Props): React.JSX.Element {
           </Card>
         </Pressable>
 
-        <Text style={styles.footer}>Professor Dex — a fan-made Pokemon GO companion.</Text>
+        <Text style={styles.footer}>{APP_FULL_NAME} (PTC) — a fan-made Pokemon GO companion.</Text>
       </ScrollView>
     </SafeAreaView>
   );

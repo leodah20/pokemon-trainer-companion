@@ -42,7 +42,7 @@ export function BottomTabNavigator(): React.JSX.Element {
         name="Pokedex"
         component={PokedexListScreen}
         options={{
-          headerTitle: () => <Logo size="sm" color={COLORS.surface} />,
+          headerTitle: () => <Logo size="sm" color={COLORS.brandGold} />,
         }}
       />
       <Tab.Screen name="Tools" component={ToolsHubScreen} options={{ headerShown: false }} />
@@ -62,12 +62,12 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   tabBar: {
-    backgroundColor: COLORS.surface,
+    backgroundColor: COLORS.glassSurface,
     borderTopWidth: 0,
     height: 60,
     paddingBottom: 8,
     paddingTop: 6,
-    ...SHADOW.lg,
+    ...SHADOW.md,
   },
   tabBarLabel: {
     fontSize: 11,
