@@ -74,7 +74,7 @@ cards) are intentionally out of scope for this beta — see "Post-beta scope" be
 
 <!-- ==================== PROGRESS OVERVIEW ==================== -->
 
-Progress: 88% █████████████████░░░ (21 / 24 features)
+Progress: 85% █████████████████░░░ (23 / 27 features)
 
 | Category | Feature | Status | Tests |
 |----------|---------|--------|-------|
@@ -92,13 +92,17 @@ Progress: 88% █████████████████░░░ (21 /
 | | Type Chart API (`/api/type-chart`, `/:type`, `/weather/boosts`) | ✅ Done | ✅ |
 | | PvP API (`/api/pvp/leagues`, `/top/:league`) | ✅ Done | ✅ |
 | | Raids API (`/api/raids/current`, `/:id/counters`) | ✅ Done | ✅ |
+| | Companion AI API (`POST /api/companion/suggest`, Gemini-backed) | ✅ Done | ✅ |
 | **Mobile** | Type effectiveness chart (attacker vs. all 18 types) | ✅ Done | — |
 | | Pokémon comparison tool (side-by-side stats) | ✅ Done | ✅ |
 | | Top rankings (ATK/DEF/STA/Bulk/Max CP/PvP by league) | ✅ Done | ✅ |
 | | Quiz / trivia mode | ✅ Done | ✅ |
 | | Raid counters with DPS estimates | ✅ Done | ✅ |
 | | Evolution chain viewer with costs | ✅ Done | ✅ |
+| | In-app Companion widget (avatar + speech bubble, rule-based) | ✅ Done | — |
 | **Future** | OCR engine + rule-based smart suggestions (gallery screenshot → species/CP/HP → evolve/PvP/raid/gym advice) | ✅ Done | ✅ |
+| | Mobile wiring for the Companion AI endpoint (currently backend-only) | ❌ Not started | — |
+| | Scraped knowledge base (Bulbapedia/PokeAPI) feeding the AI prompt | ❌ Not started | — |
 | | Floating overlay (native Android module, auto-capture instead of gallery picker) | ❌ Not started | — |
 | | Cross-device sync + authentication | ❌ Not started | — |
 
@@ -110,9 +114,12 @@ Deliberately deferred past this beta — not gaps, just not yet prioritized:
   species/CP/HP → full analysis); auto-capture via a native Android Kotlin module
   (SYSTEM_ALERT_WINDOW + MediaProjection) is the only piece left, and it's the riskiest native
   work in the project — deliberately deferred rather than rushed
-- **LLM-based suggestions** — considered and explicitly declined (see `generateSmartSuggestions.ts`);
-  would add cost, a network dependency, and send screen data off-device for what deterministic
-  rules already handle for free
+- **LLM-based suggestions** — the free, rule-based path (`generateSmartSuggestions.ts`) stays as
+  the always-available default. A real LLM was later added as an *optional* layer on top
+  (`POST /api/companion/suggest`, backend-only so far — see "Last implemented features"), using
+  Gemini's free tier specifically to avoid the cost/privacy tradeoffs of a paid API. Not wired
+  into the mobile app yet, and not backed by any scraped knowledge base — it only knows what the
+  backend's own species/type/PvP/raid data already contains
 - **Cross-device sync + auth** — backend schema exists (`Trainer`, `SavedTeam`), no endpoints yet
 - **i18n / translation** — UI is English-only by design for now (tracked, see task list)
 - **Dark mode** — `useColorScheme` is read in `App.tsx` but not wired into the theme yet
@@ -126,6 +133,26 @@ Deliberately deferred past this beta — not gaps, just not yet prioritized:
 ### Last implemented features
 
 > <time datetime="2026-07-15">2026-07-15</time>
+>
+> **In-app Companion widget + backend Companion AI endpoint:**
+> - New `CompanionWidget` (mobile) — a Paimon-style floating buddy avatar rendered once at the
+>   App root (persists across every screen), gentle idle bounce, tap opens a speech bubble
+>   cycling through lore/tips, long-press opens a search picker to change the favorite species.
+>   Entirely rule-based (reuses `lore-data.json` / `getLoreWithFallback`), no network call.
+> - New backend `POST /api/companion/suggest` — takes `{ speciesId, context, extra? }`
+>   (`context` is `raid`/`battle`/`capture`/`levelup`/`general`) and returns an AI-generated tip
+>   from Gemini. `buildCompanionPrompt.ts` assembles the prompt from data the backend already
+>   has (stats, types, evolution family, counters, PvP rankings) — no scraped knowledge base yet.
+> - `geminiClient.ts` calls Gemini's REST API directly (no SDK dependency) and defaults to the
+>   Flash-Lite model, which sits inside Gemini's free tier (1,500 requests/day, no credit card)
+>   for normal personal use. Missing `GEMINI_API_KEY` degrades to a clean 503, not a crash.
+> - Chosen explicitly over self-hosting an open-source LLM (would cost more in server/hosting
+>   than the free tier ever would) and over Rasa (a chatbot-intent framework, not a generative
+>   LLM — doesn't fit this use case at all)
+> - 6 new backend tests (20/20 backend passing) covering prompt construction and the
+>   not-configured error path without needing a real API call
+> - Not yet done: wiring this endpoint into the mobile app (currently backend-only, no UI calls
+>   it), and the Bulbapedia/PokeAPI-sourced knowledge base for richer answers
 >
 > **OCR pipeline: rule-based smart suggestions (no LLM):**
 > - New `generateSmartSuggestions.ts` — turns a scanned Pokemon into actionable advice: evolve

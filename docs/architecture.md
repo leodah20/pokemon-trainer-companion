@@ -42,7 +42,7 @@ flowchart TB
 |-----------|--------|-------|
 | Mobile app (React Native) | ✅ Functional | Pokédex, IV calc, detail screen with lore |
 | Bundled JSON data | ✅ Implemented | 965 species, PvPoke rankings, power-up costs, lore (Gen 1) |
-| Backend (NestJS) | ✅ Functional | Species, Type Chart, PvP, and Raids REST APIs (Swagger) + Prisma; mobile doesn't call it yet |
+| Backend (NestJS) | ✅ Functional | Species, Type Chart, PvP, Raids, and Companion AI (Gemini-backed) REST APIs (Swagger) + Prisma; mobile doesn't call it yet |
 | Database (PostgreSQL + Prisma) | 🟡 Schema ready | Models defined; migrations not yet run |
 | Overlay / OCR | ❌ Not started | Requires native Android Kotlin module |
 
