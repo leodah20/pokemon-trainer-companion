@@ -1,4 +1,3 @@
-import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import React, { useMemo, useState } from 'react';
 import { Image, Pressable, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
@@ -22,14 +21,14 @@ import {
   SPACING,
   TypeBadge,
 } from '../theme';
-import { RootStackParamList } from '../navigation/types';
+import { RootStackScreenProps } from '../navigation/types';
 
 const LEAGUE_ORDER: PvpLeague[] = ['great', 'ultra', 'master'];
 const ALL_SPECIES = getAllSpecies();
 const POWER_UP_STEPS = getPowerUpSteps();
 const MAX_BASE_STAT_FOR_BAR = 300; // Mewtwo's base attack (300) is the ceiling in our data range
 
-type Props = NativeStackScreenProps<RootStackParamList, 'PokemonDetail'>;
+type Props = RootStackScreenProps<'PokemonDetail'>;
 type BattleRoleView = 'attack' | 'defense';
 
 function StatBar({ label, value, color }: { label: string; value: number; color: string }): React.JSX.Element {

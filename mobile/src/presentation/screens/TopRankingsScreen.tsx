@@ -1,15 +1,14 @@
-import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import React, { useMemo, useState } from 'react';
 import { FlatList, Image, Pressable, StyleSheet, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { getAllSpecies, getSpriteUrl } from '../../data/pokedex/pokedexRepository';
 import { getTopRanking, RANKING_CATEGORIES, RankingCategory } from '../../use-cases/rankTopPokemon';
 import { COLORS, FONT_SIZE, RADIUS, SPACING, TypeBadge } from '../theme';
-import { RootStackParamList } from '../navigation/types';
+import { TabScreenProps } from '../navigation/types';
 
 const ALL_SPECIES = getAllSpecies();
 
-type Props = NativeStackScreenProps<RootStackParamList, 'TopRankings'>;
+type Props = TabScreenProps<'Rankings'>;
 
 export function TopRankingsScreen({ navigation }: Props): React.JSX.Element {
   const [category, setCategory] = useState<RankingCategory>('attack');

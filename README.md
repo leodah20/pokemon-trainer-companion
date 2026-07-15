@@ -53,7 +53,7 @@ reasoning.
 | Layer | Choice | Notes |
 |---|---|---|
 | Mobile | React Native 0.86 (TypeScript, bare workflow) | Bare workflow because overlay + ML Kit OCR need a custom native module |
-| Navigation | `@react-navigation/native-stack` | Stack navigator with 3+ routes |
+| Navigation | `@react-navigation/native-stack` + `@react-navigation/bottom-tabs` | Bottom tab bar (Pokedex/Tools/Rankings/Quiz/More) for primary navigation; a root stack pushes detail/tool screens full-screen over the tab bar from any tab |
 | State | Local (useState/useMemo/useRef) | No global state library — static data loaded from bundled JSON |
 | Backend | NestJS 11 (TypeScript) | Clean Architecture-friendly module/DI structure |
 | ORM | Prisma 7 | Schema-first modeling, migrations, typed client |
@@ -91,6 +91,23 @@ Progress: 60% ████████████░░░░░░░░ (12 /
 ### Last implemented features
 
 > <time datetime="2026-07-14">2026-07-14</time>
+>
+> **Navigation redesign — bottom tabs + scroll-fade Pokedex:**
+> - Replaced the growing row of header buttons (Compare/Type Chart/Rankings/Quiz/Overlay Demo —
+>   the thing that kept clipping at the screen edge) with a proper 5-tab bottom navigation bar:
+>   Pokedex, Tools, Rankings, Quiz, More
+> - New `ToolsHubScreen` and `MoreScreen` — card-based hubs (icon + title + one-line description)
+>   grouping IV Calculator/Compare/Type Chart and Overlay Demo respectively, so no single screen
+>   dumps every feature on the user at once (progressive disclosure over one flat button wall)
+> - `PokedexListScreen`'s list now fades each card out as it scrolls past the top of the screen
+>   (pure `Animated` API from React Native core — no new native dependency), instead of cards
+>   abruptly vanishing under the header
+> - Screen transitions use native-stack's `fade_from_bottom` animation for a softer, more modern
+>   push than the platform default
+> - Navigation types reworked into a root stack (`Tabs`, `PokemonDetail`, `IvCalculator`,
+>   `Comparison`, `TypeChart`, `OverlayDemo`) wrapping a tab navigator (`Pokedex`, `Tools`,
+>   `Rankings`, `Quiz`, `More`) — any tab can reach any detail/tool screen via React Navigation's
+>   automatic bubbling, no prop drilling or manual deep-link wiring needed
 >
 > **Top rankings + Quiz mode:**
 > - New `TopRankingsScreen` — 8 leaderboards (Attack, Defense, Stamina, Bulk, Max CP at level 40

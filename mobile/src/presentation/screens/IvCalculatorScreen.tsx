@@ -1,4 +1,3 @@
-import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import React, { useEffect, useState } from 'react';
 import { FlatList, Image, Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -6,9 +5,9 @@ import { calculateIvPercentage, IvCombination } from '../../domain/iv-calculator
 import { getSpeciesById, getSpriteUrl } from '../../data/pokedex/pokedexRepository';
 import { calculateIvsForSpecies, UnknownSpeciesError } from '../../use-cases/calculateIvsForSpecies';
 import { Card, COLORS, DISPLAY_FONT, FONT_SIZE, RADIUS, SPACING } from '../theme';
-import { RootStackParamList } from '../navigation/types';
+import { RootStackScreenProps } from '../navigation/types';
 
-type Props = NativeStackScreenProps<RootStackParamList, 'IvCalculator'>;
+type Props = RootStackScreenProps<'IvCalculator'>;
 
 const DEFAULT_SPECIES_ID = 1; // Bulbasaur
 const DEFAULT_MIN_LEVEL = '1';
@@ -92,7 +91,7 @@ export function IvCalculatorScreen({ route, navigation }: Props): React.JSX.Elem
               <Text style={styles.label}>Species</Text>
               <Pressable
                 style={({ pressed }) => [styles.speciesPicker, pressed && styles.pressedOpacity]}
-                onPress={() => navigation.navigate('Pokedex', { pickerMode: true })}
+                onPress={() => navigation.navigate('Tabs', { screen: 'Pokedex', params: { pickerMode: true } })}
               >
                 {species && (
                   <Image source={{ uri: getSpriteUrl(species.id) }} style={styles.speciesSprite} resizeMode="contain" />

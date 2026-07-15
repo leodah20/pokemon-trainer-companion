@@ -1,4 +1,3 @@
-import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import React, { useMemo, useRef, useState } from 'react';
 import {
   Animated,
@@ -28,9 +27,9 @@ import {
   TypeBadge,
 } from '../theme';
 import { EMPTY_POKEDEX_FILTERS, filterPokedex, PokedexFilters } from '../../use-cases/filterPokedex';
-import { RootStackParamList } from '../navigation/types';
+import { TabScreenProps } from '../navigation/types';
 
-type Props = NativeStackScreenProps<RootStackParamList, 'Pokedex'>;
+type Props = TabScreenProps<'Pokedex'>;
 
 const ALL_SPECIES = getAllSpecies();
 const ALL_GENERATIONS = getAllGenerations();
@@ -38,6 +37,13 @@ const ALL_TYPES = getAllTypes();
 
 const BACKGROUND_TRANSITION_MS = 600;
 const DEFAULT_GRADIENT = getTypeGradient(getTypeColor(ALL_SPECIES[0].types[0]));
+
+// Approximate height of one list row + its gap (sprite 60 + vertical padding 16 + list gap 12) —
+// used only to estimate where each row sits for the scroll-fade effect below, not for layout.
+const ROW_SLOT_HEIGHT = 88;
+const FADE_DISTANCE = 90;
+
+const AnimatedFlatList = Animated.createAnimatedComponent(FlatList<PokemonSpecies>);
 
 // RN's AnimatedInterpolation isn't accepted where LinearGradient expects plain colors,
 // so the animated gradient is two stacked static gradients cross-fading via opacity.
@@ -52,6 +58,8 @@ export function PokedexListScreen({ navigation, route }: Props): React.JSX.Eleme
     from: DEFAULT_GRADIENT,
     to: DEFAULT_GRADIENT,
   });
+
+  const scrollY = useRef(new Animated.Value(0)).current;
 
   const viewabilityConfig = useRef({ itemVisiblePercentThreshold: 60 }).current;
   const handleViewableItemsChanged = useRef(
@@ -92,27 +100,7 @@ export function PokedexListScreen({ navigation, route }: Props): React.JSX.Eleme
       </Animated.View>
 
       <SafeAreaView style={styles.screen} edges={['top', 'left', 'right']}>
-        {pickerMode ? (
-          <Text style={styles.title}>Choose a Pokemon</Text>
-        ) : (
-          <View style={styles.actionsRow}>
-            <Pressable style={styles.overlayDemoButton} onPress={() => navigation.navigate('Quiz')}>
-              <Text style={styles.overlayDemoButtonText}>Quiz</Text>
-            </Pressable>
-            <Pressable style={styles.overlayDemoButton} onPress={() => navigation.navigate('TopRankings')}>
-              <Text style={styles.overlayDemoButtonText}>Top Rankings</Text>
-            </Pressable>
-            <Pressable style={styles.overlayDemoButton} onPress={() => navigation.navigate('Comparison')}>
-              <Text style={styles.overlayDemoButtonText}>Compare</Text>
-            </Pressable>
-            <Pressable style={styles.overlayDemoButton} onPress={() => navigation.navigate('TypeChart')}>
-              <Text style={styles.overlayDemoButtonText}>Type Chart</Text>
-            </Pressable>
-            <Pressable style={styles.overlayDemoButton} onPress={() => navigation.navigate('OverlayDemo')}>
-              <Text style={styles.overlayDemoButtonText}>Overlay Demo</Text>
-            </Pressable>
-          </View>
-        )}
+        <Text style={styles.title}>{pickerMode ? 'Choose a Pokemon' : 'Pokedex'}</Text>
 
         <TextInput
           style={styles.search}
@@ -167,7 +155,7 @@ export function PokedexListScreen({ navigation, route }: Props): React.JSX.Eleme
           ))}
         </ScrollView>
 
-        <FlatList
+        <AnimatedFlatList
           data={results}
           keyExtractor={(item) => String(item.id)}
           style={styles.list}
@@ -175,26 +163,42 @@ export function PokedexListScreen({ navigation, route }: Props): React.JSX.Eleme
           initialNumToRender={16}
           onViewableItemsChanged={handleViewableItemsChanged}
           viewabilityConfig={viewabilityConfig}
-          renderItem={({ item }) => {
-            const itemColor = getTypeColor(item.types[0]);
+          onScroll={Animated.event([{ nativeEvent: { contentOffset: { y: scrollY } } }], {
+            useNativeDriver: true,
+          })}
+          scrollEventThrottle={16}
+          renderItem={({ item: species, index }) => {
+            const itemColor = getTypeColor(species.types[0]);
+            // Cards fade out as they scroll past the top of the list. The exit point is where
+            // the item's bottom edge would align with the viewport top (index+1 row heights of
+            // scroll) — using the item's own top (index * height) instead made item 0 start
+            // pre-faded, since its top already sits at scrollY 0 before any scrolling happens.
+            const itemExitPoint = (index + 1) * ROW_SLOT_HEIGHT;
+            const opacity = scrollY.interpolate({
+              inputRange: [itemExitPoint - FADE_DISTANCE, itemExitPoint],
+              outputRange: [1, 0],
+              extrapolate: 'clamp',
+            });
             return (
-              <Pressable
-                style={({ pressed }) => [styles.row, pressed && styles.rowPressed]}
-                onPress={() => handleSelect(item)}
-              >
-                <View style={[styles.spriteBackdrop, { backgroundColor: tintTowardWhite(itemColor, 0.55), borderColor: COLORS.outline }]}>
-                  <Image source={{ uri: getSpriteUrl(item.id) }} style={styles.sprite} resizeMode="contain" />
-                </View>
-                <View style={styles.rowInfo}>
-                  <Text style={styles.rowDexNumber}>#{String(item.id).padStart(3, '0')}</Text>
-                  <Text style={styles.rowName}>{item.name}</Text>
-                  <View style={styles.rowTypes}>
-                    {item.types.map((type) => (
-                      <TypeBadge key={type} type={type} />
-                    ))}
+              <Animated.View style={{ opacity }}>
+                <Pressable
+                  style={({ pressed }) => [styles.row, pressed && styles.rowPressed]}
+                  onPress={() => handleSelect(species)}
+                >
+                  <View style={[styles.spriteBackdrop, { backgroundColor: tintTowardWhite(itemColor, 0.55), borderColor: COLORS.outline }]}>
+                    <Image source={{ uri: getSpriteUrl(species.id) }} style={styles.sprite} resizeMode="contain" />
                   </View>
-                </View>
-              </Pressable>
+                  <View style={styles.rowInfo}>
+                    <Text style={styles.rowDexNumber}>#{String(species.id).padStart(3, '0')}</Text>
+                    <Text style={styles.rowName}>{species.name}</Text>
+                    <View style={styles.rowTypes}>
+                      {species.types.map((type) => (
+                        <TypeBadge key={type} type={type} />
+                      ))}
+                    </View>
+                  </View>
+                </Pressable>
+              </Animated.View>
             );
           }}
           ListEmptyComponent={<Text style={styles.emptyText}>No Pokemon match these filters.</Text>}
@@ -230,33 +234,6 @@ const styles = StyleSheet.create({
   },
   screen: {
     flex: 1,
-  },
-  actionsRow: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    marginTop: SPACING.md,
-    marginBottom: SPACING.sm,
-    paddingHorizontal: SPACING.lg,
-    gap: SPACING.sm,
-  },
-  overlayDemoButton: {
-    borderRadius: RADIUS.sm,
-    borderWidth: 2,
-    borderColor: COLORS.outline,
-    backgroundColor: COLORS.surface,
-    paddingVertical: SPACING.sm,
-    paddingHorizontal: SPACING.md,
-    justifyContent: 'center',
-    alignItems: 'center',
-    minHeight: 36,
-  },
-  overlayDemoButtonText: {
-    fontSize: 12,
-    fontWeight: '700',
-    color: COLORS.textPrimary,
-    textAlign: 'center',
-    // No explicit lineHeight on purpose — a value tighter than the font's natural box clips
-    // ascenders/descenders on Android (same issue as the filter chips below).
   },
   title: {
     fontFamily: DISPLAY_FONT,
