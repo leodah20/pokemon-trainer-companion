@@ -42,7 +42,7 @@ flowchart TB
 |-----------|--------|-------|
 | Mobile app (React Native) | ✅ Functional | Pokédex, IV calc, detail screen with lore |
 | Bundled JSON data | ✅ Implemented | 965 species, PvPoke rankings, power-up costs, lore (Gen 1) |
-| Backend (NestJS) | ✅ Functional | Species, Type Chart, PvP, Raids, and Companion AI (Gemini-backed) REST APIs (Swagger) + Prisma; mobile doesn't call it yet |
+| Backend (NestJS) | ✅ Functional | Species, Type Chart, PvP, Raids, and Companion AI (Gemini-backed) REST APIs (Swagger) + Prisma |
 | Database (PostgreSQL + Prisma) | 🟡 Schema ready | Models defined; migrations not yet run |
 | Overlay / OCR | ❌ Not started | Requires native Android Kotlin module |
 
@@ -105,8 +105,11 @@ PokemonDetailScreen renders lore card
    Service violations that target memory injection, automation, and credential-based scraping.
 
 2. **Offline-first mobile app.** Calculators and cached Pokédex data work without network access;
-   the backend is only required for the optional cross-device sync feature. The app is fully free
-   and open source — there is no paid tier and no billing.
+   the backend is only required for cross-device sync (planned) and the optional Companion AI
+   endpoint (`POST /api/companion/suggest`) — the one deliberate exception to offline-first,
+   since it needs a live call to Gemini. Every other screen, including the in-app Companion
+   widget's default lore/tips, works with zero network access. The app is fully free and open
+   source — there is no paid tier and no billing.
 
 3. **Backend as a cache refresher, not a live proxy.** The scheduled sync job pulls from PokéAPI /
    PoGo API on an interval and stores results in Postgres, so the mobile app never depends on

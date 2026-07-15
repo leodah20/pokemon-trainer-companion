@@ -1,8 +1,9 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
-import { Animated, Image, Modal, Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
+import { ActivityIndicator, Animated, Image, Modal, Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { getAllSpecies, getSpeciesById, getSpriteUrl } from '../../data/pokedex/pokedexRepository';
 import { getLoreWithFallback } from '../../data/lore/loreRepository';
+import { CompanionApiError, fetchCompanionSuggestion } from '../../data/companion/companionApiClient';
 import { PokemonSpecies } from '../../domain/pokemon-species';
 import { COLORS, DISPLAY_FONT, FONT_SIZE, RADIUS, SHADOW, SPACING } from '../theme';
 
@@ -42,9 +43,40 @@ export function CompanionWidget(): React.JSX.Element {
   const [dialogueIndex, setDialogueIndex] = useState(0);
   const [pickerVisible, setPickerVisible] = useState(false);
 
+  const [aiState, setAiState] = useState<'idle' | 'loading' | 'error'>('idle');
+  const [aiText, setAiText] = useState<string | null>(null);
+  const [aiError, setAiError] = useState<string | null>(null);
+
   const species = getSpeciesById(speciesId);
-  const dialogue = useMemo(() => (species ? buildDialogue(species) : []), [species]);
+  const baseDialogue = useMemo(() => (species ? buildDialogue(species) : []), [species]);
+  const dialogue = useMemo(
+    () => (aiText ? [...baseDialogue, { label: '✨ AI Tip', text: aiText }] : baseDialogue),
+    [baseDialogue, aiText],
+  );
   const currentLine = dialogue[dialogueIndex] ?? null;
+
+  useEffect(() => {
+    setAiState('idle');
+    setAiText(null);
+    setAiError(null);
+  }, [speciesId]);
+
+  async function handleAskAi(): Promise<void> {
+    if (!species || aiState === 'loading') {
+      return;
+    }
+    setAiState('loading');
+    setAiError(null);
+    try {
+      const suggestion = await fetchCompanionSuggestion(species.id, 'general');
+      setAiText(suggestion);
+      setAiState('idle');
+      setDialogueIndex(baseDialogue.length); // jump to the new AI Tip page
+    } catch (error) {
+      setAiState('error');
+      setAiError(error instanceof CompanionApiError ? error.message : 'Something went wrong.');
+    }
+  }
 
   const bounce = useRef(new Animated.Value(0)).current;
   useEffect(() => {
@@ -98,6 +130,26 @@ export function CompanionWidget(): React.JSX.Element {
               <View key={entry.label} style={[styles.dot, index === dialogueIndex && styles.dotActive]} />
             ))}
           </View>
+
+          {aiState === 'error' && aiError && <Text style={styles.aiErrorText}>{aiError}</Text>}
+
+          <Pressable
+            style={styles.askAiButton}
+            onPress={(event) => {
+              event.stopPropagation();
+              handleAskAi();
+            }}
+            disabled={aiState === 'loading'}
+          >
+            {aiState === 'loading' ? (
+              <ActivityIndicator size="small" color={COLORS.mintDark} />
+            ) : (
+              <Text style={styles.askAiText}>
+                {aiState === 'error' ? 'Retry Ask AI ✨' : aiText ? 'Ask again ✨' : 'Ask AI ✨'}
+              </Text>
+            )}
+          </Pressable>
+
           <View style={styles.bubbleTail} />
         </Pressable>
       )}
@@ -247,6 +299,26 @@ const styles = StyleSheet.create({
   },
   dotActive: {
     backgroundColor: COLORS.mint,
+  },
+  aiErrorText: {
+    marginTop: SPACING.sm,
+    fontSize: 11,
+    color: COLORS.danger,
+  },
+  askAiButton: {
+    marginTop: SPACING.sm,
+    alignSelf: 'flex-start',
+    backgroundColor: COLORS.surface,
+    borderRadius: RADIUS.full,
+    borderWidth: 1,
+    borderColor: COLORS.glassBorder,
+    paddingVertical: SPACING.xs,
+    paddingHorizontal: SPACING.md,
+  },
+  askAiText: {
+    fontSize: 11,
+    fontWeight: '700',
+    color: COLORS.mintDark,
   },
   pickerBackdrop: {
     flex: 1,

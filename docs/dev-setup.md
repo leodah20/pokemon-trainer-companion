@@ -28,6 +28,26 @@ cp backend/.env.example backend/.env     # backend — DATABASE_URL for Prisma
 The `POSTGRES_*` values in the root `.env` and the `DATABASE_URL` in `backend/.env` must describe
 the same user/password/database/port — the defaults in both `.env.example` files already match.
 
+### Optional: Companion AI (`GEMINI_API_KEY`)
+
+Everything else in this app works with zero configuration. The one exception is
+`POST /api/companion/suggest` (AI-generated tips, not the free rule-based ones) — it needs a
+Gemini API key:
+
+1. Get a free key at [aistudio.google.com/apikey](https://aistudio.google.com/apikey) (no credit
+   card — the free tier is 1,500 requests/day on the Flash/Flash-Lite models this endpoint uses).
+2. Add it to `backend/.env`: `GEMINI_API_KEY=your-key-here`.
+
+Without it, the endpoint returns a clean `503` instead of crashing — nothing else in the app is
+affected.
+
+**Testing from the mobile app:** it needs to reach the backend over the network, which is new —
+every other mobile feature is offline. Check `mobile/src/config.ts`:
+- Android emulator: default `http://10.0.2.2:3000/api` already works (10.0.2.2 is the emulator's
+  alias for your dev machine's `localhost`).
+- Physical device: change it to your dev machine's LAN IP (e.g. `http://192.168.1.42:3000/api`)
+  — phone and computer must be on the same Wi-Fi, and `npm run dev` must be running.
+
 ## 3. Start PostgreSQL
 
 ```bash

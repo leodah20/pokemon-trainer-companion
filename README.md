@@ -74,7 +74,7 @@ cards) are intentionally out of scope for this beta — see "Post-beta scope" be
 
 <!-- ==================== PROGRESS OVERVIEW ==================== -->
 
-Progress: 85% █████████████████░░░ (23 / 27 features)
+Progress: 88% █████████████████░░░ (23 / 26 features)
 
 | Category | Feature | Status | Tests |
 |----------|---------|--------|-------|
@@ -99,9 +99,8 @@ Progress: 85% █████████████████░░░ (23 /
 | | Quiz / trivia mode | ✅ Done | ✅ |
 | | Raid counters with DPS estimates | ✅ Done | ✅ |
 | | Evolution chain viewer with costs | ✅ Done | ✅ |
-| | In-app Companion widget (avatar + speech bubble, rule-based) | ✅ Done | — |
+| | In-app Companion widget (avatar + speech bubble, rule-based + optional AI) | ✅ Done | — |
 | **Future** | OCR engine + rule-based smart suggestions (gallery screenshot → species/CP/HP → evolve/PvP/raid/gym advice) | ✅ Done | ✅ |
-| | Mobile wiring for the Companion AI endpoint (currently backend-only) | ❌ Not started | — |
 | | Scraped knowledge base (Bulbapedia/PokeAPI) feeding the AI prompt | ❌ Not started | — |
 | | Floating overlay (native Android module, auto-capture instead of gallery picker) | ❌ Not started | — |
 | | Cross-device sync + authentication | ❌ Not started | — |
@@ -114,12 +113,12 @@ Deliberately deferred past this beta — not gaps, just not yet prioritized:
   species/CP/HP → full analysis); auto-capture via a native Android Kotlin module
   (SYSTEM_ALERT_WINDOW + MediaProjection) is the only piece left, and it's the riskiest native
   work in the project — deliberately deferred rather than rushed
-- **LLM-based suggestions** — the free, rule-based path (`generateSmartSuggestions.ts`) stays as
-  the always-available default. A real LLM was later added as an *optional* layer on top
-  (`POST /api/companion/suggest`, backend-only so far — see "Last implemented features"), using
-  Gemini's free tier specifically to avoid the cost/privacy tradeoffs of a paid API. Not wired
-  into the mobile app yet, and not backed by any scraped knowledge base — it only knows what the
-  backend's own species/type/PvP/raid data already contains
+- **LLM-based suggestions** — the free, rule-based path (`generateSmartSuggestions.ts` in the OCR
+  flow, `buildDialogue` in the Companion widget) stays as the always-available default that needs
+  no network. An optional real LLM layer (`POST /api/companion/suggest`, Gemini free tier, wired
+  into the Companion widget's "Ask AI ✨" button) sits on top for trainers who set up a
+  `GEMINI_API_KEY`. Not yet backed by a scraped knowledge base — it only knows what the backend's
+  own species/type/PvP/raid data already contains (Bulbapedia/PokeAPI ingestion is the next step)
 - **Cross-device sync + auth** — backend schema exists (`Trainer`, `SavedTeam`), no endpoints yet
 - **i18n / translation** — UI is English-only by design for now (tracked, see task list)
 - **Dark mode** — `useColorScheme` is read in `App.tsx` but not wired into the theme yet
@@ -133,6 +132,19 @@ Deliberately deferred past this beta — not gaps, just not yet prioritized:
 ### Last implemented features
 
 > <time datetime="2026-07-15">2026-07-15</time>
+>
+> **Mobile ↔ Companion AI wiring:**
+> - `CompanionWidget`'s speech bubble now has an "Ask AI ✨" button — calls the backend's
+>   `POST /api/companion/suggest` and appends the result as a new page in the dialogue cycle
+> - New `mobile/src/data/companion/companionApiClient.ts` and `mobile/src/config.ts` — this is
+>   the **first and only** network call anywhere in the mobile app (everything else is offline);
+>   `config.ts` documents how to point it at the emulator (`10.0.2.2`) vs. a physical device
+>   (dev machine's LAN IP)
+> - Fails gracefully: no backend running, no `GEMINI_API_KEY`, or no network all surface as a
+>   small inline error with a "Retry" button — the rest of the companion (and the whole app)
+>   keeps working normally either way
+> - `docs/architecture.md` and `docs/dev-setup.md` updated to reflect this as the one deliberate
+>   exception to offline-first
 >
 > **In-app Companion widget + backend Companion AI endpoint:**
 > - New `CompanionWidget` (mobile) — a Paimon-style floating buddy avatar rendered once at the
