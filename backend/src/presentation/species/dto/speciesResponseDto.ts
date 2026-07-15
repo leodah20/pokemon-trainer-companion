@@ -20,10 +20,11 @@ class SpeciesCounterDto {
   @ApiProperty() effectiveness: number;
 }
 
-class PvpRankingDto {
+export class PvpRankingDto {
   @ApiProperty() league: string;
   @ApiProperty() rank: number;
   @ApiProperty() rating: number;
+  @ApiProperty() speciesId: number;
   @ApiProperty() speciesName: string;
   @ApiProperty() fastMove: string;
   @ApiProperty() chargeMove: string;

@@ -37,6 +37,7 @@ export interface PvpRanking {
   league: string;
   rank: number;
   rating: number;
+  speciesId: number;
   speciesName: string;
   fastMove: string;
   chargeMove: string;

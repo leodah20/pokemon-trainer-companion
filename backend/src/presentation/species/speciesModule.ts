@@ -2,11 +2,12 @@ import { Module } from '@nestjs/common';
 import { SpeciesController } from './speciesController';
 import { SpeciesService } from '../../use-cases/species/speciesService';
 import { SpeciesRepository } from '../../data/species/speciesRepository';
-import { PvpRankingsRepository } from '../../data/pvp/pvpRankingsRepository';
+import { PvpModule } from '../pvp/pvpModule';
 
 @Module({
+  imports: [PvpModule],
   controllers: [SpeciesController],
-  providers: [SpeciesService, SpeciesRepository, PvpRankingsRepository],
+  providers: [SpeciesService, SpeciesRepository],
   exports: [SpeciesService],
 })
 export class SpeciesModule {}

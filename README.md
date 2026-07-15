@@ -64,7 +64,7 @@ reasoning.
 
 <!-- ==================== PROGRESS OVERVIEW ==================== -->
 
-Progress: 60% ████████████░░░░░░░░ (12 / 20 features)
+Progress: 78% ███████████████░░░░░ (18 / 23 features)
 
 | Category | Feature | Status | Tests |
 |----------|---------|--------|-------|
@@ -79,6 +79,9 @@ Progress: 60% ████████████░░░░░░░░ (12 /
 | | Intelligent fallback for unseeded species | ✅ Done | — |
 | **Backend** | Skeleton (NestJS + Prisma schema + logging) | ✅ Done | ✅ |
 | | Species REST API (endpoints + Swagger) | ✅ Done | — |
+| | Type Chart API (`/api/type-chart`, `/:type`, `/weather/boosts`) | ✅ Done | ✅ |
+| | PvP API (`/api/pvp/leagues`, `/top/:league`) | ✅ Done | ✅ |
+| | Raids API (`/api/raids/current`, `/:id/counters`) | ✅ Done | ✅ |
 | **Mobile** | Type effectiveness chart (attacker vs. all 18 types) | ✅ Done | — |
 | | Pokémon comparison tool (side-by-side stats) | ✅ Done | ✅ |
 | | Top rankings (ATK/DEF/STA/Bulk/Max CP/PvP by league) | ✅ Done | ✅ |
@@ -90,7 +93,28 @@ Progress: 60% ████████████░░░░░░░░ (12 /
 
 ### Last implemented features
 
-> <time datetime="2026-07-14">2026-07-14</time>
+> <time datetime="2026-07-15">2026-07-15</time>
+>
+> **Backend: Type Chart, PvP, and Raids modules (Fase 2.3-2.5 of the content roadmap):**
+> - `GET /api/type-chart` — full 18×18 attacker→defender multiplier matrix
+> - `GET /api/type-chart/:type` — weaknesses/resistances/immunities/strong-against for one type
+>   (case-insensitive lookup, `BadRequestException` on an unknown type)
+> - `GET /api/type-chart/weather/boosts` — which types each weather condition boosts
+> - `GET /api/pvp/leagues`, `GET /api/pvp/top/:league?limit=N` — new `PvpModule`,
+>   `SpeciesModule` now imports it instead of duplicating `PvpRankingsRepository` as a provider
+> - **Bug fix:** `PvpRankingsRepository.findBySpeciesId` never actually filtered by species id
+>   (the mock rankings had no `speciesId` field) — `GET /api/species/:id/pvp-rankings` was
+>   silently returning all 60 mock rankings relabeled with the requested species' name. Added
+>   `speciesId` to the `PvpRanking` domain type and fixed the filter.
+> - `GET /api/raids/current`, `GET /api/raids/:id/counters?weather=Rain` — new `RaidsModule`
+>   with a curated mock boss rotation (11 Gen 1 bosses across tiers 1/3/5) and a documented
+>   *estimated* DPS ranking (`baseAttack × type-effectiveness × STAB`, over an assumed move
+>   cycle) — explicitly not a full moveset simulation, since the app has no fast/charge move
+>   power+energy+duration database yet
+> - 13 new backend unit tests (`typeChartService`, `pvpService`, `raidsService`), full suite:
+>   **14/14 passing**
+> - Not yet done: wiring these into mobile screens (raid counters, evolution viewer are still
+>   mobile-side gaps — see Fase 3 of the roadmap) and the scheduled data-sync job (Fase 2.6)
 >
 > **Navigation redesign — bottom tabs + scroll-fade Pokedex:**
 > - Replaced the growing row of header buttons (Compare/Type Chart/Rankings/Quiz/Overlay Demo —

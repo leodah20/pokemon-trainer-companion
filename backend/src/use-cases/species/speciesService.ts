@@ -60,10 +60,7 @@ export class SpeciesService {
       ...this.toDto(species),
       evolutionFamily,
       counters,
-      pvpRankings: pvpRankings.map((r) => ({
-        ...r,
-        speciesName: species.name,
-      })),
+      pvpRankings,
     };
   }
 
@@ -88,10 +85,7 @@ export class SpeciesService {
     if (!species) {
       throw new NotFoundException(`Species with id ${id} not found`);
     }
-    return this.pvpRepo.findBySpeciesId(id).map((r) => ({
-      ...r,
-      speciesName: species.name,
-    }));
+    return this.pvpRepo.findBySpeciesId(id);
   }
 
   getMetadata(): SpeciesMetadataDto {
