@@ -33,12 +33,13 @@ product needs before it ships to app stores.
 - OCR overlay (ML Kit) for automatic screenshot capture on Android
 - Catch-chance calculator (throw type, curveball, berry)
 - Raid / gym counter recommender with DPS estimates
-- Pokémon comparison tool (side-by-side stat table)
 - Top rankings (ATK, DEF, STA, bulk, CP, PvP by league)
-- Type effectiveness chart (18×18 matrix)
 - Evolution chain viewer with costs and stat changes
 - Quiz / trivia mode
-- Cross-device sync for saved teams and settings (Pro tier)
+- Cross-device sync for saved teams and settings
+
+The whole app is free and open source — every feature above ships free, with no paid/subscription
+tier. See [LICENSE](LICENSE) (MIT).
 
 ## How the "overlay" works (and why it's ToS-safe)
 
@@ -56,15 +57,14 @@ reasoning.
 | State | Local (useState/useMemo/useRef) | No global state library — static data loaded from bundled JSON |
 | Backend | NestJS 11 (TypeScript) | Clean Architecture-friendly module/DI structure |
 | ORM | Prisma 7 | Schema-first modeling, migrations, typed client |
-| Database | PostgreSQL 16 | Saved teams, user accounts, Pro entitlements |
+| Database | PostgreSQL 16 | Saved teams, user accounts (for future cross-device sync) |
 | Data sources | [PoGo API](https://pogoapi.net/) (stats, CP multipliers), [PvPoke](https://pvpoke.com/) (PvP movesets), [PokéAPI](https://pokeapi.co/) (sprites) | All free, unofficial/open-source, community-maintained |
-| Payments | Stripe / RevenueCat | Schema prepared with plan flag; billing not implemented in MVP |
 
 ## Project status
 
 <!-- ==================== PROGRESS OVERVIEW ==================== -->
 
-Progress: 40% ████████░░░░░░░░░░░░ (8 / 20 features)
+Progress: 60% ████████████░░░░░░░░ (12 / 20 features)
 
 | Category | Feature | Status | Tests |
 |----------|---------|--------|-------|
@@ -78,20 +78,57 @@ Progress: 40% ████████░░░░░░░░░░░░ (8 / 
 | **Lore** | Hand-written lore for 151 Gen 1 species (8 fields each) | ✅ Done | — |
 | | Intelligent fallback for unseeded species | ✅ Done | — |
 | **Backend** | Skeleton (NestJS + Prisma schema + logging) | ✅ Done | ✅ |
-| | Species REST API (endpoints + Swagger) | 🔄 In progress | — |
-| **Mobile** | Type effectiveness chart (18×18 matrix) | 🔄 Planned | — |
-| | Pokémon comparison tool (side-by-side stats) | 🔄 Planned | — |
-| | Top rankings (ATK/DEF/STA/Bulk/CP/PvP) | 🔄 Planned | — |
+| | Species REST API (endpoints + Swagger) | ✅ Done | — |
+| **Mobile** | Type effectiveness chart (attacker vs. all 18 types) | ✅ Done | — |
+| | Pokémon comparison tool (side-by-side stats) | ✅ Done | ✅ |
+| | Top rankings (ATK/DEF/STA/Bulk/Max CP/PvP by league) | ✅ Done | ✅ |
+| | Quiz / trivia mode | ✅ Done | ✅ |
 | | Raid counters with DPS estimates | 🔄 Planned | — |
 | | Evolution chain viewer with costs | 🔄 Planned | — |
-| | Quiz / trivia mode | 🔄 Planned | — |
-| **Pro** | Overlay OCR (native Android module + ML Kit) | ❌ Not started | — |
+| **Future** | Overlay OCR (native Android module + ML Kit) | ❌ Not started | — |
 | | Cross-device sync + authentication | ❌ Not started | — |
-| | Subscription billing (Stripe/RevenueCat) | ❌ Not started | — |
 
 ### Last implemented features
 
 > <time datetime="2026-07-14">2026-07-14</time>
+>
+> **Top rankings + Quiz mode:**
+> - New `TopRankingsScreen` — 8 leaderboards (Attack, Defense, Stamina, Bulk, Max CP at level 40
+>   with perfect IVs, and PvP score per league), tap any row to open that species' detail screen
+> - `use-cases/rankTopPokemon.ts` — sorts/limits by category, unit tested (3 tests)
+> - New `QuizScreen` — 10 random multiple-choice questions (type ID, type-effectiveness
+>   matchups, generation), score tracking, "Play Again"
+> - `use-cases/generateQuiz.ts` — pure question generator with an injectable RNG for
+>   deterministic tests (3 tests)
+> - Raid counters with DPS and the evolution chain viewer are still planned but blocked on data
+>   the app doesn't have yet: a fast/charged move power+energy+duration database (for raid DPS)
+>   and full evolution-family data beyond the ~150 species the backend currently has (for the
+>   evolution chain viewer) — both need a new data source before implementation, not just UI work
+>
+> **Pokemon comparison tool:**
+> - New `ComparisonScreen` — search-and-select two species inline (no cross-screen picker
+>   needed), then see ATK/DEF/STA/Bulk side by side with the higher stat highlighted in green
+> - `use-cases/comparePokemon.ts` — pure comparison logic, unit tested (3 tests)
+> - Reachable from the Pokédex header ("Compare" button)
+> - Verified on the physical device end-to-end (Charizard vs. Blastoise matches real base stats)
+>
+> **Type effectiveness chart:**
+> - New `TypeChartScreen` — pick an attacking type from a chip row, see the full 18-type
+>   matchup grouped into Super effective (×2), Not very effective (×0.5), No effect (×0)
+> - `domain/type-effectiveness` + `data/type-effectiveness` — same attacker→defender
+>   multiplier table as the backend's `TYPE_EFFECTIVENESS`, kept as a separate offline copy
+>   (mobile doesn't call the backend — see `docs/architecture.md`)
+> - Reachable from the Pokédex header ("Type Chart" button)
+> - UI text is English-only for now; a translation/i18n layer is a planned follow-up
+>   (tracked separately, not yet started)
+> - Verified on the physical device end-to-end (all 3 effectiveness buckets checked against
+>   the official chart for Normal and Fire)
+>
+> **Android install/debug fixes (Xiaomi/HyperOS):**
+> - `INSTALL_FAILED_USER_RESTRICTED` fixed by enabling Developer Options → "USB debugging
+>   (Security settings)" — see `docs/dev-setup.md` troubleshooting table
+> - Documented the cold-start requirement (`am force-stop` + `am start`) needed to force the
+>   app to re-fetch the JS bundle from Metro after a fresh install
 >
 > **Lore system overhaul:**
 > - New `lore-data.json` with hand-written content for all 151 Generation 1 species

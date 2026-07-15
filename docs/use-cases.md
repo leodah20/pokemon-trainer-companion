@@ -82,12 +82,14 @@ existing stats (type, generation, base stats, evolution cost estimates).
 
 ---
 
-## UC-07 — Manage Pro subscription
+## UC-07 — Sign in for cross-device team sync
 
-1. Trainer opens the "Go Pro" screen.
-2. Trainer completes purchase through the platform's in-app purchase flow (Stripe/RevenueCat).
-3. System verifies the purchase receipt and grants Pro entitlements (cross-device sync, ad-free).
-4. Trainer can view/cancel the subscription from account settings.
+1. Trainer opts into signing in (entirely optional — the app works fully offline without it).
+2. System creates/authenticates the `TRAINER` account and syncs `SAVED_TEAM`/`TEAM_MEMBER` rows.
+3. Trainer can view/delete their synced data from account settings at any time.
+
+There is no paid tier — this use case exists purely for the convenience of syncing saved teams
+across devices, not to gate any feature.
 
 **Status:** ❌ Not started
 

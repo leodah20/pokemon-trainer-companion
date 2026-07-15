@@ -15,7 +15,6 @@ flowchart TB
     subgraph Cloud["Backend (NestJS)"]
         API["REST API"]
         Auth["Auth module"]
-        Billing["Billing module - Stripe/RevenueCat webhooks"]
         SyncJob["Scheduled data-sync job"]
         Postgres[("PostgreSQL")]
     end
@@ -29,9 +28,8 @@ flowchart TB
     Overlay --> OCR
     OCR --> MobileApp
     MobileApp <--> LocalDB
-    MobileApp <-- "only for Pro features: sync, billing" --> API
+    MobileApp <-- "only for cross-device sync" --> API
     API --> Auth
-    API --> Billing
     API <--> Postgres
     SyncJob --> PokeAPI
     SyncJob --> PoGoAPI
@@ -44,7 +42,7 @@ flowchart TB
 |-----------|--------|-------|
 | Mobile app (React Native) | ✅ Functional | Pokédex, IV calc, detail screen with lore |
 | Bundled JSON data | ✅ Implemented | 965 species, PvPoke rankings, power-up costs, lore (Gen 1) |
-| Backend (NestJS) | 🟡 Skeleton | Root controller + logging interceptor; no business modules yet |
+| Backend (NestJS) | ✅ Functional | Root controller + Species API (5 endpoints, Swagger) + Prisma |
 | Database (PostgreSQL + Prisma) | 🟡 Schema ready | Models defined; migrations not yet run |
 | Overlay / OCR | ❌ Not started | Requires native Android Kotlin module |
 
@@ -107,7 +105,8 @@ PokemonDetailScreen renders lore card
    Service violations that target memory injection, automation, and credential-based scraping.
 
 2. **Offline-first mobile app.** Calculators and cached Pokédex data work without network access;
-   the backend is only required for Pro features (cross-device sync, billing).
+   the backend is only required for the optional cross-device sync feature. The app is fully free
+   and open source — there is no paid tier and no billing.
 
 3. **Backend as a cache refresher, not a live proxy.** The scheduled sync job pulls from PokéAPI /
    PoGo API on an interval and stores results in Postgres, so the mobile app never depends on

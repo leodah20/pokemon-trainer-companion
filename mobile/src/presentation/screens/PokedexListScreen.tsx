@@ -95,11 +95,28 @@ export function PokedexListScreen({ navigation, route }: Props): React.JSX.Eleme
         {pickerMode ? (
           <Text style={styles.title}>Choose a Pokemon</Text>
         ) : (
-          <View style={styles.actionsRow}>
+          <ScrollView
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            style={styles.actionsRow}
+            contentContainerStyle={styles.actionsRowContent}
+          >
+            <Pressable style={styles.overlayDemoButton} onPress={() => navigation.navigate('Quiz')}>
+              <Text style={styles.overlayDemoButtonText}>Quiz</Text>
+            </Pressable>
+            <Pressable style={styles.overlayDemoButton} onPress={() => navigation.navigate('TopRankings')}>
+              <Text style={styles.overlayDemoButtonText}>Top Rankings</Text>
+            </Pressable>
+            <Pressable style={styles.overlayDemoButton} onPress={() => navigation.navigate('Comparison')}>
+              <Text style={styles.overlayDemoButtonText}>Compare</Text>
+            </Pressable>
+            <Pressable style={styles.overlayDemoButton} onPress={() => navigation.navigate('TypeChart')}>
+              <Text style={styles.overlayDemoButtonText}>Type Chart</Text>
+            </Pressable>
             <Pressable style={styles.overlayDemoButton} onPress={() => navigation.navigate('OverlayDemo')}>
               <Text style={styles.overlayDemoButtonText}>Overlay Demo</Text>
             </Pressable>
-          </View>
+          </ScrollView>
         )}
 
         <TextInput
@@ -220,11 +237,13 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   actionsRow: {
-    flexDirection: 'row',
-    justifyContent: 'flex-end',
+    marginTop: SPACING.md,
+    marginBottom: SPACING.sm,
+    flexGrow: 0,
+  },
+  actionsRowContent: {
     paddingHorizontal: SPACING.lg,
-    paddingTop: SPACING.md,
-    paddingBottom: SPACING.sm,
+    gap: SPACING.sm,
   },
   overlayDemoButton: {
     borderRadius: RADIUS.full,

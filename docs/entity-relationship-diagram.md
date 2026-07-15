@@ -7,7 +7,6 @@ the mobile app and are not modeled here.
 ```mermaid
 erDiagram
     TRAINER ||--o{ SAVED_TEAM : owns
-    TRAINER ||--o| SUBSCRIPTION : has
     SAVED_TEAM ||--|{ TEAM_MEMBER : contains
     TEAM_MEMBER }o--|| POKEMON_SPECIES : references
     POKEMON_SPECIES ||--o{ POKEMON_TYPE_MAP : has
@@ -19,17 +18,6 @@ erDiagram
         string display_name
         timestamp created_at
         boolean lore_popups_enabled
-    }
-
-    SUBSCRIPTION {
-        uuid id PK
-        uuid trainer_id FK
-        string tier "free | pro"
-        string provider "stripe | revenuecat"
-        string provider_reference
-        timestamp started_at
-        timestamp renews_at
-        boolean active
     }
 
     SAVED_TEAM {
@@ -79,6 +67,7 @@ erDiagram
 - `POKEMON_SPECIES`, `POKEMON_TYPE`, and `POKEMON_TYPE_MAP` are a **read-only cache** populated by
   the sync job described in [use-cases.md](use-cases.md) (UC-06) from PokéAPI/PoGo API — the
   backend is the source of truth for the mobile app's local cache, not the other way around.
-- `TRAINER` and `SAVED_TEAM` only exist for Pro accounts; a Trainer using the app without signing
-  in never has a row here, which keeps the LGPD footprint minimal for the free tier
-  (see [legal-compliance.md](legal-compliance.md)).
+- `TRAINER` and `SAVED_TEAM` only exist for accounts that opt into cross-device sync; a Trainer
+  using the app without signing in never has a row here, which keeps the LGPD footprint minimal
+  (see [legal-compliance.md](legal-compliance.md)). The app itself is entirely free — signing in
+  is only ever about syncing saved teams across devices, never about unlocking features.

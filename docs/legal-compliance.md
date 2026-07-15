@@ -58,22 +58,17 @@ up moveset suggestions with "real community sentiment." That was deliberately re
 
 ## 3. LGPD (Lei Geral de Proteção de Dados)
 
-Two data postures, by design:
+Two data postures, by design. The app is entirely free — there is no paid tier — but signing in
+for cross-device team sync is still optional, so LGPD exposure is scoped to that opt-in only:
 
-- **Free tier (no account):** no personal data leaves the device. OCR runs on-device; screenshots
+- **No account (default):** no personal data leaves the device. OCR runs on-device; screenshots
   are never uploaded. This alone keeps LGPD exposure close to zero — there's no personal data
   processing to govern.
-- **Pro tier (account required):** collects only what's needed to operate the account (email,
-  saved teams, subscription status). Requirements to satisfy before this ships:
+- **Signed in (opt-in, for cross-device sync only):** collects only what's needed to sync saved
+  teams across devices (email, saved teams). Requirements to satisfy before this ships:
   - A public privacy policy stating what's collected and why (consent as the legal basis).
   - A way for the trainer to export or delete their data (account deletion removes `TRAINER` and
     cascades to `SAVED_TEAM`/`TEAM_MEMBER`, see [entity-relationship-diagram.md](entity-relationship-diagram.md)).
   - Encryption in transit (HTTPS) and at rest for the database.
   - Google Play "Data Safety" and Apple "App Privacy" labels kept in sync with what's actually
     collected — mismatches here are a common app-store rejection reason.
-
-## 4. Payments
-
-Subscription billing goes through Stripe or RevenueCat rather than custom payment handling — this
-avoids the app ever touching raw card data (PCI DSS scope stays with the payment provider) and is
-required by both app stores for digital subscriptions distributed through their platforms.

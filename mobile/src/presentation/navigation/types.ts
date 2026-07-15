@@ -3,4 +3,8 @@ export type RootStackParamList = {
   PokemonDetail: { speciesId: number };
   IvCalculator: { speciesId?: number } | undefined;
   OverlayDemo: undefined;
+  TypeChart: undefined;
+  Comparison: undefined;
+  TopRankings: undefined;
+  Quiz: undefined;
 };
