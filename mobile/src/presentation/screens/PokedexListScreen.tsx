@@ -304,11 +304,14 @@ const styles = StyleSheet.create({
   },
   filterRowContent: {
     paddingHorizontal: SPACING.lg,
+    // Vertical room for the chip's shadow/rounded corners to render fully — without this the
+    // ScrollView clips the shadow flush against the chip's own bounds, making it look cut off.
+    paddingVertical: SPACING.xs + 2,
     alignItems: 'center',
   },
   chip: {
     flexShrink: 0,
-    borderRadius: RADIUS.full,
+    borderRadius: RADIUS.md,
     borderWidth: 1,
     borderColor: COLORS.glassBorder,
     backgroundColor: COLORS.glassSurface,
