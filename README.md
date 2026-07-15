@@ -133,6 +133,19 @@ Deliberately deferred past this beta — not gaps, just not yet prioritized:
 
 > <time datetime="2026-07-15">2026-07-15</time>
 >
+> **Fixed a real bug: every backend route was double-prefixed (`/api/api/...`):**
+> - Every controller declared `@Controller('api/xxx')` on top of `main.ts`'s global `api` prefix
+>   — the actual served path was `/api/api/species`, `/api/api/companion/suggest`, etc. Went
+>   unnoticed because manual `curl` testing happened to type the (wrong) double path correctly;
+>   surfaced as a real 404 once the mobile Companion AI client (which assumed the correct
+>   single-prefixed path) hit it from the physical device.
+> - Fixed all five controllers (species, type-chart, pvp, raids, companion) to declare just their
+>   own segment. Verified with a real Gemini API key: `POST /api/companion/suggest` now returns
+>   sensible, context-varying advice (raid vs. battle vs. capture), and the old
+>   `/api/api/species/1` correctly 404s while `/api/species/1` returns 200.
+> - `mobile/src/config.ts` now reaches the backend via `localhost` + `adb reverse tcp:3000
+>   tcp:3000` (same pattern as Metro's port 8081) instead of the emulator-only `10.0.2.2` alias.
+>
 > **Companion widget: draggable avatar:**
 > - The floating avatar can now be dragged anywhere on screen (RN core `PanResponder`, no new
 >   dependency — same "avoid Reanimated/gesture-handler unless needed" call as the rest of the
