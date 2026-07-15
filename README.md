@@ -133,6 +133,16 @@ Deliberately deferred past this beta — not gaps, just not yet prioritized:
 
 > <time datetime="2026-07-15">2026-07-15</time>
 >
+> **Fixed a real bug: OCR never matched CP/HP on an actual Pokemon GO screen:**
+> - Found via a real device screenshot's OCR debug output. Two separate bugs: (1) CP regex only
+>   recognized the English label "CP" — Portuguese Pokemon GO shows `PC3975` ("Poder de Combate"),
+>   no English text anywhere; (2) HP regex assumed `HP: 111` (label before the number), but the
+>   game actually renders `175 / 175 HP` — a current/max pair with the label *after*, in English
+>   and Portuguese alike (`175 / 175 PS`, "Pontos de Saúde"). The original pattern likely never
+>   matched on a real screen regardless of language.
+> - Both label sets are now tried, prioritizing the real "number/number label" layout. 3 new
+>   tests built from actual OCR text off a real screenshot (63/63 mobile passing).
+>
 > **Companion AI grounded in real screen data (not a generic default):**
 > - Until now, "Ask AI" only lived on the Companion widget and talked about whichever species the
 >   trainer manually picked as their buddy, with a hardcoded `general` context — completely
