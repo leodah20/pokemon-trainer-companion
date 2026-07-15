@@ -109,7 +109,7 @@ emulator -avd pokemon_trainer_companion
 7. **Build and install**:
    ```bash
    cd mobile
-   npx react-native run-android --deviceId YOUR_SERIAL
+   npx react-native run-android --device YOUR_SERIAL
    ```
 
    > **Note:** If you see a warning about `@react-native-community/cli`, it's benign — the
