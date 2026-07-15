@@ -101,6 +101,17 @@ export function OverlayDemoScreen(): React.JSX.Element {
                       Defense: {BULK_TIER_LABELS[analysis.bulkRanking.tier]}
                     </Text>
                   )}
+
+                  {analysis.suggestions.length > 0 && (
+                    <>
+                      <Text style={styles.suggestionsLabel}>WHAT TO DO WITH IT</Text>
+                      {analysis.suggestions.map((suggestion) => (
+                        <Text key={suggestion} style={styles.suggestionText}>
+                          • {suggestion}
+                        </Text>
+                      ))}
+                    </>
+                  )}
                 </>
               ) : (
                 <Text style={styles.sectionText}>
@@ -194,6 +205,19 @@ const styles = StyleSheet.create({
     fontSize: FONT_SIZE.sm,
     color: COLORS.textPrimary,
     marginTop: SPACING.md,
+  },
+  suggestionsLabel: {
+    marginTop: SPACING.lg,
+    fontSize: 11,
+    fontWeight: '800',
+    letterSpacing: 1,
+    color: COLORS.mint,
+  },
+  suggestionText: {
+    fontSize: FONT_SIZE.sm,
+    color: COLORS.textPrimary,
+    marginTop: SPACING.xs,
+    lineHeight: 19,
   },
   rawTextLabel: {
     marginTop: SPACING.lg,
