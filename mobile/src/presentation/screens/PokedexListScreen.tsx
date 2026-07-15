@@ -32,6 +32,7 @@ import { EMPTY_POKEDEX_FILTERS, filterPokedex, PokedexFilters } from '../../use-
 import { TabScreenProps } from '../navigation/types';
 import { BottomSheetMenu, BottomSheetMenuItem } from '../components/BottomSheetMenu';
 import { QuickActionsFab } from '../components/QuickActionsFab';
+import { useTranslation } from '../../i18n';
 
 type Props = TabScreenProps<'Pokedex'>;
 
@@ -49,6 +50,7 @@ const AnimatedFlatList = Animated.createAnimatedComponent(FlatList<PokemonSpecie
 // RN's AnimatedInterpolation isn't accepted where LinearGradient expects plain colors,
 // so the animated gradient is two stacked static gradients cross-fading via opacity.
 export function PokedexListScreen({ navigation, route }: Props): React.JSX.Element {
+  const { t } = useTranslation();
   const pickerMode = route.params?.pickerMode ?? false;
   const [filters, setFilters] = useState<PokedexFilters>(EMPTY_POKEDEX_FILTERS);
   const [quickActionsVisible, setQuickActionsVisible] = useState(false);
@@ -115,11 +117,11 @@ export function PokedexListScreen({ navigation, route }: Props): React.JSX.Eleme
       </Animated.View>
 
       <SafeAreaView style={styles.screen} edges={['top', 'left', 'right']}>
-        <Text style={styles.title}>{pickerMode ? 'Choose a Pokemon' : APP_NAME}</Text>
+        <Text style={styles.title}>{pickerMode ? t('pokedex.pickerTitle') : APP_NAME}</Text>
 
         <TextInput
           style={styles.search}
-          placeholder="Search by name"
+          placeholder={t('pokedex.searchPlaceholder')}
           placeholderTextColor={COLORS.textMuted}
           value={filters.searchText}
           onChangeText={(text) => setFilters((prev) => ({ ...prev, searchText: text }))}
@@ -132,7 +134,7 @@ export function PokedexListScreen({ navigation, route }: Props): React.JSX.Eleme
           contentContainerStyle={styles.filterRowContent}
         >
           <FilterChip
-            label="All gens"
+            label={t('pokedex.allGens')}
             selected={filters.generation === null}
             onPress={() => setFilters((prev) => ({ ...prev, generation: null }))}
           />
@@ -155,7 +157,7 @@ export function PokedexListScreen({ navigation, route }: Props): React.JSX.Eleme
           contentContainerStyle={styles.filterRowContent}
         >
           <FilterChip
-            label="All types"
+            label={t('pokedex.allTypes')}
             selected={filters.type === null}
             onPress={() => setFilters((prev) => ({ ...prev, type: null }))}
           />
@@ -230,7 +232,7 @@ export function PokedexListScreen({ navigation, route }: Props): React.JSX.Eleme
               </Animated.View>
             );
           }}
-          ListEmptyComponent={<Text style={styles.emptyText}>No Pokemon match these filters.</Text>}
+          ListEmptyComponent={<Text style={styles.emptyText}>{t('pokedex.emptyResults')}</Text>}
         />
 
         {!pickerMode && (

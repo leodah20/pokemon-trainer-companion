@@ -2,6 +2,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import React from 'react';
 import { StyleSheet, Text } from 'react-native';
 import { COLORS, DISPLAY_FONT, Logo, SHADOW } from '../theme';
+import { useTranslation } from '../../i18n';
 import { MoreScreen } from '../screens/MoreScreen';
 import { PokedexListScreen } from '../screens/PokedexListScreen';
 import { QuizScreen } from '../screens/QuizScreen';
@@ -24,6 +25,8 @@ function TabIcon({ symbol, focused }: { symbol: string; focused: boolean }): Rea
 }
 
 export function BottomTabNavigator(): React.JSX.Element {
+  const { t } = useTranslation();
+
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({
@@ -42,13 +45,26 @@ export function BottomTabNavigator(): React.JSX.Element {
         name="Pokedex"
         component={PokedexListScreen}
         options={{
+          tabBarLabel: t('nav.pokedex'),
           headerTitle: () => <Logo size="sm" color={COLORS.brandGold} />,
         }}
       />
-      <Tab.Screen name="Tools" component={ToolsHubScreen} options={{ headerShown: false }} />
-      <Tab.Screen name="Rankings" component={TopRankingsScreen} options={{ title: 'Top Rankings' }} />
-      <Tab.Screen name="Quiz" component={QuizScreen} options={{ title: 'Quiz' }} />
-      <Tab.Screen name="More" component={MoreScreen} options={{ headerShown: false }} />
+      <Tab.Screen
+        name="Tools"
+        component={ToolsHubScreen}
+        options={{ tabBarLabel: t('nav.tools'), headerShown: false }}
+      />
+      <Tab.Screen
+        name="Rankings"
+        component={TopRankingsScreen}
+        options={{ tabBarLabel: t('nav.rankings'), title: t('nav.rankings') }}
+      />
+      <Tab.Screen name="Quiz" component={QuizScreen} options={{ tabBarLabel: t('nav.quiz'), title: t('nav.quiz') }} />
+      <Tab.Screen
+        name="More"
+        component={MoreScreen}
+        options={{ tabBarLabel: t('nav.more'), headerShown: false }}
+      />
     </Tab.Navigator>
   );
 }

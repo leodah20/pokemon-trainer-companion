@@ -18,6 +18,7 @@ import { getLoreWithFallback } from '../../data/lore/loreRepository';
 import { CompanionApiError, fetchCompanionSuggestion } from '../../data/companion/companionApiClient';
 import { PokemonSpecies } from '../../domain/pokemon-species';
 import { COLORS, DISPLAY_FONT, FONT_SIZE, RADIUS, SHADOW, SPACING } from '../theme';
+import { useTranslation } from '../../i18n';
 
 const DEFAULT_COMPANION_ID = 25; // Pikachu — the iconic "pick a buddy" default
 const BOUNCE_DISTANCE = 7;
@@ -52,6 +53,7 @@ function buildDialogue(species: PokemonSpecies): DialogueEntry[] {
  * LLM + scraped knowledge base was scoped as a separate, later decision (cost, ToS, privacy).
  */
 export function CompanionWidget(): React.JSX.Element {
+  const { t } = useTranslation();
   const insets = useSafeAreaInsets();
   const [speciesId, setSpeciesId] = useState(DEFAULT_COMPANION_ID);
   const [bubbleVisible, setBubbleVisible] = useState(false);
@@ -198,7 +200,7 @@ export function CompanionWidget(): React.JSX.Element {
               <ActivityIndicator size="small" color={COLORS.mintDark} />
             ) : (
               <Text style={styles.askAiText}>
-                {aiState === 'error' ? 'Retry Ask AI ✨' : aiText ? 'Ask again ✨' : 'Ask AI ✨'}
+                {aiState === 'error' ? t('companion.retryAskAi') : aiText ? t('companion.askAgain') : t('companion.askAi')}
               </Text>
             )}
           </Pressable>
@@ -235,6 +237,7 @@ interface CompanionPickerProps {
 }
 
 function CompanionPicker({ visible, onClose, onPick }: CompanionPickerProps): React.JSX.Element {
+  const { t } = useTranslation();
   const [query, setQuery] = useState('');
   const allSpecies = useMemo(() => getAllSpecies(), []);
   const results = useMemo(() => {
@@ -249,10 +252,10 @@ function CompanionPicker({ visible, onClose, onPick }: CompanionPickerProps): Re
     <Modal transparent visible={visible} animationType="fade" onRequestClose={onClose}>
       <Pressable style={styles.pickerBackdrop} onPress={onClose}>
         <Pressable style={styles.pickerCard} onPress={(event) => event.stopPropagation()}>
-          <Text style={styles.pickerTitle}>Choose your companion</Text>
+          <Text style={styles.pickerTitle}>{t('companion.choosePrompt')}</Text>
           <TextInput
             style={styles.pickerInput}
-            placeholder="Search by name"
+            placeholder={t('companion.searchPlaceholder')}
             placeholderTextColor={COLORS.textMuted}
             value={query}
             onChangeText={setQuery}

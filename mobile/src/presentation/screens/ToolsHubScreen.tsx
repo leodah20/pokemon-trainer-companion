@@ -3,58 +3,61 @@ import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Card, COLORS, DISPLAY_FONT, FONT_SIZE, SPACING } from '../theme';
 import { TabScreenProps } from '../navigation/types';
+import { TranslationKeys, useTranslation } from '../../i18n';
 
 type Props = TabScreenProps<'Tools'>;
 
 interface ToolEntry {
   emoji: string;
-  title: string;
-  description: string;
+  titleKey: keyof TranslationKeys;
+  descriptionKey: keyof TranslationKeys;
   onPress: (navigation: Props['navigation']) => void;
 }
 
 const TOOLS: readonly ToolEntry[] = [
   {
     emoji: '🧮',
-    title: 'IV Calculator',
-    description: 'Enter CP and HP to find the possible IV combinations for a Pokemon.',
+    titleKey: 'tools.ivCalculator.title',
+    descriptionKey: 'tools.ivCalculator.description',
     onPress: (navigation) => navigation.navigate('IvCalculator'),
   },
   {
     emoji: '⚖️',
-    title: 'Compare',
-    description: 'Put two Pokemon side by side and see who wins each stat.',
+    titleKey: 'tools.compare.title',
+    descriptionKey: 'tools.compare.description',
     onPress: (navigation) => navigation.navigate('Comparison'),
   },
   {
     emoji: '🔥',
-    title: 'Type Chart',
-    description: 'Pick an attacking type and see everything it’s strong or weak against.',
+    titleKey: 'tools.typeChart.title',
+    descriptionKey: 'tools.typeChart.description',
     onPress: (navigation) => navigation.navigate('TypeChart'),
   },
   {
     emoji: '⚔️',
-    title: 'Raid Counters',
-    description: 'Pick a raid boss and see the top estimated counters, with weather boosts.',
+    titleKey: 'tools.raidCounters.title',
+    descriptionKey: 'tools.raidCounters.description',
     onPress: (navigation) => navigation.navigate('RaidCounters'),
   },
 ];
 
 export function ToolsHubScreen({ navigation }: Props): React.JSX.Element {
+  const { t } = useTranslation();
+
   return (
     <SafeAreaView style={styles.screen} edges={['top', 'left', 'right']}>
       <ScrollView contentContainerStyle={styles.content}>
-        <Text style={styles.title}>Tools</Text>
-        <Text style={styles.subtitle}>Calculators and reference tools for battle prep.</Text>
+        <Text style={styles.title}>{t('tools.title')}</Text>
+        <Text style={styles.subtitle}>{t('tools.subtitle')}</Text>
 
         {TOOLS.map((tool) => (
-          <Pressable key={tool.title} onPress={() => tool.onPress(navigation)}>
+          <Pressable key={tool.titleKey} onPress={() => tool.onPress(navigation)}>
             <Card style={styles.card} accentColor={COLORS.brandBlue}>
               <View style={styles.cardRow}>
                 <Text style={styles.emoji}>{tool.emoji}</Text>
                 <View style={styles.cardText}>
-                  <Text style={styles.cardTitle}>{tool.title}</Text>
-                  <Text style={styles.cardDescription}>{tool.description}</Text>
+                  <Text style={styles.cardTitle}>{t(tool.titleKey)}</Text>
+                  <Text style={styles.cardDescription}>{t(tool.descriptionKey)}</Text>
                 </View>
               </View>
             </Card>
