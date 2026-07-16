@@ -1,6 +1,7 @@
 import { CompanionService } from './companionService';
 import { GeminiNotConfiguredError } from '../../data/companion/geminiClient';
 import { SpeciesService } from '../species/speciesService';
+import { KnowledgeRepository } from '../../data/knowledge/knowledgeRepository';
 
 describe('CompanionService', () => {
   const originalApiKey = process.env.GEMINI_API_KEY;
@@ -25,8 +26,9 @@ describe('CompanionService', () => {
         pvpRankings: [],
       }),
     } as unknown as SpeciesService;
+    const fakeKnowledgeRepository = { findBySpeciesId: () => null } as unknown as KnowledgeRepository;
 
-    const service = new CompanionService(fakeSpeciesService);
+    const service = new CompanionService(fakeSpeciesService, fakeKnowledgeRepository);
     await expect(service.getSuggestion(1, 'raid')).rejects.toThrow(GeminiNotConfiguredError);
   });
 });

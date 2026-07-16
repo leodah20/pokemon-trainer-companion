@@ -47,16 +47,18 @@ always-on floating overlay is the remaining piece — see "Flagship feature" in 
 4. Trainer reads a tip specific to their actual Pokémon and situation — not a generic, disconnected
    fact.
 
-**What makes this the flagship feature, not just an LLM wrapper:** today the LLM only knows what
-the backend's own species/type/PvP/raid data already contains, plus general Pokémon knowledge from
-its own training. The next step — the single highest-value piece of work left in the project — is
-replacing that general-purpose pass-through with a proper knowledge base built from public Pokémon
-data (Bulbapedia, PokéAPI, community-maintained sources) that the AI is explicitly grounded in, so
-answers are backed by real structured Pokémon knowledge instead of an LLM's best guess.
+**What makes this the flagship feature, not just an LLM wrapper:** the LLM is grounded in the
+backend's own species/type/PvP/raid data plus a knowledge base of real Pokedex facts
+(`backend/src/data/knowledge/`, PokeAPI-sourced: genus, habitat, official Pokedex flavor text),
+instead of relying purely on its own training. That knowledge base currently covers the 151 Gen 1
+species — extending it to later generations and toward deeper, community-sourced facts
+(Bulbapedia-style trivia) beyond what PokeAPI's structured fields cover is the next step and the
+highest-value piece of work left in the project.
 
-**Status:** 🟡 Partially done — grounded prompting with real OCR data works
-(`buildCompanionExtraContext.ts`, `companionController.ts`); the community-fed knowledge base does
-not exist yet.
+**Status:** 🟡 Partially done — grounded prompting with real OCR data
+(`buildCompanionExtraContext.ts`) and a PokeAPI-sourced knowledge base MVP
+(`KnowledgeRepository`, `buildCompanionPrompt.ts`) both work today; the knowledge base covers only
+Gen 1 and only PokeAPI's structured fields so far.
 
 ---
 

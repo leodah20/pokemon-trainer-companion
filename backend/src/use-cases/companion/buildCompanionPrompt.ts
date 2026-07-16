@@ -1,4 +1,5 @@
 import { CompanionContext } from '../../domain/companion/types';
+import { KnowledgeEntry } from '../../domain/knowledge/types';
 import { SpeciesDetailDto } from '../../presentation/species/dto/speciesResponseDto';
 
 const CONTEXT_FRAMING: Record<CompanionContext, string> = {
@@ -10,11 +11,17 @@ const CONTEXT_FRAMING: Record<CompanionContext, string> = {
 };
 
 /**
- * Builds the prompt sent to Gemini from data this backend already has — no scraped knowledge
- * base yet (see README's Post-beta scope). Keeping this a pure function makes it unit-testable
- * without a real API call.
+ * Builds the prompt sent to Gemini. `knowledge`, when present, comes from the PokeAPI-sourced
+ * knowledge base (see docs/architecture.md's "Flagship feature") so the model answers grounded in
+ * real Pokedex facts instead of only its own general training. Keeping this a pure function makes
+ * it unit-testable without a real API call.
  */
-export function buildCompanionPrompt(species: SpeciesDetailDto, context: CompanionContext, extra?: string): string {
+export function buildCompanionPrompt(
+  species: SpeciesDetailDto,
+  context: CompanionContext,
+  extra?: string,
+  knowledge?: KnowledgeEntry | null,
+): string {
   const lines: string[] = [
     'You are a concise, knowledgeable Pokemon GO companion giving a trainer quick, actionable advice.',
     'Keep the reply to 2-3 short sentences, no markdown, no bullet points, friendly but efficient tone.',
@@ -40,10 +47,42 @@ export function buildCompanionPrompt(species: SpeciesDetailDto, context: Compani
     lines.push(`PvP rankings: ${byLeague}`);
   }
 
+  if (knowledge) {
+    lines.push(...summarizeKnowledge(knowledge));
+  }
+
   lines.push('', CONTEXT_FRAMING[context]);
   if (extra) {
     lines.push(`Extra context from the trainer's screen: ${extra}`);
   }
 
   return lines.join('\n');
+}
+
+function summarizeKnowledge(knowledge: KnowledgeEntry): string[] {
+  const lines: string[] = [];
+  const facts: string[] = [];
+
+  if (knowledge.genus) {
+    facts.push(`known as the "${knowledge.genus}"`);
+  }
+  if (knowledge.habitat) {
+    facts.push(`typically found in ${knowledge.habitat} habitats`);
+  }
+  if (knowledge.isLegendary) {
+    facts.push('a Legendary Pokemon');
+  }
+  if (knowledge.isMythical) {
+    facts.push('a Mythical Pokemon');
+  }
+  if (facts.length > 0) {
+    lines.push(`Knowledge base: this Pokemon is ${facts.join(', ')}.`);
+  }
+
+  if (knowledge.pokedexEntries.length > 0) {
+    const entry = knowledge.pokedexEntries[0];
+    lines.push(`Official Pokedex entry (${entry.game}): "${entry.text}"`);
+  }
+
+  return lines;
 }

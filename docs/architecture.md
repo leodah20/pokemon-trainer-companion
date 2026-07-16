@@ -22,7 +22,7 @@ flowchart TB
         Auth["Auth module"]
         SyncJob["Scheduled data-sync job"]
         Companion["Companion AI service"]
-        KB[("Knowledge base - planned\nBulbapedia / PokeAPI / community")]
+        KB[("Knowledge base - MVP done\nPokeAPI, Gen 1 (151 species)\nplanned: wider gens + Bulbapedia")]
         Postgres[("PostgreSQL")]
     end
 
@@ -39,7 +39,7 @@ flowchart TB
     MobileApp <-- "only for cross-device sync" --> API
     MobileApp -- "Ask AI - grounded in real OCR data" --> Companion
     Companion --> LLM
-    Companion -. "planned: ground answers in KB\ninstead of general LLM knowledge" .-> KB
+    Companion -- "grounds answers in KB facts\ninstead of only general LLM knowledge" --> KB
     API --> Auth
     API <--> Postgres
     SyncJob --> PokeAPI
@@ -58,7 +58,7 @@ flowchart TB
 | **🏆 OCR pipeline (gallery screenshot)** | ✅ Functional | Species/CP/HP extraction → full analysis (IV, PvP, bulk, evolution, tips) |
 | **🏆 Companion AI, grounded in real OCR data** | ✅ Functional | `POST /api/companion/suggest`, Gemini-backed, wired into "Ask AI ✨" |
 | **🏆 Native always-on overlay** | ❌ Not started | Requires native Android Kotlin module (`SYSTEM_ALERT_WINDOW` + `MediaProjection`) |
-| **🏆 Community-fed knowledge base** | ❌ Not started | Would replace the Gemini pass-through with grounded, structured Pokémon knowledge (Bulbapedia/PokéAPI) — the single highest-value piece of work left |
+| **🏆 Knowledge base grounding the AI** | ✅ MVP done | `backend/src/data/knowledge/` — PokeAPI-sourced genus/habitat/Pokedex-entry facts for 151 Gen 1 species, folded into the Companion prompt. Next: wider generations + deeper (Bulbapedia-style) facts |
 
 ## Mobile app architecture (Clean Architecture)
 
@@ -118,9 +118,9 @@ PokemonDetailScreen renders lore card
    below — on-device OCR, grounded prompting, backend-as-cache — exists to make the overlay
    reliable, fast, and legally safe. The calculators, Pokédex, and rankings are a genuinely useful
    app on their own, but they're the foundation the flagship feature sits on top of, not the other
-   way around. The two pieces still missing to reach the full vision (native always-on capture, a
-   community-fed knowledge base grounding the AI's answers) are the highest-priority remaining work
-   in the project — see "Current implementation status" above.
+   way around. The knowledge base grounding the AI's answers now has a working MVP (PokeAPI, Gen
+   1); native always-on capture and extending the knowledge base further are the highest-priority
+   remaining work in the project — see "Current implementation status" above.
 
 1. **No integration with the Pokémon GO client.** The only "input" from the game is what the
    trainer's eyes and camera/screenshot already see. This keeps the app outside Niantic's Terms of

@@ -26,17 +26,20 @@ whether to catch or pass, what to run in this raid, what moveset wins this PvP m
 no game-memory access, no calls to Niantic's servers — see
 [docs/legal-compliance.md](docs/legal-compliance.md).
 
-Two pieces already work today, ahead of the native always-on overlay:
+Three pieces already work today, ahead of the native always-on overlay:
 - **OCR pipeline** — gallery screenshot → species/CP/HP extraction → full analysis (IV, PvP, bulk,
   evolution, rule-based tips), demoed in `OverlayDemoScreen`
 - **AI companion** — an optional Gemini-backed layer, grounded in the *real* OCR-extracted stats
   from your screen (not a generic "here's a Charizard fact"), reachable via "Ask AI ✨"
+- **Knowledge base (MVP)** — the AI's answers are now grounded in real PokeAPI-sourced Pokedex
+  facts (genus, habitat, official Pokedex flavor text) for the 151 Gen 1 species, instead of
+  purely the LLM's own training — `backend/src/data/knowledge/`
 
 What's left to reach the full vision: swapping the gallery picker for a native always-on floating
-overlay (`SYSTEM_ALERT_WINDOW` + `MediaProjection`), and — the real differentiator — replacing the
-Gemini pass-through with a knowledge base fed by public Pokémon data (Bulbapedia, PokéAPI, community
-sources) so the AI's answers are grounded in real, structured Pokémon knowledge instead of a
-general-purpose LLM's best guess. See "Post-beta scope" below for where this stands.
+overlay (`SYSTEM_ALERT_WINDOW` + `MediaProjection`), and extending the knowledge base past Gen 1
+and past PokeAPI's structured fields toward deeper community-sourced Pokémon knowledge (Bulbapedia
+and similar), so the AI's answers keep getting richer instead of the same handful of facts
+repeating. See "Post-beta scope" below for where this stands.
 
 ## Why this exists
 
@@ -68,9 +71,9 @@ feature checklist.
 **AI overlay (in progress — see "🏆 Flagship feature" section)**
 - OCR pipeline (gallery screenshot → species/CP/HP → full analysis) — done
 - Gemini-backed AI companion grounded in real on-screen stats — done
+- Knowledge base (PokeAPI-sourced Pokedex facts for 151 Gen 1 species — genus, habitat, official
+  Pokedex entries — grounding the AI's answers) — MVP done, expanding coverage is ongoing
 - Native always-on floating overlay (auto-capture, no gallery picker) — planned
-- Community-fed knowledge base (Bulbapedia/PokéAPI ingestion) replacing the general-purpose LLM
-  pass-through — planned
 
 **Planned features**
 - Catch-chance calculator (throw type, curveball, berry)
@@ -136,8 +139,9 @@ Progress: 89% █████████████████░░░ (24 /
 | | i18n (English/Portuguese/Spanish) — every screen | ✅ Done | — |
 | **🏆 Flagship** | OCR engine + rule-based smart suggestions (gallery screenshot → species/CP/HP → evolve/PvP/raid/gym advice) | ✅ Done | ✅ |
 | | Gemini-backed AI companion grounded in real on-screen stats | ✅ Done | ✅ |
+| | Knowledge base grounding the AI (PokeAPI-sourced, 151 Gen 1 species) | ✅ MVP done | ✅ |
 | | Floating overlay (native Android module, auto-capture instead of gallery picker) | ❌ Not started | — |
-| | Community-fed knowledge base (Bulbapedia/PokeAPI) replacing the LLM pass-through | ❌ Not started | — |
+| | Knowledge base — expand past Gen 1 + deeper Bulbapedia-sourced facts | 🔄 Planned | — |
 | **Future** | lore-data.json content translation (currently Portuguese-only) | 🔄 Planned | — |
 | | Cross-device sync + authentication | ❌ Not started | — |
 
@@ -152,14 +156,16 @@ Deliberately deferred past this beta — not gaps, just not yet prioritized:
     (SYSTEM_ALERT_WINDOW + MediaProjection) is the piece left to make it always-on instead of a
     manual gallery pick — it's the riskiest native work in the project, deliberately deferred
     rather than rushed
-  - **Community-fed knowledge base** — the free, rule-based path (`generateSmartSuggestions.ts` in
-    the OCR flow, `buildDialogue` in the Companion widget) stays as the always-available default
-    that needs no network. An optional real LLM layer (`POST /api/companion/suggest`, Gemini free
-    tier, wired into "Ask AI ✨") sits on top for trainers who set up a `GEMINI_API_KEY` — but
-    today it's a thin pass-through to a general-purpose model, not yet backed by a scraped
-    knowledge base. Ingesting Bulbapedia/PokéAPI/community data into a proper knowledge base the
-    AI is grounded in (instead of relying on Gemini's general Pokémon knowledge) is the next step
-    and the single highest-value piece of work left in the project
+  - **Knowledge base — MVP done, deepen next.** The free, rule-based path
+    (`generateSmartSuggestions.ts` in the OCR flow, `buildDialogue` in the Companion widget) stays
+    as the always-available default that needs no network. An optional real LLM layer
+    (`POST /api/companion/suggest`, Gemini free tier, wired into "Ask AI ✨") sits on top for
+    trainers who set up a `GEMINI_API_KEY`. It's now grounded in a real knowledge base
+    (`backend/src/data/knowledge/`, ingested from PokeAPI via `backend/scripts/fetchKnowledgeBase.mjs`)
+    covering genus, habitat, and official Pokedex flavor text for the 151 Gen 1 species — instead
+    of relying purely on Gemini's own training. Still to do: extend past Gen 1 (re-run the
+    ingestion script with a wider ID range) and pull in richer, community-sourced facts
+    (Bulbapedia-style) beyond what PokeAPI's structured fields cover
 - **Cross-device sync + auth** — backend schema exists (`Trainer`, `SavedTeam`), no endpoints yet
 - **Lore content translation** — every screen's UI chrome is now translated (English/Portuguese/
   Spanish), but `lore-data.json` itself (~150 species × 7 fields of hand-written Portuguese text)
@@ -178,6 +184,27 @@ Deliberately deferred past this beta — not gaps, just not yet prioritized:
 ### Last implemented features
 
 > <time datetime="2026-07-15">2026-07-15</time>
+>
+> **Knowledge base MVP — the flagship AI overlay's first real grounding source:**
+> - New `backend/src/data/knowledge/` — a PokeAPI-sourced knowledge base (genus/species
+>   classification, habitat, capture rate, growth rate, egg groups, legendary/mythical flags, and
+>   up to 3 deduplicated official Pokedex flavor-text entries per species) covering the 151 Gen 1
+>   species, matching the existing lore scope.
+> - `backend/scripts/fetchKnowledgeBase.mjs` — a one-off ingestion script (plain Node + native
+>   `fetch`, no new dependency) that pulls this from PokeAPI's public, unauthenticated API and
+>   writes a committed `.ts` data module — re-run it to refresh or extend the ID range to later
+>   generations. Not called at runtime, so the backend stays offline-safe for every other request.
+> - `KnowledgeRepository` (same in-memory `Map`-over-static-data pattern as `SpeciesRepository`)
+>   and `buildCompanionPrompt.ts` now accepts an optional `KnowledgeEntry`, folding a short
+>   "Knowledge base" fact line and one official Pokedex quote into the Gemini prompt when
+>   available — closing the exact gap flagged in the doc rewrite from earlier tonight ("today it's
+>   a thin pass-through to a general-purpose model, not yet backed by a knowledge base").
+> - Verified end-to-end against the running backend: `POST /api/companion/suggest` for Bulbasaur
+>   returns a real Gemini response built from the grounded prompt, not just a typecheck pass.
+> - 26/26 backend tests passing (2 new spec files), zero TypeScript errors.
+> - **Still not done:** extending past Gen 1 (script supports it, just needs a wider ID range run)
+>   and going beyond PokeAPI's structured fields into deeper, community-sourced facts
+>   (Bulbapedia-style trivia) — see "Post-beta scope".
 >
 > **Full i18n coverage — every remaining screen translated (EN/PT-BR/ES):**
 > - Finished the i18n pass across the whole app: IV Calculator, Comparison, Type Chart, Top

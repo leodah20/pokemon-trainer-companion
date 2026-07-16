@@ -1,5 +1,6 @@
 import { buildCompanionPrompt } from './buildCompanionPrompt';
 import { SpeciesDetailDto } from '../../presentation/species/dto/speciesResponseDto';
+import { KnowledgeEntry } from '../../domain/knowledge/types';
 
 const BASE_SPECIES: SpeciesDetailDto = {
   id: 1,
@@ -58,5 +59,30 @@ describe('buildCompanionPrompt', () => {
   it('appends extra OCR context when given', () => {
     const prompt = buildCompanionPrompt(BASE_SPECIES, 'capture', 'CP 452, appraisal: great');
     expect(prompt).toContain('CP 452, appraisal: great');
+  });
+
+  it('grounds the prompt in knowledge base facts when present', () => {
+    const knowledge: KnowledgeEntry = {
+      speciesId: 1,
+      genus: 'Seed Pokémon',
+      habitat: 'grassland',
+      captureRate: 45,
+      growthRate: 'medium-slow',
+      eggGroups: ['monster', 'plant'],
+      isLegendary: false,
+      isMythical: false,
+      pokedexEntries: [{ game: 'red', text: 'A strange seed was planted on its back at birth.' }],
+      source: 'pokeapi',
+    };
+    const prompt = buildCompanionPrompt(BASE_SPECIES, 'general', undefined, knowledge);
+    expect(prompt).toContain('Seed Pokémon');
+    expect(prompt).toContain('grassland habitats');
+    expect(prompt).toContain('A strange seed was planted on its back at birth.');
+  });
+
+  it('omits knowledge base lines when no entry is available', () => {
+    const prompt = buildCompanionPrompt(BASE_SPECIES, 'general', undefined, null);
+    expect(prompt).not.toContain('Knowledge base');
+    expect(prompt).not.toContain('Official Pokedex entry');
   });
 });
