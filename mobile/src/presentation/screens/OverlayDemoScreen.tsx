@@ -70,7 +70,12 @@ export function OverlayDemoScreen(): React.JSX.Element {
         <Text style={styles.title}>{t('overlay.title')}</Text>
         <Text style={styles.subtitle}>{t('overlay.subtitle')}</Text>
 
-        <Pressable style={({ pressed }) => [styles.pickButton, pressed && styles.pickButtonPressed]} onPress={handlePickImage}>
+        <Pressable
+          style={({ pressed }) => [styles.pickButton, pressed && styles.pickButtonPressed]}
+          onPress={handlePickImage}
+          accessibilityRole="button"
+          accessibilityLabel={t('overlay.pickButton')}
+        >
           <Text style={styles.pickButtonText}>{t('overlay.pickButton')}</Text>
         </Pressable>
 
@@ -146,6 +151,9 @@ export function OverlayDemoScreen(): React.JSX.Element {
                         key={option}
                         style={[styles.contextChip, option === aiContext && styles.contextChipSelected]}
                         onPress={() => setAiContext(option)}
+                        accessibilityRole="button"
+                        accessibilityLabel={t(`aiContext.${option}`)}
+                        accessibilityState={{ selected: option === aiContext }}
                       >
                         <Text style={[styles.contextChipText, option === aiContext && styles.contextChipTextSelected]}>
                           {t(`aiContext.${option}`)}
@@ -157,7 +165,13 @@ export function OverlayDemoScreen(): React.JSX.Element {
                   {aiState === 'error' && aiError && <Text style={styles.aiErrorText}>{aiError}</Text>}
                   {aiText && aiState === 'idle' && <Text style={styles.aiResultText}>{aiText}</Text>}
 
-                  <Pressable style={styles.askAiButton} onPress={handleAskAi} disabled={aiState === 'loading'}>
+                  <Pressable
+                    style={styles.askAiButton}
+                    onPress={handleAskAi}
+                    disabled={aiState === 'loading'}
+                    accessibilityRole="button"
+                    accessibilityLabel={aiState === 'error' ? t('companion.retryAskAi') : aiText ? t('companion.askAgain') : t('companion.askAi')}
+                  >
                     {aiState === 'loading' ? (
                       <ActivityIndicator size="small" color={COLORS.surface} />
                     ) : (

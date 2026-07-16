@@ -110,6 +110,8 @@ export function IvCalculatorScreen({ route, navigation }: Props): React.JSX.Elem
               <Pressable
                 style={({ pressed }) => [styles.speciesPicker, pressed && styles.pressedOpacity]}
                 onPress={() => navigation.navigate('Tabs', { screen: 'Pokedex', params: { pickerMode: true } })}
+                accessibilityRole="button"
+                accessibilityLabel={`${t('ivCalc.species')}: ${species?.name ?? t('ivCalc.unknownSpecies')}. ${t('common.change')}`}
               >
                 {species && (
                   <Image source={{ uri: getSpriteUrl(species.id) }} style={styles.speciesSprite} resizeMode="contain" />
@@ -126,6 +128,7 @@ export function IvCalculatorScreen({ route, navigation }: Props): React.JSX.Elem
                 onChangeText={setCpInput}
                 placeholder="e.g. 1256"
                 placeholderTextColor={COLORS.textMuted}
+                accessibilityLabel={t('ivCalc.cp')}
               />
 
               <Text style={styles.label}>{t('ivCalc.hp')}</Text>
@@ -136,6 +139,7 @@ export function IvCalculatorScreen({ route, navigation }: Props): React.JSX.Elem
                 onChangeText={setHpInput}
                 placeholder="e.g. 111"
                 placeholderTextColor={COLORS.textMuted}
+                accessibilityLabel={t('ivCalc.hp')}
               />
 
               <View style={styles.levelRangeRow}>
@@ -146,6 +150,7 @@ export function IvCalculatorScreen({ route, navigation }: Props): React.JSX.Elem
                     keyboardType="decimal-pad"
                     value={minLevelInput}
                     onChangeText={setMinLevelInput}
+                    accessibilityLabel={t('ivCalc.minLevel')}
                   />
                 </View>
                 <View style={styles.levelRangeField}>
@@ -155,6 +160,7 @@ export function IvCalculatorScreen({ route, navigation }: Props): React.JSX.Elem
                     keyboardType="decimal-pad"
                     value={maxLevelInput}
                     onChangeText={setMaxLevelInput}
+                    accessibilityLabel={t('ivCalc.maxLevel')}
                   />
                 </View>
               </View>
@@ -162,6 +168,8 @@ export function IvCalculatorScreen({ route, navigation }: Props): React.JSX.Elem
               <Pressable
                 style={({ pressed }) => [styles.calculateButton, pressed && styles.pressedOpacity]}
                 onPress={handleCalculate}
+                accessibilityRole="button"
+                accessibilityLabel={t('ivCalc.calculate')}
               >
                 <Text style={styles.calculateButtonText}>{t('ivCalc.calculate')}</Text>
               </Pressable>

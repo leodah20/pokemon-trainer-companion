@@ -45,6 +45,9 @@ export function RaidCountersScreen(): React.JSX.Element {
                     styles.bossChip,
                     boss.id === selectedBoss.id && styles.bossChipSelected,
                   ]}
+                  accessibilityRole="button"
+                  accessibilityLabel={boss.speciesName}
+                  accessibilityState={{ selected: boss.id === selectedBoss.id }}
                 >
                   <Image source={{ uri: getSpriteUrl(boss.speciesId) }} style={styles.bossSprite} resizeMode="contain" />
                   <Text style={[styles.bossChipText, boss.id === selectedBoss.id && styles.bossChipTextSelected]}>
@@ -63,6 +66,9 @@ export function RaidCountersScreen(): React.JSX.Element {
               key={option}
               onPress={() => setWeather(option)}
               style={[styles.weatherChip, option === weather && styles.weatherChipSelected]}
+              accessibilityRole="button"
+              accessibilityLabel={weatherLabel(option)}
+              accessibilityState={{ selected: option === weather }}
             >
               <Text style={[styles.weatherChipText, option === weather && styles.weatherChipTextSelected]}>
                 {weatherLabel(option)}

@@ -73,7 +73,12 @@ export function QuizScreen(): React.JSX.Element {
             </Text>
             <Text style={styles.finishedText}>{scoreMessage(score, questions.length, t)}</Text>
           </Card>
-          <Pressable style={styles.primaryButton} onPress={handlePlayAgain}>
+          <Pressable
+            style={styles.primaryButton}
+            onPress={handlePlayAgain}
+            accessibilityRole="button"
+            accessibilityLabel={t('quiz.playAgain')}
+          >
             <Text style={styles.primaryButtonText}>{t('quiz.playAgain')}</Text>
           </Pressable>
         </View>
@@ -103,6 +108,9 @@ export function QuizScreen(): React.JSX.Element {
                   selectedOption !== index &&
                   styles.optionRevealCorrect,
               ]}
+              accessibilityRole="button"
+              accessibilityLabel={option}
+              accessibilityState={{ disabled: answerState !== 'unanswered', selected: selectedOption === index }}
             >
               <Text
                 style={[
@@ -117,7 +125,12 @@ export function QuizScreen(): React.JSX.Element {
         </View>
 
         {answerState !== 'unanswered' && (
-          <Pressable style={styles.primaryButton} onPress={handleNext}>
+          <Pressable
+            style={styles.primaryButton}
+            onPress={handleNext}
+            accessibilityRole="button"
+            accessibilityLabel={questionIndex + 1 < questions.length ? t('quiz.nextQuestion') : t('quiz.seeResults')}
+          >
             <Text style={styles.primaryButtonText}>
               {questionIndex + 1 < questions.length ? t('quiz.nextQuestion') : t('quiz.seeResults')}
             </Text>

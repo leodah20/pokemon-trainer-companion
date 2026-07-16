@@ -1,26 +1,99 @@
 import { PokemonSpecies } from '../../domain/pokemon-species';
 import { LoreEntry, LoreEntryWithFallback } from '../../domain/lore';
-import rawLoreData from './lore-data.json';
+import { SupportedLanguage } from '../../i18n';
+import loreDataPtBR from './lore-data.json';
+import loreDataEn from './lore-data.en.json';
+import loreDataEs from './lore-data.es.json';
 
-const LORE_BY_SPECIES_ID = new Map(
-  (rawLoreData as LoreEntry[]).map((entry) => [entry.speciesId, entry]),
-);
+const LORE_BY_LANGUAGE: Record<SupportedLanguage, Map<number, LoreEntry>> = {
+  'pt-BR': new Map((loreDataPtBR as LoreEntry[]).map((entry) => [entry.speciesId, entry])),
+  en: new Map((loreDataEn as LoreEntry[]).map((entry) => [entry.speciesId, entry])),
+  es: new Map((loreDataEs as LoreEntry[]).map((entry) => [entry.speciesId, entry])),
+};
 
-export function getLoreForSpecies(speciesId: number): LoreEntry | undefined {
-  const writtenLore = LORE_BY_SPECIES_ID.get(speciesId);
-  if (writtenLore) {
-    return writtenLore;
-  }
-  return undefined;
+export function getLoreForSpecies(speciesId: number, language: SupportedLanguage): LoreEntry | undefined {
+  return LORE_BY_LANGUAGE[language].get(speciesId);
 }
+
+interface BattleRoleLabels {
+  offensive: string;
+  defensive: string;
+  tank: string;
+}
+
+const BATTLE_ROLE_LABELS: Record<SupportedLanguage, BattleRoleLabels> = {
+  'pt-BR': { offensive: 'ofensivo (ATK)', defensive: 'defensivo (DEF)', tank: 'tanque (STA)' },
+  en: { offensive: 'offensive (ATK)', defensive: 'defensive (DEF)', tank: 'tanky (STA)' },
+  es: { offensive: 'ofensivo (ATQ)', defensive: 'defensivo (DEF)', tank: 'resistente (RES)' },
+};
+
+function battleRoleFor(species: PokemonSpecies, language: SupportedLanguage): string {
+  const labels = BATTLE_ROLE_LABELS[language];
+  const maxStat = Math.max(species.baseAttack, species.baseDefense, species.baseStamina);
+  if (maxStat === species.baseAttack) return labels.offensive;
+  if (maxStat === species.baseDefense) return labels.defensive;
+  return labels.tank;
+}
+
+/**
+ * Procedural fallback lore for species without hand-written entries. Short parametrized template
+ * sentences, hand-translated per language (not run through the Gemini batch-translation script —
+ * these aren't fixed prose, they're built from live species stats, so machine-translating a
+ * template wouldn't be meaningfully different from just writing 3 short versions by hand).
+ */
+function buildFallbackLore(species: PokemonSpecies, language: SupportedLanguage): LoreEntryWithFallback {
+  const role = battleRoleFor(species, language);
+  const maxStat = Math.max(species.baseAttack, species.baseDefense, species.baseStamina);
+  const candyEstimate = species.id <= 151 ? 50 : 125;
+  const types = species.types.join('/');
+
+  const templates: Record<SupportedLanguage, Omit<LoreEntry, 'speciesId'>> = {
+    'pt-BR': {
+      origin: `Um Pokemon do tipo ${types} da Geracao ${species.generation}. Seu nome e ${species.name}.`,
+      goRelevance: `Tem ATK base ${species.baseAttack}, DEF ${species.baseDefense} e STA ${species.baseStamina}. E mais ${role}.`,
+      battleTip: `Seu melhor atributo e ${maxStat} (${role}). Use moves que aproveitem seu typing ${types}.`,
+      easterEgg: `Foi introduzido na Geracao ${species.generation}. Complete a Pokedex para mais informacoes.`,
+      goDifference: 'Consulte fontes da comunidade como PvPoke e PoGo API para analises detalhadas de moveset e ranking.',
+      evolutionCost: `Aproximadamente ${candyEstimate} candy para evolucoes. Buddy 3km/candy.`,
+      shinyRate: 'Shiny rate padrao (~1/500). Consulte eventos ativos para chances aumentadas.',
+    },
+    en: {
+      origin: `A ${types}-type Pokemon from Generation ${species.generation}. Its name is ${species.name}.`,
+      goRelevance: `Has base ATK ${species.baseAttack}, DEF ${species.baseDefense}, and STA ${species.baseStamina}. Leans ${role}.`,
+      battleTip: `Its best stat is ${maxStat} (${role}). Use moves that take advantage of its ${types} typing.`,
+      easterEgg: `Introduced in Generation ${species.generation}. Complete the Pokedex for more information.`,
+      goDifference: 'Check community sources like PvPoke and PoGo API for detailed moveset and ranking analysis.',
+      evolutionCost: `Roughly ${candyEstimate} candy for its evolutions. 3km/candy as a buddy.`,
+      shinyRate: 'Standard shiny rate (~1/500). Check active events for boosted odds.',
+    },
+    es: {
+      origin: `Un Pokemon de tipo ${types} de la Generacion ${species.generation}. Su nombre es ${species.name}.`,
+      goRelevance: `Tiene ATQ base ${species.baseAttack}, DEF ${species.baseDefense} y RES ${species.baseStamina}. Es mas ${role}.`,
+      battleTip: `Su mejor estadistica es ${maxStat} (${role}). Usa movimientos que aprovechen su tipo ${types}.`,
+      easterEgg: `Fue introducido en la Generacion ${species.generation}. Completa la Pokedex para mas informacion.`,
+      goDifference: 'Consulta fuentes de la comunidad como PvPoke y PoGo API para analisis detallados de movimientos y ranking.',
+      evolutionCost: `Aproximadamente ${candyEstimate} caramelos para sus evoluciones. 3km/caramelo como compañero.`,
+      shinyRate: 'Tasa shiny estandar (~1/500). Consulta los eventos activos para mejores probabilidades.',
+    },
+  };
+
+  return { speciesId: species.id, ...templates[language], isAutoGenerated: true };
+}
+
+const SPECIES_NOT_FOUND: Record<SupportedLanguage, string> = {
+  'pt-BR': 'Dados da especie nao encontrados.',
+  en: 'Species data not found.',
+  es: 'Datos de la especie no encontrados.',
+};
 
 export function getLoreWithFallback(
   species: PokemonSpecies | undefined,
+  language: SupportedLanguage,
 ): LoreEntryWithFallback {
   if (!species) {
     return {
       speciesId: 0,
-      origin: 'Species data not found.',
+      origin: SPECIES_NOT_FOUND[language],
       goRelevance: '',
       battleTip: '',
       easterEgg: '',
@@ -31,28 +104,10 @@ export function getLoreWithFallback(
     };
   }
 
-  const writtenLore = LORE_BY_SPECIES_ID.get(species.id);
+  const writtenLore = LORE_BY_LANGUAGE[language].get(species.id);
   if (writtenLore) {
     return { ...writtenLore, isAutoGenerated: false };
   }
 
-  const maxStat = Math.max(species.baseAttack, species.baseDefense, species.baseStamina);
-  let battleRole = 'versatil';
-  if (maxStat === species.baseAttack) battleRole = 'ofensivo (ATK)';
-  else if (maxStat === species.baseDefense) battleRole = 'defensivo (DEF)';
-  else battleRole = 'tanque (STA)';
-
-  const candyEstimate = species.id <= 151 ? 50 : 125;
-
-  return {
-    speciesId: species.id,
-    origin: `Um Pokemon do tipo ${species.types.join('/')} da Geracao ${species.generation}. Seu nome e ${species.name}.`,
-    goRelevance: `Tem ATK base ${species.baseAttack}, DEF ${species.baseDefense} e STA ${species.baseStamina}. E mais ${battleRole}.`,
-    battleTip: `Seu melhor atributo e ${maxStat} (${battleRole}). Use moves que aproveitem seu typing ${species.types.join('/')}.`,
-    easterEgg: `Foi introduzido na Geracao ${species.generation}. Complete a Pokedex para mais informacoes.`,
-    goDifference: 'Consulte fontes da comunidade como PvPoke e PoGo API para analises detalhadas de moveset e ranking.',
-    evolutionCost: `Aproximadamente ${candyEstimate} candy para evolucoes. Buddy 3km/candy.`,
-    shinyRate: 'Shiny rate padrao (~1/500). Consulte eventos ativos para chances aumentadas.',
-    isAutoGenerated: true,
-  };
+  return buildFallbackLore(species, language);
 }

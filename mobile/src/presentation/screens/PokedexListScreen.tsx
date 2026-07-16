@@ -93,12 +93,12 @@ export function PokedexListScreen({ navigation, route }: Props): React.JSX.Eleme
   ).current;
 
   const quickActions: readonly BottomSheetMenuItem[] = [
-    { key: 'iv', emoji: '🧮', label: 'IV Calculator', onPress: () => navigation.navigate('IvCalculator') },
-    { key: 'compare', emoji: '⚖️', label: 'Compare', onPress: () => navigation.navigate('Comparison') },
-    { key: 'types', emoji: '🔥', label: 'Type Chart', onPress: () => navigation.navigate('TypeChart') },
-    { key: 'raids', emoji: '⚔️', label: 'Raid Counters', onPress: () => navigation.navigate('RaidCounters') },
-    { key: 'rankings', emoji: '🏆', label: 'Rankings', onPress: () => navigation.navigate('Rankings') },
-    { key: 'quiz', emoji: '❓', label: 'Quiz', onPress: () => navigation.navigate('Quiz') },
+    { key: 'iv', emoji: '🧮', label: t('tools.ivCalculator.title'), onPress: () => navigation.navigate('IvCalculator') },
+    { key: 'compare', emoji: '⚖️', label: t('tools.compare.title'), onPress: () => navigation.navigate('Comparison') },
+    { key: 'types', emoji: '🔥', label: t('tools.typeChart.title'), onPress: () => navigation.navigate('TypeChart') },
+    { key: 'raids', emoji: '⚔️', label: t('tools.raidCounters.title'), onPress: () => navigation.navigate('RaidCounters') },
+    { key: 'rankings', emoji: '🏆', label: t('nav.rankings'), onPress: () => navigation.navigate('Rankings') },
+    { key: 'quiz', emoji: '❓', label: t('nav.quiz'), onPress: () => navigation.navigate('Quiz') },
   ];
 
   function handleSelect(species: PokemonSpecies): void {
@@ -125,6 +125,7 @@ export function PokedexListScreen({ navigation, route }: Props): React.JSX.Eleme
           placeholderTextColor={COLORS.textMuted}
           value={filters.searchText}
           onChangeText={(text) => setFilters((prev) => ({ ...prev, searchText: text }))}
+          accessibilityLabel={t('pokedex.searchPlaceholder')}
         />
 
         <ScrollView
@@ -132,6 +133,7 @@ export function PokedexListScreen({ navigation, route }: Props): React.JSX.Eleme
           showsHorizontalScrollIndicator={false}
           style={styles.filterRow}
           contentContainerStyle={styles.filterRowContent}
+          accessibilityLabel={t('pokedex.filterByGen')}
         >
           <FilterChip
             label={t('pokedex.allGens')}
@@ -155,6 +157,7 @@ export function PokedexListScreen({ navigation, route }: Props): React.JSX.Eleme
           showsHorizontalScrollIndicator={false}
           style={styles.filterRow}
           contentContainerStyle={styles.filterRowContent}
+          accessibilityLabel={t('pokedex.filterByType')}
         >
           <FilterChip
             label={t('pokedex.allTypes')}
@@ -215,6 +218,8 @@ export function PokedexListScreen({ navigation, route }: Props): React.JSX.Eleme
                 <Pressable
                   style={({ pressed }) => [styles.row, pressed && styles.rowPressed]}
                   onPress={() => handleSelect(species)}
+                  accessibilityRole="button"
+                  accessibilityLabel={`#${String(species.id).padStart(3, '0')} ${species.name}`}
                 >
                   <View style={[styles.spriteBackdrop, { backgroundColor: tintTowardWhite(itemColor, 0.55) }]}>
                     <Image source={{ uri: getSpriteUrl(species.id) }} style={styles.sprite} resizeMode="contain" />
@@ -241,7 +246,7 @@ export function PokedexListScreen({ navigation, route }: Props): React.JSX.Eleme
             <BottomSheetMenu
               visible={quickActionsVisible}
               onClose={() => setQuickActionsVisible(false)}
-              title="Quick Actions"
+              title={t('pokedex.quickActions')}
               items={quickActions}
             />
           </>
@@ -263,6 +268,9 @@ function FilterChip({ label, selected, onPress, color }: FilterChipProps): React
     <Pressable
       onPress={onPress}
       style={[styles.chip, selected && { backgroundColor: color ?? COLORS.brandRed }]}
+      accessibilityRole="button"
+      accessibilityState={{ selected }}
+      accessibilityLabel={label}
     >
       <Text style={[styles.chipText, selected && styles.chipTextSelected]} numberOfLines={1}>
         {label}

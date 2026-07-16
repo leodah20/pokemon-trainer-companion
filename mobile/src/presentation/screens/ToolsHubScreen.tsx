@@ -51,7 +51,13 @@ export function ToolsHubScreen({ navigation }: Props): React.JSX.Element {
         <Text style={styles.subtitle}>{t('tools.subtitle')}</Text>
 
         {TOOLS.map((tool) => (
-          <Pressable key={tool.titleKey} onPress={() => tool.onPress(navigation)}>
+          <Pressable
+            key={tool.titleKey}
+            onPress={() => tool.onPress(navigation)}
+            accessibilityRole="button"
+            accessibilityLabel={t(tool.titleKey)}
+            accessibilityHint={t(tool.descriptionKey)}
+          >
             <Card style={styles.card} accentColor={COLORS.brandBlue}>
               <View style={styles.cardRow}>
                 <Text style={styles.emoji}>{tool.emoji}</Text>

@@ -47,10 +47,10 @@ function StatBar({ label, value, color }: { label: string; value: number; color:
 }
 
 export function PokemonDetailScreen({ route, navigation }: Props): React.JSX.Element {
-  const { t } = useTranslation();
+  const { t, language } = useTranslation();
   const species = getSpeciesById(route.params.speciesId);
   const pvpRankings = getPvpRankingsForSpecies(route.params.speciesId);
-  const lore = getLoreWithFallback(species);
+  const lore = getLoreWithFallback(species, language);
   const [battleRoleView, setBattleRoleView] = useState<BattleRoleView>('attack');
   const [fromLevelInput, setFromLevelInput] = useState('1');
   const [toLevelInput, setToLevelInput] = useState('40');
@@ -141,6 +141,9 @@ export function PokemonDetailScreen({ route, navigation }: Props): React.JSX.Ele
               <Pressable
                 style={[styles.roleToggleButton, battleRoleView === 'attack' && styles.roleToggleButtonSelected]}
                 onPress={() => setBattleRoleView('attack')}
+                accessibilityRole="button"
+                accessibilityLabel={t('detail.attack')}
+                accessibilityState={{ selected: battleRoleView === 'attack' }}
               >
                 <Text
                   style={battleRoleView === 'attack' ? styles.roleToggleTextSelected : styles.roleToggleText}
@@ -151,6 +154,9 @@ export function PokemonDetailScreen({ route, navigation }: Props): React.JSX.Ele
               <Pressable
                 style={[styles.roleToggleButton, battleRoleView === 'defense' && styles.roleToggleButtonSelected]}
                 onPress={() => setBattleRoleView('defense')}
+                accessibilityRole="button"
+                accessibilityLabel={t('detail.defense')}
+                accessibilityState={{ selected: battleRoleView === 'defense' }}
               >
                 <Text
                   style={battleRoleView === 'defense' ? styles.roleToggleTextSelected : styles.roleToggleText}
@@ -254,6 +260,8 @@ export function PokemonDetailScreen({ route, navigation }: Props): React.JSX.Ele
           <Pressable
             style={({ pressed }) => [styles.secondaryButton, pressed && styles.calculateButtonPressed]}
             onPress={() => navigation.navigate('EvolutionChain', { speciesId: species.id })}
+            accessibilityRole="button"
+            accessibilityLabel={t('detail.evolutionChainButton')}
           >
             <Text style={styles.secondaryButtonText}>{t('detail.evolutionChainButton')}</Text>
           </Pressable>
@@ -261,6 +269,8 @@ export function PokemonDetailScreen({ route, navigation }: Props): React.JSX.Ele
           <Pressable
             style={({ pressed }) => [styles.calculateButton, pressed && styles.calculateButtonPressed]}
             onPress={() => navigation.navigate('IvCalculator', { speciesId: species.id })}
+            accessibilityRole="button"
+            accessibilityLabel={t('detail.calculateIvButton')}
           >
             <Text style={styles.calculateButtonText}>{t('detail.calculateIvButton')}</Text>
           </Pressable>

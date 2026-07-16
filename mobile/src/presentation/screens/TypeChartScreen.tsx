@@ -44,6 +44,9 @@ export function TypeChartScreen(): React.JSX.Element {
               styles.typeChip,
               { backgroundColor: type === attackerType ? getTypeColor(type) : COLORS.glassSurface },
             ]}
+            accessibilityRole="button"
+            accessibilityLabel={type}
+            accessibilityState={{ selected: type === attackerType }}
           >
             <Text style={[styles.typeChipText, type === attackerType && styles.typeChipTextSelected]}>
               {type}

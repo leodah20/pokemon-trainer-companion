@@ -24,6 +24,9 @@ export interface TranslationKeys {
   'pokedex.allTypes': string;
   'pokedex.pickerTitle': string;
   'pokedex.emptyResults': string;
+  'pokedex.quickActions': string;
+  'pokedex.filterByGen': string;
+  'pokedex.filterByType': string;
 
   'tools.title': string;
   'tools.subtitle': string;
@@ -53,6 +56,11 @@ export interface TranslationKeys {
   'companion.retryAskAi': string;
   'companion.choosePrompt': string;
   'companion.searchPlaceholder': string;
+  'companion.dialogueAbout': string;
+  'companion.dialogueInGo': string;
+  'companion.dialogueBattleTip': string;
+  'companion.dialogueFunFact': string;
+  'companion.dialogueAiTip': string;
 
   'pvpLeague.great': string;
   'pvpLeague.ultra': string;

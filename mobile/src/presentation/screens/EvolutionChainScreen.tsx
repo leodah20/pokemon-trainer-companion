@@ -56,7 +56,7 @@ export function EvolutionChainScreen({ route, navigation }: Props): React.JSX.El
 
 function EvolutionCard({ link, onPress }: { link: EvolutionChainLink; onPress: () => void }): React.JSX.Element {
   return (
-    <Pressable onPress={onPress} style={styles.card}>
+    <Pressable onPress={onPress} style={styles.card} accessibilityRole="button" accessibilityLabel={link.speciesName}>
       <Image source={{ uri: getSpriteUrl(link.speciesId) }} style={styles.sprite} resizeMode="contain" />
       <View style={styles.cardInfo}>
         <Text style={styles.cardName}>{link.speciesName}</Text>

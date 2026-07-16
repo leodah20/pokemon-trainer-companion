@@ -37,6 +37,9 @@ export function TopRankingsScreen({ navigation }: Props): React.JSX.Element {
             key={option.category}
             onPress={() => setCategory(option.category)}
             style={[styles.categoryChip, option.category === category && styles.categoryChipSelected]}
+            accessibilityRole="button"
+            accessibilityLabel={t(CATEGORY_LABEL_KEYS[option.category])}
+            accessibilityState={{ selected: option.category === category }}
           >
             <Text
               style={[styles.categoryChipText, option.category === category && styles.categoryChipTextSelected]}
@@ -56,6 +59,8 @@ export function TopRankingsScreen({ navigation }: Props): React.JSX.Element {
           <Pressable
             style={styles.row}
             onPress={() => navigation.navigate('PokemonDetail', { speciesId: item.species.id })}
+            accessibilityRole="button"
+            accessibilityLabel={`#${item.rank} ${item.species.name}, ${Math.round(item.value)} ${activeOption.unit}`}
           >
             <Text style={styles.rank}>#{item.rank}</Text>
             <Image

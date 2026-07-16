@@ -1,0 +1,1512 @@
+[
+  {
+    "speciesId": 1,
+    "origin": "Bulbasaur se inspiró en ranas y plantas bulbosas. Su nombre combina 'bulb' (bulbo) con 'saur' (lagarto en griego). Es el único inicial con ventaja contra el primer gimnasio de la región (Brock).",
+    "goRelevance": "Común en eventos de inicio de temporada y aniversarios de Pokémon GO. Venusaur es un gran counter de tipo Planta para incursiones de Agua y Tierra, especialmente con Planta Feroz.",
+    "battleTip": "El tipo Planta/Veneno ofrece 5 resistencias (Agua, Eléctrico, Hada, Lucha, Planta) pero también 4 debilidades: Fuego, Hielo, Volador y Psíquico. Cuidado con Mewtwo y Rayquaza en la Liga Máster.",
+    "easterEgg": "Bulbasaur es el #001 en la Pokédex Nacional, pero no fue el primer Pokémon creado; ese título es para Rhydon, quien fue el primero en ser modelado por los diseñadores.",
+    "goDifference": "En los juegos principales, Bulbasaur aprende Planta Feroz al evolucionar. En GO, Planta Feroz es un movimiento exclusivo del Día de la Comunidad; sin una MT de élite no se puede obtener.",
+    "evolutionCost": "25 caramelos para Ivysaur + 100 caramelos para Venusaur = 125 en total. 3km por caramelo como compañero. Requiere 296 caramelos XL para subir del nivel 40 al 50.",
+    "shinyRate": "Shiny disponible (tasa estándar ~1/500). Tuvo un Día de la Comunidad en 2018, por lo que es común entre los jugadores veteranos."
+  },
+  {
+    "speciesId": 2,
+    "origin": "Ivysaur es la forma intermedia de Bulbasaur. El bulbo en su espalda comienza a florecer, indicando que está cerca de evolucionar. Su nombre mezcla 'ivy' (hiedra) con 'saur'.",
+    "goRelevance": "Rara vez se usa en combate por ser una forma intermedia. Aparece en eventos de evolución con bonos de polvos estelares o XP.",
+    "battleTip": "Con 151 ATK y 143 DEF, Ivysaur es estadísticamente inferior a Venusaur en todo aspecto. No vale la inversión de polvos estelares.",
+    "easterEgg": "Ivysaur y Venusaur son los únicos Pokémon de la línea de Bulbasaur que aparecen en el juego Super Smash Bros. como trofeos ayudantes.",
+    "goDifference": "En los juegos principales, Ivysaur aprende Razor Leaf al nivel 22. En GO, los movimientos se definen al capturar o evolucionar, sin nivel de aprendizaje.",
+    "evolutionCost": "100 caramelos para evolucionar a Venusaur. 3km por caramelo de compañero. Probabilidad baja de recibir caramelos XL al caminar con él.",
+    "shinyRate": "Shiny disponible: evoluciona un Bulbasaur shiny para obtener un Ivysaur shiny. No aparece shiny en estado salvaje."
+  },
+  {
+    "speciesId": 3,
+    "origin": "Venusaur está inspirado en una rana venenosa y una flor gigante en floración. Su nombre proviene de 'Venus' (diosa de las flores) + 'saur'. Es la forma final del inicial de Kanto.",
+    "goRelevance": "Uno de los mejores tipos Planta en GO. Clasificado #43 en la Liga Máster por PvPoke con Planta Feroz. Excelente counter para Kyogre, Groudon y Swampert.",
+    "battleTip": "Con Planta Feroz (movimiento de Día de la Comunidad), Venusaur tiene uno de los mejores DPS entre los tipo Planta. Sin él, su ranking cae significativamente; usa una MT de élite si te perdiste el evento.",
+    "easterEgg": "La flor de Venusaur está inspirada en la Rafflesia arnoldii, la flor más grande del mundo, que huele a carne podrida. Por suerte, la de Venusaur no tiene olor.",
+    "goDifference": "En los juegos principales, Venusaur puede aprender Terremoto y Bomba Lodo por MT. En GO, solo aprende movimientos de tipo Planta y Veneno; no tiene cobertura de tipo Tierra.",
+    "evolutionCost": "100 caramelos para evolucionar desde Ivysaur. 3km/caramelo como compañero. 296 caramelos XL para llegar al nivel 50.",
+    "shinyRate": "Variocolor verde lima disponible. Tuvo un Día de la Comunidad clásico en 2018 y un relanzamiento en 2022. La probabilidad de shiny es de ~1/25 durante el evento."
+  },
+  {
+    "speciesId": 4,
+    "origin": "Charmander está inspirado en lagartijas y dragones. La llama en la punta de su cola indica su salud y emoción; si se apaga, muere. Su nombre viene de 'char' (quemar) + 'salamander'.",
+    "goRelevance": "Un inicial icónico con su propio Día de la Comunidad. Charizard es uno de los tipos Fuego más versátiles en GO, con acceso a Anillo Ígneo y sus dos Megaevoluciones.",
+    "battleTip": "Aunque es tipo Fuego, Charizard gana el tipo Volador al evolucionar. Esto le da una debilidad 4x a Roca; cuidado con Tyranitar y Rhyperior en las incursiones.",
+    "easterEgg": "Charmander era el Pokémon favorito del creador de la franquicia, Satoshi Tajiri. El nombre del protagonista, Ash, es Satoshi en japonés en su honor.",
+    "goDifference": "En los juegos originales, Charmander evoluciona al nivel 36. En GO, tú decides cuándo evolucionar, sin restricciones de nivel de entrenador.",
+    "evolutionCost": "25 caramelos para Charmeleon + 100 caramelos para Charizard = 125 en total. Compañero: 3km/caramelo.",
+    "shinyRate": "Shiny dorado disponible. Día de la Comunidad en 2018. Tasa de CD ~1/25. El Charmander shiny es uno de los más populares por su color amarillo."
+  },
+  {
+    "speciesId": 5,
+    "origin": "Charmeleon es la forma intermedia de Charmander. Cuando se enfada, la llama de su cola se vuelve azulada. Su nombre mezcla 'char' con 'chameleon' (camaleón).",
+    "goRelevance": "Es una forma intermedia sin utilidad práctica en combate. Solo sirve para completar la Pokédex y como paso previo a Charizard.",
+    "battleTip": "Con 158 de ATQ y 151 de EAT, Charmeleon tiene estadísticas decentes para su categoría, pero es superado por muchos tipos Fuego intermedios.",
+    "easterEgg": "En la serie original, el Charmander de Ash se negó a evolucionar durante un tiempo, convirtiendo a Charmeleon en uno de los pocos Pokémon que siente celos de su Entrenador.",
+    "goDifference": "En los juegos principales, Charmeleon se obtiene al nivel 16. En GO, se puede obtener a cualquier nivel siempre que tengas 25 caramelos de Charmander.",
+    "evolutionCost": "100 caramelos para evolucionar a Charizard. 3km/caramelo como compañero.",
+    "shinyRate": "Shiny disponible al evolucionar un Charmander shiny. Su color es amarillo claro."
+  },
+  {
+    "speciesId": 6,
+    "origin": "Charizard está inspirado en los dragones europeos. A pesar de su apariencia dracónica, no es de tipo Dragón; uno de los mayores errores de tipo en la historia hasta hoy.",
+    "goRelevance": "Versátil tipo Fuego/Volador con acceso a Anillo Ígneo (CD). Posee dos Megaevoluciones (Mega X Fuego/Dragón y Mega Y Fuego/Volador). Top counter para Planta, Acero y Hielo.",
+    "battleTip": "Mega Charizard X gana el tipo Dragón, perdiendo la debilidad 4x a Roca pero ganando debilidad a Dragón, Hada y Hielo. Elige la Mega según el oponente.",
+    "easterEgg": "Charizard es el único Pokémon en aparecer en la portada de dos juegos diferentes: Red/Green (japonés) y FireRed/LeafGreen, 8 años después.",
+    "goDifference": "En los juegos principales, Charizard no podía aprender Vuelo hasta la Generación 6 (vía MO). En GO, simplemente tiene Ataque Ala como movimiento rápido disponible.",
+    "evolutionCost": "100 caramelos de Charmeleon. 3km/caramelo de compañero. 296 caramelos XL para maximizar. El caramelo XL de Charizard es difícil de obtener por ser raro en spawns salvajes.",
+    "shinyRate": "Icónico shiny negro. Uno de los más codiciados del juego. Community Day 2018 + relanzamiento 2022. Mega Charizard shiny X e Y disponibles."
+  },
+  {
+    "speciesId": 7,
+    "origin": "Squirtle está inspirado en las tortugas marinas. Su nombre proviene de 'squirt' (chorro) + 'turtle' (tortuga). Puede lanzar chorros de agua por la boca con precisión quirúrgica.",
+    "goRelevance": "El inicial de Agua más defensivo de los tres. Blastoise con Hydro Cannon es un tipo Agua sólido para incursiones, aunque superado por Kyogre y Swampert.",
+    "battleTip": "Blastoise tiene 207 DEF, una de las más altas entre los tipo Agua. Es un gran defensor de gimnasios si tiene Hydro Cannon o Ice Beam para cobertura.",
+    "easterEgg": "Squirtle tiene al famoso Escuadrón Squirtle: un grupo de Squirtle con gafas de sol que aparecen en el anime como bomberos, liderados por un Squirtle que se convirtió en la mano derecha de la Oficial Jenny.",
+    "goDifference": "En los juegos principales, Blastoise aprende Hydro Pump en el nivel 42. En GO, Hydro Cannon es un movimiento exclusivo de CD; sin él, Blastoise pierde mucho valor.",
+    "evolutionCost": "25 caramelos para Wartortle + 100 caramelos para Blastoise = 125 en total. Compañero 3km/caramelo.",
+    "shinyRate": "Shiny disponible. Community Day 2018. El Shiny Blastoise es de color morado claro. CD clásico relanzado en 2023."
+  },
+  {
+    "speciesId": 8,
+    "origin": "Wartortle es la forma intermedia de Squirtle. Sus orejas peludas y su cola esponjosa son rasgos que desaparecen al convertirse en Blastoise. Su nombre viene de 'war' (guerra) + 'turtle' (tortuga).",
+    "goRelevance": "Forma intermedia sin relevancia competitiva. Se usa solo para completar la Pokédex y como paso evolutivo.",
+    "battleTip": "Con 155 de DEF, Wartortle es más defensivo que muchos tipos Agua básicos, pero sigue siendo débil comparado con Blastoise.",
+    "easterEgg": "Wartortle es uno de los pocos Pokémon que pierde rasgos al evolucionar: la cola esponjosa desaparece por completo en Blastoise.",
+    "goDifference": "En los juegos principales, Wartortle se obtiene al nivel 16. En GO, es una evolución de 25 caramelos en cualquier momento.",
+    "evolutionCost": "100 caramelos para Blastoise. 3km/caramelo como compañero.",
+    "shinyRate": "Shiny disponible mediante evolución. Tiene un color azul más oscuro de lo normal."
+  },
+  {
+    "speciesId": 9,
+    "origin": "Blastoise está inspirado en tortugas cañón. Sus cañones de agua en los hombros pueden perforar acero. Su nombre viene de 'blast' (explosión) + 'turtle'. Es el más defensivo de los tres iniciales de Kanto.",
+    "goRelevance": "Tipo Agua sólido con Hydro Cannon (CD). Pierde ante Kyogre y Swampert en DPS, pero tiene una DEF excepcional. Usado en Great League como tanque (rango #118 PvPoke).",
+    "battleTip": "Blastoise con Ice Beam cubre contra los tipo Planta, su mayor debilidad. Skull Bash como movimiento cargado aumenta la DEF, pero es predecible.",
+    "easterEgg": "Blastoise puede disparar agua a presión suficiente para perforar acero grueso. Esta característica lo convierte en uno de los Pokémon más poderosos de Kanto en términos de fuerza bruta.",
+    "goDifference": "En los juegos principales, Blastoise puede aprender Aura Sphere y Dragon Pulse. En GO, su repertorio de movimientos se limita a Agua, Hielo y Normal.",
+    "evolutionCost": "100 caramelos de Wartortle. 3km/caramelo de compañero. 296 caramelos XL para maximizar.",
+    "shinyRate": "Shiny de color morado claro. Community Day 2018. Mega Blastoise shiny con cañones morados disponible."
+  },
+  {
+    "speciesId": 10,
+    "origin": "Caterpie está inspirado en la oruga de la mariposa monarca. Su nombre proviene de 'caterpillar' (oruga) simplificado. Es uno de los Pokémon más débiles jamás creados, con un ATK base de solo 55.",
+    "goRelevance": "Común en áreas urbanas y parques. Aparece frecuentemente con clima parcialmente nublado (Partly Cloudy). Se usa para evoluciones masivas y ganar XP.",
+    "battleTip": "Con un ATK de 55, Caterpie es uno de los peores Pokémon para el combate. No vale la pena invertir Polvos Estelares en él bajo ninguna circunstancia.",
+    "easterEgg": "Caterpie fue el primer Pokémon capturado por Ash en la serie original (excluyendo a Pikachu). Lo capturó en el episodio 3.",
+    "goDifference": "En los juegos principales, Caterpie aprende Placaje y Disparo Demora. En GO tiene Picadura y Combate; movimientos muy débiles que solo sirven para gimnasios fáciles.",
+    "evolutionCost": "12 caramelos para Metapod + 50 caramelos para Butterfree = 62 en total. Compañero de 1km/caramelo. Extremadamente rápido de evolucionar.",
+    "shinyRate": "Shiny disponible (verde claro). Relativamente común entre jugadores dedicados por ser un Pokémon de aparición frecuente."
+  },
+  {
+    "speciesId": 11,
+    "origin": "Metapod está inspirado en la crisálida de una mariposa. Permanece completamente inmóvil mientras se prepara para la metamorfosis. Su nombre proviene de 'metamorphosis' + 'pod'.",
+    "goRelevance": "Prácticamente irrelevante en combate. Tiene el PC de captura más bajo posible de todos los Pokémon. Solo se usa como paso previo para Butterfree.",
+    "battleTip": "Con un ATK base de 45, Metapod es literalmente uno de los Pokémon más débiles del juego. Su único movimiento viable es Combate.",
+    "easterEgg": "El Metapod de Ash es famoso por usar solo Fortaleza en combate, convirtiéndose en un meme entre los fans.",
+    "goDifference": "En la serie principal, Metapod aprende Fortaleza al nivel 1 y nada más. En GO, tiene Placaje como movimiento rápido.",
+    "evolutionCost": "50 caramelos para evolucionar a Butterfree. Compañero: 1km/caramelo.",
+    "shinyRate": "Shiny disponible mediante evolución (tono ligeramente diferente). Rara vez se encuentra shiny en estado salvaje."
+  },
+  {
+    "speciesId": 12,
+    "origin": "Butterfree está inspirada en la mariposa monarca. Su capacidad para localizar flores a 10km de distancia es una referencia a las migraciones reales de las mariposas. Su nombre viene de 'butterfly' + 'free'.",
+    "goRelevance": "Razonable en batallas PvP de Little League (CP bajo). Tiene acceso a Confusion + Psychic, lo que puede sorprender a oponentes desprevenidos.",
+    "battleTip": "Butterfree con Confusion causa daño de tipo Psíquico que cubre contra tipos Veneno y Lucha. Es buena para la Great League si su CP está cerca del límite.",
+    "easterEgg": "Butterfree fue el primer Pokémon que Ash liberó en la naturaleza (episodio 21), junto a una Butterfree rosa; una de las escenas más emotivas del anime.",
+    "goDifference": "En la serie principal, Butterfree aprende Sleep Powder y Stun Spore. En GO, los estados alterados (dormir/envenenar) no existen, por lo que estos movimientos fueron reemplazados por daño directo.",
+    "evolutionCost": "50 caramelos de Metapod. Compañero de 1km/caramelo; es muy fácil farmear caramelos.",
+    "shinyRate": "Shiny rosa disponible (como la Butterfree del anime). Tasa estándar ~1/500. A diferencia de la del anime, esta es solo una variación de color."
+  },
+  {
+    "speciesId": 13,
+    "origin": "Weedle está inspirado en orugas con aguijón. Su nombre proviene de 'weed' (hierba) + 'needle' (aguja), en referencia al aguijón de su cabeza. Es de tipo Bicho/Veneno.",
+    "goRelevance": "Extremadamente común. Junto con Caterpie y Wurmple, forma el trío de 'evolución de 12 caramelos' que los jugadores usan para evoluciones masivas con Huevo Suerte.",
+    "battleTip": "Peor que Caterpie en estadísticas: un ATK base de solo 63. Ni lo consideres para combates.",
+    "easterEgg": "Weedle y Kakuna son los únicos Pokémon que pueden encontrarse shiny en estado salvaje SOLO durante eventos especiales; fuera de eso, solo mediante tareas de investigación.",
+    "goDifference": "En la serie principal, Weedle aprende Picotazo Venenoso al nivel 1. En GO, el movimiento existe pero con una mecánica distinta (genera energía en lugar de envenenar).",
+    "evolutionCost": "12 caramelos para Kakuna + 50 caramelos para Beedrill = 62 en total. Compañero de 1km/caramelo.",
+    "shinyRate": "Shiny disponible. De color dorado. Es más fácil de obtener por ser un spawn muy común."
+  },
+  {
+    "speciesId": 14,
+    "origin": "Kakuna es la fase de capullo de Weedle. Se parece a una cáscara de huevo o pupa. Su nombre proviene de 'cocoon' (capullo) adaptado. Permanece completamente inmóvil durante su metamorfosis.",
+    "goRelevance": "Sin relevancia más allá de ser un paso evolutivo. Uno de los peores Pokémon del juego.",
+    "battleTip": "ATQ base 46: el segundo más bajo del juego, solo superado por Metapod (45).",
+    "easterEgg": "Kakuna y Metapod son los únicos Pokémon en GO que tienen EXACTAMENTE los mismos movimientos: Picadura + Combate.",
+    "goDifference": "En la serie principal, Kakuna solo aprende Fortaleza. En GO, tiene Placaje como movimiento rápido.",
+    "evolutionCost": "50 caramelos para evolucionar a Beedrill. Compañero: 1km/caramelo.",
+    "shinyRate": "Shiny dorado disponible mediante evolución."
+  },
+  {
+    "speciesId": 15,
+    "origin": "Beedrill está inspirado en avispas y abejas carroñeras. Sus tres aguijones pueden inyectar veneno. Su nombre viene de 'bee' (abeja) + 'needle' (aguja).",
+    "goRelevance": "Su Megaevolución se añadió en 2021, volviéndolo viable de nuevo. Mega Beedrill es un gran tipo Veneno para incursiones de tipo Hada.",
+    "battleTip": "Mega Beedrill es frágil (130 DEF) pero tiene un ATK alto (303 con Mega). Úsalo con cuidado: inflige mucho daño pero cae rápido.",
+    "easterEgg": "Kakuna y Metapod son los únicos Pokémon que tienen EXACTAMENTE los mismos movimientos en GO: Picadura + Combate.",
+    "goDifference": "En la serie principal, Beedrill aprende Doble Ataque al nivel 20. En GO este movimiento no existe; fue sustituido por Corte Furia.",
+    "evolutionCost": "50 caramelos de Kakuna. Compañero 1km/caramelo. Mega Beedrill requiere 200 Megaenergía para su primera activación.",
+    "shinyRate": "Un Shiny dorado brillante. El Mega Beedrill shiny con sus detalles dorados es muy llamativo."
+  },
+  {
+    "speciesId": 16,
+    "origin": "Pidgey está inspirado en palomas y gorriones. Su nombre es una simplificación de 'pigeon' (paloma). Es posiblemente el Pokémon más común de Kanto, equivalente a lo que son las palomas en las ciudades reales.",
+    "goRelevance": "Extremadamente común. Pidgey es el rey de las evoluciones masivas: cuesta solo 12 caramelos para Pidgeotto y 50 para Pidgeot. Los jugadores usan miles de estos para ganar XP.",
+    "battleTip": "Pidgeot tiene acceso a Gust + Brave Bird, movimientos decentes para un tipo Normal/Volador. No es competitivo, pero es divertido para usar en batallas casuales.",
+    "easterEgg": "El Pidgeot de Ash es uno de los pocos Pokémon que ha liberado (lo dejó con un amigo para proteger a otros Pidgey). Reapareció años después en el anime.",
+    "goDifference": "En la serie principal, la línea de Pidgey aprende Quick Attack y Gust. En GO, Gust es un movimiento de viento que solo Pidgeot tiene como movimiento rápido (legado).",
+    "evolutionCost": "12 caramelos para Pidgeotto + 50 caramelos para Pidgeot = 62 en total. Compañero 1km/caramelo. Uno de los más fáciles de evolucionar.",
+    "shinyRate": "Shiny disponible (color claro). Extremadamente común por ser uno de los spawns más frecuentes."
+  },
+  {
+    "speciesId": 17,
+    "origin": "Pidgeotto es la forma intermedia de Pidgey. Tiene garras afiladas para capturar presas y una envergadura impresionante. Su nombre proviene de 'pigeon' y un sufijo aumentativo.",
+    "goRelevance": "Forma intermedia. Rara vez se conserva sin evolucionar a menos que sea por nostalgia.",
+    "battleTip": "Pidgeotto es uno de los pocos Pokémon intermedios que aparece como jefe de gimnasio en algunas versiones del juego.",
+    "easterEgg": "El Pidgeotto de Ash era su Pokémon más confiable en las primeras temporadas, usado para reconocimiento aéreo y entregas.",
+    "goDifference": "En la serie principal, Pidgeotto evoluciona al nivel 36. En GO, la evolución depende de caramelos, no de nivel.",
+    "evolutionCost": "50 caramelos para Pidgeot. Compañero 1km/caramelo.",
+    "shinyRate": "Shiny mediante evolución. Tono más claro que el original."
+  },
+  {
+    "speciesId": 18,
+    "origin": "Pidgeot está inspirado en halcones y águilas majestuosas. Su plumaje crea patrones hipnóticos al volar. Su nombre proviene de 'pigeon' con un sufijo que sugiere grandeza.",
+    "goRelevance": "Tuvo su momento de gloria con la Megaevolución en 2021. Mega Pidgeot es el mejor tipo Volador para incursiones en cuanto a DPS puro.",
+    "battleTip": "Mega Pidgeot con Tajo Aéreo (Gust) + Pájaro Osado (Brave Bird) causa un daño masivo. La desventaja es que Pájaro Osado reduce la DEF tras cada uso; ten un cambio listo para retirarlo.",
+    "easterEgg": "Pidgeot tiene el CP máximo más alto entre todos los tipos Normal/Volador que no son legendarios, aunque sigue siendo superado por Staraptor.",
+    "goDifference": "En la serie principal, Pidgeot puede aprender Onda Ígnea (Heat Wave) y Ala de Acero (Steel Wing). En GO, su repertorio de movimientos se limita a Normal y Volador.",
+    "evolutionCost": "50 caramelos de Pidgeotto. Compañero 1km/caramelo. Mega Pidgeot: 200 Megaenergía.",
+    "shinyRate": "Shiny rosa claro. El Mega Pidgeot shiny tiene detalles rosados en sus plumas."
+  },
+  {
+    "speciesId": 19,
+    "origin": "Rattata está inspirado en ratas y roedores urbanos. Es famoso por decir 'Top percentage Rattata', una referencia a un personaje del anime que presumía de su Rattata. Su nombre proviene de 'rat' (rata).",
+    "goRelevance": "Común en áreas urbanas. Tiene una variante regional de Alola (Siniestro/Normal). Se usa para evoluciones masivas (25 caramelos).",
+    "battleTip": "Raticate con Mordisco + Hipercolmillo es decente para batallas de PC bajo. No es competitivo, pero es divertido.",
+    "easterEgg": "Las frases 'Top percentage Rattata' y 'Youngster Joey' son el meme clásico más grande de la comunidad Pokémon. Rattata es famoso solo por esto.",
+    "goDifference": "En la serie principal, Rattata aprende Hipercolmillo al nivel 14. En GO, Hipercolmillo es un ataque cargado que cualquier Raticate puede aprender.",
+    "evolutionCost": "25 caramelos para Raticate. Compañero 1km/caramelo. Muy fácil.",
+    "shinyRate": "Shiny dorado. Relativamente común debido a su frecuencia de aparición."
+  },
+  {
+    "speciesId": 20,
+    "origin": "Raticate es la forma evolucionada de Rattata. Sus dientes crecen continuamente y roe rocas para desgastarlos. Su nombre proviene de 'rat' y un aumentativo. Tiene una variante de Alola de tipo Siniestro/Normal.",
+    "goRelevance": "Rara vez se usa en combate. El Raticate de Alola es más útil por ser de tipo Siniestro contra Fantasma y Psíquico.",
+    "battleTip": "El Raticate de Alola (Siniestro/Normal) es interesante porque el tipo Normal le otorga inmunidad a Fantasma, algo que ningún tipo Siniestro puro posee.",
+    "easterEgg": "Raticate es el centro de una teoría que dice que el Pokémon de Ash murió y fue reemplazado, pero esto fue desmentido por los creadores.",
+    "goDifference": "En la serie principal, Raticate puede aprender Excavar y Rayo Hielo mediante MT. En GO, su repertorio de movimientos es mucho más limitado.",
+    "evolutionCost": "25 caramelos de Rattata. Compañero 1km/caramelo.",
+    "shinyRate": "Shiny disponible. Tiene un tono más claro y saturado que el original."
+  },
+  {
+    "speciesId": 21,
+    "origin": "Spearow está inspirado en gorriones y aves agresivas. A diferencia de Pidgey, Spearow tiene una actitud agresiva desde el primer contacto. Su nombre viene de 'spear' (lanza) + 'sparrow' (gorrión).",
+    "goRelevance": "Menos común que Pidgey. Aparece en zonas montañosas y campos. Se usa principalmente para evoluciones en masa.",
+    "battleTip": "Fearow tiene 182 de ATK, mayor que Pidgeot (166). En términos de ataque puro, Fearow es mejor que el otro.",
+    "easterEgg": "Spearow fue el primer Pokémon que Ash encontró en su viaje (episodio 1). Una bandada de ellos lo persiguió a él y a Pikachu.",
+    "goDifference": "Fearow puede aprender Drill Run en los juegos principales. En GO, no tiene movimientos de tipo Tierra a pesar de su pico parecido a un taladro.",
+    "evolutionCost": "50 caramelos para Fearow. Compañero de 1km/caramelo.",
+    "shinyRate": "Shiny disponible. Color ligeramente alterado (un tono más oscuro)."
+  },
+  {
+    "speciesId": 22,
+    "origin": "Fearow es la forma evolucionada de Spearow, inspirado en águilas y halcones. Su pico largo y afilado puede perforar presas. Su nombre proviene de 'fear' (miedo) + 'sparrow' (gorrión).",
+    "goRelevance": "Nicho muy específico: supera a Pidgeot en ATK (182 vs 166) pero pierde en DEF y STA. Raramente usado, pero tiene sus fans.",
+    "battleTip": "Fearow con Drill Run y Sky Attack cubre bien los tipos Electric y Rock, sus debilidades naturales.",
+    "easterEgg": "Fearow fue el Pokémon que el Guardabosques usaba para perseguir a Ash al inicio del anime. Uno de los primeros antagonistas de la serie.",
+    "goDifference": "En la serie principal, Fearow aprende Drill Peck de forma natural. En GO, el movimiento Drill Peck existe pero Fearow no lo aprende; en su lugar aprende Sky Attack.",
+    "evolutionCost": "50 caramelos de Spearow. Compañero: 1km/caramelo.",
+    "shinyRate": "Shiny disponible. Coloración ligeramente diferente."
+  },
+  {
+    "speciesId": 23,
+    "origin": "Ekans está inspirado en serpientes. La palabra 'Ekans' es 'snake' (serpiente) al revés. Su habilidad para mudar de piel se basa en serpientes reales.",
+    "goRelevance": "Común en áreas de hierba y clima Soleado. Frecuencia de aparición media. Arbok es sólido en la Gran Liga de PvP.",
+    "battleTip": "Arbok con Cola Dragón + Lanzamugre y Pulso Umbrío cubre bien contra tipos Psíquico y Hada, sus principales amenazas.",
+    "easterEgg": "Ekans es 'snake' al revés. Arbok es 'kobra' al revés (casi, ya que cobra es 'kobra' en algunos idiomas). Siguen el mismo patrón de nomenclatura.",
+    "goDifference": "En la serie principal, Ekans aprende Desenrollar e Intimidación. En GO, los efectos de estado no existen, por lo que estas mecánicas se perdieron.",
+    "evolutionCost": "50 caramelos para evolucionar a Arbok. 3km/caramelo como compañero.",
+    "shinyRate": "Shiny disponible. Color dorado/amarillento."
+  },
+  {
+    "speciesId": 24,
+    "origin": "Arbok está inspirado en cobras reales y en la mitología de serpientes gigantes. El patrón de su vientre se asemeja a un rostro intimidante. Su nombre es 'kobra' al revés.",
+    "goRelevance": "Aparece ocasionalmente como mini-jefe del Team Rocket. Tiene uso limitado en la Liga Super (puesto #207 en PvPoke).",
+    "battleTip": "Un Arbok con Gunk Shot puede sorprender a los tipo Hada en la Liga Super, aunque existen mejores opciones con el mismo PC.",
+    "easterEgg": "El patrón en el pecho de Arbok cambia según la región en el anime; existen 4 diseños diferentes para evitar problemas de censura.",
+    "goDifference": "En la serie principal, Arbok puede aprender Earthquake. En GO, su repertorio de movimientos no incluye ataques de tipo Tierra, lo que limita su cobertura.",
+    "evolutionCost": "50 caramelos Ekans. Compañero: 3km/caramelo.",
+    "shinyRate": "Variante shiny amarillenta disponible."
+  },
+  {
+    "speciesId": 25,
+    "origin": "Pikachu está inspirado en ardillas, no en ratones como muchos creen. Sus mejillas eléctricas almacenan electricidad. Diseñado por Atsuko Nishida, se convirtió en la mascota mundial de la franquicia.",
+    "goRelevance": "Mascota de Pokémon GO. Eventos exclusivos con Pikachu con gorro (más de 12 variantes). Tuvo su propio Día de la Comunidad con Surf. Favorito en la Copa Kanto.",
+    "battleTip": "Pikachu con Surf (CD 2018) es mucho más versátil que el normal, pero Raichu con Voltio Cambio es superior en DPS.",
+    "easterEgg": "Pikachu iba a ser el Pokémon inicial por defecto en todos los juegos, pero Satoshi Tajiri eligió a Clefairy primero. Pikachu solo se volvió mascota gracias al anime.",
+    "goDifference": "En la serie principal, Pikachu puede usar Bola Luminosa para duplicar ATK y ATK ESP. En GO no existen objetos equipables, por lo que Pikachu es simplemente débil.",
+    "evolutionCost": "50 caramelos para Raichu. 1km por caramelo como compañero. Raichu de Alola requiere 50 caramelos + Piedra Solar en GO.",
+    "shinyRate": "Shiny naranja disponible. Tasa de ~1/500. Las variantes shiny con gorro son EXTREMADAMENTE raras y solo aparecen durante eventos."
+  },
+  {
+    "speciesId": 26,
+    "origin": "Raichu es la forma evolucionada de Pikachu. Su cola funciona como un pararrayos para acumular carga. En GO existe Raichu de Alola (Eléctrico/Psíquico). Su nombre viene de 'rai' (trueno) + 'chu' (sonido de chirrido).",
+    "goRelevance": "El Raichu normal tiene Voltio Cambio como movimiento fuerte. El Raichu de Alola (Eléctrico/Psíquico) es más usado por tener un tipo único que nadie más posee.",
+    "battleTip": "Raichu de Alola es una gran opción para la Liga Super; su tipo cubre contra Lucha y Psíquico al mismo tiempo, algo poco común.",
+    "easterEgg": "El creador de Pokémon odia profundamente a Raichu, ya que piensa que la evolución le quita la ternura a Pikachu. Por eso el anime nunca mostró un Raichu de Ash.",
+    "goDifference": "En los juegos principales, Raichu aprende Rayo naturalmente. En GO, es un movimiento cargado mediante MT.",
+    "evolutionCost": "50 caramelos de Pikachu. Compañero 1km/caramelo. Raichu de Alola: 50 caramelos (no se requiere Piedra Solar en GO).",
+    "shinyRate": "Shiny es naranja. El Raichu de Alola shiny es gris oscuro."
+  },
+  {
+    "speciesId": 27,
+    "origin": "Sandshrew está inspirado en armadillos y pangolines. Su piel es seca y resistente, lo que le permite hacerse una bola para defenderse. Tiene una variante de Alola (Hielo/Acero). Su nombre viene de 'sand' (arena) + 'shrew' (musaraña).",
+    "goRelevance": "Común en zonas desérticas y clima Soleado. Sandslash es un tipo Tierra sólido. La variante de Alola es mucho más popular por ser Hielo/Acero.",
+    "battleTip": "Sandslash de Alola (Hielo/Acero) es uno de los mejores counters para tipos Dragón y Volador gracias a su tipo único.",
+    "easterEgg": "El Sandshrew de Alola sobrevive en la nieve porque su piel se convirtió en una capa de hielo. Es el único caso en el que una variante regional cambia completamente su tipo.",
+    "goDifference": "En la serie principal, Sandshrew aprende Ataque Arena por crianza. En GO, los movimientos tienen efectos distintos: Ataque Arena genera energía.",
+    "evolutionCost": "50 caramelos para Sandslash. Compañero: 3km/caramelo. Sandshrew de Alola: 50 caramelos.",
+    "shinyRate": "Shiny disponible. Color azulado (diferente al marrón original)."
+  },
+  {
+    "speciesId": 28,
+    "origin": "Sandslash es la forma evolucionada de Sandshrew. Sus garras sirven para cavar túneles y trepar árboles. Su nombre proviene de 'sand' (arena) + 'slash' (corte). La variante de Alola es Hielo/Acero.",
+    "goRelevance": "Un tipo Tierra sólido con Tajo Umbrío para cobertura. La variante de Alola es más solicitada por ser Hielo/Acero, un counter natural para los tipo Dragón.",
+    "battleTip": "Sandslash de Alola con Nieve Polvo + Puño Hielo + Giro Bola es excelente para la Liga Super y Ultra. Frágil pero rápido.",
+    "easterEgg": "Sandslash de Alola se introdujo como uno de los pocos casos donde una variante regional pierde su tipo original por completo (Tierra → Hielo/Acero).",
+    "goDifference": "En la serie principal, Sandslash aprende Cuchillada y Terremoto. En GO, Terremoto es un movimiento cargado que compite con Taladradora.",
+    "evolutionCost": "50 caramelos de Sandshrew. Compañero: 3km/caramelo.",
+    "shinyRate": "El shiny es azulado. El Sandslash de Alola shiny es rosa claro."
+  },
+  {
+    "speciesId": 29,
+    "origin": "Nidoran♀ está inspirada en erizos y roedores con cuernos pequeños. La línea Nidoran tiene la peculiaridad de tener géneros distintos con números de Pokédex diferentes. Su nombre viene de 'needle' (aguja) + 'doran'.",
+    "goRelevance": "Común en áreas de hierba. Evoluciona a Nidorina con 25 caramelos y luego a Nidoqueen con 100 caramelos. Se usa en evoluciones masivas.",
+    "battleTip": "Nidoqueen es de tipo Veneno/Tierra con Puya Nociva + Tierra Viva; buena cobertura contra tipos Hada y Eléctrico.",
+    "easterEgg": "Nidoran♀ y Nidoran♂ son los únicos Pokémon que tienen números de Pokédex diferentes a pesar de ser la misma especie con géneros distintos.",
+    "goDifference": "En la serie principal, Nidoran♀ aprende Picotazo Venenoso de forma natural. En GO, los movimientos son independientes del nivel.",
+    "evolutionCost": "25 caramelos para Nidorina + 100 caramelos para Nidoqueen = 125 en total. Compañero 3km/caramelo.",
+    "shinyRate": "Shiny disponible. Color ligeramente azulado."
+  },
+  {
+    "speciesId": 30,
+    "origin": "Nidorina es la forma intermedia femenina de Nidoran. Las espinas de su espalda empiezan a crecer. Su nombre es una variante de Nidoran con un sufijo femenino.",
+    "goRelevance": "Se utiliza únicamente como paso previo para Nidoqueen.",
+    "battleTip": "Nidorina rara vez se usa en combates. Nidoqueen es la que tiene valor competitivo.",
+    "easterEgg": "A diferencia de Nidorino, Nidorina no puede criar en la guardería de los juegos principales, una peculiaridad que sigue causando confusión hoy en día.",
+    "goDifference": "En los juegos principales, Nidorina evoluciona con una Piedra Lunar. En GO, se usan caramelos, no piedras evolutivas.",
+    "evolutionCost": "100 caramelos para Nidoqueen. Compañero: 3km/caramelo.",
+    "shinyRate": "Shiny disponible mediante evolución."
+  },
+  {
+    "speciesId": 31,
+    "origin": "Nidoqueen es la forma final femenina de la línea Nidoran. Tiene una naturaleza protectora con su familia. Sus espinas liberan veneno cuando está irritada. Su nombre proviene de 'needle' + 'queen'.",
+    "goRelevance": "Buena opción para PvP en Liga Super y Ultra. Siendo tipo Veneno/Tierra, Poison Jab + Earth Power cubre bien contra tipos Hada y Eléctrico.",
+    "battleTip": "En la Liga Super, Nidoqueen con Earth Power y Stone Edge sorprende a tipos Volador como Altaria y Skarmory.",
+    "easterEgg": "Nidoqueen nunca puede aprender ni usar una Piedra Lunar, a pesar de que su preevolución Nidorina la necesita en los juegos de la serie principal.",
+    "goDifference": "En la serie principal, Nidoqueen aprende Superpower y Aqua Tail por MT. En GO, no tiene acceso a estos movimientos.",
+    "evolutionCost": "100 caramelos de Nidorina. 3km por caramelo como compañero. Nidoqueen no evoluciona más.",
+    "shinyRate": "Shiny azulado. Relativamente raro al ser una evolución."
+  },
+  {
+    "speciesId": 32,
+    "origin": "Nidoran♂ es la versión masculina de Nidoran. Tiene cuernos más grandes que la versión femenina. Su nombre proviene de 'needle' + 'doran' con un sufijo masculino.",
+    "goRelevance": "Común en zonas de hierba. Evoluciona a Nidorino (25 caramelos) y luego a Nidoking (100 caramelos).",
+    "battleTip": "Nidoking tiene 204 de ATQ, más que Nidoqueen (180). Es mejor para ataques ofensivos.",
+    "easterEgg": "Nidoran♂ y Nidoran♀ son los precursores del sistema de género que se convirtió en estándar en futuras generaciones.",
+    "goDifference": "En la serie principal, Nidoran♂ aprende Cornada (Horn Attack). En GO, Cornada no existe como movimiento.",
+    "evolutionCost": "25 caramelos para Nidorino + 100 caramelos para Nidoking = 125 en total. Compañero 3km/caramelo.",
+    "shinyRate": "Shiny azulado."
+  },
+  {
+    "speciesId": 33,
+    "origin": "Nidorino es la forma intermedia masculina de Nidoran. Su cuerno es más largo y afilado que el de Nidoran♂.",
+    "goRelevance": "Paso evolutivo. Sin relevancia competitiva.",
+    "battleTip": "Nidorino tiene estadísticas promedio: ATQ 137, DEF 111. Nada especial.",
+    "easterEgg": "Nidorino aparece en la intro original de Pokémon Rojo/Azul luchando contra Gengar, una de las escenas más icónicas de la franquicia.",
+    "goDifference": "En la serie principal, Nidorino puede aprender Furia (Fury Attack). En GO, Corte Furia (Fury Cutter) es similar pero de tipo Bicho.",
+    "evolutionCost": "100 caramelos para Nidoking. Compañero 3km/caramelo.",
+    "shinyRate": "Shiny disponible mediante evolución."
+  },
+  {
+    "speciesId": 34,
+    "origin": "Nidoking es la forma final masculina de la línea Nidoran. Inspirado en dinosaurios terópodos con cuernos. Su cola puede romper árboles. Su nombre viene de 'needle' + 'king'.",
+    "goRelevance": "Mejor ATK que Nidoqueen (204 vs 180), pero menos defensivo. Se usa en Ultra League y incursiones como tipo Veneno/Tierra.",
+    "battleTip": "Nidoking con Corte Furia + Tierra Viva + Megacuerno es uno de los mejores 'shield breakers' por su rápida generación de energía.",
+    "easterEgg": "En la serie principal, Nidoking puede aprender Rayo Hielo y Rayo, algo que su contraparte femenina, Nidoqueen, no puede.",
+    "goDifference": "En la serie principal, Nidoking tiene acceso a un enorme repertorio de MTs (más de 70 movimientos). En GO, su repertorio se limita a unos 10.",
+    "evolutionCost": "100 caramelos de Nidorino. 3km por caramelo como compañero.",
+    "shinyRate": "Shiny azul. El Nidoking shiny es sutil pero elegante."
+  },
+  {
+    "speciesId": 35,
+    "origin": "Clefairy se inspira en hadas y duendes de la mitología europea. Originalmente era de tipo Normal, pero cambió a tipo Hada en la Generación 6. Su nombre viene de 'clef' (clave musical) + 'fairy'.",
+    "goRelevance": "Aparece en incursiones de 1 estrella. Clefable es un gran tipo Hada para incursiones contra Dragón y Siniestro, especialmente con Encanto + Brillo Mágico.",
+    "battleTip": "Clefable con Encanto + Brillo Mágico + Puño Meteoro (CD) es un Hada de primer nivel. Encanto es uno de los mejores movimientos rápidos del juego.",
+    "easterEgg": "¡Clefairy iba a ser la mascota de la franquicia en lugar de Pikachu! El merchandising inicial estaba basado en Clefairy, pero Pikachu se robó el protagonismo con el anime.",
+    "goDifference": "En los juegos principales, Clefable aprende Fuerza Lunar de forma natural. En GO, Fuerza Lunar es un movimiento cargado de MT de élite raramente disponible.",
+    "evolutionCost": "50 caramelos para Clefable. 1km por caramelo como compañero. Requiere Piedra Lunar en los juegos principales, pero en GO solo usa caramelos.",
+    "shinyRate": "Shiny disponible. El Clefairy shiny tiene orejas azules. El Clefable shiny es similar."
+  },
+  {
+    "speciesId": 36,
+    "origin": "Clefable es la forma evolucionada de Clefairy. La leyenda dice que Clefable viene de la luna en naves espaciales. Su oído es tan agudo que puede escuchar caer un alfiler a 1km de distancia.",
+    "goRelevance": "Excelente tipo Hada para incursiones y PvP. Encanto + Brillo Mágico destruye a los tipo Dragón. Clasificado #33 en la Liga Máster por PvPoke.",
+    "battleTip": "Clefable con Encanto + Puño Meteoro (CD 2020) + Brillo Mágico ofrece cobertura contra los tipo Acero, que resisten a los Hada.",
+    "easterEgg": "En el Monte Moon, los Clefairy bailan bajo la luz de la luna llena, una referencia a las leyendas de hadas que bailan en círculos.",
+    "goDifference": "En la serie principal, Clefable puede aprender Trampa Rocas y Pantalla de Luz. En GO, los movimientos de estado no existen de la misma forma.",
+    "evolutionCost": "50 caramelos de Clefairy. 1km por caramelo como compañero.",
+    "shinyRate": "Shiny disponible. Diferencia sutil."
+  },
+  {
+    "speciesId": 37,
+    "origin": "Vulpix está inspirado en zorros y kitsunes (zorros mitológicos japoneses). Sus seis colas hacen referencia a los zorros de múltiples colas del folclore. Su nombre viene de 'vulpes' (zorro en latín) + 'six'.",
+    "goRelevance": "Aparece en incursiones de 1 estrella. Ninetales es un tipo Fuego sólido. La variante de Alola (Hielo/Hada) es mucho más popular para PvP.",
+    "battleTip": "Ninetales de Alola con Encanto + Meteorobola (Hielo) + Brillo Mágico es de primer nivel en la Liga Super — muy versátil.",
+    "easterEgg": "El Vulpix de Alola es blanco como la nieve, inspirado en los zorros árticos. Es una de las variantes regionales más bonitas del juego.",
+    "goDifference": "En la serie principal, Vulpix solo evoluciona con Piedra Fuego. En GO, cuesta 50 caramelos, sin necesidad de piedra.",
+    "evolutionCost": "50 caramelos para Ninetales. Compañero 3km/caramelo. Vulpix de Alola: 50 caramelos para Ninetales de Alola.",
+    "shinyRate": "Variocolor gris claro. Ninetales variocolor es gris/plateado, muy bonito."
+  },
+  {
+    "speciesId": 38,
+    "origin": "Ninetales está inspirado en el kitsune de nueve colas del folclore japonés. Vivir 1000 años le otorga 9 colas con poderes psíquicos y de fuego. Su nombre viene de 'nine' (nueve) + 'tales' (colas).",
+    "goRelevance": "Un sólido tipo Fuego con Incinerar + Meteorobola (Fuego) + Sofoco. Su variante de Alola (Hielo/Hada) domina la Liga Super y Ultra.",
+    "battleTip": "Ninetales de Alola es el puesto #20 en la Liga Super. Encanto + Meteorobola (Hielo) derrite a los tipo Dragón, Volador y Tierra.",
+    "easterEgg": "La leyenda dice que cada una de las 9 colas de Ninetales posee un poder diferente y que vive 1000 años.",
+    "goDifference": "En la serie principal, Ninetales puede aprender Fuego Fatuo y Rayo Confuso. En GO, los movimientos de estado se convirtieron en daño.",
+    "evolutionCost": "50 caramelos Vulpix. Compañero 3km/caramelo.",
+    "shinyRate": "Shiny gris/plateado. Muy elegante y muy buscado."
+  },
+  {
+    "speciesId": 39,
+    "origin": "Jigglypuff está inspirado en globos y malvaviscos. Originalmente de tipo Normal, obtuvo el tipo Hada en la Generación 6. Su nombre proviene de 'jiggle' (balancearse) + 'puff' (soplo).",
+    "goRelevance": "Un spawn relativamente común. Wigglytuff es un gran tipo Hada para la Liga Super con Encanto + Carantoña + Rayo Hielo.",
+    "battleTip": "Wigglytuff con Encanto derrite a los tipo Siniestro. Rayo Hielo cubre contra los tipo Volador y Planta, una cobertura que Encanto no alcanza.",
+    "easterEgg": "El Jigglypuff del anime toma un micrófono y canta hasta que todos se duermen. Luego dibuja en las caras de las personas con un marcador. Es uno de los personajes más memorables.",
+    "goDifference": "En la serie principal, Jigglypuff aprende Canto al nivel 1 e Hipnosis. En GO, el estado de sueño no existe, por lo que Canto es solo un movimiento de daño (Voz Cautivadora).",
+    "evolutionCost": "50 caramelos para Wigglytuff. Compañero 1km/caramelo.",
+    "shinyRate": "Shiny de color verde claro. El Wigglytuff shiny tiene ojos verdes."
+  },
+  {
+    "speciesId": 40,
+    "origin": "Wigglytuff es la forma evolucionada de Jigglypuff. Su piel es extremadamente elástica y suave. Su nombre proviene de 'wiggly' (que se mueve) + 'tuff' (mechón).",
+    "goRelevance": "Un elemento básico en la Gran Liga de PvP. Encanto + Carantoña + Rayo Hielo ofrecen una cobertura amplia. Sus 295 de STA son enormes: un tanque que no cae fácilmente.",
+    "battleTip": "Con 295 de STA y 90 de DEF, Wigglytuff es una 'esponja' que absorbe daño mientras usa Encanto. Sin embargo, los tipo Acero como Registeel son sus counters duros.",
+    "easterEgg": "Wigglytuff tiene la mayor STA base de todos los tipo Normal o Hada que no son legendarios, solo por detrás de Blissey y Chansey.",
+    "goDifference": "En la serie principal, Wigglytuff puede aprender Vozarrón. En GO, Vozarrón es un movimiento exclusivo de unos pocos Pokémon.",
+    "evolutionCost": "50 caramelos de Jigglypuff. Compañero: 1km/caramelo.",
+    "shinyRate": "Shiny de color verde claro. Una diferencia sutil."
+  },
+  {
+    "speciesId": 41,
+    "origin": "Zubat está inspirado en los murciélagos vampiro. Tiene ojos atrofiados por vivir en cuevas oscuras y usa la ecolocalización para navegar. Su nombre viene de 'zub' (sonido de paso rápido) + 'bat' (murciélago).",
+    "goRelevance": "Extremadamente común en cuevas y de noche. Golbat y Crobat (Gen 2) son rápidos en PvP. Crobat es uno de los mejores tipo Veneno/Volador con Ataque Ala + Bomba Lodo.",
+    "battleTip": "Crobat ocupa el puesto #104 en la Liga Super. Ataque Ala genera energía rápido y Bomba Lodo causa gran daño a los tipo Hada. Esquiva los tipo Roca.",
+    "easterEgg": "Zubat es famoso por ser el Pokémon más odiado por los jugadores de los juegos principales: aparece en TODA cueva, sin excepción, cada 3 pasos.",
+    "goDifference": "En la serie principal, Zubat necesita mucha amistad para evolucionar a Crobat. En GO, solo requiere 100 caramelos + una Piedra Sinnoh.",
+    "evolutionCost": "25 caramelos para Golbat + 100 caramelos + Piedra Sinnoh para Crobat. Compañero 1km/caramelo.",
+    "shinyRate": "Shiny verde. El Crobat shiny tiene alas rosadas."
+  },
+  {
+    "speciesId": 42,
+    "origin": "Golbat es la forma evolucionada de Zubat. Su boca es más grande y puede succionar sangre de presas grandes. Puedes oír el batir de sus alas a 200m de distancia.",
+    "goRelevance": "Paso evolutivo hacia Crobat. Golbat rara vez se usa por sí solo; Crobat siempre es superior.",
+    "battleTip": "Golbat tiene 161 ATQ y 181 STA; decente para PvP, pero Crobat es mejor en todo.",
+    "easterEgg": "Golbat aparece como uno de los primeros Pokémon encontrados en casi todos los juegos de la serie principal, heredando la fama molesta de Zubat.",
+    "goDifference": "En la serie principal, Golbat evoluciona con alta amistad por la noche. En GO, requiere una Piedra Sinnoh.",
+    "evolutionCost": "100 caramelos + Piedra Sinnoh para Crobat. Compañero 1km/caramelo.",
+    "shinyRate": "Shiny verde. Sutil."
+  },
+  {
+    "speciesId": 43,
+    "origin": "Oddish está inspirado en plantas con raíces y mandrágoras. Se entierra durante el día y vaga de noche para dispersar semillas. Su nombre viene de 'odd' (extraño) + 'radish' (rábano).",
+    "goRelevance": "Relativamente común con clima Soleado y Nublado. Vileplume y Bellossom (Gen 2) son tipos Planta sólidos para incursiones.",
+    "battleTip": "Vileplume con Hoja Afilada + Bomba Lodo + Fuerza Lunar ofrece buena cobertura contra tipos Hada, Agua y Tierra.",
+    "easterEgg": "Oddish tiene una de las líneas evolutivas más versátiles: puede convertirse en Vileplume (Planta/Veneno) O en Bellossom (Planta puro) con una Piedra Solar.",
+    "goDifference": "En la serie principal, Oddish evoluciona al nivel 21. En GO, cuesta 25 caramelos evolucionar a Gloom.",
+    "evolutionCost": "25 caramelos para Gloom + 100 caramelos para Vileplume O 100 caramelos + Piedra Solar para Bellossom. Compañero 3km/caramelo.",
+    "shinyRate": "Shiny azul. El Vileplume shiny azul es precioso."
+  },
+  {
+    "speciesId": 44,
+    "origin": "Gloom es la forma intermedia de Oddish. Babea un néctar apestoso que atrae a Pokémon de tipo Bicho. Cuanto peor es el olor, más fuerte es el néctar.",
+    "goRelevance": "Se utiliza como paso previo para Vileplume o Bellossom. No tiene uso competitivo propio.",
+    "battleTip": "Gloom puede aprender Fuerza Lunar como movimiento cargado, lo que ofrece cobertura contra los tipo Siniestro.",
+    "easterEgg": "Gloom es considerado uno de los Pokémon más feos jamás diseñados, pero compensa con dos posibles evoluciones.",
+    "goDifference": "En la serie principal, Bellossom necesita una Piedra Solar sobre Gloom. En GO, requiere 100 caramelos + Piedra Solar.",
+    "evolutionCost": "100 caramelos para Vileplume O 100 caramelos + Piedra Solar para Bellossom. Compañero 3km/caramelo.",
+    "shinyRate": "Shiny azul."
+  },
+  {
+    "speciesId": 45,
+    "origin": "Vileplume está inspirado en la Rafflesia, la flor más grande del mundo, que huele a carne podrida. Sus pétalos son los más grandes del mundo Pokémon. Su nombre viene de 'vile' (vil) + 'plume' (pluma/flor).",
+    "goRelevance": "Razonable como tipo Planta/Veneno en incursiones. Usa Hoja Afilada + Bomba Lodo. Pierde contra Venusaur con Planta Feroz en DPS.",
+    "battleTip": "Vileplume con Hoja Afilada + Fuerza Lunar ofrece cobertura contra tipos Siniestro y Dragón. Su ATQ de 202 es decente, pero su DEF de 167 lo hace frágil para incursiones.",
+    "easterEgg": "Vileplume, Bellossom y Roselia son las únicas formas finales de una línea evolutiva que comparten la misma preevolución (Oddish).",
+    "goDifference": "En la serie principal, Vileplume puede aprender Danza Pétalo. En GO, Ventisca Floral es el movimiento cargado más cercano.",
+    "evolutionCost": "100 caramelos de Gloom. Compañero 3km/caramelo.",
+    "shinyRate": "Shiny azul oscuro. Sus pétalos cambian de rojo a azul."
+  },
+  {
+    "speciesId": 46,
+    "origin": "Paras está inspirado en hongos e insectos parásitos. Los hongos en su espalda son los verdaderos controladores del cuerpo, ya que extraen nutrientes del Paras. Su nombre proviene de 'parasite' (parásito).",
+    "goRelevance": "Común en bosques y parques. Parasect es el único tipo Bicho/Planta del juego, una combinación que le da una debilidad 4x al Fuego (8 debilidades en total).",
+    "battleTip": "Parasect es FRÁGIL debido a sus 8 debilidades. Úsalo solo contra tipos Agua, Tierra o Psíquico puro, y con precaución.",
+    "easterEgg": "Los hongos de Paras están basados en el Cordyceps, un hongo real que infecta insectos y controla sus cuerpos; puro terror.",
+    "goDifference": "En la serie principal, Paras aprende Espora (100% de precisión para dormir) al nivel 22, uno de los mejores movimientos del juego. En GO, Espora no existe.",
+    "evolutionCost": "50 caramelos para evolucionar a Parasect. Distancia de compañero: 3km/caramelo.",
+    "shinyRate": "La versión variocolor (shiny) tiene hongos azules en lugar de naranjas."
+  },
+  {
+    "speciesId": 47,
+    "origin": "Parasect es la forma evolucionada de Paras. El hongo ha tomado el control TOTAL del cuerpo del insecto; Parasect está técnicamente muerto, controlado por el hongo. Escalofriante.",
+    "goRelevance": "Un tipo Bicho/Planta frágil. Sin utilidad competitiva en ninguna liga. Evítalo para incursiones y PvP.",
+    "battleTip": "Parasect tiene 8 debilidades y 0 inmunidades. El peor tipo defensivo del juego. Recibe 4x de daño de Fuego y 2x de otros 6 tipos.",
+    "easterEgg": "La Pokedex dice: 'Parasect está controlado por el hongo. Si se separa el hongo, Parasect muere.'—uno de los textos más macabros de la franquicia.",
+    "goDifference": "En la serie principal, Parasect es lento y débil. En GO es igual de malo; uno de los peores Pokemon del juego.",
+    "evolutionCost": "50 caramelos de Paras. 3km por caramelo como compañero.",
+    "shinyRate": "Shiny con hongo azul. El Parasect shiny es fácil de notar."
+  },
+  {
+    "speciesId": 48,
+    "origin": "Venonat está inspirado en insectos con ojos compuestos grandes y cuerpo peludo. Tiene una excelente visión nocturna y detecta presas por el olor. Su nombre viene de 'venom' (veneno) + 'gnat' (mosquito).",
+    "goRelevance": "Menos común que otros tipos Bicho. Venomoth es decente en la Little League (PC bajo) pero rara vez se usa.",
+    "battleTip": "Venomoth con Confusión + Psíquico + Colmillo Venenoso puede sorprender a tipos Lucha y Veneno gracias a su cobertura Psíquica.",
+    "easterEgg": "Venonat tiene un parecido sospechoso con Caterpie. Algunos fans teorizan que Venonat era el diseño original de Butterfree.",
+    "goDifference": "En la serie principal, Venonat aprende Espora Algodón y Somnífero. En GO, los movimientos de estado no existen de la misma forma.",
+    "evolutionCost": "50 caramelos para evolucionar a Venomoth. Compañero 3km/caramelo.",
+    "shinyRate": "La versión variocolor tiene el cuerpo azul en lugar de morado."
+  },
+  {
+    "speciesId": 49,
+    "origin": "Venomoth es la forma evolucionada de Venonat, inspirado en polillas venenosas. Sus escamas liberan polvo tóxico al agitarse. Su nombre viene de 'venom' (veneno) y 'moth' (polilla).",
+    "goRelevance": "Tiene un nicho específico en PvP: con Confusión + Psíquico, contrarresta a los tipo Lucha y Veneno en la Liga Super. Puesto #137.",
+    "battleTip": "Venomoth con Viento Plata puede aumentar todas sus estadísticas (efecto raro). Sin embargo, Confusión + Colmillo Venenoso es más consistente.",
+    "easterEgg": "Venomoth y Confusión siempre han sido movimientos de tipo Psíquico, a pesar de que Venomoth es Bicho/Veneno. Pocos Pokémon tienen esta cobertura de tipos.",
+    "goDifference": "En la serie principal, Venomoth aprende Danza Aleteo, un movimiento que aumenta el Ataque Especial, la Velocidad y la Defensa Especial. En GO, no existe.",
+    "evolutionCost": "50 caramelos de Venonat. Compañero: 3km/caramelo.",
+    "shinyRate": "Shiny de color verde/amarillento."
+  },
+  {
+    "speciesId": 50,
+    "origin": "Diglett está inspirado en los topos. Solo se ve su cabeza; el resto del cuerpo nunca se ha mostrado oficialmente. Hay décadas de teorías sobre cómo es el cuerpo de Diglett. Su nombre viene de 'dig' (cavar).",
+    "goRelevance": "Común en zonas de playa y desierto. Dugtrio usa Mud Shot + Earthquake; es bueno para incursiones y PvP, pero extremadamente frágil (STA 67).",
+    "battleTip": "STA base 67, la segunda más baja del juego. Dugtrio cae muy rápido. Usa Mud Shot para generar energía antes de ser derrotado.",
+    "easterEgg": "El cuerpo de Diglett nunca se ha mostrado. En los juegos principales, si usas un movimiento que levanta el suelo (como Fissure), Diglett sigue ahí. Un misterio hasta el día de hoy.",
+    "goDifference": "En la serie principal, Diglett tiene la habilidad Arena Trap que impide la huida. En GO, las habilidades no existen, por lo que esta mecánica se perdió.",
+    "evolutionCost": "50 caramelos para Dugtrio. Compañero 3km/caramelo.",
+    "shinyRate": "Shiny con cabeza rosada en lugar de marrón."
+  },
+  {
+    "speciesId": 51,
+    "origin": "Dugtrio es la forma evolucionada de Diglett: tres Diglett compartiendo el mismo agujero. Inspirado en la idea de las cabezas múltiples como la hidra mitológica. Su nombre viene de 'dig' + 'trio'.",
+    "goRelevance": "Mud Shot + Earthquake ofrece un DPS rápido. Frágil (STA 111) pero ataca primero en muchos enfrentamientos PvP. Bueno para la Great League.",
+    "battleTip": "Dugtrio con Mud Shot + Earthquake + Stone Edge (legado) es excelente para contrarrestar tipos Fuego, Eléctrico, Acero y Roca.",
+    "easterEgg": "The Pokemon Company confirmó que los tres Diglett son HERMANOS, no una criatura de tres cabezas. Cada uno tiene su propio cuerpo en el mismo agujero.",
+    "goDifference": "En la serie principal, Dugtrio puede aprender Sucker Punch y Aerial Ace. En GO, no tiene acceso a movimientos de tipo Siniestro o Volador.",
+    "evolutionCost": "50 caramelos de Diglett. Compañero 3km/caramelo.",
+    "shinyRate": "Shiny con cabezas rosadas. Más fácil de notar que el normal."
+  },
+  {
+    "speciesId": 52,
+    "origin": "Meowth está inspirado en gatos domésticos que aman los objetos brillantes. Tiene la peculiaridad de estar obsesionado con las monedas. Habilidad única: Pay Day (lanza monedas). Su nombre viene de 'meow' + 'mouth'. Existen variantes de Alola (Siniestro) y Galar (Acero).",
+    "goRelevance": "Común en áreas urbanas. Persian es decente en la Liga Super gracias a Arañazo + Carantoña. La variante de Alola (Siniestro) es mejor por su tipo.",
+    "battleTip": "Persian de Alola con Mordisco + Carantoña + Pulso Umbrío ofrece buena cobertura contra tipos Psíquico y Fantasma.",
+    "easterEgg": "El Team Rocket tiene un Meowth que HABLA; es el único Pokémon confirmado en la serie que aprendió el lenguaje humano (no por telepatía).",
+    "goDifference": "En los juegos principales, Meowth aprende Pay Day como movimiento característico. En GO, Pay Day existe como un movimiento cargado que otorga Polvos Estelares extra al usarse.",
+    "evolutionCost": "50 caramelos para evolucionar a Persian. Compañero: 3km/caramelo. Meowth de Alola y Galar: 50 caramelos para sus formas.",
+    "shinyRate": "El shiny es gris. Persian shiny tiene el cuerpo plateado. Meowth de Galar shiny es de color bronce."
+  },
+  {
+    "speciesId": 53,
+    "origin": "Persian es la forma evolucionada de Meowth, inspirado en elegantes gatos persas. Su joya frontal brilla al atacar. Su nombre proviene de 'gato persa'.",
+    "goRelevance": "Usado en PvP de Liga Super (rango #202). La variante de Alola (Siniestro) es mejor con Pulso Umbrío + Carantoña.",
+    "battleTip": "Un Persian normal con Arañazo + Carantoña + Juego Sucio puede sorprender a los tipo Lucha, aunque existen mejores opciones.",
+    "easterEgg": "Persian es el Pokémon favorito de Giovanni, líder del Team Rocket. Su Persian tiene garras de 5cm y es tratado como un rey.",
+    "goDifference": "En la serie principal, Persian tiene una Velocidad alta (115). En GO, la Velocidad no es una estadística directa; se refleja indirectamente en los movimientos.",
+    "evolutionCost": "50 caramelos Meowth. 3km por caramelo como compañero.",
+    "shinyRate": "Shiny plateado. Una distinción sutil."
+  },
+  {
+    "speciesId": 54,
+    "origin": "Psyduck está inspirado en patos con poderes psíquicos que no puede controlar. Cuando tiene migraña, sus poderes estallan. Su nombre viene de 'psychic' (psíquico) + 'duck' (pato).",
+    "goRelevance": "Relativamente común cerca de lagos y ríos. Golduck es un tipo Agua sólido con Confusion + Psychic como movimientos de cobertura poco comunes para un tipo Agua.",
+    "battleTip": "Golduck con Confusion + Psychic + Hydro Pump sorprende a oponentes que esperan solo movimientos de Agua. La cobertura de tipo Psíquico es rara en tipos Agua.",
+    "easterEgg": "En el anime, el Psyduck de Misty es un chiste recurrente: aparece en momentos aleatorios con dolor de cabeza y explota con poder psíquico descontrolado.",
+    "goDifference": "En la serie principal, Psyduck aprende Confusion y Zen Headbutt. En GO, Confusion es uno de los mejores movimientos rápidos de tipo Psíquico.",
+    "evolutionCost": "50 caramelos para evolucionar a Golduck. Compañero: 3km/caramelo.",
+    "shinyRate": "Psyduck variocolor es azul claro. Golduck variocolor es azul celeste."
+  },
+  {
+    "speciesId": 55,
+    "origin": "Golduck es la forma evolucionada de Psyduck. La gema en su frente brilla cuando usa poderes psíquicos. Su nombre viene de 'gold' (oro) + 'duck' (pato). A pesar de su apariencia, es puramente de tipo Agua, no Agua/Psíquico.",
+    "goRelevance": "Un sólido tipo Agua con Confusion + Psychic para una cobertura poco común. Útil en incursiones contra tipo Fuego y Tierra. Supera a Starmie en STA (190 vs 155).",
+    "battleTip": "Golduck es uno de los pocos tipo Agua con movimientos Psíquicos. Usa Confusion + Psychic contra tipo Lucha o Veneno que esperen ataques de agua.",
+    "easterEgg": "A pesar de su apariencia claramente psíquica (gema en la frente, nombre con 'psi'), Golduck es puramente de tipo Agua. Es uno de los errores de tipo más percibidos.",
+    "goDifference": "En la serie principal, Golduck aprende Zen Headbutt de forma natural. En GO, es un movimiento de MT.",
+    "evolutionCost": "50 caramelos de Psyduck. Compañero: 3km/caramelo.",
+    "shinyRate": "Shiny azul celeste. Elegante."
+  },
+  {
+    "speciesId": 56,
+    "origin": "Mankey está inspirado en los monos capuchinos y su naturaleza agresiva. Se enfurece con facilidad y su temperamento empeora con el frío. Su nombre viene de 'man' (hombre) + 'monkey' (mono).",
+    "goRelevance": "Común en zonas montañosas y clima nublado. Primeape es un tipo Lucha agresivo con Contraataque + A bocajarro. Evoluciona a Annihilape en Paldea.",
+    "battleTip": "Primeape con Contraataque + A bocajarro + Puño Hielo ofrece cobertura contra tipos Volador y Planta. Su ATQ de 207 es alto para su PC.",
+    "easterEgg": "En el anime, Mankey pelea contra árboles al confundirlos con Pokémon. Es una referencia a la agresividad de los monos capuchinos reales.",
+    "goDifference": "En la serie principal, Mankey aprende Golpe Kárate. En GO, Golpe Kárate es un movimiento rápido que pocos Pokémon tienen.",
+    "evolutionCost": "50 caramelos para Primeape. Compañero: 3km/caramelo.",
+    "shinyRate": "Shiny de color dorado. Muy sutil."
+  },
+  {
+    "speciesId": 57,
+    "origin": "Primeape es la forma evolucionada de Mankey. Su furia solo aumenta, nunca disminuye. No deja de luchar hasta que deja fuera de combate a su oponente o cae derrotado.",
+    "goRelevance": "Un tipo Lucha decente para la Liga Super. Ahora tiene evolución a Annihilape en GO, que es muy superior en PvP.",
+    "battleTip": "Primeape con Contraataque + A bocajarro + Tajo umbrío cubre contra los tipo Fantasma (debilidad de Lucha). Genera energía rápidamente.",
+    "easterEgg": "Primeape evoluciona a Annihilape tras usar Puño furia 20 veces en la serie principal. En GO, cuesta 100 caramelos (sin requisito especial).",
+    "goDifference": "En la serie principal, Primeape tiene la habilidad Foco interno que maximiza el ATQ al recibir un golpe crítico. En GO, las habilidades pasivas no existen.",
+    "evolutionCost": "50 caramelos de Mankey + 100 caramelos para Annihilape. 3km por caramelo como compañero.",
+    "shinyRate": "Shiny dorado. Annihilape shiny es morado."
+  },
+  {
+    "speciesId": 58,
+    "origin": "Growlithe está inspirado en los perros Shiba Inu y Akita. Es tan leal a su Entrenador como un perro guardián. Su nombre viene de 'growl' (gruñir) + 'lithe' (ágil).",
+    "goRelevance": "Común en zonas secas y clima Soleado. Arcanine es uno de los tipos Fuego más fuertes (ATK 227). Es llamado el 'Pokémon Legendario' en la Pokédex original.",
+    "battleTip": "Arcanine con Colmillo Ígneo + Voltio Cambio + Lanzallamas cubre contra tipos Agua (debilidad de Fuego). Pero cuidado con los tipos Roca.",
+    "easterEgg": "En la Pokédex original, Arcanine es descrito como el 'Pokémon Legendario', siendo el único no legendario con ese título. Probablemente fue planeado para ser legendario.",
+    "goDifference": "En la serie principal, Arcanine aprende Velocidad Extrema como movimiento característico. En GO, Velocidad Extrema es un movimiento raro que Arcanine solo tiene vía Legado.",
+    "evolutionCost": "50 caramelos para Arcanine. Compañero: 3km/caramelo.",
+    "shinyRate": "Shiny dorado. Arcanine shiny es de color naranja claro; muy bonito."
+  },
+  {
+    "speciesId": 59,
+    "origin": "Arcanine es la forma evolucionada de Growlithe, inspirado en perros mitológicos como el Foo Dog chino y el Shisa de Okinawa. Tiene una presencia majestuosa. Su nombre viene de 'arcane' (arcano) + 'canine' (canino).",
+    "goRelevance": "Un tipo Fuego de primer nivel con 227 de ATK. Colmillo Ígneo + Voltio Cambio ofrece cobertura contra Agua. Se usa en Liga Máster y en incursiones contra tipo Acero.",
+    "battleTip": "Arcanine con Voltio Cambio sorprende a los tipo Agua que entran esperando resistir el Fuego. Inflige daño masivo pero reduce tu DEF.",
+    "easterEgg": "Arcanine corre tan rápido que puede recorrer 10km en un minuto. Es una de las velocidades más altas registradas entre todos los Pokémon.",
+    "goDifference": "En la serie principal, Arcanine tiene Absorbe Fuego (inmunidad al Fuego) como habilidad. En GO, no existe un mecanismo de inmunidad completa.",
+    "evolutionCost": "50 caramelos Growlithe. 3km/caramelo como compañero. 296 caramelos XL para subir al nivel 50.",
+    "shinyRate": "Shiny de color naranja claro. Sutil pero elegante."
+  },
+  {
+    "speciesId": 60,
+    "origin": "Poliwag está inspirado en los renacuajos. La espiral en su vientre es una representación de sus órganos internos visibles por transparencia. Su nombre viene de 'polliwog' (renacuajo en inglés arcaico) + 'wag'.",
+    "goRelevance": "Común cerca de lagos y ríos. Poliwrath es un excelente tipo Agua/Lucha para incursiones y PvP. Politoed (Gen 2) es tipo Agua con Meteorobola.",
+    "battleTip": "Poliwrath con Disparo Lodo + Puño Dinámico + Puño Hielo cubre contra tipos Planta y Dragón. Es un counter de tipos Acero como Registeel en la Liga Super.",
+    "easterEgg": "La espiral de Poliwag es lo que se ve al mirar dentro de su vientre transparente: sus órganos en forma de espiral.",
+    "goDifference": "En la serie principal, Poliwag evoluciona al nivel 25. En GO, cuesta 25 caramelos evolucionar a Poliwhirl.",
+    "evolutionCost": "25 caramelos para Poliwhirl + 100 caramelos para Poliwrath O 100 caramelos + Roca del Rey para Politoed. Compañero: 3km/caramelo.",
+    "shinyRate": "El shiny es azul claro. Politoed shiny es verde claro."
+  },
+  {
+    "speciesId": 61,
+    "origin": "Poliwhirl es la forma intermedia de Poliwag. La espiral de su vientre está más definida. Tiene gran fuerza en sus brazos y piernas.",
+    "goRelevance": "Paso evolutivo. No se utiliza en combates serios.",
+    "battleTip": "Poliwhirl puede aprender Disparo Lodo + Escaldar, movimientos decentes para su categoría.",
+    "easterEgg": "Poliwhirl es la mascota no oficial de OAKAY, empresa hermana de Creatures Inc. que gestiona el merchandising de Pokémon.",
+    "goDifference": "En la serie principal, Poliwhirl necesita una Piedra Agua para evolucionar a Poliwrath. En GO, cuesta 100 caramelos.",
+    "evolutionCost": "100 caramelos para Poliwrath O 100 caramelos + Roca del Rey para Politoed. Compañero: 3km/caramelo.",
+    "shinyRate": "Shiny de color azul claro."
+  },
+  {
+    "speciesId": 62,
+    "origin": "Poliwrath es una de las formas finales de Poliwag, combinando Agua y Lucha. Es un luchador que domina técnicas de tipo Agua. Su nombre proviene de 'polliwog' + 'wrath' (ira).",
+    "goRelevance": "Excelente tipo Agua/Lucha para la Liga Super y Ultra. Mud Shot + Dynamic Punch + Ice Punch son movimientos de alta presión. Puesto #64 en PvPoke para la Liga Super.",
+    "battleTip": "Poliwrath es un counter directo de Registeel, Bastiodon y Stunfisk en la Liga Super. Mud Shot genera energía muy rápido.",
+    "easterEgg": "Poliwrath es uno de los pocos tipos Agua/Lucha del juego. Solo él, Keldeo (legendario) y Urshifu Estilo Fluido tienen este tipo.",
+    "goDifference": "En la serie principal, Poliwrath puede aprender el combo Mind Reader + Dynamic Punch. En GO, Mind Reader no existe.",
+    "evolutionCost": "100 caramelos de Poliwhirl. 3km/caramelo como compañero.",
+    "shinyRate": "Shiny azul claro. Sutil."
+  },
+  {
+    "speciesId": 63,
+    "origin": "Abra está inspirado en criaturas psíquicas y telépatas. Duerme 18 horas al día y usa telepatía para sentir el peligro mientras duerme. Su nombre es una abreviatura de 'abracadabra'.",
+    "goRelevance": "Común en zonas urbanas y clima Ventoso. Alakazam es uno de los tipos Psíquico más rápidos. Excelente para incursiones contra tipo Lucha y Veneno.",
+    "battleTip": "Alakazam con Confusión + Psíquico + Bola Sombra cubre contra tipo Fantasma, pero es MUY frágil (DEF 167, STA 146).",
+    "easterEgg": "Abra es el único Pokémon que usa Teletransporte como único movimiento, incluso en los juegos principales. Huye de los encuentros salvajes al instante.",
+    "goDifference": "En la serie principal, Abra necesita ser intercambiado para evolucionar a Alakazam. En GO, cuesta 25 + 100 caramelos, sin necesidad de intercambio.",
+    "evolutionCost": "25 caramelos para Kadabra + 100 para Alakazam = 125 en total. Compañero 3km/caramelo.",
+    "shinyRate": "Shiny dorado. El Alakazam shiny tiene cucharas y bigote dorados."
+  },
+  {
+    "speciesId": 64,
+    "origin": "Kadabra es la forma intermedia de Abra. Emite ondas alfa que causan dolor de cabeza a los humanos cercanos. Su nombre proviene de la palabra mágica 'abracadabra'.",
+    "goRelevance": "Un paso evolutivo. Kadabra rara vez se usa por sí solo; Alakazam siempre es superior.",
+    "battleTip": "Kadabra con Confusión + Psíquico es decente hasta que consigas suficientes caramelos para Alakazam.",
+    "easterEgg": "Existe una controversia real: Uri Geller, un famoso 'psíquico', demandó a Nintendo porque Kadabra se parecía a él doblando una cuchara. La demanda fue retirada recién en 2020.",
+    "goDifference": "En la serie principal, Kadabra se obtiene al nivel 16. En GO, cuesta 25 caramelos.",
+    "evolutionCost": "100 caramelos para Alakazam. Compañero de 3km/caramelo.",
+    "shinyRate": "Shiny dorado."
+  },
+  {
+    "speciesId": 65,
+    "origin": "Alakazam está inspirado en magos y mentalistas. Su CI es de 5000, el más alto de todos los Pokémon. Sus dos cucharas son amplificadores de poder psíquico. Su nombre viene de 'abracadabra' + 'zam'.",
+    "goRelevance": "Tipo Psíquico ofensivo de primer nivel (271 ATK, el más alto entre los Psíquicos puros). Confusion + Psychic ofrece un DPS masivo. Frágil pero letal.",
+    "battleTip": "Alakazam con Counter + Confusion + Psychic + Shadow Ball es impredecible. Counter sorprende a los tipo Siniestro que serían sus counters naturales.",
+    "easterEgg": "El bigote de Alakazam: en realidad no tiene bigote, son protuberancias de piel. Pero los primeros sprites hacían que pareciera un bigote, convirtiéndose en su marca registrada.",
+    "goDifference": "En la serie principal, Alakazam puede megaevolucionar. En GO, Mega Alakazam fue añadido en 2022 con un ATK absurdo de 367.",
+    "evolutionCost": "100 caramelos de Kadabra. 3km por caramelo como compañero. 296 caramelos XL para maximizar.",
+    "shinyRate": "Shiny dorado. Mega Alakazam shiny es de color dorado oscuro."
+  },
+  {
+    "speciesId": 66,
+    "origin": "Machop está inspirado en artistas marciales y culturistas. Su cuerpo es todo músculo, sin grasa. Su nombre viene de 'macho' (fuerte) + 'chop' (golpe).",
+    "goRelevance": "Común en zonas urbanas y clima Nublado. Machamp es un Fighting-type clásico con Contraataque + Tajo Cruzado. Excelente para incursiones de tipo Normal y Acero.",
+    "battleTip": "Machamp con Contraataque + Tajo Cruzado + Avalancha ofrece cobertura contra Flying-types. Uno de los Fighting-types más versátiles.",
+    "easterEgg": "Machop puede levantar pesos equivalentes a 100 veces su propio peso, a pesar de ser uno de los Pokémon más pequeños de su línea.",
+    "goDifference": "En la serie principal, Machop necesita intercambio para evolucionar a Machamp. En GO, cuesta 25+100 caramelos sin necesidad de intercambio.",
+    "evolutionCost": "25 caramelos para Machoke + 100 para Machamp = 125 en total. 3km por caramelo como compañero.",
+    "shinyRate": "Shiny gris. El Machamp shiny tiene la piel más clara."
+  },
+  {
+    "speciesId": 67,
+    "origin": "Machoke es la forma intermedia de Machop. Usa un cinturón de poder que limita su fuerza; sin él, sería incontrolable. Su nombre viene de 'macho' + 'choke' (asfixiar).",
+    "goRelevance": "Un paso previo a Machamp. Machoke puede usarse en la Liga Super como alternativa económica, pero Machamp es mejor.",
+    "battleTip": "Machoke con Tajo Cruzado + Golpe Karate es decente en Liga Pequeña/Super, pero tiene menos DPS que Machamp.",
+    "easterEgg": "Machoke trabaja a menudo como ayudante en construcciones, moviendo vigas y cemento. Es uno de los Pokémon más útiles para los humanos.",
+    "goDifference": "En los juegos principales, Machoke se obtiene al nivel 28. En GO, cuesta 25 caramelos Machop.",
+    "evolutionCost": "100 caramelos para Machamp. Compañero: 3km/caramelo.",
+    "shinyRate": "Shiny gris."
+  },
+  {
+    "speciesId": 68,
+    "origin": "Machamp es la forma final de Machop con 4 brazos. Puede lanzar golpes tan rápidos que parecen mil brazos. Inspirado en el dios hindú Shiva y en los culturistas. Su nombre viene de 'macho' + 'champion'.",
+    "goRelevance": "Tipo Lucha clásico. Counter + Dynamic Punch es un combo sólido. Superado por Lucario y Conkeldurr en DPS, pero sigue siendo viable. Puesto #157 en la Liga Máster.",
+    "battleTip": "Machamp con Cross Chop (movimiento de CD) genera energía más rápido que Dynamic Punch. Si lo tienes, usa Cross Chop para mantener presión constante.",
+    "easterEgg": "La Pokédex dice que Machamp puede dar 1,000 golpes en 2 segundos, es decir, 500 golpes por segundo. Físicamente imposible, pero impresionante.",
+    "goDifference": "En la serie principal, Machamp tiene la habilidad Indefenso (los movimientos nunca fallan). En GO, al no haber habilidades, se pierde esta ventaja.",
+    "evolutionCost": "100 caramelos de Machoke. 3km/caramelo como compañero. 296 caramelos XL para subir al máximo.",
+    "shinyRate": "Shiny gris. Más oscuro que el normal."
+  },
+  {
+    "speciesId": 69,
+    "origin": "Bellsprout está inspirado en plantas carnívoras como la Venus atrapamoscas. Su cabeza funciona como una trampa que se cierra al detectar presas. Su nombre viene de 'bell' (campana) + 'sprout' (brote).",
+    "goRelevance": "Común en áreas de hierba y clima soleado. Victreebel es un sólido tipo Planta/Veneno con Hoja Afilada + Hoja Aguda.",
+    "battleTip": "Victreebel con Hoja Afilada + Hoja Aguda + Bomba Lodo ofrece cobertura contra tipos Hada y Acero. Hoja Aguda es un movimiento de alta generación de energía.",
+    "easterEgg": "Bellsprout tiene una de las DEF base más bajas (61) de todos los Pokémon; es increíblemente frágil.",
+    "goDifference": "En la serie principal, Bellsprout puede aprender Látigo Cepa. En GO, Látigo Cepa es un movimiento rápido que Bellsprout aprende de forma natural.",
+    "evolutionCost": "25 caramelos para Weepinbell + 100 caramelos para Victreebel = 125 en total. Compañero: 3km/caramelo.",
+    "shinyRate": "Shiny dorado. Victreebel shiny amarillento."
+  },
+  {
+    "speciesId": 70,
+    "origin": "Weepinbell es la forma intermedia de Bellsprout. Cuando tiene sed, la campana de su cabeza se marchita. Gotea miel por la boca para atraer a sus presas.",
+    "goRelevance": "Etapa evolutiva. No se usa en combates.",
+    "battleTip": "Weepinbell con Hoja Afilada es decente para combates de PC bajo.",
+    "easterEgg": "Weepinbell es uno de los pocos Pokémon que evoluciona con Piedra Hoja en la serie principal y con caramelos en GO.",
+    "goDifference": "En la serie principal, Weepinbell necesita una Piedra Hoja. En GO cuesta 100 caramelos.",
+    "evolutionCost": "100 caramelos para evolucionar a Victreebel. Compañero: 3km/caramelo.",
+    "shinyRate": "Shiny dorado."
+  },
+  {
+    "speciesId": 71,
+    "origin": "Victreebel es la forma final de Bellsprout. Engulle a sus presas vivas y las disuelve con ácido estomacal. Una de las entradas de la Pokedex más macabras. Su nombre viene de 'victory' (victoria) + 'bell' (campana).",
+    "goRelevance": "Un sólido tipo Planta/Veneno para incursiones y PvP. Usa Hoja Afilada + Hoja Aguda + Bomba Lodo. Superado por Venusaur, pero sigue siendo decente.",
+    "battleTip": "Victreebel con Ácido + Hoja Aguda + Bomba Lodo es más rápido que con Hoja Afilada. Ácido genera energía más rápido que Hoja Afilada.",
+    "easterEgg": "Victreebel es conocido por ser el Pokemon de James (Team Rocket) en el anime; siempre intenta comérselo, pero él insiste en conservarlo.",
+    "goDifference": "En la serie principal, Victreebel puede aprender Danza Espada. En GO, los aumentos de estadísticas son menos impactantes que en los juegos principales.",
+    "evolutionCost": "100 caramelos de Weepinbell. 3km por caramelo como compañero.",
+    "shinyRate": "Shiny amarillento."
+  },
+  {
+    "speciesId": 72,
+    "origin": "Tentacool está inspirado en medusas y carabelas portuguesas. Sus tentáculos son invisibles en el agua. Su nombre proviene de 'tentacle' (tentáculo) + 'cool' (genial/frío).",
+    "goRelevance": "Común en zonas costeras y clima Lluvioso. Tentacruel es uno de los mejores tipo Agua/Veneno para la Liga Super.",
+    "battleTip": "Tentacruel con Puya Nociva + Hidrobomba + Ventisca es impredecible y ofrece cobertura contra tipos Planta, Tierra y Dragón.",
+    "easterEgg": "Tentacool es conocido por causar accidentes marítimos, ya que los barcos chocan con sus bancos. Es una referencia a los peligros reales de las medusas.",
+    "goDifference": "En la serie principal, Tentacool aprende Barrera y Constricción. En GO, Barrera no existe como movimiento.",
+    "evolutionCost": "50 caramelos para evolucionar a Tentacruel. Compañero: 3km/caramelo.",
+    "shinyRate": "Shiny de color morado claro. Tentacruel shiny es de color violeta."
+  },
+  {
+    "speciesId": 73,
+    "origin": "Tentacruel es la forma evolucionada de Tentacool. Tiene 80 tentáculos que se regeneran si se cortan. Sus ojos rojos brillan en la oscuridad del océano. Su nombre viene de 'tentacle' + 'cruel'.",
+    "goRelevance": "PvP de alto nivel en la Liga Super. Poison Jab + Hydro Pump + Blizzard. DEF 209 es enorme, uno de los tipos Agua más defensivos. Rango #68 en PvPoke.",
+    "battleTip": "Tentacruel con Blizzard sorprende a Altaria y Dragonite en la Liga Super; los movimientos de tipo Hielo son raros en los tipo Agua.",
+    "easterEgg": "En el anime, un Tentacruel gigante ataca una ciudad y secuestra personas; uno de los episodios más memorables y tensos de la primera temporada.",
+    "goDifference": "En la serie principal, Tentacruel aprende Hydro Pump naturalmente. En GO, Hydro Pump es un movimiento cargado que requiere mucha energía.",
+    "evolutionCost": "50 caramelos de Tentacool. Compañero 3km/caramelo.",
+    "shinyRate": "Shiny violeta."
+  },
+  {
+    "speciesId": 74,
+    "origin": "Geodude está inspirado en rocas y peñascos. Parece un montón de piedras enfadadas. La leyenda dice que los Geodude son rocas que cobraron vida. Su nombre viene de 'geo' (tierra) + 'dude' (tío).",
+    "goRelevance": "Común en zonas montañosas y cuevas. Golem es un sólido tipo Roca/Tierra para incursiones de Fuego y Volador, pero débil ante Agua y Planta.",
+    "battleTip": "Golem con Lanzarrocas + Avalancha + Terremoto es genial para incursiones. Evita los tipos Agua y Planta, ya que tiene una debilidad 4x.",
+    "easterEgg": "Geodude es uno de los pocos Pokémon que se puede encontrar pateando rocas en los juegos principales. La roca 'despierta' y lucha.",
+    "goDifference": "En la serie principal, Geodude evoluciona al nivel 25. En GO, cuesta 25 caramelos evolucionar a Graveler.",
+    "evolutionCost": "25 caramelos para Graveler + 100 caramelos para Golem = 125 en total. Compañero 1km/caramelo.",
+    "shinyRate": "El shiny es dorado. Golem shiny también es dorado."
+  },
+  {
+    "speciesId": 75,
+    "origin": "Graveler es la forma intermedia de Geodude. Suelta rocas mientras rueda montaña abajo. Solo rueda hacia abajo, nunca hacia arriba. Su nombre viene de 'gravel' (grava) + -er.",
+    "goRelevance": "Paso previo a Golem. Raramente usado en su forma base.",
+    "battleTip": "Graveler tiene 164 de DEF y 164 de ATK: estadísticas perfectamente equilibradas, pero poco destacables.",
+    "easterEgg": "¿Son Graveler y Golem los únicos Pokémon que cambian de tipo al evolucionar? No, pero mantienen el tipo Roca/Tierra en todas sus etapas.",
+    "goDifference": "En la serie principal, Graveler necesita intercambio para evolucionar a Golem. En GO, cuesta 100 caramelos sin necesidad de intercambio.",
+    "evolutionCost": "100 caramelos para evolucionar a Golem. Compañero: 1km/caramelo.",
+    "shinyRate": "Shiny dorado."
+  },
+  {
+    "speciesId": 76,
+    "origin": "Golem es la forma final de Geodude. Su caparazón es duro como el diamante. Cuando explota de rabia, trozos de roca salen volando en todas direcciones. Su nombre viene de 'go' + 'lem' (del gólem de la mitología).",
+    "goRelevance": "Un sólido tipo Roca/Tierra para incursiones. Roca Afilada + Avalancha ofrece buen DPS contra tipos Fuego, Volador y Hielo. Sin embargo, su debilidad 4x a Agua y Planta es fatal.",
+    "battleTip": "Golem pierde contra cualquier tipo Agua o Planta. Nunca lo enfrentes a Kyogre, Gyarados o Venusaur.",
+    "easterEgg": "Golem tiene una variante de Alola (Roca/Eléctrico) introducida en Sol/Luna. En GO, Geodude de Alola evoluciona a Golem de Alola con un tipo diferente.",
+    "goDifference": "En la serie principal, Golem puede aprender Puño Fuego y Puño Trueno. En GO, no tiene acceso a movimientos de tipo puño.",
+    "evolutionCost": "100 caramelos de Graveler. Compañero 1km/caramelo. Golem de Alola: 100 caramelos de Graveler de Alola.",
+    "shinyRate": "Shiny dorado. Golem de Alola shiny es azul oscuro."
+  },
+  {
+    "speciesId": 77,
+    "origin": "Ponyta se inspira en ponis y caballos mitológicos con crines de fuego. Su crin quema, pero no a quienes confían en él. Su nombre viene de 'pony' + 'ta' (sonido de trote).",
+    "goRelevance": "Común en zonas secas y clima Soleado. Rapidash es un tipo Fuego veloz con Giro Fuego + Nitrocarga. La variante de Galar (Psíquico) es más rara.",
+    "battleTip": "Rapidash con Taladradora + Nitrocarga + Golpe Cuerpo cubre contra tipos Roca y Agua. Nitrocarga aumenta su Velocidad.",
+    "easterEgg": "En la mitología griega, Pegaso es un caballo alado. Ponyta no tiene alas, pero su crin de fuego le da un aspecto mágico.",
+    "goDifference": "En la serie principal, Ponyta puede montarse como un caballo. En GO, no existe la función de montura.",
+    "evolutionCost": "50 caramelos para evolucionar a Rapidash. Compañero: 3km/caramelo. Ponyta de Galar: 50 caramelos para Rapidash de Galar.",
+    "shinyRate": "El shiny tiene la crin gris claro. El Rapidash de Galar shiny es violeta."
+  },
+  {
+    "speciesId": 78,
+    "origin": "Rapidash es la forma evolucionada de Ponyta. Corre tan rápido que sus cascos apenas tocan el suelo. Se dice que puede saltar sobre la Torre de Tokio. Su nombre viene de 'rapid' (rápido) + 'dash' (carrera).",
+    "goRelevance": "Un tipo Fuego decente con Giro Fuego + Taladradora para incursiones. Superado en DPS por Chandelure, Darmanitan y Reshiram.",
+    "battleTip": "Rapidash con Taladradora ofrece cobertura contra tipos Roca, algo que la mayoría de los tipo Fuego no tienen.",
+    "easterEgg": "Rapidash de Galar (Psíquico/Hada) es una versión unicornio, con un cuerno morado y crin en tonos pastel. Es singularmente bella.",
+    "goDifference": "En la serie principal, Rapidash aprende Agilidad y Pisotón. En GO, Agilidad fue convertida en Nitrocarga (movimiento de fuego que aumenta el ATQ).",
+    "evolutionCost": "50 caramelos de Ponyta. Compañero: 3km/caramelo.",
+    "shinyRate": "Shiny gris claro. Rapidash de Galar shiny es violeta oscuro."
+  },
+  {
+    "speciesId": 79,
+    "origin": "Slowpoke está inspirado en perezosos y salamandras. Su cola se considera un manjar en la región de Alola. Es conocido por ser extremadamente lento. Su nombre viene de 'slow' (lento) + 'poke'.",
+    "goRelevance": "Relativamente común cerca de lagos. Slowbro y Slowking son tipos Agua/Psíquico defensivos. Slowbro tiene su variante de Galar (Veneno/Psíquico).",
+    "battleTip": "Slowbro con Pistola Agua + Rayo Hielo + Psíquico es un tanque defensivo. Con 180 DEF y 216 STA, es difícil de debilitar.",
+    "easterEgg": "Slowpoke es tan lento que tarda 5 segundos en procesar que ha sido herido. Su cola se cae y vuelve a crecer como la de las lagartijas.",
+    "goDifference": "En la serie principal, Slowpoke puede aprender Surf y Fuerza (MO). Estas mecánicas no existen en GO.",
+    "evolutionCost": "50 caramelos para Slowbro O 50 caramelos + Roca del Rey para Slowking. Compañero: 3km/caramelo. Slowpoke de Galar: misma regla para Slowbro-G y Slowking-G.",
+    "shinyRate": "El shiny es rosa claro. Slowbro shiny es de color rosa."
+  },
+  {
+    "speciesId": 80,
+    "origin": "Slowbro es la forma evolucionada de Slowpoke. Un Shellder le mordió la cola y se volvió parte de él. Si el Shellder lo suelta, Slowbro regresa a ser Slowpoke. Su nombre viene de 'slow' + 'bro'.",
+    "goRelevance": "Un buen tipo Agua/Psíquico defensivo para Great y Ultra League. Usa Pistola Agua + Psíquico + Rayo Hielo. Rango #150 en Great League según PvPoke.",
+    "battleTip": "Slowbro con Rayo Hielo cubre contra tipos Planta y Dragón, amenazas naturales para Agua/Psíquico. Slowbro de Galar (Veneno/Psíquico) es diferente.",
+    "easterEgg": "La mordida del Shellder en la cola de Slowbro es una de las pocas 'evoluciones por asociación' donde dos Pokémon se fusionan. Otro caso es Magneton.",
+    "goDifference": "En la serie principal, Slowbro puede megaevolucionar (Mega Slowbro). En GO, Mega Slowbro tiene una DEF masiva y es un excelente tanque.",
+    "evolutionCost": "50 caramelos Slowpoke. Compañero: 3km/caramelo.",
+    "shinyRate": "Shiny rosa. El Shellder en su cola también se vuelve rosa."
+  },
+  {
+    "speciesId": 81,
+    "origin": "Magnemite está inspirado en imanes y orbes metálicos. Flota usando campos magnéticos y atrae objetos metálicos a su cuerpo. Su nombre combina 'magnet' (imán) y 'mite' (ácaro/pequeño).",
+    "goRelevance": "Común en zonas industriales y clima Ventoso. Magneton (y Magnezone de Gen 4) son excelentes tipos Eléctrico/Acero para incursiones y PvP.",
+    "battleTip": "Magnezone con Chispa + Voltio Cruel + Foco Resplandor es de primer nivel. Su resistencia al Acero le da inmunidad a Veneno y otras 11 resistencias.",
+    "easterEgg": "Magnemite está hecho de tornillos e imanes; está inspirado en basura electrónica y chatarra que cobró vida.",
+    "goDifference": "En la serie principal, Magnemite evoluciona al nivel 30. En GO, cuesta 25 caramelos evolucionar a Magneton.",
+    "evolutionCost": "25 caramelos para Magneton + 100 caramelos + Módulo Cebo Magnético para Magnezone. Compañero 3km/caramelo.",
+    "shinyRate": "Shiny azul oscuro (el lado izquierdo se vuelve azul). Es sutil."
+  },
+  {
+    "speciesId": 82,
+    "origin": "Magneton es la forma de tres Magnemite unidos por un fuerte campo magnético. Es imposible separarlos. Su nombre viene de 'magnet' + 'ton' (tonelada/fuerza).",
+    "goRelevance": "Paso previo a Magnezone. Magneton puro es decente para la Liga Super con Chispazo + Foco Resplandor.",
+    "battleTip": "Magneton con Espejo Tiro tiene la posibilidad de bajar el ATQ del oponente, un efecto útil en PvP.",
+    "easterEgg": "Magneton es una de las primeras 'fusiones' de múltiples Pokémon. A diferencia de Dugtrio, que son hermanos, Magneton es una fusión literal.",
+    "goDifference": "En la serie principal, Magneton necesita un lugar magnético especial (Monte Corona) para evolucionar a Magnezone. En GO, se usa un Módulo Cebo Magnético.",
+    "evolutionCost": "100 caramelos + Módulo Cebo Magnético para Magnezone. Compañero: 3km/caramelo.",
+    "shinyRate": "El shiny presenta un color azul oscuro en uno de los tres imanes."
+  },
+  {
+    "speciesId": 83,
+    "origin": "Farfetch'd está inspirado en patos salvajes que llevan puerros, una referencia al proverbio japonés 'kamo ga negi o shotte kuru' (un pato llega cargando un puerro).",
+    "goRelevance": "Raro en algunas regiones. En la Gen 8 se añadió su evolución: Sirfetch'd (Lucha). En GO, el Farfetch'd de Galar evoluciona al realizar 10 lanzamientos excelentes.",
+    "battleTip": "Sirfetch'd con Contraataque + Tajo Umbrío + Pájaro Osado es un excelente tipo Lucha para la Liga Ultra.",
+    "easterEgg": "Farfetch'd lleva un puerro porque, en Japón, decir que 'un pato vino con un puerro' significa que algo llegó listo para ser usado.",
+    "goDifference": "En la serie principal, Farfetch'd sostiene el puerro como objeto. En GO, el puerro es parte del movimiento exclusivo de Sirfetch'd, Asalto Estelar.",
+    "evolutionCost": "50 caramelos + 10 lanzamientos excelentes para Sirfetch'd (requisito especial en GO). 3km por caramelo como compañero.",
+    "shinyRate": "El shiny tiene un puerro azul. El Sirfetch'd shiny es más oscuro."
+  },
+  {
+    "speciesId": 84,
+    "origin": "Doduo está inspirado en avestruces de dos cabezas. Una cabeza duerme mientras la otra vigila. Ambas tienen pensamientos distintos. Su nombre viene de 'dodo' (ave extinta) + 'duo' (dos).",
+    "goRelevance": "Común en áreas de hierba y clima Soleado. Dodrio es Normal/Volador con un ATK de 218, sorprendentemente alto.",
+    "battleTip": "Dodrio con Ataque Rápido + Pico Taladro + Pájaro Osado tiene 218 de ATK, superior a muchos tipos que parecen más fuertes.",
+    "easterEgg": "Doduo y Dodrio se basan en el Dodo, ave extinta. Pero el Dodo tenía UNA cabeza; el chiste es que cada 'era' añadía una cabeza más.",
+    "goDifference": "En la serie principal, Doduo puede aprender Vuelo (MO). En GO, el equivalente es Pico Taladro como movimiento cargado.",
+    "evolutionCost": "50 caramelos para Dodrio. Compañero 3km/caramelo.",
+    "shinyRate": "Shiny verde claro. Dodrio shiny tiene un tono verdoso."
+  },
+  {
+    "speciesId": 85,
+    "origin": "Dodrio es la forma evolucionada de Doduo con 3 cabezas. Cada cabeza tiene su propia personalidad y piensa por sí misma. Su nombre viene de 'dodo' + 'trio'. Son avestruces de tres cabezas.",
+    "goRelevance": "218 ATQ—mayor que muchos tipos 'fuertes'. Ataque Rápido + Pico Taladro es decente para la Liga Super. 155 EVE es bajo.",
+    "battleTip": "Dodrio con Pájaro Osado inflige daño masivo pero reduce la DEF. Usa Pico Taladro cuando necesites consistencia.",
+    "easterEgg": "Las 3 cabezas de Dodrio representan alegría, tristeza y furia. Discuten constantemente entre ellas sobre qué hacer.",
+    "goDifference": "En la serie principal, Dodrio puede aprender Triataque (un ataque de 3 tipos). En GO, Triataque es un movimiento cargado que tienen algunos Pokémon.",
+    "evolutionCost": "50 caramelos Doduo. 3km/caramelo como compañero.",
+    "shinyRate": "Shiny verdoso. Sutil."
+  },
+  {
+    "speciesId": 86,
+    "origin": "Seel está inspirado en focas y leones marinos. Su cuerno es de hielo y se rompe fácilmente. Su nombre viene de 'seal' (foca). Viven en aguas heladas.",
+    "goRelevance": "Común en zonas costeras y clima Nieve. Dewgong es tipo Agua/Hielo con una tipificación defensiva interesante. Poco usado.",
+    "battleTip": "Dewgong con Canto Helado + Viento Hielo + Taladradora cubre contra tipos Roca, Fuego y Eléctrico.",
+    "easterEgg": "Seel y Dewgong se basan en focas y dugongos reales. A pesar del nombre 'Dewgong', se parece más a una morsa.",
+    "goDifference": "En la serie principal, Seel aprende Rayo Aurora naturalmente. En GO, el movimiento existe pero es menos impactante que Rayo Hielo.",
+    "evolutionCost": "50 caramelos para Dewgong. Compañero 3km/caramelo.",
+    "shinyRate": "Shiny rosa claro. Dewgong shiny es rosa."
+  },
+  {
+    "speciesId": 87,
+    "origin": "Dewgong es la forma evolucionada de Seel, inspirada en dugongos y sirenas. Tiene un cuerpo aerodinámico para nadar en aguas gélidas. Su nombre proviene de 'dew' (rocío) + 'dugong'.",
+    "goRelevance": "Un tipo Agua/Hielo decente para la Liga Super con Canto Helado + Viento Hielo. El efecto de Viento Hielo (baja el ATQ del oponente) es muy útil.",
+    "battleTip": "Dewgong con Viento Hielo es uno de los mejores 'debuffers' en PvP; reduce el ATQ del oponente en cada uso, acumulando ventaja durante el combate.",
+    "easterEgg": "Dewgong puede aprender Acua Jet en la serie principal. En GO, Acua Jet existe pero es un movimiento de tipo Agua promedio.",
+    "goDifference": "En la serie principal, Dewgong aprende Frío Polar, un movimiento de 1 golpe fulminante. En GO, los movimientos de OHKO no existen.",
+    "evolutionCost": "50 caramelos de Seel. 3km por caramelo como compañero.",
+    "shinyRate": "Shiny de color rosa."
+  },
+  {
+    "speciesId": 88,
+    "origin": "Grimer está inspirado en el lodo tóxico y la contaminación industrial. Surgió cuando los residuos de alcantarilla fueron expuestos a radiación. Su nombre proviene de 'grime' (suciedad). La variante de Alola (Veneno/Siniestro) es más oscura.",
+    "goRelevance": "Común en áreas urbanas y contaminadas. Muk es de tipo Veneno puro con 190 de ATK y 172 de DEF; sólido para PvP.",
+    "battleTip": "Muk con Puya Nociva + Pulso Umbrío + Bomba Lodo ofrece cobertura contra tipos Psíquico. Es uno de los mejores tipo Veneno para la Liga Máster.",
+    "easterEgg": "Grimer se inspiró en la contaminación de la Bahía de Tokio. Es una crítica ambiental sutil: la contaminación creando vida mutante.",
+    "goDifference": "En la serie principal, Grimer puede aprender Reducción (aumenta la evasión). En GO, Reducción no existe de la misma forma.",
+    "evolutionCost": "50 caramelos para evolucionar a Muk. Compañero: 3km/caramelo. Grimer de Alola: 50 caramelos para Muk de Alola.",
+    "shinyRate": "El shiny es verde oscuro. El Muk de Alola shiny es de un morado más oscuro."
+  },
+  {
+    "speciesId": 89,
+    "origin": "Muk es la forma evolucionada de Grimer. Su olor es tan fuerte que hace desmayar a los humanos. Hecho de toxinas concentradas. Su nombre viene de 'muck' (lodo). Variante de Alola (Veneno/Siniestro).",
+    "goRelevance": "Excelente tipo Veneno para Liga Super, Ultra y Máster. Puya Nociva + Pulso Umbrío + Bomba Lodo. Puesto #46 en Liga Máster según PvPoke. STA enorme de 233.",
+    "battleTip": "Muk con Pulso Umbrío cubre contra tipos Fantasma y Psíquico que contrarrestan al Veneno. Uno de los mejores tanques de tipo Veneno del juego.",
+    "easterEgg": "Muk de Alola es Veneno/Siniestro, una mejora significativa ya que el tipo Siniestro cubre la debilidad al Psíquico que tiene el tipo Veneno puro.",
+    "goDifference": "En la serie principal, Muk puede aprender Lanzamugre y Explosión. En GO, Explosión es un movimiento de tipo Normal que Muk no aprende.",
+    "evolutionCost": "50 caramelos Grimer. 3km por caramelo como compañero.",
+    "shinyRate": "Shiny verde claro. Muk shiny es verde lima."
+  },
+  {
+    "speciesId": 90,
+    "origin": "Shellder está inspirado en bivalvos y almejas. Su concha es tan dura que ni las bombas pueden romperla. Su lengua es larga y morada. Su nombre viene de 'shell' (concha) + 'elder' (más viejo).",
+    "goRelevance": "Común en zonas costeras y playas. Cloyster es un tipo Agua/Hielo defensivo con 256 de DEF, una de las más altas del juego.",
+    "battleTip": "Cloyster tiene la quinta DEF base más alta del juego (256). Ice Shard + Avalanche es excelente para incursiones contra tipos Dragón y Volador.",
+    "easterEgg": "Shellder es la concha que muerde a Slowpoke y se convierte en parte de Slowbro. En algunas ediciones, la entrada de la Pokédex menciona que Shellder le teme a Slowpoke.",
+    "goDifference": "En la serie principal, Shellder necesita una Piedra Agua para evolucionar a Cloyster. En GO, cuesta 50 caramelos.",
+    "evolutionCost": "50 caramelos para evolucionar a Cloyster. Compañero: 3km/caramelo.",
+    "shinyRate": "Shiny de color morado claro. Cloyster shiny tiene la concha morada."
+  },
+  {
+    "speciesId": 91,
+    "origin": "Cloyster es la forma evolucionada de Shellder. Su concha es dura como el diamante y sus espinas están hechas de hielo puro. Su nombre viene de 'cloister' (claustro) + 'oyster' (ostra).",
+    "goRelevance": "256 DEF: la quinta más alta del juego. Ice Shard + Avalanche es de primer nivel contra tipos Dragón y Volador. Excelente para incursiones contra Rayquaza, Dragonite y Salamence.",
+    "battleTip": "Cloyster con Ice Shard + Avalanche + Hydro Pump ofrece cobertura contra los tipos Fuego que amenazarían a un tipo Hielo puro.",
+    "easterEgg": "Cloyster puede aprender Spike Cannon, un movimiento exclusivo que dispara espinas. En la serie principal, fue su movimiento característico durante generaciones.",
+    "goDifference": "En la serie principal, Cloyster tiene Skill Link + Icicle Spear (un ataque de 5 golpes). En GO, los movimientos multi-golpe no funcionan igual.",
+    "evolutionCost": "50 caramelos Shellder. 3km/caramelo como compañero.",
+    "shinyRate": "Shiny morado."
+  },
+  {
+    "speciesId": 92,
+    "origin": "Gastly está inspirado en gas tóxico y almas en pena. Se compone de gas venenoso que puede solidificarse a voluntad. No tiene forma corporal sólida. Su nombre viene de 'ghastly' (espantoso).",
+    "goRelevance": "Común en cementerios y de noche. Gengar es uno de los tipos Fantasma más icónicos y fuertes del juego. ATK 261, altísimo.",
+    "battleTip": "Gengar con Garra Umbría + Bola Sombra + Bomba Lodo es letal. Su ATK 261 es de los mejores, pero con DEF 149 y STA 155, es frágil.",
+    "easterEgg": "Gengar es la sombra de Clefable; la leyenda dice que Gengar es la sombra de un Clefable que cobró vida propia.",
+    "goDifference": "En la serie principal, Gastly necesita intercambio para evolucionar a Gengar. En GO, cuesta 25 + 100 caramelos, sin intercambio. ¿Necesita intercambio? No.",
+    "evolutionCost": "25 caramelos para Haunter + 100 caramelos para Gengar = 125 en total. Compañero 3km/caramelo.",
+    "shinyRate": "Shiny blanco. Gengar shiny es blanco, uno de los más bonitos."
+  },
+  {
+    "speciesId": 93,
+    "origin": "Haunter es la forma intermedia de Gastly. Tiene manos heladas que causan escalofríos. Si su lengua toca a alguien, la persona temblará sin parar. Su nombre viene de 'haunt' (acechar) + 'er'.",
+    "goRelevance": "Paso previo a Gengar. Haunter puede usarse en Little/Great League como alternativa, aunque Gengar siempre es mejor.",
+    "battleTip": "Haunter con Shadow Claw + Shadow Ball + Sludge Bomb es una versión más débil de Gengar. Úsalo si no tienes suficientes caramelos.",
+    "easterEgg": "Haunter es el único Pokémon que aparece en el episodio 'Ghost of Maiden's Peak' del anime, uno de los capítulos más aterradores de la serie original.",
+    "goDifference": "En los juegos principales, Haunter necesita intercambio para evolucionar a Gengar. En GO, cuesta 100 caramelos.",
+    "evolutionCost": "100 caramelos para evolucionar a Gengar. Compañero: 3km/caramelo.",
+    "shinyRate": "Shiny blanco."
+  },
+  {
+    "speciesId": 94,
+    "origin": "Gengar es la forma final de Gastly. Su apariencia está inspirada en sombras urbanas y apariciones. Se dice que acecha a los más débiles para absorber su energía vital. Su nombre viene de 'gangster' + 'phantom'.",
+    "goRelevance": "Tipo Fantasma de primer nivel. Garra Umbría + Bola Sombra + Bomba Lodo. ATQ 261. Mega Gengar es el mejor Fantasma del juego con 349 de ATQ. Puesto #6 en Liga Máster.",
+    "battleTip": "Gengar con el movimiento legado Lengüetazo + Bola Sombra es incluso mejor que con Garra Umbría. Si tienes uno con Lengüetazo, es un tesoro. Mega Gengar es frágil pero letal.",
+    "easterEgg": "¡Gengar es la sombra de Clefable! Compara sus diseños: misma forma, orejas puntiagudas, cuerpo redondeado. Gengar es la versión 'sombría'.",
+    "goDifference": "En la serie principal, Gengar megaevoluciona. En GO, se añadió a Mega Gengar y es el tipo Fantasma más fuerte del juego.",
+    "evolutionCost": "100 caramelos de Haunter. Compañero 3km/caramelo. 296 caramelos XL para maximizar. Mega Gengar: 200 Megaenergía.",
+    "shinyRate": "Shiny blanco. Mega Gengar shiny es blanco con ojos rojos: aterrador y hermoso."
+  },
+  {
+    "speciesId": 95,
+    "origin": "Onix está inspirado en serpientes de piedra y minerales. Su cuerpo está hecho de rocas gigantes que se atraen magnéticamente. Su nombre proviene de 'ónice', una piedra preciosa.",
+    "goRelevance": "Común en cuevas. Onix tiene 232 de DEF pero 85 de ATK; uno de los mayores desequilibrios de estadísticas del juego. Evoluciona a Steelix con un Revestimiento Metálico.",
+    "battleTip": "Steelix (Gen 2) con Cola Dragón + Triturar + Terremoto es un gran tanque para la Liga Super. Su DEF de 333 (Mega) lo hace casi impenetrable.",
+    "easterEgg": "Onix mide 8.8 metros de largo, siendo uno de los Pokémon más largos. Sin embargo, solo pesa 210kg, lo cual es ligero para su tamaño.",
+    "goDifference": "En la serie principal, Onix necesita un Revestimiento Metálico mediante intercambio para evolucionar. En GO, cuesta 50 caramelos + un Revestimiento Metálico (objeto especial).",
+    "evolutionCost": "50 caramelos + Revestimiento Metálico para Steelix. 5km por caramelo de compañero.",
+    "shinyRate": "Onix shiny es de color verde claro. Steelix shiny es dorado."
+  },
+  {
+    "speciesId": 96,
+    "origin": "Drowzee está inspirado en tapires y en el Baku (criatura mitológica japonesa que devora pesadillas). Duerme todo el tiempo. Su nombre viene de 'drowse' (somnolencia) y 'zee' (zzz de sueño).",
+    "goRelevance": "Común en zonas urbanas. Hypno es un tipo Psíquico defensivo con buena presencia en la Liga Super. Usa Hipnosis, Psíquico y Bola Sombra.",
+    "battleTip": "Hypno con Confusión + Puño Trueno + Bola Sombra ofrece cobertura contra tipos Siniestro y Fantasma. Bola Sombra sorprende a los oponentes.",
+    "easterEgg": "Drowzee y el Baku: el Baku es una criatura del folclore japonés que come pesadillas. Drowzee come sueños, no pesadillas.",
+    "goDifference": "En la serie principal, Drowzee aprende Hipnosis al nivel 1. En GO, Hipnosis es un movimiento rápido que Drowzee puede aprender.",
+    "evolutionCost": "50 caramelos para evolucionar a Hypno. 3km por caramelo como compañero.",
+    "shinyRate": "Shiny de color rosa claro. Hypno shiny es rosa."
+  },
+  {
+    "speciesId": 97,
+    "origin": "Hypno es la forma evolucionada de Drowzee. Sostiene un péndulo para hipnotizar a las personas. La leyenda dice que se llevó a niños a lugares desconocidos. Su nombre proviene de 'hypnosis' + 'no'.",
+    "goRelevance": "Un tipo Psíquico defensivo popular en la Liga Super. Confusión + Puño Trueno + Bola Sombra ofrece cobertura contra casi todo. Puesto #162 en PvPoke.",
+    "battleTip": "Hypno con Puño Trueno y Puño Fuego cubre contra tipos Acero y Siniestro. Su versátil set de movimientos es su mayor ventaja.",
+    "easterEgg": "En la Pokédex de los juegos, Hypno es descrito como un secuestrador de niños, uno de los textos más perturbadores de la franquicia de Nintendo.",
+    "goDifference": "En la serie principal, Hypno aprende Come Sueños y Pesadilla. En GO, estos movimientos no existen porque los efectos de estado funcionan de forma distinta.",
+    "evolutionCost": "50 caramelos Drowzee. 3km por caramelo como compañero.",
+    "shinyRate": "Variante shiny rosa."
+  },
+  {
+    "speciesId": 98,
+    "origin": "Krabby está inspirado en los cangrejos violinistas. Sus pinzas vuelven a crecer si las pierde. Su nombre viene de 'crab' (cangrejo) + 'by'. Uno de los diseños de cangrejo más clásicos de Pokémon.",
+    "goRelevance": "Común en playas y zonas costeras. Kingler es un tipo Agua con 240 de ATK, altísimo para su categoría. Usa Garra Metal + Tijera X + Martillazo.",
+    "battleTip": "Kingler con Disparo Lodo + Martillazo + Tijera X genera energía extremadamente rápido. Sus 240 de ATK son devastadores en la Liga Super.",
+    "easterEgg": "Krabby fue uno de los Pokémon de Ash en las Islas Naranja, uno de los raros casos en los que Ash capturó algo que no era de tipo Normal o Volador.",
+    "goDifference": "En la serie principal, Krabby puede aprender Guillotina (movimiento OHKO). En GO, los movimientos OHKO no existen.",
+    "evolutionCost": "50 caramelos para evolucionar a Kingler. 3km por caramelo como compañero.",
+    "shinyRate": "Krabby variocolor es azul claro. Kingler variocolor es azul oscuro."
+  },
+  {
+    "speciesId": 99,
+    "origin": "Kingler es la forma evolucionada de Krabby. Su pinza derecha es descomunalmente grande y tiene fuerza suficiente para romper rocas. Su nombre proviene de 'king' (rey) + 'crab' (cangrejo) + 'ler'.",
+    "goRelevance": "240 ATK, superior a muchos tipos Agua 'fuertes'. Mud Shot + Crabhammer + X-Scissor es un combo de alta presión. Viable en Great League.",
+    "battleTip": "Kingler con Mud Shot + Crabhammer + X-Scissor ofrece cobertura contra tipos Planta (debilidad de Agua) y tipos Psíquico.",
+    "easterEgg": "Kingler Gigamax (Gen 8) tiene una pinza de 30 metros que funciona como sombrilla. Es uno de los diseños más absurdos.",
+    "goDifference": "En la serie principal, Kingler aprende Vice Grip y Crabhammer. En GO, Crabhammer es un movimiento cargado de tipo Agua muy fuerte.",
+    "evolutionCost": "50 caramelos de Krabby. Compañero: 3km/caramelo.",
+    "shinyRate": "Shiny azul oscuro."
+  },
+  {
+    "speciesId": 100,
+    "origin": "Voltorb está inspirado en Poke Balls que cobraron vida. La leyenda dice que fueron creadas cuando un rayo golpeó una Poke Ball. Su nombre viene de 'volt' + 'orb'. Variante de Hisui (Eléctrico/Planta).",
+    "goRelevance": "Común en zonas industriales y urbanas. Electrode es de tipo Eléctrico puro con estadísticas equilibradas. Rara vez se usa en PvP.",
+    "battleTip": "Electrode con Voltiocambio + Juego Sucio + Rayo ofrece cobertura contra tipos Siniestro y Fantasma.",
+    "easterEgg": "Voltorb y Electrode son conocidos por explotar cuando se irritan. En la serie principal, tienen Autodestrucción como movimiento característico.",
+    "goDifference": "En la serie principal, Voltorb puede aprender Autodestrucción y Explosión. En GO, estos movimientos serían suicidas, por lo que fueron omitidos.",
+    "evolutionCost": "50 caramelos para Electrode. Compañero 3km/caramelo.",
+    "shinyRate": "Shiny rojo (como una Poke Ball invertida). Muy llamativo."
+  },
+  {
+    "speciesId": 101,
+    "origin": "Electrode es la forma evolucionada de Voltorb. Tiene la apariencia de una Poké Ball invertida y es conocido por ser inestable y explotar. Su nombre proviene de 'electrodo'.",
+    "goRelevance": "Tipo Eléctrico rápido con Voltiocambio + Juego Sucio. Es decente para la Liga Super, pero superado por Galvantula y Lanturn.",
+    "battleTip": "Electrode con Juego Sucio sorprende a los oponentes que esperan movimientos puramente Eléctricos. La cobertura Siniestra es rara en los tipo Eléctrico.",
+    "easterEgg": "Electrode es el Pokémon más rápido de los primeros juegos (140 de Velocidad base en la serie principal). En GO, la Velocidad no es una estadística directa.",
+    "goDifference": "En la serie principal, Electrode explota (Autodestrucción). En GO, simplemente no tiene Explosión como movimiento viable.",
+    "evolutionCost": "50 caramelos de Voltorb. 3km por caramelo como compañero.",
+    "shinyRate": "Shiny de color rojo oscuro."
+  },
+  {
+    "speciesId": 102,
+    "origin": "Exeggcute está inspirado en una nidada de 6 huevos. Aunque parecen huevos, son semillas que se asemejan a ellos. Uno de los diseños más confusos de Pokémon. Su nombre viene de 'egg' + 'execute'.",
+    "goRelevance": "Común en áreas de hierba y clima Soleado. Exeggutor es Planta/Psíquico con un ATK muy alto de 233. La variante de Alola (Planta/Dragón) es muy popular.",
+    "battleTip": "Exeggutor de Alola (Planta/Dragón) es único. Tiene debilidad 4x al Hielo. Sin embargo, su alto ATK y movimientos como Recurrente + Cometa Draco son muy buenos.",
+    "easterEgg": "Exeggcute no son huevos. Son semillas que PARECEN huevos. La Pokédex insiste en ello, pero nadie lo acepta. Seguimos llamándolos huevos.",
+    "goDifference": "En la serie principal, Exeggcute necesita una Piedra Hoja. En GO, cuesta 50 caramelos.",
+    "evolutionCost": "50 caramelos para Exeggutor. Compañero 3km/caramelo. ¿Exeggcute de Alola: 50 caramelos + Piedra Hoja? No, solo 50 caramelos para Exeggutor de Alola en GO.",
+    "shinyRate": "Shiny de color rosa claro. Exeggutor shiny también es rosa."
+  },
+  {
+    "speciesId": 103,
+    "origin": "Exeggutor es la forma evolucionada de Exeggcute. Una de las cabezas es la líder y las otras tres la siguen. La variante de Alola es una palmera DRAGON de 10 metros de altura. Su nombre viene de 'egg' + 'executor'.",
+    "goRelevance": "Planta/Psíquico con 233 de ATK. Usa Recurrente + Bomba Germen + Psíquico. La variante de Alola (Planta/Dragón) es mejor para incursiones por su tipo único.",
+    "battleTip": "Exeggutor de Alola es el Pokémon más alto del juego (10.9m). Tiene debilidad 4x a Hielo, pero Recurrente + Cometa Draco ofrece un DPS alto contra incursiones.",
+    "easterEgg": "Exeggutor de Alola mide 10.9 metros de altura. En el anime, aparece tan alto que se sale de la pantalla. Es un chiste visual intencional.",
+    "goDifference": "En la serie principal, Exeggutor puede aprender Pisotón y Bomba Huevo. En GO, Bomba Huevo fue reemplazado por Bomba Germen.",
+    "evolutionCost": "50 caramelos de Exeggcute. Compañero de 3km/caramelo.",
+    "shinyRate": "Shiny rosa. Exeggutor de Alola shiny es dorado."
+  },
+  {
+    "speciesId": 104,
+    "origin": "Cubone está inspirado en cachorros que usan el cráneo de su madre fallecida como casco. Una de las historias más tristes del universo Pokémon. Las lágrimas forman las marcas en el cráneo. Su nombre viene de 'cub' (cachorro) + 'bone' (hueso).",
+    "goRelevance": "Común en zonas secas y montañosas. Marowak es de tipo Tierra con Bone Club + Bonemerang. La variante de Alola (Fuego/Fantasma) es mucho más popular.",
+    "battleTip": "Marowak de Alola con Fire Spin + Shadow Bone + Bone Club es de primer nivel en la Liga Super y Ultra. Shadow Bone es un movimiento exclusivo excelente.",
+    "easterEgg": "La historia de Cubone es tristemente confirmada: su madre muere y él usa el cráneo. Pero algunos dicen que es el cráneo de un Kangaskhan, una teoría popular.",
+    "goDifference": "En la serie principal, Cubone evoluciona al nivel 28. En GO, cuesta 50 caramelos.",
+    "evolutionCost": "50 caramelos para Marowak. Compañero 3km/caramelo. Cubone de Alola: 50 caramelos para Marowak de Alola.",
+    "shinyRate": "Shiny verde claro. Marowak de Alola shiny es morado oscuro."
+  },
+  {
+    "speciesId": 105,
+    "origin": "Marowak es la forma evolucionada de Cubone. Tras superar la pérdida de su madre, ahora es un guerrero feroz. La variante de Alola (Fuego/Fantasma) es un espíritu llameante. Su nombre proviene de 'marrow' (médula) + 'wak' (de 'whack' o golpe).",
+    "goRelevance": "Un tipo Tierra de nivel medio. El Marowak de Alola es el verdadero protagonista: tipo Fuego/Fantasma con el movimiento exclusivo Hueso Sombrío. Es de primer nivel en la Liga Super.",
+    "battleTip": "Marowak de Alola con Giro Fuego + Hueso Sombrío + Golpe Hueso ofrece cobertura contra tipos Fantasma, Psíquico, Acero y Planta. Muy versátil.",
+    "easterEgg": "La variante de Alola de Marowak es Fuego/Fantasma porque la luna llena de Alola hizo que el espíritu de su madre protegiera a su hijo con fuego.",
+    "goDifference": "En la serie principal, Marowak puede aprender Alboroto y Doble Filo. En GO, Alboroto no existe como movimiento.",
+    "evolutionCost": "50 caramelos de Cubone. 3km de distancia de compañero por caramelo.",
+    "shinyRate": "El shiny es de un tono más claro. El Marowak de Alola shiny es azul oscuro con llamas moradas."
+  },
+  {
+    "speciesId": 106,
+    "origin": "Hitmonlee está inspirado en luchadores de kickboxing y Bruce Lee. Sus piernas son como muelles que se estiran para dar patadas. Su nombre es 'hit' + 'mon' (monster) + 'lee' (Bruce Lee).",
+    "goRelevance": "Raro: se obtiene de Tyrogue (Gen 2). Tipo Lucha con Low Kick + Close Combat + Stone Edge. Usado en la Liga Super.",
+    "battleTip": "Hitmonlee con Low Kick + Close Combat + Stone Edge cubre contra tipos Volador. ATK 224 es alto, pero DEF 181 y STA 137 son promedio.",
+    "easterEgg": "Hitmonlee y Hitmonchan son un homenaje a Bruce Lee (Lee) y Jackie Chan (Chan). Hitmontop es el homenaje al actor de Hong Kong.",
+    "goDifference": "En la serie principal, Hitmonlee necesita un Tyrogue con ATK > DEF para evolucionar. En GO, Tyrogue evoluciona según qué estadística sea mayor.",
+    "evolutionCost": "25 caramelos Tyrogue. Tyrogue se obtiene de huevos de 5km. Compañero 5km/caramelo.",
+    "shinyRate": "Shiny verde claro. Sutil."
+  },
+  {
+    "speciesId": 107,
+    "origin": "Hitmonchan está inspirado en boxeadores y Jackie Chan. Sus puños son como dinamita y puede lanzar golpes a velocidades supersónicas. Su nombre proviene de 'hit' + 'mon' + 'chan' (Jackie Chan).",
+    "goRelevance": "Tipo Lucha con Contraataque + Puño Hielo + Puño Trueno. Tiene una cobertura elemental excelente y se usa en la Liga Super.",
+    "battleTip": "Un Hitmonchan con Puño Hielo + Puño Trueno + Puño Fuego cubre contra tipos Volador, Agua, Planta, Hielo y Acero. Es raro tener tanta cobertura.",
+    "easterEgg": "El flequillo de Hitmonchan oculta parte de su rostro, inspirado en los cortes de pelo de los boxeadores japoneses.",
+    "goDifference": "En la serie principal, Hitmonchan puede aprender Corpulencia y Ultrapuño. En GO, los movimientos de estado como Corpulencia tienen menos impacto.",
+    "evolutionCost": "25 caramelos de Tyrogue. Compañero: 5km por caramelo.",
+    "shinyRate": "Shiny de color verde claro."
+  },
+  {
+    "speciesId": 108,
+    "origin": "Lickitung está inspirado en lagartos y osos hormigueros con lenguas largas. Su lengua mide 2 metros y puede usarse como un látigo. Es pegajosa y flexible. Su nombre viene de 'lick' (lamer) + 'tongue' (lengua).",
+    "goRelevance": "Común en zonas urbanas. Lickitung evoluciona a Lickilicky (Gen 4) con una Piedra Sinnoh. Lickilicky es un tipo Normal decente para la Liga Super.",
+    "battleTip": "Lickilicky con Lengüetazo + Golpe Cuerpo + Terremoto cubre tipos Acero, Fuego y Eléctrico. Su STA de 207 es alta.",
+    "easterEgg": "En el Poké Recreo, se puede enseñar a Lickitung a 'lamer' en lugar de caminar como animación. Es una de las animaciones más extrañas.",
+    "goDifference": "En la serie principal, Lickitung aprende Desenrollar (movimiento Roca). En GO, Desenrollar existe como movimiento rápido de tipo Roca.",
+    "evolutionCost": "50 caramelos + Piedra Sinnoh para Lickilicky. Compañero: 3km/caramelo.",
+    "shinyRate": "Shiny de color rosa claro."
+  },
+  {
+    "speciesId": 109,
+    "origin": "Koffing está inspirado en gases tóxicos y globos de contaminación. Estas esferas nacen en desechos químicos y flotan. Su nombre viene de 'coffin' (ataúd) + 'fuming' (humeante).",
+    "goRelevance": "Común en áreas urbanas e industriales. Weezing es un tipo Veneno decente. La variante de Galar (Hada) es más usada en PvP.",
+    "battleTip": "Weezing con Placaje + Bomba Lodo + Pulso Umbrío cubre contra los tipo Psíquico que contrarrestan al tipo Veneno puro.",
+    "easterEgg": "Koffing es el Pokémon del Team Rocket desde el principio. James y Meowth suelen ser derrotados por él también.",
+    "goDifference": "En la serie principal, Koffing puede aprender Autodestrucción y Explosión. En GO, estos movimientos no están disponibles para él.",
+    "evolutionCost": "50 caramelos para Weezing. Compañero 3km/caramelo. Koffing de Galar: 50 caramelos para Weezing de Galar.",
+    "shinyRate": "Shiny es azul claro. Weezing shiny es azul."
+  },
+  {
+    "speciesId": 110,
+    "origin": "Weezing es la forma evolucionada de Koffing: dos Koffing unidos. La leyenda dice que los Koffing rara vez evolucionan de forma natural a menos que estén en entornos muy contaminados. Su nombre viene de 'wheeze' (sibilancia). Variante de Galar (Hada).",
+    "goRelevance": "Un tipo Veneno decente para PvP. Weezing de Galar (Hada) se usa por su tipo único Hada/Veneno, interesante contra tipos Dragón y Lucha.",
+    "battleTip": "Weezing de Galar con Viento Feérico + Carantoña + Bomba Lodo cubre contra tipos Lucha, Siniestro y Dragón.",
+    "easterEgg": "Weezing de Galar tiene chimeneas que emiten humo rosa, pero el humo es en realidad contaminación convertida en hada. Una crítica ambiental.",
+    "goDifference": "En la serie principal, Weezing aprende Pantallahumo (baja la precisión). En GO, los debuffs de precisión no existen.",
+    "evolutionCost": "50 caramelos Koffing. 3km por caramelo de compañero.",
+    "shinyRate": "Shiny azul. Weezing de Galar shiny es azul oscuro."
+  },
+  {
+    "speciesId": 111,
+    "origin": "Rhyhorn está inspirado en rinocerontes con armadura de roca. Tiene un cerebro muy pequeño y actúa por instinto. Su nombre viene de 'rhino' (rinoceronte) + 'horn' (cuerno).",
+    "goRelevance": "Común en zonas secas y montañosas. Rhyperior (Gen 4) es tipo Tierra/Roca con 241 ATK y 224 DEF: un tanque ofensivo muy potente.",
+    "battleTip": "Rhyperior con Bofetón Lodo + Romperrocas + Terremoto es devastador. Romperrocas es un movimiento exclusivo (CD 2021). Ojo a su debilidad 4x a Agua y Planta.",
+    "easterEgg": "Rhyhorn puede aprender Perforador (movimiento OHKO) en la serie principal. Es conocido por tener una de las inteligencias más bajas de todos los Pokémon.",
+    "goDifference": "En la serie principal, Rhyhorn evoluciona al nivel 42. En GO, cuesta 50 caramelos evolucionar a Rhydon.",
+    "evolutionCost": "50 caramelos para Rhydon + 100 caramelos + Piedra Sinnoh para Rhyperior. Compañero: 3km/caramelo.",
+    "shinyRate": "Shiny de color gris oscuro. Rhyperior shiny es dorado."
+  },
+  {
+    "speciesId": 112,
+    "origin": "Rhydon es la forma intermedia de Rhyhorn. Puede perforar rocas con su cuerno. Tiene una piel de piedra casi impenetrable. Su nombre viene de 'rhino' + 'don' (señor).",
+    "goRelevance": "Paso previo a Rhyperior. Rhydon puede usarse como atacante de tipo Tierra/Roca con Terremoto + Roca Afilada, pero Rhyperior es mucho mejor.",
+    "battleTip": "Rhydon con Bofetón Lodo + Terremoto + Surf cubre contra tipos Fuego y Tierra. Surf es una cobertura rara para un tipo Roca/Tierra.",
+    "easterEgg": "Rhydon fue el PRIMER Pokémon creado por los diseñadores de Game Freak. Es el Pokémon #001 en orden de creación.",
+    "goDifference": "En la serie principal, Rhydon necesita ser intercambiado con un Protector para evolucionar. En GO, cuesta 100 caramelos + una Piedra Sinnoh.",
+    "evolutionCost": "100 caramelos + Piedra Sinnoh para Rhyperior. Compañero: 3km/caramelo.",
+    "shinyRate": "Shiny de color gris oscuro."
+  },
+  {
+    "speciesId": 113,
+    "origin": "Chansey está inspirada en las enfermeras de los Centros Pokémon y en los huevos. Lleva un huevo que comparte con quien lo necesita. Su nombre viene de 'chance' (suerte) + 'sey' (de nurse/enfermera).",
+    "goRelevance": "Rara. Blissey (Gen 2) tiene la mayor STA del juego (496). Es la mejor defensora de gimnasios en Pokémon GO. Pon a Blissey en cualquier gimnasio y será difícil de derrotar.",
+    "battleTip": "Chansey tiene 487 STA, la segunda más alta del juego (solo superada por los 496 de Blissey). Blissey con Cabezazo Zen + Brillo Mágico + Psíquico es la defensora de gimnasios suprema.",
+    "easterEgg": "Chansey es el Pokémon que usan las enfermeras Joy en los Centros Pokémon. El huevo de Chansey es altamente nutritivo y rejuvenecedor.",
+    "goDifference": "En la serie principal, Chansey necesita amistad para evolucionar a Blissey. En GO, cuesta 50 caramelos.",
+    "evolutionCost": "50 caramelos para evolucionar a Blissey. 5km por caramelo como compañero. Rara: Chansey aparece muy poco.",
+    "shinyRate": "Shiny de color verde claro. Blissey shiny es verde."
+  },
+  {
+    "speciesId": 114,
+    "origin": "Tangela está inspirado en algas marinas y lianas enredadas. Sus lianas azules cubren todo su cuerpo, dejando ver solo sus ojos rojos. Su nombre proviene de 'tangle' (enredo).",
+    "goRelevance": "Común cerca de lagos. Evoluciona a Tangrowth (Gen 4) con 100 caramelos + Poder Pasado.",
+    "battleTip": "Tangrowth con Látigo Cepa + Latigazo + Avalancha ofrece cobertura contra tipos Fuego y Volador. 183 de ATQ es decente para un tipo Planta.",
+    "easterEgg": "Las lianas de Tangela son extremadamente resistentes y pueden usarse como cuerdas, pero si se rompen, liberan un látex pegajoso.",
+    "goDifference": "En la serie principal, Tangela debe aprender Poder Pasado y subir un nivel para evolucionar. En GO, requiere 100 caramelos + Poder Pasado.",
+    "evolutionCost": "100 caramelos + conocer Poder Pasado para evolucionar a Tangrowth. Compañero: 3km/caramelo.",
+    "shinyRate": "Su forma variocolor es morado claro. Tangrowth variocolor es azulado."
+  },
+  {
+    "speciesId": 115,
+    "origin": "Kangaskhan está inspirado en los canguros con crías en su bolsa. La cría lucha junto a su madre sin salir de la bolsa. Su nombre combina 'kangaroo' y 'khan' (líder). Exclusivo de incursiones en la región de Australasia.",
+    "goRelevance": "Regional (Asia-Pacífico). Tipo Normal con 181 ATK y 233 STA. Tiene Megaevolución con la habilidad Amor Filial, que ataca dos veces.",
+    "battleTip": "Mega Kangaskhan con Bofetón Lodo + Puño Incremento + Retroceso es excelente para incursiones y PvP. Amor Filial hace que cada ataque golpee dos veces.",
+    "easterEgg": "Kangaskhan es uno de los primeros Pokémon regionales; en Pokémon GO, es exclusivo de ciertas partes del mundo (Oceanía).",
+    "goDifference": "En la serie principal, Kangaskhan megaevoluciona. En GO, se añadió a Mega Kangaskhan y es uno de los mejores tipo Normal.",
+    "evolutionCost": "No evoluciona. Compañero 3km/caramelo. ¿La cría de Kangaskhan? El bebé en la bolsa nunca sale, a diferencia de Cubone, que pierde a su madre.",
+    "shinyRate": "Shiny verde claro. Mega Kangaskhan es azulado."
+  },
+  {
+    "speciesId": 116,
+    "origin": "Horsea está inspirado en caballitos de mar y dragones acuáticos. Puede disparar tinta negra para huir. Su nombre viene de 'horse' (caballo) + 'sea' (mar).",
+    "goRelevance": "Común en zonas costeras. Kingdra (Gen 2) es Agua/Dragón con un tipo defensivo excelente (solo débil a Dragón y Hada).",
+    "battleTip": "Kingdra con Dragoaliento + Hidrobomba + Octazooka cubre contra tipos Acero y Fuego. Agua/Dragón es uno de los mejores tipos del juego.",
+    "easterEgg": "Horsea puede disparar tinta negra para escapar de depredadores. También puede cambiar de color, como los camaleones.",
+    "goDifference": "En la serie principal, Horsea evoluciona al nivel 32. En GO, cuesta 50 caramelos.",
+    "evolutionCost": "50 caramelos para Seadra + 100 caramelos + Escama Dragón para Kingdra. Compañero 3km/caramelo.",
+    "shinyRate": "Shiny es azul claro. Kingdra shiny es morado."
+  },
+  {
+    "speciesId": 117,
+    "origin": "Seadra es la forma intermedia de Horsea. Tiene espinas venenosas que causan parálisis. Su nombre viene de 'sea' (mar) + 'dragon' (dragón) + 'adra' (¿hidra?).",
+    "goRelevance": "Paso previo a Kingdra. Seadra puro se usa raramente; Kingdra es siempre preferible.",
+    "battleTip": "Seadra con Pistola Agua + Hidrobomba + Ventisca ofrece cobertura contra tipos Planta y Dragón.",
+    "easterEgg": "Seadra está basado en caballitos de mar reales que son venenosos. Las espinas de Seadra pueden causar mareos.",
+    "goDifference": "En la serie principal, Seadra necesita un intercambio con Escama Dragón para evolucionar a Kingdra. En GO, cuesta 100 caramelos + Escama Dragón.",
+    "evolutionCost": "100 caramelos + Escama Dragón para Kingdra. Compañero: 3km/caramelo.",
+    "shinyRate": "Shiny de color azul claro."
+  },
+  {
+    "speciesId": 118,
+    "origin": "Goldeen está inspirado en peces dorados y carpas ornamentales. Sus aletas son elegantes como abanicos. El cuerno de su cabeza se usa en rituales de apareamiento. Su nombre proviene de 'gold' (oro) + 'deen' (¿de 'queen' o realeza?).",
+    "goRelevance": "Común en lagos y ríos de agua limpia. Seaking es un tipo Agua de nivel medio con Poison Jab + Drill Run.",
+    "battleTip": "Seaking con Poison Jab + Drill Run + Megahorn ofrece cobertura contra tipos Planta y Eléctrico, algo raro para un tipo Agua.",
+    "easterEgg": "En el anime, Goldeen se mostró como un pez muy elegante y agraciado. Misty tenía una que usaba en concursos de belleza.",
+    "goDifference": "En la serie principal, Goldeen puede aprender Waterfall (MO). En GO, Waterfall es un movimiento rápido que Goldeen puede aprender.",
+    "evolutionCost": "50 caramelos para evolucionar a Seaking. Compañero: 3km/caramelo.",
+    "shinyRate": "Goldeen shiny es rosa claro. Seaking shiny es verde oliva."
+  },
+  {
+    "speciesId": 119,
+    "origin": "Seaking es la forma evolucionada de Goldeen. En otoño, su cuerno se vuelve más colorido para atraer parejas. Su nombre viene de 'sea' (mar) + 'king' (rey).",
+    "goRelevance": "Tipo Agua de nivel medio con Puya Nociva + Taladradora. Raramente usado en batallas competitivas.",
+    "battleTip": "Seaking con Megacuerno sorprende a los tipo Planta. La cobertura de tipo Bicho es rara en los tipo Agua.",
+    "easterEgg": "Seaking puede aprender Pulso Agua en la serie principal. Es conocido por tener una de las mayores variedades de movimientos entre los tipo Agua en GO.",
+    "goDifference": "En la serie principal, Seaking aprende Perforador (OHKO). En GO, los movimientos OHKO no existen.",
+    "evolutionCost": "50 caramelos de Goldeen. Compañero 3km/caramelo.",
+    "shinyRate": "Shiny de color verde oliva."
+  },
+  {
+    "speciesId": 120,
+    "origin": "Staryu está inspirado en las estrellas de mar. Si su cuerpo es cortado, se regenera. La joya en el centro es su órgano vital. Su nombre viene de 'star' (estrella) + 'yu' (de 'you' — ¿tú?).",
+    "goRelevance": "Común en zonas costeras. Starmie es tipo Agua/Psíquico con 210 de ATQ; excelente para incursiones y PvP. Uno de los mejores tipo Agua de la Gen 1.",
+    "battleTip": "Starmie con Pistola Agua + Hidrobomba + Psíquico cubre contra tipos Lucha y Veneno. Rápido y versátil.",
+    "easterEgg": "Staryu y Starmie comparten un diseño de estrella de mar y el símbolo de estrella. La joya central es un 'núcleo' que brilla en la oscuridad.",
+    "goDifference": "En la serie principal, Staryu necesita una Piedra Agua. En GO, cuesta 50 caramelos evolucionar a Starmie.",
+    "evolutionCost": "50 caramelos para Starmie. Compañero: 3km/caramelo.",
+    "shinyRate": "Staryu shiny es azul claro. Starmie shiny es morado claro."
+  },
+  {
+    "speciesId": 121,
+    "origin": "Starmie es la forma evolucionada de Staryu. Su núcleo brilla en 7 colores diferentes. Es conocida por su velocidad e inteligencia. Sus gemas se usan como joyas caras. Su nombre viene de 'star' + 'mie' (de 'me').",
+    "goRelevance": "Versátil tipo Agua/Psíquico. Usa Pistola Agua + Hidrobomba + Psíquico. Tiene 210 de ATQ y alta velocidad. Útil para incursiones y la Liga Super.",
+    "battleTip": "Starmie con Rayo cubre contra tipos Agua y Volador. La cobertura eléctrica es rara en los tipo Agua.",
+    "easterEgg": "La gema de Starmie vale mucho dinero. La leyenda dice que los pescadores que encuentran a Starmie se hacen ricos vendiendo sus gemas.",
+    "goDifference": "En la serie principal, Starmie puede aprender Poder Reserva y Pantalla de Luz. En GO, los movimientos defensivos funcionan de forma distinta.",
+    "evolutionCost": "50 caramelos de Staryu. Compañero 3km/caramelo.",
+    "shinyRate": "Shiny de color morado claro."
+  },
+  {
+    "speciesId": 122,
+    "origin": "Mr. Mime está inspirado en mimos y payasos callejeros. Es un maestro de la mímica capaz de crear barreras invisibles. Su nombre viene de 'mister' + 'mime'. Variante de Galar (Hielo/Psíquico).",
+    "goRelevance": "Regional (Europa). Tipo Psíquico/Hada con Confusión + Psíquico + Bola Sombra. Mime Jr. (Gen 4) se obtiene de huevos. Mr. Mime de Galar evoluciona a Mr. Rime.",
+    "battleTip": "Mr. Mime con Confusión + Psíquico + Bola Sombra ofrece cobertura contra tipos Fantasma. Su DEF de 205 es alta, lo que lo hace un buen tanque Psíquico.",
+    "easterEgg": "Mr. Mime es uno de los pocos Pokémon con un nombre de género ('Mr.') que puede ser hembra; una contradicción que Game Freak nunca ha explicado.",
+    "goDifference": "En la serie principal, Mr. Mime aprende Barrera y Pantalla de Luz. En GO, Barrera no existe, por lo que Mr. Mime usa Psíquico como movimiento cargado.",
+    "evolutionCost": "50 caramelos de Mime Jr. (huevo de 5km). Mr. Mime no evoluciona. Mr. Rime (Galar): 50 caramelos de Mr. Mime de Galar. 5km por caramelo como compañero.",
+    "shinyRate": "Shiny gris. Mr. Mime de Galar shiny es azul oscuro."
+  },
+  {
+    "speciesId": 123,
+    "origin": "Scyther está inspirado en las mantis religiosas y los samuráis. Sus guadañas pueden cortar hasta árboles gruesos. Su nombre viene de 'scythe' (guadaña) + 'er' (agente).",
+    "goRelevance": "Común en áreas de hierba. Evoluciona a Scizor (Gen 2, Acero/Bicho) con un Revestimiento Metálico. Scizor es uno de los mejores tipo Bicho/Acero del juego.",
+    "battleTip": "Scizor con Corte Furia + Puño Bala + Cabeza de Hierro es genial para incursiones y PvP. Resiste 10 tipos diferentes.",
+    "easterEgg": "Scyther es uno de los pocos Pokémon que cambia de tipo al evolucionar (Bicho/Volador → Bicho/Acero). Pierde su debilidad x4 a Roca (4x → 2x).",
+    "goDifference": "En la serie principal, Scyther necesita un Revestimiento Metálico mediante intercambio. En GO, cuesta 50 caramelos + Revestimiento Metálico.",
+    "evolutionCost": "50 caramelos + Revestimiento Metálico para Scizor. Compañero 5km/caramelo. Mega Scizor: 200 Megaenergía.",
+    "shinyRate": "Shiny verde claro. Scizor shiny también es verde claro."
+  },
+  {
+    "speciesId": 124,
+    "origin": "Jynx está inspirada en cantantes de ópera y divas. Viste un vestido rojo y baila para hipnotizar. Su nombre viene de 'jinx' (mal augurio).",
+    "goRelevance": "Rara en áreas de hielo. Hielo/Psíquico con Confusión + Psíquico + Alud. Útil en incursiones de tipo Dragón y Volador.",
+    "battleTip": "Jynx con Confusión + Alud + Psíquico cubre contra tipos Lucha, Dragón y Veneno. ATQ alto de 223.",
+    "easterEgg": "Jynx fue rediseñada en 2002 porque su diseño original (piel negra, labios grandes) fue acusado de blackface. Ahora tiene piel morada.",
+    "goDifference": "En la serie principal, Jynx evoluciona de Smoochum (Gen 2). En GO, Smoochum sale de huevos de 5km y evoluciona con 25 caramelos.",
+    "evolutionCost": "25 caramelos de Smoochum (huevo 5km). Compañero 5km/caramelo. Jynx no evoluciona más.",
+    "shinyRate": "Shiny gris claro. Muy sutil."
+  },
+  {
+    "speciesId": 125,
+    "origin": "Electabuzz está inspirado en demonios eléctricos y yetis. Genera electricidad estática que eriza su pelaje. Su nombre viene de 'electric' + 'buzz' (zumbido).",
+    "goRelevance": "Común en zonas urbanas. Electivire (Gen 4) es de tipo Eléctrico con Impactrueno + Voltio Cambio + Puño Hielo. Excelente para incursiones.",
+    "battleTip": "Electivire con Puño Hielo ofrece cobertura contra tipos Tierra y Dragón, algo que un tipo Eléctrico puro no tiene. Úsalo como cobertura.",
+    "easterEgg": "Electabuzz aparece en centros de distribución de energía. Si hay un corte de luz cerca de una subestación, podría haber un Electabuzz cerca.",
+    "goDifference": "En la serie principal, Electabuzz requiere intercambio con Electirizador. En GO, cuesta 100 caramelos + Piedra Sinnoh para evolucionar a Electivire.",
+    "evolutionCost": "25 caramelos de Elekid (huevo 5km) + 100 caramelos + Piedra Sinnoh para Electivire. Compañero 5km/caramelo.",
+    "shinyRate": "Su versión shiny es dorada. Electivire shiny es de un tono dorado oscuro."
+  },
+  {
+    "speciesId": 126,
+    "origin": "Magmar está inspirado en demonios de fuego y salamandras. Su temperatura corporal es de 1200 grados, lo que hace que el aire a su alrededor se distorsione por el calor. Su nombre viene de 'magma' + 'mar' (¿de 'mare' — charca?).",
+    "goRelevance": "Común en zonas volcánicas. Magmortar (Gen 4) es de tipo Fuego y cuenta con Giro Fuego + Puño Fuego + Rayo.",
+    "battleTip": "Magmortar con Rayo ofrece cobertura contra los tipo Agua. La cobertura eléctrica es poco común en los tipo Fuego.",
+    "easterEgg": "Magmar aparece en el anime como el Pokémon que quemó la cara del padre de un personaje. Una escena seria que se convirtió en meme años después.",
+    "goDifference": "En la serie principal, Magmar requiere intercambio con Magmatizador. En GO, cuesta 100 caramelos + una Piedra Sinnoh para evolucionar a Magmortar.",
+    "evolutionCost": "25 caramelos de Magby (huevo de 5km) + 100 caramelos + Piedra Sinnoh para Magmortar. Compañero: 5km/caramelo.",
+    "shinyRate": "Shiny rosa claro. Magmortar shiny es rosa."
+  },
+  {
+    "speciesId": 127,
+    "origin": "Pinsir está inspirado en escarabajos y ciervos volantes. Sus pinzas tienen fuerza suficiente para cortar troncos. Su nombre viene de 'pincer' (pinza) + 'sir' (señor).",
+    "goRelevance": "Común en áreas de hierba. Tipo Bicho con Fury Cutter + Close Combat + X-Scissor. Mega Pinsir (Bicho/Volador) es mejor.",
+    "battleTip": "Mega Pinsir con Fury Cutter + Close Combat + X-Scissor cubre contra tipos Acero y Roca. El ATK de la mega es 305.",
+    "easterEgg": "Pinsir y Heracross son los 'rivales' escarabajos: uno es Bicho puro, el otro Bicho/Lucha. Pinsir es exclusivo de algunas regiones.",
+    "goDifference": "En la serie principal, Pinsir puede aprender Guillotine (OHKO). En GO, no existen movimientos OHKO.",
+    "evolutionCost": "No evoluciona. Compañero 3km/caramelo. Mega Pinsir: 200 Megaenergía.",
+    "shinyRate": "Shiny azul oscuro. Mega Pinsir shiny es azul."
+  },
+  {
+    "speciesId": 128,
+    "origin": "Tauros está inspirado en los toros. Corre en manadas y es muy agresivo. Su nombre proviene de 'tauros' (toro en griego/latín). Tiene variantes regionales en Paldea (3 formas: Lucha, Siniestro, Agua).",
+    "goRelevance": "Regional de Norteamérica. Tipo Normal con 198 de ATQ y 183 de DEF. Razonable para la Liga Super con Cuerpo Pesado + Terremoto.",
+    "battleTip": "Tauros con Cuerpo Pesado + Terremoto cubre contra tipos Acero y Roca. Cuerpo Pesado es uno de los mejores ataques cargados de tipo Normal.",
+    "easterEgg": "Tauros es un regional exclusivo de Pokémon GO en Norteamérica. Las variantes de Paldea se encuentran en otras regiones.",
+    "goDifference": "En la serie principal, Tauros puede aprender Alboroto de forma natural. En GO, Alboroto no existe como movimiento.",
+    "evolutionCost": "No evoluciona. 3km por caramelo como compañero.",
+    "shinyRate": "Shiny azul claro. Las variantes shiny de Paldea también están disponibles."
+  },
+  {
+    "speciesId": 129,
+    "origin": "Magikarp está inspirado en las carpas comunes. Es famoso por ser totalmente inútil en combate; solo aprende Salpicadura (Splash). Su historia del 'pequeño pez que se convierte en dragón' proviene del folclore chino. Su nombre viene de 'magic' + 'carp'.",
+    "goRelevance": "Extremadamente común cerca del agua. Gyarados es uno de los tipo Agua/Volador más fuertes. Magikarp se usa para completar la misión 'Evoluciona un Magikarp' (400 caramelos).",
+    "battleTip": "Magikarp es inútil. Solo sirve para evolucionar a Gyarados (400 caramelos). No uses a Magikarp en combate bajo ninguna circunstancia.",
+    "easterEgg": "Magikarp se basa en la leyenda china de que las carpas que saltan la 'Puerta del Dragón' se convierten en dragones. ¿La prueba? Magikarp → Gyarados (¿Agua/Dragón? No, Agua/Volador).",
+    "goDifference": "En la serie principal, Magikarp solo aprende Salpicadura (sin efecto). ¡En GO, Salpicadura es un movimiento rápido que realmente existe! Inflige 0 de daño.",
+    "evolutionCost": "400 caramelos para Gyarados. Compañero 1km/caramelo. Es la evolución más cara del juego en cuanto a caramelos.",
+    "shinyRate": "El shiny es de color dorado brillante. El Gyarados shiny es ROJO, uno de los más bonitos."
+  },
+  {
+    "speciesId": 130,
+    "origin": "Gyarados es la forma evolucionada de Magikarp. Inspirado en la leyenda china de las carpas que se convierten en dragones. Tiene un temperamento destructivo y aterroriza ciudades costeras. Su nombre viene de 'gyrate' + 'rados' (?).",
+    "goRelevance": "Tipo Agua/Volador con 237 de ATQ y 186 de DEF. Dragon Breath + Aqua Tail + Crunch. De primer nivel para la Liga Master y raids. Mega Gyarados (Siniestro) es excelente.",
+    "battleTip": "Gyarados con Dragon Breath + Aqua Tail + Crunch cubre contra tipos Dragón, Fantasma y Psíquico. Mega Gyarados (Siniestro) ofrece una cobertura aún mejor.",
+    "easterEgg": "Gyarados NO es tipo Dragón; es Agua/Volador. El mayor error de expectativa de tipo en la historia. Debería ser Agua/Dragón.",
+    "goDifference": "En la serie principal, Gyarados megaevoluciona a Mega Gyarados (Siniestro). En GO, Mega Gyarados es Siniestro/Agua, ideal para raids contra Psíquicos y Fantasmas.",
+    "evolutionCost": "400 caramelos Magikarp. Compañero de 1km/caramelo. 296 caramelos XL para maximizar. Mega Gyarados: 200 Megaenergía.",
+    "shinyRate": "Shiny ROJO VIVO. Extremadamente popular. El Gyarados shiny rojo es uno de los más famosos de la franquicia."
+  },
+  {
+    "speciesId": 131,
+    "origin": "Lapras está inspirado en los plesiosaurios y el monstruo del Lago Ness. Tiene un caparazón azul y canta melodías que calman el mar. Su nombre viene de 'la' (nota musical) + 'pras' (?).",
+    "goRelevance": "Raro en áreas de hielo. Tipo Agua/Hielo con Canto Helado + Surf + Rayo Hielo. Excelente para incursiones de tipo Dragón. Tiene un STA alto de 277.",
+    "battleTip": "Lapras es un tanque de tipo Agua/Hielo. Canto Helado + Surf + Rayo Hielo ofrece cobertura contra tipos Dragón, Planta y Tierra. Bueno para la Liga Máster.",
+    "easterEgg": "Lapras es la inspiración para el monstruo del Lago Ness. En el anime, Ash ayudó a un niño a devolver un Lapras con su familia.",
+    "goDifference": "En la serie principal, Lapras puede aprender Canto Mortal (todos se debilitan en 3 turnos). En GO, Canto Mortal no existe.",
+    "evolutionCost": "No evoluciona. 5km por caramelo como compañero. Raro: aparece en incursiones de 3 estrellas y huevos de 10km.",
+    "shinyRate": "Shiny de color morado claro. Muy bonito."
+  },
+  {
+    "speciesId": 132,
+    "origin": "Ditto está inspirado en la plastilina y las amebas. Puede transformarse en CUALQUIER Pokémon copiando su ADN. Su nombre proviene de 'ditto' (ídem, lo mismo).",
+    "goRelevance": "Raro: aparece disfrazado de otros Pokémon en el mapa. Es esencial para intercambiar Pokémon legendarios shiny y para la crianza en los juegos principales.",
+    "battleTip": "Ditto con Transformación copia los movimientos y estadísticas del oponente. Solo es útil si el rival es fuerte; contra oponentes débiles, Ditto también es débil.",
+    "easterEgg": "Ditto puede encontrarse disfrazado de otros Pokémon en Pokémon GO. Las apariciones sospechosas de un Pokémon 'fuera de lo normal' podrían ser Ditto.",
+    "goDifference": "En los juegos principales, Ditto es esencial para la crianza. En GO, la crianza no existe. Ditto se usa para transformarse en incursiones.",
+    "evolutionCost": "No evoluciona. Compañero 3km/caramelo. No se puede encontrar como shiny en GO (aunque el shiny existe en los juegos principales).",
+    "shinyRate": "Shiny azul claro. En GO, NO está disponible como shiny (actualmente)."
+  },
+  {
+    "speciesId": 133,
+    "origin": "Eevee está inspirado en zorros y conejos. Es genéticamente inestable, lo que permite múltiples evoluciones. Su nombre proviene de 'eev' (de 'evolution') + 'ee'. El Pokémon más versátil de la franquicia.",
+    "goRelevance": "Relativamente común. Tiene 8 evoluciones posibles (Vaporeon, Jolteon, Flareon, Espeon, Umbreon, Leafeon, Glaceon, Sylveon). Cada una con un tipo diferente.",
+    "battleTip": "Cada Eeveelution tiene un propósito distinto: Vaporeon (tanque de agua), Jolteon (ATK eléctrico), Umbreon (tanque PvP siniestro), Sylveon (DPS hada). Elige según tu necesidad.",
+    "easterEgg": "Eevee es el único Pokémon con 8 evoluciones. No hay ningún otro Pokémon con tantas opciones evolutivas. Es el poseedor del récord absoluto.",
+    "goDifference": "En la serie principal, Eevee evoluciona con piedras elementales, amistad o ubicación. En GO, requiere 25 caramelos + nombre o un Módulo Cebo específico.",
+    "evolutionCost": "25 caramelos para cualquier Eeveelution. Compañero 3km/caramelo. Para Espeon/Umbreon: camina 10km con él y evoluciona de día/noche.",
+    "shinyRate": "El shiny es gris claro. Cada Eeveelution shiny tiene un color diferente y todas son muy codiciadas."
+  },
+  {
+    "speciesId": 134,
+    "origin": "Vaporeon es la evolución de tipo Agua de Eevee. Compuesto principalmente de agua, puede fundirse con cuerpos de agua. Su nombre combina 'vapor' y 'eon' (sufijo de las Eeveelutions).",
+    "goRelevance": "Tipo Agua con 205 de ATK y 277 de STA: una reserva de HP enorme. Usa Pistola Agua + Acua Cola + Hidrobomba. Bueno para incursiones y PvP.",
+    "battleTip": "Con 277 de STA, Vaporeon es un gran tanque de tipo Agua. Acua Cola genera energía más rápido que Hidrobomba. Úsalo en la Liga Máster.",
+    "easterEgg": "Vaporeon fue el centro de uno de los memes más difundidos e inapropiados de la comunidad Pokémon (No lo busquen).",
+    "goDifference": "En la serie principal, Vaporeon puede aprender Armadura Ácida (aumenta la DEF). En GO, Armadura Ácida no existe.",
+    "evolutionCost": "25 caramelos de Eevee. 3km de distancia de compañero por caramelo.",
+    "shinyRate": "Vaporeon shiny es de color morado claro con tonos lilas."
+  },
+  {
+    "speciesId": 135,
+    "origin": "Jolteon es la evolución de tipo Eléctrico de Eevee. Su piel acumula cargas eléctricas y sus pelos actúan como agujas que disparan electricidad. Su nombre viene de 'jolt' (sacudida) + 'eon'.",
+    "goRelevance": "Tipo Eléctrico con 232 de ATK. Usa Impactrueno + Rayo + Voltiocambio. Buen DPS contra tipos Agua y Volador.",
+    "battleTip": "Jolteon tiene 232 de ATK, siendo uno de los tipos Eléctrico más ofensivos. Sin embargo, con 182 de DEF y 163 de STA, es frágil. Genera energía muy rápido con Impactrueno.",
+    "easterEgg": "Jolteon es el favorito de muchos fans por su diseño de 'animal erizado': un zorro cubierto de espinas eléctricas.",
+    "goDifference": "En la serie principal, Jolteon puede aprender Pin Misil y Agilidad. En GO, Pin Misil existe pero no es de primer nivel.",
+    "evolutionCost": "25 caramelos de Eevee. Compañero: 3km/caramelo.",
+    "shinyRate": "Eevee variocolor es verde claro. Jolteon variocolor es amarillo neón."
+  },
+  {
+    "speciesId": 136,
+    "origin": "Flareon es la evolución de tipo Fuego de Eevee. Almacena llamas en una bolsa interna y las libera por la boca. Su nombre viene de 'flare' (llamarada) + 'eon'.",
+    "goRelevance": "Tipo Fuego con 246 de ATQ: MUY alto. Giro Fuego + Lanzallamas + Sofoco. Buen DPS para incursiones de Hielo y Acero.",
+    "battleTip": "Flareon tiene 246 de ATQ, el más alto de las Eeveelutions. Giro Fuego + Sofoco inflige daño masivo. Pero Sofoco baja el ATQ: consigue un segundo ataque cargado.",
+    "easterEgg": "Flareon es la 'prima pobre' de las Eeveelutions en GO por tener movimientos limitados comparado con otros tipos Fuego.",
+    "goDifference": "En la serie principal, Flareon puede aprender Fuego Fatuo y Colmillo Ígneo. En GO, Colmillo Ígneo es el movimiento rápido de Fuego más fuerte.",
+    "evolutionCost": "25 caramelos Eevee. Compañero 3km/caramelo.",
+    "shinyRate": "Shiny naranja claro. Sutil."
+  },
+  {
+    "speciesId": 137,
+    "origin": "Porygon es un Pokémon artificial hecho de datos y código. Creado por científicos como prototipo de Pokémon digital, puede habitar el ciberespacio. Su nombre viene de 'polygon' (polígono) + 'ory' (¿de 'laboratory'?).",
+    "goRelevance": "Raro. Evoluciona a Porygon2 (Gen 2) con una Mejora y a Porygon-Z (Gen 4) con una Piedra Sinnoh + Disco Extraño. Porygon-Z es de tipo Normal con 264 de ATQ.",
+    "battleTip": "Porygon-Z con Fijado + Electrocañón es un combo devastador; Fijado garantiza que Electrocañón acierte. Porygon2 con Triataque + Chispazo es un gran tanque.",
+    "easterEgg": "Porygon es INFAME por causar convulsiones epilépticas en el episodio 'Dennō Senshi Porygon' en Japón, hospitalizando a 685 niños. El episodio nunca volvió a emitirse.",
+    "goDifference": "En la serie principal, Porygon requiere Mejora y Disco Extraño (por intercambio). En GO, cuesta 25 + 100 + 100 caramelos, una Piedra Sinnoh y los objetos de evolución.",
+    "evolutionCost": "25 caramelos + Mejora para Porygon2, luego 100 caramelos + Piedra Sinnoh + Disco Extraño para Porygon-Z. Compañero: 3km/caramelo.",
+    "shinyRate": "El shiny es azul oscuro. Porygon-Z shiny es morado."
+  },
+  {
+    "speciesId": 138,
+    "origin": "Omanyte está inspirado en los ammonites fósiles. Es un Pokémon fósil revivido a partir de un Fósil Helix. Su nombre viene de 'ammonite' + 'nyte' (posiblemente de 'night').",
+    "goRelevance": "Se obtiene de fósiles (Fósil Helix). Omastar es de tipo Roca/Agua con 207 de ATK y 201 de DEF. Se usa en la Liga Super de PvP.",
+    "battleTip": "Omastar con Disparo Lodo + Avalancha + Hidrobomba ofrece cobertura contra tipos Fuego y Roca. Avalancha es un movimiento de alta generación de energía.",
+    "easterEgg": "Omanyte (y el Fósil Helix) se convirtieron en el centro de una leyenda en Twitch Plays Pokémon; el 'Fósil Helix' era venerado como una deidad.",
+    "goDifference": "En la serie principal, Omanyte se revive de un fósil. En GO, se obtiene de huevos de 7km, incursiones e investigación de campo.",
+    "evolutionCost": "50 caramelos para evolucionar a Omastar. Distancia de compañero: 5km/caramelo.",
+    "shinyRate": "Su versión variocolor es azul claro. Omastar variocolor es morado."
+  },
+  {
+    "speciesId": 139,
+    "origin": "Omastar es la forma evolucionada de Omanyte. Usaba sus tentáculos para capturar presas. Se extinguió porque su concha se volvió demasiado pesada. Su nombre viene de 'Oma' + 'star' (estrella).",
+    "goRelevance": "Tipo Roca/Agua con 207 de ATK y 201 de DEF; estadísticas equilibradas. Usa Disparo Lodo + Avalancha + Hidrobomba. Se usa en la Liga Super.",
+    "battleTip": "Omastar con el movimiento legado Lanzarrocas + Avalancha es mejor que Disparo Lodo. Si tienes uno con Lanzarrocas, guárdalo.",
+    "easterEgg": "Omastar se extinguió a causa de su propia concha: se volvió pesada y ya no podía moverse. Una autodestrucción evolutiva.",
+    "goDifference": "En la serie principal, Omastar puede aprender Púas (movimiento exclusivo). En GO, no tiene Púas.",
+    "evolutionCost": "50 caramelos de Omanyte. Compañero: 5km por caramelo.",
+    "shinyRate": "Shiny de color morado oscuro."
+  },
+  {
+    "speciesId": 140,
+    "origin": "Kabuto está inspirado en trilobites fósiles y cangrejos herradura. Revivido del Fósil Domo. Sus ojos brillan en la oscuridad. 'Kabuto' significa casco samurái en japonés.",
+    "goRelevance": "Se obtiene del Fósil Domo. Kabutops es tipo Roca/Agua con 220 de ATQ y 186 de DEF. Razonable para incursiones y la Liga Super.",
+    "battleTip": "Kabutops con Corte Furia + Acua Cola + Avalancha cubre contra tipos Fuego y Roca. Corte Furia genera energía muy rápido.",
+    "easterEgg": "Kabutops es uno de los Pokémon fósiles más antiguos, basado en trilobites que vivieron hace 500 millones de años.",
+    "goDifference": "En la serie principal, Kabuto se revive de un fósil. En GO, proviene de huevos de 7km e incursiones.",
+    "evolutionCost": "50 caramelos para Kabutops. Compañero 5km/caramelo.",
+    "shinyRate": "Shiny rosa claro. Kabutops shiny es dorado."
+  },
+  {
+    "speciesId": 141,
+    "origin": "Kabutops es la forma evolucionada de Kabuto. Sus cuchillas en los brazos funcionan como hoces. Cazaba presas en el agua. Su nombre viene de 'kabuto' + 'tops' (cima/fin).",
+    "goRelevance": "Tipo Roca/Agua con 220 de ATK. Usa Fury Cutter + Aqua Tail + Rock Slide. Razonable para PvP por su rápida generación de energía.",
+    "battleTip": "Kabutops con el movimiento legado Mud Shot + Stone Edge era mucho mejor. Si tienes uno con Mud Shot, es valioso.",
+    "easterEgg": "Kabutops parece un esqueleto fosilizado viviente. Dice la leyenda que Kabutops fue una inspiración para el diseño de Scyther.",
+    "goDifference": "En los juegos principales, Kabutops puede aprender Slash y Swords Dance. En GO, Swords Dance es un movimiento de mejora al que Kabutops no tiene acceso.",
+    "evolutionCost": "50 caramelos de Kabuto. 5km de compañero por caramelo.",
+    "shinyRate": "Shiny dorado."
+  },
+  {
+    "speciesId": 142,
+    "origin": "Aerodactyl está inspirado en pterodáctilos y pterosaurios. Es un Pokémon fósil revivido del Ámbar Viejo. Su mordida es lo suficientemente poderosa para romper rocas. Su nombre viene de 'aero' (aire) + 'dactyl' (dedo, de pterodáctilo).",
+    "goRelevance": "Tipo Roca/Volador con 221 de ATK. Rock Throw + Rock Slide + Iron Head. Tiene una Megaevolución (Roca/Volador) excelente para incursiones. Gran counter para tipos Volador y Hielo.",
+    "battleTip": "Mega Aerodactyl con Rock Throw + Rock Slide + Earth Power es de primer nivel para incursiones. Su tipo es agresivo y cubre contra tipos Psíquico y Fantasma.",
+    "easterEgg": "Aerodactyl es revivido del Ámbar Viejo, a diferencia de otros fósiles que son conchas o huesos. El ámbar preservó su ADN.",
+    "goDifference": "En la serie principal, Aerodactyl megaevoluciona. En GO, Mega Aerodactyl es uno de los mejores tipo Roca.",
+    "evolutionCost": "No evoluciona. 5km por caramelo como compañero. Se obtiene de huevos de 7km, incursiones de 3 estrellas e investigación de campo. Mega Aerodactyl: 200 Megaenergía.",
+    "shinyRate": "Su versión shiny es rosa claro. Mega Aerodactyl shiny es color vino."
+  },
+  {
+    "speciesId": 143,
+    "origin": "Snorlax se inspira en osos hibernando y luchadores de sumo. Duerme todo el tiempo y solo despierta para comer (450kg de comida al día). Su nombre viene de 'snore' (ronquido) + 'lax' (relajado).",
+    "goRelevance": "Raro. Tipo Normal con 330 de STA, la más alta entre los que no evolucionan. Lick + Body Slam + Earthquake. Mega Snorlax es de primer nivel. Excelente defensor de gimnasios.",
+    "battleTip": "Snorlax con Lick + Body Slam (Legado) + Superpower es de primer nivel en la Liga Máster. Body Slam genera presión constante. Superpower cubre contra tipo Acero.",
+    "easterEgg": "Snorlax bloquea el paso en los juegos principales (el famoso 'Snorlax bloqueando el camino'). Necesitas una Poké Flauta para despertarlo.",
+    "goDifference": "En la serie principal, Snorlax puede megaevolucionar. En GO, Mega Snorlax tiene una STA masiva y es un gran tanque.",
+    "evolutionCost": "25 caramelos de Munchlax (huevo de 5km). 5km/caramelo de compañero. 296 caramelos XL para llevar a Snorlax al nivel 50.",
+    "shinyRate": "Shiny azul oscuro. Munchlax shiny es azul."
+  },
+  {
+    "speciesId": 144,
+    "origin": "Articuno está inspirado en los fénix de hielo de la mitología y en aves árticas. Congela el agua por donde vuela. Su nombre viene de 'arctic' (ártico) + 'uno'. Es una de las tres aves legendarias.",
+    "goRelevance": "Legendario. Tipo Hielo/Volador con Canto Helado + Rayo Hielo + Vendaval. Bueno para incursiones contra tipos Dragón y Volador. Articuno de Galar (Psíquico/Volador) es diferente.",
+    "battleTip": "Articuno con Viento Hielo es un gran debuffer en PvP, bajando el ATQ del oponente. Articuno de Galar es raro y solo se encuentra con el Incienso de Aventura Diario.",
+    "easterEgg": "Articuno es el primer legendario que Ash encuentra en el anime (en las Islas Espuma). Es una de las escenas más icónicas.",
+    "goDifference": "En la serie principal, Articuno puede aprender Frío Polar (OHKO). En GO, no existe un movimiento OHKO similar.",
+    "evolutionCost": "No evoluciona. Compañero: 20km/caramelo. Aparece en incursiones de 5 estrellas (rotación). Caramelo XL: 296 para maximizar.",
+    "shinyRate": "El shiny es morado oscuro. El Articuno de Galar shiny es morado claro."
+  },
+  {
+    "speciesId": 145,
+    "origin": "Zapdos está inspirado en las aves del trueno de la mitología indígena americana. Sus alas generan relámpagos al batirlas. Su nombre viene de 'zap' + 'dos' (dos). El segundo de los tres pájaros legendarios.",
+    "goRelevance": "Legendario. Eléctrico/Volador con Impactrueno + Rayo + Pico Taladro. ATQ 253 — altísimo. Zapdos de Galar (Lucha/Volador) es un regional de combate.",
+    "battleTip": "Zapdos con Impactrueno + Rayo + Pico Taladro cubre contra tipos Planta y Lucha. Zapdos de Galar es Lucha/Volador y puramente cuerpo a cuerpo.",
+    "easterEgg": "Zapdos es considerado el más fuerte de los tres pájaros legendarios de Kanto por su cobertura de tipos y su alto ATQ.",
+    "goDifference": "En la serie principal, Zapdos puede aprender Pantalla de Luz y Danza Lluvia. En GO, los movimientos de clima no están implementados igual.",
+    "evolutionCost": "No evoluciona. Compañero 20km/caramelo. Incursiones de 5 estrellas. Zapdos de Galar: Incienso de Aventura Diario (probabilidad muy baja, huye).",
+    "shinyRate": "Shiny dorado claro. Zapdos de Galar shiny es dorado oscuro."
+  },
+  {
+    "speciesId": 146,
+    "origin": "Moltres está inspirado en el fénix mitológico. Renace de sus cenizas al morir. Su llama es tan caliente que derrite rocas. Su nombre combina 'molten' (fundido) y 'tres'.",
+    "goRelevance": "Legendario. Fuego/Volador con Giro Fuego + Ataque Aéreo + Sofoco. 251 ATK. Moltres de Galar (Siniestro/Volador) es uno de los mejores tipo Siniestro para PvP.",
+    "battleTip": "Moltres con Ataque Aéreo cubre contra tipos Roca y Agua. Moltres de Galar con Alarido + Furia Ardiente + Pájaro Osado es de primer nivel en Liga Ultra.",
+    "easterEgg": "Moltres renace de sus cenizas al ser herido, una clara referencia al fénix. El nombre 'Moltres' combina 'molten' (fundido) con 'tres'.",
+    "goDifference": "En la serie principal, Moltres puede aprender Día Soleado y Fuego Fatuo. En GO, Día Soleado no existe como movimiento.",
+    "evolutionCost": "No evoluciona. 20km por caramelo como compañero. Incursiones de 5 estrellas. Moltres de Galar: Incienso de Aventura Diario (huye).",
+    "shinyRate": "Shiny es naranja claro. Moltres de Galar shiny es morado oscuro."
+  },
+  {
+    "speciesId": 147,
+    "origin": "Dratini está inspirado en dragones y serpientes marinas mitológicas. Se le llama el 'Pokémon espejismo' por ser raro y esquivo. Su nombre viene de 'dragon' (dragón) + 'tiny' (pequeño).",
+    "goRelevance": "Raro cerca del agua. Dragonite es Dragón/Volador con un ATK altísimo de 263. Usa Cola Dragón + Cometa Draco + Fuerza Bruta. Uno de los mejores dragones.",
+    "battleTip": "Dragonite con Dragoaliento + Garra Dragón + Fuerza Bruta es versátil. Garra Dragón tiene bajo coste de energía. Fuerza Bruta cubre contra tipos Acero.",
+    "easterEgg": "Dratini era tan raro en los juegos originales que se vendía por dinero real en sitios de subastas. Uno de los primeros 'shinies' más codiciados.",
+    "goDifference": "En la serie principal, Dratini aparece pescando con Super Caña. En GO, aparece cerca del agua pero es raro.",
+    "evolutionCost": "25 caramelos para Dragonair + 100 caramelos para Dragonite = 125 en total. Compañero 5km/caramelo.",
+    "shinyRate": "Shiny es rosa claro. Dragonite shiny es verde."
+  },
+  {
+    "speciesId": 148,
+    "origin": "Dragonair es la forma intermedia de Dratini. Posee un aura mística y puede controlar el clima. Las esferas azules en su cuerpo contienen energía dracónica. Su nombre viene de 'dragon' + 'air' (aire).",
+    "goRelevance": "Un paso previo a Dragonite. Rara vez se usa por sí solo, pero tiene fans por su belleza. Dragonair es uno de los diseños más queridos.",
+    "battleTip": "Dragonair es estadísticamente inferior a Dragonite. Evoluciónalo siempre a Dragonite si puedes.",
+    "easterEgg": "Dragonair es frecuentemente considerado el diseño más bonito entre las formas intermedias. Muchos fans prefieren la apariencia de Dragonair a la de Dragonite.",
+    "goDifference": "En la serie principal, Dragonair puede aprender Water Pulse de forma natural. En GO, Water Pulse es un movimiento cargado al que Dragonair tiene acceso.",
+    "evolutionCost": "100 caramelos para Dragonite. Compañero 5km/caramelo.",
+    "shinyRate": "Shiny rosa claro."
+  },
+  {
+    "speciesId": 149,
+    "origin": "Dragonite es la forma final de Dratini. Inspirado en los dragones europeos. Aunque parece amigable, es extremadamente poderoso. ¿Su nombre viene de 'dragon' + 'knight' o 'nite' (noche)?",
+    "goRelevance": "Tipo Dragón/Volador con 263 de ATK. Dragon Breath + Dragon Claw + Superpower. De primer nivel en Liga Máster y incursiones. El mejor dragón por su versatilidad.",
+    "battleTip": "Dragonite con Draco Meteor + Dragon Claw es un combo clásico. Draco Meteor para un golpe fuerte, Dragon Claw para presionar. Cuidado con los tipo Hielo: debilidad 4x.",
+    "easterEgg": "Dragonite es amigable y rescata náufragos. Su fuerza es legendaria: puede dar la vuelta al mundo en 16 horas.",
+    "goDifference": "En la serie principal, Dragonite aprende Hyper Beam y Fly. En GO, Hyper Beam es tipo Normal; Draco Meteor es mejor para el STAB de tipo Dragón.",
+    "evolutionCost": "100 caramelos de Dragonair. Compañero: 5km/caramelo. Requiere 296 caramelos XL para subir al nivel 50.",
+    "shinyRate": "Dratini shiny es verde claro. Dragonite shiny es verde oscuro."
+  },
+  {
+    "speciesId": 150,
+    "origin": "Mewtwo está inspirado en experimentos genéticos y en la película 'Alien'. Fue clonado de Mew en un laboratorio. Es el Pokémon más poderoso de Kanto. Su nombre viene de 'mew' (sonido de gato) + 'two' (dos).",
+    "goRelevance": "Legendario. Tipo Psíquico con 300 de ATK, el más alto de toda la Gen 1. Confusion + Psychic + Shadow Ball. Dos Megaevoluciones: Mega X (Psíquico/Lucha) y Mega Y (Psíquico).",
+    "battleTip": "Mewtwo con Psycho Cut + Psystrike (Legado) es el mejor set. Psystrike es un movimiento exclusivo muy potente. Mega Mewtwo Y tiene 392 de ATK, el más alto del juego.",
+    "easterEgg": "Mewtwo es uno de los pocos Pokémon con DOS Megaevoluciones. Mega X es Lucha/Psíquico, mientras que Mega Y es Psíquico puro con ATK máximo.",
+    "goDifference": "En la serie principal, Mewtwo se obtiene en la Cueva Celeste. En GO, aparece en incursiones EX y de 5 estrellas con rotación especial.",
+    "evolutionCost": "No evoluciona. Compañero 20km/caramelo. 296 caramelos XL para maximizar. Mega Mewtwo: 200 Megaenergía por forma.",
+    "shinyRate": "Shiny verde claro. Sutil pero muy codiciado."
+  },
+  {
+    "speciesId": 151,
+    "origin": "Mew está inspirado en la criatura mítica que contiene el ADN de todos los Pokémon. Es rosa, felino y flota. Fue descubierto en Sudamérica. Su nombre 'Mew' proviene del sonido de un gato.",
+    "goRelevance": "Mítico. Tipo Psíquico con 210 de ATQ y 210 de DEF: estadísticas perfectamente equilibradas. Garra Umbría + Psíquico + Rayo Hielo o Surf. Extremadamente versátil.",
+    "battleTip": "Mew es el Pokémon más versátil de GO: puede aprender decenas de ataques cargados diferentes. Garra Umbría + Voltio Cambio + Lanzallamas es un combo popular.",
+    "easterEgg": "Mew era un secreto tan bien guardado en los juegos originales que Nintendo negaba su existencia. Solo se descubrió mediante fallos (Mew Truck, Mew glitch).",
+    "goDifference": "En la serie principal, Mew se obtiene mediante eventos especiales. En GO, se distribuyó a través de una investigación especial (Un descubrimiento singular) y eventos.",
+    "evolutionCost": "No evoluciona. 20km por caramelo como compañero. 296 caramelos XL para maximizar. No se puede colocar en gimnasios.",
+    "shinyRate": "Shiny azul claro. EXTREMADAMENTE raro: solo ha aparecido en eventos especiales en GO."
+  }
+]

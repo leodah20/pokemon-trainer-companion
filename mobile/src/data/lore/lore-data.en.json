@@ -1,0 +1,1512 @@
+[
+  {
+    "speciesId": 1,
+    "origin": "Bulbasaur was inspired by frogs and bulbous plants. Its name combines 'bulb' with 'saur' (Greek for lizard). It is the only starter with a type advantage against the region's first gym leader, Brock.",
+    "goRelevance": "Common in season-start and Pokémon GO anniversary events. Venusaur is a great Grass-type counter for Water and Ground raids, especially when using Frenzy Plant.",
+    "battleTip": "The Grass/Poison typing provides 5 resistances (Water, Electric, Fairy, Fighting, Grass) but also 4 weaknesses: Fire, Ice, Flying, and Psychic. Watch out for Mewtwo and Rayquaza in the Master League.",
+    "easterEgg": "Bulbasaur is #001 in the National Dex, but it wasn't the first Pokémon created—that title belongs to Rhydon, who was the first to be modeled by designers.",
+    "goDifference": "In the main series games, Bulbasaur learns Frenzy Plant upon evolving. In GO, Frenzy Plant is an exclusive Community Day move—you cannot obtain it without an Elite TM.",
+    "evolutionCost": "25 candy for Ivysaur + 100 candy for Venusaur = 125 total. 3km buddy distance per candy. Requires 296 XL candy to max out from level 40 to 50.",
+    "shinyRate": "Shiny available (standard rate ~1/500). It had a Community Day in 2018, so it is common among veteran players."
+  },
+  {
+    "speciesId": 2,
+    "origin": "Ivysaur is Bulbasaur's middle evolution. The bulb on its back begins to bloom, signaling it is close to evolving. Its name combines 'ivy' with 'saur'.",
+    "goRelevance": "Rarely used in battle as it is a middle evolution. It appears in evolution-themed events for dust or XP bonuses.",
+    "battleTip": "With 151 ATK and 143 DEF, Ivysaur is statistically inferior to Venusaur in every way. Not worth the Stardust investment.",
+    "easterEgg": "Ivysaur and Venusaur are the only Pokémon from the Bulbasaur line to appear in Super Smash Bros. as Assist Trophies.",
+    "goDifference": "In the main games, Ivysaur learns Razor Leaf at level 22. In GO, moves are determined upon capture or evolution, with no leveling system.",
+    "evolutionCost": "100 Candy to evolve into Venusaur. 3km per buddy candy. Low chance to earn XL Candy while walking as your buddy.",
+    "shinyRate": "Shiny available—evolve a Shiny Bulbasaur to get a Shiny Ivysaur. It does not appear as a Shiny in the wild."
+  },
+  {
+    "speciesId": 3,
+    "origin": "Venusaur is inspired by a poison dart frog and a giant blooming flower. Its name comes from 'Venus' (goddess of flowers) + 'saur'. It is the final evolution of the Kanto starter.",
+    "goRelevance": "One of the best Grass-types in GO. Ranked #43 in Master League by PvPoke with Frenzy Plant. An excellent counter for Kyogre, Groudon, and Swampert.",
+    "battleTip": "With Frenzy Plant (Community Day move), Venusaur has top-tier Grass-type DPS. Without it, its ranking drops significantly—use an Elite TM if you missed the CD.",
+    "easterEgg": "Venusaur's flower is inspired by Rafflesia arnoldii, the world's largest flower, which smells like rotting meat. Luckily, Venusaur's doesn't have a scent.",
+    "goDifference": "In the main series, Venusaur can learn Earthquake and Sludge Bomb via TM. In GO, it only learns Grass and Poison-type moves—no Ground-type coverage.",
+    "evolutionCost": "100 candy to evolve from Ivysaur. 3km/candy buddy distance. 296 XL candy to reach level 50.",
+    "shinyRate": "Lime-green shiny available. Featured in a 2018 Community Day and a 2022 re-run. Shiny rate is ~1/25 during CD events."
+  },
+  {
+    "speciesId": 4,
+    "origin": "Charmander is inspired by lizards and dragons. The flame on its tail indicates its health and emotion—if it goes out, it dies. Its name comes from 'char' + 'salamander'.",
+    "goRelevance": "An iconic starter with its own Community Day. Charizard is one of the most versatile Fire-types in GO, with access to Blast Burn and both Mega Evolutions.",
+    "battleTip": "Despite being Fire-type, Charizard gains the Flying type upon evolving. This creates a 4x weakness to Rock—watch out for Tyranitar and Rhyperior in raids.",
+    "easterEgg": "Charmander was the favorite Pokémon of franchise creator Satoshi Tajiri. The protagonist Ash's Japanese name is Satoshi in his honor.",
+    "goDifference": "In the original games, Charmander evolves at level 36. In GO, you decide when to evolve—there are no trainer level restrictions.",
+    "evolutionCost": "25 candy for Charmeleon + 100 candy for Charizard = 125 total. Buddy distance is 3km/candy.",
+    "shinyRate": "Golden shiny available. Featured in a 2018 Community Day. CD rate is ~1/25. Shiny Charmander is one of the most popular due to its yellow color."
+  },
+  {
+    "speciesId": 5,
+    "origin": "Charmeleon is the middle evolution of Charmander. When angered, the flame on its tail turns bluish. Its name blends 'char' with 'chameleon'.",
+    "goRelevance": "This middle stage has no practical battle use. It is mainly for completing your Dex and as a stepping stone to Charizard.",
+    "battleTip": "With 158 ATK and 151 STA, Charmeleon has decent stats for its tier, but is outperformed by many other mid-tier Fire-types.",
+    "easterEgg": "In the original series, Ash's Charmander refused to evolve for a time, making Charmeleon one of the few Pokémon known to be jealous of its Trainer.",
+    "goDifference": "In the main series, Charmeleon is obtained at level 16. In GO, it can be obtained at any level as long as you have 25 Charmander Candy.",
+    "evolutionCost": "100 Candy to evolve into Charizard. 3km/candy buddy distance.",
+    "shinyRate": "Shiny available by evolving a Shiny Charmander. It features a light yellow color."
+  },
+  {
+    "speciesId": 6,
+    "origin": "Charizard is inspired by European dragons. Despite its draconic appearance, it is not a Dragon-type—one of the biggest typing mistakes in history to this day.",
+    "goRelevance": "A versatile Fire/Flying type with access to Blast Burn (CD). It has two Mega Evolutions (Mega X Fire/Dragon and Mega Y Fire/Flying). A top counter for Grass, Steel, and Ice.",
+    "battleTip": "Mega Charizard X gains the Dragon type, losing its 4x Rock weakness but becoming weak to Dragon, Fairy, and Ice. Choose your Mega based on the opponent.",
+    "easterEgg": "Charizard is the only Pokémon to be featured on the cover of two different games: Red/Green (Japanese) and FireRed/LeafGreen, 8 years later.",
+    "goDifference": "In the main series, Charizard couldn't learn Fly until Generation 6 (via HM). In GO, it simply has Wing Attack available as a fast move.",
+    "evolutionCost": "100 candy from Charmeleon. 3km/candy buddy. 296 XL candy to max out. Charizard XL candy is hard to get as it is rare in wild spawns.",
+    "shinyRate": "Iconic black shiny. One of the most coveted in the game. Community Day 2018 + 2022 re-run. Mega Charizard shiny X and Y are available."
+  },
+  {
+    "speciesId": 7,
+    "origin": "Squirtle is inspired by sea turtles. Its name comes from 'squirt' + 'turtle'. It can fire water jets from its mouth with surgical precision.",
+    "goRelevance": "The most defensive of the three Water starters. Blastoise with Hydro Cannon is a solid Water-type for raids, though outperformed by Kyogre and Swampert.",
+    "battleTip": "Blastoise has 207 DEF, one of the highest among Water-types. It is a great gym defender if it has Hydro Cannon or Ice Beam for coverage.",
+    "easterEgg": "Squirtle has the famous Squirtle Squad—a group of sunglasses-wearing Squirtle that appear in the anime as firefighters, led by a Squirtle who became Officer Jenny's right-hand man.",
+    "goDifference": "In the main games, Blastoise learns Hydro Pump at level 42. In GO, Hydro Cannon is an exclusive CD move—without it, Blastoise loses significant value.",
+    "evolutionCost": "25 candy for Wartortle + 100 candy for Blastoise = 125 total. Buddy 3km/candy.",
+    "shinyRate": "Shiny available. Community Day 2018. Shiny Blastoise is light purple. Classic CD re-run in 2023."
+  },
+  {
+    "speciesId": 8,
+    "origin": "Wartortle is the middle evolution of Squirtle. Its furry ears and fluffy tail are features that disappear upon evolving into Blastoise. Its name comes from 'war' + 'turtle'.",
+    "goRelevance": "A middle evolution with no competitive relevance. Used only for Dex completion and as an evolutionary step.",
+    "battleTip": "With 155 DEF, Wartortle is more defensive than many basic Water-types, but still weak compared to Blastoise.",
+    "easterEgg": "Wartortle is one of the few Pokémon that loses features when evolving—the fluffy tail vanishes completely on Blastoise.",
+    "goDifference": "In the main games, you get Wartortle at level 16. In GO, it is a 25 candy evolution at any time.",
+    "evolutionCost": "100 candy to evolve into Blastoise. 3km/candy buddy distance.",
+    "shinyRate": "Shiny available via evolution. Features a darker blue color than normal."
+  },
+  {
+    "speciesId": 9,
+    "origin": "Blastoise is inspired by cannon turtles. Its shoulder water cannons can pierce steel. Its name comes from 'blast' + 'turtle'. It is the most defensive of the three Kanto starters.",
+    "goRelevance": "A solid Water-type with Hydro Cannon (CD). It trails Kyogre and Swampert in DPS but has exceptional DEF. Used in Great League as a tank (rank #118 PvPoke).",
+    "battleTip": "Blastoise with Ice Beam covers Grass-types, its biggest weakness. Skull Bash as a charged move boosts DEF, but it is predictable.",
+    "easterEgg": "Blastoise can fire water at pressure high enough to pierce thick steel. This trait makes it one of Kanto's most powerful Pokémon in terms of raw force.",
+    "goDifference": "In main series games, Blastoise can learn Aura Sphere and Dragon Pulse. In GO, its move pool is limited to Water, Ice, and Normal types.",
+    "evolutionCost": "100 candy from Wartortle. 3km/candy buddy. 296 XL candy to max out.",
+    "shinyRate": "Light purple shiny. Community Day 2018. Shiny Mega Blastoise with purple cannons is available."
+  },
+  {
+    "speciesId": 10,
+    "origin": "Caterpie is inspired by the monarch butterfly caterpillar. Its name is a simplified version of 'caterpillar'. It is one of the weakest Pokémon ever created, with a base ATK of only 55.",
+    "goRelevance": "Common in urban areas and parks. Spawns frequently in Partly Cloudy weather. Used for mass evolving to gain XP.",
+    "battleTip": "With an ATK of 55, Caterpie is one of the worst Pokémon for battle. It is not worth the Stardust investment under any circumstances.",
+    "easterEgg": "Caterpie was the first Pokémon caught by Ash in the original series (excluding Pikachu). He caught it in episode 3.",
+    "goDifference": "In the main series games, Caterpie learns Tackle and String Shot. In GO, it has Bug Bite and Struggle—very weak moves only useful for weak gyms.",
+    "evolutionCost": "12 candy for Metapod + 50 candy for Butterfree = 62 total. 1km/candy buddy distance. Extremely fast to evolve.",
+    "shinyRate": "Shiny available (light green). Relatively common among dedicated players due to its frequent spawn rate."
+  },
+  {
+    "speciesId": 11,
+    "origin": "Metapod is inspired by a butterfly chrysalis. It remains completely motionless while preparing for metamorphosis. Its name comes from 'metamorphosis' + 'pod'.",
+    "goRelevance": "Practically irrelevant in battle. It has the lowest possible catch CP of any Pokémon. Used only as a stepping stone to Butterfree.",
+    "battleTip": "With a base ATK of 45, Metapod is literally one of the weakest Pokémon in the game. Its only viable move is Struggle.",
+    "easterEgg": "Ash's Metapod is famous for only using Harden in battle, becoming a meme among fans.",
+    "goDifference": "In the main series, Metapod learns Harden at level 1 and nothing else. In GO, it has Tackle as a fast move.",
+    "evolutionCost": "50 candy to evolve into Butterfree. Buddy distance is 1km/candy.",
+    "shinyRate": "Shiny available via evolution (slightly different shade). Rarely found as a shiny in the wild."
+  },
+  {
+    "speciesId": 12,
+    "origin": "Butterfree is inspired by the monarch butterfly. Its ability to locate flowers from 10km away references real-life butterfly migrations. Its name comes from 'butterfly' + 'free'.",
+    "goRelevance": "Decent in Little League PvP (low CP). It has access to Confusion + Psychic, which can surprise unsuspecting opponents.",
+    "battleTip": "Butterfree with Confusion deals Psychic-type damage, covering Poison and Fighting types. Good for Great League if the CP is near the limit.",
+    "easterEgg": "Butterfree was the first Pokémon Ash released into the wild (episode 21), alongside a pink Butterfree—one of the most emotional scenes in the anime.",
+    "goDifference": "In the main series, Butterfree learns Sleep Powder and Stun Spore. In GO, status effects like sleep/poison don't exist, so these moves were replaced with direct damage.",
+    "evolutionCost": "50 Candy from Metapod. 1km/candy buddy distance—very easy to farm candy.",
+    "shinyRate": "Pink Shiny available (like the anime Butterfree). Standard rate ~1/500. Unlike the anime version, this is a standard shiny color variation."
+  },
+  {
+    "speciesId": 13,
+    "origin": "Weedle is inspired by caterpillars with stingers. Its name comes from 'weed' + 'needle', referring to the stinger on its head. It is a Bug/Poison type.",
+    "goRelevance": "Extremely common. Along with Caterpie and Wurmple, it forms the '12 candy evolve' trio used by players for mass evolving with a Lucky Egg.",
+    "battleTip": "Worse than Caterpie in stats—base ATK of only 63. Don't even consider it for battles.",
+    "easterEgg": "Weedle and Kakuna are the only Pokémon that can be found as shiny in the wild ONLY during special events; otherwise, they are only available via research tasks.",
+    "goDifference": "In the main series, Weedle learns Poison Sting at level 1. In GO, the move exists but with different mechanics (it generates energy instead of poisoning).",
+    "evolutionCost": "12 candy for Kakuna + 50 candy for Beedrill = 62 total. Buddy distance is 1km/candy.",
+    "shinyRate": "Shiny available. It has a golden color. Easier to obtain due to its very common spawn rate."
+  },
+  {
+    "speciesId": 14,
+    "origin": "Kakuna is Weedle's cocoon stage. It resembles an eggshell or pupa. Its name is an adaptation of 'cocoon.' It remains completely motionless during metamorphosis.",
+    "goRelevance": "No relevance beyond being an evolution step. One of the worst Pokémon in the game.",
+    "battleTip": "Base ATK 46—the second lowest in the game, only worse than Metapod (45).",
+    "easterEgg": "Kakuna and Metapod are the only Pokémon in GO that share the exact same moveset: Bug Bite + Struggle.",
+    "goDifference": "In the main series, Kakuna only learns Harden. In GO, it has Tackle as a fast move.",
+    "evolutionCost": "50 candy to evolve into Beedrill. Buddy distance is 1km/candy.",
+    "shinyRate": "Golden shiny available via evolution."
+  },
+  {
+    "speciesId": 15,
+    "origin": "Beedrill is inspired by wasps and predatory bees. Its triple stingers can inject potent venom. Its name comes from 'bee' + 'needle'.",
+    "goRelevance": "Mega Evolution was added in 2021, making it viable again. Mega Beedrill is a great Poison-type for Fairy-type raids.",
+    "battleTip": "Mega Beedrill is fragile (130 DEF) but has high ATK (303 with Mega). Use with caution — it deals massive damage but faints quickly.",
+    "easterEgg": "Kakuna and Metapod are the only Pokémon that have EXACTLY the same moves in GO: Bug Bite + Struggle.",
+    "goDifference": "In the main series, Beedrill learns Twineedle at level 20. This move doesn't exist in GO; it was replaced by Fury Cutter.",
+    "evolutionCost": "50 Kakuna Candy. Buddy distance is 1km/candy. Mega Beedrill requires 200 Mega Energy for the first activation.",
+    "shinyRate": "A bright golden Shiny. Shiny Mega Beedrill with its golden accents looks fantastic."
+  },
+  {
+    "speciesId": 16,
+    "origin": "Pidgey is inspired by pigeons and sparrows. Its name is a simplification of 'pigeon'. It is arguably the most common Pokémon in Kanto, much like pigeons in real-world cities.",
+    "goRelevance": "Extremely common. Pidgey is the king of mass evolves—it costs only 12 candy to evolve into Pidgeotto and 50 for Pidgeot. Players use thousands of these for XP.",
+    "battleTip": "Pidgeot has access to Gust + Brave Bird, decent moves for a Normal/Flying type. Not competitive, but fun to use in casual battles.",
+    "easterEgg": "Ash's Pidgeot is one of the few Pokémon he has released (left with a friend to protect other Pidgey). It reappeared years later in the anime.",
+    "goDifference": "In the main series, the Pidgey line learns Quick Attack and Gust. In GO, Gust is a wind-type move that only Pidgeot has as a fast move (legacy).",
+    "evolutionCost": "12 candy for Pidgeotto + 50 candy for Pidgeot = 62 total. Buddy 1km/candy. One of the easiest to evolve.",
+    "shinyRate": "Shiny available (lighter color). Extremely common due to being one of the most frequent spawns."
+  },
+  {
+    "speciesId": 17,
+    "origin": "Pidgeotto is the middle evolution of Pidgey. It has sharp talons to catch prey and an impressive wingspan. Its name comes from 'pigeon' plus an augmentative suffix.",
+    "goRelevance": "A middle evolution. Rarely kept unevolved unless for nostalgia.",
+    "battleTip": "Pidgeotto is one of the few middle-stage Pokémon that appears as a Gym boss in some versions of the game.",
+    "easterEgg": "Ash's Pidgeotto was his most reliable Pokémon in the early seasons, used for aerial reconnaissance and deliveries.",
+    "goDifference": "In the main series, Pidgeotto evolves at level 36. In GO, evolution depends on candy, not level.",
+    "evolutionCost": "50 candy for Pidgeot. Buddy 1km/candy.",
+    "shinyRate": "Shiny via evolution. Lighter shade than the original."
+  },
+  {
+    "speciesId": 18,
+    "origin": "Pidgeot is inspired by majestic hawks and eagles. Its plumage creates mesmerizing patterns in flight. Its name combines 'pigeon' with a suffix suggesting grandeur.",
+    "goRelevance": "It had a moment of glory with its Mega Evolution in 2021. Mega Pidgeot is the top Flying-type for raids in terms of raw DPS.",
+    "battleTip": "Mega Pidgeot with Gust + Brave Bird deals massive damage. The downside is that Brave Bird debuffs DEF with each use—have a switch ready to swap it out.",
+    "easterEgg": "Pidgeot has the highest max CP among all non-legendary Normal/Flying types, though it is still surpassed by Staraptor.",
+    "goDifference": "In the main series, Pidgeot can learn Heat Wave and Steel Wing. In GO, its move pool is limited to Normal and Flying types.",
+    "evolutionCost": "50 Pidgeotto candy. Buddy 1km/candy. Mega Pidgeot: 200 Mega Energy.",
+    "shinyRate": "Light pink shiny. Mega Pidgeot shiny features pink accents on its feathers."
+  },
+  {
+    "speciesId": 19,
+    "origin": "Rattata is inspired by urban rats and rodents. It is famous for the 'Top percentage Rattata' line, a reference to an anime character who bragged about his Rattata. Its name comes from 'rat'.",
+    "goRelevance": "Common in urban areas. It has an Alolan regional variant (Dark/Normal). Used for mass evolves (25 candy).",
+    "battleTip": "Raticate with Bite + Hyper Fang is decent for low-CP battles. Not competitive, but fun to use.",
+    "easterEgg": "The phrases 'Top percentage Rattata' and 'Youngster Joey' are the biggest classic memes in the Pokémon community. Rattata is famous primarily for this.",
+    "goDifference": "In the main series, Rattata learns Hyper Fang at level 14. In GO, Hyper Fang is a charged move that any Raticate can learn.",
+    "evolutionCost": "25 candy to evolve into Raticate. Buddy distance is 1km/candy. Very easy.",
+    "shinyRate": "Golden shiny. Relatively common due to frequent spawns."
+  },
+  {
+    "speciesId": 20,
+    "origin": "Raticate is the evolved form of Rattata. Its teeth grow continuously, so it gnaws on rocks to wear them down. Its name comes from 'rat' plus an augmentative. It has an Alolan Dark/Normal variant.",
+    "goRelevance": "Rarely used in battle. Alolan Raticate is more useful as a Dark-type against Ghost and Psychic types.",
+    "battleTip": "Alolan Raticate (Dark/Normal) is interesting because its Normal typing provides immunity to Ghost-type moves, which no pure Dark-type has.",
+    "easterEgg": "Raticate is at the center of a theory that Ash's Pokémon died and was replaced, but this has been debunked by the creators.",
+    "goDifference": "In the main series, Raticate can learn Dig and Ice Beam via TM. In GO, its move pool is much more limited.",
+    "evolutionCost": "25 Rattata Candy. Buddy distance 1km/candy.",
+    "shinyRate": "Shiny available. It features a lighter, more saturated color than the original."
+  },
+  {
+    "speciesId": 21,
+    "origin": "Spearow is inspired by sparrows and aggressive birds. Unlike Pidgey, Spearow has an aggressive attitude from the first encounter. Its name comes from 'spear' + 'sparrow'.",
+    "goRelevance": "Less common than Pidgey. Spawns in mountain areas and fields. Primarily used for mass evolving.",
+    "battleTip": "Fearow has an ATK of 182, higher than Pidgeot's 166. In terms of pure attack, Fearow is the better of the two.",
+    "easterEgg": "Spearow was the first Pokémon Ash encountered on his journey (Episode 1). A flock of them chased him and Pikachu.",
+    "goDifference": "Fearow can learn Drill Run in the main series. In GO, it lacks Ground-type moves despite its drill-like beak.",
+    "evolutionCost": "50 candy to evolve into Fearow. Buddy distance is 1km/candy.",
+    "shinyRate": "Shiny available. Color is slightly altered (a darker shade)."
+  },
+  {
+    "speciesId": 22,
+    "origin": "Fearow is the evolved form of Spearow, inspired by eagles and hawks. Its long, sharp beak can pierce prey. Its name comes from 'fear' + 'sparrow'.",
+    "goRelevance": "Very niche: it beats Pidgeot in ATK (182 vs 166) but loses in DEF and STA. Rarely used, but has its fans.",
+    "battleTip": "Fearow with Drill Run and Sky Attack provides good coverage against Electric and Rock types, its natural weaknesses.",
+    "easterEgg": "Fearow was the Pokémon the Pokémon Ranger used to chase Ash at the start of the anime. One of the series' first antagonists.",
+    "goDifference": "In the main series, Fearow learns Drill Peck naturally. In GO, the move Drill Peck exists but Fearow doesn't learn it—it learns Sky Attack instead.",
+    "evolutionCost": "50 Spearow candy. Buddy distance: 1km/candy.",
+    "shinyRate": "Shiny available. Slightly different coloration."
+  },
+  {
+    "speciesId": 23,
+    "origin": "Ekans is inspired by snakes. The name 'Ekans' is 'snake' spelled backward. Its ability to shed its skin is based on real-life snakes.",
+    "goRelevance": "Common in grassy areas and Sunny weather. Average spawn rate. Arbok is a solid pick for Great League PvP.",
+    "battleTip": "Arbok with Dragon Tail + Gunk Shot and Dark Pulse covers Psychic and Fairy types well—its main threats.",
+    "easterEgg": "Ekans is 'snake' backward. Arbok is 'kobra' backward (nearly—cobra is 'kobra' in some languages). They share the same naming pattern.",
+    "goDifference": "In the main series, Ekans learns Glare and Intimidate. In GO, status effects don't exist, so these mechanics were lost.",
+    "evolutionCost": "50 candy to evolve into Arbok. 3km/candy buddy distance.",
+    "shinyRate": "Shiny available. Features a golden/yellowish color."
+  },
+  {
+    "speciesId": 24,
+    "origin": "Arbok is inspired by cobras and giant snake mythology. The pattern on its belly resembles an intimidating face. Its name is 'kobra' spelled backward.",
+    "goRelevance": "Appears occasionally as a Team Rocket mini-boss. It has limited use in Great League PvP (ranked #207 on PvPoke).",
+    "battleTip": "Arbok with Gunk Shot can surprise Fairy-types in the Great League, though better options exist at the same CP.",
+    "easterEgg": "The pattern on Arbok's chest changes based on the region in the anime—there are 4 different designs to avoid censorship issues.",
+    "goDifference": "In the main series, Arbok can learn Earthquake. In GO, its move pool lacks Ground-type moves, limiting its coverage.",
+    "evolutionCost": "50 Ekans Candy. Buddy distance: 3km/candy.",
+    "shinyRate": "Yellowish shiny form is available."
+  },
+  {
+    "speciesId": 25,
+    "origin": "Pikachu is inspired by squirrels, not mice as many think. Its electric cheeks store electricity. Designed by Atsuko Nishida, it became the franchise's global mascot.",
+    "goRelevance": "Pokémon GO mascot. Features exclusive hat-wearing variants (12+). Had its own Community Day featuring Surf. A Kanto Cup favorite.",
+    "battleTip": "Pikachu with Surf (2018 CD) is more versatile than the standard version, but Raichu with Wild Charge offers superior DPS.",
+    "easterEgg": "Pikachu was meant to be the default starter in all games, but Satoshi Tajiri initially chose Clefairy. Pikachu only became the mascot due to the anime.",
+    "goDifference": "In the main series, Pikachu can hold a Light Ball to double ATK and SP ATK. GO has no held items, so Pikachu is simply weak.",
+    "evolutionCost": "50 candy to evolve into Raichu. 1km per candy as a buddy. Alolan Raichu requires 50 candy + a Sun Stone in GO.",
+    "shinyRate": "Orange shiny available. Rate is ~1/500. Shiny hat variants are EXTREMELY rare and only appear during events."
+  },
+  {
+    "speciesId": 26,
+    "origin": "Raichu is the evolved form of Pikachu. Its tail acts as a lightning rod to store charge. In GO, there is Alolan Raichu (Electric/Psychic). The name comes from 'rai' (thunder) + 'chu' (squeaking sound).",
+    "goRelevance": "Standard Raichu has Wild Charge as a strong move. Alolan Raichu (Electric/Psychic) is more popular due to its unique typing that no one else shares.",
+    "battleTip": "Alolan Raichu is a great choice for the Great League; its typing provides coverage against Fighting and Psychic types simultaneously, which is rare.",
+    "easterEgg": "The creator of Pokémon famously dislikes Raichu, feeling the evolution ruins Pikachu's cuteness. This is why Ash's Pikachu never evolved in the anime.",
+    "goDifference": "In the main series, Raichu learns Thunderbolt naturally. In GO, it is a Charged Move learned via TM.",
+    "evolutionCost": "50 Pikachu Candy. Buddy distance is 1km/candy. Alolan Raichu: 50 Candy (no Sun Stone required in GO).",
+    "shinyRate": "Shiny is orange. Shiny Alolan Raichu is dark gray."
+  },
+  {
+    "speciesId": 27,
+    "origin": "Sandshrew is inspired by armadillos and pangolins. Its dry, tough skin allows it to roll into a ball for defense. It has an Alolan variant (Ice/Steel). Its name comes from 'sand' + 'shrew'.",
+    "goRelevance": "Common in desert areas and Sunny weather. Sandslash is a solid Ground-type. The Alolan variant is much more popular due to its Ice/Steel typing.",
+    "battleTip": "Alolan Sandslash (Ice/Steel) is one of the best counters for Dragon and Flying-types thanks to its unique typing.",
+    "easterEgg": "Alolan Sandshrew survives in the snow because its skin turned into an ice shell. It is the only case where a regional variant completely changes its type.",
+    "goDifference": "In the main series, Sandshrew learns Sand Attack via breeding. In GO, move mechanics differ—Sand Attack generates energy.",
+    "evolutionCost": "50 candy to evolve into Sandslash. Buddy distance: 3km/candy. Alolan Sandshrew: 50 candy.",
+    "shinyRate": "Shiny available. Features a bluish color (distinct from the original brown)."
+  },
+  {
+    "speciesId": 28,
+    "origin": "Sandslash is the evolved form of Sandshrew. Its claws are used for digging tunnels and climbing trees. Its name comes from 'sand' + 'slash'. The Alolan variant is Ice/Steel.",
+    "goRelevance": "A solid Ground-type with Night Slash for coverage. The Alolan variant is more sought after for its Ice/Steel typing—a natural counter to Dragon-types.",
+    "battleTip": "Alolan Sandslash with Powder Snow + Ice Punch + Gyro Ball is great for Great and Ultra League. Fragile but fast.",
+    "easterEgg": "Alolan Sandslash was introduced as one of the few cases where a regional variant completely loses its original type (Ground → Ice/Steel).",
+    "goDifference": "In the main series, Sandslash learns Slash and Earthquake. In GO, Earthquake is a Charged Move that competes with Drill Run.",
+    "evolutionCost": "50 Sandshrew Candy. Buddy distance: 3km/candy.",
+    "shinyRate": "Shiny is bluish. Shiny Alolan Sandslash is light pink."
+  },
+  {
+    "speciesId": 29,
+    "origin": "Nidoran♀ is inspired by hedgehogs and small horned rodents. The Nidoran line is unique for having different genders with different Dex numbers. Its name comes from 'needle' + 'doran'.",
+    "goRelevance": "Common in grassy areas. Evolves into Nidorina with 25 candy and then Nidoqueen with 100 candy. Often used for mass evolves.",
+    "battleTip": "Nidoqueen is a Poison/Ground-type with Poison Jab + Earth Power—great coverage against Fairy and Electric-types.",
+    "easterEgg": "Nidoran♀ and Nidoran♂ are the only Pokémon with different Pokédex numbers despite being the same species with different genders.",
+    "goDifference": "In the main series, Nidoran♀ learns Poison Sting naturally. In GO, moves are independent of level.",
+    "evolutionCost": "25 candy for Nidorina + 100 candy for Nidoqueen = 125 total. Buddy 3km/candy.",
+    "shinyRate": "Shiny available. Slightly bluish color."
+  },
+  {
+    "speciesId": 30,
+    "origin": "Nidorina is the female intermediate form of Nidoran. The spines on its back start to grow larger. Its name is a variation of Nidoran with a feminine suffix.",
+    "goRelevance": "Used only as a stepping stone to Nidoqueen.",
+    "battleTip": "Nidorina is rarely used in battles. Nidoqueen is the one with competitive value.",
+    "easterEgg": "Unlike Nidorino, Nidorina cannot breed in the main series Daycare—a game quirk that still causes confusion today.",
+    "goDifference": "In the main series, Nidorina evolves using a Moon Stone. In GO, it requires candy, not evolution stones.",
+    "evolutionCost": "100 candy to evolve into Nidoqueen. Buddy distance is 3km/candy.",
+    "shinyRate": "Shiny available via evolution."
+  },
+  {
+    "speciesId": 31,
+    "origin": "Nidoqueen is the final female evolution of the Nidoran line. She has a protective nature toward her family. Her scales release poison when she is agitated. Her name comes from 'needle' + 'queen'.",
+    "goRelevance": "A solid choice for Great and Ultra League PvP. As a Poison/Ground type, Poison Jab + Earth Power provides great coverage against Fairy and Electric types.",
+    "battleTip": "In the Great League, Nidoqueen with Earth Power and Stone Edge can surprise Flying-types like Altaria and Skarmory.",
+    "easterEgg": "Nidoqueen cannot learn or use a Moon Stone, even though her pre-evolution Nidorina requires one in the main series games.",
+    "goDifference": "In the main series, Nidoqueen can learn Superpower and Aqua Tail via TM. In GO, she does not have access to these moves.",
+    "evolutionCost": "100 Nidorina candy. 3km buddy distance per candy. Nidoqueen does not evolve further.",
+    "shinyRate": "Bluish shiny. Relatively rare as it is an evolved form."
+  },
+  {
+    "speciesId": 32,
+    "origin": "Nidoran♂ is the male version of Nidoran. It has larger horns than the female version. Its name comes from 'needle' + 'doran' with a masculine suffix.",
+    "goRelevance": "Common in grassy areas. Evolves into Nidorino (25 candy) and then Nidoking (100 candy).",
+    "battleTip": "Nidoking has 204 ATK—higher than Nidoqueen (180). Better for offensive attacks.",
+    "easterEgg": "Nidoran♂ and Nidoran♀ are the precursors to the gender system that became standard in future generations.",
+    "goDifference": "In the main series, Nidoran♂ learns Horn Attack. In GO, Horn Attack does not exist as a move.",
+    "evolutionCost": "25 candy for Nidorino + 100 candy for Nidoking = 125 total. Buddy 3km/candy.",
+    "shinyRate": "Bluish shiny."
+  },
+  {
+    "speciesId": 33,
+    "origin": "Nidorino is the male intermediate form of Nidoran. Its horn is longer and sharper than Nidoran♂'s.",
+    "goRelevance": "Evolutionary step. No competitive relevance.",
+    "battleTip": "Nidorino has average stats—ATK 137, DEF 111. Nothing special.",
+    "easterEgg": "Nidorino appears in the original Pokémon Red/Blue opening fighting Gengar—one of the most iconic scenes in the franchise.",
+    "goDifference": "In the main series, Nidorino can learn Fury Attack. In GO, Fury Cutter is similar but is Bug-type.",
+    "evolutionCost": "100 candy to evolve into Nidoking. 3km/candy buddy distance.",
+    "shinyRate": "Shiny available via evolution."
+  },
+  {
+    "speciesId": 34,
+    "origin": "Nidoking is the final male evolution of the Nidoran line. Inspired by horned theropod dinosaurs, its tail is strong enough to snap trees. Name comes from 'needle' + 'king'.",
+    "goRelevance": "Higher ATK than Nidoqueen (204 vs 180), though less defensive. Used in Ultra League and raids as a Poison/Ground type.",
+    "battleTip": "Nidoking with Fury Cutter + Earth Power + Megahorn is a top-tier shield breaker due to its fast energy generation.",
+    "easterEgg": "In the main series, Nidoking can learn Ice Beam and Thunderbolt, moves its female counterpart Nidoqueen cannot.",
+    "goDifference": "In the main series, Nidoking has access to a massive TM pool (over 70 moves). In GO, its movepool is limited to about 10.",
+    "evolutionCost": "100 Nidorino candy. 3km buddy distance per candy.",
+    "shinyRate": "Blue shiny. Nidoking's shiny form is subtle but elegant."
+  },
+  {
+    "speciesId": 35,
+    "origin": "Clefairy is inspired by European folklore fairies and sprites. Originally a Normal-type, it became Fairy-type in Generation 6. Its name comes from 'clef' (musical key) + 'fairy'.",
+    "goRelevance": "Appears in 1-star raids. Clefable is a great Fairy-type for Dragon and Dark raids, especially with Charm + Dazzling Gleam.",
+    "battleTip": "Clefable with Charm + Dazzling Gleam + Meteor Mash (CD) is a top-tier Fairy. Charm is one of the best fast moves in the game.",
+    "easterEgg": "Clefairy was originally intended to be the franchise mascot instead of Pikachu! Early merchandise focused on Clefairy, but Pikachu stole the spotlight with the anime.",
+    "goDifference": "In the main series, Clefable learns Moonblast naturally. In GO, Moonblast is a charged move via Elite TM that is rarely available.",
+    "evolutionCost": "50 candy to evolve into Clefable. 1km buddy distance per candy. Requires a Moon Stone in the main series, but only candy in GO.",
+    "shinyRate": "Shiny available. Shiny Clefairy has blue ears. Shiny Clefable looks similar."
+  },
+  {
+    "speciesId": 36,
+    "origin": "Clefable is the evolved form of Clefairy. Legend says Clefable arrives from the moon in spaceships. Its hearing is sharp enough to hear a pin drop from 1km away.",
+    "goRelevance": "An excellent Fairy-type for raids and PvP. Charm + Dazzling Gleam destroys Dragon-types. Ranked #33 in Master League by PvPoke.",
+    "battleTip": "Clefable with Charm + Meteor Mash (2020 CD) + Dazzling Gleam provides coverage against Steel-types, which resist Fairy moves.",
+    "easterEgg": "At Mt. Moon, Clefairy dance under the full moon—a reference to legends of fairies dancing in circles.",
+    "goDifference": "In the main series, Clefable can learn Stealth Rock and Light Screen. In GO, status moves do not exist in the same way.",
+    "evolutionCost": "50 Clefairy Candy. 1km buddy distance per candy.",
+    "shinyRate": "Shiny available. Subtle difference."
+  },
+  {
+    "speciesId": 37,
+    "origin": "Vulpix is inspired by foxes and kitsunes (Japanese mythological foxes). Its six tails refer to multi-tailed foxes in folklore. Name comes from 'vulpes' (Latin for fox) + 'six'.",
+    "goRelevance": "Appears in 1-star raids. Ninetales is a solid Fire-type. The Alolan variant (Ice/Fairy) is much more popular for PvP.",
+    "battleTip": "Alolan Ninetales with Charm + Weather Ball (Ice) + Dazzling Gleam is top-tier in Great League — very versatile.",
+    "easterEgg": "Alolan Vulpix is snow-white, inspired by arctic foxes. It is one of the most beautiful regional variants in the game.",
+    "goDifference": "In the main series, Vulpix only evolves with a Fire Stone. In GO, it costs 50 candy — no stone required.",
+    "evolutionCost": "50 candy for Ninetales. Buddy 3km/candy. Alolan Vulpix: 50 candy for Alolan Ninetales.",
+    "shinyRate": "Shiny is light gray. Shiny Ninetales is gray/silver — very beautiful."
+  },
+  {
+    "speciesId": 38,
+    "origin": "Ninetales is inspired by the nine-tailed kitsune of Japanese folklore. Living 1,000 years grants it 9 tails with psychic and fire powers. Its name comes from 'nine' + 'tales'.",
+    "goRelevance": "A solid Fire-type with Incinerate + Weather Ball (Fire) + Overheat. Its Alolan variant (Ice/Fairy) dominates Great and Ultra League.",
+    "battleTip": "Alolan Ninetales is ranked #20 in the Great League. Charm + Weather Ball (Ice) melts Dragon, Flying, and Ground-types.",
+    "easterEgg": "Legend says each of Ninetales' 9 tails holds a different power and that it lives for 1,000 years.",
+    "goDifference": "In the main series, Ninetales can learn Will-O-Wisp and Confuse Ray. In GO, status moves were converted into damage-dealing moves.",
+    "evolutionCost": "50 Vulpix candy. Buddy 3km/candy.",
+    "shinyRate": "Gray/silver shiny. Very elegant and highly sought after."
+  },
+  {
+    "speciesId": 39,
+    "origin": "Jigglypuff is inspired by balloons and marshmallows. Originally Normal-type, it gained the Fairy-type in Generation 6. Its name comes from 'jiggle' + 'puff'.",
+    "goRelevance": "A relatively common spawn. Wigglytuff is a great Fairy-type for the Great League with Charm + Play Rough + Ice Beam.",
+    "battleTip": "Wigglytuff with Charm melts Dark-types. Ice Beam provides coverage against Flying and Grass types—coverage that Charm doesn't reach.",
+    "easterEgg": "The Jigglypuff from the anime grabs a microphone and sings until everyone falls asleep, then draws on their faces with a marker. It's one of the most memorable characters.",
+    "goDifference": "In the main series, Jigglypuff learns Sing at level 1 and Hypnosis. In GO, the sleep status doesn't exist, so Sing is just a damage-dealing move (Disarming Voice).",
+    "evolutionCost": "50 candy to evolve into Wigglytuff. Buddy distance is 1km/candy.",
+    "shinyRate": "Light green shiny. Shiny Wigglytuff has green eyes."
+  },
+  {
+    "speciesId": 40,
+    "origin": "Wigglytuff is the evolved form of Jigglypuff. Its skin is extremely elastic and soft. The name comes from 'wiggly' + 'tuff'.",
+    "goRelevance": "A Great League PvP staple. Charm + Play Rough + Ice Beam provides wide coverage. Its 295 STA is massive—a tank that doesn't go down easily.",
+    "battleTip": "With 295 STA and 90 DEF, Wigglytuff is a 'sponge'—it absorbs damage while dealing Charm. However, Steel-types like Registeel are hard counters.",
+    "easterEgg": "Wigglytuff has the highest base STA of any non-legendary Normal or Fairy-type, trailing only Blissey and Chansey.",
+    "goDifference": "In the main series, Wigglytuff can learn Hyper Voice. In GO, Hyper Voice is an exclusive move for only a few Pokémon.",
+    "evolutionCost": "50 Jigglypuff Candy. Buddy distance: 1km/candy.",
+    "shinyRate": "Light green Shiny. A subtle difference."
+  },
+  {
+    "speciesId": 41,
+    "origin": "Zubat is inspired by vampire bats. It has atrophied eyes from living in dark caves and uses echolocation to navigate. Its name comes from 'zub' (sound of a quick pass) + 'bat'.",
+    "goRelevance": "Extremely common in caves and at night. Golbat and Crobat (Gen 2) are fast in PvP. Crobat is one of the best Poison/Flying types with Wing Attack + Sludge Bomb.",
+    "battleTip": "Crobat is ranked #104 in the Great League. Wing Attack generates energy quickly and Sludge Bomb deals heavy damage to Fairy-types. Dodge Rock-types.",
+    "easterEgg": "Zubat is infamous for being the most hated Pokémon by main series players—it appears in EVERY cave, without exception, every 3 steps.",
+    "goDifference": "In the main series, Zubat needs high friendship to evolve into Crobat. In GO, it's just 100 candy + a Sinnoh Stone.",
+    "evolutionCost": "25 candy for Golbat + 100 candy + Sinnoh Stone for Crobat. Buddy distance is 1km/candy.",
+    "shinyRate": "Green shiny. Shiny Crobat has pink wings."
+  },
+  {
+    "speciesId": 42,
+    "origin": "Golbat is the evolved form of Zubat. Its mouth is larger and can drain blood from large prey. You can hear its wings flapping from 200m away.",
+    "goRelevance": "An evolutionary step toward Crobat. Golbat is rarely used on its own—Crobat is always superior.",
+    "battleTip": "Golbat has 161 ATK and 181 STA—decent for PvP, but Crobat is better in every way.",
+    "easterEgg": "Golbat appears as one of the first Pokémon encountered in almost every main series game, inheriting Zubat's annoying reputation.",
+    "goDifference": "In the main series, Golbat evolves with high friendship at night. In GO, it requires a Sinnoh Stone.",
+    "evolutionCost": "100 candy + Sinnoh Stone for Crobat. 1km/candy buddy distance.",
+    "shinyRate": "Green shiny. Subtle."
+  },
+  {
+    "speciesId": 43,
+    "origin": "Oddish is inspired by rooted plants and mandrakes. It buries itself by day and wanders at night to scatter seeds. Its name comes from 'odd' + 'radish'.",
+    "goRelevance": "Relatively common in Sunny and Cloudy weather. Vileplume and Bellossom (Gen 2) are solid Grass-types for raids.",
+    "battleTip": "Vileplume with Razor Leaf + Sludge Bomb + Moonblast provides great coverage against Fairy, Water, and Ground types.",
+    "easterEgg": "Oddish has one of the most versatile evolution lines—it can become Vileplume (Grass/Poison) OR Bellossom (pure Grass) using a Sun Stone.",
+    "goDifference": "In the main series, Oddish evolves at level 21. In GO, it costs 25 candy to evolve into Gloom.",
+    "evolutionCost": "25 candy for Gloom + 100 candy for Vileplume OR 100 candy + Sun Stone for Bellossom. Buddy distance is 3km/candy.",
+    "shinyRate": "Shiny is blue. The blue shiny Vileplume looks great."
+  },
+  {
+    "speciesId": 44,
+    "origin": "Gloom is the middle form of Oddish. It drools a foul-smelling nectar that attracts Bug-type Pokémon. The worse the smell, the stronger the nectar.",
+    "goRelevance": "Used as a stepping stone for Vileplume or Bellossom. It has no competitive use of its own.",
+    "battleTip": "Gloom can learn Moonblast as a charged move, which provides coverage against Dark-types.",
+    "easterEgg": "Gloom is often considered one of the ugliest Pokémon ever designed, but it makes up for it with two possible evolutions.",
+    "goDifference": "In the main series, Bellossom requires a Sun Stone on Gloom. In GO, it requires 100 candy + Sun Stone.",
+    "evolutionCost": "100 candy for Vileplume OR 100 candy + Sun Stone for Bellossom. Buddy 3km/candy.",
+    "shinyRate": "Blue shiny."
+  },
+  {
+    "speciesId": 45,
+    "origin": "Vileplume is inspired by the Rafflesia, the world's largest flower, which smells like rotting meat. Its petals are the largest in the Pokemon world. Its name comes from 'vile' + 'plume'.",
+    "goRelevance": "Decent as a Grass/Poison type in raids. Runs Razor Leaf + Sludge Bomb. It loses to Venusaur with Frenzy Plant in DPS.",
+    "battleTip": "Vileplume with Razor Leaf + Moonblast provides coverage against Dark and Dragon-types. Its 202 ATK is decent, but its 167 DEF makes it fragile for raids.",
+    "easterEgg": "Vileplume, Bellossom, and Roselia are the only final evolutionary forms that share the same pre-evolution (Oddish).",
+    "goDifference": "In the main series, Vileplume can learn Petal Dance. In GO, Petal Blizzard is the closest charged move.",
+    "evolutionCost": "100 candy from Gloom. Buddy 3km/candy.",
+    "shinyRate": "Dark blue shiny. The petals change from red to blue."
+  },
+  {
+    "speciesId": 46,
+    "origin": "Paras is inspired by parasitic fungi and insects. The mushrooms on its back are the true controllers of its body, extracting nutrients from the host. Its name comes from 'parasite'.",
+    "goRelevance": "Common in forests and parks. Parasect is the only Bug/Grass type in the game, a typing that gives it a 4x weakness to Fire (8 weaknesses total).",
+    "battleTip": "Parasect is FRAGILE due to its 8 weaknesses. Use it only against Water, Ground, or pure Psychic types, and with caution.",
+    "easterEgg": "Paras's mushrooms are based on Cordyceps, a real-world fungus that infects insects and controls their bodies—true horror.",
+    "goDifference": "In the main series, Paras learns Spore (100% accuracy sleep) at level 22, one of the best moves in the game. In GO, Spore does not exist.",
+    "evolutionCost": "50 candy to evolve into Parasect. Buddy distance is 3km/candy.",
+    "shinyRate": "Shiny variant features blue mushrooms instead of orange."
+  },
+  {
+    "speciesId": 47,
+    "origin": "Parasect is the evolved form of Paras. The mushroom has taken TOTAL control of the insect's body—Parasect is technically dead, controlled by the fungus. Creepy.",
+    "goRelevance": "A fragile Bug/Grass type. No competitive utility in any league. Avoid for raids and PvP.",
+    "battleTip": "Parasect has 8 weaknesses and 0 immunities. The worst defensive typing in the game. Takes 4x damage from Fire and 2x from 6 other types.",
+    "easterEgg": "The Pokedex states: 'Parasect is controlled by the mushroom. If the mushroom is removed, Parasect dies.'—one of the darkest entries in the franchise.",
+    "goDifference": "In the main series, Parasect is slow and weak. It is equally bad in GO—one of the worst Pokemon in the game.",
+    "evolutionCost": "50 Paras candy. 3km buddy distance per candy.",
+    "shinyRate": "Shiny features a blue mushroom. The shiny Parasect is easy to spot."
+  },
+  {
+    "speciesId": 48,
+    "origin": "Venonat is inspired by insects with large compound eyes and hairy bodies. It has excellent night vision and tracks prey by scent. Its name comes from 'venom' + 'gnat'.",
+    "goRelevance": "Less common than other Bug-types. Venomoth is decent in the Little League (low CP) but rarely used.",
+    "battleTip": "Venomoth with Confusion + Psychic + Poison Fang can surprise Fighting and Poison-types thanks to its Psychic coverage.",
+    "easterEgg": "Venonat bears a suspicious resemblance to Caterpie. Some fans theorize that Venonat was the original design for Butterfree.",
+    "goDifference": "In the main series, Venonat learns Stun Spore and Sleep Powder. In GO, status moves do not exist in the same way.",
+    "evolutionCost": "50 candy to evolve into Venomoth. Buddy distance is 3km/candy.",
+    "shinyRate": "Shiny version has a blue body instead of purple."
+  },
+  {
+    "speciesId": 49,
+    "origin": "Venomoth is the evolved form of Venonat, inspired by poisonous moths. Its scales release toxic dust when shaken. Its name combines 'venom' and 'moth'.",
+    "goRelevance": "It has a niche in PvP: with Confusion + Psychic, it counters Fighting and Poison-types in the Great League. Rank #137.",
+    "battleTip": "Venomoth with Silver Wind can boost all stats (a rare effect), but Confusion + Poison Fang is more consistent.",
+    "easterEgg": "Venomoth and Confusion have always been Psychic-type moves, despite Venomoth being Bug/Poison. Few Pokémon have this type of coverage.",
+    "goDifference": "In the main series, Venomoth learns Quiver Dance, a move that boosts Special Attack, Speed, and Special Defense. It does not exist in GO.",
+    "evolutionCost": "50 Venonat Candy. Buddy distance: 3km/candy.",
+    "shinyRate": "Green/yellowish shiny."
+  },
+  {
+    "speciesId": 50,
+    "origin": "Diglett is inspired by moles. Only its head is visible—the rest of its body has never been officially shown. There are decades of theories about what Diglett's body looks like. Its name comes from 'dig'.",
+    "goRelevance": "Common in beach and desert areas. Dugtrio uses Mud Shot + Earthquake—good for raids and PvP, but extremely fragile (STA 67).",
+    "battleTip": "Base STA 67—the second lowest in the game. Dugtrio goes down easily. Use Mud Shot to generate energy quickly before being knocked out.",
+    "easterEgg": "Diglett's body has never been shown. In the main games, if you use a move that lifts the ground (like Fissure), Diglett stays underground. A mystery to this day.",
+    "goDifference": "In the main series, Diglett has the Arena Trap ability which prevents escape. In GO, abilities don't exist, so this mechanic is lost.",
+    "evolutionCost": "50 candy to evolve into Dugtrio. Buddy 3km/candy.",
+    "shinyRate": "Shiny has a pinkish head instead of brown."
+  },
+  {
+    "speciesId": 51,
+    "origin": "Dugtrio is the evolved form of Diglett—three Diglett sharing the same hole. Inspired by the mythological hydra's multiple heads. Name comes from 'dig' + 'trio'.",
+    "goRelevance": "Mud Shot + Earthquake offers fast DPS. Fragile (STA 111) but strikes first in many PvP matchups. Good for Great League.",
+    "battleTip": "Dugtrio with Mud Shot + Earthquake + Stone Edge (legacy) is great for countering Fire, Electric, Steel, and Rock-types.",
+    "easterEgg": "The Pokemon Company confirmed the three Diglett are SIBLINGS, not a three-headed creature. Each has its own body in the same hole.",
+    "goDifference": "In the main series, Dugtrio can learn Sucker Punch and Aerial Ace. In GO, it lacks access to Dark or Flying-type moves.",
+    "evolutionCost": "50 Diglett candy. Buddy 3km/candy.",
+    "shinyRate": "Shiny has pinkish heads. Easier to spot than the normal version."
+  },
+  {
+    "speciesId": 52,
+    "origin": "Meowth is inspired by house cats that love shiny objects. It is famously obsessed with coins. Unique ability: Pay Day (tosses coins). Name comes from 'meow' + 'mouth'. Alolan (Dark) and Galarian (Steel) variants exist.",
+    "goRelevance": "Common in urban areas. Persian is decent in Great League thanks to Scratch + Play Rough. The Alolan (Dark) variant is better due to its typing.",
+    "battleTip": "Alolan Persian with Bite + Play Rough + Dark Pulse provides great coverage against Psychic and Ghost-types.",
+    "easterEgg": "Team Rocket has a Meowth that TALKS—the only Pokémon in the series confirmed to have learned human speech (not via telepathy).",
+    "goDifference": "In the main series, Meowth learns Pay Day as a signature move. In GO, Pay Day exists as a charged move that grants extra Stardust when used.",
+    "evolutionCost": "50 Candy to evolve into Persian. Buddy distance: 3km/candy. Alolan and Galarian Meowth: 50 Candy for their respective evolutions.",
+    "shinyRate": "Shiny is gray. Shiny Persian has a silver body. Shiny Galarian Meowth is bronze."
+  },
+  {
+    "speciesId": 53,
+    "origin": "Persian is the evolved form of Meowth, inspired by elegant Persian cats. Its forehead jewel glows when it attacks. Its name comes from 'Persian cat'.",
+    "goRelevance": "Used in Great League PvP (rank #202). The Alolan (Dark) variant is best with Dark Pulse + Play Rough.",
+    "battleTip": "A normal Persian with Scratch + Play Rough + Foul Play can surprise Fighting-types, though better options exist.",
+    "easterEgg": "Persian is the favorite Pokémon of Team Rocket leader Giovanni. His Persian has 5cm claws and is treated like royalty.",
+    "goDifference": "In the main series, Persian has high Speed (115). In GO, Speed isn't a direct stat; it is reflected indirectly in move stats.",
+    "evolutionCost": "50 Meowth candy. 3km buddy distance per candy.",
+    "shinyRate": "Silver shiny. A subtle distinction."
+  },
+  {
+    "speciesId": 54,
+    "origin": "Psyduck is inspired by ducks with psychic powers it cannot control. When it gets a headache, its powers erupt. Its name comes from 'psychic' + 'duck'.",
+    "goRelevance": "Relatively common near lakes and rivers. Golduck is a solid Water-type with Confusion + Psychic as rare coverage moves for a Water-type.",
+    "battleTip": "Golduck with Confusion + Psychic + Hydro Pump surprises opponents expecting pure Water moves. Psychic-type coverage is rare on Water-types.",
+    "easterEgg": "In the anime, Misty's Psyduck is a recurring gag—it appears at random moments with a headache and unleashes uncontrolled psychic power.",
+    "goDifference": "In the main series, Psyduck learns Confusion and Zen Headbutt. In GO, Confusion is one of the best Psychic-type fast moves.",
+    "evolutionCost": "50 candy to evolve into Golduck. Buddy distance: 3km/candy.",
+    "shinyRate": "Shiny Psyduck is light blue. Shiny Golduck is sky blue."
+  },
+  {
+    "speciesId": 55,
+    "origin": "Golduck is the evolved form of Psyduck. The gem on its forehead glows when it uses psychic powers. Its name comes from 'gold' + 'duck'. Despite its appearance, it is purely Water-type, not Water/Psychic.",
+    "goRelevance": "A solid Water-type with Confusion + Psychic for rare coverage. Good for Fire and Ground-type raids. It outperforms Starmie in STA (190 vs 155).",
+    "battleTip": "Golduck is one of the few Water-types with Psychic moves. Use Confusion + Psychic against Fighting or Poison-types that expect Water moves.",
+    "easterEgg": "Despite its clearly psychic appearance (forehead gem, 'psy' in its name), Golduck is purely Water. It is one of the most famously misidentified typings.",
+    "goDifference": "In the main series, Golduck learns Zen Headbutt naturally. In GO, it is a TM move.",
+    "evolutionCost": "50 Psyduck Candy. Buddy distance: 3km/candy.",
+    "shinyRate": "Sky blue shiny. Very elegant."
+  },
+  {
+    "speciesId": 56,
+    "origin": "Mankey is inspired by capuchin monkeys and their aggressive nature. It gets angry easily, and its temper worsens in cold weather. Its name comes from 'man' + 'monkey'.",
+    "goRelevance": "Common in mountainous areas and Cloudy weather. Primeape is an aggressive Fighting-type with Counter + Close Combat. It evolves into Annihilape in Paldea.",
+    "battleTip": "Primeape with Counter + Close Combat + Ice Punch provides coverage against Flying and Grass-types. Its 207 ATK is high for its CP.",
+    "easterEgg": "Mankey is seen fighting trees in the anime, mistaking them for Pokémon. This references the aggression of real-life capuchin monkeys.",
+    "goDifference": "In the main series, Mankey learns Karate Chop. In GO, Karate Chop is a fast move available to only a few Pokémon.",
+    "evolutionCost": "50 candy to evolve into Primeape. Buddy distance is 3km/candy.",
+    "shinyRate": "Gold-colored shiny. Very subtle."
+  },
+  {
+    "speciesId": 57,
+    "origin": "Primeape is the evolved form of Mankey. Its rage only grows, never subsides. It never stops fighting until it knocks out its opponent or is knocked out itself.",
+    "goRelevance": "A decent Fighting-type for Great League. It now evolves into Annihilape in GO, which is far superior in PvP.",
+    "battleTip": "Primeape with Counter + Close Combat + Night Slash provides coverage against Ghost-types (a Fighting weakness). It generates energy quickly.",
+    "easterEgg": "Primeape evolves into Annihilape after using Rage Fist 20 times in the main series. In GO, it costs 100 Candy (no special requirement).",
+    "goDifference": "In the main series, Primeape has the Anger Point ability, which maximizes ATK when hit by a critical hit. Passive abilities do not exist in GO.",
+    "evolutionCost": "50 Mankey Candy + 100 Candy for Annihilape. 3km per candy as a buddy.",
+    "shinyRate": "Golden Shiny. Shiny Annihilape is purple."
+  },
+  {
+    "speciesId": 58,
+    "origin": "Growlithe is inspired by Shiba Inu and Akita dogs. It is as loyal to its Trainer as a guard dog. Its name comes from 'growl' + 'lithe' (agile).",
+    "goRelevance": "Common in dry areas and Sunny weather. Arcanine is one of the strongest Fire-types (ATK 227). It is called the 'Legendary Pokémon' in the original Pokédex.",
+    "battleTip": "Arcanine with Fire Fang + Wild Charge + Flamethrower provides coverage against Water-types (a Fire weakness). Watch out for Rock-types, though.",
+    "easterEgg": "In the original Pokédex, Arcanine is described as the 'Legendary Pokémon'—the only non-Legendary with this title. It was likely planned to be a Legendary.",
+    "goDifference": "In the main series, Arcanine learns Extreme Speed as a signature move. In GO, Extreme Speed is a rare move only available to Arcanine via Legacy.",
+    "evolutionCost": "50 Candy to evolve into Arcanine. Buddy distance: 3km/candy.",
+    "shinyRate": "Golden Shiny. Shiny Arcanine is a light orange color—very beautiful."
+  },
+  {
+    "speciesId": 59,
+    "origin": "Arcanine is the evolved form of Growlithe, inspired by mythological dogs like the Chinese Foo Dog and the Okinawan Shisa. It has a majestic presence. The name comes from 'arcane' + 'canine'.",
+    "goRelevance": "A top-tier Fire-type with 227 ATK. Fire Fang + Wild Charge provides coverage against Water. Used in Master League and against Steel-type raids.",
+    "battleTip": "Arcanine with Wild Charge surprises Water-types that switch in expecting to resist Fire. It deals massive damage but lowers your DEF.",
+    "easterEgg": "Arcanine runs so fast it can cover 10km in a minute. It is one of the highest speeds recorded among all Pokémon.",
+    "goDifference": "In the main series, Arcanine has Flash Fire (Fire immunity) as an ability. In GO, there is no complete immunity mechanic.",
+    "evolutionCost": "50 Growlithe candy. 3km/candy as a buddy. 296 XL candy to max out to level 50.",
+    "shinyRate": "Light orange shiny. Subtle but elegant."
+  },
+  {
+    "speciesId": 60,
+    "origin": "Poliwag is inspired by tadpoles. The spiral pattern on its belly represents its visible internal organs. Its name comes from 'polliwog' (archaic English for tadpole) + 'wag'.",
+    "goRelevance": "Common near lakes and rivers. Poliwrath is a great Water/Fighting-type for raids and PvP. Politoed (Gen 2) is a Water-type with Weather Ball.",
+    "battleTip": "Poliwrath with Mud Shot + Dynamic Punch + Ice Punch provides coverage against Grass and Dragon-types. It counters Steel-types like Registeel in the Great League.",
+    "easterEgg": "Poliwag's spiral is what you see when looking inside its transparent belly—its spiral-shaped organs.",
+    "goDifference": "In the main series, Poliwag evolves at level 25. In GO, it costs 25 Candy to evolve into Poliwhirl.",
+    "evolutionCost": "25 Candy for Poliwhirl + 100 Candy for Poliwrath OR 100 Candy + King's Rock for Politoed. Buddy distance: 3km/candy.",
+    "shinyRate": "Shiny is light blue. Shiny Politoed is light green."
+  },
+  {
+    "speciesId": 61,
+    "origin": "Poliwhirl is the middle evolution of Poliwag. The spiral on its belly becomes more defined. It has great strength in its arms and legs.",
+    "goRelevance": "Evolutionary step. Not used in serious battles.",
+    "battleTip": "Poliwhirl can learn Mud Shot + Scald, decent moves for its category.",
+    "easterEgg": "Poliwhirl is the unofficial mascot of OAKAY, a sister company of Creatures Inc. that manages Pokémon merchandise.",
+    "goDifference": "In the main series, Poliwhirl needs a Water Stone to become Poliwrath. In GO, it costs 100 Candy.",
+    "evolutionCost": "100 Candy for Poliwrath OR 100 Candy + King's Rock for Politoed. Buddy distance: 3km/candy.",
+    "shinyRate": "Light blue shiny."
+  },
+  {
+    "speciesId": 62,
+    "origin": "Poliwrath is a final evolution of Poliwag, combining Water and Fighting types. It is a fighter that masters Water-type techniques. Its name comes from 'polliwog' + 'wrath'.",
+    "goRelevance": "An excellent Water/Fighting type for Great and Ultra League. Mud Shot + Dynamic Punch + Ice Punch provide high pressure. Ranked #64 on PvPoke for Great League.",
+    "battleTip": "Poliwrath is a direct counter to Registeel, Bastiodon, and Stunfisk in the Great League. Mud Shot generates energy very quickly.",
+    "easterEgg": "Poliwrath is one of the few Water/Fighting types in the game. Only it, Keldeo (Legendary), and Urshifu Rapid Strike share this typing.",
+    "goDifference": "In the main series, Poliwrath can learn the Mind Reader + Dynamic Punch combo. In GO, Mind Reader does not exist.",
+    "evolutionCost": "100 Poliwhirl candy. 3km/candy as a buddy.",
+    "shinyRate": "Light blue shiny. Subtle."
+  },
+  {
+    "speciesId": 63,
+    "origin": "Abra is inspired by psychic and telepathic creatures. It sleeps 18 hours a day, using telepathy to sense danger while dozing. Its name is a shortened 'abracadabra'.",
+    "goRelevance": "Common in urban areas and Windy weather. Alakazam is one of the fastest Psychic-types, making it great for Fighting and Poison-type raids.",
+    "battleTip": "Alakazam with Confusion + Psychic + Shadow Ball covers Ghost-types, but it is VERY fragile (DEF 167, STA 146).",
+    "easterEgg": "Abra is the only Pokémon that uses Teleport as its only move, even in the main games. It flees wild encounters instantly.",
+    "goDifference": "In the main series, Abra requires a trade to evolve into Alakazam. In GO, it costs 25 + 100 candy—no trade required.",
+    "evolutionCost": "25 candy for Kadabra + 100 candy for Alakazam = 125 total. Buddy distance is 3km/candy.",
+    "shinyRate": "Golden Shiny. Shiny Alakazam features golden spoons and a golden mustache."
+  },
+  {
+    "speciesId": 64,
+    "origin": "Kadabra is the middle evolution of Abra. It emits alpha waves that cause headaches in nearby humans. Its name comes from the magic word 'abracadabra'.",
+    "goRelevance": "An evolutionary step. Pure Kadabra is rarely used—Alakazam is always superior.",
+    "battleTip": "Kadabra with Confusion + Psychic is decent until you have enough candy for Alakazam.",
+    "easterEgg": "There is real-world controversy: Uri Geller, a famous 'psychic', sued Nintendo because Kadabra resembled him bending a spoon. The lawsuit was only dropped in 2020.",
+    "goDifference": "In the main series, Kadabra is obtained at level 16. In GO, it costs 25 candy.",
+    "evolutionCost": "100 candy to evolve into Alakazam. Buddy distance is 3km/candy.",
+    "shinyRate": "Golden shiny."
+  },
+  {
+    "speciesId": 65,
+    "origin": "Alakazam is inspired by magicians and mentalists. Its IQ is 5000—the highest of any Pokémon. Its two spoons act as psychic power amplifiers. Its name comes from 'abracadabra' + 'zam'.",
+    "goRelevance": "A top-tier offensive Psychic-type (271 ATK, the highest among pure Psychic-types). Confusion + Psychic provides massive DPS. Fragile but lethal.",
+    "battleTip": "Alakazam with Counter + Confusion + Psychic + Shadow Ball is unpredictable. Counter surprises Dark-types that would otherwise be natural counters.",
+    "easterEgg": "Alakazam's mustache—it doesn't actually have one; those are skin protrusions. However, early sprites made them look like a mustache, which became a trademark.",
+    "goDifference": "In the main series, Alakazam can Mega Evolve. In GO, Mega Alakazam was added in 2022 with an absurd 367 ATK.",
+    "evolutionCost": "100 Kadabra candy. 3km buddy distance per candy. 296 XL candy to max out.",
+    "shinyRate": "Golden shiny. Mega Alakazam is a dark golden shiny."
+  },
+  {
+    "speciesId": 66,
+    "origin": "Machop is inspired by martial artists and bodybuilders. Its body is pure muscle with zero fat. Its name combines 'macho' (strong) and 'chop' (a strike).",
+    "goRelevance": "Common in urban areas and Cloudy weather. Machamp is a classic Fighting-type with Counter + Dynamic Punch. Great for Normal and Steel-type raids.",
+    "battleTip": "Machamp with Counter + Dynamic Punch + Rock Slide provides coverage against Flying-types. One of the most versatile Fighting-types.",
+    "easterEgg": "Machop can lift weights 100 times its own body weight, despite being one of the smallest in its evolutionary line.",
+    "goDifference": "In the main series, Machop requires a trade to become Machamp. In GO, it costs 25+100 candy with no trade needed.",
+    "evolutionCost": "25 candy for Machoke + 100 candy for Machamp = 125 total. 3km per candy as a buddy.",
+    "shinyRate": "Shiny is grey. Shiny Machamp has lighter-colored skin."
+  },
+  {
+    "speciesId": 67,
+    "origin": "Machoke is the middle evolution of Machop. It wears a power belt to limit its strength—without it, it would be uncontrollable. Its name comes from 'macho' + 'choke'.",
+    "goRelevance": "A stepping stone to Machamp. Machoke can be used in Great League as a budget alternative, but Machamp is superior.",
+    "battleTip": "Machoke with Karate Chop + Cross Chop is decent in Little/Great League, but has lower DPS than Machamp.",
+    "easterEgg": "Machoke often works as a construction assistant, moving beams and concrete. It is one of the most useful Pokémon for humans.",
+    "goDifference": "In the main series, Machoke is obtained at level 28. In GO, it costs 25 Machop candy.",
+    "evolutionCost": "100 candy to evolve into Machamp. Buddy distance is 3km/candy.",
+    "shinyRate": "Gray shiny."
+  },
+  {
+    "speciesId": 68,
+    "origin": "Machamp is the final form of Machop with 4 arms. It can throw punches so fast they look like a thousand arms. Inspired by the Hindu god Shiva and bodybuilders. Name comes from 'macho' + 'champion'.",
+    "goRelevance": "Classic Fighting-type. Counter + Dynamic Punch is a solid combo. Outclassed by Lucario and Conkeldurr in DPS but still viable. Rank #157 in Master League.",
+    "battleTip": "Machamp with Cross Chop (CD move) generates energy faster than Dynamic Punch. If you have it, use Cross Chop for constant pressure.",
+    "easterEgg": "The Pokédex says Machamp can throw 1,000 punches in 2 seconds—that's 500 punches per second. Physically impossible, but impressive.",
+    "goDifference": "In the main series, Machamp has No Guard (moves never miss) as an ability. In GO, without abilities, this advantage is lost.",
+    "evolutionCost": "100 candy from Machoke. 3km/candy buddy distance. 296 XL candy to max out.",
+    "shinyRate": "Gray shiny. Darker than the normal version."
+  },
+  {
+    "speciesId": 69,
+    "origin": "Bellsprout is inspired by carnivorous plants like the Venus flytrap. Its head acts as a trap that snaps shut when it detects prey. Its name comes from 'bell' + 'sprout'.",
+    "goRelevance": "Common in grassy areas and Sunny weather. Victreebel is a solid Grass/Poison type with Razor Leaf + Leaf Blade.",
+    "battleTip": "Victreebel with Razor Leaf + Leaf Blade + Sludge Bomb provides coverage against Fairy and Steel-types. Leaf Blade is a high energy-generating move.",
+    "easterEgg": "Bellsprout has one of the lowest base DEF stats (61) of all Pokémon—it is incredibly fragile.",
+    "goDifference": "In the main series, Bellsprout can learn Vine Whip. In GO, Vine Whip is a fast move that Bellsprout learns naturally.",
+    "evolutionCost": "25 candy for Weepinbell + 100 candy for Victreebel = 125 total. Buddy distance: 3km/candy.",
+    "shinyRate": "Shiny is golden. Shiny Victreebel is yellowish."
+  },
+  {
+    "speciesId": 70,
+    "origin": "Weepinbell is the middle evolution of Bellsprout. When thirsty, the bell on its head wilts. Honey-like nectar drips from its mouth to lure prey.",
+    "goRelevance": "Evolutionary step. Not typically used in battles.",
+    "battleTip": "Weepinbell with Razor Leaf is decent for low-CP battles.",
+    "easterEgg": "Weepinbell is one of the few Pokémon that evolves via Leaf Stone in the main series but via Candy in GO.",
+    "goDifference": "In the main series, Weepinbell requires a Leaf Stone. In GO, it costs 100 Candy.",
+    "evolutionCost": "100 Candy to evolve into Victreebel. Buddy distance is 3km/candy.",
+    "shinyRate": "Golden shiny."
+  },
+  {
+    "speciesId": 71,
+    "origin": "Victreebel is the final evolution of Bellsprout. It swallows prey whole and dissolves them in stomach acid. One of the most macabre Pokedex entries. Name comes from 'victory' + 'bell'.",
+    "goRelevance": "A solid Grass/Poison type for raids and PvP. Runs Razor Leaf + Leaf Blade + Sludge Bomb. Outclassed by Venusaur but still decent.",
+    "battleTip": "Victreebel with Acid + Leaf Blade + Sludge Bomb is faster than Razor Leaf. Acid generates energy more quickly than Razor Leaf.",
+    "easterEgg": "Victreebel is famous for being James's (Team Rocket) Pokemon in the anime—it constantly tries to eat him, yet he insists on keeping it.",
+    "goDifference": "In the main series, Victreebel can learn Swords Dance. In GO, stat buffs are less impactful than in the main series games.",
+    "evolutionCost": "100 Weepinbell candy. 3km per candy as a buddy.",
+    "shinyRate": "Yellowish shiny."
+  },
+  {
+    "speciesId": 72,
+    "origin": "Tentacool is inspired by jellyfish and Portuguese man o' wars. Its tentacles are invisible in water. Its name comes from 'tentacle' + 'cool'.",
+    "goRelevance": "Common in coastal areas and Rainy weather. Tentacruel is a top-tier Water/Poison type for Great League PvP.",
+    "battleTip": "Tentacruel with Poison Jab + Hydro Pump + Blizzard is unpredictable and provides coverage against Grass, Ground, and Dragon-types.",
+    "easterEgg": "Tentacool is known for causing maritime accidents, as ships collide with their swarms. This references real-life jellyfish hazards.",
+    "goDifference": "In the main series, Tentacool learns Barrier and Wrap. In GO, Barrier does not exist as a move.",
+    "evolutionCost": "50 Candy to evolve into Tentacruel. Buddy distance is 3km/candy.",
+    "shinyRate": "Shiny is light purple. Shiny Tentacruel is violet."
+  },
+  {
+    "speciesId": 73,
+    "origin": "Tentacruel is the evolved form of Tentacool. It has 80 tentacles that regenerate if cut. Its red eyes glow in the dark ocean. Name comes from 'tentacle' + 'cruel'.",
+    "goRelevance": "Top-tier Great League PvP. Poison Jab + Hydro Pump + Blizzard. DEF 209 is massive—one of the most defensive Water-types. Ranked #68 on PvPoke.",
+    "battleTip": "Tentacruel with Blizzard surprises Altaria and Dragonite in the Great League—Ice-type moves are rare on Water-types.",
+    "easterEgg": "In the anime, a giant Tentacruel attacks a city and kidnaps people—one of the most memorable and tense episodes of the first season.",
+    "goDifference": "In the main series, Tentacruel learns Hydro Pump naturally. In GO, Hydro Pump is a high-energy charged move.",
+    "evolutionCost": "50 Tentacool candy. Buddy 3km/candy.",
+    "shinyRate": "Violet shiny."
+  },
+  {
+    "speciesId": 74,
+    "origin": "Geodude is inspired by rocks and boulders. It looks like a pile of angry stones. Legend says Geodude are rocks that came to life. Its name comes from 'geo' (earth) + 'dude'.",
+    "goRelevance": "Common in mountainous areas and caves. Golem is a solid Rock/Ground type for Fire and Flying raids, but weak to Water and Grass.",
+    "battleTip": "Golem with Rock Throw + Rock Slide + Earthquake is great for raids. Avoid Water and Grass-types, as it has a 4x weakness.",
+    "easterEgg": "Geodude is one of the few Pokémon found by kicking rocks in the main series games. The rock 'wakes up' and battles you.",
+    "goDifference": "In the main series, Geodude evolves at level 25. In GO, it takes 25 Candy to evolve into Graveler.",
+    "evolutionCost": "25 Candy for Graveler + 100 Candy for Golem = 125 total. Buddy distance is 1km/candy.",
+    "shinyRate": "Shiny is gold. Shiny Golem is also gold."
+  },
+  {
+    "speciesId": 75,
+    "origin": "Graveler is the middle evolution of Geodude. It sheds rocks while rolling down mountains. It only rolls downhill—never uphill. Name comes from 'gravel' + -er.",
+    "goRelevance": "Stepping stone to Golem. Rarely used in its base form.",
+    "battleTip": "Graveler has 164 DEF and 164 ATK—perfectly balanced stats, but underwhelming.",
+    "easterEgg": "Are Graveler and Golem the only Pokémon that change typing upon evolution? No—but they maintain Rock/Ground throughout all stages.",
+    "goDifference": "In the main series, Graveler requires a trade to evolve into Golem. In GO, it costs 100 Candy with no trade needed.",
+    "evolutionCost": "100 Candy to evolve into Golem. Buddy distance is 1km/candy.",
+    "shinyRate": "Golden shiny."
+  },
+  {
+    "speciesId": 76,
+    "origin": "Golem is the final evolution of Geodude. Its shell is as hard as diamond. When it explodes in rage, rock fragments fly everywhere. Its name comes from 'go' + 'lem' (from the mythological golem).",
+    "goRelevance": "A solid Rock/Ground type for raids. Rock Throw + Rock Slide offers good DPS against Fire, Flying, and Ice types. However, its 4x weakness to Water and Grass is fatal.",
+    "battleTip": "Golem loses to any Water or Grass-type. Never pit it against Kyogre, Gyarados, or Venusaur.",
+    "easterEgg": "Golem has an Alolan variant (Rock/Electric) introduced in Sun/Moon. In GO, Alolan Geodude evolves into Alolan Golem with a different typing.",
+    "goDifference": "In the main series, Golem can learn Fire Punch and Thunder Punch. In GO, it does not have access to punch moves.",
+    "evolutionCost": "100 candy from Graveler. Buddy 1km/candy. Alolan Golem: 100 candy from Alolan Graveler.",
+    "shinyRate": "Golden shiny. Alolan Golem shiny is dark blue."
+  },
+  {
+    "speciesId": 77,
+    "origin": "Ponyta is inspired by ponies and mythological horses with fiery manes. Its mane burns, but not those it trusts. Its name combines 'pony' + 'ta' (trotting sound).",
+    "goRelevance": "Common in dry areas and Sunny weather. Rapidash is a fast Fire-type with Fire Spin + Flame Charge. The Galarian variant (Psychic) is rarer.",
+    "battleTip": "Rapidash with Drill Run + Flame Charge + Body Slam provides coverage against Rock and Water-types. Flame Charge boosts its Speed.",
+    "easterEgg": "In Greek mythology, Pegasus is a winged horse. Ponyta lacks wings, but its flaming mane gives it a magical appearance.",
+    "goDifference": "In the main series, Ponyta can be ridden like a horse. In GO, there is no mount mechanic.",
+    "evolutionCost": "50 Candy to evolve into Rapidash. Buddy distance: 3km/candy. Galarian Ponyta: 50 Candy to evolve into Galarian Rapidash.",
+    "shinyRate": "Shiny has a light gray mane. Shiny Galarian Rapidash is violet."
+  },
+  {
+    "speciesId": 78,
+    "origin": "Rapidash is the evolved form of Ponyta. It runs so fast that its hooves barely touch the ground. It is said it can jump over Tokyo Tower. Its name comes from 'rapid' + 'dash'.",
+    "goRelevance": "A decent Fire-type with Fire Spin + Drill Run for raids. Outclassed in DPS by Chandelure, Darmanitan, and Reshiram.",
+    "battleTip": "Rapidash with Drill Run provides coverage against Rock-types, which most Fire-types lack.",
+    "easterEgg": "Galarian Rapidash (Psychic/Fairy) is a unicorn-like version with a purple horn and pastel-colored mane. It is uniquely beautiful.",
+    "goDifference": "In the main series, Rapidash learns Agility and Stomp. In GO, Agility was converted to Flame Charge (a Fire-type move that boosts ATK).",
+    "evolutionCost": "50 Ponyta candy. Buddy distance: 3km/candy.",
+    "shinyRate": "Light gray shiny. Galarian Rapidash shiny is dark violet."
+  },
+  {
+    "speciesId": 79,
+    "origin": "Slowpoke is inspired by sloths and salamanders. Its tail is considered a tasty treat in the Alola region. Known for being extremely slow. Its name comes from 'slow' + 'poke'.",
+    "goRelevance": "Relatively common near lakes. Slowbro and Slowking are defensive Water/Psychic types. Galarian Slowbro is Poison/Psychic.",
+    "battleTip": "Slowbro with Water Gun + Ice Beam + Psychic is a defensive tank. With 180 DEF and 216 STA, it is tough to knock out.",
+    "easterEgg": "Slowpoke is so slow that it takes 5 seconds to realize it has been hurt. Its tail falls off and regrows like a lizard's.",
+    "goDifference": "In the main series, Slowpoke can learn Surf and Strength (HMs). These mechanics do not exist in GO.",
+    "evolutionCost": "50 candy for Slowbro OR 50 candy + King's Rock for Slowking. Buddy distance is 3km/candy. Galarian Slowpoke follows the same rules for Galarian Slowbro and Galarian Slowking.",
+    "shinyRate": "Shiny is light pink. Shiny Slowbro is also pink."
+  },
+  {
+    "speciesId": 80,
+    "origin": "Slowbro is the evolved form of Slowpoke. A Shellder bit its tail and became part of it. If the Shellder lets go, Slowbro reverts to Slowpoke. Name comes from 'slow' + 'bro'.",
+    "goRelevance": "A solid defensive Water/Psychic type for Great and Ultra League. Runs Water Gun + Psychic + Ice Beam. Ranked #150 in Great League on PvPoke.",
+    "battleTip": "Slowbro with Ice Beam covers Grass and Dragon-types—natural threats to Water/Psychic. Galarian Slowbro (Poison/Psychic) is different.",
+    "easterEgg": "The Shellder bite on Slowbro's tail is one of the few 'partnership evolutions' where two Pokémon fuse. Another case is Magneton.",
+    "goDifference": "In the main series, Slowbro can Mega Evolve (Mega Slowbro). In GO, Mega Slowbro has massive DEF and is an excellent tank.",
+    "evolutionCost": "50 Slowpoke candy. Buddy distance: 3km/candy.",
+    "shinyRate": "Pink shiny. The Shellder on its tail also turns pink."
+  },
+  {
+    "speciesId": 81,
+    "origin": "Magnemite is inspired by magnets and metallic orbs. It floats using magnetic fields and attracts metal objects to its body. Its name combines 'magnet' and 'mite'.",
+    "goRelevance": "Common in industrial areas and Windy weather. Magneton (and Gen 4's Magnezone) are excellent Electric/Steel types for raids and PvP.",
+    "battleTip": "Magnezone with Spark + Wild Charge + Mirror Shot is top-tier. Its Steel typing grants immunity to Poison and 11 other resistances.",
+    "easterEgg": "Magnemite is made of screws and magnets; it is inspired by electronic waste and scrap metal that came to life.",
+    "goDifference": "In the main series, Magnemite evolves at level 30. In GO, it costs 25 Candy to evolve into Magneton.",
+    "evolutionCost": "25 Candy for Magneton + 100 Candy + Magnetic Lure Module for Magnezone. Buddy distance is 3km/candy.",
+    "shinyRate": "Dark blue shiny (the left side turns blue). It's quite subtle."
+  },
+  {
+    "speciesId": 82,
+    "origin": "Magneton is three Magnemite joined by a strong magnetic field. They cannot be separated. Its name comes from 'magnet' + 'ton' (weight/force).",
+    "goRelevance": "Stepping stone to Magnezone. Pure Magneton is decent in Great League with Spark + Discharge.",
+    "battleTip": "Magneton with Mirror Shot has a chance to lower the opponent's ATK—a useful effect in PvP.",
+    "easterEgg": "Magneton is one of the first 'fusions' of multiple Pokémon. Unlike Dugtrio, which are siblings, Magneton is a literal fusion.",
+    "goDifference": "In the main series, Magneton needs a special magnetic area (Mt. Coronet) to evolve into Magnezone. In GO, it uses a Magnetic Lure Module.",
+    "evolutionCost": "100 candy + Magnetic Lure Module to evolve into Magnezone. Buddy distance: 3km/candy.",
+    "shinyRate": "The shiny version features a dark blue color on one of the three magnets."
+  },
+  {
+    "speciesId": 83,
+    "origin": "Farfetch'd is inspired by wild ducks carrying leeks—a reference to the Japanese proverb 'kamo ga negi o shotte kuru' (a duck arrives carrying a leek).",
+    "goRelevance": "Rare in some regions. A Gen 8 evolution was added: Sirfetch'd (Fighting). In GO, Galarian Farfetch'd evolves after landing 10 Excellent Throws.",
+    "battleTip": "Sirfetch'd with Counter + Leaf Blade + Brave Bird is a great Fighting-type for the Ultra League.",
+    "easterEgg": "Farfetch'd carries a leek because, in Japan, saying 'a duck came with a leek' means something arrived ready to be used.",
+    "goDifference": "In the main series, Farfetch'd holds the leek as an item. In GO, the leek is part of Sirfetch'd's signature move, Meteor Assault.",
+    "evolutionCost": "50 candy + 10 Excellent Throws to get Sirfetch'd (special GO requirement). 3km buddy distance per candy.",
+    "shinyRate": "Shiny features a blue leek. Shiny Sirfetch'd is darker."
+  },
+  {
+    "speciesId": 84,
+    "origin": "Doduo is inspired by two-headed ostriches. One head sleeps while the other keeps watch. Both heads have different thoughts. Its name comes from 'dodo' (extinct bird) + 'duo' (two).",
+    "goRelevance": "Common in grassy areas and Sunny weather. Dodrio is Normal/Flying with a surprisingly high 218 ATK.",
+    "battleTip": "Dodrio with Quick Attack + Drill Peck + Brave Bird has 218 ATK—higher than many types that seem stronger.",
+    "easterEgg": "Doduo and Dodrio are based on the Dodo, an extinct bird. But the Dodo had ONE head—the joke is that each 'era' added another head.",
+    "goDifference": "In the main series, Doduo can learn Fly (HM). In GO, the equivalent is Drill Peck as a charged move.",
+    "evolutionCost": "50 candy for Dodrio. Buddy 3km/candy.",
+    "shinyRate": "Light green shiny. Shiny Dodrio has a greenish tint."
+  },
+  {
+    "speciesId": 85,
+    "origin": "Dodrio is the evolved form of Doduo with 3 heads. Each head has its own personality and thinks for itself. Its name comes from 'dodo' + 'trio'. They are three-headed ostriches.",
+    "goRelevance": "218 ATK—higher than many 'strong' types. Quick Attack + Drill Peck is decent for Great League. 155 STA is low.",
+    "battleTip": "Dodrio with Brave Bird deals massive damage but debuffs DEF. Use Drill Peck when you need consistency.",
+    "easterEgg": "Dodrio's 3 heads represent joy, sorrow, and anger. They constantly argue with each other about what to do.",
+    "goDifference": "In the main series, Dodrio can learn Tri Attack (a 3-type move). In GO, Tri Attack is a charged move available to select Pokémon.",
+    "evolutionCost": "50 Doduo candy. 3km/candy buddy distance.",
+    "shinyRate": "Greenish shiny. Subtle."
+  },
+  {
+    "speciesId": 86,
+    "origin": "Seel is inspired by seals and sea lions. Its head horn is made of ice and breaks easily. Name comes from 'seal'. They live in icy waters.",
+    "goRelevance": "Common in coastal areas and Snowy weather. Dewgong is a Water/Ice type with an interesting defensive typing. Rarely used.",
+    "battleTip": "Dewgong with Ice Shard + Icy Wind + Drill Run provides coverage against Rock, Fire, and Electric-types.",
+    "easterEgg": "Seel and Dewgong are based on real seals and dugongs. Despite the name 'Dewgong', it resembles a walrus more.",
+    "goDifference": "In the main series, Seel learns Aurora Beam naturally. In GO, the move exists but is less impactful than Ice Beam.",
+    "evolutionCost": "50 candy to evolve into Dewgong. Buddy distance is 3km/candy.",
+    "shinyRate": "Light pink shiny. Shiny Dewgong is also pink."
+  },
+  {
+    "speciesId": 87,
+    "origin": "Dewgong is the evolved form of Seel, inspired by dugongs and mermaids. It has a streamlined body for swimming in icy waters. Its name comes from 'dew' + 'dugong'.",
+    "goRelevance": "A solid Water/Ice type for Great League with Ice Shard + Icy Wind. The Icy Wind buff (lowering the opponent's ATK) is very useful.",
+    "battleTip": "Dewgong with Icy Wind is one of the best PvP debuffers; it lowers the opponent's ATK with every use, building an advantage throughout the fight.",
+    "easterEgg": "Dewgong can learn Aqua Jet in the main series. In GO, Aqua Jet exists but is an average Water-type move.",
+    "goDifference": "In the main series, Dewgong learns Sheer Cold, a 1-hit-KO move. In GO, OHKO moves do not exist.",
+    "evolutionCost": "50 Seel Candy. 3km buddy distance per candy.",
+    "shinyRate": "Pink shiny."
+  },
+  {
+    "speciesId": 88,
+    "origin": "Grimer is inspired by toxic sludge and industrial pollution. It emerged when sewage sludge was exposed to radiation. Its name comes from 'grime'. The Alolan variant (Poison/Dark) is darker in color.",
+    "goRelevance": "Common in urban and polluted areas. Muk is a pure Poison-type with 190 ATK and 172 DEF—solid for PvP.",
+    "battleTip": "Muk with Poison Jab + Dark Pulse + Sludge Wave provides coverage against Psychic-types. It is one of the best Poison-types for Master League.",
+    "easterEgg": "Grimer was inspired by pollution in Tokyo Bay. It serves as a subtle environmental critique—pollution creating mutant life.",
+    "goDifference": "In the main series, Grimer can learn Minimize (increases evasion). In GO, Minimize does not exist in the same way.",
+    "evolutionCost": "50 candy to evolve into Muk. Buddy distance is 3km/candy. Alolan Grimer: 50 candy to evolve into Alolan Muk.",
+    "shinyRate": "Shiny is dark green. Shiny Alolan Muk is a darker purple."
+  },
+  {
+    "speciesId": 89,
+    "origin": "Muk is the evolved form of Grimer. Its odor is so strong it causes humans to faint. Made of concentrated toxins. Name comes from 'muck'. Alolan variant is Poison/Dark.",
+    "goRelevance": "Excellent Poison-type for Great, Ultra, and Master League. Poison Jab + Dark Pulse + Sludge Wave. Ranked #46 in Master League by PvPoke. Massive 233 STA.",
+    "battleTip": "Muk with Dark Pulse covers Ghost and Psychic-types that counter Poison. One of the best Poison tanks in the game.",
+    "easterEgg": "Alolan Muk is Poison/Dark—a significant upgrade since Dark covers the Psychic weakness that pure Poison has.",
+    "goDifference": "In the main series, Muk can learn Gunk Shot and Explosion. In GO, Explosion is a Normal-type move that Muk cannot learn.",
+    "evolutionCost": "50 Grimer candy. 3km buddy distance per candy.",
+    "shinyRate": "Light green shiny. Shiny Muk is lime green."
+  },
+  {
+    "speciesId": 90,
+    "origin": "Shellder is inspired by bivalves and clams. Its shell is so hard that even bombs cannot break it. It has a long, purple tongue. Its name comes from 'shell' + 'elder'.",
+    "goRelevance": "Common in coastal areas and beaches. Cloyster is a defensive Water/Ice type with 256 DEF—one of the highest in the game.",
+    "battleTip": "Cloyster has the fifth-highest base DEF in the game (256). Ice Shard + Avalanche is great for Dragon and Flying-type raids.",
+    "easterEgg": "Shellder is the shell that bites Slowpoke to become part of Slowbro. In some editions, the Pokédex entry mentions Shellder is afraid of Slowpoke.",
+    "goDifference": "In the main series, Shellder needs a Water Stone to evolve into Cloyster. In GO, it costs 50 Candy.",
+    "evolutionCost": "50 Candy to evolve into Cloyster. Buddy distance is 3km/candy.",
+    "shinyRate": "Light purple Shiny. Shiny Cloyster has a purple shell."
+  },
+  {
+    "speciesId": 91,
+    "origin": "Cloyster is the evolved form of Shellder. Its shell is as hard as diamond and its spikes are made of pure ice. Name comes from 'cloister' + 'oyster'.",
+    "goRelevance": "256 DEF—the fifth highest in the game. Ice Shard + Avalanche is top-tier against Dragon and Flying-types. Great for Rayquaza, Dragonite, and Salamence raids.",
+    "battleTip": "Cloyster with Ice Shard + Avalanche + Hydro Pump provides coverage against Fire-types that would threaten a pure Ice-type.",
+    "easterEgg": "Cloyster can learn Spike Cannon, an exclusive move that fires spikes. In the main series, it was its signature move for generations.",
+    "goDifference": "In the main series, Cloyster has Skill Link + Icicle Spear (a 5-hit attack). In GO, multi-hit moves do not function the same way.",
+    "evolutionCost": "50 Shellder candy. 3km/candy buddy distance.",
+    "shinyRate": "Purple shiny."
+  },
+  {
+    "speciesId": 92,
+    "origin": "Gastly is inspired by toxic gas and wandering spirits. It is made of poisonous gas that can solidify at will. It lacks a solid body. Its name comes from 'ghastly'.",
+    "goRelevance": "Common in cemeteries and at night. Gengar is one of the most iconic and powerful Ghost-types in the game. ATK 261 is extremely high.",
+    "battleTip": "Gengar with Shadow Claw + Shadow Ball + Sludge Bomb is lethal. Its 261 ATK is top-tier, but with 149 DEF and 155 STA, it is quite fragile.",
+    "easterEgg": "Gengar is Clefable's shadow—legend says Gengar is a Clefable's shadow that gained a life of its own.",
+    "goDifference": "In the main series, Gastly requires a trade to become Gengar. In GO, it costs 25 + 100 candy, no trade needed. Need to trade? No.",
+    "evolutionCost": "25 candy for Haunter + 100 candy for Gengar = 125 total. Buddy distance is 3km/candy.",
+    "shinyRate": "Shiny is white. A shiny Gengar is white—one of the best-looking ones."
+  },
+  {
+    "speciesId": 93,
+    "origin": "Haunter is the middle evolution of Gastly. It has icy hands that cause chills, and if its tongue touches someone, they will shake uncontrollably. Its name comes from 'haunt' + 'er'.",
+    "goRelevance": "A stepping stone to Gengar. Pure Haunter can be used in Little/Great League as an alternative, though Gengar is always better.",
+    "battleTip": "Haunter with Shadow Claw + Shadow Ball + Sludge Bomb is a weaker version of Gengar. Use it if you don't have enough candy.",
+    "easterEgg": "Haunter is the featured Pokémon in the 'Ghost of Maiden's Peak' episode of the anime—one of the scariest episodes of the original series.",
+    "goDifference": "In the main series, Haunter requires a trade to evolve into Gengar. In GO, it costs 100 candy.",
+    "evolutionCost": "100 candy to evolve into Gengar. Buddy distance is 3km/candy.",
+    "shinyRate": "White shiny."
+  },
+  {
+    "speciesId": 94,
+    "origin": "Gengar is the final form of Gastly. Its appearance is inspired by urban shadows and hauntings. It is said to lurk near the weak to drain their life force. Name derived from 'gangster' + 'phantom'.",
+    "goRelevance": "TOP-tier Ghost-type. Shadow Claw + Shadow Ball + Sludge Bomb. ATK 261. Mega Gengar is the best Ghost in the game with 349 ATK. Rank #6 in Master League.",
+    "battleTip": "Gengar with Legacy move Lick + Shadow Ball is even better than Shadow Claw. If you have one with Lick, it's a treasure. Mega Gengar is fragile but deadly.",
+    "easterEgg": "Gengar is Clefable's shadow! Compare their designs—same shape, pointed ears, rounded body. Gengar is the 'shadow' version.",
+    "goDifference": "In the main series, Gengar mega evolves. In GO, Mega Gengar was added and is the strongest Ghost-type in the game.",
+    "evolutionCost": "100 candy from Haunter. Buddy 3km/candy. 296 XL candy to max out. Mega Gengar: 200 Mega Energy.",
+    "shinyRate": "White shiny. Shiny Mega Gengar is white with red eyes—scary and beautiful."
+  },
+  {
+    "speciesId": 95,
+    "origin": "Onix is inspired by stone snakes and minerals. Its body consists of giant rocks held together by magnetic attraction. Its name comes from 'onyx,' a gemstone.",
+    "goRelevance": "Common in caves. Onix has 232 DEF but only 85 ATK—one of the most unbalanced stats in the game. Evolves into Steelix using a Metal Coat.",
+    "battleTip": "Steelix (Gen 2) with Dragon Tail + Crunch + Earthquake is a great Great League tank. Its 333 DEF (Mega) makes it nearly impenetrable.",
+    "easterEgg": "Onix is 8.8 meters long, making it one of the longest Pokémon. However, it only weighs 210kg, which is quite light for its size.",
+    "goDifference": "In the main series, Onix requires a trade while holding a Metal Coat to evolve. In GO, it costs 50 Candy + a Metal Coat (special item).",
+    "evolutionCost": "50 Candy + Metal Coat to evolve into Steelix. 5km per Buddy Candy.",
+    "shinyRate": "Shiny Onix is light green. Shiny Steelix is gold."
+  },
+  {
+    "speciesId": 96,
+    "origin": "Drowzee is inspired by tapirs and the Baku (a Japanese mythological creature that eats nightmares). It sleeps constantly. Its name comes from 'drowse' and 'zee' (zzz for sleep).",
+    "goRelevance": "Common in urban areas. Hypno is a defensive Psychic-type with a solid Great League presence. Runs Hypnosis, Psychic, and Shadow Ball.",
+    "battleTip": "Hypno with Confusion + Thunder Punch + Shadow Ball provides coverage against Dark and Ghost-types. Shadow Ball is great for surprising opponents.",
+    "easterEgg": "Drowzee and the Baku—the Baku is a Japanese folklore creature that eats nightmares. Drowzee eats dreams, not nightmares.",
+    "goDifference": "In the main series, Drowzee learns Hypnosis at level 1. In GO, Hypnosis is a fast move that Drowzee can learn.",
+    "evolutionCost": "50 candy to evolve into Hypno. 3km per candy as a buddy.",
+    "shinyRate": "Light pink shiny. Hypno is also pink."
+  },
+  {
+    "speciesId": 97,
+    "origin": "Hypno is the evolved form of Drowzee. It holds a pendulum to hypnotize people. Legend says it once led children to unknown places. Its name comes from 'hypnosis' + 'no'.",
+    "goRelevance": "A popular defensive Psychic-type in Great League PvP. Confusion + Thunder Punch + Shadow Ball provides coverage against almost everything. Ranked #162 on PvPoke.",
+    "battleTip": "Hypno with Thunder Punch and Fire Punch covers Steel and Dark-types. Its versatile moveset is its main advantage.",
+    "easterEgg": "In the main series Pokédex, Hypno is described as a child kidnapper—one of the most disturbing entries in the Nintendo franchise.",
+    "goDifference": "In the main series, Hypno learns Dream Eater and Nightmare. In GO, these moves don't exist because status effects work differently.",
+    "evolutionCost": "50 Drowzee Candy. 3km buddy distance per candy.",
+    "shinyRate": "Pink shiny variant."
+  },
+  {
+    "speciesId": 98,
+    "origin": "Krabby is inspired by fiddler crabs. Its pincers regrow if lost. Name is 'crab' + 'by'. One of the most classic crab designs in Pokémon.",
+    "goRelevance": "Common near beaches and coastal areas. Kingler is a Water-type with 240 ATK—very high for its tier. Runs Metal Claw + X-Scissor + Crabhammer.",
+    "battleTip": "Kingler with Mud Shot + Crabhammer + X-Scissor generates energy extremely fast. Its 240 ATK is devastating in Great League.",
+    "easterEgg": "Krabby was one of Ash's Pokémon in the Orange Islands—a rare case where Ash caught something that wasn't Normal or Flying-type.",
+    "goDifference": "In the main series, Krabby can learn Guillotine (an OHKO move). In GO, OHKO moves do not exist.",
+    "evolutionCost": "50 candy to evolve into Kingler. 3km/candy buddy distance.",
+    "shinyRate": "Shiny Krabby is light blue. Shiny Kingler is dark blue."
+  },
+  {
+    "speciesId": 99,
+    "origin": "Kingler is the evolved form of Krabby. Its right claw is disproportionately large and strong enough to crush rocks. Its name comes from 'king' + 'crab' + 'ler'.",
+    "goRelevance": "240 ATK—higher than many 'strong' Water-types. Mud Shot + Crabhammer + X-Scissor is a high-pressure combo. Viable in Great League.",
+    "battleTip": "Kingler with Mud Shot + Crabhammer + X-Scissor provides coverage against Grass-types (a Water weakness) and Psychic-types.",
+    "easterEgg": "Gigantamax Kingler (Gen 8) has a 30-meter claw that acts like a parasol. It is one of the most absurd designs.",
+    "goDifference": "In the main series, Kingler learns Vice Grip and Crabhammer. In GO, Crabhammer is a powerful Water-type charged move.",
+    "evolutionCost": "50 Krabby candy. Buddy distance: 3km/candy.",
+    "shinyRate": "Dark blue shiny."
+  },
+  {
+    "speciesId": 100,
+    "origin": "Voltorb is inspired by Poke Balls that came to life. Legend says they were created when a Poke Ball was struck by lightning. Named from 'volt' + 'orb'. Hisuian variant is Electric/Grass.",
+    "goRelevance": "Common in industrial and urban areas. Electrode is a pure Electric-type with balanced stats. Rarely used in PvP.",
+    "battleTip": "Electrode with Volt Switch + Foul Play + Thunderbolt provides coverage against Dark and Ghost-types.",
+    "easterEgg": "Voltorb and Electrode are known for exploding when irritated. In the main series, they have Self-Destruct as a signature move.",
+    "goDifference": "In the main series, Voltorb can learn Self-Destruct and Explosion. In GO, these moves would be suicidal, so they were omitted.",
+    "evolutionCost": "50 candy to evolve into Electrode. Buddy distance is 3km/candy.",
+    "shinyRate": "Shiny is red (like an inverted Poke Ball). Very striking."
+  },
+  {
+    "speciesId": 101,
+    "origin": "Electrode is the evolved form of Voltorb. It resembles an inverted Poké Ball and is known for being unstable and prone to exploding. Its name comes from 'electrode'.",
+    "goRelevance": "A fast Electric-type with Volt Switch + Foul Play. Decent for Great League, but outclassed by Galvantula and Lanturn.",
+    "battleTip": "Electrode with Foul Play surprises opponents expecting pure Electric moves. Dark-type coverage is rare for Electric-types.",
+    "easterEgg": "Electrode is the fastest Pokémon from the original games (140 base Speed in main series). In GO, Speed is not a direct stat.",
+    "goDifference": "In the main series, Electrode is known for exploding (Self-Destruct). In GO, it simply does not have Explosion as a viable move.",
+    "evolutionCost": "50 Voltorb Candy. 3km buddy distance per candy.",
+    "shinyRate": "Dark red shiny."
+  },
+  {
+    "speciesId": 102,
+    "origin": "Exeggcute is inspired by a clutch of 6 eggs. Despite their appearance, they are actually seeds that look like eggs. One of the most confusing Pokémon designs. The name comes from 'egg' + 'execute'.",
+    "goRelevance": "Common in grassy areas and Sunny weather. Exeggutor is Grass/Psychic with a high 233 ATK. The Alolan variant (Grass/Dragon) is also popular.",
+    "battleTip": "Alolan Exeggutor (Grass/Dragon) is unique. It has a 4x weakness to Ice. However, its high ATK and moves like Bullet Seed + Draco Meteor are quite strong.",
+    "easterEgg": "Exeggcute aren't eggs; they are seeds that look like eggs. The Pokédex insists on this, but nobody believes it. We keep calling them eggs.",
+    "goDifference": "In the main series, Exeggcute needs a Leaf Stone to evolve. In GO, it costs 50 Candy.",
+    "evolutionCost": "50 Candy to evolve into Exeggutor. Buddy distance is 3km/candy. Alolan Exeggcute: 50 Candy + Leaf Stone? No—just 50 Candy for Alolan Exeggutor in GO.",
+    "shinyRate": "Shiny is light pink. Shiny Exeggutor is also pink."
+  },
+  {
+    "speciesId": 103,
+    "origin": "Exeggutor is the evolved form of Exeggcute. One head acts as the leader while the other three follow. The Alolan variant is a 10-meter-tall DRAGON palm tree. Name comes from 'egg' + 'executor'.",
+    "goRelevance": "Grass/Psychic with 233 ATK. Runs Bullet Seed + Seed Bomb + Psychic. The Alolan variant (Grass/Dragon) is better for raids due to its unique typing.",
+    "battleTip": "Alolan Exeggutor is the tallest Pokémon in the game (10.9m). It has a 4x weakness to Ice, but Bullet Seed + Draco Meteor provides high DPS in raids.",
+    "easterEgg": "Alolan Exeggutor stands 10.9 meters tall. In the anime, it appears so tall that it goes off-screen. It is an intentional visual gag.",
+    "goDifference": "In the main series, Exeggutor can learn Stomp and Egg Bomb. In GO, Egg Bomb was replaced by Seed Bomb.",
+    "evolutionCost": "50 Exeggcute candy. 3km/candy buddy distance.",
+    "shinyRate": "Standard shiny is pink. Alolan Exeggutor shiny is gold."
+  },
+  {
+    "speciesId": 104,
+    "origin": "Cubone is inspired by cubs that wear their deceased mother's skull as a helmet. One of the saddest stories in the Pokémon universe. Tears form the marks on the skull. Name comes from 'cub' + 'bone'.",
+    "goRelevance": "Common in dry and mountainous areas. Marowak is a Ground-type with Bone Club + Bonemerang. The Alolan variant (Fire/Ghost) is much more popular.",
+    "battleTip": "Alolan Marowak with Fire Spin + Shadow Bone + Bone Club is top-tier in Great and Ultra League. Shadow Bone is an excellent exclusive move.",
+    "easterEgg": "Cubone's story is confirmed to be sad: its mother dies and it wears the skull. However, some say it is a Kangaskhan skull—a popular theory.",
+    "goDifference": "In the main series, Cubone evolves at level 28. In GO, it costs 50 candy.",
+    "evolutionCost": "50 candy for Marowak. Buddy 3km/candy. Alolan Cubone: 50 candy for Alolan Marowak.",
+    "shinyRate": "Light green shiny. Alolan Marowak shiny is dark purple."
+  },
+  {
+    "speciesId": 105,
+    "origin": "Marowak is the evolved form of Cubone. Having overcome the loss of its mother, it is now a fierce warrior. The Alolan variant (Fire/Ghost) is a flaming spirit. Its name comes from 'marrow' + 'wak' (likely from 'whack').",
+    "goRelevance": "A mid-tier Ground-type. Alolan Marowak is the real standout—a Fire/Ghost type with the exclusive Shadow Bone. It is top-tier in Great League PvP.",
+    "battleTip": "Alolan Marowak with Fire Spin + Shadow Bone + Bone Club provides coverage against Ghost, Psychic, Steel, and Grass-types. Very versatile.",
+    "easterEgg": "Alolan Marowak is Fire/Ghost because the full moon of Alola caused the mother's spirit to protect her child with fire.",
+    "goDifference": "In the main series, Marowak can learn Thrash and Double-Edge. In GO, Thrash does not exist as a move.",
+    "evolutionCost": "50 Cubone candy. 3km buddy distance per candy.",
+    "shinyRate": "The shiny is lighter in color. Shiny Alolan Marowak is dark blue with purple flames."
+  },
+  {
+    "speciesId": 106,
+    "origin": "Hitmonlee is inspired by kickboxers and Bruce Lee. Its legs act like springs that stretch for kicks. Name is 'hit' + 'mon' (monster) + 'lee' (Bruce Lee).",
+    "goRelevance": "Rare — obtained from Tyrogue (Gen 2). Fighting-type with Low Kick + Close Combat + Stone Edge. Used in Great League.",
+    "battleTip": "Hitmonlee with Low Kick + Close Combat + Stone Edge covers Flying-types. ATK 224 is high, but DEF 181 and STA 137 are average.",
+    "easterEgg": "Hitmonlee and Hitmonchan are a tribute to Bruce Lee (Lee) and Jackie Chan (Chan). Hitmontop is the tribute to the Hong Kong actor.",
+    "goDifference": "In main series, Hitmonlee needs Tyrogue with ATK > DEF to evolve. In GO, Tyrogue evolves based on which stat is highest.",
+    "evolutionCost": "25 Tyrogue Candy. Tyrogue obtained from 5km eggs. Buddy 5km/candy.",
+    "shinyRate": "Light green shiny. Subtle."
+  },
+  {
+    "speciesId": 107,
+    "origin": "Hitmonchan is inspired by boxers and Jackie Chan. Its fists are like dynamite and can throw punches at supersonic speeds. Its name comes from 'hit' + 'mon' + 'chan' (Jackie Chan).",
+    "goRelevance": "A Fighting-type with Counter + Ice Punch + Thunder Punch. It offers excellent elemental coverage and is used in the Great League.",
+    "battleTip": "A Hitmonchan with Ice Punch + Thunder Punch + Fire Punch covers Flying, Water, Grass, Ice, and Steel-types. It is rare to have such wide coverage.",
+    "easterEgg": "Hitmonchan's bangs hide part of its face, inspired by the hairstyles of Japanese boxers.",
+    "goDifference": "In the main series, Hitmonchan can learn Bulk Up and Mach Punch. In GO, status moves like Bulk Up are less impactful.",
+    "evolutionCost": "25 Tyrogue Candy. Buddy distance is 5km per candy.",
+    "shinyRate": "Light green shiny."
+  },
+  {
+    "speciesId": 108,
+    "origin": "Lickitung is inspired by lizards and anteaters with long tongues. Its tongue is 2 meters long and can be used like a whip. It is sticky and flexible. Its name comes from 'lick' + 'tongue'.",
+    "goRelevance": "Common in urban areas. Lickitung evolves into Lickilicky (Gen 4) using a Sinnoh Stone. Lickilicky is a decent Normal-type for the Great League.",
+    "battleTip": "Lickilicky with Lick + Body Slam + Earthquake provides coverage against Steel, Fire, and Electric-types. Its 207 STA is quite high.",
+    "easterEgg": "In Pokémon Amie, Lickitung can be taught to 'lick' instead of walking as an animation. It is one of the strangest animations.",
+    "goDifference": "In the main series, Lickitung learns Rollout (a Rock-type move). In GO, Rollout exists as a Rock-type fast move.",
+    "evolutionCost": "50 Candy + Sinnoh Stone to evolve into Lickilicky. Buddy distance is 3km/candy.",
+    "shinyRate": "Light pink shiny."
+  },
+  {
+    "speciesId": 109,
+    "origin": "Koffing is inspired by toxic gases and pollution balloons. These spheres emerge from chemical waste and float. Its name comes from 'coffin' + 'fuming'.",
+    "goRelevance": "Common in urban and industrial areas. Weezing is a decent Poison-type. The Galarian variant (Fairy) is more widely used in PvP.",
+    "battleTip": "A Weezing with Tackle + Sludge Bomb + Dark Pulse provides coverage against Psychic-types that counter pure Poison-types.",
+    "easterEgg": "Koffing has been a Team Rocket Pokémon since the start. James and Meowth are also frequently defeated by it.",
+    "goDifference": "In the main series, Koffing can learn Self-Destruct and Explosion. In GO, these moves are not available to it.",
+    "evolutionCost": "50 candy to evolve into Weezing. Buddy distance is 3km/candy. Galarian Koffing: 50 candy to evolve into Galarian Weezing.",
+    "shinyRate": "Shiny is light blue. Shiny Weezing is blue."
+  },
+  {
+    "speciesId": 110,
+    "origin": "Weezing is the evolved form of Koffing—two Koffing joined together. Legend says Koffing rarely evolve naturally unless in highly polluted environments. Named after 'wheeze'. Galarian variant is Fairy-type.",
+    "goRelevance": "A decent Poison-type for PvP. Galarian Weezing (Fairy) is used for its unique Fairy/Poison typing—great against Dragon and Fighting types.",
+    "battleTip": "Galarian Weezing with Fairy Wind + Play Rough + Sludge Bomb provides coverage against Fighting, Dark, and Dragon-types.",
+    "easterEgg": "Galarian Weezing has chimneys that emit pink smoke—but the smoke is actually pollution turned into fairy energy. An environmental critique.",
+    "goDifference": "In the main series, Weezing learns Smokescreen (accuracy down). In GO, accuracy debuffs do not exist.",
+    "evolutionCost": "50 Koffing Candy. 3km per buddy candy.",
+    "shinyRate": "Blue shiny. Galarian Weezing shiny is dark blue."
+  },
+  {
+    "speciesId": 111,
+    "origin": "Rhyhorn is inspired by armored rhinoceroses. It has a tiny brain and acts on instinct. Its name combines 'rhino' and 'horn'.",
+    "goRelevance": "Common in dry and mountainous areas. Rhyperior (Gen 4) is Ground/Rock with 241 ATK and 224 DEF—a powerful offensive tank.",
+    "battleTip": "Rhyperior with Mud-Slap + Rock Wrecker + Earthquake is devastating. Rock Wrecker is an exclusive move (2021 CD). Beware of 4x weakness to Water and Grass.",
+    "easterEgg": "Rhyhorn can learn Horn Drill (OHKO move) in the main series. It is known for having one of the lowest intelligence stats of all Pokémon.",
+    "goDifference": "In the main series, Rhyhorn evolves at level 42. In GO, it costs 50 Candy to evolve into Rhydon.",
+    "evolutionCost": "50 Candy for Rhydon + 100 Candy + Sinnoh Stone for Rhyperior. Buddy distance is 3km/candy.",
+    "shinyRate": "Shiny is dark gray. Shiny Rhyperior is golden."
+  },
+  {
+    "speciesId": 112,
+    "origin": "Rhydon is the middle evolution of Rhyhorn. It can drill through rock with its horn. Its stone-like hide is nearly impenetrable. Name comes from 'rhino' + 'don' (lord).",
+    "goRelevance": "Stepping stone to Rhyperior. Rhydon can be used as a Ground/Rock attacker with Earthquake + Stone Edge, but Rhyperior is much better.",
+    "battleTip": "Rhydon with Mud-Slap + Earthquake + Surf provides coverage against Fire and Ground-types. Surf is rare coverage for a Rock/Ground type.",
+    "easterEgg": "Rhydon was the FIRST Pokémon ever created by Game Freak designers. It is Pokémon #001 in order of creation.",
+    "goDifference": "In the main series, Rhydon needs to be traded with a Protector to evolve. In GO, it costs 100 Candy + a Sinnoh Stone.",
+    "evolutionCost": "100 Candy + Sinnoh Stone to evolve into Rhyperior. Buddy distance: 3km/candy.",
+    "shinyRate": "Dark grey shiny."
+  },
+  {
+    "speciesId": 113,
+    "origin": "Chansey is inspired by Pokémon Center nurses and eggs. It carries an egg to share with those in need. Its name comes from 'chance' + 'sey' (from nurse).",
+    "goRelevance": "Rare. Blissey (Gen 2) has the highest STA in the game (496). The best gym defender in Pokémon GO. Put a Blissey in any gym and it's tough to take down.",
+    "battleTip": "Chansey has 487 STA, the second highest in the game (behind Blissey's 496). Blissey with Zen Headbutt + Dazzling Gleam + Psychic is the ultimate gym defender.",
+    "easterEgg": "Chansey is the Pokémon used by Nurse Joys in Pokémon Centers. Chansey's egg is highly nutritious and rejuvenating.",
+    "goDifference": "In the main series, Chansey needs friendship to evolve into Blissey. In GO, it costs 50 candy.",
+    "evolutionCost": "50 candy to evolve into Blissey. 5km buddy distance per candy. Rare—Chansey spawns are very limited.",
+    "shinyRate": "Shiny is light green. Shiny Blissey is also green."
+  },
+  {
+    "speciesId": 114,
+    "origin": "Tangela is inspired by seaweed and tangled vines. Blue vines cover its entire body, with only its red eyes visible. Its name comes from 'tangle'.",
+    "goRelevance": "Common near lakes. Evolves into Tangrowth (Gen 4) using 100 Candy + Ancient Power.",
+    "battleTip": "Tangrowth with Vine Whip + Power Whip + Rock Slide provides coverage against Fire and Flying-types. 183 ATK is decent for a Grass-type.",
+    "easterEgg": "Tangela's vines are extremely durable and can be used as ropes, but they release a sticky latex if broken.",
+    "goDifference": "In the main series, Tangela must learn Ancient Power and level up to evolve. In GO, it requires 100 Candy + Ancient Power.",
+    "evolutionCost": "100 Candy + must know Ancient Power to evolve into Tangrowth. Buddy distance: 3km/candy.",
+    "shinyRate": "Shiny is light purple. Shiny Tangrowth is bluish."
+  },
+  {
+    "speciesId": 115,
+    "origin": "Kangaskhan is inspired by kangaroos with joeys in their pouches. The baby fights alongside its mother without leaving the pouch. Its name combines 'kangaroo' and 'khan' (leader). Exclusive to raids in the Australasia region.",
+    "goRelevance": "Regional (Asia-Pacific). Normal-type with 181 ATK and 233 STA. It has a Mega Evolution with the Parental Bond ability that attacks twice.",
+    "battleTip": "Mega Kangaskhan with Mud-Slap + Power-Up Punch + Return is great for raids and PvP. Parental Bond makes every attack hit twice.",
+    "easterEgg": "Kangaskhan is one of the first regional Pokémon—in Pokémon GO, it is exclusive to certain parts of the world (Oceania).",
+    "goDifference": "In the main series, Kangaskhan Mega Evolves. In GO, Mega Kangaskhan was added and is one of the best Normal-types.",
+    "evolutionCost": "Does not evolve. Buddy 3km/candy. Kangaskhan's baby? The baby in the pouch never leaves—unlike Cubone, who loses its mother.",
+    "shinyRate": "Light green shiny. Mega Kangaskhan is bluish."
+  },
+  {
+    "speciesId": 116,
+    "origin": "Horsea is inspired by seahorses and sea dragons. It can shoot black ink to escape. Its name comes from 'horse' + 'sea'.",
+    "goRelevance": "Common in coastal areas. Kingdra (Gen 2) is Water/Dragon with excellent defensive typing (weak only to Dragon and Fairy).",
+    "battleTip": "Kingdra with Dragon Breath + Hydro Pump + Octazooka provides coverage against Steel and Fire-types. Water/Dragon is one of the best typings in the game.",
+    "easterEgg": "Horsea can shoot black ink to escape predators. It can also change color, much like a chameleon.",
+    "goDifference": "In the main series, Horsea evolves at level 32. In GO, it costs 50 Candy.",
+    "evolutionCost": "50 Candy for Seadra + 100 Candy + Dragon Scale for Kingdra. Buddy distance is 3km/candy.",
+    "shinyRate": "Shiny is light blue. Shiny Kingdra is purple."
+  },
+  {
+    "speciesId": 117,
+    "origin": "Seadra is the middle evolution of Horsea. It has poisonous spikes that cause paralysis. Its name comes from 'sea' + 'dragon' + 'adra' (hydra?).",
+    "goRelevance": "Stepping stone to Kingdra. Pure Seadra is rarely used — Kingdra is always preferred.",
+    "battleTip": "Seadra with Water Gun + Hydro Pump + Blizzard provides coverage against Grass and Dragon-types.",
+    "easterEgg": "Seadra is based on real-life poisonous seahorses. Seadra's spikes can cause dizziness.",
+    "goDifference": "In the main series, Seadra needs to be traded holding a Dragon Scale to evolve into Kingdra. In GO, it costs 100 candy + Dragon Scale.",
+    "evolutionCost": "100 candy + Dragon Scale for Kingdra. Buddy distance is 3km/candy.",
+    "shinyRate": "Light blue shiny."
+  },
+  {
+    "speciesId": 118,
+    "origin": "Goldeen is inspired by goldfish and ornamental carp. Its fins are elegant like fans. The horn on its head is used in mating rituals. Its name comes from 'gold' + 'deen' (possibly from 'queen' or royalty).",
+    "goRelevance": "Common in lakes and rivers with clean water. Seaking is a mid-tier Water-type that can run Poison Jab + Drill Run.",
+    "battleTip": "Seaking with Poison Jab + Drill Run + Megahorn provides coverage against Grass and Electric-types, a rare trait for a Water-type.",
+    "easterEgg": "In the anime, Goldeen was portrayed as a very elegant and graceful fish. Misty owned one that she used in beauty contests.",
+    "goDifference": "In the main series, Goldeen can learn Waterfall as an HM. In GO, Waterfall is a fast move that Goldeen can learn.",
+    "evolutionCost": "50 candy to evolve into Seaking. Buddy distance is 3km/candy.",
+    "shinyRate": "Shiny Goldeen is light pink. Shiny Seaking is olive green."
+  },
+  {
+    "speciesId": 119,
+    "origin": "Seaking is the evolved form of Goldeen. In autumn, its horn becomes more colorful to attract mates. Name comes from 'sea' + 'king'.",
+    "goRelevance": "Mid-tier Water-type with Poison Jab + Drill Run. Rarely used in serious battles.",
+    "battleTip": "Seaking with Megahorn surprises Grass-types. Bug-type coverage is rare among Water-types.",
+    "easterEgg": "Seaking can learn Water Pulse in the main series. It is known for having one of the widest move pools among Water-types in GO.",
+    "goDifference": "In the main series, Seaking learns Horn Drill (OHKO). In GO, OHKO moves do not exist.",
+    "evolutionCost": "50 Goldeen candy. Buddy 3km/candy.",
+    "shinyRate": "Olive green shiny."
+  },
+  {
+    "speciesId": 120,
+    "origin": "Staryu is inspired by starfish. If its body is cut, it regenerates. The jewel in the center is its vital organ. Its name comes from 'star' + 'yu' (from 'you'?).",
+    "goRelevance": "Common in coastal areas. Starmie is a Water/Psychic type with 210 ATK—great for raids and PvP. One of the best Gen 1 Water-types.",
+    "battleTip": "Starmie with Water Gun + Hydro Pump + Psychic covers Fighting and Poison-types. Fast and versatile.",
+    "easterEgg": "Staryu and Starmie share a starfish design and star symbol. The central jewel is a 'core' that glows in the dark.",
+    "goDifference": "In the main series, Staryu needs a Water Stone. In GO, it costs 50 candy to evolve into Starmie.",
+    "evolutionCost": "50 candy for Starmie. Buddy distance is 3km/candy.",
+    "shinyRate": "Shiny Staryu is light blue. Shiny Starmie is light purple."
+  },
+  {
+    "speciesId": 121,
+    "origin": "Starmie is the evolved form of Staryu. Its core glows in 7 different colors. Known for its speed and intelligence, its gems are used as expensive jewelry. Name comes from 'star' + 'mie' (from 'me').",
+    "goRelevance": "Versatile Water/Psychic type. Runs Water Gun + Hydro Pump + Psychic. Has 210 ATK and high speed. Good for raids and Great League.",
+    "battleTip": "Starmie with Thunderbolt covers against Water and Flying-types. Electric coverage is rare on Water-types.",
+    "easterEgg": "Starmie's gem is worth a lot of money. Legend says fishermen who find Starmie become rich by selling its gems.",
+    "goDifference": "In the main series, Starmie can learn Cosmic Power and Light Screen. In GO, defensive moves work differently.",
+    "evolutionCost": "50 Staryu candy. Buddy distance 3km/candy.",
+    "shinyRate": "Light purple shiny."
+  },
+  {
+    "speciesId": 122,
+    "origin": "Mr. Mime is inspired by mimes and street clowns. A master of mimicry, it can create invisible barriers. Name is 'mister' + 'mime'. Galarian variant is Ice/Psychic.",
+    "goRelevance": "Regional (Europe). Psychic/Fairy type with Confusion + Psychic + Shadow Ball. Mime Jr. (Gen 4) is obtained from eggs. Galarian Mr. Mime evolves into Mr. Rime.",
+    "battleTip": "Mr. Mime with Confusion + Psychic + Shadow Ball provides coverage against Ghost-types. Its 205 DEF is high, making it a solid Psychic tank.",
+    "easterEgg": "Mr. Mime is one of the few Pokémon with a gendered name ('Mr.') that can be female—a contradiction Game Freak has never explained.",
+    "goDifference": "In the main series, Mr. Mime learns Barrier and Light Screen. In GO, Barrier doesn't exist, so Mr. Mime uses Psychic as a charged move.",
+    "evolutionCost": "50 candy from Mime Jr. (5km egg). Mr. Mime does not evolve. Mr. Rime (Galar): 50 candy from Galarian Mr. Mime. 5km buddy distance per candy.",
+    "shinyRate": "Shiny is gray. Galarian Mr. Mime shiny is dark blue."
+  },
+  {
+    "speciesId": 123,
+    "origin": "Scyther is inspired by praying mantises and samurais. Its scythes can cut through thick trees. Name comes from 'scythe' + 'er' (agent).",
+    "goRelevance": "Common in grassy areas. Evolves into Scizor (Gen 2, Steel/Bug) with a Metal Coat. Scizor is one of the best Bug/Steel types in the game.",
+    "battleTip": "Scizor with Fury Cutter + Bullet Punch + Iron Head is great for raids and PvP. Resists 10 different types.",
+    "easterEgg": "Scyther is one of the few Pokémon that changes its typing upon evolution (Bug/Flying → Bug/Steel). It loses its 4x Rock weakness (4x → 2x).",
+    "goDifference": "In the main series, Scyther needs a Metal Coat via trade. In GO, it costs 50 Candy + Metal Coat.",
+    "evolutionCost": "50 Candy + Metal Coat for Scizor. Buddy 5km/candy. Mega Scizor: 200 Mega Energy.",
+    "shinyRate": "Light green Shiny. Shiny Scizor is also light green."
+  },
+  {
+    "speciesId": 124,
+    "origin": "Jynx is inspired by opera singers and divas. It wears a red dress and dances to hypnotize. Its name comes from 'jinx' (bad omen).",
+    "goRelevance": "Rare in icy areas. Ice/Psychic with Confusion + Psychic + Avalanche. Used in Dragon and Flying-type raids.",
+    "battleTip": "Jynx with Confusion + Avalanche + Psychic covers Fighting, Dragon, and Poison-types. High 223 ATK.",
+    "easterEgg": "Jynx was redesigned in 2002 after its original design (black skin, large lips) was accused of blackface. It now has purple skin.",
+    "goDifference": "In the main series, Jynx evolves from Smoochum (Gen 2). In GO, Smoochum hatches from 5km eggs and evolves with 25 candy.",
+    "evolutionCost": "25 Smoochum candy (5km egg). Buddy 5km/candy. Jynx does not evolve further.",
+    "shinyRate": "Light gray shiny. Very subtle."
+  },
+  {
+    "speciesId": 125,
+    "origin": "Electabuzz is inspired by electric demons and yetis. It generates static electricity that makes its fur stand on end. Its name combines 'electric' and 'buzz'.",
+    "goRelevance": "Common in urban areas. Electivire (Gen 4) is an Electric-type with Thunder Shock + Wild Charge + Ice Punch. Great for raids.",
+    "battleTip": "Electivire with Ice Punch provides coverage against Ground and Dragon-types—coverage a pure Electric-type lacks. Use it for versatility.",
+    "easterEgg": "Electabuzz appears near power distribution centers. If the power goes out near a substation, an Electabuzz might be nearby.",
+    "goDifference": "In the main series, Electabuzz requires a trade with an Electirizer. In GO, it costs 100 candy + a Sinnoh Stone to evolve into Electivire.",
+    "evolutionCost": "25 candy from Elekid (5km egg) + 100 candy + Sinnoh Stone for Electivire. Buddy distance is 5km/candy.",
+    "shinyRate": "Shiny is golden. Shiny Electivire is a darker gold."
+  },
+  {
+    "speciesId": 126,
+    "origin": "Magmar is inspired by fire demons and salamanders. Its body temperature is 1200 degrees, causing the surrounding air to shimmer with heat. Its name comes from 'magma' + 'mar' (possibly from 'mare'—pool?).",
+    "goRelevance": "Common in volcanic areas. Magmortar (Gen 4) is a Fire-type with access to Fire Spin + Fire Punch + Thunderbolt.",
+    "battleTip": "Magmortar with Thunderbolt provides coverage against Water-types. Electric-type coverage is rare for Fire-types.",
+    "easterEgg": "Magmar appears in the anime as the Pokémon that burned a character's father's face. A serious scene that became a meme years later.",
+    "goDifference": "In the main series, Magmar requires a trade with a Magmarizer. In GO, it costs 100 Candy + a Sinnoh Stone to evolve into Magmortar.",
+    "evolutionCost": "25 Candy from Magby (5km egg) + 100 Candy + Sinnoh Stone for Magmortar. Buddy distance is 5km/candy.",
+    "shinyRate": "Light pink shiny. Shiny Magmortar is also pink."
+  },
+  {
+    "speciesId": 127,
+    "origin": "Pinsir is inspired by beetles and stag beetles. Its pincers are strong enough to cut through logs. The name comes from 'pincer' + 'sir'.",
+    "goRelevance": "Common in grassy areas. A Bug-type with Fury Cutter + Close Combat + X-Scissor. Mega Pinsir (Bug/Flying) is superior.",
+    "battleTip": "Mega Pinsir with Fury Cutter + Close Combat + X-Scissor provides coverage against Steel and Rock-types. Mega ATK is 305.",
+    "easterEgg": "Pinsir and Heracross are the beetle 'rivals'—one is pure Bug, the other Bug/Fighting. Pinsir is region-exclusive in some areas.",
+    "goDifference": "In the main series, Pinsir can learn Guillotine (OHKO). In GO, there are no OHKO moves.",
+    "evolutionCost": "Does not evolve. Buddy 3km/candy. Mega Pinsir: 200 Mega Energy.",
+    "shinyRate": "Dark blue shiny. Mega Pinsir shiny is also blue."
+  },
+  {
+    "speciesId": 128,
+    "origin": "Tauros is inspired by bulls. It runs in herds and is very aggressive. Its name comes from 'tauros' (bull in Greek/Latin). Paldean regional variants exist (3 forms: Fighting, Dark, Water).",
+    "goRelevance": "North American regional. Normal-type with 198 ATK and 183 DEF. Decent for Great League with Body Slam + Earthquake.",
+    "battleTip": "Tauros with Body Slam + Earthquake provides coverage against Steel and Rock-types. Body Slam is one of the best Normal-type charged moves.",
+    "easterEgg": "Tauros is a North American exclusive regional in Pokémon GO. Paldean variants are found in other regions.",
+    "goDifference": "In the main series, Tauros can learn Thrash naturally. In GO, Thrash does not exist as a move.",
+    "evolutionCost": "Does not evolve. 3km buddy distance per candy.",
+    "shinyRate": "Light blue shiny. Shiny variants of the Paldean forms are also available."
+  },
+  {
+    "speciesId": 129,
+    "origin": "Magikarp is inspired by common carp. It is famous for being useless in battle, only learning Splash. Its story of a 'small fish becoming a dragon' comes from Chinese folklore. Its name is 'magic' + 'carp'.",
+    "goRelevance": "Extremely common near water. Gyarados is one of the strongest Water/Flying types. Magikarp is required to complete the 'Evolve a Magikarp' quest (400 candy).",
+    "battleTip": "Magikarp is useless. It only exists to evolve into Gyarados (400 candy). Do not use Magikarp in battle under any circumstances.",
+    "easterEgg": "Magikarp is based on the Chinese legend that carp jumping over the 'Dragon Gate' become dragons. The proof? Magikarp → Gyarados (Water/Dragon? No, Water/Flying).",
+    "goDifference": "In the main series, Magikarp only learns Splash (no effect). In GO, Splash is an actual fast move! It deals 0 damage.",
+    "evolutionCost": "400 candy to evolve into Gyarados. Buddy distance is 1km/candy. It is the most expensive evolution in the game in terms of candy.",
+    "shinyRate": "Shiny is a bright gold. Shiny Gyarados is RED—one of the best-looking ones."
+  },
+  {
+    "speciesId": 130,
+    "origin": "Gyarados is the evolved form of Magikarp. Inspired by the Chinese legend of carp turning into dragons. It has a destructive temperament and terrorizes coastal cities. Name comes from 'gyrate' + 'rados' (?).",
+    "goRelevance": "Water/Flying with 237 ATK and 186 DEF. Dragon Breath + Aqua Tail + Crunch. Top-tier for Master League and raids. Mega Gyarados (Dark) is excellent.",
+    "battleTip": "Gyarados with Dragon Breath + Aqua Tail + Crunch provides coverage against Dragon, Ghost, and Psychic-types. Mega Gyarados (Dark) offers even better coverage.",
+    "easterEgg": "Gyarados is NOT a Dragon-type; it is Water/Flying. The biggest typing expectation error in history. It should have been Water/Dragon.",
+    "goDifference": "In the main series, Gyarados mega evolves into Dark-type Mega Gyarados. In GO, Mega Gyarados is Dark/Water, making it great for Psychic and Ghost raids.",
+    "evolutionCost": "400 Magikarp candy. 1km/candy buddy distance. 296 XL candy to max out. Mega Gyarados: 200 Mega Energy.",
+    "shinyRate": "VIBRANT RED shiny. Extremely popular. The red shiny Gyarados is one of the most famous in the franchise."
+  },
+  {
+    "speciesId": 131,
+    "origin": "Lapras is inspired by plesiosaurs and the Loch Ness Monster. It has a blue shell and sings melodies that calm the sea. Its name comes from 'la' (musical note) + 'pras' (?).",
+    "goRelevance": "Rare in icy areas. Water/Ice type with Ice Shard + Surf + Ice Beam. Great for Dragon-type raids. High STA of 277.",
+    "battleTip": "Lapras is a Water/Ice tank. Ice Shard + Surf + Ice Beam provides coverage against Dragon, Grass, and Ground types. Good for Master League.",
+    "easterEgg": "Lapras is the inspiration for the Loch Ness Monster. In the anime, Ash helped a child reunite a Lapras with its family.",
+    "goDifference": "In the main series, Lapras can learn Perish Song (all faint in 3 turns). In GO, Perish Song does not exist.",
+    "evolutionCost": "Does not evolve. 5km buddy distance per candy. Rare—appears in 3-star raids and 10km eggs.",
+    "shinyRate": "Light purple shiny. Very beautiful."
+  },
+  {
+    "speciesId": 132,
+    "origin": "Ditto is inspired by modeling clay and amoebas. It can transform into ANY Pokémon by copying its DNA. Its name comes from 'ditto' (the same).",
+    "goRelevance": "Rare—disguised as other Pokémon on the map. Essential for trading shiny Legendary Pokémon and for breeding in the main series games.",
+    "battleTip": "Ditto's Transform copies the opponent's moves and stats. It is only useful if the opponent is strong; against weak opponents, Ditto is also weak.",
+    "easterEgg": "Ditto can be found disguised as other Pokémon in Pokémon GO. Suspicious appearances of an 'unusual' Pokémon might be Ditto.",
+    "goDifference": "In the main series, Ditto is essential for breeding. In GO, breeding does not exist. Ditto is used to Transform in raids.",
+    "evolutionCost": "Does not evolve. Buddy 3km/candy. Cannot be found as shiny in GO (though shiny exists in the main series).",
+    "shinyRate": "Light blue shiny. In GO, it is NOT available as a shiny (currently)."
+  },
+  {
+    "speciesId": 133,
+    "origin": "Eevee is inspired by foxes and rabbits. It is genetically unstable, allowing for multiple evolutions. Its name comes from 'eev' (from 'evolution') + 'ee'. The most versatile Pokémon in the franchise.",
+    "goRelevance": "Relatively common. It has 8 possible evolutions (Vaporeon, Jolteon, Flareon, Espeon, Umbreon, Leafeon, Glaceon, Sylveon), each with a different typing.",
+    "battleTip": "Each Eeveelution serves a different purpose: Vaporeon (Water tank), Jolteon (Electric ATK), Umbreon (Dark PvP tank), Sylveon (Fairy DPS). Choose based on your needs.",
+    "easterEgg": "Eevee is the only Pokémon with 8 evolutions. No other Pokémon has as many evolutionary options. It is the absolute record holder.",
+    "goDifference": "In the main series, Eevee evolves via elemental stones, friendship, or location. In GO, it requires 25 Candy plus a specific name or Lure Module.",
+    "evolutionCost": "25 Candy for any Eeveelution. Buddy distance is 3km/candy. For Espeon/Umbreon: walk 10km together and evolve during the day/night.",
+    "shinyRate": "Shiny is light gray. Each shiny Eeveelution has a different color and all are highly sought after."
+  },
+  {
+    "speciesId": 134,
+    "origin": "Vaporeon is Eevee's Water-type evolution. Composed mostly of water, it can melt into bodies of water. Its name combines 'vapor' and 'eon' (the Eeveelution suffix).",
+    "goRelevance": "A Water-type with 205 ATK and 277 STA—a massive HP pool. Runs Water Gun + Aqua Tail + Hydro Pump. Great for raids and PvP.",
+    "battleTip": "With 277 STA, Vaporeon is a great Water tank. Aqua Tail generates energy faster than Hydro Pump. Use it in Master League.",
+    "easterEgg": "Vaporeon was the subject of one of the most widespread and inappropriate memes in the Pokémon community (Do not search).",
+    "goDifference": "In the main series, Vaporeon can learn Acid Armor (raises DEF). In GO, Acid Armor does not exist.",
+    "evolutionCost": "25 Eevee Candy. 3km buddy distance per candy.",
+    "shinyRate": "Shiny Vaporeon is light purple with lilac tones."
+  },
+  {
+    "speciesId": 135,
+    "origin": "Jolteon is Eevee's Electric-type evolution. Its fur accumulates electric charges, and its hairs act like needles that discharge electricity. Name comes from 'jolt' + 'eon'.",
+    "goRelevance": "Electric-type with 232 ATK. Runs Thunder Shock + Thunderbolt + Volt Switch. Good DPS against Water and Flying-types.",
+    "battleTip": "Jolteon has a high 232 ATK, making it one of the most offensive Electric-types. However, its 182 DEF and 163 STA make it fragile. It generates energy very quickly with Thunder Shock.",
+    "easterEgg": "Jolteon is a fan favorite for its 'spiky animal' design—a fox covered in electric quills.",
+    "goDifference": "In the main series, Jolteon can learn Pin Missile and Agility. In GO, Pin Missile exists but isn't top-tier.",
+    "evolutionCost": "25 Eevee candy. Buddy distance is 3km/candy.",
+    "shinyRate": "Shiny Eevee is light green. Shiny Jolteon is neon yellow."
+  },
+  {
+    "speciesId": 136,
+    "origin": "Flareon is Eevee's Fire-type evolution. It stores flames in an internal pouch and releases them through its mouth. Name comes from 'flare' + 'eon'.",
+    "goRelevance": "Fire-type with 246 ATK—VERY high. Fire Spin + Flamethrower + Overheat. Good DPS for Steel and Ice raids.",
+    "battleTip": "Flareon has 246 ATK, the highest among Eeveelutions. Fire Spin + Overheat deals massive damage. But Overheat drops ATK—get a second charged move.",
+    "easterEgg": "Flareon is the 'poor cousin' of the Eeveelutions in GO due to its limited moveset compared to other Fire-types.",
+    "goDifference": "In the main series, Flareon can learn Will-O-Wisp and Fire Fang. In GO, Fire Fang is the strongest Fire-type fast move.",
+    "evolutionCost": "25 Eevee candy. Buddy 3km/candy.",
+    "shinyRate": "Light orange shiny. Subtle."
+  },
+  {
+    "speciesId": 137,
+    "origin": "Porygon is an artificial Pokémon made of data and code. Created by scientists as a digital Pokémon prototype, it can inhabit cyberspace. Its name comes from 'polygon' + 'ory' (likely from 'laboratory').",
+    "goRelevance": "Rare. Evolves into Porygon2 (Gen 2) with an Up-Grade and Porygon-Z (Gen 4) with a Sinnoh Stone + Dubious Disc. Porygon-Z is a Normal-type with 264 ATK.",
+    "battleTip": "Porygon-Z with Lock-On + Zap Cannon is a devastating combo; Lock-On ensures Zap Cannon hits. Porygon2 with Tri Attack + Discharge is a great tank.",
+    "easterEgg": "Porygon is INFAMOUS for causing epileptic seizures in the 'Dennō Senshi Porygon' episode in Japan, hospitalizing 685 children. The episode never aired again.",
+    "goDifference": "In the main series, Porygon requires an Up-Grade and Dubious Disc (via trade). In GO, it costs 25 + 100 + 100 candies, a Sinnoh Stone, and an Up-Grade/Dubious Disc.",
+    "evolutionCost": "25 candies + Up-Grade for Porygon2, then 100 candies + Sinnoh Stone + Dubious Disc for Porygon-Z. Buddy distance: 3km/candy.",
+    "shinyRate": "Shiny is dark blue. Shiny Porygon-Z is purple."
+  },
+  {
+    "speciesId": 138,
+    "origin": "Omanyte is inspired by fossil ammonites. It is a Fossil Pokémon revived from a Helix Fossil. Its name comes from 'ammonite' + 'nyte' (possibly from 'night').",
+    "goRelevance": "Obtained from fossils (Helix Fossil). Omastar is Rock/Water with 207 ATK and 201 DEF. Used in Great League PvP.",
+    "battleTip": "Omastar with Mud Shot + Rock Slide + Hydro Pump provides coverage against Fire and Rock-types. Rock Slide is a high energy-generating move.",
+    "easterEgg": "Omanyte (and the Helix Fossil) became the center of a legend in Twitch Plays Pokémon—the 'Helix Fossil' was worshipped as a deity.",
+    "goDifference": "In the main series, Omanyte is revived from a fossil. In GO, it is obtained from 7km eggs, raids, and field research.",
+    "evolutionCost": "50 candy to evolve into Omastar. Buddy distance is 5km/candy.",
+    "shinyRate": "Shiny is light blue. Shiny Omastar is purple."
+  },
+  {
+    "speciesId": 139,
+    "origin": "Omastar is the evolved form of Omanyte. It used its tentacles to capture prey and went extinct because its shell became too heavy. The name comes from 'Oma' + 'star'.",
+    "goRelevance": "Rock/Water type with 207 ATK and 201 DEF—balanced stats. Runs Mud Shot + Rock Slide + Hydro Pump. Used in Great League.",
+    "battleTip": "Omastar with the legacy move Rock Throw + Rock Slide is better than Mud Shot. If you have one with Rock Throw, keep it.",
+    "easterEgg": "Omastar went extinct because of its own shell; it became so heavy that it could no longer move. An evolutionary self-destruction.",
+    "goDifference": "In the main series, Omastar can learn Spike Cannon (an exclusive move). In GO, it does not have Spike Cannon.",
+    "evolutionCost": "50 Omanyte candy. 5km buddy distance per candy.",
+    "shinyRate": "Dark purple shiny."
+  },
+  {
+    "speciesId": 140,
+    "origin": "Kabuto is inspired by trilobite fossils and horseshoe crabs. Revived from a Dome Fossil. Its eyes glow in the dark. 'Kabuto' is Japanese for samurai helmet.",
+    "goRelevance": "Obtained from Dome Fossils. Kabutops is a Rock/Water type with 220 ATK and 186 DEF. Decent for raids and the Great League.",
+    "battleTip": "Kabutops with Fury Cutter + Aqua Tail + Rock Slide covers Fire and Rock types. Fury Cutter generates energy very quickly.",
+    "easterEgg": "Kabutops is one of the oldest fossil Pokemon, based on trilobites that lived 500 million years ago.",
+    "goDifference": "In the main series, Kabuto is revived from a fossil. In GO, it comes from 7km eggs and raids.",
+    "evolutionCost": "50 candy to evolve into Kabutops. Buddy distance is 5km/candy.",
+    "shinyRate": "Shiny is light pink. Shiny Kabutops is gold."
+  },
+  {
+    "speciesId": 141,
+    "origin": "Kabutops is the evolved form of Kabuto. Its arm blades act like scythes. It hunted prey in the water. Name comes from 'kabuto' + 'tops' (top/end).",
+    "goRelevance": "Rock/Water type with 220 ATK. Runs Fury Cutter + Aqua Tail + Rock Slide. Decent for PvP due to fast energy generation.",
+    "battleTip": "Kabutops with the legacy move Mud Shot + Stone Edge was much better. If you have one with Mud Shot, it is valuable.",
+    "easterEgg": "Kabutops looks like a living fossilized skeleton. Legend says Kabutops was an inspiration for Scyther's design.",
+    "goDifference": "In the main series, Kabutops can learn Slash and Swords Dance. In GO, Swords Dance is a buff move that Kabutops cannot access.",
+    "evolutionCost": "50 Kabuto Candy. 5km buddy distance per candy.",
+    "shinyRate": "Golden shiny."
+  },
+  {
+    "speciesId": 142,
+    "origin": "Aerodactyl is inspired by pterodactyls and pterosaurs. It is a fossil Pokémon revived from Old Amber. Its bite is powerful enough to crush rocks. Its name comes from 'aero' (air) + 'dactyl' (finger, from pterodactyl).",
+    "goRelevance": "Rock/Flying with 221 ATK. Rock Throw + Rock Slide + Iron Head. It has a Mega Evolution (Rock/Flying) that is excellent for raids. A great counter for Flying and Ice-types.",
+    "battleTip": "Mega Aerodactyl with Rock Throw + Rock Slide + Earth Power is top-tier for raids. Its typing is aggressive and covers against Psychic and Ghost types.",
+    "easterEgg": "Aerodactyl is revived from Old Amber—unlike other fossils which are shells or bones. The amber preserved its DNA.",
+    "goDifference": "In the main series, Aerodactyl mega evolves. In GO, Mega Aerodactyl is one of the best Rock-types.",
+    "evolutionCost": "Does not evolve. 5km buddy distance/candy. Obtained from 7km eggs, 3-star raids, and field research. Mega Aerodactyl: 200 Mega Energy.",
+    "shinyRate": "Shiny is light pink. Mega Aerodactyl shiny is wine-colored."
+  },
+  {
+    "speciesId": 143,
+    "origin": "Snorlax is inspired by hibernating bears and sumo wrestlers. It sleeps constantly, waking only to eat (450kg of food daily). Name comes from 'snore' + 'lax' (relaxed).",
+    "goRelevance": "Rare. Normal-type with 330 STA — the highest among non-evolutions. Lick + Body Slam + Earthquake. Mega Snorlax is top-tier. Excellent gym defender.",
+    "battleTip": "Snorlax with Lick + Body Slam (Legacy) + Superpower is top-tier in Master League. Body Slam provides constant pressure. Superpower covers Steel-types.",
+    "easterEgg": "Snorlax blocks paths in the main series games (the famous 'Snorlax blocking the road'). Requires a Poke Flute to wake up.",
+    "goDifference": "In the main series, Snorlax can Mega Evolve. In GO, Mega Snorlax has massive STA and is a great tank.",
+    "evolutionCost": "25 candy from Munchlax (5km egg). 5km/candy buddy distance. 296 XL candy to max Snorlax to level 50.",
+    "shinyRate": "Dark blue shiny. Shiny Munchlax is blue."
+  },
+  {
+    "speciesId": 144,
+    "origin": "Articuno is inspired by mythological ice phoenixes and arctic birds. It freezes moisture in the air as it flies. Its name combines 'arctic' and 'uno' (Spanish for one). One of the three legendary birds.",
+    "goRelevance": "Legendary. Ice/Flying type with Ice Shard + Ice Beam + Hurricane. Great for Dragon and Flying-type raids. Galarian Articuno (Psychic/Flying) is a different form.",
+    "battleTip": "Articuno with Icy Wind is a great PvP debuffer, lowering the opponent's ATK. Galarian Articuno is rare and only found via Daily Adventure Incense.",
+    "easterEgg": "Articuno is the first legendary Pokémon Ash encounters in the anime (at Seafoam Islands). It remains one of the most iconic scenes.",
+    "goDifference": "In the main series, Articuno can learn Sheer Cold (OHKO). In GO, there is no similar OHKO move.",
+    "evolutionCost": "Does not evolve. Buddy distance: 20km/candy. Appears in 5-star raids (rotation). XL candy: 296 to max out.",
+    "shinyRate": "Shiny is dark purple. Galarian Articuno shiny is light purple."
+  },
+  {
+    "speciesId": 145,
+    "origin": "Zapdos is inspired by Native American thunderbird mythology. Its wings generate lightning when flapped. Name comes from 'zap' + 'dos' (two). The second of the three legendary birds.",
+    "goRelevance": "Legendary. Electric/Flying with Thunder Shock + Thunderbolt + Drill Peck. ATK 253 — very high. Galarian Zapdos (Fighting/Flying) is a battle regional.",
+    "battleTip": "Zapdos with Thunder Shock + Thunderbolt + Drill Peck covers Grass and Fighting-types. Galarian Zapdos is Fighting/Flying and purely melee.",
+    "easterEgg": "Zapdos is considered the strongest of the three Kanto legendary birds due to its typing coverage and high ATK.",
+    "goDifference": "In the main series, Zapdos can learn Light Screen and Rain Dance. In GO, weather moves are not implemented the same way.",
+    "evolutionCost": "Does not evolve. Buddy 20km/candy. 5-star raids. Galarian Zapdos: Daily Adventure Incense (very low catch rate, flees).",
+    "shinyRate": "Light gold shiny. Galarian Zapdos is dark gold shiny."
+  },
+  {
+    "speciesId": 146,
+    "origin": "Moltres is inspired by the mythological Phoenix. It is reborn from ashes upon death. Its flames are hot enough to melt rock. Its name combines 'molten' and 'tres' (three).",
+    "goRelevance": "Legendary. Fire/Flying with Fire Spin + Sky Attack + Overheat. 251 ATK. Galarian Moltres (Dark/Flying) is a top-tier Dark-type for PvP.",
+    "battleTip": "Moltres with Sky Attack provides coverage against Rock and Water-types. Galarian Moltres with Snarl + Fiery Wrath + Brave Bird is top-tier in Ultra League.",
+    "easterEgg": "Moltres is reborn from ashes when injured—a clear reference to the Phoenix. The name 'Moltres' combines 'molten' with 'tres'.",
+    "goDifference": "In the main series, Moltres can learn Sunny Day and Will-O-Wisp. In GO, Sunny Day does not exist as a move.",
+    "evolutionCost": "Does not evolve. 20km buddy distance per candy. Found in 5-star raids. Galarian Moltres: Daily Adventure Incense (flees).",
+    "shinyRate": "Shiny is light orange. Galarian Moltres shiny is dark purple."
+  },
+  {
+    "speciesId": 147,
+    "origin": "Dratini is inspired by mythological dragons and sea serpents. It is called the 'Mirage Pokémon' due to being rare and elusive. Its name comes from 'dragon' + 'tiny'.",
+    "goRelevance": "Rare near water. Dragonite is Dragon/Flying with a massive 263 ATK. Runs Dragon Tail + Draco Meteor + Superpower. One of the best Dragons.",
+    "battleTip": "Dragonite with Dragon Breath + Dragon Claw + Superpower is versatile. Dragon Claw has a low energy cost. Superpower provides coverage against Steel-types.",
+    "easterEgg": "Dratini was so rare in the original games that it was sold for real money on auction sites. One of the first highly coveted 'shinies'.",
+    "goDifference": "In the main series, Dratini is caught by fishing with a Super Rod. In GO, it spawns near water but remains rare.",
+    "evolutionCost": "25 candy for Dragonair + 100 candy for Dragonite = 125 total. Buddy distance is 5km/candy.",
+    "shinyRate": "Shiny is light pink. Shiny Dragonite is green."
+  },
+  {
+    "speciesId": 148,
+    "origin": "Dragonair is the middle evolution of Dratini. It has a mystical aura and can control the weather. The blue orbs on its body contain draconic energy. Its name comes from 'dragon' + 'air'.",
+    "goRelevance": "A stepping stone to Dragonite. Rarely used on its own, but popular for its beauty. Dragonair is one of the most beloved designs.",
+    "battleTip": "Dragonair is statistically inferior to Dragonite. Always evolve it into Dragonite if you can.",
+    "easterEgg": "Dragonair is often considered the most beautiful middle-evolution design. Many fans prefer Dragonair's appearance over Dragonite's.",
+    "goDifference": "In the main series, Dragonair can learn Water Pulse naturally. In GO, Water Pulse is a charged move that Dragonair has access to.",
+    "evolutionCost": "100 candy to evolve into Dragonite. Buddy distance is 5km/candy.",
+    "shinyRate": "Light pink shiny."
+  },
+  {
+    "speciesId": 149,
+    "origin": "Dragonite is the final form of Dratini. Inspired by European dragons. Despite its friendly look, it is extremely powerful. Is the name 'dragon' + 'knight', or 'nite' for night?",
+    "goRelevance": "Dragon/Flying with 263 ATK. Dragon Breath + Dragon Claw + Superpower. Top-tier for Master League and raids. The best Dragon for versatility.",
+    "battleTip": "Dragonite with Draco Meteor + Dragon Claw is a classic combo. Use Draco Meteor to nuke, Dragon Claw for pressure. Watch out for Ice-types—they deal 4x damage.",
+    "easterEgg": "Dragonite is friendly and saves shipwrecked sailors. Its strength is legendary—it can fly around the world in 16 hours.",
+    "goDifference": "In the main series, Dragonite learns Hyper Beam and Fly. In GO, Hyper Beam is Normal-type; Draco Meteor is better for Dragon STAB.",
+    "evolutionCost": "100 Candy from Dragonair. Buddy distance is 5km/candy. Needs 296 XL Candy to max out to level 50.",
+    "shinyRate": "Shiny Dratini is light green. Shiny Dragonite is dark green."
+  },
+  {
+    "speciesId": 150,
+    "origin": "Mewtwo is inspired by genetic experiments and the movie 'Alien'. It was cloned from Mew in a lab. It is the most powerful Pokémon from Kanto. Its name comes from 'mew' (cat sound) + 'two'.",
+    "goRelevance": "Legendary. Psychic-type with 300 ATK — the highest in Gen 1. Best moves: Confusion + Psychic + Shadow Ball. Two Mega Evolutions: Mega X (Psychic/Fighting) and Mega Y (Psychic).",
+    "battleTip": "Mewtwo with Psycho Cut + Psystrike (Legacy) is the best set. Psystrike is a powerful exclusive move. Mega Mewtwo Y has 392 ATK — the highest in the game.",
+    "easterEgg": "Mewtwo is one of the few Pokémon with TWO Mega Evolutions. Mega X is Fighting/Psychic, while Mega Y is pure Psychic with maximum ATK.",
+    "goDifference": "In the main series, Mewtwo is found in Cerulean Cave. In GO, it appears in EX Raids and 5-star raids on special rotation.",
+    "evolutionCost": "Does not evolve. Buddy 20km/candy. 296 XL candy to max out. Mega Mewtwo: 200 Mega Energy per form.",
+    "shinyRate": "Light green shiny. Subtle but highly coveted."
+  },
+  {
+    "speciesId": 151,
+    "origin": "Mew is inspired by the mythical creature containing the DNA of all Pokémon. It is pink, feline, and floats. It was discovered in South America. Named 'Mew' after the sound a cat makes.",
+    "goRelevance": "Mythical. Psychic-type with 210 ATK and 210 DEF—perfectly balanced stats. Shadow Claw + Psychic + Ice Beam or Surf. Extremely versatile.",
+    "battleTip": "Mew is the most versatile Pokémon in GO—it can learn dozens of different Charged Moves. Shadow Claw + Wild Charge + Flamethrower is a popular combo.",
+    "easterEgg": "Mew was such a well-kept secret in the original games that Nintendo denied its existence. It was only discovered via glitches (Mew Truck, Mew glitch).",
+    "goDifference": "In the main series, Mew is obtained via special events. In GO, it was distributed through Special Research (A Mythical Discovery) and events.",
+    "evolutionCost": "Does not evolve. 20km buddy distance per candy. 296 XL Candy to max out. Cannot be placed in Gyms.",
+    "shinyRate": "Light blue Shiny. EXTREMELY rare—only appeared in special GO events."
+  }
+]

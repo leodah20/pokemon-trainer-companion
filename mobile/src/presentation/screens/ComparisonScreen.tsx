@@ -37,7 +37,12 @@ function SpeciesSlot({ label, species, onSelect, onClear }: SpeciesSlotProps): R
     return (
       <View style={styles.slot}>
         <Text style={styles.slotLabel}>{label}</Text>
-        <Pressable style={styles.selectedRow} onPress={onClear}>
+        <Pressable
+          style={styles.selectedRow}
+          onPress={onClear}
+          accessibilityRole="button"
+          accessibilityLabel={`${label}: ${species.name}. ${t('common.change')}`}
+        >
           <Image source={{ uri: getSpriteUrl(species.id) }} style={styles.selectedSprite} resizeMode="contain" />
           <View style={styles.selectedInfo}>
             <Text style={styles.selectedName}>{species.name}</Text>
@@ -62,6 +67,7 @@ function SpeciesSlot({ label, species, onSelect, onClear }: SpeciesSlotProps): R
         placeholderTextColor={COLORS.textMuted}
         value={query}
         onChangeText={setQuery}
+        accessibilityLabel={label}
       />
       {results.length > 0 && (
         <View style={styles.resultsList}>
@@ -73,6 +79,8 @@ function SpeciesSlot({ label, species, onSelect, onClear }: SpeciesSlotProps): R
                 onSelect(result);
                 setQuery('');
               }}
+              accessibilityRole="button"
+              accessibilityLabel={result.name}
             >
               <Image source={{ uri: getSpriteUrl(result.id) }} style={styles.resultSprite} resizeMode="contain" />
               <Text style={styles.resultName}>{result.name}</Text>

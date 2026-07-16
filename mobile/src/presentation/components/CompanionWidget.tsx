@@ -18,7 +18,7 @@ import { getLoreWithFallback } from '../../data/lore/loreRepository';
 import { CompanionApiError, fetchCompanionSuggestion } from '../../data/companion/companionApiClient';
 import { PokemonSpecies } from '../../domain/pokemon-species';
 import { COLORS, DISPLAY_FONT, FONT_SIZE, RADIUS, SHADOW, SPACING } from '../theme';
-import { useTranslation } from '../../i18n';
+import { useTranslation, SupportedLanguage, TranslationKeys } from '../../i18n';
 
 const DEFAULT_COMPANION_ID = 25; // Pikachu — the iconic "pick a buddy" default
 const BOUNCE_DISTANCE = 7;
@@ -33,13 +33,17 @@ interface DialogueEntry {
   text: string;
 }
 
-function buildDialogue(species: PokemonSpecies): DialogueEntry[] {
-  const lore = getLoreWithFallback(species);
+function buildDialogue(
+  species: PokemonSpecies,
+  language: SupportedLanguage,
+  t: (key: keyof TranslationKeys) => string,
+): DialogueEntry[] {
+  const lore = getLoreWithFallback(species, language);
   return [
-    { label: 'About', text: lore.origin },
-    { label: 'In GO', text: lore.goRelevance },
-    { label: 'Battle tip', text: lore.battleTip },
-    { label: 'Fun fact', text: lore.easterEgg },
+    { label: t('companion.dialogueAbout'), text: lore.origin },
+    { label: t('companion.dialogueInGo'), text: lore.goRelevance },
+    { label: t('companion.dialogueBattleTip'), text: lore.battleTip },
+    { label: t('companion.dialogueFunFact'), text: lore.easterEgg },
   ].filter((entry) => entry.text.trim().length > 0);
 }
 
@@ -53,7 +57,7 @@ function buildDialogue(species: PokemonSpecies): DialogueEntry[] {
  * LLM + scraped knowledge base was scoped as a separate, later decision (cost, ToS, privacy).
  */
 export function CompanionWidget(): React.JSX.Element {
-  const { t } = useTranslation();
+  const { t, language } = useTranslation();
   const insets = useSafeAreaInsets();
   const [speciesId, setSpeciesId] = useState(DEFAULT_COMPANION_ID);
   const [bubbleVisible, setBubbleVisible] = useState(false);
@@ -103,10 +107,13 @@ export function CompanionWidget(): React.JSX.Element {
   const [aiError, setAiError] = useState<string | null>(null);
 
   const species = getSpeciesById(speciesId);
-  const baseDialogue = useMemo(() => (species ? buildDialogue(species) : []), [species]);
+  const baseDialogue = useMemo(
+    () => (species ? buildDialogue(species, language, t) : []),
+    [species, language, t],
+  );
   const dialogue = useMemo(
-    () => (aiText ? [...baseDialogue, { label: '✨ AI Tip', text: aiText }] : baseDialogue),
-    [baseDialogue, aiText],
+    () => (aiText ? [...baseDialogue, { label: t('companion.dialogueAiTip'), text: aiText }] : baseDialogue),
+    [baseDialogue, aiText, t],
   );
   const currentLine = dialogue[dialogueIndex] ?? null;
 
@@ -172,10 +179,21 @@ export function CompanionWidget(): React.JSX.Element {
   return (
     <Animated.View style={[styles.wrapper, { transform: pan.getTranslateTransform() }]}>
       {bubbleVisible && currentLine && (
-        <Pressable style={styles.bubble} onPress={handleNextLine}>
+        <Pressable
+          style={styles.bubble}
+          onPress={handleNextLine}
+          accessibilityRole="button"
+          accessibilityLabel={currentLine.label}
+          accessibilityHint={currentLine.text}
+        >
           <View style={styles.bubbleHeaderRow}>
             <Text style={styles.bubbleLabel}>{currentLine.label.toUpperCase()}</Text>
-            <Pressable hitSlop={12} onPress={() => setBubbleVisible(false)}>
+            <Pressable
+              hitSlop={12}
+              onPress={() => setBubbleVisible(false)}
+              accessibilityRole="button"
+              accessibilityLabel={t('common.close')}
+            >
               <Text style={styles.bubbleClose}>×</Text>
             </Pressable>
           </View>
@@ -195,6 +213,8 @@ export function CompanionWidget(): React.JSX.Element {
               handleAskAi();
             }}
             disabled={aiState === 'loading'}
+            accessibilityRole="button"
+            accessibilityLabel={aiState === 'error' ? t('companion.retryAskAi') : aiText ? t('companion.askAgain') : t('companion.askAi')}
           >
             {aiState === 'loading' ? (
               <ActivityIndicator size="small" color={COLORS.mintDark} />
@@ -218,6 +238,7 @@ export function CompanionWidget(): React.JSX.Element {
             style={styles.avatarButton}
             onPress={handleAvatarPress}
             onLongPress={() => setPickerVisible(true)}
+            accessibilityRole="button"
             accessibilityLabel={`${species.name} companion, tap for tips, hold to change, drag to move`}
           >
             <Image source={{ uri: getSpriteUrl(species.id) }} style={styles.avatarSprite} resizeMode="contain" />
@@ -250,7 +271,7 @@ function CompanionPicker({ visible, onClose, onPick }: CompanionPickerProps): Re
 
   return (
     <Modal transparent visible={visible} animationType="fade" onRequestClose={onClose}>
-      <Pressable style={styles.pickerBackdrop} onPress={onClose}>
+      <Pressable style={styles.pickerBackdrop} onPress={onClose} accessibilityRole="button" accessibilityLabel={t('common.close')}>
         <Pressable style={styles.pickerCard} onPress={(event) => event.stopPropagation()}>
           <Text style={styles.pickerTitle}>{t('companion.choosePrompt')}</Text>
           <TextInput
@@ -260,9 +281,16 @@ function CompanionPicker({ visible, onClose, onPick }: CompanionPickerProps): Re
             value={query}
             onChangeText={setQuery}
             autoFocus
+            accessibilityLabel={t('companion.searchPlaceholder')}
           />
           {results.map((s) => (
-            <Pressable key={s.id} style={styles.pickerRow} onPress={() => onPick(s)}>
+            <Pressable
+              key={s.id}
+              style={styles.pickerRow}
+              onPress={() => onPick(s)}
+              accessibilityRole="button"
+              accessibilityLabel={s.name}
+            >
               <Image source={{ uri: getSpriteUrl(s.id) }} style={styles.pickerSprite} resizeMode="contain" />
               <Text style={styles.pickerRowText}>{s.name}</Text>
             </Pressable>

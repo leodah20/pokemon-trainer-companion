@@ -13,6 +13,9 @@ export const en: TranslationKeys = {
   'pokedex.allTypes': 'All types',
   'pokedex.pickerTitle': 'Choose a Pokemon',
   'pokedex.emptyResults': 'No Pokemon match these filters.',
+  'pokedex.quickActions': 'Quick Actions',
+  'pokedex.filterByGen': 'Filter by generation',
+  'pokedex.filterByType': 'Filter by type',
 
   'tools.title': 'Tools',
   'tools.subtitle': 'Calculators and reference tools for battle prep.',
@@ -42,6 +45,11 @@ export const en: TranslationKeys = {
   'companion.retryAskAi': 'Retry Ask AI ✨',
   'companion.choosePrompt': 'Choose your companion',
   'companion.searchPlaceholder': 'Search by name',
+  'companion.dialogueAbout': 'About',
+  'companion.dialogueInGo': 'In GO',
+  'companion.dialogueBattleTip': 'Battle tip',
+  'companion.dialogueFunFact': 'Fun fact',
+  'companion.dialogueAiTip': '✨ AI Tip',
 
   'pvpLeague.great': 'Great League',
   'pvpLeague.ultra': 'Ultra League',

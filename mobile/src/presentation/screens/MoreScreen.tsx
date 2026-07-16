@@ -15,7 +15,12 @@ export function MoreScreen({ navigation }: Props): React.JSX.Element {
       <ScrollView contentContainerStyle={styles.content}>
         <Text style={styles.title}>{t('more.title')}</Text>
 
-        <Pressable onPress={() => navigation.navigate('OverlayDemo')}>
+        <Pressable
+          onPress={() => navigation.navigate('OverlayDemo')}
+          accessibilityRole="button"
+          accessibilityLabel={t('more.overlayDemo.title')}
+          accessibilityHint={t('more.overlayDemo.description')}
+        >
           <Card style={styles.card} accentColor={COLORS.brandGold}>
             <View style={styles.cardRow}>
               <Text style={styles.emoji}>📡</Text>
@@ -35,6 +40,9 @@ export function MoreScreen({ navigation }: Props): React.JSX.Element {
                 key={option}
                 style={[styles.languageChip, option === language && styles.languageChipSelected]}
                 onPress={() => setLanguage(option)}
+                accessibilityRole="button"
+                accessibilityLabel={LANGUAGE_LABELS[option]}
+                accessibilityState={{ selected: option === language }}
               >
                 <Text style={[styles.languageChipText, option === language && styles.languageChipTextSelected]}>
                   {LANGUAGE_LABELS[option]}

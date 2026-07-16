@@ -105,8 +105,10 @@ reasoning.
 
 **v1.0 Beta.** Every planned battle-stat calculator, PvP tool, and reference screen (type chart,
 rankings, raid counters, evolution chain, quiz) is implemented, tested, and verified on a physical
-device. Overlay OCR, cross-device sync, and deeper content (dark mode, i18n, extra lore/PvP-IV
-cards) are intentionally out of scope for this beta — see "Post-beta scope" below.
+device, fully translated (English/Portuguese/Spanish) including lore content, and has accessibility
+labels on interactive elements. The native floating overlay, a deeper community-sourced knowledge
+base, cross-device sync, and dark mode are intentionally out of scope for this beta — see
+"Post-beta scope" below.
 
 <!-- ==================== PROGRESS OVERVIEW ==================== -->
 
@@ -122,7 +124,8 @@ Progress: 89% █████████████████░░░ (24 /
 | **PvP** | Move rankings by league (Great/Ultra/Master) | ✅ Done | ✅ |
 | | Meta tier classification (Top/Viable/Niche) | ✅ Done | ✅ |
 | **Lore** | Hand-written lore for 151 Gen 1 species (8 fields each) | ✅ Done | — |
-| | Intelligent fallback for unseeded species | ✅ Done | — |
+| | Intelligent fallback for unseeded species (localized per language) | ✅ Done | ✅ |
+| | Lore content translated EN/PT-BR/ES (Gemini batch translation) | ✅ Done | ✅ |
 | **Backend** | Skeleton (NestJS + Prisma schema + logging) | ✅ Done | ✅ |
 | | Species REST API (endpoints + Swagger) | ✅ Done | — |
 | | Type Chart API (`/api/type-chart`, `/:type`, `/weather/boosts`) | ✅ Done | ✅ |
@@ -136,14 +139,14 @@ Progress: 89% █████████████████░░░ (24 /
 | | Raid counters with DPS estimates | ✅ Done | ✅ |
 | | Evolution chain viewer with costs | ✅ Done | ✅ |
 | | In-app Companion widget (avatar + speech bubble, rule-based + optional AI) | ✅ Done | — |
-| | i18n (English/Portuguese/Spanish) — every screen | ✅ Done | — |
+| | i18n (English/Portuguese/Spanish) — every screen + lore content | ✅ Done | ✅ |
+| | Accessibility labels (accessibilityRole/Label/State on interactive elements) | ✅ Done | — |
 | **🏆 Flagship** | OCR engine + rule-based smart suggestions (gallery screenshot → species/CP/HP → evolve/PvP/raid/gym advice) | ✅ Done | ✅ |
 | | Gemini-backed AI companion grounded in real on-screen stats | ✅ Done | ✅ |
 | | Knowledge base grounding the AI (PokeAPI-sourced, 151 Gen 1 species) | ✅ MVP done | ✅ |
 | | Floating overlay (native Android module, auto-capture instead of gallery picker) | ❌ Not started | — |
 | | Knowledge base — expand past Gen 1 + deeper Bulbapedia-sourced facts | 🔄 Planned | — |
-| **Future** | lore-data.json content translation (currently Portuguese-only) | 🔄 Planned | — |
-| | Cross-device sync + authentication | ❌ Not started | — |
+| **Future** | Cross-device sync + authentication | ❌ Not started | — |
 
 ### Post-beta scope
 
@@ -167,12 +170,12 @@ Deliberately deferred past this beta — not gaps, just not yet prioritized:
     ingestion script with a wider ID range) and pull in richer, community-sourced facts
     (Bulbapedia-style) beyond what PokeAPI's structured fields cover
 - **Cross-device sync + auth** — backend schema exists (`Trainer`, `SavedTeam`), no endpoints yet
-- **Lore content translation** — every screen's UI chrome is now translated (English/Portuguese/
-  Spanish), but `lore-data.json` itself (~150 species × 7 fields of hand-written Portuguese text)
-  is still Portuguese-only regardless of selected language. Good candidate for batch-translating
-  via the Gemini integration already in place, rather than hand-translating each field. Quiz
-  question content (`generateQuiz.ts`) and Pokemon type names (Fire, Water, etc.) are also
-  deliberately left untranslated for now.
+- **Remaining i18n gaps (deliberate)** — quiz question content (`generateQuiz.ts`) and Pokemon
+  type names (Fire, Water, etc.) are left untranslated on purpose. Everything else — every screen's
+  UI chrome and the full lore-data.json content (151 species × 7 fields) — is now translated across
+  English/Portuguese/Spanish via a Gemini batch translation script
+  (`mobile/scripts/translateLoreData.mjs`), resumable and incremental so a rate limit or parse
+  hiccup mid-run doesn't lose progress.
 - **Dark mode** — `useColorScheme` is read in `App.tsx` but not wired into the theme yet
 - **Extra content cards** (Fase 5 of the original roadmap) — Rarity & Spawn, Best PvP League +
   IV spread, Buddy & Candy distance, Legacy Moves — need new data sources, not just UI work
@@ -183,7 +186,28 @@ Deliberately deferred past this beta — not gaps, just not yet prioritized:
 
 ### Last implemented features
 
-> <time datetime="2026-07-15">2026-07-15</time>
+> <time datetime="2026-07-16">2026-07-16</time>
+>
+> **Full lore content translation (EN/PT-BR/ES) + accessibility labels across the app:**
+> - `lore-data.json` (151 Gen 1 species × 7 fields, previously Portuguese-only regardless of
+>   selected language) is now translated into English and Spanish via
+>   `mobile/scripts/translateLoreData.mjs` — a resumable, incremental Gemini batch-translation
+>   script (writes progress after every species, so a rate limit or a malformed JSON response
+>   mid-run never loses completed work; a balanced-brace JSON parser was needed after the naive
+>   first-`{`-to-last-`}` approach broke on responses where the model echoed a second object).
+>   `loreRepository.ts` now keys lookups by language (`getLoreForSpecies`/`getLoreWithFallback`
+>   both take a `SupportedLanguage`), and the procedural fallback lore generator — which was still
+>   hardcoded Portuguese even in English/Spanish mode, a real gap found while doing this work — now
+>   has hand-translated templates per language too.
+> - Fixed a second, related gap: the Companion widget's speech-bubble dialogue labels ("About",
+>   "In GO", "Battle tip", "Fun fact", "✨ AI Tip") and the Pokedex's Quick Actions sheet
+>   (title + 6 item labels) were still hardcoded English — both now use `t()`.
+> - **Accessibility pass** — added `accessibilityRole`/`accessibilityLabel`/`accessibilityState` to
+>   every interactive `Pressable` across all 15 screens/components that have one (buttons, list
+>   rows, filter chips, toggle groups, text inputs), reusing existing translated strings as labels
+>   so the two efforts reinforce each other instead of duplicating text.
+> - 20/20 mobile test suites passing (72 tests total, 1 new `loreRepository.test.ts` covering
+>   per-language lookups and localized fallback text), zero TypeScript errors.
 >
 > **Knowledge base MVP — the flagship AI overlay's first real grounding source:**
 > - New `backend/src/data/knowledge/` — a PokeAPI-sourced knowledge base (genus/species

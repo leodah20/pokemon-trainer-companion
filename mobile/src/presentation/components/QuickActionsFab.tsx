@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { Animated, Pressable, StyleSheet } from 'react-native';
 import { COLORS, PokeballIcon, SHADOW } from '../theme';
+import { useTranslation } from '../../i18n';
 
 const PULSE_MIN_SCALE = 1;
 const PULSE_MAX_SCALE = 1.08;
@@ -18,6 +19,7 @@ interface QuickActionsFabProps {
  * just settles the press scale back to 1, the pulse loop keeps running underneath).
  */
 export function QuickActionsFab({ onPress }: QuickActionsFabProps): React.JSX.Element {
+  const { t } = useTranslation();
   const pulseScale = useRef(new Animated.Value(PULSE_MIN_SCALE)).current;
   const pressScale = useRef(new Animated.Value(1)).current;
 
@@ -55,7 +57,7 @@ export function QuickActionsFab({ onPress }: QuickActionsFabProps): React.JSX.El
         onPressIn={handlePressIn}
         onPressOut={handlePressOut}
         style={styles.button}
-        accessibilityLabel="Open quick actions"
+        accessibilityLabel={t('pokedex.quickActions')}
         accessibilityRole="button"
       >
         <PokeballIcon size={34} />

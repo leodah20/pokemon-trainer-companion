@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Animated, Dimensions, Modal, Pressable, StyleSheet, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { COLORS, DISPLAY_FONT, FONT_SIZE, RADIUS, SHADOW, SPACING } from '../theme';
+import { useTranslation } from '../../i18n';
 
 const SCREEN_HEIGHT = Dimensions.get('window').height;
 const STAGGER_DELAY_MS = 45;
@@ -28,6 +29,7 @@ interface BottomSheetMenuProps {
  * `useNativeDriver: true` for transform/opacity, so it's not a JS-thread-bound approximation.
  */
 export function BottomSheetMenu({ visible, onClose, title, items }: BottomSheetMenuProps): React.JSX.Element | null {
+  const { t } = useTranslation();
   const insets = useSafeAreaInsets();
   const [mounted, setMounted] = useState(visible);
   const translateY = useRef(new Animated.Value(SCREEN_HEIGHT)).current;
@@ -75,7 +77,7 @@ export function BottomSheetMenu({ visible, onClose, title, items }: BottomSheetM
   return (
     <Modal transparent visible animationType="none" onRequestClose={onClose} statusBarTranslucent>
       <Animated.View style={[StyleSheet.absoluteFill, styles.backdrop, { opacity: backdropOpacity }]}>
-        <Pressable style={StyleSheet.absoluteFill} onPress={onClose} />
+        <Pressable style={StyleSheet.absoluteFill} onPress={onClose} accessibilityRole="button" accessibilityLabel={t('common.close')} />
       </Animated.View>
 
       <Animated.View
@@ -96,6 +98,8 @@ export function BottomSheetMenu({ visible, onClose, title, items }: BottomSheetM
                   onClose();
                   item.onPress();
                 }}
+                accessibilityRole="button"
+                accessibilityLabel={item.label}
               >
                 <View style={styles.itemIconCircle}>
                   <Text style={styles.itemEmoji}>{item.emoji}</Text>
