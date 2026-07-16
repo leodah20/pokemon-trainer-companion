@@ -266,6 +266,49 @@ acima — ver "Padrões pra lembrar".
 
 ---
 
+### 8. `IllegalStateException: Must register a callback before starting capture` ao abrir a sessão real de `MediaProjection`
+
+**Sintoma:** implementando a captura de tela ao vivo de verdade (`ScreenCaptureService.kt`), o app
+crashava assim que `startLiveCapture()` era chamado, com `FATAL EXCEPTION` no logcat vindo de dentro
+de `MediaProjection.createVirtualDisplay()`.
+
+**Causa:** versões recentes do Android (visto no emulador rodando API 36) passaram a exigir que a
+app registre um `MediaProjection.Callback` via `registerCallback(...)` **antes** de chamar
+`createVirtualDisplay()` — é assim que o sistema avisa a app quando o usuário para o
+compartilhamento (ex: pela notificação "Parar compartilhamento"), pra ela liberar
+`VirtualDisplay`/`ImageReader` em vez de vazar recursos. Sem o callback registrado, a chamada lança
+imediatamente em vez de simplesmente não notificar depois.
+
+**Fix:** registrar o callback logo após `getMediaProjection(...)` e antes de `createVirtualDisplay(...)`:
+```kotlin
+projection.registerCallback(object : MediaProjection.Callback() {
+  override fun onStop() { stopProjection() }
+}, Handler(Looper.getMainLooper()))
+```
+
+---
+
+### 9. Testar "share one app" no emulador: nenhum frame chega no `ImageReader`
+
+**Sintoma:** com o consentimento de `MediaProjectionManager` no modo "Share one app" (ex: Chrome) e
+o serviço rodando sem crash, `captureLatestFrame()` sempre voltava `null` ("No frame ready yet").
+
+**Causa:** no modo "compartilhar um app", o Android só produz frames pro `VirtualDisplay` enquanto
+esse app específico está em primeiro plano — como o app escolhido (Chrome) fica em background assim
+que se volta pro PTC pra tocar em "Analyze current screen", nenhum frame chega a ser desenhado no
+`ImageReader` depois disso. Esse é exatamente o comportamento esperado no uso real (o trainer
+escolheria o Pokémon GO como app compartilhado, que ficaria em primeiro plano enquanto o overlay do
+PTC flutua por cima via `TYPE_APPLICATION_OVERLAY`), mas atrapalha testar a partir da própria UI de
+teste do PTC.
+
+**Fix (só pra testar):** usar "Share entire screen" em vez de "Share one app" — captura o que
+estiver fisicamente na tela a qualquer momento, incluindo a própria UI do PTC, sem depender de qual
+app está em primeiro plano. Verificado assim: o texto OCR retornado bateu, palavra por palavra, com
+o conteúdo real da tela do `OverlayDemoScreen` no instante da captura (inclusive o timer do
+indicador de gravação do Android) — prova de que é um frame ao vivo de verdade, não um stub.
+
+---
+
 ## Padrões pra lembrar
 
 - **Prisma 7 mudou bastante** em relação a versões anteriores: sem `index.ts` de barril, formato de
@@ -299,3 +342,10 @@ acima — ver "Padrões pra lembrar".
 - **Texto de LLM (Gemini, etc.) vem formatado em Markdown por padrão** — sempre renderizar respostas
   de IA com um parser de Markdown (`react-native-markdown-display` aqui, JS puro, sem rebuild),
   nunca assumir que vai ser texto plano.
+- **`MediaProjection` em Android recente exige `registerCallback(...)` antes de
+  `createVirtualDisplay(...)`**, senão lança `IllegalStateException` em runtime — não tem como saber
+  isso sem testar de verdade (o compilador não acusa nada).
+- **Testar captura "share one app" a partir da própria UI do app que pede a captura é furada** — o
+  app compartilhado só produz frames enquanto está em primeiro plano, e a UI de controle geralmente
+  é o próprio app que pediu a captura. Pra validar rápido, usar "share entire screen" em vez de
+  escolher um app específico.

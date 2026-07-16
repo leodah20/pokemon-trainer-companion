@@ -34,23 +34,27 @@ Five pieces already work today, ahead of the fully automatic always-on overlay:
 - **Knowledge base (MVP)** — the AI's answers are now grounded in real PokeAPI-sourced Pokedex
   facts (genus, habitat, official Pokedex flavor text) for all 251 Gen 1+2 species, instead of
   purely the LLM's own training — `backend/src/data/knowledge/`
-- **Native floating window (scaffolding)** — a real Android Kotlin module
+- **Native floating window** — a real Android Kotlin module
   (`android/.../overlay/OverlayModule.kt`) draws a `SYSTEM_ALERT_WINDOW` overlay that floats over
   *any* app, not just PTC — verified by showing it, backgrounding to the home screen, and
-  confirming it's still on top. This is genuinely the always-on floating window; what's not built
-  yet is feeding it live screen content instead of a static test label.
-- **Screen capture consent flow (scaffolding)** — the same module also round-trips Android's real
+  confirming it's still on top.
+- **Screen capture consent flow** — the same module also round-trips Android's real
   `MediaProjectionManager` "Share your screen with PTC?" system dialog, verified on both the
-  accept and deny paths. No frame is captured yet — this only proves the consent step, the piece
-  every screen-recording app has to get through before it can request a `VirtualDisplay`.
+  accept and deny paths.
+- **Live screen capture** — a foreground service (`ScreenCaptureService.kt`) opens the actual
+  `MediaProjection` session the consent dialog grants, backed by a `VirtualDisplay` +
+  `ImageReader`, and grabs a real single frame on demand. That frame is saved as a PNG and fed
+  through the *exact same* `analyzeScreenshot(uri)` pipeline the gallery-picker flow already uses
+  — verified end to end on the emulator: the raw OCR text came back as a live, verbatim
+  transcription of whatever was on screen at the moment of capture (down to the running
+  recording-indicator timer), proving it's a genuine live frame, not a stub.
 
-What's left to reach the full vision: a foreground service that actually opens the
-`MediaProjection` session and pipes captured frames through the existing OCR pipeline (the actual
-"read the screen live" part), and extending the knowledge base past Gen 2 and past PokeAPI's
-structured fields toward deeper
-community-sourced Pokémon knowledge (Bulbapedia and similar), so the AI's answers keep getting
-richer instead of the same handful of facts repeating. See "Post-beta scope" below for where this
-stands.
+What's left to reach the full vision: wiring live capture into the actual floating overlay window
+(right now it's a manual "analyze current screen" button in `OverlayDemoScreen`, not yet triggered
+automatically/continuously from the overlay itself), and extending the knowledge base past Gen 2
+and past PokeAPI's structured fields toward deeper community-sourced Pokémon knowledge (Bulbapedia
+and similar), so the AI's answers keep getting richer instead of the same handful of facts
+repeating. See "Post-beta scope" below for where this stands.
 
 ## Why this exists
 
@@ -123,7 +127,7 @@ base, cross-device sync, and dark mode are intentionally out of scope for this b
 
 <!-- ==================== PROGRESS OVERVIEW ==================== -->
 
-Progress: 92% ██████████████████░░ (33 / 36 features)
+Progress: 94% ███████████████████░ (34 / 36 features)
 
 | Category | Feature | Status | Tests |
 |----------|---------|--------|-------|
@@ -160,7 +164,7 @@ Progress: 92% ██████████████████░░ (33 /
 | | Knowledge base grounding the AI (PokeAPI-sourced, all 251 Gen 1+2 species) | ✅ MVP done | ✅ |
 | | Floating overlay window (native Android module, permission + WindowManager) | ✅ Scaffolding done | — |
 | | Screen capture consent flow (`MediaProjectionManager`, verified both accept/deny paths) | ✅ Scaffolding done | — |
-| | Floating overlay live capture (foreground service + frame capture → OCR pipeline) | ❌ Not started | — |
+| | Floating overlay live capture (foreground service + frame capture → OCR pipeline) | ✅ Done | — |
 | | Knowledge base — expand past Gen 2 + deeper Bulbapedia-sourced facts | 🔄 Planned | — |
 | **Future** | Cross-device sync + authentication | ❌ Not started | — |
 
@@ -170,19 +174,24 @@ Deliberately deferred past this beta — not gaps, just not yet prioritized:
 
 - **🏆 The flagship real-time AI overlay** — this is the project's actual differentiator (see
   "Flagship feature" above), not a nice-to-have, and it's split into two remaining pieces:
-  - **Native floating overlay — scaffolding done, capture next.** The OCR engine itself works
-    today (gallery screenshot → species/CP/HP → full analysis). A real native Android Kotlin
-    module (`android/.../overlay/OverlayModule.kt` + `OverlayPackage.kt`, registered in
-    `MainApplication.kt`) requests the `SYSTEM_ALERT_WINDOW` permission and draws a genuine
-    `TYPE_APPLICATION_OVERLAY` floating window — verified on-device: shown, backgrounded to the
-    home screen, still floating on top, then hidden cleanly. The same module also round-trips
+  - **Native floating overlay + live capture — done, wiring into the always-on overlay is next.**
+    The OCR engine itself works today (gallery screenshot → species/CP/HP → full analysis). A real
+    native Android Kotlin module (`android/.../overlay/OverlayModule.kt` + `OverlayPackage.kt`,
+    registered in `MainApplication.kt`) requests the `SYSTEM_ALERT_WINDOW` permission and draws a
+    genuine `TYPE_APPLICATION_OVERLAY` floating window — verified on-device: shown, backgrounded to
+    the home screen, still floating on top, then hidden cleanly. The same module also round-trips
     Android's real `MediaProjectionManager` screen-capture consent dialog — verified on both the
-    accept and deny paths, resolving correctly back to JS each time.
-    `mobile/src/data/overlay/overlayBridge.ts` exposes both to JS, with a test card in
-    `OverlayDemoScreen`. What's still not built is the actual "read the screen live" part: a
-    foreground service that opens the `MediaProjection` session the consent dialog already grants
-    access to, and pipes captured frames through the existing OCR pipeline instead of showing a
-    static test label. That's real remaining native work, just no longer starting from zero
+    accept and deny paths, resolving correctly back to JS each time. A foreground service
+    (`ScreenCaptureService.kt`) now opens the actual `MediaProjection` session from that consent and
+    grabs a real frame via `VirtualDisplay` + `ImageReader` on demand, saving it as a PNG and feeding
+    it through the same `analyzeScreenshot(uri)` pipeline the gallery-picker flow uses — verified
+    end to end on the emulator (the OCR'd text came back as a live transcription of the actual
+    on-screen UI, not a stub). `mobile/src/data/overlay/overlayBridge.ts` exposes all of this to JS,
+    with a manual "Analyze current screen" test card in `OverlayDemoScreen`. What's still not built:
+    triggering that capture automatically/continuously from the floating overlay window itself
+    (right now it's a manual button in the demo screen, not a live loop feeding the overlay's own
+    UI), and rendering real analysis results inside the floating window instead of the static
+    placeholder label
   - **Knowledge base — MVP done, deepen next.** The free, rule-based path
     (`generateSmartSuggestions.ts` in the OCR flow, `buildDialogue` in the Companion widget) stays
     as the always-available default that needs no network. An optional real LLM layer
@@ -218,6 +227,32 @@ Deliberately deferred past this beta — not gaps, just not yet prioritized:
 
 ### Last implemented features
 
+> <time datetime="2026-07-16">2026-07-16</time>
+>
+> **Live screen capture — the overlay reads a real frame, not just a static placeholder:**
+> - New `ScreenCaptureService.kt`, a foreground service (`android:foregroundServiceType="mediaProjection"`)
+>   that opens the actual `MediaProjection` session using the consent token `OverlayModule.kt`'s
+>   existing dialog already grants (previously discarded — now kept and passed through). A
+>   `VirtualDisplay` backed by an `ImageReader` mirrors the screen; `captureLatestFrame()` pulls
+>   whatever frame is currently available.
+> - `OverlayModule.kt` gained `startLiveCapture()`, `captureLiveFrame()` (saves the frame as a PNG
+>   in the app's cache dir and resolves a `file://` URI), and `stopLiveCapture()`.
+> - Deliberately single-frame-on-demand, not continuous video streaming — the OCR pipeline only
+>   ever needs one still frame at a time, so this avoids the extra complexity and battery cost of a
+>   real-time video pipe across the RN bridge.
+> - The returned URI is the same shape `analyzeScreenshot(uri)` already expects from the
+>   gallery-picker flow, so zero changes were needed to the OCR/IV/PvP/bulk analysis pipeline
+>   itself — only `OverlayDemoScreen` gained a small live-capture UI (start/analyze/stop) reusing
+>   the existing result card.
+> - Hit and fixed a real Android API requirement along the way: newer Android versions throw
+>   `IllegalStateException: Must register a callback before starting capture` unless
+>   `MediaProjection.registerCallback(...)` is called before `createVirtualDisplay()` — see
+>   `docs/debug-log.md`.
+> - Verified end-to-end on the emulator with "Share entire screen" consent: tapped "Analyze current
+>   screen" while looking at the app itself, and the raw OCR text came back as a live, verbatim
+>   transcription of the actual on-screen UI at that instant (down to the running recording-indicator
+>   timer) — proof it's a genuine live frame, not a stub.
+>
 > <time datetime="2026-07-16">2026-07-16</time>
 >
 > **Professor Mode keyboard fix, take two — the first fix wasn't actually enough:**

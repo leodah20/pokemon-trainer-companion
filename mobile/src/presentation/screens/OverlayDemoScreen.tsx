@@ -12,12 +12,15 @@ import { CompanionAiContext, CompanionApiError, fetchCompanionSuggestion } from 
 import { Card, COLORS, DISPLAY_FONT, FONT_SIZE, RADIUS, SHADOW, SPACING } from '../theme';
 import { useTranslation } from '../../i18n';
 import {
+  captureLiveFrame,
   hasOverlayPermission,
   hideTestOverlay,
   isOverlaySupported,
   requestOverlayPermission,
   requestScreenCapturePermission,
   showTestOverlay,
+  startLiveCapture,
+  stopLiveCapture,
 } from '../../data/overlay/overlayBridge';
 
 const LEAGUE_ORDER: PvpLeague[] = ['great', 'ultra', 'master'];
@@ -39,11 +42,34 @@ export function OverlayDemoScreen(): React.JSX.Element {
   const [overlayPermission, setOverlayPermission] = useState<boolean | null>(null);
   const [overlayShown, setOverlayShown] = useState(false);
   const [captureConsent, setCaptureConsent] = useState<'idle' | 'checking' | 'granted' | 'denied'>('idle');
+  const [liveCaptureRunning, setLiveCaptureRunning] = useState(false);
+  const [liveCaptureNote, setLiveCaptureNote] = useState<string | null>(null);
 
   async function handleRequestCapturePermission(): Promise<void> {
     setCaptureConsent('checking');
     const granted = await requestScreenCapturePermission();
     setCaptureConsent(granted ? 'granted' : 'denied');
+  }
+
+  async function handleStartLiveCapture(): Promise<void> {
+    const started = await startLiveCapture();
+    setLiveCaptureRunning(started);
+  }
+
+  async function handleStopLiveCapture(): Promise<void> {
+    await stopLiveCapture();
+    setLiveCaptureRunning(false);
+    setLiveCaptureNote(null);
+  }
+
+  async function handleAnalyzeLiveFrame(): Promise<void> {
+    setLiveCaptureNote(null);
+    const uri = await captureLiveFrame();
+    if (!uri) {
+      setLiveCaptureNote(t('overlay.liveCaptureNoFrame'));
+      return;
+    }
+    await runAnalysis(uri);
   }
 
   async function refreshOverlayPermission(): Promise<void> {
@@ -71,13 +97,7 @@ export function OverlayDemoScreen(): React.JSX.Element {
     setOverlayShown(granted);
   }
 
-  async function handlePickImage(): Promise<void> {
-    const result = await launchImageLibrary({ mediaType: 'photo' });
-    const uri = result.assets?.[0]?.uri;
-    if (!uri) {
-      return;
-    }
-
+  async function runAnalysis(uri: string): Promise<void> {
     setStatus('loading');
     setAiState('idle');
     setAiText(null);
@@ -89,6 +109,15 @@ export function OverlayDemoScreen(): React.JSX.Element {
     } catch {
       setStatus('error');
     }
+  }
+
+  async function handlePickImage(): Promise<void> {
+    const result = await launchImageLibrary({ mediaType: 'photo' });
+    const uri = result.assets?.[0]?.uri;
+    if (!uri) {
+      return;
+    }
+    await runAnalysis(uri);
   }
 
   async function handleAskAi(): Promise<void> {
@@ -161,6 +190,41 @@ export function OverlayDemoScreen(): React.JSX.Element {
             )}
             {captureConsent === 'denied' && (
               <Text style={styles.sectionText}>{t('overlay.captureConsentDenied')}</Text>
+            )}
+
+            {captureConsent === 'granted' && !liveCaptureRunning && (
+              <Pressable
+                style={[styles.askAiButton, styles.captureConsentButton]}
+                onPress={handleStartLiveCapture}
+                accessibilityRole="button"
+                accessibilityLabel={t('overlay.startLiveCaptureButton')}
+              >
+                <Text style={styles.askAiButtonText}>{t('overlay.startLiveCaptureButton')}</Text>
+              </Pressable>
+            )}
+
+            {liveCaptureRunning && (
+              <>
+                <Text style={styles.sectionText}>{t('overlay.liveCaptureActive')}</Text>
+                <Pressable
+                  style={styles.askAiButton}
+                  onPress={handleAnalyzeLiveFrame}
+                  disabled={status === 'loading'}
+                  accessibilityRole="button"
+                  accessibilityLabel={t('overlay.captureLiveFrameButton')}
+                >
+                  <Text style={styles.askAiButtonText}>{t('overlay.captureLiveFrameButton')}</Text>
+                </Pressable>
+                <Pressable
+                  style={[styles.askAiButton, styles.stopLiveCaptureButton]}
+                  onPress={handleStopLiveCapture}
+                  accessibilityRole="button"
+                  accessibilityLabel={t('overlay.stopLiveCaptureButton')}
+                >
+                  <Text style={styles.askAiButtonText}>{t('overlay.stopLiveCaptureButton')}</Text>
+                </Pressable>
+                {liveCaptureNote && <Text style={styles.sectionText}>{liveCaptureNote}</Text>}
+              </>
             )}
           </Card>
         )}
@@ -436,6 +500,9 @@ const styles = StyleSheet.create({
   },
   captureConsentButton: {
     backgroundColor: COLORS.turquoise,
+  },
+  stopLiveCaptureButton: {
+    backgroundColor: COLORS.danger,
   },
   askAiButtonText: {
     fontSize: FONT_SIZE.sm,

@@ -6,16 +6,18 @@ interface OverlayNativeModule {
   showOverlay(): Promise<boolean>;
   hideOverlay(): Promise<boolean>;
   requestScreenCapturePermission(): Promise<boolean>;
+  startLiveCapture(): Promise<boolean>;
+  captureLiveFrame(): Promise<string>;
+  stopLiveCapture(): Promise<boolean>;
 }
 
 const { OverlayModule } = NativeModules as { OverlayModule?: OverlayNativeModule };
 
 /**
  * Thin wrapper over the native OverlayModule (Android only -- see
- * android/.../overlay/OverlayModule.kt). This is scaffolding for the flagship real-time overlay:
- * it proves the permission flow and a bare floating window work, but does not read anything from
- * the screen yet (no MediaProjection capture). Every function is a safe no-op on iOS or if the
- * native module isn't linked, so callers never need their own platform checks.
+ * android/.../overlay/OverlayModule.kt and ScreenCaptureService.kt). Every function is a safe
+ * no-op on iOS or if the native module isn't linked, so callers never need their own platform
+ * checks.
  */
 export function isOverlaySupported(): boolean {
   return Platform.OS === 'android' && OverlayModule != null;
@@ -50,12 +52,45 @@ export async function hideTestOverlay(): Promise<boolean> {
 
 /**
  * Shows Android's system screen-capture consent dialog and resolves with whether the trainer
- * allowed it. Scaffolding only — no capture session is actually started (see
- * OverlayModule.kt's requestScreenCapturePermission for why).
+ * allowed it. Call `startLiveCapture()` afterwards to actually open the capture session.
  */
 export async function requestScreenCapturePermission(): Promise<boolean> {
   if (!isOverlaySupported()) {
     return false;
   }
   return OverlayModule!.requestScreenCapturePermission();
+}
+
+/**
+ * Starts the foreground service that opens the real MediaProjection session using the consent
+ * granted by `requestScreenCapturePermission()`. Must be called once before `captureLiveFrame()`.
+ */
+export async function startLiveCapture(): Promise<boolean> {
+  if (!isOverlaySupported()) {
+    return false;
+  }
+  return OverlayModule!.startLiveCapture();
+}
+
+/**
+ * Grabs the current screen as a single frame and returns a `file://` URI for it -- the same shape
+ * `analyzeScreenshot(uri)` already expects from the gallery-picker flow. Returns `null` if no
+ * frame is available yet (e.g. called immediately after `startLiveCapture()`).
+ */
+export async function captureLiveFrame(): Promise<string | null> {
+  if (!isOverlaySupported()) {
+    return null;
+  }
+  try {
+    return await OverlayModule!.captureLiveFrame();
+  } catch {
+    return null;
+  }
+}
+
+export async function stopLiveCapture(): Promise<boolean> {
+  if (!isOverlaySupported()) {
+    return false;
+  }
+  return OverlayModule!.stopLiveCapture();
 }

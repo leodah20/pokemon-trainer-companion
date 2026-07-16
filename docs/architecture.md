@@ -11,7 +11,7 @@ section.
 flowchart TB
     subgraph Device["Trainer's device"]
         PogoApp["Pokémon GO (unmodified)"]
-        Overlay["Overlay window (Android, scaffolded - static content)\ngallery screenshot (live OCR today)"]
+        Overlay["Overlay window (Android, live capture works)\ngallery screenshot + on-demand live frame -> OCR"]
         OCR["On-device OCR - ML Kit"]
         LocalDB["Local cache - SQLite"]
         MobileApp["Mobile app (React Native)"]
@@ -59,8 +59,8 @@ flowchart TB
 | **🏆 Companion AI, grounded in real OCR data** | ✅ Functional | `POST /api/companion/suggest`, Gemini-backed, wired into "Ask AI ✨" |
 | **🏆 Professor Mode — open-ended AI chat** | ✅ Functional | `POST /api/companion/chat`, multi-turn conversation via Gemini's native `contents` history, wired into `ProfessorChatScreen` |
 | **🏆 Native floating window** | ✅ Scaffolding done | `OverlayModule.kt`/`OverlayPackage.kt` — permission + real `TYPE_APPLICATION_OVERLAY` window, verified surviving app backgrounding. Static placeholder content only |
-| **🏆 Screen capture consent flow** | ✅ Scaffolding done | `MediaProjectionManager` consent dialog round-trips to JS via `ActivityEventListener`, verified on both accept and deny paths. No frame captured yet |
-| **🏆 Native overlay live capture** | ❌ Not started | Needs a foreground service that opens the `MediaProjection` session the consent dialog already grants access to, and feeds captured frames into the existing OCR pipeline instead of a static label |
+| **🏆 Screen capture consent flow** | ✅ Scaffolding done | `MediaProjectionManager` consent dialog round-trips to JS via `ActivityEventListener`, verified on both accept and deny paths |
+| **🏆 Native overlay live capture** | ✅ Done | `ScreenCaptureService.kt`, a foreground service, opens the real `MediaProjection` session and captures single frames on demand via `VirtualDisplay`/`ImageReader`, feeding them through the existing `analyzeScreenshot(uri)` pipeline unchanged. Verified end to end on the emulator. Still manual (a button in `OverlayDemoScreen`), not yet triggered automatically from the floating window itself |
 | **🏆 Knowledge base grounding the AI** | ✅ MVP done | `backend/src/data/knowledge/` — PokeAPI-sourced genus/habitat/Pokedex-entry facts for all 251 Gen 1+2 species (tracks the backend's species database range), folded into the Companion prompt. Next: wider generations + deeper (Bulbapedia-style) facts |
 
 ## Mobile app architecture (Clean Architecture)

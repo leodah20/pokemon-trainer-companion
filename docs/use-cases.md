@@ -22,23 +22,26 @@ calculator/reference foundation it sits on top of). See
 4. Trainer can tap "Ask AI ✨" for a natural-language tip generated from that same real, on-screen
    data (see UC-01a).
 
-**Alternate flow (native overlay, scaffolded):** instead of picking a screenshot from the gallery,
-the overlay captures the visible screen region live via a native Android module
-(`SYSTEM_ALERT_WINDOW` + `MediaProjection`), so results render as a floating window over the game
-in real time — no manual screenshot step. The floating window itself is real and verified
-(`OverlayModule.kt`, survives app backgrounding). The `MediaProjection` screen-capture consent
-dialog is also wired up and verified on both the accept and deny paths — it just doesn't open an
-actual capture session yet; piping real frames into the existing OCR pipeline is the remaining
-piece.
+**Alternate flow (native overlay, live capture works):** instead of picking a screenshot from the
+gallery, the trainer can capture the current screen live via a native Android module
+(`SYSTEM_ALERT_WINDOW` + `MediaProjection`) and run it through the same analysis. The floating
+window itself is real and verified (`OverlayModule.kt`, survives app backgrounding). The
+`MediaProjection` consent dialog is wired up and verified on both accept/deny paths, and a
+foreground service (`ScreenCaptureService.kt`) now opens the real capture session from that
+consent and grabs a single live frame on demand via `VirtualDisplay`/`ImageReader` — verified end
+to end on the emulator, feeding the exact same `analyzeScreenshot(uri)` pipeline the gallery flow
+uses. What's left: triggering that capture automatically/continuously from the floating window
+itself instead of a manual button in `OverlayDemoScreen`, and rendering results inside the
+floating window rather than the demo screen's result card.
 
 **Alternate flow:** OCR confidence is too low / no known species recognized → Trainer is shown a
 message rather than a wrong result; no manual-entry fallback yet.
 
 **Status:** 🟡 Partially done — OCR pipeline, IV/PvP/bulk analysis, and rule-based suggestions all
-work today via gallery screenshot (`analyzeScreenshot.ts`, `OverlayDemoScreen`). The native
-floating window and the screen-capture consent flow are both scaffolded and verified; opening an
-actual `MediaProjection` session (its own foreground service) and feeding frames into the OCR
-pipeline is the remaining piece — see "Flagship feature" in the README.
+work today via gallery screenshot (`analyzeScreenshot.ts`, `OverlayDemoScreen`). The native floating
+window, the screen-capture consent flow, and live single-frame capture are all built and verified;
+wiring live capture into the floating window itself (continuous, automatic) is the remaining piece
+— see "Flagship feature" in the README.
 
 ---
 

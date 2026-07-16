@@ -206,6 +206,11 @@ export interface TranslationKeys {
   'overlay.requestCaptureConsentButton': string;
   'overlay.captureConsentGranted': string;
   'overlay.captureConsentDenied': string;
+  'overlay.startLiveCaptureButton': string;
+  'overlay.stopLiveCaptureButton': string;
+  'overlay.captureLiveFrameButton': string;
+  'overlay.liveCaptureActive': string;
+  'overlay.liveCaptureNoFrame': string;
   'aiContext.raid': string;
   'aiContext.battle': string;
   'aiContext.capture': string;

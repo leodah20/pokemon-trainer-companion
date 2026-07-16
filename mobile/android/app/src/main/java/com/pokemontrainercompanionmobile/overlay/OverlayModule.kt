@@ -3,11 +3,14 @@ package com.pokemontrainercompanionmobile.overlay
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.graphics.Bitmap
 import android.graphics.Color
 import android.graphics.PixelFormat
 import android.media.projection.MediaProjectionManager
 import android.net.Uri
 import android.os.Build
+import android.os.Handler
+import android.os.Looper
 import android.provider.Settings
 import android.view.Gravity
 import android.view.WindowManager
@@ -17,22 +20,23 @@ import com.facebook.react.bridge.Promise
 import com.facebook.react.bridge.ReactApplicationContext
 import com.facebook.react.bridge.ReactContextBaseJavaModule
 import com.facebook.react.bridge.ReactMethod
+import java.io.File
+import java.io.FileOutputStream
 
 /**
- * Scaffolding for the flagship real-time overlay (see docs/architecture.md and the README's
- * "Flagship feature" section) -- proves the permission flows and a bare WindowManager floating
- * window work end to end. Actual screen capture (reading frames via MediaProjection into a
- * VirtualDisplay/ImageReader, feeding the OCR pipeline) is NOT implemented here on purpose: this
- * module only shows a static placeholder view and round-trips the capture *consent* dialog, it
- * never reads a single pixel from the screen. Real capture also needs its own foreground service
- * (required by Android 10+ once a MediaProjection session actually starts), which is separate,
- * larger work than what's scaffolded so far.
+ * The flagship real-time overlay's native half (see docs/architecture.md and the README's
+ * "Flagship feature" section): a bare WindowManager floating window, the MediaProjection consent
+ * flow, and (via [ScreenCaptureService]) live single-frame screen capture. Capture is on-demand
+ * single frames, not continuous video -- the OCR pipeline only ever analyzes one still frame at a
+ * time, so streaming would add cost and bridge traffic for no benefit.
  */
 class OverlayModule(reactContext: ReactApplicationContext) :
     ReactContextBaseJavaModule(reactContext), ActivityEventListener {
 
   private var overlayView: TextView? = null
   private var screenCapturePermissionPromise: Promise? = null
+  private var pendingProjectionResultCode: Int? = null
+  private var pendingProjectionData: Intent? = null
 
   init {
     reactContext.addActivityEventListener(this)
@@ -117,10 +121,9 @@ class OverlayModule(reactContext: ReactApplicationContext) :
 
   /**
    * Triggers Android's system screen-capture consent dialog ("Start recording or casting your
-   * screen?") and resolves with whether the trainer allowed it. Does NOT start capturing
-   * anything -- the `data: Intent` Android hands back on approval (needed to actually open a
-   * MediaProjection session) is discarded in [onActivityResult] below. That's the next real
-   * milestone, not this one.
+   * screen?") and resolves with whether the trainer allowed it. The `data: Intent` Android hands
+   * back on approval is kept (see [onActivityResult]) so [startLiveCapture] can open the actual
+   * MediaProjection session from it afterwards.
    */
   @ReactMethod
   fun requestScreenCapturePermission(promise: Promise) {
@@ -145,12 +148,88 @@ class OverlayModule(reactContext: ReactApplicationContext) :
       return
     }
     val granted = resultCode == Activity.RESULT_OK && data != null
+    if (granted) {
+      pendingProjectionResultCode = resultCode
+      pendingProjectionData = data
+    }
     screenCapturePermissionPromise?.resolve(granted)
     screenCapturePermissionPromise = null
   }
 
   override fun onNewIntent(intent: Intent) {
     // No-op: this module doesn't register for deep links / new intents, only activity results.
+  }
+
+  /**
+   * Starts [ScreenCaptureService], which opens the actual MediaProjection session using the
+   * consent token captured in [onActivityResult]. Must be called after
+   * [requestScreenCapturePermission] resolves `true`.
+   */
+  @ReactMethod
+  fun startLiveCapture(promise: Promise) {
+    val resultCode = pendingProjectionResultCode
+    val data = pendingProjectionData
+    if (resultCode == null || data == null) {
+      promise.reject("NO_CONSENT", "Call requestScreenCapturePermission first")
+      return
+    }
+
+    val intent =
+        Intent(reactApplicationContext, ScreenCaptureService::class.java).apply {
+          putExtra(ScreenCaptureService.EXTRA_RESULT_CODE, resultCode)
+          putExtra(ScreenCaptureService.EXTRA_DATA, data)
+        }
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+      reactApplicationContext.startForegroundService(intent)
+    } else {
+      reactApplicationContext.startService(intent)
+    }
+    promise.resolve(true)
+  }
+
+  /**
+   * Grabs whatever frame the live capture session currently has, saves it as a PNG in the app's
+   * cache dir, and resolves with its `file://` URI -- the same shape `analyzeScreenshot(uri)`
+   * already expects from the gallery-picker flow, so the OCR pipeline needs no changes.
+   */
+  @ReactMethod
+  fun captureLiveFrame(promise: Promise) {
+    val service = ScreenCaptureService.instance
+    if (service == null) {
+      promise.reject("NOT_CAPTURING", "Live capture isn't running -- call startLiveCapture first")
+      return
+    }
+
+    // The VirtualDisplay may not have produced a frame yet on the very first call right after
+    // startLiveCapture -- give it a beat before reading from the ImageReader.
+    Handler(Looper.getMainLooper())
+        .postDelayed(
+            {
+              val bitmap = service.captureLatestFrame()
+              if (bitmap == null) {
+                promise.reject("NO_FRAME", "No frame available yet -- try again")
+                return@postDelayed
+              }
+              try {
+                val file =
+                    File(reactApplicationContext.cacheDir, "ptc-live-capture-${System.currentTimeMillis()}.png")
+                FileOutputStream(file).use { out -> bitmap.compress(Bitmap.CompressFormat.PNG, 100, out) }
+                promise.resolve(Uri.fromFile(file).toString())
+              } catch (error: Exception) {
+                promise.reject("SAVE_FAILED", error)
+              } finally {
+                bitmap.recycle()
+              }
+            },
+            150)
+  }
+
+  @ReactMethod
+  fun stopLiveCapture(promise: Promise) {
+    reactApplicationContext.stopService(Intent(reactApplicationContext, ScreenCaptureService::class.java))
+    pendingProjectionResultCode = null
+    pendingProjectionData = null
+    promise.resolve(true)
   }
 
   companion object {
