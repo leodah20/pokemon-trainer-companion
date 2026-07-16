@@ -229,14 +229,23 @@ Android.
 
 **Causa:** `undefined` é um valor válido pra essa prop (significa "não faça nada"), então no
 Android o `KeyboardAvoidingView` literalmente não reagia ao teclado abrir — mesmo com
-`android:windowSoftInputMode="adjustResize"` já declarado no `AndroidManifest.xml`. Esse manifest
-setting sozinho não é suficiente quando o conteúdo está dentro de uma `SafeAreaView`/navigator com
-layout customizado.
+`android:windowSoftInputMode="adjustResize"` já declarado no `AndroidManifest.xml`.
 
-**Fix:** trocar pra `behavior={Platform.OS === 'ios' ? 'padding' : 'height'}` — `'height'` é o
-comportamento correto pro Android nesse tipo de layout (encolhe o container em vez de adicionar
-padding). Padrão a lembrar: **`undefined` não é "comportamento padrão", é "nenhum comportamento"**
-em `KeyboardAvoidingView.behavior` — sempre definir explicitamente os dois casos de plataforma.
+**Primeira tentativa (não resolveu sozinha):** trocar pra
+`behavior={Platform.OS === 'ios' ? 'padding' : 'height'}`. Testado num device físico depois — o
+teclado *ainda* cobria o input. Causa provável: a tela vive dentro de um Fragment nativo do
+react-native-screens (native-stack), e o `adjustResize` do manifest não parece se propagar pra
+dentro desse Fragment do mesmo jeito que propagaria numa Activity simples — então mesmo com
+`behavior="height"` corretamente setado, o `KeyboardAvoidingView` não tinha uma mudança de layout
+confiável pra reagir.
+
+**Fix que realmente funcionou (verificado em device físico):** abandonar o `KeyboardAvoidingView`
+no Android e rastrear a altura do teclado manualmente via `Keyboard.addListener('keyboardDidShow'
+/ 'keyboardDidHide', ...)`, aplicando esse valor como `paddingBottom` no container da tela. iOS
+continua usando `KeyboardAvoidingView` normalmente (não teve o mesmo problema). Padrão a lembrar:
+**dentro do React Navigation native-stack + react-native-screens no Android, não confiar que
+`KeyboardAvoidingView` + `adjustResize` do manifest sejam suficientes — testar em device físico
+antes de considerar resolvido, e ter o listener manual de `Keyboard` como plano B confiável.**
 
 ---
 
@@ -284,8 +293,9 @@ acima — ver "Padrões pra lembrar".
   um bug do app — checar `logcat` por `FATAL`/`Exception` antes de suspeitar do código; se estiver
   limpo, reiniciar o emulador resolve.
 - **`KeyboardAvoidingView.behavior={undefined}` no Android = nenhum comportamento**, não um padrão
-  razoável — sempre definir `'height'` (ou `'position'`) explicitamente pro Android, `'padding'`
-  costuma ser só pra iOS.
+  razoável — mas mesmo setando `'height'` explicitamente, não confiar cegamente nisso dentro de
+  React Navigation native-stack + react-native-screens: testar em device físico, e ter o listener
+  manual de `Keyboard.addListener` como plano B se o `KeyboardAvoidingView` não reagir de verdade.
 - **Texto de LLM (Gemini, etc.) vem formatado em Markdown por padrão** — sempre renderizar respostas
   de IA com um parser de Markdown (`react-native-markdown-display` aqui, JS puro, sem rebuild),
   nunca assumir que vai ser texto plano.

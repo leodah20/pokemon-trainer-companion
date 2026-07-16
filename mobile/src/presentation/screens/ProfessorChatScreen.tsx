@@ -1,7 +1,8 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import {
   ActivityIndicator,
   FlatList,
+  Keyboard,
   KeyboardAvoidingView,
   Platform,
   Pressable,
@@ -27,6 +28,32 @@ function nextMessageId(): string {
 }
 
 /**
+ * `KeyboardAvoidingView` with `behavior="height"` did not reliably shrink the screen on Android
+ * here — this screen lives inside a react-native-screens native-stack Fragment, and
+ * `android:windowSoftInputMode="adjustResize"` (set in AndroidManifest.xml) doesn't always
+ * propagate a resize down into that Fragment the way it would for a plain Activity. Tracking the
+ * keyboard height directly and padding the container ourselves sidesteps that entirely — verified
+ * on a physical device where the KeyboardAvoidingView approach did not work.
+ */
+function useAndroidKeyboardHeight(): number {
+  const [height, setHeight] = useState(0);
+
+  useEffect(() => {
+    if (Platform.OS !== 'android') {
+      return;
+    }
+    const showSub = Keyboard.addListener('keyboardDidShow', (event) => setHeight(event.endCoordinates.height));
+    const hideSub = Keyboard.addListener('keyboardDidHide', () => setHeight(0));
+    return () => {
+      showSub.remove();
+      hideSub.remove();
+    };
+  }, []);
+
+  return height;
+}
+
+/**
  * "Professor Mode" — free-form chat with the Companion AI, as opposed to the Companion widget's
  * "Companion Mode" (rule-based tips + one-shot species-scoped suggestions). The trainer can ask
  * literally anything Pokemon-related; POST /api/companion/chat forwards the full conversation to
@@ -39,6 +66,7 @@ export function ProfessorChatScreen(): React.JSX.Element {
   const [sending, setSending] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const listRef = useRef<FlatList<DisplayMessage>>(null);
+  const androidKeyboardHeight = useAndroidKeyboardHeight();
 
   async function handleSend(): Promise<void> {
     const text = input.trim();
@@ -68,8 +96,8 @@ export function ProfessorChatScreen(): React.JSX.Element {
   return (
     <SafeAreaView style={styles.screen} edges={['left', 'right', 'bottom']}>
       <KeyboardAvoidingView
-        style={styles.flex}
-        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+        style={[styles.flex, Platform.OS === 'android' && { paddingBottom: androidKeyboardHeight }]}
+        behavior={Platform.OS === 'ios' ? 'padding' : undefined}
         keyboardVerticalOffset={Platform.OS === 'ios' ? 90 : 0}
       >
         <FlatList

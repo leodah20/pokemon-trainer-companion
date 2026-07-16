@@ -220,6 +220,20 @@ Deliberately deferred past this beta — not gaps, just not yet prioritized:
 
 > <time datetime="2026-07-16">2026-07-16</time>
 >
+> **Professor Mode keyboard fix, take two — the first fix wasn't actually enough:**
+> - The `behavior: 'height'` fix documented below tested clean on typecheck/tests but the keyboard
+>   *still* covered the chat input when verified on a physical device — `KeyboardAvoidingView`
+>   inside a React Navigation native-stack screen (react-native-screens renders each screen in its
+>   own native Fragment) doesn't reliably pick up `android:windowSoftInputMode="adjustResize"` the
+>   way it would in a plain Activity.
+> - Real fix: dropped `KeyboardAvoidingView` on Android entirely in favor of manually tracking
+>   keyboard height via `Keyboard.addListener('keyboardDidShow'/'keyboardDidHide', ...)` and
+>   applying it as `paddingBottom` on the screen's container. iOS keeps using
+>   `KeyboardAvoidingView` (no evidence it has the same issue there).
+> - **Verified live on a physical device** — confirmed working after this change, not just
+>   assumed from the first (insufficient) fix. `docs/debug-log.md` updated to reflect what
+>   actually worked, not just what was tried first.
+>
 > **Professor Mode — open-ended, multi-turn AI chat:**
 > - New `POST /api/companion/chat` endpoint: unlike `/companion/suggest` (a one-shot suggestion
 >   tied to a specific species), this accepts the full conversation history (oldest first, ending
