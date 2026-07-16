@@ -123,7 +123,7 @@ base, cross-device sync, and dark mode are intentionally out of scope for this b
 
 <!-- ==================== PROGRESS OVERVIEW ==================== -->
 
-Progress: 91% ██████████████████░░ (32 / 35 features)
+Progress: 92% ██████████████████░░ (33 / 36 features)
 
 | Category | Feature | Status | Tests |
 |----------|---------|--------|-------|
@@ -150,6 +150,7 @@ Progress: 91% ██████████████████░░ (32 /
 | | Raid counters with DPS estimates | ✅ Done | ✅ |
 | | Evolution chain viewer with costs | ✅ Done | ✅ |
 | | In-app Companion widget (avatar + speech bubble, rule-based + optional AI) | ✅ Done | — |
+| | Professor Mode — open-ended multi-turn AI chat (`POST /api/companion/chat`) | ✅ Done | ✅ |
 | | i18n (English/Portuguese/Spanish) — every screen + lore content | ✅ Done | ✅ |
 | | Accessibility labels (accessibilityRole/Label/State on interactive elements) | ✅ Done | — |
 | | App-wide Error Boundary (recoverable crash fallback, no blank white screen) | ✅ Done | ✅ |
@@ -218,6 +219,37 @@ Deliberately deferred past this beta — not gaps, just not yet prioritized:
 ### Last implemented features
 
 > <time datetime="2026-07-16">2026-07-16</time>
+>
+> **Professor Mode — open-ended, multi-turn AI chat:**
+> - New `POST /api/companion/chat` endpoint: unlike `/companion/suggest` (a one-shot suggestion
+>   tied to a specific species), this accepts the full conversation history (oldest first, ending
+>   with the newest user message) and forwards it to Gemini's `contents` array natively, so the
+>   model has real multi-turn context — not prompt-stuffed history, an actual back-and-forth
+>   conversation. `buildChatSystemPrompt.ts` frames the assistant as a friendly Pokemon GO expert
+>   that can discuss anything Pokemon-related, not just deliver canned suggestions.
+>   `geminiClient.ts` was refactored to share its HTTP/error-handling logic between the existing
+>   one-shot `generateCompanionSuggestion` and the new multi-turn `generateChatReply`.
+> - New `ProfessorChatScreen` — a real chat UI (message bubbles, text input, send button, loading
+>   state) reachable via a new "🎓 Professor Mode" button inside the Companion widget's speech
+>   bubble, alongside the existing "Ask AI ✨" one-shot suggestion. The product framing (the
+>   user's own words): "Companion Mode" is the existing rule-based/one-shot tips, "Professor Mode"
+>   is the full chat session.
+> - `CompanionWidget` needed `useNavigation()` to open the chat screen, which meant moving it
+>   inside `<NavigationContainer>` in `App.tsx` (it was a sibling before) — and the widget's own
+>   floating avatar/bubble is now hidden while `ProfessorChat` is the active screen, since it was
+>   confusingly floating on top of the chat transcript otherwise (a real bug found testing on a
+>   physical device, fixed the same session).
+> - Two more real bugs found via physical-device testing, both fixed the same session: the
+>   keyboard covered the chat input on Android (`KeyboardAvoidingView`'s `behavior` was `undefined`
+>   on Android — changed to `'height'`), and Gemini's `**bold**` Markdown rendered as literal
+>   asterisks (added `react-native-markdown-display` — pure JS, no native code, so no rebuild
+>   needed — and a `markdownStyles` object matching the app's theme).
+> - Verified live end-to-end on a physical device: asked the Professor a real PvP question in
+>   Portuguese, got a detailed, well-formatted, conversational reply that asked a natural follow-up
+>   question back — not a canned response.
+> - `jest.config.js` needed `react-native-markdown-display` and its `react-native-fit-image`
+>   dependency added to `transformIgnorePatterns`' exception list (same recurring pattern as
+>   `@react-native-async-storage` earlier — see docs/debug-log.md).
 >
 > **Screen capture consent flow — the next brick after the floating window:**
 > - Extended `OverlayModule.kt` with `requestScreenCapturePermission()`, which launches Android's

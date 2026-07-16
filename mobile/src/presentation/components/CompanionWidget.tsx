@@ -13,6 +13,9 @@ import {
   View,
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { RootStackParamList } from '../navigation/types';
 import { getAllSpecies, getSpeciesById, getSpriteUrl } from '../../data/pokedex/pokedexRepository';
 import { getLoreWithFallback } from '../../data/lore/loreRepository';
 import { CompanionApiError, fetchCompanionSuggestion } from '../../data/companion/companionApiClient';
@@ -59,6 +62,7 @@ function buildDialogue(
 export function CompanionWidget(): React.JSX.Element {
   const { t, language } = useTranslation();
   const insets = useSafeAreaInsets();
+  const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const [speciesId, setSpeciesId] = useState(DEFAULT_COMPANION_ID);
   const [bubbleVisible, setBubbleVisible] = useState(false);
   const [dialogueIndex, setDialogueIndex] = useState(0);
@@ -225,6 +229,19 @@ export function CompanionWidget(): React.JSX.Element {
             )}
           </Pressable>
 
+          <Pressable
+            style={styles.professorButton}
+            onPress={(event) => {
+              event.stopPropagation();
+              setBubbleVisible(false);
+              navigation.navigate('ProfessorChat');
+            }}
+            accessibilityRole="button"
+            accessibilityLabel={t('companion.professorModeButton')}
+          >
+            <Text style={styles.professorButtonText}>{t('companion.professorModeButton')}</Text>
+          </Pressable>
+
           <View style={styles.bubbleTail} />
         </Pressable>
       )}
@@ -334,7 +351,12 @@ const styles = StyleSheet.create({
     position: 'absolute',
     bottom: AVATAR_SIZE + SPACING.sm,
     left: SPACING.xs,
-    maxWidth: 260,
+    // `width`, not `maxWidth` — an absolutely positioned view with no `width`/`left`+`right` pair
+    // has no reference box for Yoga to measure a max-width against, so it collapsed to the
+    // narrowest column that could still wrap the text (one word per line) instead of a sensible
+    // bubble width. This regressed when the bubble moved from in-flow to `position: 'absolute'`
+    // to fix the avatar-jumping bug — a fixed width is the correct fix for an absolute element.
+    width: 260,
     backgroundColor: COLORS.glassSurface,
     borderWidth: 1,
     borderColor: COLORS.glassBorder,
@@ -410,6 +432,21 @@ const styles = StyleSheet.create({
     fontSize: 11,
     fontWeight: '700',
     color: COLORS.mintDark,
+  },
+  professorButton: {
+    marginTop: SPACING.xs,
+    alignSelf: 'flex-start',
+    backgroundColor: COLORS.surface,
+    borderRadius: RADIUS.full,
+    borderWidth: 1,
+    borderColor: COLORS.glassBorder,
+    paddingVertical: SPACING.xs,
+    paddingHorizontal: SPACING.md,
+  },
+  professorButtonText: {
+    fontSize: 11,
+    fontWeight: '700',
+    color: COLORS.brandBlue,
   },
   pickerBackdrop: {
     flex: 1,

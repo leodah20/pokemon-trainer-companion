@@ -220,6 +220,43 @@ um erro de import.
 
 ---
 
+### 6. `KeyboardAvoidingView` não move o input pra cima no Android
+
+**Sintoma:** na tela de chat (`ProfessorChatScreen`), ao abrir o teclado, a caixa de texto ficava
+escondida atrás dele — no iOS o `behavior="padding"` funciona, mas o código tinha
+`behavior={Platform.OS === 'ios' ? 'padding' : undefined}`, ou seja, **nenhum comportamento** no
+Android.
+
+**Causa:** `undefined` é um valor válido pra essa prop (significa "não faça nada"), então no
+Android o `KeyboardAvoidingView` literalmente não reagia ao teclado abrir — mesmo com
+`android:windowSoftInputMode="adjustResize"` já declarado no `AndroidManifest.xml`. Esse manifest
+setting sozinho não é suficiente quando o conteúdo está dentro de uma `SafeAreaView`/navigator com
+layout customizado.
+
+**Fix:** trocar pra `behavior={Platform.OS === 'ios' ? 'padding' : 'height'}` — `'height'` é o
+comportamento correto pro Android nesse tipo de layout (encolhe o container em vez de adicionar
+padding). Padrão a lembrar: **`undefined` não é "comportamento padrão", é "nenhum comportamento"**
+em `KeyboardAvoidingView.behavior` — sempre definir explicitamente os dois casos de plataforma.
+
+---
+
+### 7. Markdown do Gemini aparecendo como asteriscos literais no chat
+
+**Sintoma:** respostas do Professor Mode com `**negrito**` ou listas apareciam com os asteriscos
+literais na tela (`**Hydrocanhão**` em vez de **Hydrocanhão** em negrito), já que o texto era
+renderizado direto num `<Text>` sem nenhum parser de Markdown.
+
+**Causa:** Gemini formata respostas em Markdown por padrão (é assim que ele "sabe" formatar
+naturalmente), mas React Native não tem suporte nativo a Markdown — só texto plano.
+
+**Fix:** `react-native-markdown-display` — biblioteca 100% JS (parser `markdown-it` + componentes
+React puros, sem código nativo), então **não precisou de rebuild Gradle**, só recarregar o bundle
+do Metro. Precisou entrar em `transformIgnorePatterns` do `jest.config.js` (junto com sua
+dependência `react-native-fit-image`), mesmo padrão do item de `@react-native-async-storage`
+acima — ver "Padrões pra lembrar".
+
+---
+
 ## Padrões pra lembrar
 
 - **Prisma 7 mudou bastante** em relação a versões anteriores: sem `index.ts` de barril, formato de
@@ -246,3 +283,9 @@ um erro de import.
 - **`screencap` do emulador pode "vidrar" (branco/corrompido) depois de sessão longa** sem que seja
   um bug do app — checar `logcat` por `FATAL`/`Exception` antes de suspeitar do código; se estiver
   limpo, reiniciar o emulador resolve.
+- **`KeyboardAvoidingView.behavior={undefined}` no Android = nenhum comportamento**, não um padrão
+  razoável — sempre definir `'height'` (ou `'position'`) explicitamente pro Android, `'padding'`
+  costuma ser só pra iOS.
+- **Texto de LLM (Gemini, etc.) vem formatado em Markdown por padrão** — sempre renderizar respostas
+  de IA com um parser de Markdown (`react-native-markdown-display` aqui, JS puro, sem rebuild),
+  nunca assumir que vai ser texto plano.

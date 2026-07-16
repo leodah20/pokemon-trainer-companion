@@ -6,6 +6,7 @@ import { EvolutionChainScreen } from '../screens/EvolutionChainScreen';
 import { IvCalculatorScreen } from '../screens/IvCalculatorScreen';
 import { OverlayDemoScreen } from '../screens/OverlayDemoScreen';
 import { PokemonDetailScreen } from '../screens/PokemonDetailScreen';
+import { ProfessorChatScreen } from '../screens/ProfessorChatScreen';
 import { RaidCountersScreen } from '../screens/RaidCountersScreen';
 import { TypeChartScreen } from '../screens/TypeChartScreen';
 import { BottomTabNavigator } from './BottomTabNavigator';
@@ -34,6 +35,7 @@ export function RootNavigator(): React.JSX.Element {
       <Stack.Screen name="RaidCounters" component={RaidCountersScreen} options={{ title: 'Raid Counters' }} />
       <Stack.Screen name="EvolutionChain" component={EvolutionChainScreen} options={{ title: 'Evolution Chain' }} />
       <Stack.Screen name="OverlayDemo" component={OverlayDemoScreen} options={{ title: 'Overlay Demo' }} />
+      <Stack.Screen name="ProfessorChat" component={ProfessorChatScreen} options={{ title: 'Professor Mode' }} />
     </Stack.Navigator>
   );
 }

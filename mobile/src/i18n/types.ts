@@ -61,6 +61,12 @@ export interface TranslationKeys {
   'companion.dialogueBattleTip': string;
   'companion.dialogueFunFact': string;
   'companion.dialogueAiTip': string;
+  'companion.professorModeButton': string;
+  'professorChat.emptyState': string;
+  'professorChat.inputPlaceholder': string;
+  'professorChat.sendButton': string;
+  'professorChat.thinking': string;
+  'professorChat.genericError': string;
 
   'pvpLeague.great': string;
   'pvpLeague.ultra': string;

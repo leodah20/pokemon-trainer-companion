@@ -50,6 +50,12 @@ export const ptBR: TranslationKeys = {
   'companion.dialogueBattleTip': 'Dica de batalha',
   'companion.dialogueFunFact': 'Curiosidade',
   'companion.dialogueAiTip': '✨ Dica da IA',
+  'companion.professorModeButton': '🎓 Modo Professor',
+  'professorChat.emptyState': 'Pergunte qualquer coisa sobre Pokémon pro Professor — espécies, PvP, raids, lore, estratégia, o que quiser saber.',
+  'professorChat.inputPlaceholder': 'Pergunte qualquer coisa ao Professor...',
+  'professorChat.sendButton': 'Enviar',
+  'professorChat.thinking': 'Professor está pensando...',
+  'professorChat.genericError': 'Algo deu errado. Tentar de novo?',
 
   'pvpLeague.great': 'Great League',
   'pvpLeague.ultra': 'Ultra League',

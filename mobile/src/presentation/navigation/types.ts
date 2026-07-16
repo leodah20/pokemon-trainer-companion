@@ -13,6 +13,7 @@ export type RootStackParamList = {
   RaidCounters: undefined;
   EvolutionChain: { speciesId: number };
   OverlayDemo: undefined;
+  ProfessorChat: undefined;
 };
 
 /** The 5 bottom-tab destinations. Each is a leaf screen — deeper navigation (detail, tools)

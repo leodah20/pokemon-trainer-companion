@@ -69,6 +69,28 @@ the project.
 
 ---
 
+## UC-01b — Open-ended chat with the Companion AI ("Professor Mode")
+
+1. Trainer taps "🎓 Professor Mode" in the Companion widget's speech bubble (alongside the
+   existing one-shot "Ask AI ✨" — the widget itself stays "Companion Mode").
+2. A dedicated full-screen chat opens (`ProfessorChatScreen`). Trainer types any Pokemon-related
+   question — species stats, PvP, raids, lore, strategy, anything, not scoped to one species.
+3. System sends the full conversation so far to `POST /api/companion/chat`, which forwards it to
+   Gemini as a native multi-turn `contents` history (not a single stuffed prompt), so the model
+   has real conversational context and can reference earlier turns.
+4. Trainer reads the reply (rendered as Markdown — bold, lists, etc. from the model's formatting)
+   and can keep asking follow-ups in the same session.
+
+**Difference from UC-01a:** UC-01a is a one-shot suggestion tied to a specific species and
+context (raid/battle/capture/etc.); this is an open conversation with no species scoping and full
+multi-turn memory within the session (not persisted across app restarts).
+
+**Status:** ✅ Done — verified live on a physical device with a real Portuguese PvP question,
+correctly formatted, conversational reply. Not grounded in the knowledge base (unlike UC-01a) —
+answers come from Gemini's own training plus the system prompt's Pokemon-focused framing.
+
+---
+
 ## UC-02 — Get a raid/gym counter recommendation
 
 1. Trainer selects the raid boss from a list (grouped by tier: 1★/3★/5★).

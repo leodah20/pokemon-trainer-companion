@@ -57,6 +57,7 @@ flowchart TB
 | Database (PostgreSQL + Prisma) | 🟡 Schema ready | Models defined; migrations not yet run |
 | **🏆 OCR pipeline (gallery screenshot)** | ✅ Functional | Species/CP/HP extraction → full analysis (IV, PvP, bulk, evolution, tips) |
 | **🏆 Companion AI, grounded in real OCR data** | ✅ Functional | `POST /api/companion/suggest`, Gemini-backed, wired into "Ask AI ✨" |
+| **🏆 Professor Mode — open-ended AI chat** | ✅ Functional | `POST /api/companion/chat`, multi-turn conversation via Gemini's native `contents` history, wired into `ProfessorChatScreen` |
 | **🏆 Native floating window** | ✅ Scaffolding done | `OverlayModule.kt`/`OverlayPackage.kt` — permission + real `TYPE_APPLICATION_OVERLAY` window, verified surviving app backgrounding. Static placeholder content only |
 | **🏆 Screen capture consent flow** | ✅ Scaffolding done | `MediaProjectionManager` consent dialog round-trips to JS via `ActivityEventListener`, verified on both accept and deny paths. No frame captured yet |
 | **🏆 Native overlay live capture** | ❌ Not started | Needs a foreground service that opens the `MediaProjection` session the consent dialog already grants access to, and feeds captured frames into the existing OCR pipeline instead of a static label |
