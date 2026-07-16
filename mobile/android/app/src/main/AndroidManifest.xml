@@ -1,6 +1,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <!-- Flagship real-time overlay (docs/architecture.md) — draws the floating tips window over
+         Pokemon GO. Scaffolding only for now: the permission and a bare WindowManager overlay are
+         wired up, but screen capture (MediaProjection) is a separate, larger piece not built yet.
+         See docs/legal-compliance.md for why this stays screen-reading only, no game integration. -->
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
 
     <application
       android:name=".MainApplication"

@@ -11,7 +11,7 @@ section.
 flowchart TB
     subgraph Device["Trainer's device"]
         PogoApp["Pokémon GO (unmodified)"]
-        Overlay["Overlay window (Android, planned) / gallery screenshot (today)"]
+        Overlay["Overlay window (Android, scaffolded - static content)\ngallery screenshot (live OCR today)"]
         OCR["On-device OCR - ML Kit"]
         LocalDB["Local cache - SQLite"]
         MobileApp["Mobile app (React Native)"]
@@ -57,7 +57,8 @@ flowchart TB
 | Database (PostgreSQL + Prisma) | 🟡 Schema ready | Models defined; migrations not yet run |
 | **🏆 OCR pipeline (gallery screenshot)** | ✅ Functional | Species/CP/HP extraction → full analysis (IV, PvP, bulk, evolution, tips) |
 | **🏆 Companion AI, grounded in real OCR data** | ✅ Functional | `POST /api/companion/suggest`, Gemini-backed, wired into "Ask AI ✨" |
-| **🏆 Native always-on overlay** | ❌ Not started | Requires native Android Kotlin module (`SYSTEM_ALERT_WINDOW` + `MediaProjection`) |
+| **🏆 Native floating window** | ✅ Scaffolding done | `OverlayModule.kt`/`OverlayPackage.kt` — permission + real `TYPE_APPLICATION_OVERLAY` window, verified surviving app backgrounding. Static placeholder content only |
+| **🏆 Native overlay live capture** | ❌ Not started | Needs `MediaProjection` (its own foreground service + capture lifecycle) feeding the existing OCR pipeline instead of a static label |
 | **🏆 Knowledge base grounding the AI** | ✅ MVP done | `backend/src/data/knowledge/` — PokeAPI-sourced genus/habitat/Pokedex-entry facts for all 251 Gen 1+2 species (tracks the backend's species database range), folded into the Companion prompt. Next: wider generations + deeper (Bulbapedia-style) facts |
 
 ## Mobile app architecture (Clean Architecture)

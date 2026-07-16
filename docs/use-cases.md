@@ -22,17 +22,20 @@ calculator/reference foundation it sits on top of). See
 4. Trainer can tap "Ask AI ✨" for a natural-language tip generated from that same real, on-screen
    data (see UC-01a).
 
-**Alternate flow (native overlay, planned):** instead of picking a screenshot from the gallery,
+**Alternate flow (native overlay, scaffolded):** instead of picking a screenshot from the gallery,
 the overlay captures the visible screen region live via a native Android module
 (`SYSTEM_ALERT_WINDOW` + `MediaProjection`), so results render as a floating window over the game
-in real time — no manual screenshot step.
+in real time — no manual screenshot step. The floating window itself is real and verified
+(`OverlayModule.kt`, survives app backgrounding); it just isn't fed live screen content yet —
+`MediaProjection` capture into the existing OCR pipeline is the remaining piece.
 
 **Alternate flow:** OCR confidence is too low / no known species recognized → Trainer is shown a
 message rather than a wrong result; no manual-entry fallback yet.
 
 **Status:** 🟡 Partially done — OCR pipeline, IV/PvP/bulk analysis, and rule-based suggestions all
 work today via gallery screenshot (`analyzeScreenshot.ts`, `OverlayDemoScreen`). The native
-always-on floating overlay is the remaining piece — see "Flagship feature" in the README.
+floating window itself is scaffolded and verified; live `MediaProjection` capture feeding it is
+the remaining piece — see "Flagship feature" in the README.
 
 ---
 

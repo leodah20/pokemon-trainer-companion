@@ -26,7 +26,7 @@ whether to catch or pass, what to run in this raid, what moveset wins this PvP m
 no game-memory access, no calls to Niantic's servers — see
 [docs/legal-compliance.md](docs/legal-compliance.md).
 
-Three pieces already work today, ahead of the native always-on overlay:
+Four pieces already work today, ahead of the fully automatic always-on overlay:
 - **OCR pipeline** — gallery screenshot → species/CP/HP extraction → full analysis (IV, PvP, bulk,
   evolution, rule-based tips), demoed in `OverlayDemoScreen`
 - **AI companion** — an optional Gemini-backed layer, grounded in the *real* OCR-extracted stats
@@ -34,12 +34,18 @@ Three pieces already work today, ahead of the native always-on overlay:
 - **Knowledge base (MVP)** — the AI's answers are now grounded in real PokeAPI-sourced Pokedex
   facts (genus, habitat, official Pokedex flavor text) for all 251 Gen 1+2 species, instead of
   purely the LLM's own training — `backend/src/data/knowledge/`
+- **Native floating window (scaffolding)** — a real Android Kotlin module
+  (`android/.../overlay/OverlayModule.kt`) draws a `SYSTEM_ALERT_WINDOW` overlay that floats over
+  *any* app, not just PTC — verified by showing it, backgrounding to the home screen, and
+  confirming it's still on top. This is genuinely the always-on floating window; what's not built
+  yet is feeding it live screen content instead of a static test label.
 
-What's left to reach the full vision: swapping the gallery picker for a native always-on floating
-overlay (`SYSTEM_ALERT_WINDOW` + `MediaProjection`), and extending the knowledge base past Gen 1
-and past PokeAPI's structured fields toward deeper community-sourced Pokémon knowledge (Bulbapedia
-and similar), so the AI's answers keep getting richer instead of the same handful of facts
-repeating. See "Post-beta scope" below for where this stands.
+What's left to reach the full vision: replacing the static test label with `MediaProjection`
+screen capture piped through the existing OCR pipeline (the actual "read the screen live" part),
+and extending the knowledge base past Gen 2 and past PokeAPI's structured fields toward deeper
+community-sourced Pokémon knowledge (Bulbapedia and similar), so the AI's answers keep getting
+richer instead of the same handful of facts repeating. See "Post-beta scope" below for where this
+stands.
 
 ## Why this exists
 
@@ -146,7 +152,8 @@ Progress: 89% █████████████████░░░ (24 /
 | **🏆 Flagship** | OCR engine + rule-based smart suggestions (gallery screenshot → species/CP/HP → evolve/PvP/raid/gym advice) | ✅ Done | ✅ |
 | | Gemini-backed AI companion grounded in real on-screen stats | ✅ Done | ✅ |
 | | Knowledge base grounding the AI (PokeAPI-sourced, all 251 Gen 1+2 species) | ✅ MVP done | ✅ |
-| | Floating overlay (native Android module, auto-capture instead of gallery picker) | ❌ Not started | — |
+| | Floating overlay window (native Android module, permission + WindowManager) | ✅ Scaffolding done | — |
+| | Floating overlay live capture (MediaProjection feeding the OCR pipeline) | ❌ Not started | — |
 | | Knowledge base — expand past Gen 2 + deeper Bulbapedia-sourced facts | 🔄 Planned | — |
 | **Future** | Cross-device sync + authentication | ❌ Not started | — |
 
@@ -156,11 +163,16 @@ Deliberately deferred past this beta — not gaps, just not yet prioritized:
 
 - **🏆 The flagship real-time AI overlay** — this is the project's actual differentiator (see
   "Flagship feature" above), not a nice-to-have, and it's split into two remaining pieces:
-  - **Native floating overlay** (rest of Fase 6) — the OCR engine itself works today (gallery
-    screenshot → species/CP/HP → full analysis); auto-capture via a native Android Kotlin module
-    (SYSTEM_ALERT_WINDOW + MediaProjection) is the piece left to make it always-on instead of a
-    manual gallery pick — it's the riskiest native work in the project, deliberately deferred
-    rather than rushed
+  - **Native floating overlay — scaffolding done, capture next.** The OCR engine itself works
+    today (gallery screenshot → species/CP/HP → full analysis). A real native Android Kotlin
+    module (`android/.../overlay/OverlayModule.kt` + `OverlayPackage.kt`, registered in
+    `MainApplication.kt`) requests the `SYSTEM_ALERT_WINDOW` permission and draws a genuine
+    `TYPE_APPLICATION_OVERLAY` floating window — verified on-device: shown, backgrounded to the
+    home screen, still floating on top, then hidden cleanly. `mobile/src/data/overlay/overlayBridge.ts`
+    exposes it to JS, with a test card in `OverlayDemoScreen`. What's still not built is the
+    actual "read the screen live" part — piping `MediaProjection` screen capture through the
+    existing OCR pipeline instead of showing a static test label; that's real remaining native
+    work (its own foreground service, capture lifecycle), just no longer starting from zero
   - **Knowledge base — MVP done, deepen next.** The free, rule-based path
     (`generateSmartSuggestions.ts` in the OCR flow, `buildDialogue` in the Companion widget) stays
     as the always-available default that needs no network. An optional real LLM layer
@@ -194,6 +206,28 @@ Deliberately deferred past this beta — not gaps, just not yet prioritized:
 ### Last implemented features
 
 > <time datetime="2026-07-16">2026-07-16</time>
+>
+> **Native overlay window scaffolding — the flagship feature's biggest remaining piece, started:**
+> - A real native Android Kotlin module: `android/.../overlay/OverlayModule.kt` requests the
+>   `SYSTEM_ALERT_WINDOW` permission (via `Settings.ACTION_MANAGE_OVERLAY_PERMISSION`, since
+>   Android requires a user-driven grant, not a normal runtime prompt) and draws a genuine
+>   `TYPE_APPLICATION_OVERLAY` floating window via `WindowManager`. `OverlayPackage.kt` registers
+>   it as a NativeModule; `mobile/src/data/overlay/overlayBridge.ts` exposes
+>   `hasOverlayPermission()`/`requestOverlayPermission()`/`showTestOverlay()`/`hideTestOverlay()`
+>   to JS, safely no-op on iOS or if the module isn't linked.
+> - Deliberately scoped down: this only proves the permission flow and a floating window work —
+>   it draws a static placeholder label, not live screen content. `MediaProjection` capture (its
+>   own foreground service + capture lifecycle) is separate, larger, real remaining work.
+> - **Verified live on-device, not just typecheck**: granted the permission, showed the test
+>   overlay, pressed the home button to background the app entirely, confirmed the overlay was
+>   still floating on top of the Android home screen, then returned to the app and hid it cleanly.
+>   This is the actual "floats over any app, not just PTC" behavior the flagship feature needs.
+> - A new "Native overlay (experimental)" card in `OverlayDemoScreen` exercises this — grant
+>   permission, show/hide the test window — gated behind `isOverlaySupported()` so it's invisible
+>   on iOS.
+> - 23/23 mobile test suites still passing; native module changes required a full Gradle rebuild
+>   (Kotlin compiled clean on the first attempt) and reinstall to pick up the new permission and
+>   registered package.
 >
 > **Companion avatar position bug fix + AsyncStorage persistence:**
 > - Fixed a real bug reported by the user via a screen recording on a physical device: closing the

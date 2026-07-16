@@ -183,6 +183,12 @@ export const es: TranslationKeys = {
   'overlay.rawTextLabel': 'Texto bruto del OCR (para depuración)',
   'overlay.rawTextEmpty': '(vacío)',
   'overlay.aiGenericError': 'Algo salió mal.',
+  'overlay.nativeExperimentalLabel': 'OVERLAY NATIVO (EXPERIMENTAL)',
+  'overlay.nativeExperimentalHint':
+    'Estructura inicial del overlay flotante siempre activo — esto solo comprueba que el permiso y una ventana de prueba funcionan, todavía no lee tu pantalla.',
+  'overlay.grantPermissionButton': 'Permitir superposición',
+  'overlay.showTestOverlayButton': 'Mostrar overlay de prueba',
+  'overlay.hideTestOverlayButton': 'Ocultar overlay de prueba',
   'aiContext.raid': 'Raid',
   'aiContext.battle': 'Batalla',
   'aiContext.capture': 'Captura',

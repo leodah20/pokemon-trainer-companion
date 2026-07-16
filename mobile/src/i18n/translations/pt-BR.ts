@@ -183,6 +183,12 @@ export const ptBR: TranslationKeys = {
   'overlay.rawTextLabel': 'Texto bruto do OCR (para depuração)',
   'overlay.rawTextEmpty': '(vazio)',
   'overlay.aiGenericError': 'Algo deu errado.',
+  'overlay.nativeExperimentalLabel': 'OVERLAY NATIVO (EXPERIMENTAL)',
+  'overlay.nativeExperimentalHint':
+    'Estrutura inicial do overlay flutuante sempre ativo — isso só comprova que a permissão e uma janela de teste funcionam, ainda não lê sua tela.',
+  'overlay.grantPermissionButton': 'Permitir sobreposição',
+  'overlay.showTestOverlayButton': 'Mostrar overlay de teste',
+  'overlay.hideTestOverlayButton': 'Esconder overlay de teste',
   'aiContext.raid': 'Raid',
   'aiContext.battle': 'Batalha',
   'aiContext.capture': 'Captura',

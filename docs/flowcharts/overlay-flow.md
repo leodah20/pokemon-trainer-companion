@@ -6,7 +6,7 @@ flow — see [../architecture.md](../architecture.md) and the README's "🏆 Fla
 
 ```mermaid
 flowchart TD
-    A[Trainer opens the overlay] --> B["Screen region captured\n(today: gallery screenshot pick;\nplanned: native floating overlay, live)"]
+    A[Trainer opens the overlay] --> B["Screen region captured\n(today: gallery screenshot pick;\nfloating window itself is scaffolded -\nMediaProjection live capture still to build)"]
     B --> C[On-device OCR extracts text\nML Kit Text Recognition]
     C --> D{OCR confidence\nabove threshold?}
     D -- yes --> E[Parse species, CP, HP]
@@ -16,7 +16,7 @@ flowchart TD
     H --> I[Render analysis card]
     I --> J{Trainer taps\n"Ask AI ✨"?}
     J -- yes --> K["Send species + real OCR-extracted\nCP/HP/IVs + chosen context to\nCompanion AI endpoint"]
-    K --> L["Companion service builds a grounded\nprompt (planned: pulled from a\ncommunity-fed knowledge base,\ntoday: backend species/type/PvP/raid data)"]
+    K --> L["Companion service builds a grounded\nprompt (backend species/type/PvP/raid data +\nPokeAPI-sourced knowledge base, 251 species;\nplanned: deeper Bulbapedia-style facts)"]
     L --> M[LLM generates a contextual tip]
     M --> N[Render tip in the analysis card]
     J -- no --> O{Trainer feeds another\nscreenshot?}

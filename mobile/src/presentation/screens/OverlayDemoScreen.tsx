@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import { ActivityIndicator, Image, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { useFocusEffect } from '@react-navigation/native';
 import { launchImageLibrary } from 'react-native-image-picker';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { getSpriteUrl } from '../../data/pokedex/pokedexRepository';
@@ -10,6 +11,13 @@ import { buildCompanionExtraContext } from '../../use-cases/buildCompanionExtraC
 import { CompanionAiContext, CompanionApiError, fetchCompanionSuggestion } from '../../data/companion/companionApiClient';
 import { Card, COLORS, DISPLAY_FONT, FONT_SIZE, RADIUS, SHADOW, SPACING } from '../theme';
 import { useTranslation } from '../../i18n';
+import {
+  hasOverlayPermission,
+  hideTestOverlay,
+  isOverlaySupported,
+  requestOverlayPermission,
+  showTestOverlay,
+} from '../../data/overlay/overlayBridge';
 
 const LEAGUE_ORDER: PvpLeague[] = ['great', 'ultra', 'master'];
 const AI_CONTEXTS: readonly CompanionAiContext[] = ['raid', 'battle', 'capture', 'levelup', 'general'];
@@ -26,6 +34,34 @@ export function OverlayDemoScreen(): React.JSX.Element {
   const [aiState, setAiState] = useState<AiState>('idle');
   const [aiText, setAiText] = useState<string | null>(null);
   const [aiError, setAiError] = useState<string | null>(null);
+
+  const [overlayPermission, setOverlayPermission] = useState<boolean | null>(null);
+  const [overlayShown, setOverlayShown] = useState(false);
+
+  async function refreshOverlayPermission(): Promise<void> {
+    setOverlayPermission(await hasOverlayPermission());
+  }
+
+  // Re-checks on every focus, not just mount, so returning from the system "draw over other
+  // apps" settings screen (there's no grant callback for this permission) picks up the change.
+  useFocusEffect(
+    useCallback(() => {
+      if (isOverlaySupported()) {
+        refreshOverlayPermission();
+      }
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []),
+  );
+
+  async function handleToggleTestOverlay(): Promise<void> {
+    if (overlayShown) {
+      await hideTestOverlay();
+      setOverlayShown(false);
+      return;
+    }
+    const granted = await showTestOverlay();
+    setOverlayShown(granted);
+  }
 
   async function handlePickImage(): Promise<void> {
     const result = await launchImageLibrary({ mediaType: 'photo' });
@@ -69,6 +105,37 @@ export function OverlayDemoScreen(): React.JSX.Element {
       <ScrollView contentContainerStyle={styles.content}>
         <Text style={styles.title}>{t('overlay.title')}</Text>
         <Text style={styles.subtitle}>{t('overlay.subtitle')}</Text>
+
+        {isOverlaySupported() && (
+          <Card style={styles.nativeOverlayCard} accentColor={COLORS.mint}>
+            <Text style={styles.nativeOverlayLabel}>{t('overlay.nativeExperimentalLabel')}</Text>
+            <Text style={styles.sectionText}>{t('overlay.nativeExperimentalHint')}</Text>
+
+            {overlayPermission === false && (
+              <Pressable
+                style={styles.pickButton}
+                onPress={requestOverlayPermission}
+                accessibilityRole="button"
+                accessibilityLabel={t('overlay.grantPermissionButton')}
+              >
+                <Text style={styles.pickButtonText}>{t('overlay.grantPermissionButton')}</Text>
+              </Pressable>
+            )}
+
+            {overlayPermission === true && (
+              <Pressable
+                style={styles.askAiButton}
+                onPress={handleToggleTestOverlay}
+                accessibilityRole="button"
+                accessibilityLabel={overlayShown ? t('overlay.hideTestOverlayButton') : t('overlay.showTestOverlayButton')}
+              >
+                <Text style={styles.askAiButtonText}>
+                  {overlayShown ? t('overlay.hideTestOverlayButton') : t('overlay.showTestOverlayButton')}
+                </Text>
+              </Pressable>
+            )}
+          </Card>
+        )}
 
         <Pressable
           style={({ pressed }) => [styles.pickButton, pressed && styles.pickButtonPressed]}
@@ -213,6 +280,15 @@ const styles = StyleSheet.create({
     fontSize: FONT_SIZE.sm,
     color: COLORS.textSecondary,
     lineHeight: 20,
+  },
+  nativeOverlayCard: {
+    marginTop: SPACING.lg,
+  },
+  nativeOverlayLabel: {
+    fontSize: 11,
+    fontWeight: '800',
+    letterSpacing: 1,
+    color: COLORS.mintDark,
   },
   pickButton: {
     marginTop: SPACING.xl,

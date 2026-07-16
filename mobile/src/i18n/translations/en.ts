@@ -183,6 +183,12 @@ export const en: TranslationKeys = {
   'overlay.rawTextLabel': 'Raw OCR text (for debugging)',
   'overlay.rawTextEmpty': '(empty)',
   'overlay.aiGenericError': 'Something went wrong.',
+  'overlay.nativeExperimentalLabel': 'NATIVE OVERLAY (EXPERIMENTAL)',
+  'overlay.nativeExperimentalHint':
+    'Early scaffolding for the always-on floating overlay — this only proves the permission and a placeholder window work, it does not read your screen yet.',
+  'overlay.grantPermissionButton': 'Allow overlay permission',
+  'overlay.showTestOverlayButton': 'Show test overlay',
+  'overlay.hideTestOverlayButton': 'Hide test overlay',
   'aiContext.raid': 'Raid',
   'aiContext.battle': 'Battle',
   'aiContext.capture': 'Capture',

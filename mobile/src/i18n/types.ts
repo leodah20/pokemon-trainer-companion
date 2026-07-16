@@ -192,6 +192,11 @@ export interface TranslationKeys {
   'overlay.rawTextLabel': string;
   'overlay.rawTextEmpty': string;
   'overlay.aiGenericError': string;
+  'overlay.nativeExperimentalLabel': string;
+  'overlay.nativeExperimentalHint': string;
+  'overlay.grantPermissionButton': string;
+  'overlay.showTestOverlayButton': string;
+  'overlay.hideTestOverlayButton': string;
   'aiContext.raid': string;
   'aiContext.battle': string;
   'aiContext.capture': string;
