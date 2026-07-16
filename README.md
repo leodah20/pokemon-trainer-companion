@@ -26,7 +26,7 @@ whether to catch or pass, what to run in this raid, what moveset wins this PvP m
 no game-memory access, no calls to Niantic's servers — see
 [docs/legal-compliance.md](docs/legal-compliance.md).
 
-Four pieces already work today, ahead of the fully automatic always-on overlay:
+Five pieces already work today, ahead of the fully automatic always-on overlay:
 - **OCR pipeline** — gallery screenshot → species/CP/HP extraction → full analysis (IV, PvP, bulk,
   evolution, rule-based tips), demoed in `OverlayDemoScreen`
 - **AI companion** — an optional Gemini-backed layer, grounded in the *real* OCR-extracted stats
@@ -39,10 +39,15 @@ Four pieces already work today, ahead of the fully automatic always-on overlay:
   *any* app, not just PTC — verified by showing it, backgrounding to the home screen, and
   confirming it's still on top. This is genuinely the always-on floating window; what's not built
   yet is feeding it live screen content instead of a static test label.
+- **Screen capture consent flow (scaffolding)** — the same module also round-trips Android's real
+  `MediaProjectionManager` "Share your screen with PTC?" system dialog, verified on both the
+  accept and deny paths. No frame is captured yet — this only proves the consent step, the piece
+  every screen-recording app has to get through before it can request a `VirtualDisplay`.
 
-What's left to reach the full vision: replacing the static test label with `MediaProjection`
-screen capture piped through the existing OCR pipeline (the actual "read the screen live" part),
-and extending the knowledge base past Gen 2 and past PokeAPI's structured fields toward deeper
+What's left to reach the full vision: a foreground service that actually opens the
+`MediaProjection` session and pipes captured frames through the existing OCR pipeline (the actual
+"read the screen live" part), and extending the knowledge base past Gen 2 and past PokeAPI's
+structured fields toward deeper
 community-sourced Pokémon knowledge (Bulbapedia and similar), so the AI's answers keep getting
 richer instead of the same handful of facts repeating. See "Post-beta scope" below for where this
 stands.
@@ -118,7 +123,7 @@ base, cross-device sync, and dark mode are intentionally out of scope for this b
 
 <!-- ==================== PROGRESS OVERVIEW ==================== -->
 
-Progress: 91% ██████████████████░░ (31 / 34 features)
+Progress: 91% ██████████████████░░ (32 / 35 features)
 
 | Category | Feature | Status | Tests |
 |----------|---------|--------|-------|
@@ -153,7 +158,8 @@ Progress: 91% ██████████████████░░ (31 /
 | | Gemini-backed AI companion grounded in real on-screen stats | ✅ Done | ✅ |
 | | Knowledge base grounding the AI (PokeAPI-sourced, all 251 Gen 1+2 species) | ✅ MVP done | ✅ |
 | | Floating overlay window (native Android module, permission + WindowManager) | ✅ Scaffolding done | — |
-| | Floating overlay live capture (MediaProjection feeding the OCR pipeline) | ❌ Not started | — |
+| | Screen capture consent flow (`MediaProjectionManager`, verified both accept/deny paths) | ✅ Scaffolding done | — |
+| | Floating overlay live capture (foreground service + frame capture → OCR pipeline) | ❌ Not started | — |
 | | Knowledge base — expand past Gen 2 + deeper Bulbapedia-sourced facts | 🔄 Planned | — |
 | **Future** | Cross-device sync + authentication | ❌ Not started | — |
 
@@ -168,11 +174,14 @@ Deliberately deferred past this beta — not gaps, just not yet prioritized:
     module (`android/.../overlay/OverlayModule.kt` + `OverlayPackage.kt`, registered in
     `MainApplication.kt`) requests the `SYSTEM_ALERT_WINDOW` permission and draws a genuine
     `TYPE_APPLICATION_OVERLAY` floating window — verified on-device: shown, backgrounded to the
-    home screen, still floating on top, then hidden cleanly. `mobile/src/data/overlay/overlayBridge.ts`
-    exposes it to JS, with a test card in `OverlayDemoScreen`. What's still not built is the
-    actual "read the screen live" part — piping `MediaProjection` screen capture through the
-    existing OCR pipeline instead of showing a static test label; that's real remaining native
-    work (its own foreground service, capture lifecycle), just no longer starting from zero
+    home screen, still floating on top, then hidden cleanly. The same module also round-trips
+    Android's real `MediaProjectionManager` screen-capture consent dialog — verified on both the
+    accept and deny paths, resolving correctly back to JS each time.
+    `mobile/src/data/overlay/overlayBridge.ts` exposes both to JS, with a test card in
+    `OverlayDemoScreen`. What's still not built is the actual "read the screen live" part: a
+    foreground service that opens the `MediaProjection` session the consent dialog already grants
+    access to, and pipes captured frames through the existing OCR pipeline instead of showing a
+    static test label. That's real remaining native work, just no longer starting from zero
   - **Knowledge base — MVP done, deepen next.** The free, rule-based path
     (`generateSmartSuggestions.ts` in the OCR flow, `buildDialogue` in the Companion widget) stays
     as the always-available default that needs no network. An optional real LLM layer
@@ -209,6 +218,24 @@ Deliberately deferred past this beta — not gaps, just not yet prioritized:
 ### Last implemented features
 
 > <time datetime="2026-07-16">2026-07-16</time>
+>
+> **Screen capture consent flow — the next brick after the floating window:**
+> - Extended `OverlayModule.kt` with `requestScreenCapturePermission()`, which launches Android's
+>   real `MediaProjectionManager.createScreenCaptureIntent()` — the actual "Share your screen with
+>   PTC?" system dialog every screen-recording app has to get through. Implemented via
+>   `ActivityEventListener` (registered in the module's `init` block) so the result of that
+>   system dialog round-trips back to a JS `Promise` correctly.
+> - **Verified live on-device, both paths**: requested the permission, hit "Cancel" on the real
+>   system dialog, confirmed the JS side resolved to "denied"; requested again, went through
+>   "Share one app" → picked an app → confirmed the JS side resolved to "granted". Neither path
+>   actually opens a capture session yet — the `Intent` data Android hands back on approval is
+>   deliberately discarded for now, this only proves the consent round-trip works.
+> - Manifest gained `FOREGROUND_SERVICE` + `FOREGROUND_SERVICE_MEDIA_PROJECTION` permissions ahead
+>   of the foreground service that will actually run the capture session — declared now so that
+>   piece doesn't need its own manifest change later.
+> - New "Request screen capture consent" button in the same `OverlayDemoScreen` experimental card.
+> - 23/23 mobile test suites passing, Kotlin compiled clean after two small signature fixes
+>   (`ActivityEventListener`'s callback params are non-null, not nullable).
 >
 > **Native overlay window scaffolding — the flagship feature's biggest remaining piece, started:**
 > - A real native Android Kotlin module: `android/.../overlay/OverlayModule.kt` requests the

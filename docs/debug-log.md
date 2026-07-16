@@ -198,6 +198,28 @@ do código.
 
 ---
 
+### 5. Kotlin: `Class 'OverlayModule' is not abstract and does not implement abstract members`
+
+**Sintoma:** ao implementar `ActivityEventListener` em `OverlayModule.kt`, o `compileDebugKotlin`
+falhava com esse erro, mais `Unresolved reference 'currentActivity'` e
+`'onActivityResult' overrides nothing`.
+
+**Causa:** duas coisas ao mesmo tempo — (1) a assinatura real da interface
+`ActivityEventListener` do RN usa parâmetros **não-nuláveis**
+(`onActivityResult(activity: Activity, requestCode: Int, resultCode: Int, data: Intent?)` e
+`onNewIntent(intent: Intent)`), não `Activity?`/`Intent?` como parecia razoável assumir vindo do
+Java clássico; (2) `currentActivity` não é uma propriedade direta em `ReactContextBaseJavaModule`
+nesta versão — precisa ser `reactApplicationContext.currentActivity`.
+
+**Fix:** ajustar as assinaturas dos overrides pra bater exatamente com a interface (sem `?` nos
+parâmetros que a interface não tem) e usar `reactApplicationContext.currentActivity` em vez de
+`currentActivity` sozinho. Padrão a lembrar: **ao implementar uma interface de listener do RN
+(Java) em Kotlin, checar a assinatura exata na fonte** — o compilador Kotlin não avisa "assinatura
+incompatível", ele simplesmente diz que o override "overrides nothing", o que pode confundir com
+um erro de import.
+
+---
+
 ## Padrões pra lembrar
 
 - **Prisma 7 mudou bastante** em relação a versões anteriores: sem `index.ts` de barril, formato de

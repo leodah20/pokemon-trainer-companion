@@ -6,7 +6,7 @@ flow — see [../architecture.md](../architecture.md) and the README's "🏆 Fla
 
 ```mermaid
 flowchart TD
-    A[Trainer opens the overlay] --> B["Screen region captured\n(today: gallery screenshot pick;\nfloating window itself is scaffolded -\nMediaProjection live capture still to build)"]
+    A[Trainer opens the overlay] --> B["Screen region captured\n(today: gallery screenshot pick;\nfloating window + capture consent dialog\nscaffolded - live frame capture still to build)"]
     B --> C[On-device OCR extracts text\nML Kit Text Recognition]
     C --> D{OCR confidence\nabove threshold?}
     D -- yes --> E[Parse species, CP, HP]

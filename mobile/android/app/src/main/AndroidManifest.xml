@@ -6,6 +6,11 @@
          wired up, but screen capture (MediaProjection) is a separate, larger piece not built yet.
          See docs/legal-compliance.md for why this stays screen-reading only, no game integration. -->
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <!-- Declared ahead of the foreground service that will actually run the MediaProjection
+         capture session (Android 10+ requires one once capture starts) — no such service exists
+         yet, this just avoids a second manifest change when it's built. Safe to declare unused. -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MEDIA_PROJECTION" />
 
     <application
       android:name=".MainApplication"

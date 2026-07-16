@@ -1,15 +1,18 @@
 package com.pokemontrainercompanionmobile.overlay
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.graphics.PixelFormat
+import android.media.projection.MediaProjectionManager
 import android.net.Uri
 import android.os.Build
 import android.provider.Settings
 import android.view.Gravity
 import android.view.WindowManager
 import android.widget.TextView
+import com.facebook.react.bridge.ActivityEventListener
 import com.facebook.react.bridge.Promise
 import com.facebook.react.bridge.ReactApplicationContext
 import com.facebook.react.bridge.ReactContextBaseJavaModule
@@ -17,15 +20,23 @@ import com.facebook.react.bridge.ReactMethod
 
 /**
  * Scaffolding for the flagship real-time overlay (see docs/architecture.md and the README's
- * "Flagship feature" section) -- proves the permission flow and a bare WindowManager floating
- * window work end to end. Screen capture (MediaProjection) is a separate, larger piece that
- * still needs its own foreground service and is NOT implemented here on purpose: this module
- * only shows a static placeholder view, it never reads anything from the screen.
+ * "Flagship feature" section) -- proves the permission flows and a bare WindowManager floating
+ * window work end to end. Actual screen capture (reading frames via MediaProjection into a
+ * VirtualDisplay/ImageReader, feeding the OCR pipeline) is NOT implemented here on purpose: this
+ * module only shows a static placeholder view and round-trips the capture *consent* dialog, it
+ * never reads a single pixel from the screen. Real capture also needs its own foreground service
+ * (required by Android 10+ once a MediaProjection session actually starts), which is separate,
+ * larger work than what's scaffolded so far.
  */
 class OverlayModule(reactContext: ReactApplicationContext) :
-    ReactContextBaseJavaModule(reactContext) {
+    ReactContextBaseJavaModule(reactContext), ActivityEventListener {
 
   private var overlayView: TextView? = null
+  private var screenCapturePermissionPromise: Promise? = null
+
+  init {
+    reactContext.addActivityEventListener(this)
+  }
 
   override fun getName(): String = NAME
 
@@ -104,7 +115,46 @@ class OverlayModule(reactContext: ReactApplicationContext) :
     promise.resolve(true)
   }
 
+  /**
+   * Triggers Android's system screen-capture consent dialog ("Start recording or casting your
+   * screen?") and resolves with whether the trainer allowed it. Does NOT start capturing
+   * anything -- the `data: Intent` Android hands back on approval (needed to actually open a
+   * MediaProjection session) is discarded in [onActivityResult] below. That's the next real
+   * milestone, not this one.
+   */
+  @ReactMethod
+  fun requestScreenCapturePermission(promise: Promise) {
+    val activity = reactApplicationContext.currentActivity
+    if (activity == null) {
+      promise.reject("NO_ACTIVITY", "No foreground activity to request screen capture from")
+      return
+    }
+    if (screenCapturePermissionPromise != null) {
+      promise.reject("REQUEST_IN_PROGRESS", "A screen capture permission request is already pending")
+      return
+    }
+    val projectionManager =
+        activity.getSystemService(Context.MEDIA_PROJECTION_SERVICE) as MediaProjectionManager
+    screenCapturePermissionPromise = promise
+    activity.startActivityForResult(
+        projectionManager.createScreenCaptureIntent(), SCREEN_CAPTURE_REQUEST_CODE)
+  }
+
+  override fun onActivityResult(activity: Activity, requestCode: Int, resultCode: Int, data: Intent?) {
+    if (requestCode != SCREEN_CAPTURE_REQUEST_CODE) {
+      return
+    }
+    val granted = resultCode == Activity.RESULT_OK && data != null
+    screenCapturePermissionPromise?.resolve(granted)
+    screenCapturePermissionPromise = null
+  }
+
+  override fun onNewIntent(intent: Intent) {
+    // No-op: this module doesn't register for deep links / new intents, only activity results.
+  }
+
   companion object {
     const val NAME = "OverlayModule"
+    private const val SCREEN_CAPTURE_REQUEST_CODE = 4201
   }
 }

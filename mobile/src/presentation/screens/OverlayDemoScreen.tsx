@@ -16,6 +16,7 @@ import {
   hideTestOverlay,
   isOverlaySupported,
   requestOverlayPermission,
+  requestScreenCapturePermission,
   showTestOverlay,
 } from '../../data/overlay/overlayBridge';
 
@@ -37,6 +38,13 @@ export function OverlayDemoScreen(): React.JSX.Element {
 
   const [overlayPermission, setOverlayPermission] = useState<boolean | null>(null);
   const [overlayShown, setOverlayShown] = useState(false);
+  const [captureConsent, setCaptureConsent] = useState<'idle' | 'checking' | 'granted' | 'denied'>('idle');
+
+  async function handleRequestCapturePermission(): Promise<void> {
+    setCaptureConsent('checking');
+    const granted = await requestScreenCapturePermission();
+    setCaptureConsent(granted ? 'granted' : 'denied');
+  }
 
   async function refreshOverlayPermission(): Promise<void> {
     setOverlayPermission(await hasOverlayPermission());
@@ -133,6 +141,26 @@ export function OverlayDemoScreen(): React.JSX.Element {
                   {overlayShown ? t('overlay.hideTestOverlayButton') : t('overlay.showTestOverlayButton')}
                 </Text>
               </Pressable>
+            )}
+
+            <Pressable
+              style={[styles.askAiButton, styles.captureConsentButton]}
+              onPress={handleRequestCapturePermission}
+              disabled={captureConsent === 'checking'}
+              accessibilityRole="button"
+              accessibilityLabel={t('overlay.requestCaptureConsentButton')}
+            >
+              {captureConsent === 'checking' ? (
+                <ActivityIndicator size="small" color={COLORS.mintDark} />
+              ) : (
+                <Text style={styles.askAiButtonText}>{t('overlay.requestCaptureConsentButton')}</Text>
+              )}
+            </Pressable>
+            {captureConsent === 'granted' && (
+              <Text style={styles.sectionText}>{t('overlay.captureConsentGranted')}</Text>
+            )}
+            {captureConsent === 'denied' && (
+              <Text style={styles.sectionText}>{t('overlay.captureConsentDenied')}</Text>
             )}
           </Card>
         )}
@@ -405,6 +433,9 @@ const styles = StyleSheet.create({
     borderRadius: RADIUS.full,
     paddingVertical: SPACING.sm,
     alignItems: 'center',
+  },
+  captureConsentButton: {
+    backgroundColor: COLORS.turquoise,
   },
   askAiButtonText: {
     fontSize: FONT_SIZE.sm,

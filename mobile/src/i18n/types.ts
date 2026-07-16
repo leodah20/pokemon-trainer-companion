@@ -197,6 +197,9 @@ export interface TranslationKeys {
   'overlay.grantPermissionButton': string;
   'overlay.showTestOverlayButton': string;
   'overlay.hideTestOverlayButton': string;
+  'overlay.requestCaptureConsentButton': string;
+  'overlay.captureConsentGranted': string;
+  'overlay.captureConsentDenied': string;
   'aiContext.raid': string;
   'aiContext.battle': string;
   'aiContext.capture': string;

@@ -58,7 +58,8 @@ flowchart TB
 | **🏆 OCR pipeline (gallery screenshot)** | ✅ Functional | Species/CP/HP extraction → full analysis (IV, PvP, bulk, evolution, tips) |
 | **🏆 Companion AI, grounded in real OCR data** | ✅ Functional | `POST /api/companion/suggest`, Gemini-backed, wired into "Ask AI ✨" |
 | **🏆 Native floating window** | ✅ Scaffolding done | `OverlayModule.kt`/`OverlayPackage.kt` — permission + real `TYPE_APPLICATION_OVERLAY` window, verified surviving app backgrounding. Static placeholder content only |
-| **🏆 Native overlay live capture** | ❌ Not started | Needs `MediaProjection` (its own foreground service + capture lifecycle) feeding the existing OCR pipeline instead of a static label |
+| **🏆 Screen capture consent flow** | ✅ Scaffolding done | `MediaProjectionManager` consent dialog round-trips to JS via `ActivityEventListener`, verified on both accept and deny paths. No frame captured yet |
+| **🏆 Native overlay live capture** | ❌ Not started | Needs a foreground service that opens the `MediaProjection` session the consent dialog already grants access to, and feeds captured frames into the existing OCR pipeline instead of a static label |
 | **🏆 Knowledge base grounding the AI** | ✅ MVP done | `backend/src/data/knowledge/` — PokeAPI-sourced genus/habitat/Pokedex-entry facts for all 251 Gen 1+2 species (tracks the backend's species database range), folded into the Companion prompt. Next: wider generations + deeper (Bulbapedia-style) facts |
 
 ## Mobile app architecture (Clean Architecture)

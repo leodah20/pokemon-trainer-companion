@@ -26,16 +26,19 @@ calculator/reference foundation it sits on top of). See
 the overlay captures the visible screen region live via a native Android module
 (`SYSTEM_ALERT_WINDOW` + `MediaProjection`), so results render as a floating window over the game
 in real time — no manual screenshot step. The floating window itself is real and verified
-(`OverlayModule.kt`, survives app backgrounding); it just isn't fed live screen content yet —
-`MediaProjection` capture into the existing OCR pipeline is the remaining piece.
+(`OverlayModule.kt`, survives app backgrounding). The `MediaProjection` screen-capture consent
+dialog is also wired up and verified on both the accept and deny paths — it just doesn't open an
+actual capture session yet; piping real frames into the existing OCR pipeline is the remaining
+piece.
 
 **Alternate flow:** OCR confidence is too low / no known species recognized → Trainer is shown a
 message rather than a wrong result; no manual-entry fallback yet.
 
 **Status:** 🟡 Partially done — OCR pipeline, IV/PvP/bulk analysis, and rule-based suggestions all
 work today via gallery screenshot (`analyzeScreenshot.ts`, `OverlayDemoScreen`). The native
-floating window itself is scaffolded and verified; live `MediaProjection` capture feeding it is
-the remaining piece — see "Flagship feature" in the README.
+floating window and the screen-capture consent flow are both scaffolded and verified; opening an
+actual `MediaProjection` session (its own foreground service) and feeding frames into the OCR
+pipeline is the remaining piece — see "Flagship feature" in the README.
 
 ---
 

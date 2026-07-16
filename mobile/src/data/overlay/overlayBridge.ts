@@ -5,6 +5,7 @@ interface OverlayNativeModule {
   requestOverlayPermission(): void;
   showOverlay(): Promise<boolean>;
   hideOverlay(): Promise<boolean>;
+  requestScreenCapturePermission(): Promise<boolean>;
 }
 
 const { OverlayModule } = NativeModules as { OverlayModule?: OverlayNativeModule };
@@ -45,4 +46,16 @@ export async function hideTestOverlay(): Promise<boolean> {
     return false;
   }
   return OverlayModule!.hideOverlay();
+}
+
+/**
+ * Shows Android's system screen-capture consent dialog and resolves with whether the trainer
+ * allowed it. Scaffolding only — no capture session is actually started (see
+ * OverlayModule.kt's requestScreenCapturePermission for why).
+ */
+export async function requestScreenCapturePermission(): Promise<boolean> {
+  if (!isOverlaySupported()) {
+    return false;
+  }
+  return OverlayModule!.requestScreenCapturePermission();
 }
