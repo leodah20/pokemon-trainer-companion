@@ -1,19 +1,49 @@
 # Pokémon Trainer Companion
 
-A companion app for Pokémon GO trainers: battle-stat calculators (IV, CP, PvP rankings, raid
-counters) plus an optional "partner Pokédex" that surfaces lore and trivia about the Pokémon
-currently on screen.
+**The real-time, AI-powered overlay for Pokémon GO — the "Mobalytics for Pokémon GO."**
+
+While every trainer app on the store is another IV calculator with a different coat of paint,
+PTC's actual goal is a floating overlay that reads your screen live and gives smart, contextual
+tips as you play — capture advice, raid counters, PvP moves — backed by a knowledge base built
+from public Pokémon data and kept fresh by the community, not by a wall of generic pop-up ads. The
+trainer shouldn't have to think or tab out to a website; they should just catch Pokémon, learn the
+lore, and let the app do the thinking. **That overlay + AI knowledge base is the project's
+flagship feature and is actively in development** — see "🏆 Flagship feature" section
+below. Everything else in this README (calculators, Pokédex, rankings) is the solid foundation
+it's built on top of.
 
 > **Fan project.** Not affiliated with, endorsed by, or sponsored by Niantic, The Pokémon Company,
 > Nintendo, or Game Freak. Pokémon and Pokémon GO are trademarks of their respective owners. This
 > project only reads what the trainer's device already displays on screen (via OCR) — it never
 > logs in with a game account, reads game memory, or calls any Niantic server.
 
+## 🏆 Flagship feature (in development): real-time AI overlay
+
+The differentiator, not a footnote. A floating on-screen overlay — think Mobalytics, but for
+Pokémon GO instead of League of Legends — that reads your device's screen live via on-device OCR
+and gives contextual, non-generic advice for exactly the Pokémon and situation in front of you:
+whether to catch or pass, what to run in this raid, what moveset wins this PvP matchup. No login,
+no game-memory access, no calls to Niantic's servers — see
+[docs/legal-compliance.md](docs/legal-compliance.md).
+
+Two pieces already work today, ahead of the native always-on overlay:
+- **OCR pipeline** — gallery screenshot → species/CP/HP extraction → full analysis (IV, PvP, bulk,
+  evolution, rule-based tips), demoed in `OverlayDemoScreen`
+- **AI companion** — an optional Gemini-backed layer, grounded in the *real* OCR-extracted stats
+  from your screen (not a generic "here's a Charizard fact"), reachable via "Ask AI ✨"
+
+What's left to reach the full vision: swapping the gallery picker for a native always-on floating
+overlay (`SYSTEM_ALERT_WINDOW` + `MediaProjection`), and — the real differentiator — replacing the
+Gemini pass-through with a knowledge base fed by public Pokémon data (Bulbapedia, PokéAPI, community
+sources) so the AI's answers are grounded in real, structured Pokémon knowledge instead of a
+general-purpose LLM's best guess. See "Post-beta scope" below for where this stands.
+
 ## Why this exists
 
 A portfolio project built to exercise the full stack: mobile app, backend API, data modeling,
 system design, and the non-technical work (legal/compliance research, documentation) that a real
-product needs before it ships to app stores.
+product needs before it ships to app stores — with an actual product vision behind it, not just a
+feature checklist.
 
 ## Core features
 
@@ -33,14 +63,17 @@ product needs before it ships to app stores.
 - Pokémon detail screen with 8 lore categories: origin & inspiration, GO relevance, battle tips, easter eggs, GO vs main series differences, evolution costs, shiny rates
 - Hand-written lore for all 151 Generation 1 species
 - Intelligent fallback — auto-generated lore for unseeded species using existing stats
+- Top rankings (ATK, DEF, STA, bulk, CP, PvP by league) and Quiz / trivia mode
+
+**AI overlay (in progress — see "🏆 Flagship feature" section)**
+- OCR pipeline (gallery screenshot → species/CP/HP → full analysis) — done
+- Gemini-backed AI companion grounded in real on-screen stats — done
+- Native always-on floating overlay (auto-capture, no gallery picker) — planned
+- Community-fed knowledge base (Bulbapedia/PokéAPI ingestion) replacing the general-purpose LLM
+  pass-through — planned
 
 **Planned features**
-- OCR overlay (ML Kit) for automatic screenshot capture on Android
 - Catch-chance calculator (throw type, curveball, berry)
-- Raid / gym counter recommender with DPS estimates
-- Top rankings (ATK, DEF, STA, bulk, CP, PvP by league)
-- Evolution chain viewer with costs and stat changes
-- Quiz / trivia mode
 - Cross-device sync for saved teams and settings
 
 The whole app is free and open source — every feature above ships free, with no paid/subscription
@@ -101,26 +134,32 @@ Progress: 89% █████████████████░░░ (24 /
 | | Evolution chain viewer with costs | ✅ Done | ✅ |
 | | In-app Companion widget (avatar + speech bubble, rule-based + optional AI) | ✅ Done | — |
 | | i18n (English/Portuguese/Spanish) — every screen | ✅ Done | — |
-| **Future** | OCR engine + rule-based smart suggestions (gallery screenshot → species/CP/HP → evolve/PvP/raid/gym advice) | ✅ Done | ✅ |
-| | lore-data.json content translation (currently Portuguese-only) | 🔄 Planned | — |
-| | Scraped knowledge base (Bulbapedia/PokeAPI) feeding the AI prompt | ❌ Not started | — |
+| **🏆 Flagship** | OCR engine + rule-based smart suggestions (gallery screenshot → species/CP/HP → evolve/PvP/raid/gym advice) | ✅ Done | ✅ |
+| | Gemini-backed AI companion grounded in real on-screen stats | ✅ Done | ✅ |
 | | Floating overlay (native Android module, auto-capture instead of gallery picker) | ❌ Not started | — |
+| | Community-fed knowledge base (Bulbapedia/PokeAPI) replacing the LLM pass-through | ❌ Not started | — |
+| **Future** | lore-data.json content translation (currently Portuguese-only) | 🔄 Planned | — |
 | | Cross-device sync + authentication | ❌ Not started | — |
 
 ### Post-beta scope
 
 Deliberately deferred past this beta — not gaps, just not yet prioritized:
 
-- **Floating overlay** (rest of Fase 6) — the OCR engine itself works today (gallery screenshot →
-  species/CP/HP → full analysis); auto-capture via a native Android Kotlin module
-  (SYSTEM_ALERT_WINDOW + MediaProjection) is the only piece left, and it's the riskiest native
-  work in the project — deliberately deferred rather than rushed
-- **LLM-based suggestions** — the free, rule-based path (`generateSmartSuggestions.ts` in the OCR
-  flow, `buildDialogue` in the Companion widget) stays as the always-available default that needs
-  no network. An optional real LLM layer (`POST /api/companion/suggest`, Gemini free tier, wired
-  into the Companion widget's "Ask AI ✨" button) sits on top for trainers who set up a
-  `GEMINI_API_KEY`. Not yet backed by a scraped knowledge base — it only knows what the backend's
-  own species/type/PvP/raid data already contains (Bulbapedia/PokeAPI ingestion is the next step)
+- **🏆 The flagship real-time AI overlay** — this is the project's actual differentiator (see
+  "Flagship feature" above), not a nice-to-have, and it's split into two remaining pieces:
+  - **Native floating overlay** (rest of Fase 6) — the OCR engine itself works today (gallery
+    screenshot → species/CP/HP → full analysis); auto-capture via a native Android Kotlin module
+    (SYSTEM_ALERT_WINDOW + MediaProjection) is the piece left to make it always-on instead of a
+    manual gallery pick — it's the riskiest native work in the project, deliberately deferred
+    rather than rushed
+  - **Community-fed knowledge base** — the free, rule-based path (`generateSmartSuggestions.ts` in
+    the OCR flow, `buildDialogue` in the Companion widget) stays as the always-available default
+    that needs no network. An optional real LLM layer (`POST /api/companion/suggest`, Gemini free
+    tier, wired into "Ask AI ✨") sits on top for trainers who set up a `GEMINI_API_KEY` — but
+    today it's a thin pass-through to a general-purpose model, not yet backed by a scraped
+    knowledge base. Ingesting Bulbapedia/PokéAPI/community data into a proper knowledge base the
+    AI is grounded in (instead of relying on Gemini's general Pokémon knowledge) is the next step
+    and the single highest-value piece of work left in the project
 - **Cross-device sync + auth** — backend schema exists (`Trainer`, `SavedTeam`), no endpoints yet
 - **Lore content translation** — every screen's UI chrome is now translated (English/Portuguese/
   Spanish), but `lore-data.json` itself (~150 species × 7 fields of hand-written Portuguese text)
