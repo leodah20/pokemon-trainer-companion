@@ -1,8 +1,9 @@
-import React, { createContext, useContext, useMemo, useState } from 'react';
-import { SupportedLanguage, TranslationKeys } from './types';
+import React, { createContext, useContext, useEffect, useMemo, useState } from 'react';
+import { SUPPORTED_LANGUAGES, SupportedLanguage, TranslationKeys } from './types';
 import { en } from './translations/en';
 import { ptBR } from './translations/pt-BR';
 import { es } from './translations/es';
+import { loadStoredLanguage, saveStoredLanguage } from '../data/storage/appStorage';
 
 const DICTIONARIES: Record<SupportedLanguage, TranslationKeys> = {
   en,
@@ -11,6 +12,10 @@ const DICTIONARIES: Record<SupportedLanguage, TranslationKeys> = {
 };
 
 const DEFAULT_LANGUAGE: SupportedLanguage = 'en';
+
+function isSupportedLanguage(value: string): value is SupportedLanguage {
+  return (SUPPORTED_LANGUAGES as readonly string[]).includes(value);
+}
 
 interface LanguageContextValue {
   language: SupportedLanguage;
@@ -24,12 +29,28 @@ const LanguageContext = createContext<LanguageContextValue | null>(null);
 /**
  * No device-locale auto-detection (e.g. react-native-localize) on purpose — that's a new native
  * dependency for a "nice to have" default, and this app already deliberately avoids adding
- * native deps unless the feature needs one. Defaults to English; the trainer picks a language
- * once in More and it's remembered for the session (not persisted across app restarts yet —
- * same tradeoff as the rest of the app's in-memory-only state, see README's Post-beta scope).
+ * native deps unless the feature needs one. Defaults to English on first launch; once the trainer
+ * picks a language in More, it's persisted via AsyncStorage and restored on the next app start.
  */
 export function LanguageProvider({ children }: { children: React.ReactNode }): React.JSX.Element {
-  const [language, setLanguage] = useState<SupportedLanguage>(DEFAULT_LANGUAGE);
+  const [language, setLanguageState] = useState<SupportedLanguage>(DEFAULT_LANGUAGE);
+
+  useEffect(() => {
+    let cancelled = false;
+    loadStoredLanguage().then((stored) => {
+      if (!cancelled && stored && isSupportedLanguage(stored)) {
+        setLanguageState(stored);
+      }
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  function setLanguage(next: SupportedLanguage): void {
+    setLanguageState(next);
+    saveStoredLanguage(next);
+  }
 
   const value = useMemo<LanguageContextValue>(
     () => ({

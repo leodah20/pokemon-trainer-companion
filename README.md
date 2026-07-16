@@ -142,6 +142,7 @@ Progress: 89% █████████████████░░░ (24 /
 | | i18n (English/Portuguese/Spanish) — every screen + lore content | ✅ Done | ✅ |
 | | Accessibility labels (accessibilityRole/Label/State on interactive elements) | ✅ Done | — |
 | | App-wide Error Boundary (recoverable crash fallback, no blank white screen) | ✅ Done | ✅ |
+| | AsyncStorage persistence (language choice, last IV Calculator search) | ✅ Done | ✅ |
 | **🏆 Flagship** | OCR engine + rule-based smart suggestions (gallery screenshot → species/CP/HP → evolve/PvP/raid/gym advice) | ✅ Done | ✅ |
 | | Gemini-backed AI companion grounded in real on-screen stats | ✅ Done | ✅ |
 | | Knowledge base grounding the AI (PokeAPI-sourced, all 251 Gen 1+2 species) | ✅ MVP done | ✅ |
@@ -183,12 +184,36 @@ Deliberately deferred past this beta — not gaps, just not yet prioritized:
   IV spread, Buddy & Candy distance, Legacy Moves — need new data sources, not just UI work
 - **Raid boss rotation / PvP rankings** are curated mocks (documented in-code), not live-synced —
   Fase 2.6's scheduled sync job was never built
-- **AsyncStorage persistence** (e.g. last IV Calculator result) — skipped to avoid adding a new
-  native dependency this late in the beta; safe to add post-beta
+- **Dark mode** deferred a second time — `useColorScheme` is still only read, not wired into a
+  theme. Turns out to be a much bigger lift than it looks: `COLORS` is a static object imported
+  directly by nearly every screen's module-scope `StyleSheet.create()`, so real runtime theme
+  switching means refactoring every one of those call sites to a reactive theme hook — too large
+  and too visually risky to do without a device to check every screen against, so left for a
+  dedicated pass
 
 ### Last implemented features
 
 > <time datetime="2026-07-16">2026-07-16</time>
+>
+> **Companion avatar position bug fix + AsyncStorage persistence:**
+> - Fixed a real bug reported by the user via a screen recording on a physical device: closing the
+>   Companion widget's speech bubble made the floating avatar jump to align with where the
+>   bubble's top edge used to be (and could push it off-screen if dragged near the bottom). Root
+>   cause: the bubble was a normal-flow sibling stacked *above* the avatar in a column, so its
+>   presence/absence changed the column's total height — and since a single `Animated.ValueXY`
+>   translates the whole column's position, toggling the bubble effectively moved the avatar too.
+>   Fixed by making the bubble `position: 'absolute'`, anchored above the avatar instead of pushing
+>   it — the avatar's position no longer depends on the bubble's visibility at all.
+> - Added `@react-native-async-storage/async-storage` (official RN community package) to persist
+>   the trainer's language choice and their last IV Calculator search (species + CP/HP/level
+>   range), both previously reset to defaults on every app restart. `mobile/src/data/storage/appStorage.ts`
+>   wraps every read/write as best-effort (a storage failure falls back to in-memory defaults
+>   rather than crashing or blocking a screen).
+> - Verified end-to-end on a fresh emulator install: switched language to Portuguese, force-stopped
+>   the app process, relaunched, and the language was still Portuguese — confirming the persistence
+>   round-trip actually works, not just that it typechecks.
+> - 23/23 mobile test suites passing (82 tests, 2 new test files for the storage layer and its
+>   `LanguageContext` integration), zero TypeScript errors.
 >
 > **Full lore content translation (EN/PT-BR/ES) + accessibility labels across the app:**
 > - `lore-data.json` (151 Gen 1 species × 7 fields, previously Portuguese-only regardless of

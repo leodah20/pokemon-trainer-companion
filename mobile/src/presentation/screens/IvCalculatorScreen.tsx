@@ -7,6 +7,7 @@ import { calculateIvsForSpecies, UnknownSpeciesError } from '../../use-cases/cal
 import { Card, COLORS, DISPLAY_FONT, FONT_SIZE, RADIUS, SHADOW, SPACING } from '../theme';
 import { RootStackScreenProps } from '../navigation/types';
 import { useTranslation } from '../../i18n';
+import { loadStoredIvCalculatorInputs, saveStoredIvCalculatorInputs } from '../../data/storage/appStorage';
 
 type Props = RootStackScreenProps<'IvCalculator'>;
 
@@ -47,8 +48,23 @@ export function IvCalculatorScreen({ route, navigation }: Props): React.JSX.Elem
       setSpeciesId(route.params.speciesId);
       setResults(null);
       setErrorMessage(null);
+      return;
     }
-  }, [route.params?.speciesId]);
+    // Only restore the last search when the screen opened with no explicit species (e.g. from
+    // the tab bar) — arriving via "Calculate IV" from a specific Pokemon's detail screen should
+    // never get silently overridden by an unrelated past search.
+    loadStoredIvCalculatorInputs().then((stored) => {
+      if (!stored) {
+        return;
+      }
+      setSpeciesId(stored.speciesId);
+      setCpInput(stored.cpInput);
+      setHpInput(stored.hpInput);
+      setMinLevelInput(stored.minLevelInput);
+      setMaxLevelInput(stored.maxLevelInput);
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const species = getSpeciesById(speciesId);
 
@@ -85,6 +101,7 @@ export function IvCalculatorScreen({ route, navigation }: Props): React.JSX.Elem
       });
       setErrorMessage(null);
       setResults(matches);
+      saveStoredIvCalculatorInputs({ speciesId, cpInput, hpInput, minLevelInput, maxLevelInput });
     } catch (error) {
       if (error instanceof UnknownSpeciesError) {
         setErrorMessage(error.message);
