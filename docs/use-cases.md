@@ -50,15 +50,16 @@ always-on floating overlay is the remaining piece — see "Flagship feature" in 
 **What makes this the flagship feature, not just an LLM wrapper:** the LLM is grounded in the
 backend's own species/type/PvP/raid data plus a knowledge base of real Pokedex facts
 (`backend/src/data/knowledge/`, PokeAPI-sourced: genus, habitat, official Pokedex flavor text),
-instead of relying purely on its own training. That knowledge base currently covers the 151 Gen 1
-species — extending it to later generations and toward deeper, community-sourced facts
-(Bulbapedia-style trivia) beyond what PokeAPI's structured fields cover is the next step and the
-highest-value piece of work left in the project.
+instead of relying purely on its own training. That knowledge base currently covers all 251 Gen
+1+2 species (tracking the backend's own species database range) — extending it to later
+generations and toward deeper, community-sourced facts (Bulbapedia-style trivia) beyond what
+PokeAPI's structured fields cover is the next step and the highest-value piece of work left in
+the project.
 
 **Status:** 🟡 Partially done — grounded prompting with real OCR data
 (`buildCompanionExtraContext.ts`) and a PokeAPI-sourced knowledge base MVP
-(`KnowledgeRepository`, `buildCompanionPrompt.ts`) both work today; the knowledge base covers only
-Gen 1 and only PokeAPI's structured fields so far.
+(`KnowledgeRepository`, `buildCompanionPrompt.ts`) both work today; the knowledge base covers all
+251 Gen 1+2 species but only PokeAPI's structured fields so far.
 
 ---
 

@@ -22,7 +22,7 @@ flowchart TB
         Auth["Auth module"]
         SyncJob["Scheduled data-sync job"]
         Companion["Companion AI service"]
-        KB[("Knowledge base - MVP done\nPokeAPI, Gen 1 (151 species)\nplanned: wider gens + Bulbapedia")]
+        KB[("Knowledge base - MVP done\nPokeAPI, Gen 1+2 (251 species)\nplanned: wider gens + Bulbapedia")]
         Postgres[("PostgreSQL")]
     end
 
@@ -58,7 +58,7 @@ flowchart TB
 | **🏆 OCR pipeline (gallery screenshot)** | ✅ Functional | Species/CP/HP extraction → full analysis (IV, PvP, bulk, evolution, tips) |
 | **🏆 Companion AI, grounded in real OCR data** | ✅ Functional | `POST /api/companion/suggest`, Gemini-backed, wired into "Ask AI ✨" |
 | **🏆 Native always-on overlay** | ❌ Not started | Requires native Android Kotlin module (`SYSTEM_ALERT_WINDOW` + `MediaProjection`) |
-| **🏆 Knowledge base grounding the AI** | ✅ MVP done | `backend/src/data/knowledge/` — PokeAPI-sourced genus/habitat/Pokedex-entry facts for 151 Gen 1 species, folded into the Companion prompt. Next: wider generations + deeper (Bulbapedia-style) facts |
+| **🏆 Knowledge base grounding the AI** | ✅ MVP done | `backend/src/data/knowledge/` — PokeAPI-sourced genus/habitat/Pokedex-entry facts for all 251 Gen 1+2 species (tracks the backend's species database range), folded into the Companion prompt. Next: wider generations + deeper (Bulbapedia-style) facts |
 
 ## Mobile app architecture (Clean Architecture)
 

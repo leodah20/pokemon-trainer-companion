@@ -1,12 +1,15 @@
 // One-off ingestion script: pulls structured Pokedex facts from PokeAPI (free, public, no auth)
-// for Gen 1 species (matching the mobile app's hand-written lore scope) and writes the result to
-// src/data/knowledge/knowledge-data.json. Not run at app runtime — the backend stays offline-safe
-// and lightweight; re-run this manually to refresh or extend to later generations.
+// and writes the result to src/data/knowledge/knowledge-data.json. Not run at app runtime — the
+// backend stays offline-safe and lightweight; re-run this manually to refresh or extend range.
+// END_ID tracks the backend's own species database range (speciesDatabase.ts currently goes up to
+// 251, Gen 1+2) rather than the mobile app's Gen-1-only hand-written lore scope — the knowledge
+// base only needs a species to exist in the backend's species data to be useful, since
+// CompanionService looks up the species there before grounding the AI prompt.
 //
 // Usage: node scripts/fetchKnowledgeBase.mjs
 
 const START_ID = 1;
-const END_ID = 151;
+const END_ID = 251;
 const DELAY_MS = 120; // be a polite citizen of a free public API
 const MAX_POKEDEX_ENTRIES = 3;
 
@@ -30,12 +33,24 @@ function pickPokedexEntries(flavorTextEntries) {
 }
 
 async function fetchSpeciesKnowledge(id) {
-  const res = await fetch(`https://pokeapi.co/api/v2/pokemon-species/${id}`);
-  if (!res.ok) {
-    throw new Error(`PokeAPI request failed for species ${id}: HTTP ${res.status}`);
+  const MAX_RETRIES = 3;
+  let lastError;
+  for (let attempt = 1; attempt <= MAX_RETRIES; attempt++) {
+    try {
+      const res = await fetch(`https://pokeapi.co/api/v2/pokemon-species/${id}`);
+      if (!res.ok) {
+        throw new Error(`PokeAPI request failed for species ${id}: HTTP ${res.status}`);
+      }
+      return await parseSpeciesResponse(id, await res.json());
+    } catch (error) {
+      lastError = error;
+      await sleep(DELAY_MS * attempt * 2);
+    }
   }
-  const data = await res.json();
+  throw lastError;
+}
 
+async function parseSpeciesResponse(id, data) {
   const genusEntry = englishOnly(data.genera).find((g) => g.genus);
 
   return {
