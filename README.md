@@ -141,6 +141,7 @@ Progress: 89% █████████████████░░░ (24 /
 | | In-app Companion widget (avatar + speech bubble, rule-based + optional AI) | ✅ Done | — |
 | | i18n (English/Portuguese/Spanish) — every screen + lore content | ✅ Done | ✅ |
 | | Accessibility labels (accessibilityRole/Label/State on interactive elements) | ✅ Done | — |
+| | App-wide Error Boundary (recoverable crash fallback, no blank white screen) | ✅ Done | ✅ |
 | **🏆 Flagship** | OCR engine + rule-based smart suggestions (gallery screenshot → species/CP/HP → evolve/PvP/raid/gym advice) | ✅ Done | ✅ |
 | | Gemini-backed AI companion grounded in real on-screen stats | ✅ Done | ✅ |
 | | Knowledge base grounding the AI (PokeAPI-sourced, 151 Gen 1 species) | ✅ MVP done | ✅ |
@@ -206,8 +207,14 @@ Deliberately deferred past this beta — not gaps, just not yet prioritized:
 >   every interactive `Pressable` across all 15 screens/components that have one (buttons, list
 >   rows, filter chips, toggle groups, text inputs), reusing existing translated strings as labels
 >   so the two efforts reinforce each other instead of duplicating text.
-> - 20/20 mobile test suites passing (72 tests total, 1 new `loreRepository.test.ts` covering
->   per-language lookups and localized fallback text), zero TypeScript errors.
+> - **App-wide Error Boundary** — a class-component `ErrorBoundary` now wraps the whole app in
+>   `App.tsx` (outside `LanguageProvider`, so a crash in the translation context itself still
+>   recovers), showing a "Try again" fallback screen instead of a blank white crash. Fallback copy
+>   is deliberately plain English, not run through `t()` — the crash UI can't depend on the same
+>   context tree that might be the thing crashing.
+> - 21/21 mobile test suites passing (74 tests total: 1 new `loreRepository.test.ts` covering
+>   per-language lookups and localized fallback text, 1 new `ErrorBoundary.test.tsx`), zero
+>   TypeScript errors.
 >
 > **Knowledge base MVP — the flagship AI overlay's first real grounding source:**
 > - New `backend/src/data/knowledge/` — a PokeAPI-sourced knowledge base (genus/species
