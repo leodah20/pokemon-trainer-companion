@@ -1,6 +1,6 @@
 # Pokémon Trainer Companion
 
-**The real-time, AI-powered overlay for Pokémon GO — the "Mobalytics for Pokémon GO."**
+**The real-time, AI-powered overlay for Pokémon GO.**
 
 While every trainer app on the store is another IV calculator with a different coat of paint,
 PTC's actual goal is a floating overlay that reads your screen live and gives smart, contextual
@@ -19,9 +19,9 @@ it's built on top of.
 
 ## 🏆 Flagship feature (in development): real-time AI overlay
 
-The differentiator, not a footnote. A floating on-screen overlay — think Mobalytics, but for
-Pokémon GO instead of League of Legends — that reads your device's screen live via on-device OCR
-and gives contextual, non-generic advice for exactly the Pokémon and situation in front of you:
+The differentiator, not a footnote. A floating on-screen overlay that reads your device's screen
+live via on-device OCR and gives contextual, non-generic advice for exactly the Pokémon and
+situation in front of you:
 whether to catch or pass, what to run in this raid, what moveset wins this PvP matchup. No login,
 no game-memory access, no calls to Niantic's servers — see
 [docs/legal-compliance.md](docs/legal-compliance.md).

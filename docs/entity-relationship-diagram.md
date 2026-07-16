@@ -71,3 +71,8 @@ erDiagram
   using the app without signing in never has a row here, which keeps the LGPD footprint minimal
   (see [legal-compliance.md](legal-compliance.md)). The app itself is entirely free — signing in
   is only ever about syncing saved teams across devices, never about unlocking features.
+- **Not modeled yet:** the community-fed knowledge base that will ground the flagship AI overlay's
+  answers (see [architecture.md](architecture.md)) — likely a `KNOWLEDGE_ENTRY` table keyed by
+  `pokemon_species_id` with source-attributed, structured facts (ingested from Bulbapedia/PokéAPI),
+  retrieved and injected into the Companion AI prompt instead of relying on the LLM's general
+  training. Left out of this ERD until that ingestion pipeline is actually designed.

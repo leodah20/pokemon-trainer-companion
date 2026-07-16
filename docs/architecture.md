@@ -1,12 +1,17 @@
 # Architecture
 
+**The real-time AI overlay (bottom-right of the diagram: OCR → Companion AI → Knowledge Base) is
+the project's flagship feature** — everything else here (Pokédex, calculators, backend REST API)
+is the foundation it's built on. See "Key decisions" below and the README's "🏆 Flagship feature"
+section.
+
 ## System overview
 
 ```mermaid
 flowchart TB
     subgraph Device["Trainer's device"]
         PogoApp["Pokémon GO (unmodified)"]
-        Overlay["Overlay window (Android) / manual entry (iOS)"]
+        Overlay["Overlay window (Android, planned) / gallery screenshot (today)"]
         OCR["On-device OCR - ML Kit"]
         LocalDB["Local cache - SQLite"]
         MobileApp["Mobile app (React Native)"]
@@ -16,12 +21,15 @@ flowchart TB
         API["REST API"]
         Auth["Auth module"]
         SyncJob["Scheduled data-sync job"]
+        Companion["Companion AI service"]
+        KB[("Knowledge base - planned\nBulbapedia / PokeAPI / community")]
         Postgres[("PostgreSQL")]
     end
 
     subgraph External["External data sources (read-only, no account access)"]
         PokeAPI["PokeAPI - species, types, moves, lore"]
         PoGoAPI["PoGo API - CP multipliers, raid bosses, events"]
+        LLM["LLM provider - Gemini (free tier)"]
     end
 
     PogoApp -. "trainer looks at screen, no integration" .-> Overlay
@@ -29,6 +37,9 @@ flowchart TB
     OCR --> MobileApp
     MobileApp <--> LocalDB
     MobileApp <-- "only for cross-device sync" --> API
+    MobileApp -- "Ask AI - grounded in real OCR data" --> Companion
+    Companion --> LLM
+    Companion -. "planned: ground answers in KB\ninstead of general LLM knowledge" .-> KB
     API --> Auth
     API <--> Postgres
     SyncJob --> PokeAPI
@@ -44,7 +55,10 @@ flowchart TB
 | Bundled JSON data | ✅ Implemented | 965 species, PvPoke rankings, power-up costs, lore (Gen 1) |
 | Backend (NestJS) | ✅ Functional | Species, Type Chart, PvP, Raids, and Companion AI (Gemini-backed) REST APIs (Swagger) + Prisma |
 | Database (PostgreSQL + Prisma) | 🟡 Schema ready | Models defined; migrations not yet run |
-| Overlay / OCR | ❌ Not started | Requires native Android Kotlin module |
+| **🏆 OCR pipeline (gallery screenshot)** | ✅ Functional | Species/CP/HP extraction → full analysis (IV, PvP, bulk, evolution, tips) |
+| **🏆 Companion AI, grounded in real OCR data** | ✅ Functional | `POST /api/companion/suggest`, Gemini-backed, wired into "Ask AI ✨" |
+| **🏆 Native always-on overlay** | ❌ Not started | Requires native Android Kotlin module (`SYSTEM_ALERT_WINDOW` + `MediaProjection`) |
+| **🏆 Community-fed knowledge base** | ❌ Not started | Would replace the Gemini pass-through with grounded, structured Pokémon knowledge (Bulbapedia/PokéAPI) — the single highest-value piece of work left |
 
 ## Mobile app architecture (Clean Architecture)
 
@@ -99,6 +113,14 @@ PokemonDetailScreen renders lore card
 ```
 
 ## Key decisions
+
+0. **The real-time AI overlay is the product, not a bonus feature.** Every architectural choice
+   below — on-device OCR, grounded prompting, backend-as-cache — exists to make the overlay
+   reliable, fast, and legally safe. The calculators, Pokédex, and rankings are a genuinely useful
+   app on their own, but they're the foundation the flagship feature sits on top of, not the other
+   way around. The two pieces still missing to reach the full vision (native always-on capture, a
+   community-fed knowledge base grounding the AI's answers) are the highest-priority remaining work
+   in the project — see "Current implementation status" above.
 
 1. **No integration with the Pokémon GO client.** The only "input" from the game is what the
    trainer's eyes and camera/screenshot already see. This keeps the app outside Niantic's Terms of

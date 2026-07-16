@@ -3,19 +3,60 @@
 Actors: **Trainer** (end user), **Pro Trainer** (authenticated, paying user), **System** (background
 jobs: data sync).
 
+**UC-01 and UC-01a are the project's flagship use cases** — the real-time AI overlay is the
+differentiator this app is actually being built around (every other use case below is the solid
+calculator/reference foundation it sits on top of). See
+[architecture.md](architecture.md#key-decisions) and the README's "🏆 Flagship feature" section.
+
 ---
 
-## UC-01 — Calculate IVs from a screenshot
+## UC-01 — Calculate IVs and get contextual tips from a screenshot
 
-1. Trainer opens the overlay while viewing a Pokémon's status screen in Pokémon GO.
-2. Trainer takes a screenshot (or the overlay captures the visible region on Android).
-3. System runs on-device OCR to extract CP, HP, and stardust cost.
-4. System computes the possible IV combinations and displays the top match(es) in the overlay.
-5. Trainer dismisses the overlay or feeds another screenshot.
+1. Trainer picks a screenshot of a Pokémon's status screen in Pokémon GO (today: from the gallery
+   via `OverlayDemoScreen`; the goal: a native floating overlay that captures the screen live —
+   see the alternate flow below).
+2. System runs on-device OCR to extract species name, CP, and HP.
+3. System computes the possible IV combinations, PvP moveset rankings, bulk percentile, and
+   rule-based suggestions (evolve/power-up/PvP/raid/gym advice) — all grounded in the exact
+   Pokémon and stats just read from the screen, not generic advice.
+4. Trainer can tap "Ask AI ✨" for a natural-language tip generated from that same real, on-screen
+   data (see UC-01a).
 
-**Alternate flow:** OCR confidence is too low → Trainer is prompted to enter CP/HP/stardust manually.
+**Alternate flow (native overlay, planned):** instead of picking a screenshot from the gallery,
+the overlay captures the visible screen region live via a native Android module
+(`SYSTEM_ALERT_WINDOW` + `MediaProjection`), so results render as a floating window over the game
+in real time — no manual screenshot step.
 
-**Status:** ❌ Not started (depends on native Android overlay module + ML Kit)
+**Alternate flow:** OCR confidence is too low / no known species recognized → Trainer is shown a
+message rather than a wrong result; no manual-entry fallback yet.
+
+**Status:** 🟡 Partially done — OCR pipeline, IV/PvP/bulk analysis, and rule-based suggestions all
+work today via gallery screenshot (`analyzeScreenshot.ts`, `OverlayDemoScreen`). The native
+always-on floating overlay is the remaining piece — see "Flagship feature" in the README.
+
+---
+
+## UC-01a — Get an AI tip grounded in real on-screen data (flagship)
+
+1. Trainer has just analyzed a screenshot (UC-01) or is chatting with the in-app Companion widget
+   about their chosen buddy species.
+2. Trainer picks a context (raid / battle / capture / level up / general) and taps "Ask AI ✨".
+3. System sends the species' data plus the *real* OCR-extracted CP/HP/IVs (when available) to the
+   Companion AI endpoint (`POST /api/companion/suggest`), which builds a grounded prompt and calls
+   an LLM (currently Gemini) for a natural-language tip.
+4. Trainer reads a tip specific to their actual Pokémon and situation — not a generic, disconnected
+   fact.
+
+**What makes this the flagship feature, not just an LLM wrapper:** today the LLM only knows what
+the backend's own species/type/PvP/raid data already contains, plus general Pokémon knowledge from
+its own training. The next step — the single highest-value piece of work left in the project — is
+replacing that general-purpose pass-through with a proper knowledge base built from public Pokémon
+data (Bulbapedia, PokéAPI, community-maintained sources) that the AI is explicitly grounded in, so
+answers are backed by real structured Pokémon knowledge instead of an LLM's best guess.
+
+**Status:** 🟡 Partially done — grounded prompting with real OCR data works
+(`buildCompanionExtraContext.ts`, `companionController.ts`); the community-fed knowledge base does
+not exist yet.
 
 ---
 
@@ -28,9 +69,9 @@ jobs: data sync).
    power+energy+duration database yet).
 4. Trainer views the top 10 ranked list.
 
-**Status:** ✅ Done — `RaidCountersScreen` (mobile, offline) + `GET /api/raids/current`,
-`GET /api/raids/:id/counters` (backend, not yet consumed by mobile). "Pokémon I own" filtering
-and recommended fast/charge moves are not implemented — would need the move database above.
+**Status:** ✅ Done — `RaidCountersScreen` (mobile) + `GET /api/raids/current`,
+`GET /api/raids/:id/counters` (backend). "Pokémon I own" filtering and recommended fast/charge
+moves are not implemented — would need the move database above.
 
 ---
 
@@ -99,30 +140,31 @@ across devices, not to gate any feature.
 
 ---
 
-## UC-08 — Compare Pokémon stats (planned)
+## UC-08 — Compare Pokémon stats
 
-1. Trainer selects 2–4 Pokémon species from the Pokédex.
-2. System displays a side-by-side table with ATK, DEF, STA, bulk (DEF+STA), max CP, and bulk percentile.
-3. Highest value in each column is highlighted.
+1. Trainer selects 2 Pokémon species inline on the Comparison screen.
+2. System displays a side-by-side table with ATK, DEF, STA, and bulk (DEF+STA), highest value per
+   row highlighted.
 
-**Status:** 🔄 Planned
+**Status:** ✅ Done — `ComparisonScreen` (mobile)
 
 ---
 
-## UC-09 — View top rankings (planned)
+## UC-09 — View top rankings
 
 1. Trainer opens the rankings screen.
-2. Tabs: Top ATK, Top DEF, Top STA, Top Bulk, Top CP (L50), PvP Great/Ultra/Master.
-3. Each tab shows the top 20 species with their score and type badge.
+2. Tabs: Top ATK, Top DEF, Top STA, Top Bulk, Top CP (L40, perfect IVs), PvP Great/Ultra/Master.
+3. Each tab shows the ranked species with their score, tap a row to open its detail screen.
 
-**Status:** 🔄 Planned
+**Status:** ✅ Done — `TopRankingsScreen` (mobile)
 
 ---
 
-## UC-10 — Quiz / trivia mode (planned)
+## UC-10 — Quiz / trivia mode
 
 1. Trainer opens the quiz screen.
-2. Multiple-choice questions from categories: types, stats, evolutions, lore, PvP.
-3. Timer per question, streak tracking, personal best saved locally.
+2. 10 random multiple-choice questions from categories: type ID, type-effectiveness matchups,
+   generation.
+3. Score tracked across the run; "Play Again" generates a fresh set.
 
-**Status:** 🔄 Planned
+**Status:** ✅ Done — `QuizScreen` (mobile)
