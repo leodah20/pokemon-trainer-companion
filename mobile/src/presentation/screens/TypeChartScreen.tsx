@@ -4,18 +4,20 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { EffectivenessBucket, TypeMatchup } from '../../domain/type-effectiveness/types';
 import { ALL_TYPE_NAMES, getMatchupsForAttacker } from '../../data/type-effectiveness/typeEffectivenessRepository';
 import { COLORS, FONT_SIZE, getTypeColor, RADIUS, SHADOW, SPACING, TypeBadge } from '../theme';
-
-const BUCKET_LABELS: Record<EffectivenessBucket, string> = {
-  superEffective: 'Super effective',
-  notVeryEffective: 'Not very effective',
-  noEffect: 'No effect',
-  neutral: 'Normal damage',
-};
+import { useTranslation } from '../../i18n';
 
 const BUCKET_ORDER: EffectivenessBucket[] = ['superEffective', 'notVeryEffective', 'noEffect'];
 
 export function TypeChartScreen(): React.JSX.Element {
+  const { t } = useTranslation();
   const [attackerType, setAttackerType] = useState<string>(ALL_TYPE_NAMES[0]);
+
+  const bucketLabels: Record<EffectivenessBucket, string> = {
+    superEffective: t('typeChart.superEffective'),
+    notVeryEffective: t('typeChart.notVeryEffective'),
+    noEffect: t('typeChart.noEffect'),
+    neutral: t('typeChart.neutral'),
+  };
 
   const matchups = useMemo(() => getMatchupsForAttacker(attackerType), [attackerType]);
 
@@ -31,7 +33,7 @@ export function TypeChartScreen(): React.JSX.Element {
 
   return (
     <SafeAreaView style={styles.screen} edges={['left', 'right', 'bottom']}>
-      <Text style={styles.hint}>Pick an attacking type to see what it's strong and weak against.</Text>
+      <Text style={styles.hint}>{t('typeChart.hint')}</Text>
 
       <View style={styles.typeRow}>
         {ALL_TYPE_NAMES.map((type) => (
@@ -59,7 +61,7 @@ export function TypeChartScreen(): React.JSX.Element {
           return (
             <View key={bucket} style={styles.bucketSection}>
               <Text style={styles.bucketTitle}>
-                {BUCKET_LABELS[bucket]} ({formatMultiplier(bucketMatchups[0].multiplier)})
+                {bucketLabels[bucket]} ({formatMultiplier(bucketMatchups[0].multiplier)})
               </Text>
               <View style={styles.bucketBadges}>
                 {bucketMatchups.map((matchup) => (

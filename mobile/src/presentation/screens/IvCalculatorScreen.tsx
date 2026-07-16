@@ -6,6 +6,7 @@ import { getSpeciesById, getSpriteUrl } from '../../data/pokedex/pokedexReposito
 import { calculateIvsForSpecies, UnknownSpeciesError } from '../../use-cases/calculateIvsForSpecies';
 import { Card, COLORS, DISPLAY_FONT, FONT_SIZE, RADIUS, SHADOW, SPACING } from '../theme';
 import { RootStackScreenProps } from '../navigation/types';
+import { useTranslation } from '../../i18n';
 
 type Props = RootStackScreenProps<'IvCalculator'>;
 
@@ -32,6 +33,7 @@ function parseLevel(value: string): number | null {
 }
 
 export function IvCalculatorScreen({ route, navigation }: Props): React.JSX.Element {
+  const { t } = useTranslation();
   const [speciesId, setSpeciesId] = useState(route.params?.speciesId ?? DEFAULT_SPECIES_ID);
   const [cpInput, setCpInput] = useState('');
   const [hpInput, setHpInput] = useState('');
@@ -57,19 +59,19 @@ export function IvCalculatorScreen({ route, navigation }: Props): React.JSX.Elem
     const maxLevel = parseLevel(maxLevelInput);
 
     if (cp === null || hp === null) {
-      setErrorMessage('Enter valid positive whole numbers for CP and HP.');
+      setErrorMessage(t('ivCalc.errorCpHp'));
       setResults(null);
       return;
     }
 
     if (minLevel === null || maxLevel === null) {
-      setErrorMessage('Level must be a positive number in steps of 0.5 (e.g. 1, 1.5, 25.5).');
+      setErrorMessage(t('ivCalc.errorLevel'));
       setResults(null);
       return;
     }
 
     if (minLevel > maxLevel) {
-      setErrorMessage('Min level must not be greater than max level.');
+      setErrorMessage(t('ivCalc.errorMinMax'));
       setResults(null);
       return;
     }
@@ -87,7 +89,7 @@ export function IvCalculatorScreen({ route, navigation }: Props): React.JSX.Elem
       if (error instanceof UnknownSpeciesError) {
         setErrorMessage(error.message);
       } else {
-        setErrorMessage('Something went wrong calculating IVs.');
+        setErrorMessage(t('ivCalc.errorGeneric'));
       }
       setResults(null);
     }
@@ -101,10 +103,10 @@ export function IvCalculatorScreen({ route, navigation }: Props): React.JSX.Elem
         contentContainerStyle={styles.listContent}
         ListHeaderComponent={
           <View style={styles.form}>
-            <Text style={styles.title}>IV Calculator</Text>
+            <Text style={styles.title}>{t('ivCalc.title')}</Text>
 
             <Card style={styles.card}>
-              <Text style={styles.label}>Species</Text>
+              <Text style={styles.label}>{t('ivCalc.species')}</Text>
               <Pressable
                 style={({ pressed }) => [styles.speciesPicker, pressed && styles.pressedOpacity]}
                 onPress={() => navigation.navigate('Tabs', { screen: 'Pokedex', params: { pickerMode: true } })}
@@ -112,11 +114,11 @@ export function IvCalculatorScreen({ route, navigation }: Props): React.JSX.Elem
                 {species && (
                   <Image source={{ uri: getSpriteUrl(species.id) }} style={styles.speciesSprite} resizeMode="contain" />
                 )}
-                <Text style={styles.speciesName}>{species?.name ?? 'Unknown species'}</Text>
-                <Text style={styles.changeLabel}>Change</Text>
+                <Text style={styles.speciesName}>{species?.name ?? t('ivCalc.unknownSpecies')}</Text>
+                <Text style={styles.changeLabel}>{t('common.change')}</Text>
               </Pressable>
 
-              <Text style={styles.label}>CP</Text>
+              <Text style={styles.label}>{t('ivCalc.cp')}</Text>
               <TextInput
                 style={styles.input}
                 keyboardType="number-pad"
@@ -126,7 +128,7 @@ export function IvCalculatorScreen({ route, navigation }: Props): React.JSX.Elem
                 placeholderTextColor={COLORS.textMuted}
               />
 
-              <Text style={styles.label}>HP</Text>
+              <Text style={styles.label}>{t('ivCalc.hp')}</Text>
               <TextInput
                 style={styles.input}
                 keyboardType="number-pad"
@@ -138,7 +140,7 @@ export function IvCalculatorScreen({ route, navigation }: Props): React.JSX.Elem
 
               <View style={styles.levelRangeRow}>
                 <View style={styles.levelRangeField}>
-                  <Text style={styles.label}>Min level</Text>
+                  <Text style={styles.label}>{t('ivCalc.minLevel')}</Text>
                   <TextInput
                     style={styles.input}
                     keyboardType="decimal-pad"
@@ -147,7 +149,7 @@ export function IvCalculatorScreen({ route, navigation }: Props): React.JSX.Elem
                   />
                 </View>
                 <View style={styles.levelRangeField}>
-                  <Text style={styles.label}>Max level</Text>
+                  <Text style={styles.label}>{t('ivCalc.maxLevel')}</Text>
                   <TextInput
                     style={styles.input}
                     keyboardType="decimal-pad"
@@ -161,7 +163,7 @@ export function IvCalculatorScreen({ route, navigation }: Props): React.JSX.Elem
                 style={({ pressed }) => [styles.calculateButton, pressed && styles.pressedOpacity]}
                 onPress={handleCalculate}
               >
-                <Text style={styles.calculateButtonText}>Calculate</Text>
+                <Text style={styles.calculateButtonText}>{t('ivCalc.calculate')}</Text>
               </Pressable>
 
               {errorMessage !== null && <Text style={styles.error}>{errorMessage}</Text>}
@@ -169,8 +171,11 @@ export function IvCalculatorScreen({ route, navigation }: Props): React.JSX.Elem
               {results !== null && (
                 <Text style={styles.resultsSummary}>
                   {results.length === 0
-                    ? 'No IV combination matches those numbers for this species.'
-                    : `${results.length} possible combination${results.length === 1 ? '' : 's'}:`}
+                    ? t('ivCalc.noMatches')
+                    : t(
+                        results.length === 1 ? 'ivCalc.combinationsCountSingular' : 'ivCalc.combinationsCountPlural',
+                        { n: results.length },
+                      )}
                 </Text>
               )}
             </Card>
@@ -179,7 +184,12 @@ export function IvCalculatorScreen({ route, navigation }: Props): React.JSX.Elem
         renderItem={({ item }) => (
           <View style={styles.resultRow}>
             <Text style={styles.resultText}>
-              Level {item.level} — {item.ivAttack}/{item.ivDefense}/{item.ivStamina}
+              {t('ivCalc.resultLevel', {
+                level: item.level,
+                ivAttack: item.ivAttack,
+                ivDefense: item.ivDefense,
+                ivStamina: item.ivStamina,
+              })}
             </Text>
             <Text style={styles.resultPercentage}>{calculateIvPercentage(item)}%</Text>
           </View>

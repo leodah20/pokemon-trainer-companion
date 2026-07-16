@@ -4,6 +4,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { getAllSpecies } from '../../data/pokedex/pokedexRepository';
 import { generateQuiz } from '../../use-cases/generateQuiz';
 import { Card, COLORS, DISPLAY_FONT, FONT_SIZE, RADIUS, SHADOW, SPACING } from '../theme';
+import { useTranslation } from '../../i18n';
 
 const ALL_SPECIES = getAllSpecies();
 const QUESTION_COUNT = 10;
@@ -11,6 +12,7 @@ const QUESTION_COUNT = 10;
 type AnswerState = 'unanswered' | 'correct' | 'incorrect';
 
 export function QuizScreen(): React.JSX.Element {
+  const { t } = useTranslation();
   const [questions, setQuestions] = useState(() => generateQuiz(ALL_SPECIES, QUESTION_COUNT));
   const [questionIndex, setQuestionIndex] = useState(0);
   const [score, setScore] = useState(0);
@@ -21,8 +23,9 @@ export function QuizScreen(): React.JSX.Element {
   const isFinished = questionIndex >= questions.length;
 
   const progressLabel = useMemo(
-    () => (isFinished ? '' : `Question ${questionIndex + 1} / ${questions.length}`),
-    [questionIndex, questions.length, isFinished],
+    () =>
+      isFinished ? '' : t('quiz.progress', { current: questionIndex + 1, total: questions.length }),
+    [questionIndex, questions.length, isFinished, t],
   );
 
   function handleSelectOption(optionIndex: number): void {
@@ -54,7 +57,7 @@ export function QuizScreen(): React.JSX.Element {
   if (questions.length === 0) {
     return (
       <SafeAreaView style={styles.screen}>
-        <Text style={styles.finishedText}>Not enough data to build a quiz right now.</Text>
+        <Text style={styles.finishedText}>{t('quiz.notEnoughData')}</Text>
       </SafeAreaView>
     );
   }
@@ -64,14 +67,14 @@ export function QuizScreen(): React.JSX.Element {
       <SafeAreaView style={styles.screen} edges={['left', 'right', 'bottom']}>
         <View style={styles.content}>
           <Card style={styles.resultCard} accentColor={COLORS.brandGold}>
-            <Text style={styles.finishedTitle}>Quiz complete!</Text>
+            <Text style={styles.finishedTitle}>{t('quiz.complete')}</Text>
             <Text style={styles.finishedScore}>
               {score} / {questions.length}
             </Text>
-            <Text style={styles.finishedText}>{scoreMessage(score, questions.length)}</Text>
+            <Text style={styles.finishedText}>{scoreMessage(score, questions.length, t)}</Text>
           </Card>
           <Pressable style={styles.primaryButton} onPress={handlePlayAgain}>
-            <Text style={styles.primaryButtonText}>Play Again</Text>
+            <Text style={styles.primaryButtonText}>{t('quiz.playAgain')}</Text>
           </Pressable>
         </View>
       </SafeAreaView>
@@ -116,7 +119,7 @@ export function QuizScreen(): React.JSX.Element {
         {answerState !== 'unanswered' && (
           <Pressable style={styles.primaryButton} onPress={handleNext}>
             <Text style={styles.primaryButtonText}>
-              {questionIndex + 1 < questions.length ? 'Next Question' : 'See Results'}
+              {questionIndex + 1 < questions.length ? t('quiz.nextQuestion') : t('quiz.seeResults')}
             </Text>
           </Pressable>
         )}
@@ -125,18 +128,18 @@ export function QuizScreen(): React.JSX.Element {
   );
 }
 
-function scoreMessage(score: number, total: number): string {
+function scoreMessage(score: number, total: number, t: (key: 'quiz.scorePerfect' | 'quiz.scoreGreat' | 'quiz.scoreOkay' | 'quiz.scoreLow') => string): string {
   const ratio = score / total;
   if (ratio === 1) {
-    return 'Perfect score — true Pokemon Professor!';
+    return t('quiz.scorePerfect');
   }
   if (ratio >= 0.7) {
-    return 'Great job, Trainer!';
+    return t('quiz.scoreGreat');
   }
   if (ratio >= 0.4) {
-    return 'Not bad — keep studying the Pokedex.';
+    return t('quiz.scoreOkay');
   }
-  return 'Time to hit the books, Trainer.';
+  return t('quiz.scoreLow');
 }
 
 const styles = StyleSheet.create({

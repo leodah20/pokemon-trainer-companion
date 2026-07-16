@@ -5,12 +5,25 @@ import { getAllSpecies, getSpriteUrl } from '../../data/pokedex/pokedexRepositor
 import { getTopRanking, RANKING_CATEGORIES, RankingCategory } from '../../use-cases/rankTopPokemon';
 import { COLORS, FONT_SIZE, RADIUS, SHADOW, SPACING, TypeBadge } from '../theme';
 import { TabScreenProps } from '../navigation/types';
+import { TranslationKeys, useTranslation } from '../../i18n';
 
 const ALL_SPECIES = getAllSpecies();
+
+const CATEGORY_LABEL_KEYS: Record<RankingCategory, keyof TranslationKeys> = {
+  attack: 'rankings.category.attack',
+  defense: 'rankings.category.defense',
+  stamina: 'rankings.category.stamina',
+  bulk: 'rankings.category.bulk',
+  cp: 'rankings.category.cp',
+  'pvp-great': 'rankings.category.pvpGreat',
+  'pvp-ultra': 'rankings.category.pvpUltra',
+  'pvp-master': 'rankings.category.pvpMaster',
+};
 
 type Props = TabScreenProps<'Rankings'>;
 
 export function TopRankingsScreen({ navigation }: Props): React.JSX.Element {
+  const { t } = useTranslation();
   const [category, setCategory] = useState<RankingCategory>('attack');
 
   const activeOption = RANKING_CATEGORIES.find((option) => option.category === category)!;
@@ -28,7 +41,7 @@ export function TopRankingsScreen({ navigation }: Props): React.JSX.Element {
             <Text
               style={[styles.categoryChipText, option.category === category && styles.categoryChipTextSelected]}
             >
-              {option.label}
+              {t(CATEGORY_LABEL_KEYS[option.category])}
             </Text>
           </Pressable>
         ))}
@@ -38,9 +51,7 @@ export function TopRankingsScreen({ navigation }: Props): React.JSX.Element {
         data={rankings}
         keyExtractor={(entry) => String(entry.species.id)}
         contentContainerStyle={styles.listContent}
-        ListEmptyComponent={
-          <Text style={styles.emptyText}>No Pokemon are ranked for this league.</Text>
-        }
+        ListEmptyComponent={<Text style={styles.emptyText}>{t('rankings.emptyText')}</Text>}
         renderItem={({ item }) => (
           <Pressable
             style={styles.row}

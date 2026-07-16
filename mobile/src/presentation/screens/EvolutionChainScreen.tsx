@@ -6,6 +6,7 @@ import { getEvolutionChain } from '../../use-cases/getEvolutionChain';
 import { EvolutionChainLink } from '../../domain/evolution/types';
 import { COLORS, DISPLAY_FONT, FONT_SIZE, RADIUS, SHADOW, SPACING, TypeBadge } from '../theme';
 import { RootStackScreenProps } from '../navigation/types';
+import { useTranslation } from '../../i18n';
 
 type Props = RootStackScreenProps<'EvolutionChain'>;
 
@@ -18,6 +19,7 @@ const STAT_KEYS: ReadonlyArray<{ key: 'baseAttack' | 'baseDefense' | 'baseStamin
 ];
 
 export function EvolutionChainScreen({ route, navigation }: Props): React.JSX.Element {
+  const { t } = useTranslation();
   const chain = useMemo(
     () => getEvolutionChain(route.params.speciesId, ALL_SPECIES),
     [route.params.speciesId],
@@ -26,7 +28,7 @@ export function EvolutionChainScreen({ route, navigation }: Props): React.JSX.El
   if (!chain) {
     return (
       <SafeAreaView style={styles.screen} edges={['left', 'right', 'bottom']}>
-        <Text style={styles.emptyText}>No evolution data available for this Pokemon yet.</Text>
+        <Text style={styles.emptyText}>{t('evolution.empty')}</Text>
       </SafeAreaView>
     );
   }
@@ -39,7 +41,9 @@ export function EvolutionChainScreen({ route, navigation }: Props): React.JSX.El
             {index > 0 && (
               <View style={styles.arrowRow}>
                 <Text style={styles.arrow}>↓</Text>
-                {link.candyCost !== null && <Text style={styles.candyText}>{link.candyCost} candy</Text>}
+                {link.candyCost !== null && (
+                  <Text style={styles.candyText}>{t('evolution.candy', { n: link.candyCost })}</Text>
+                )}
               </View>
             )}
             <EvolutionCard link={link} onPress={() => navigation.navigate('PokemonDetail', { speciesId: link.speciesId })} />

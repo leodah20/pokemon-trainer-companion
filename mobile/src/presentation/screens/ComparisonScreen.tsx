@@ -5,6 +5,7 @@ import { PokemonSpecies } from '../../domain/pokemon-species';
 import { getAllSpecies, getSpriteUrl } from '../../data/pokedex/pokedexRepository';
 import { compareSpecies, ComparisonWinner, StatComparison } from '../../use-cases/comparePokemon';
 import { Card, COLORS, DISPLAY_FONT, FONT_SIZE, getTypeColor, RADIUS, SHADOW, SPACING, TypeBadge } from '../theme';
+import { useTranslation } from '../../i18n';
 
 const ALL_SPECIES = getAllSpecies();
 const MAX_SEARCH_RESULTS = 6;
@@ -28,6 +29,7 @@ interface SpeciesSlotProps {
 }
 
 function SpeciesSlot({ label, species, onSelect, onClear }: SpeciesSlotProps): React.JSX.Element {
+  const { t } = useTranslation();
   const [query, setQuery] = useState('');
   const results = useMemo(() => searchSpecies(query), [query]);
 
@@ -45,7 +47,7 @@ function SpeciesSlot({ label, species, onSelect, onClear }: SpeciesSlotProps): R
               ))}
             </View>
           </View>
-          <Text style={styles.changeText}>Change</Text>
+          <Text style={styles.changeText}>{t('common.change')}</Text>
         </Pressable>
       </View>
     );
@@ -56,7 +58,7 @@ function SpeciesSlot({ label, species, onSelect, onClear }: SpeciesSlotProps): R
       <Text style={styles.slotLabel}>{label}</Text>
       <TextInput
         style={styles.searchInput}
-        placeholder="Search by name"
+        placeholder={t('pokedex.searchPlaceholder')}
         placeholderTextColor={COLORS.textMuted}
         value={query}
         onChangeText={setQuery}
@@ -90,12 +92,14 @@ function winnerColor(winner: ComparisonWinner, side: 'a' | 'b'): string {
 }
 
 function ComparisonRow({ comparison }: { comparison: StatComparison }): React.JSX.Element {
+  const { t } = useTranslation();
+  const label = comparison.label === 'Bulk (DEF+STA)' ? t('compare.bulkLabel') : comparison.label;
   return (
     <View style={styles.comparisonRow}>
       <Text style={[styles.comparisonValue, { color: winnerColor(comparison.winner, 'a') }]}>
         {comparison.valueA}
       </Text>
-      <Text style={styles.comparisonLabel}>{comparison.label}</Text>
+      <Text style={styles.comparisonLabel}>{label}</Text>
       <Text style={[styles.comparisonValue, { color: winnerColor(comparison.winner, 'b') }]}>
         {comparison.valueB}
       </Text>
@@ -104,6 +108,7 @@ function ComparisonRow({ comparison }: { comparison: StatComparison }): React.JS
 }
 
 export function ComparisonScreen(): React.JSX.Element {
+  const { t } = useTranslation();
   const [speciesA, setSpeciesA] = useState<PokemonSpecies | null>(null);
   const [speciesB, setSpeciesB] = useState<PokemonSpecies | null>(null);
 
@@ -115,8 +120,8 @@ export function ComparisonScreen(): React.JSX.Element {
   return (
     <SafeAreaView style={styles.screen} edges={['left', 'right', 'bottom']}>
       <ScrollView contentContainerStyle={styles.content} keyboardShouldPersistTaps="handled">
-        <SpeciesSlot label="Pokemon A" species={speciesA} onSelect={setSpeciesA} onClear={() => setSpeciesA(null)} />
-        <SpeciesSlot label="Pokemon B" species={speciesB} onSelect={setSpeciesB} onClear={() => setSpeciesB(null)} />
+        <SpeciesSlot label={t('compare.pokemonA')} species={speciesA} onSelect={setSpeciesA} onClear={() => setSpeciesA(null)} />
+        <SpeciesSlot label={t('compare.pokemonB')} species={speciesB} onSelect={setSpeciesB} onClear={() => setSpeciesB(null)} />
 
         {comparisons && speciesA && speciesB && (
           <Card style={styles.resultCard} accentColor={getTypeColor(speciesA.types[0])}>
@@ -127,7 +132,7 @@ export function ComparisonScreen(): React.JSX.Element {
             {comparisons.map((comparison) => (
               <ComparisonRow key={comparison.label} comparison={comparison} />
             ))}
-            <Text style={styles.sourceText}>Green highlights the higher stat. Bulk is a DEF+STA heuristic.</Text>
+            <Text style={styles.sourceText}>{t('compare.sourceNote')}</Text>
           </Card>
         )}
       </ScrollView>

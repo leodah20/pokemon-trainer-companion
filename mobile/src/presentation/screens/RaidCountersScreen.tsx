@@ -7,6 +7,7 @@ import { getAllSpecies, getSpriteUrl } from '../../data/pokedex/pokedexRepositor
 import { getRaidCounters } from '../../use-cases/getRaidCounters';
 import { WEATHER_BOOSTS } from '../../data/type-effectiveness/weatherBoosts';
 import { COLORS, DISPLAY_FONT, FONT_SIZE, RADIUS, SHADOW, SPACING, TypeBadge } from '../theme';
+import { TranslationKeys, useTranslation } from '../../i18n';
 
 const ALL_SPECIES = getAllSpecies();
 const BOSSES = getCurrentRaidBosses();
@@ -14,8 +15,13 @@ const TIER_ORDER: readonly [1, 3, 5] = [1, 3, 5];
 const WEATHER_OPTIONS = ['Any', ...WEATHER_BOOSTS.map((w) => w.weather)];
 
 export function RaidCountersScreen(): React.JSX.Element {
+  const { t } = useTranslation();
   const [selectedBoss, setSelectedBoss] = useState<RaidBoss>(BOSSES[0]);
   const [weather, setWeather] = useState('Any');
+
+  function weatherLabel(option: string): string {
+    return option === 'Any' ? t('weather.any') : t(`weather.${option}` as keyof TranslationKeys);
+  }
 
   const counters = useMemo(
     () => getRaidCounters(selectedBoss, ALL_SPECIES, weather === 'Any' ? undefined : weather),
@@ -25,14 +31,11 @@ export function RaidCountersScreen(): React.JSX.Element {
   return (
     <SafeAreaView style={styles.screen} edges={['left', 'right', 'bottom']}>
       <ScrollView contentContainerStyle={styles.content}>
-        <Text style={styles.hint}>
-          Pick a raid boss to see estimated top counters. This is a relative DPS ranking, not a
-          full moveset simulation.
-        </Text>
+        <Text style={styles.hint}>{t('raid.hint')}</Text>
 
         {TIER_ORDER.map((tier) => (
           <View key={tier} style={styles.tierSection}>
-            <Text style={styles.tierTitle}>{tier}★ Raids</Text>
+            <Text style={styles.tierTitle}>{t('raid.tierRaids', { tier })}</Text>
             <View style={styles.bossRow}>
               {BOSSES.filter((boss) => boss.tier === tier).map((boss) => (
                 <Pressable
@@ -53,7 +56,7 @@ export function RaidCountersScreen(): React.JSX.Element {
           </View>
         ))}
 
-        <Text style={styles.tierTitle}>Weather</Text>
+        <Text style={styles.tierTitle}>{t('raid.weather')}</Text>
         <View style={styles.weatherRow}>
           {WEATHER_OPTIONS.map((option) => (
             <Pressable
@@ -62,13 +65,13 @@ export function RaidCountersScreen(): React.JSX.Element {
               style={[styles.weatherChip, option === weather && styles.weatherChipSelected]}
             >
               <Text style={[styles.weatherChipText, option === weather && styles.weatherChipTextSelected]}>
-                {option}
+                {weatherLabel(option)}
               </Text>
             </Pressable>
           ))}
         </View>
 
-        <Text style={styles.resultsTitle}>Top counters vs. {selectedBoss.speciesName}</Text>
+        <Text style={styles.resultsTitle}>{t('raid.topCountersVs', { boss: selectedBoss.speciesName })}</Text>
         {counters.map((counter, index) => (
           <View key={counter.speciesId} style={styles.counterRow}>
             <Text style={styles.counterRank}>#{index + 1}</Text>
@@ -83,8 +86,8 @@ export function RaidCountersScreen(): React.JSX.Element {
             </View>
             <View style={styles.counterDpsBlock}>
               <Text style={styles.counterDps}>{counter.estimatedDps}</Text>
-              <Text style={styles.counterDpsLabel}>est. DPS</Text>
-              {counter.weatherBoosted && <Text style={styles.weatherBadge}>☀️ Boosted</Text>}
+              <Text style={styles.counterDpsLabel}>{t('raid.estDps')}</Text>
+              {counter.weatherBoosted && <Text style={styles.weatherBadge}>{t('raid.boosted')}</Text>}
             </View>
           </View>
         ))}

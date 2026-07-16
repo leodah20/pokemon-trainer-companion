@@ -4,26 +4,21 @@ import { launchImageLibrary } from 'react-native-image-picker';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { getSpriteUrl } from '../../data/pokedex/pokedexRepository';
 import { calculateIvPercentage } from '../../domain/iv-calculator';
-import { formatMoveName, getMetaTier, META_TIER_LABELS, PVP_LEAGUE_LABELS, PvpLeague } from '../../domain/pvp';
-import { BULK_TIER_LABELS } from '../../use-cases/rankBulkPercentile';
+import { formatMoveName, getMetaTier, PvpLeague } from '../../domain/pvp';
 import { analyzeScreenshot, ScreenshotAnalysis } from '../../use-cases/analyzeScreenshot';
 import { buildCompanionExtraContext } from '../../use-cases/buildCompanionExtraContext';
 import { CompanionAiContext, CompanionApiError, fetchCompanionSuggestion } from '../../data/companion/companionApiClient';
 import { Card, COLORS, DISPLAY_FONT, FONT_SIZE, RADIUS, SHADOW, SPACING } from '../theme';
+import { useTranslation } from '../../i18n';
 
 const LEAGUE_ORDER: PvpLeague[] = ['great', 'ultra', 'master'];
-const AI_CONTEXTS: readonly { value: CompanionAiContext; label: string }[] = [
-  { value: 'raid', label: 'Raid' },
-  { value: 'battle', label: 'Battle' },
-  { value: 'capture', label: 'Capture' },
-  { value: 'levelup', label: 'Level up' },
-  { value: 'general', label: 'General' },
-];
+const AI_CONTEXTS: readonly CompanionAiContext[] = ['raid', 'battle', 'capture', 'levelup', 'general'];
 
 type Status = 'idle' | 'loading' | 'error';
 type AiState = 'idle' | 'loading' | 'error';
 
 export function OverlayDemoScreen(): React.JSX.Element {
+  const { t } = useTranslation();
   const [status, setStatus] = useState<Status>('idle');
   const [analysis, setAnalysis] = useState<ScreenshotAnalysis | null>(null);
 
@@ -65,34 +60,28 @@ export function OverlayDemoScreen(): React.JSX.Element {
       setAiState('idle');
     } catch (error) {
       setAiState('error');
-      setAiError(error instanceof CompanionApiError ? error.message : 'Something went wrong.');
+      setAiError(error instanceof CompanionApiError ? error.message : t('overlay.aiGenericError'));
     }
   }
 
   return (
     <SafeAreaView style={styles.screen} edges={['top', 'left', 'right']}>
       <ScrollView contentContainerStyle={styles.content}>
-        <Text style={styles.title}>Overlay Demo</Text>
-        <Text style={styles.subtitle}>
-          Pick a status-screen screenshot — the same on-device OCR the real floating overlay will
-          use reads the species name, CP, and HP, then every calculator in this app runs on the
-          result. No login, no game memory access; see docs/legal-compliance.md.
-        </Text>
+        <Text style={styles.title}>{t('overlay.title')}</Text>
+        <Text style={styles.subtitle}>{t('overlay.subtitle')}</Text>
 
         <Pressable style={({ pressed }) => [styles.pickButton, pressed && styles.pickButtonPressed]} onPress={handlePickImage}>
-          <Text style={styles.pickButtonText}>Pick a screenshot</Text>
+          <Text style={styles.pickButtonText}>{t('overlay.pickButton')}</Text>
         </Pressable>
 
         {status === 'loading' && <ActivityIndicator style={styles.spinner} size="large" color={COLORS.brandBlue} />}
 
-        {status === 'error' && (
-          <Text style={styles.errorText}>Couldn't read that image. Try a clearer screenshot.</Text>
-        )}
+        {status === 'error' && <Text style={styles.errorText}>{t('overlay.errorText')}</Text>}
 
         {analysis && status === 'idle' && (
           <View style={styles.overlayCardWrapper}>
             <Card accentColor={COLORS.brandBlue}>
-              <Text style={styles.overlayLabel}>OVERLAY RESULT</Text>
+              <Text style={styles.overlayLabel}>{t('overlay.resultLabel')}</Text>
 
               {analysis.species ? (
                 <>
@@ -114,32 +103,34 @@ export function OverlayDemoScreen(): React.JSX.Element {
                     <Text style={styles.sectionText}>
                       IV: {analysis.ivMatches[0].ivAttack}/{analysis.ivMatches[0].ivDefense}/
                       {analysis.ivMatches[0].ivStamina} ({calculateIvPercentage(analysis.ivMatches[0])}%)
-                      {analysis.ivMatches.length > 1 ? ` — +${analysis.ivMatches.length - 1} more match` : ''}
+                      {analysis.ivMatches.length > 1
+                        ? t('overlay.ivExtraMatches', { n: analysis.ivMatches.length - 1 })
+                        : ''}
                     </Text>
                   ) : (
-                    <Text style={styles.sectionText}>IV: couldn't match CP/HP to a level 1-40.</Text>
+                    <Text style={styles.sectionText}>{t('overlay.ivUnmatched')}</Text>
                   )}
 
                   {LEAGUE_ORDER.filter((league) => analysis.pvpRankings?.[league] !== undefined).map((league) => {
                     const moveset = analysis.pvpRankings![league]!;
                     return (
                       <Text key={league} style={styles.sectionText}>
-                        {PVP_LEAGUE_LABELS[league]}: {formatMoveName(moveset.fastMove)} +{' '}
+                        {t(`pvpLeague.${league}`)}: {formatMoveName(moveset.fastMove)} +{' '}
                         {moveset.chargedMoves.map(formatMoveName).join(' / ')} (
-                        {META_TIER_LABELS[getMetaTier(moveset.score)]})
+                        {t(`metaTier.${getMetaTier(moveset.score)}`)})
                       </Text>
                     );
                   })}
 
                   {analysis.bulkRanking && (
                     <Text style={styles.sectionText}>
-                      Defense: {BULK_TIER_LABELS[analysis.bulkRanking.tier]}
+                      {t('overlay.defense')}: {t(`bulkTier.${analysis.bulkRanking.tier}`)}
                     </Text>
                   )}
 
                   {analysis.suggestions.length > 0 && (
                     <>
-                      <Text style={styles.suggestionsLabel}>WHAT TO DO WITH IT</Text>
+                      <Text style={styles.suggestionsLabel}>{t('overlay.whatToDoWithIt')}</Text>
                       {analysis.suggestions.map((suggestion) => (
                         <Text key={suggestion} style={styles.suggestionText}>
                           • {suggestion}
@@ -148,16 +139,16 @@ export function OverlayDemoScreen(): React.JSX.Element {
                     </>
                   )}
 
-                  <Text style={styles.suggestionsLabel}>ASK AI ABOUT THIS SCAN</Text>
+                  <Text style={styles.suggestionsLabel}>{t('overlay.askAiAboutScan')}</Text>
                   <View style={styles.contextRow}>
                     {AI_CONTEXTS.map((option) => (
                       <Pressable
-                        key={option.value}
-                        style={[styles.contextChip, option.value === aiContext && styles.contextChipSelected]}
-                        onPress={() => setAiContext(option.value)}
+                        key={option}
+                        style={[styles.contextChip, option === aiContext && styles.contextChipSelected]}
+                        onPress={() => setAiContext(option)}
                       >
-                        <Text style={[styles.contextChipText, option.value === aiContext && styles.contextChipTextSelected]}>
-                          {option.label}
+                        <Text style={[styles.contextChipText, option === aiContext && styles.contextChipTextSelected]}>
+                          {t(`aiContext.${option}`)}
                         </Text>
                       </Pressable>
                     ))}
@@ -171,19 +162,17 @@ export function OverlayDemoScreen(): React.JSX.Element {
                       <ActivityIndicator size="small" color={COLORS.surface} />
                     ) : (
                       <Text style={styles.askAiButtonText}>
-                        {aiState === 'error' ? 'Retry Ask AI ✨' : aiText ? 'Ask again ✨' : 'Ask AI ✨'}
+                        {aiState === 'error' ? t('companion.retryAskAi') : aiText ? t('companion.askAgain') : t('companion.askAi')}
                       </Text>
                     )}
                   </Pressable>
                 </>
               ) : (
-                <Text style={styles.sectionText}>
-                  Couldn't recognize a known species name in this image.
-                </Text>
+                <Text style={styles.sectionText}>{t('overlay.speciesNotRecognized')}</Text>
               )}
 
-              <Text style={styles.rawTextLabel}>Raw OCR text (for debugging)</Text>
-              <Text style={styles.rawText}>{analysis.rawText || '(empty)'}</Text>
+              <Text style={styles.rawTextLabel}>{t('overlay.rawTextLabel')}</Text>
+              <Text style={styles.rawText}>{analysis.rawText || t('overlay.rawTextEmpty')}</Text>
             </Card>
           </View>
         )}

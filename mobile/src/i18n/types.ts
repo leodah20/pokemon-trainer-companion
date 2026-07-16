@@ -100,4 +100,93 @@ export interface TranslationKeys {
   'detail.lore.shinyRate': string;
   'detail.evolutionChainButton': string;
   'detail.calculateIvButton': string;
+
+  'ivCalc.title': string;
+  'ivCalc.species': string;
+  'ivCalc.unknownSpecies': string;
+  'ivCalc.cp': string;
+  'ivCalc.hp': string;
+  'ivCalc.minLevel': string;
+  'ivCalc.maxLevel': string;
+  'ivCalc.calculate': string;
+  'ivCalc.errorCpHp': string;
+  'ivCalc.errorLevel': string;
+  'ivCalc.errorMinMax': string;
+  'ivCalc.errorGeneric': string;
+  'ivCalc.noMatches': string;
+  'ivCalc.combinationsCountSingular': string;
+  'ivCalc.combinationsCountPlural': string;
+  'ivCalc.resultLevel': string;
+
+  'compare.pokemonA': string;
+  'compare.pokemonB': string;
+  'compare.bulkLabel': string;
+  'compare.sourceNote': string;
+
+  'typeChart.hint': string;
+  'typeChart.superEffective': string;
+  'typeChart.notVeryEffective': string;
+  'typeChart.noEffect': string;
+  'typeChart.neutral': string;
+
+  'rankings.emptyText': string;
+  'rankings.category.attack': string;
+  'rankings.category.defense': string;
+  'rankings.category.stamina': string;
+  'rankings.category.bulk': string;
+  'rankings.category.cp': string;
+  'rankings.category.pvpGreat': string;
+  'rankings.category.pvpUltra': string;
+  'rankings.category.pvpMaster': string;
+
+  'raid.hint': string;
+  'raid.tierRaids': string;
+  'raid.weather': string;
+  'raid.topCountersVs': string;
+  'raid.estDps': string;
+  'raid.boosted': string;
+
+  'weather.any': string;
+  'weather.Clear': string;
+  'weather.Sunny': string;
+  'weather.Rain': string;
+  'weather.PartlyCloudy': string;
+  'weather.Cloudy': string;
+  'weather.Windy': string;
+  'weather.Snow': string;
+  'weather.Fog': string;
+
+  'evolution.empty': string;
+  'evolution.candy': string;
+
+  'quiz.notEnoughData': string;
+  'quiz.progress': string;
+  'quiz.complete': string;
+  'quiz.playAgain': string;
+  'quiz.nextQuestion': string;
+  'quiz.seeResults': string;
+  'quiz.scorePerfect': string;
+  'quiz.scoreGreat': string;
+  'quiz.scoreOkay': string;
+  'quiz.scoreLow': string;
+
+  'overlay.title': string;
+  'overlay.subtitle': string;
+  'overlay.pickButton': string;
+  'overlay.errorText': string;
+  'overlay.resultLabel': string;
+  'overlay.ivUnmatched': string;
+  'overlay.ivExtraMatches': string;
+  'overlay.defense': string;
+  'overlay.whatToDoWithIt': string;
+  'overlay.askAiAboutScan': string;
+  'overlay.speciesNotRecognized': string;
+  'overlay.rawTextLabel': string;
+  'overlay.rawTextEmpty': string;
+  'overlay.aiGenericError': string;
+  'aiContext.raid': string;
+  'aiContext.battle': string;
+  'aiContext.capture': string;
+  'aiContext.levelup': string;
+  'aiContext.general': string;
 }

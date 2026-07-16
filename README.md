@@ -100,9 +100,9 @@ Progress: 89% █████████████████░░░ (24 /
 | | Raid counters with DPS estimates | ✅ Done | ✅ |
 | | Evolution chain viewer with costs | ✅ Done | ✅ |
 | | In-app Companion widget (avatar + speech bubble, rule-based + optional AI) | ✅ Done | — |
-| | i18n (English/Portuguese/Spanish) — core app chrome | ✅ Done | — |
+| | i18n (English/Portuguese/Spanish) — every screen | ✅ Done | — |
 | **Future** | OCR engine + rule-based smart suggestions (gallery screenshot → species/CP/HP → evolve/PvP/raid/gym advice) | ✅ Done | ✅ |
-| | i18n coverage for the remaining screens + lore content translation | 🔄 Planned | — |
+| | lore-data.json content translation (currently Portuguese-only) | 🔄 Planned | — |
 | | Scraped knowledge base (Bulbapedia/PokeAPI) feeding the AI prompt | ❌ Not started | — |
 | | Floating overlay (native Android module, auto-capture instead of gallery picker) | ❌ Not started | — |
 | | Cross-device sync + authentication | ❌ Not started | — |
@@ -122,12 +122,12 @@ Deliberately deferred past this beta — not gaps, just not yet prioritized:
   `GEMINI_API_KEY`. Not yet backed by a scraped knowledge base — it only knows what the backend's
   own species/type/PvP/raid data already contains (Bulbapedia/PokeAPI ingestion is the next step)
 - **Cross-device sync + auth** — backend schema exists (`Trainer`, `SavedTeam`), no endpoints yet
-- **i18n coverage** — infrastructure + core chrome (nav, Pokedex, Tools hub, More, Companion) done
-  for English/Portuguese/Spanish. Remaining screens (IV Calculator, Comparison, Type Chart,
-  Rankings, Raid Counters, Evolution Chain, Quiz, Overlay Demo) and the lore-data.json content
-  itself (currently Portuguese-only) still need translating — the latter is a good candidate for
-  batch-translating via the Gemini integration already in place, rather than hand-translating
-  ~150 species × 7 fields
+- **Lore content translation** — every screen's UI chrome is now translated (English/Portuguese/
+  Spanish), but `lore-data.json` itself (~150 species × 7 fields of hand-written Portuguese text)
+  is still Portuguese-only regardless of selected language. Good candidate for batch-translating
+  via the Gemini integration already in place, rather than hand-translating each field. Quiz
+  question content (`generateQuiz.ts`) and Pokemon type names (Fire, Water, etc.) are also
+  deliberately left untranslated for now.
 - **Dark mode** — `useColorScheme` is read in `App.tsx` but not wired into the theme yet
 - **Extra content cards** (Fase 5 of the original roadmap) — Rarity & Spawn, Best PvP League +
   IV spread, Buddy & Candy distance, Legacy Moves — need new data sources, not just UI work
@@ -139,6 +139,19 @@ Deliberately deferred past this beta — not gaps, just not yet prioritized:
 ### Last implemented features
 
 > <time datetime="2026-07-15">2026-07-15</time>
+>
+> **Full i18n coverage — every remaining screen translated (EN/PT-BR/ES):**
+> - Finished the i18n pass across the whole app: IV Calculator, Comparison, Type Chart, Top
+>   Rankings, Raid Counters (including a weather-label bug fix — "PartlyCloudy" was rendering with
+>   no space), Evolution Chain, Quiz, and Overlay Demo are now all fully translated — every
+>   hardcoded string replaced with `t()` calls across ~100 new i18n keys.
+> - `PVP_LEAGUE_LABELS` / `META_TIER_LABELS` / `BULK_TIER_LABELS` usage in Overlay Demo switched
+>   from the hardcoded English domain constants to the same `pvpLeague.*`/`metaTier.*`/`bulkTier.*`
+>   i18n keys already used by PokemonDetailScreen, so the AI-scan result card translates too.
+> - **Still not translated (deliberately out of scope for this pass):** the lore CONTENT itself
+>   (`lore-data.json`, ~150 species × 7 fields of hand-written Portuguese text), quiz question
+>   content (`generateQuiz.ts`), and Pokemon type names (Fire, Water, etc.) — see "Post-beta scope".
+> - 63/63 mobile tests passing, zero TypeScript errors.
 >
 > **PokemonDetailScreen fully translated (EN/PT-BR/ES):**
 > - Fixed the exact gap a user found: the "Lore & Trivia" card's category labels (Origem &
