@@ -169,6 +169,47 @@ emulator -avd pokemon_trainer_companion
 | App stuck on a blank/gray screen after install or after fixing the above | `adb shell am start -n <pkg>/.MainActivity` only brings the existing activity to the foreground — it does **not** re-fetch the JS bundle if the RN instance already failed to load it once. Force a real cold start instead: `adb shell am force-stop <package>` then `adb shell am start -n <pkg>/.MainActivity`. Watch the Metro terminal for a `BUNDLE ./index.js` progress line to confirm the device actually requested it. |
 | `Error: listen EADDRINUSE: address already in use :::8081` when starting Metro | Another Metro instance (yours or a background one someone else started, e.g. `nohup npx react-native start &`) is already holding port 8081. Find and stop it — on Windows: `Get-Process node \| Stop-Process -Force` (kills *all* Node processes, safe in a dev-only setup) — then start Metro again. Only one Metro instance should run at a time; running two doesn't share state and the app will randomly connect to whichever one wins. |
 
+## Testing native module changes (overlay, AsyncStorage, etc.)
+
+Any change under `mobile/android/` (new native module, new permission in `AndroidManifest.xml`, a
+new dependency with native code like `@react-native-async-storage/async-storage`) needs a full
+Gradle rebuild — Metro's JS hot-reload does **not** pick these up:
+
+```bash
+cd mobile/android
+./gradlew assembleDebug
+adb -s <serial> install -r app/build/outputs/apk/debug/app-debug.apk
+adb -s <serial> shell am start -n com.pokemontrainercompanionmobile/.MainActivity
+```
+
+The native overlay module (`android/.../overlay/OverlayModule.kt`) requests the
+`SYSTEM_ALERT_WINDOW` permission via `Settings.ACTION_MANAGE_OVERLAY_PERMISSION` — this is a
+user-driven grant screen, Android does not allow a normal runtime permission prompt for it. Some
+emulator images pre-grant this permission for freshly-installed debug builds; on a physical device
+expect to grant it manually the first time.
+
+## Driving the emulator with `adb shell input tap` (for automated screenshots/testing)
+
+Screenshots from `adb shell screencap` are captured at the device's physical resolution (check
+with `adb shell wm size`), so tap coordinates should be computed directly from that resolution —
+no separate scale factor needed if you're reading pixel positions from a raw screenshot file.
+Two gotchas that cost real time debugging blind taps:
+
+- **Visual position estimates are less precise than they look**, even for static elements like the
+  bottom tab bar — a screenshot → tap → screenshot loop to confirm the tap landed where intended is
+  worth the extra round-trip. Never assume a single tap succeeded without checking.
+- **For targets near a screen edge** (bottom tab bar, a FAB), aim close to the actual edge (e.g. a
+  Y coordinate near the device's total height) rather than the visually-estimated center of the
+  element — screen real estate near edges is easy to misjudge from a description of a scaled-down
+  image.
+- **A continuously-animating target** (e.g. the Companion widget's bouncing avatar) makes single
+  synthetic taps even less reliable — prefer testing those interactions on a physical device when
+  possible.
+
+If `adb shell screencap` starts returning a suspiciously small, blank, or corrupted PNG after a
+long emulator session with no crash in `adb logcat`, that's very likely an emulator graphics glitch
+(SwiftShader), not an app bug — `adb -s <serial> emu kill` and restarting the emulator resolves it.
+
 ## 7. Prisma Studio (inspect database in browser)
 
 ```bash

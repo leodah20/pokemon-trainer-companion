@@ -65,10 +65,17 @@ for cross-device team sync is still optional, so LGPD exposure is scoped to that
   are never uploaded. This alone keeps LGPD exposure close to zero — there's no personal data
   processing to govern.
 - **Signed in (opt-in, for cross-device sync only):** collects only what's needed to sync saved
-  teams across devices (email, saved teams). Requirements to satisfy before this ships:
+  teams across devices (email, saved teams). Chosen auth method: **Google Sign-In** (OAuth), not
+  email/password — decided 2026-07-16, not yet implemented. Requires the project owner to create
+  OAuth client credentials in Google Cloud Console before backend/mobile work can start (this is
+  an account-holder action, cannot be done on their behalf). Requirements to satisfy before this
+  ships:
   - A public privacy policy stating what's collected and why (consent as the legal basis).
   - A way for the trainer to export or delete their data (account deletion removes `TRAINER` and
     cascades to `SAVED_TEAM`/`TEAM_MEMBER`, see [entity-relationship-diagram.md](entity-relationship-diagram.md)).
   - Encryption in transit (HTTPS) and at rest for the database.
   - Google Play "Data Safety" and Apple "App Privacy" labels kept in sync with what's actually
     collected — mismatches here are a common app-store rejection reason.
+  - Google Sign-In specifically also needs the OAuth consent screen configured and (before
+    general release) verified by Google if requesting sensitive scopes — email-only sign-in stays
+    in the lighter "unverified app" tier during development.

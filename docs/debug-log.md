@@ -128,6 +128,76 @@ depois do `npm install`.
 
 ---
 
+## 2026-07-16 — Persistência, base de conhecimento e overlay nativo
+
+### 1. Jest: `Cannot use import statement outside a module` ao adicionar `@react-native-async-storage/async-storage`
+
+**Sintoma:** todos os testes que importavam (direta ou indiretamente) o novo módulo de storage
+falhavam com `SyntaxError: Cannot use import statement outside a module`, apontando pro próprio
+pacote em `node_modules`.
+
+**Causa:** `mobile/jest.config.js` já tinha uma lista de exceções em `transformIgnorePatterns` pra
+pacotes RN que distribuem ESM não transpilado (`@react-native-ml-kit`, `@react-navigation`, etc.),
+mas `@react-native-async-storage` não estava nela. Por padrão o Jest ignora tudo em `node_modules`
+pro transform, então o pacote nunca era convertido pra CommonJS.
+
+**Fix:** adicionar `@react-native-async-storage` na mesma lista de exceções em `jest.config.js`.
+Padrão a lembrar: **toda vez que uma nova dependência nativa da comunidade RN for instalada, checar
+se ela precisa entrar nessa lista** — o sintoma só aparece rodando os testes, não no `tsc` nem no
+build nativo.
+
+---
+
+### 2. Script de tradução em lote (Gemini): `Unexpected non-whitespace character after JSON`
+
+**Sintoma:** `mobile/scripts/translateLoreData.mjs` falhava intermitentemente ao fazer parse da
+resposta do Gemini pra várias espécies, mesmo pedindo `responseMimeType: 'application/json'` no
+`generationConfig`.
+
+**Causa:** o modelo ocasionalmente ecoava um **segundo objeto JSON** (ou texto extra) depois do
+objeto válido — a estratégia inicial de "primeiro `{` até o último `}`" concatenava os dois objetos
+numa string inválida.
+
+**Fix:** trocar por um parser que escaneia a partir do primeiro `{` e conta chaves balanceadas
+(respeitando strings/escapes), parando exatamente no fechamento do primeiro objeto completo e
+ignorando qualquer coisa depois. Padrão a lembrar: **ao pedir JSON estruturado de um LLM, nunca
+confiar em "do primeiro colchete ao último"** — sempre validar profundidade de chaves.
+
+---
+
+### 3. `adb shell input tap` — coordenadas erradas de forma consistente (não é o widget animado)
+
+**Sintoma:** toques sintéticos via `adb shell input tap X Y`, calculados a partir de um screenshot
+(multiplicando as coordenadas exibidas pelo fator de escala indicado), caíam sistematicamente em
+elementos **abaixo** do alvo pretendido — inclusive em elementos estáticos como a bottom tab bar,
+não só no avatar do Companion que fica balançando.
+
+**Causa:** estimativa visual manual de "onde um elemento está" na imagem tem margem de erro maior
+do que a distância entre elementos vizinhos na tela (linhas de lista, tabs). O fator de escala em
+si (`wm size` vs. imagem exibida) estava correto — o erro era só na leitura visual da posição.
+
+**Fix:** quando o alvo é a bottom tab bar ou qualquer elemento fixo perto de uma borda, mirar bem
+perto da borda real da tela (ex: `y` próximo do total da altura do device) em vez de estimar a
+posição miolo. Pra alvos incertos, tirar o screenshot, tocar, tirar outro screenshot e comparar —
+não assumir que o primeiro toque acertou. Documentado também em `dev-setup.md`.
+
+---
+
+### 4. Emulador: `screencap` retorna imagem em branco/corrompida depois de sessão longa
+
+**Sintoma:** `adb shell screencap` passou a retornar um PNG sólido branco (ou com ruído tipo
+"static" de TV) mesmo com o app em foreground e sem crash no `logcat`.
+
+**Causa:** parece ser um glitch do pipeline gráfico do emulador (SwiftShader) depois de várias
+horas de sessão contínua com builds/instalações repetidas — não é um bug do app (confirmado via
+`dumpsys window` mostrando o app corretamente em foco, e `logcat` sem `FATAL`/`Exception`).
+
+**Fix:** `adb -s <serial> emu kill` e reiniciar o emulador do zero resolveu. Padrão a lembrar: se um
+screenshot parecer errado mas o app não crashou nos logs, suspeitar do emulador antes de suspeitar
+do código.
+
+---
+
 ## Padrões pra lembrar
 
 - **Prisma 7 mudou bastante** em relação a versões anteriores: sem `index.ts` de barril, formato de
@@ -142,3 +212,15 @@ depois do `npm install`.
 - **Bibliotecas nativas antigas (pre-Fabric) quebram silenciosamente** com `newArchEnabled=true` — o
   erro só aparece em runtime (`View config not found`), não em build time. Verificar se a lib tem
   `codegenConfig` no `package.json` antes de usar.
+- **Nova dependência RN da comunidade → checar `jest.config.js`** — se ela ship ESM não transpilado
+  (a maioria dos pacotes `@react-native-*` recentes), precisa entrar na exceção de
+  `transformIgnorePatterns`, senão os testes quebram mesmo com `tsc`/build nativo passando limpo.
+- **JSON estruturado de LLM: sempre parsear com contagem de chaves balanceadas**, nunca "do primeiro
+  `{` ao último `}`" — o modelo pode ecoar conteúdo extra depois do objeto válido.
+- **Toques sintéticos via `adb shell input tap` erram com frequência**, mesmo em elementos estáticos
+  — não é exclusivo de widgets animados. Screenshot → toque → novo screenshot pra confirmar, sempre;
+  nunca assumir que o toque acertou. Pra alvos perto de uma borda (tab bar, FAB), mirar perto da
+  borda real em vez do meio estimado.
+- **`screencap` do emulador pode "vidrar" (branco/corrompido) depois de sessão longa** sem que seja
+  um bug do app — checar `logcat` por `FATAL`/`Exception` antes de suspeitar do código; se estiver
+  limpo, reiniciar o emulador resolve.

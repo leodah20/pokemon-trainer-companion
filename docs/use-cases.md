@@ -111,12 +111,15 @@ existing stats (type, generation, base stats, evolution cost estimates).
 
 ---
 
-## UC-05 — Save a team (Pro)
+## UC-05 — Save a team
 
 1. Trainer signs in (optional — required only for this use case).
 2. Trainer builds a team from calculator results and saves it.
 3. System persists the team to the backend, associated with the Trainer's account.
 4. Team becomes available on any device the Trainer signs into.
+
+Not gated behind any tier — the app has no paid tier at all (see README). Signing in is purely for
+the convenience of syncing across devices.
 
 **Status:** ❌ Not started
 
@@ -135,12 +138,19 @@ existing stats (type, generation, base stats, evolution cost estimates).
 
 ## UC-07 — Sign in for cross-device team sync
 
-1. Trainer opts into signing in (entirely optional — the app works fully offline without it).
-2. System creates/authenticates the `TRAINER` account and syncs `SAVED_TEAM`/`TEAM_MEMBER` rows.
+1. Trainer opts into signing in via **Google Sign-In** (entirely optional — the app works fully
+   offline without it; decided 2026-07-16, not email/password, see
+   [legal-compliance.md](legal-compliance.md) §3).
+2. System creates/authenticates the `TRAINER` account (matched by the Google account's subject id)
+   and syncs `SAVED_TEAM`/`TEAM_MEMBER` rows.
 3. Trainer can view/delete their synced data from account settings at any time.
 
 There is no paid tier — this use case exists purely for the convenience of syncing saved teams
 across devices, not to gate any feature.
+
+**Blocked on:** the project owner creating OAuth client credentials in Google Cloud Console — an
+account-holder action that can't be done on their behalf. No backend/mobile implementation exists
+yet.
 
 **Status:** ❌ Not started
 

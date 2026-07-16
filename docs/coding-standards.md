@@ -42,6 +42,10 @@ Concretely:
   data source never touches business logic.
 - Controllers / screens only orchestrate: they call a use case and render its result, they don't
   contain business rules themselves.
+- Native platform code (`mobile/android/.../*.kt`, e.g. the overlay module) sits outside this
+  TypeScript layering entirely — treat each native module as its own thin `data/`-equivalent
+  boundary: it exposes a small typed surface to JS (see `mobile/src/data/overlay/overlayBridge.ts`)
+  and contains no business logic of its own, just platform API calls.
 
 ## TypeScript specifics
 

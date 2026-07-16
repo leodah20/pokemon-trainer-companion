@@ -118,7 +118,7 @@ base, cross-device sync, and dark mode are intentionally out of scope for this b
 
 <!-- ==================== PROGRESS OVERVIEW ==================== -->
 
-Progress: 89% █████████████████░░░ (24 / 27 features)
+Progress: 91% ██████████████████░░ (31 / 34 features)
 
 | Category | Feature | Status | Tests |
 |----------|---------|--------|-------|
@@ -184,7 +184,10 @@ Deliberately deferred past this beta — not gaps, just not yet prioritized:
     ingestion script with a wider ID range, tracking the backend's species database as it grows)
     and pull in richer, community-sourced facts (Bulbapedia-style) beyond what PokeAPI's
     structured fields cover
-- **Cross-device sync + auth** — backend schema exists (`Trainer`, `SavedTeam`), no endpoints yet
+- **Cross-device sync + auth** — backend schema exists (`Trainer`, `SavedTeam`), no endpoints yet.
+  Auth method decided: **Google Sign-In**, not email/password (see
+  [docs/legal-compliance.md](docs/legal-compliance.md) §3) — blocked on the project owner creating
+  OAuth client credentials in Google Cloud Console before implementation can start
 - **Remaining i18n gaps (deliberate)** — quiz question content (`generateQuiz.ts`) and Pokemon
   type names (Fire, Water, etc.) are left untranslated on purpose. Everything else — every screen's
   UI chrome and the full lore-data.json content (151 species × 7 fields) — is now translated across

@@ -15,6 +15,7 @@ erDiagram
     TRAINER {
         uuid id PK
         string email UK
+        string google_id UK "Google Sign-In subject id, not yet implemented"
         string display_name
         timestamp created_at
         boolean lore_popups_enabled
@@ -71,8 +72,14 @@ erDiagram
   using the app without signing in never has a row here, which keeps the LGPD footprint minimal
   (see [legal-compliance.md](legal-compliance.md)). The app itself is entirely free — signing in
   is only ever about syncing saved teams across devices, never about unlocking features.
-- **Not modeled yet:** the community-fed knowledge base that will ground the flagship AI overlay's
-  answers (see [architecture.md](architecture.md)) — likely a `KNOWLEDGE_ENTRY` table keyed by
-  `pokemon_species_id` with source-attributed, structured facts (ingested from Bulbapedia/PokéAPI),
-  retrieved and injected into the Companion AI prompt instead of relying on the LLM's general
-  training. Left out of this ERD until that ingestion pipeline is actually designed.
+- **Auth method decided, not yet implemented:** Google Sign-In (OAuth), not email/password — see
+  [legal-compliance.md](legal-compliance.md) §3. `google_id` is the planned column for the OAuth
+  subject identifier; `email` comes from the Google profile at sign-in rather than being
+  collected/verified by this app directly. No endpoints exist yet — this is schema intent only.
+- **Partially modeled:** the knowledge base grounding the flagship AI overlay's answers (see
+  [architecture.md](architecture.md)) exists today as a *static bundled data file*
+  (`backend/src/data/knowledge/knowledge-data.ts`, PokeAPI-sourced, 251 species), not a database
+  table — it's read-only reference data checked into the repo, not per-trainer or dynamically
+  updated, so it doesn't need a Postgres table yet. If it grows to need scheduled re-ingestion or
+  runtime updates, a `KNOWLEDGE_ENTRY` table keyed by `pokemon_species_id` would be the natural
+  next step — left out of this ERD until that's actually needed.
