@@ -306,7 +306,6 @@ const styles = StyleSheet.create({
     position: 'absolute',
     top: 0,
     left: 0,
-    alignItems: 'flex-start',
   },
   avatarRow: {
     flexDirection: 'row',
@@ -324,9 +323,17 @@ const styles = StyleSheet.create({
     width: AVATAR_SIZE - 16,
     height: AVATAR_SIZE - 16,
   },
+  // Absolutely positioned relative to `wrapper` (anchored above the avatar, left-aligned to it)
+  // instead of a normal-flow sibling stacked above avatarRow. The bubble used to sit in-flow
+  // above the avatar, so toggling it visible/hidden changed the column's total height — since
+  // `pan` translates `wrapper`'s top-left, that made the avatar itself visually jump by the
+  // bubble's height every time it opened or closed (and could push the avatar off-screen when
+  // dragged near the bottom edge). Taking the bubble out of flow keeps the avatar's position
+  // fixed no matter what the bubble is doing.
   bubble: {
-    marginBottom: SPACING.sm,
-    marginLeft: SPACING.xs,
+    position: 'absolute',
+    bottom: AVATAR_SIZE + SPACING.sm,
+    left: SPACING.xs,
     maxWidth: 260,
     backgroundColor: COLORS.glassSurface,
     borderWidth: 1,
