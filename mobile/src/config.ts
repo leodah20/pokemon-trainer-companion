@@ -9,4 +9,4 @@
  * For local dev: use your PC's WiFi IP, e.g. http://192.168.x.x:3000/api
  * and run: adb reverse tcp:3000 tcp:3000 (for USB) or just be on the same WiFi.
  */
-export const BACKEND_BASE_URL = 'http://10.0.227.14:3000/api'; // ← troque pela URL do Render após deploy
+export const BACKEND_BASE_URL = 'https://pokemon-trainer-companion.onrender.com/api';
