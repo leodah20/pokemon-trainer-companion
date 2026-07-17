@@ -830,6 +830,7 @@ docs/                      # Project documentation
 - [Coding standards](docs/coding-standards.md)
 - [Development setup](docs/dev-setup.md)
 - [Decisions & planning](docs/decisions-and-planning.md)
+- [Deploy backend to cloud](docs/deploy-backend-cloud.md) — Render free setup, no credit card
 
 ## License
 

@@ -2,9 +2,11 @@
  * Backend base URL for the (optional) Companion AI endpoint. Every other feature in this app is
  * fully offline and never touches this — see docs/architecture.md.
  *
- * Uses `localhost`, same as the Metro bundler (port 8081) — both the Android emulator and a
- * physical device over USB reach it via `adb reverse tcp:3000 tcp:3000`, which forwards the
- * device's localhost:3000 to your dev machine's localhost:3000. Re-run that command after every
- * USB reconnect/emulator restart, same as the Metro one (see docs/dev-setup.md).
+ * For BETA: hosted on Render (free tier, no credit card needed).
+ * After deploying the backend to Render, put your Render URL here, e.g.:
+ *   https://pokemon-trainer-companion.onrender.com/api
+ *
+ * For local dev: use your PC's WiFi IP, e.g. http://192.168.x.x:3000/api
+ * and run: adb reverse tcp:3000 tcp:3000 (for USB) or just be on the same WiFi.
  */
-export const BACKEND_BASE_URL = 'http://localhost:3000/api';
+export const BACKEND_BASE_URL = 'http://10.0.227.14:3000/api'; // ← troque pela URL do Render após deploy
