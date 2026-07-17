@@ -28,7 +28,7 @@
 | **Root Directory** | `backend` |
 | **Runtime** | `Node` |
 | **Build Command** | `npm install && npm run build` |
-| **Start Command** | `node dist/main` |
+| **Start Command** | `node dist/src/main` |
 | **Plan** | **Free** ✅ |
 
 ### 3. Adicionar variáveis de ambiente
