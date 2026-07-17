@@ -701,7 +701,32 @@ Deliberately deferred past this beta — not gaps, just not yet prioritized:
 > - Documented the cold-start requirement (`am force-stop` + `am start`) needed to force the
 >   app to re-fetch the JS bundle from Metro after a fresh install
 >
-> **Lore system overhaul:**
+> **Native overlay live capture loop + overlay tappable + release signing config:**
+> > - `OverlayModule.kt` threading fix: all `WindowManager` ops now run on main thread via
+> >   `Handler(Looper.getMainLooper())` — fixes `CalledFromWrongThreadException` from native module
+> >   methods calling UI thread APIs.
+> > - New `updateOverlayText()` — live-capture loop pushes real-time species/CP/tip text into the
+> >   floating window without recreating it. Works hand-in-hand with `ScreenCaptureService`'s own
+> >   native polling loop.
+> > - Floating overlay is now tappable: tap brings PTC to foreground + emits `PTCOverlayTapped`
+> >   event to JS. Same tap-to-open UX as chat-head-style overlays.
+> > - `ScreenCaptureService.kt` now has its own native capture+OCR polling loop (`startPolling`).
+> >   Runs ML Kit OCR in Kotlin directly, emits recognized text via `OVERLAY_FRAME_TEXT_EVENT`.
+> >   Keeps working even while PTC is backgrounded (JS-side `setInterval` stalls reliably).
+> > - `overlayBridge.ts` new methods: `showOverlay()`, `hideOverlay()`, `updateOverlayText()`,
+> >   event listeners for `PTCOverlayTapped` and `PTCOverlayFrameText`.
+> > - i18n cleanup: removed stale test/capture keys, added `startLiveOverlay`, `liveOverlayActive`,
+> >   `liveOverlaySearching` across all 3 languages.
+> > - `analyzeScreenshot.ts` split: `analyzeOcrText()` extracted for native overlay's Kotlin-side
+> >   OCR (no need to re-run JS-side OCR).
+> > - `build.gradle`: explicit `com.google.mlkit:text-recognition:16.0.1` dep for direct ML Kit import
+> >   in `ScreenCaptureService.kt`.
+> > - Release build config: `release.keystore` created, `build.gradle` configured for release signing.
+> > - Version bumped: `versionCode=2`, `versionName=1.0.0-beta.1`.
+> > - All backend APIs running and verified: Species, PvP, TypeChart, Raids, Companion AI (Gemini)
+> > - `docs/decisions-and-planning.md` created — architecture decisions, build notes, action plan
+> >
+> > **Lore system overhaul:****
 > - New `lore-data.json` with hand-written content for all 151 Generation 1 species
 > - Each species has 8 structured fields: origin, GO relevance, battle tips, easter eggs,
 >   GO vs main series differences, evolution costs, shiny rates
@@ -710,6 +735,37 @@ Deliberately deferred past this beta — not gaps, just not yet prioritized:
 > - `PokemonDetailScreen` updated with categorized lore card and "auto-generated" label
 > - All documentation updated (README, architecture, use-cases, flowcharts, dev-setup)
 > - **33 tests passing** (all existing tests maintained)
+
+## Building a release APK
+
+For standalone beta distribution (no Metro bundler needed):
+
+```bash
+cd mobile/android
+./gradlew assembleRelease
+# APK at: android/app/build/outputs/apk/release/app-release.apk
+```
+
+The release APK bundles the JS inside — users install and open, no dev server required.
+
+**What works fully offline (bundled data):**
+- Pokédex list + detail (965 species)
+- IV Calculator (brute-force 4096 combos)
+- Power-up cost simulator
+- PvP move rankings + meta tiers
+- Bulk percentile ranking
+- Lore (Gen 1 hand-written + fallback for rest)
+- Type effectiveness chart (18×18)
+- Pokémon comparison tool
+- Top rankings (ATK/DEF/STA/Bulk/CP/PvP)
+- Quiz / trivia mode
+- Raid counters with DPS estimates
+- Evolution chain viewer
+
+**What needs the backend (Companion AI features only):**
+- "Ask AI ✨" button in the Companion widget
+- Professor Mode chat screen
+- The backend can run locally (see dev-setup.md) or be hosted publicly
 
 ## Getting started
 
@@ -773,6 +829,7 @@ docs/                      # Project documentation
 - [Legal & compliance notes](docs/legal-compliance.md)
 - [Coding standards](docs/coding-standards.md)
 - [Development setup](docs/dev-setup.md)
+- [Decisions & planning](docs/decisions-and-planning.md)
 
 ## License
 
