@@ -119,6 +119,43 @@
 - [ ] Cross-device sync + auth (Google Sign-In)
 - [ ] Subscription billing (Stripe/RevenueCat)
 
+### Sistema de Versionamento de Dados (Data Freshness)
+
+Criado para garantir rastreabilidade da atualidade dos dados:
+
+- **Backend:** `backend/src/data/dataVersion.ts` — exposto via `GET /api/system/version`
+- **Mobile:** `mobile/src/data/dataVersion.ts` — embarcado no APK
+- **Estrutura:** `{ lastUpdated, version, notes, sources: { ... } }` — cada fonte de dados tem sua própria entrada
+- **Timestamp atual:** `2026-07-17T14:12:00Z`
+- **IA (Gemini):** usa a data atual via `new Date().toISOString()` nas prompts — as respostas são sempre cientes do tempo presente
+- **Dados estáticos (species, PvP, raids):** snapshot fixo; atualizar requer re-extração das fontes (PokeAPI, PvPoke) e rebuild do APK + redeploy do backend
+
+### Comandos Úteis (para o Claude)
+
+```bash
+# Build release APK
+cd C:\ptc\mobile\android
+./gradlew assembleRelease
+
+# Instalar no Xiaomi (dispositivo físico)
+adb -s 7D7L5POBUGXWR8XO install -r app/build/outputs/apk/release/app-release.apk
+
+# Instalar no emulador
+adb -s emulator-5554 install -r app/build/outputs/apk/release/app-release.apk
+
+# Backend: build local
+cd C:\ptc\backend
+npx nest build
+
+# Deploy manual no Render (após push)
+# → Dashboard Render → Manual Deploy → Deploy latest commit
+
+# Git
+git add -A
+git commit -m "mensagem"
+git push origin master
+```
+
 ### Notas sobre o Projeto
 
 - **Framework:** React Native 0.86 (bare workflow) + NestJS 11
