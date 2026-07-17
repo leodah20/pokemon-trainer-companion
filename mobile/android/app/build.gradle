@@ -116,4 +116,10 @@ dependencies {
     } else {
         implementation jscFlavor
     }
+
+    // Same artifact/version @react-native-ml-kit/text-recognition already pulls in at runtime --
+    // declared here too because that library's own `implementation` dependency isn't exposed to
+    // this module's compile classpath, and ScreenCaptureService.kt calls the native ML Kit API
+    // directly (see its class doc for why).
+    implementation("com.google.mlkit:text-recognition:16.0.1")
 }

@@ -26,12 +26,14 @@ export interface ScreenshotAnalysis {
 }
 
 /**
- * The overlay's whole pipeline in one call: OCR the image, parse the text, look up the species,
- * and run every analysis screen this app already has (IV, PvP moveset, bulk) against it.
+ * The analysis half of the overlay's pipeline: parse already-recognized text, look up the
+ * species, and run every analysis screen this app already has (IV, PvP moveset, bulk) against it.
+ * Split out from {@link analyzeScreenshot} so callers that already have OCR'd text (the native
+ * live-overlay loop runs ML Kit in Kotlin, not through this JS OCR client) can skip straight to
+ * analysis instead of re-running OCR on an image.
  */
-export async function analyzeScreenshot(imageUri: string): Promise<ScreenshotAnalysis> {
+export function analyzeOcrText(rawText: string): ScreenshotAnalysis {
   const allSpecies = getAllSpecies();
-  const rawText = await recognizeTextFromImage(imageUri);
   const parsed = parseOcrText(
     rawText,
     allSpecies.map((species) => species.name),
@@ -61,4 +63,13 @@ export async function analyzeScreenshot(imageUri: string): Promise<ScreenshotAna
     evolutionChain,
     suggestions: species ? generateSmartSuggestions(species, pvpRankings, bulkRanking, evolutionChain) : [],
   };
+}
+
+/**
+ * The overlay's whole pipeline in one call: OCR the image, then {@link analyzeOcrText}. Used by
+ * the gallery-picker flow, which only has an image URI, not pre-recognized text.
+ */
+export async function analyzeScreenshot(imageUri: string): Promise<ScreenshotAnalysis> {
+  const rawText = await recognizeTextFromImage(imageUri);
+  return analyzeOcrText(rawText);
 }

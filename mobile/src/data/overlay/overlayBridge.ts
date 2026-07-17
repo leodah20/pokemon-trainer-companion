@@ -1,15 +1,19 @@
-import { NativeModules, Platform } from 'react-native';
+import { NativeEventEmitter, NativeModules, Platform } from 'react-native';
 
 interface OverlayNativeModule {
   hasOverlayPermission(): Promise<boolean>;
   requestOverlayPermission(): void;
   showOverlay(): Promise<boolean>;
   hideOverlay(): Promise<boolean>;
+  updateOverlayText(text: string): Promise<boolean>;
   requestScreenCapturePermission(): Promise<boolean>;
   startLiveCapture(): Promise<boolean>;
   captureLiveFrame(): Promise<string>;
   stopLiveCapture(): Promise<boolean>;
 }
+
+const OVERLAY_TAPPED_EVENT = 'PTCOverlayTapped';
+const OVERLAY_FRAME_TEXT_EVENT = 'PTCOverlayFrameText';
 
 const { OverlayModule } = NativeModules as { OverlayModule?: OverlayNativeModule };
 
@@ -93,4 +97,40 @@ export async function stopLiveCapture(): Promise<boolean> {
     return false;
   }
   return OverlayModule!.stopLiveCapture();
+}
+
+/** Pushes fresh text into the already-shown floating window -- how the live-capture loop
+ * displays a species/CP/tip reading without recreating the overlay each time. */
+export async function updateOverlayText(text: string): Promise<boolean> {
+  if (!isOverlaySupported()) {
+    return false;
+  }
+  return OverlayModule!.updateOverlayText(text);
+}
+
+/** Subscribes to taps on the floating overlay window. Returns an unsubscribe function; a no-op
+ * one on iOS or if the native module isn't linked. */
+export function onOverlayTapped(listener: () => void): () => void {
+  if (!isOverlaySupported()) {
+    return () => {};
+  }
+  const emitter = new NativeEventEmitter(NativeModules.OverlayModule);
+  const subscription = emitter.addListener(OVERLAY_TAPPED_EVENT, listener);
+  return () => subscription.remove();
+}
+
+/**
+ * Subscribes to text recognized by the native live-capture polling loop (see
+ * ScreenCaptureService.kt's `startPolling`). This loop runs natively -- not as a JS timer -- so it
+ * keeps firing while PTC is backgrounded and the trainer is looking at the actual game, which a
+ * setInterval tied to a screen component cannot reliably do. Returns an unsubscribe function; a
+ * no-op one on iOS or if the native module isn't linked.
+ */
+export function onOverlayFrameText(listener: (text: string) => void): () => void {
+  if (!isOverlaySupported()) {
+    return () => {};
+  }
+  const emitter = new NativeEventEmitter(NativeModules.OverlayModule);
+  const subscription = emitter.addListener(OVERLAY_FRAME_TEXT_EVENT, listener);
+  return () => subscription.remove();
 }

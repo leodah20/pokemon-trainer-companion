@@ -20,6 +20,7 @@ import com.facebook.react.bridge.Promise
 import com.facebook.react.bridge.ReactApplicationContext
 import com.facebook.react.bridge.ReactContextBaseJavaModule
 import com.facebook.react.bridge.ReactMethod
+import com.facebook.react.modules.core.DeviceEventManagerModule
 import java.io.File
 import java.io.FileOutputStream
 
@@ -40,6 +41,10 @@ class OverlayModule(reactContext: ReactApplicationContext) :
 
   init {
     reactContext.addActivityEventListener(this)
+    // ScreenCaptureService's polling loop runs independently of any Activity (that's the whole
+    // point -- it must keep working while PTC is backgrounded), so it needs its own way to reach
+    // the JS bridge to emit recognized text. A static holder is the simplest way to hand it one.
+    reactApplicationContextHolder = reactContext
   }
 
   override fun getName(): String = NAME
@@ -72,50 +77,96 @@ class OverlayModule(reactContext: ReactApplicationContext) :
       return
     }
 
-    val windowManager =
-        reactApplicationContext.getSystemService(Context.WINDOW_SERVICE) as WindowManager
-    val overlayType =
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-          WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY
-        } else {
-          @Suppress("DEPRECATION") WindowManager.LayoutParams.TYPE_PHONE
-        }
-    val params =
-        WindowManager.LayoutParams(
-                WindowManager.LayoutParams.WRAP_CONTENT,
-                WindowManager.LayoutParams.WRAP_CONTENT,
-                overlayType,
-                WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE or
-                    WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL,
-                PixelFormat.TRANSLUCENT)
-            .apply {
-              gravity = Gravity.TOP or Gravity.START
-              x = 40
-              y = 200
-            }
+    // Native module methods run on React Native's own native-modules thread, not the real
+    // Android UI thread -- a view attached from there belongs to THAT thread, and any later
+    // mutation (updateOverlayText) from a different thread throws CalledFromWrongThreadException.
+    // Doing every WindowManager/view operation on the same Handler(Looper.getMainLooper()) keeps
+    // them all on one consistent thread.
+    Handler(Looper.getMainLooper())
+        .post {
+          val windowManager =
+              reactApplicationContext.getSystemService(Context.WINDOW_SERVICE) as WindowManager
+          val overlayType =
+              if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY
+              } else {
+                @Suppress("DEPRECATION") WindowManager.LayoutParams.TYPE_PHONE
+              }
+          val params =
+              WindowManager.LayoutParams(
+                      WindowManager.LayoutParams.WRAP_CONTENT,
+                      WindowManager.LayoutParams.WRAP_CONTENT,
+                      overlayType,
+                      WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE or
+                          WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL,
+                      PixelFormat.TRANSLUCENT)
+                  .apply {
+                    gravity = Gravity.TOP or Gravity.START
+                    x = 40
+                    y = 200
+                  }
 
-    val view =
-        TextView(reactApplicationContext).apply {
-          text = "PTC overlay (test)"
-          setTextColor(Color.WHITE)
-          setBackgroundColor(Color.parseColor("#CC1A1A2E"))
-          setPadding(32, 20, 32, 20)
-        }
+          val view =
+              TextView(reactApplicationContext).apply {
+                text = "PTC overlay (test)"
+                setTextColor(Color.WHITE)
+                setBackgroundColor(Color.parseColor("#CC1A1A2E"))
+                setPadding(32, 20, 32, 20)
+                maxWidth = 700
+                isClickable = true
+                // FLAG_NOT_TOUCH_MODAL lets touches outside this view pass through to the game
+                // underneath, but a tap directly on the view itself is still delivered here --
+                // same trick chat-head-style overlays use to stay tappable without blocking
+                // gameplay.
+                setOnClickListener {
+                  // Bring PTC to the foreground first (tapping a floating bubble should open the
+                  // app, like every chat-head-style overlay), then tell JS so it can navigate
+                  // once there.
+                  reactApplicationContext.packageManager
+                      .getLaunchIntentForPackage(reactApplicationContext.packageName)
+                      ?.apply {
+                        addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_REORDER_TO_FRONT)
+                      }
+                      ?.let { reactApplicationContext.startActivity(it) }
+                  reactApplicationContext
+                      .getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter::class.java)
+                      .emit(OVERLAY_TAPPED_EVENT, null)
+                }
+              }
 
-    windowManager.addView(view, params)
-    overlayView = view
-    promise.resolve(true)
+          windowManager.addView(view, params)
+          overlayView = view
+          promise.resolve(true)
+        }
   }
 
   @ReactMethod
   fun hideOverlay(promise: Promise) {
+    Handler(Looper.getMainLooper())
+        .post {
+          val view = overlayView
+          if (view != null) {
+            val windowManager =
+                reactApplicationContext.getSystemService(Context.WINDOW_SERVICE) as WindowManager
+            windowManager.removeView(view)
+            overlayView = null
+          }
+          promise.resolve(true)
+        }
+  }
+
+  /** Updates the floating window's text in place -- how the live-capture loop pushes a fresh
+   * species/CP/tip reading into the overlay without recreating the window each time. */
+  @ReactMethod
+  fun updateOverlayText(text: String, promise: Promise) {
     val view = overlayView
-    if (view != null) {
-      val windowManager =
-          reactApplicationContext.getSystemService(Context.WINDOW_SERVICE) as WindowManager
-      windowManager.removeView(view)
-      overlayView = null
+    if (view == null) {
+      promise.reject("NOT_SHOWN", "Overlay isn't shown -- call showOverlay first")
+      return
     }
+    // TextView mutations must happen on the UI thread; native module methods run on a
+    // different thread, and this one gets called repeatedly by the live-capture loop.
+    Handler(Looper.getMainLooper()).post { view.text = text }
     promise.resolve(true)
   }
 
@@ -234,6 +285,11 @@ class OverlayModule(reactContext: ReactApplicationContext) :
 
   companion object {
     const val NAME = "OverlayModule"
+    const val OVERLAY_TAPPED_EVENT = "PTCOverlayTapped"
+    const val OVERLAY_FRAME_TEXT_EVENT = "PTCOverlayFrameText"
     private const val SCREEN_CAPTURE_REQUEST_CODE = 4201
+
+    var reactApplicationContextHolder: ReactApplicationContext? = null
+      private set
   }
 }

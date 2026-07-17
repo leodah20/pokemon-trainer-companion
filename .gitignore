@@ -28,3 +28,7 @@ backend/generated/
 # OS
 .DS_Store
 Thumbs.db
+
+# Debug / prompt files
+PROMPT-PARA-CLAUDE.md
+UPDATE-PARA-CLAUDE.md
