@@ -309,6 +309,34 @@ indicador de gravação do Android) — prova de que é um frame ao vivo de verd
 
 ---
 
+## 2026-07-22 — Reinstalando debug build por cima de um release-signed
+
+### 1. `INSTALL_FAILED_UPDATE_INCOMPATIBLE` ao reinstalar pelo adb/Gradle
+
+**Sintoma:** `gradlew.bat app:installDebug` compilava sem erro (199 tasks, build `BUILD FAILED` só na
+etapa final) e falhava com:
+```
+com.android.ddmlib.InstallException: INSTALL_FAILED_UPDATE_INCOMPATIBLE:
+Existing package com.pokemontrainercompanionmobile signatures do not match newer version; ignoring!
+```
+
+**Causa:** a versão já instalada no celular (de uma sessão anterior, `release.keystore` assinado —
+ver changelog de 2026-07-1x) tem uma assinatura diferente do build debug local (chave debug padrão do
+Android). O Android recusa qualquer update que troque a chave de assinatura do pacote, mesmo com o
+mesmo `applicationId`.
+
+**Fix:** `adb uninstall com.pokemontrainercompanionmobile` antes de reinstalar. Depois disso o
+`gradlew.bat app:installDebug` (mesmo comando) funciona normalmente — e por já ter compilado tudo na
+tentativa anterior, a segunda rodada foi bem mais rápida (cache do Gradle).
+
+**Nota lateral:** `npx react-native run-android` falhou antes mesmo de chegar nesse ponto, com
+`'gradlew.bat' não é reconhecido` — tanto no Git Bash quanto no PowerShell. Causa: o `execa` interno
+do React Native CLI spawna `gradlew.bat` sem resolver via shell, e o diretório atual não está no
+`PATH`. Contorno: rodar `gradlew.bat` diretamente de dentro de `mobile/android/` (`.\gradlew.bat
+app:installDebug -x lint -PreactNativeDevServerPort=8081`) em vez do wrapper do CLI.
+
+---
+
 ## Padrões pra lembrar
 
 - **Prisma 7 mudou bastante** em relação a versões anteriores: sem `index.ts` de barril, formato de
@@ -332,6 +360,10 @@ indicador de gravação do Android) — prova de que é um frame ao vivo de verd
   — não é exclusivo de widgets animados. Screenshot → toque → novo screenshot pra confirmar, sempre;
   nunca assumir que o toque acertou. Pra alvos perto de uma borda (tab bar, FAB), mirar perto da
   borda real em vez do meio estimado.
+- **Reinstalar um debug build por cima de um build release-signed sempre falha** com
+  `INSTALL_FAILED_UPDATE_INCOMPATIBLE` — Android não deixa trocar a chave de assinatura de um
+  pacote já instalado. `adb uninstall <applicationId>` primeiro, sempre que alternar entre variantes
+  de build assinadas diferente no mesmo aparelho.
 - **`screencap` do emulador pode "vidrar" (branco/corrompido) depois de sessão longa** sem que seja
   um bug do app — checar `logcat` por `FATAL`/`Exception` antes de suspeitar do código; se estiver
   limpo, reiniciar o emulador resolve.

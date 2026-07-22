@@ -807,17 +807,24 @@
       <ul class="clean">
         <li><strong>PokedexListScreen</strong> <span class="lbl">— home: search, gen/type filters, animated background</span></li>
         <li><strong>PokemonDetailScreen</strong> <span class="lbl">— stats, PvP moveset, lore, evolution link</span></li>
-        <li><strong>IvCalculatorScreen</strong> · <strong>ComparisonScreen</strong> · <strong>TypeChartScreen</strong></li>
-        <li><strong>TopRankingsScreen</strong> · <strong>QuizScreen</strong> · <strong>RaidCountersScreen</strong> · <strong>EvolutionChainScreen</strong></li>
+        <li><strong>IvCalculatorScreen</strong> · <strong>ComparisonScreen</strong> · <strong>TypeChartScreen</strong> <span class="lbl">— full-screen background now a type-color gradient (getTypeGradient), keyed to the selected attacking type</span></li>
+        <li><strong>TopRankingsScreen</strong> · <strong>QuizScreen</strong> · <strong>RaidCountersScreen</strong> · <strong>EvolutionChainScreen</strong> <span class="lbl">— each card now gets a per-species type-tinted accent bar</span></li>
         <li><strong>OverlayDemoScreen</strong> <span class="lbl">— native overlay controls + gallery-screenshot analysis demo</span></li>
         <li><strong>ProfessorChatScreen</strong> <span class="lbl">— open-ended, multi-turn AI chat</span></li>
-        <li><strong>ToolsHubScreen</strong> · <strong>MoreScreen</strong></li>
+        <li><strong>ToolsHubScreen</strong> · <strong>MoreScreen</strong> <span class="lbl">— dark "PokeDex terminal" phosphor-green identity (see Design system below)</span></li>
       </ul>
       <h3 class="subhead">Key components</h3>
       <ul class="clean">
         <li><code>CompanionWidget.tsx</code> <span class="lbl">— floating draggable avatar; rule-based tips + Ask AI + Professor Mode entry, mounted once at the App root inside NavigationContainer</span></li>
         <li><code>QuickActionsFab.tsx</code> + <code>BottomSheetMenu.tsx</code> <span class="lbl">— Pokedex screen's floating action button + shortcut sheet</span></li>
         <li><code>ErrorBoundary.tsx</code> <span class="lbl">— app-wide crash fallback, wraps everything outside LanguageProvider</span></li>
+      </ul>
+      <h3 class="subhead">Design system</h3>
+      <p class="lede">Hand-rolled tokens, no styling library — <code>mobile/src/presentation/theme/{colors,typography,spacing,shadows}.ts</code>.</p>
+      <ul class="clean">
+        <li><strong>Two identities</strong> <span class="lbl">— most screens use the light glass-card look (surface/glassSurface/brandBlue). ToolsHubScreen and MoreScreen were deliberately reworked into a second identity: a dark "PokeDex terminal" look (inkBlack/inkPanel/phosphor/phosphorDim/phosphorGlow/inkText tokens, RETRO_FONT eyebrows, "&gt; " prompt accents) so those screens read as one distinctive brand moment instead of generic flat cards.</span></li>
+        <li><strong>getTypeGradient reuse</strong> <span class="lbl">— originally only used on PokemonDetailScreen; now also drives TypeChartScreen's background and EvolutionChainScreen's per-card accent.</span></li>
+        <li><strong>MONO_FONT</strong> <span class="lbl">— new typography.ts export, replaced repeated inline Platform.OS ternaries in ProfessorChatScreen's code blocks.</span></li>
       </ul>
     </section>
 
@@ -892,7 +899,7 @@
     <section id="backend-data">
       <h2 class="section-title">Backend — data sources</h2>
       <ul class="clean">
-        <li><strong>species</strong> <span class="lbl">— static, PokeAPI + PoGo API sourced, 965 species mobile-side / Gen 1+2 for backend grounding</span></li>
+        <li><strong>species</strong> <span class="lbl">— static, PokeAPI + PoGo API sourced, 965 species + 166 regional/alternate forms (1131 total) mobile-side, via speciesForms.ts / forms-data.json / Gen 1+2 for backend grounding</span></li>
         <li><strong>pvp</strong> <span class="lbl">— PvPoke-sourced move rankings</span></li>
         <li><strong>raids</strong> <span class="lbl">— curated mock boss rotation (11 Gen 1 bosses, tiers 1/3/5) — not live-synced</span></li>
         <li><strong>knowledge</strong> <span class="lbl">— PokeAPI genus/habitat/flavor-text for all 251 Gen 1+2 species, grounds the Companion AI prompt; re-run <code>fetchKnowledgeBase.mjs</code> to extend generations</span></li>

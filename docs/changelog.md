@@ -5,6 +5,45 @@ keeps only the 5 most recent entries inline — this file has everything.
 
 ---
 
+> <time datetime="2026-07-22">2026-07-22</time>
+>
+> **"PokeDex terminal" design identity + Pokemon regional/alternate forms:**
+> - Full design review of the mobile app (user-requested, "sou horrivel no front" — explicit
+>   permission to make the design calls). Landed on a two-identity system: most screens keep the
+>   existing light glass-card look, but utility-feeling screens get a deliberate dark "PokeDex
+>   terminal" identity instead, so the app has one distinctive signature moment rather than every
+>   non-flagship screen reading as a generic flat card list.
+> - New theme tokens in `colors.ts`: `inkBlack`, `inkPanel`, `phosphor`, `phosphorDim`,
+>   `phosphorGlow`, `inkText`, `inkTextMuted`. Reused the already-bundled `PressStart2P-Regular`
+>   font (`RETRO_FONT`) as small eyebrow labels — no new native asset needed.
+> - `ToolsHubScreen.tsx` and `MoreScreen.tsx` rebuilt on the new tokens: dark background, phosphor
+>   card borders, `"> "` prompt accents on titles, `tools.eyebrow` i18n key added (EN/PT-BR/ES).
+> - `getTypeGradient(typeColor)` (colors.ts) — previously only used by `PokemonDetailScreen` —
+>   now also wraps `TypeChartScreen` (gradient keyed to the selected attacking type) and drives a
+>   per-card type-tinted accent bar on `EvolutionChainScreen` (keyed to each link's own type,
+>   since one evolution chain can span multiple types).
+> - `PokedexListScreen`'s "PTC" title and `PokemonDetailScreen`'s Pokemon-name title both used a
+>   hard sticker-drop-shadow (`textShadowColor: COLORS.outline`, 0-radius offset shadow). Replaced
+>   with a soft phosphor glow on the list title (signature touch) and a soft neutral dark shadow on
+>   the detail title (kept neutral there since it renders over an arbitrary type-color gradient).
+> - Cleanup pass: added `MONO_FONT` to `typography.ts` (`Platform.OS === 'ios' ? 'Courier' :
+>   'monospace'`), replacing 3 repeated inline ternaries in `ProfessorChatScreen`'s markdown code
+>   blocks; fixed several stray raw `fontSize`/`borderRadius` numbers across
+>   `PokemonDetailScreen`, `PokedexListScreen`, `ComparisonScreen`, `EvolutionChainScreen`,
+>   `CompanionWidget`, and `QuickActionsFab` to use the shared `FONT_SIZE`/`RADIUS` scale instead.
+> - New data: Pokemon regional/alternate forms support. `backend/src/data/species/speciesForms.ts`
+>   (backend) and `mobile/src/data/pokedex/forms-data.json` (mobile) add 166 forms (e.g. Alolan,
+>   Galarian variants) merged into the existing 965-species dataset at read time — 1131 species
+>   total. `Species`/`PokemonSpecies` domain types gained optional `form`/`baseSpeciesId` fields;
+>   backend's "best counter per type" query now excludes forms (`!s.form`) to avoid recommending a
+>   regional variant as if it were the base species' representative.
+> - Verified: `npx tsc --noEmit` and `npx jest --silent` clean on both `mobile/` (24 suites, 86
+>   tests) and `backend/` (8 suites, 25 tests). Installed and launched on a physical device via
+>   `adb` (see `docs/debug-log.md` for the `INSTALL_FAILED_UPDATE_INCOMPATIBLE` signature-mismatch
+>   snag hit reinstalling over an older release-signed build — fixed with `adb uninstall` first).
+
+---
+
 > **Native overlay live capture loop + overlay tappable + release signing config:**
 > - `OverlayModule.kt` threading fix: all `WindowManager` ops now run on main thread via
 >   `Handler(Looper.getMainLooper())` — fixes `CalledFromWrongThreadException` from native module

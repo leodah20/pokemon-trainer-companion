@@ -146,6 +146,23 @@ Deliberately deferred — not gaps, just not yet prioritized:
 
 ### Last implemented features
 
+> <time datetime="2026-07-22">2026-07-22</time>
+>
+> **"PokeDex terminal" design identity + Pokemon regional/alternate forms:**
+> - Design review of the whole mobile app: `ToolsHubScreen` and `MoreScreen` reworked into a
+>   deliberate second visual identity — a dark, phosphor-green "PokeDex terminal" look
+>   (`inkBlack`/`inkPanel`/`phosphor`/`phosphorGlow` tokens, `RETRO_FONT` eyebrows, `> ` prompt
+>   accents) — instead of every non-flagship screen reading as a generic flat-card list.
+> - `getTypeGradient` (previously only used on `PokemonDetailScreen`) now also drives
+>   `TypeChartScreen`'s full-screen background and `EvolutionChainScreen`'s per-card accent bar.
+> - Sticker-shadow titles (`PokedexListScreen`, `PokemonDetailScreen`) replaced with softer,
+>   more legible shadows.
+> - Cleanup: new `MONO_FONT` token (replacing 3 repeated inline `Platform.OS` ternaries), stray
+>   border-radii/font-sizes across several screens/components now use the shared theme scale.
+> - New data: Pokemon regional/alternate forms (166 forms, e.g. Alolan/Galarian) merged into the
+>   bundled species dataset (`speciesForms.ts` backend-side, `forms-data.json` mobile-side) —
+>   965 base species + 166 forms = 1131 total.
+
 > **Native overlay live capture loop + overlay tappable + release signing config:**
 > - `ScreenCaptureService.kt` now runs its own native capture+OCR polling loop (ML Kit in Kotlin),
 >   keeping the overlay updated even while PTC is backgrounded — a JS-side `setInterval` doing the
@@ -171,10 +188,6 @@ Deliberately deferred — not gaps, just not yet prioritized:
 > natively (real multi-turn context, not prompt-stuffed history). New `ProfessorChatScreen` chat
 > UI, reachable from the Companion widget. Verified live: asked a real PvP question in Portuguese,
 > got a detailed, well-formatted, conversational reply.
-
-> **Screen capture consent flow:**
-> `OverlayModule.kt` now triggers Android's real `MediaProjectionManager` "Share your screen?"
-> system dialog, verified on both the accept and deny paths round-tripping correctly to JS.
 
 **[→ Full changelog](docs/changelog.md)** — every implemented feature, oldest to newest.
 
