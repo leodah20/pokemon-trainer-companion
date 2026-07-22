@@ -38,6 +38,8 @@ type LiveOverlayState = 'idle' | 'starting' | 'active';
 // Keeps the floating bubble compact -- the full answer is always one tap away in Professor Mode.
 const OVERLAY_AI_TIP_MAX_CHARS = 220;
 
+type Translate = (key: keyof TranslationKeys, params?: Record<string, string | number>) => string;
+
 function formatOverlayHeader(analysis: ScreenshotAnalysis): string {
   const headerParts = [analysis.species!.name];
   if (analysis.cp !== null) {
@@ -49,16 +51,57 @@ function formatOverlayHeader(analysis: ScreenshotAnalysis): string {
   return headerParts.join(' · ');
 }
 
-function formatOverlayText(
-  analysis: ScreenshotAnalysis,
-  t: (key: keyof TranslationKeys, params?: Record<string, string | number>) => string,
-): string {
+// Picks the single best-scoring league to show in the overlay -- there's no room to list all
+// three leagues in a floating bubble, so surface whichever one this Pokemon is actually good in.
+function formatPvpLine(analysis: ScreenshotAnalysis, t: Translate): string | null {
+  if (!analysis.pvpRankings) {
+    return null;
+  }
+  let best: [PvpLeague, NonNullable<ScreenshotAnalysis['pvpRankings']>[PvpLeague]] | null = null;
+  for (const league of LEAGUE_ORDER) {
+    const moveset = analysis.pvpRankings[league];
+    if (moveset && (!best || moveset.score > best[1]!.score)) {
+      best = [league, moveset];
+    }
+  }
+  if (!best) {
+    return null;
+  }
+  const [league, moveset] = best;
+  return `${t(`pvpLeague.${league}`)}: ${formatMoveName(moveset!.fastMove)} + ${moveset!.chargedMoves.map(formatMoveName).join('/')} (${t(`metaTier.${getMetaTier(moveset!.score)}`)})`;
+}
+
+function formatBulkLine(analysis: ScreenshotAnalysis, t: Translate): string | null {
+  if (!analysis.bulkRanking) {
+    return null;
+  }
+  return `${t('overlay.defense')}: ${t(`bulkTier.${analysis.bulkRanking.tier}`)}`;
+}
+
+// The overlay's "full result" body: species header, best PvP league, bulk tier, and a closing
+// tip line (either the rule-based suggestion or, once it arrives, the AI's answer). Reads as a
+// compact version of the same result card OverlayDemoScreen itself shows.
+function formatOverlayBody(analysis: ScreenshotAnalysis, t: Translate, tip: string | undefined): string {
+  const lines = [formatOverlayHeader(analysis)];
+  const pvpLine = formatPvpLine(analysis, t);
+  if (pvpLine) {
+    lines.push(pvpLine);
+  }
+  const bulkLine = formatBulkLine(analysis, t);
+  if (bulkLine) {
+    lines.push(bulkLine);
+  }
+  if (tip) {
+    lines.push(tip);
+  }
+  return lines.join('\n');
+}
+
+function formatOverlayText(analysis: ScreenshotAnalysis, t: Translate): string {
   if (!analysis.species) {
     return t('overlay.liveOverlaySearching');
   }
-  const header = formatOverlayHeader(analysis);
-  const tip = analysis.suggestions[0];
-  return tip ? `${header}\n${tip}` : header;
+  return formatOverlayBody(analysis, t, analysis.suggestions[0]);
 }
 
 function truncateForOverlay(text: string): string {
@@ -133,7 +176,7 @@ export function OverlayDemoScreen(): React.JSX.Element {
           if (aiTipSpeciesIdRef.current !== speciesId) {
             return;
           }
-          return updateOverlayText(`${formatOverlayHeader(nextAnalysis)}\n${truncateForOverlay(aiTip)}`);
+          return updateOverlayText(formatOverlayBody(nextAnalysis, t, truncateForOverlay(aiTip)));
         })
         .catch(() => {
           // No LLM configured / request failed -- the rule-based text already shown stays put.
