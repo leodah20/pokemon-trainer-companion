@@ -236,14 +236,182 @@
     border-radius: 4px;
   }
 
-  /* mermaid diagram frame */
-  .diagram-frame {
+  /* ---------- Interactive architecture node graph ---------- */
+  .section-hint {
+    font-family: ui-monospace, "SFMono-Regular", "JetBrains Mono", Consolas, monospace;
+    font-size: 10.5px;
+    letter-spacing: 0.04em;
+    text-transform: none;
+    color: var(--text-faint);
+    font-weight: 400;
+    white-space: nowrap;
+  }
+  .diagram-shell {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 250px;
+    gap: 14px;
+    align-items: start;
+  }
+  .diagram-canvas-wrap {
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: 12px;
-    padding: 20px;
+    padding: 16px 16px 8px;
     box-shadow: var(--shadow);
-    overflow-x: auto;
+  }
+  .legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-bottom: 10px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border);
+  }
+  .legend-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: ui-monospace, "SFMono-Regular", "JetBrains Mono", Consolas, monospace;
+    font-size: 11px;
+    color: var(--text-muted);
+  }
+  .dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+  .dot-native { background: var(--mono-accent); }
+  .dot-mobile { background: var(--accent); }
+  .dot-backend { background: var(--live); }
+  .dot-data { background: var(--text-faint); }
+  .dot-external { background: var(--warn); }
+
+  #archSvg {
+    width: 100%;
+    height: auto;
+    display: block;
+    min-height: 340px;
+    touch-action: none;
+  }
+  #archSvg .node { cursor: grab; }
+  #archSvg .node:active { cursor: grabbing; }
+  #archSvg .node-rect {
+    fill: var(--surface-alt);
+    stroke: var(--border-strong);
+    stroke-width: 1.4;
+    transition: stroke 140ms ease, stroke-width 140ms ease, opacity 140ms ease;
+  }
+  #archSvg .node[data-cat="native"] .node-rect { stroke: var(--mono-accent); }
+  #archSvg .node[data-cat="mobile"] .node-rect { stroke: var(--accent); }
+  #archSvg .node[data-cat="backend"] .node-rect { stroke: var(--live); }
+  #archSvg .node[data-cat="data"] .node-rect { stroke: var(--text-faint); stroke-dasharray: 3 3; }
+  #archSvg .node[data-cat="external"] .node-rect { stroke: var(--text-faint); stroke-dasharray: 2 3; }
+  #archSvg .node-label {
+    font-family: ui-monospace, "SFMono-Regular", "JetBrains Mono", Consolas, monospace;
+    font-size: 11px;
+    fill: var(--text);
+    pointer-events: none;
+  }
+  #archSvg .node-label tspan.muted { fill: var(--text-muted); }
+  #archSvg .edge-path {
+    fill: none;
+    stroke: var(--border-strong);
+    stroke-width: 1.3;
+    transition: stroke 140ms ease, stroke-width 140ms ease, opacity 140ms ease;
+  }
+  #archSvg .edge-path.dashed { stroke-dasharray: 4 4; }
+  #archSvg .edge-label {
+    font-family: ui-monospace, "SFMono-Regular", "JetBrains Mono", Consolas, monospace;
+    font-size: 9.5px;
+    fill: var(--text-faint);
+    pointer-events: none;
+  }
+  #archSvg.flow-active .node:not(.hl) .node-rect,
+  #archSvg.flow-active .node:not(.hl) .node-label { opacity: 0.3; }
+  #archSvg.flow-active .edge-path:not(.hl) { opacity: 0.12; }
+  #archSvg.flow-active .edge-label:not(.hl) { opacity: 0.15; }
+  #archSvg .node.hl .node-rect {
+    stroke: var(--mono-accent);
+    stroke-width: 2.4;
+    filter: drop-shadow(0 0 6px color-mix(in srgb, var(--mono-accent) 45%, transparent));
+  }
+  #archSvg .edge-path.hl { stroke: var(--mono-accent); stroke-width: 2.2; }
+  #archSvg .edge-label.hl { fill: var(--mono-accent); opacity: 1; }
+  #archSvg .step-badge circle { fill: var(--mono-accent); }
+  #archSvg .step-badge text {
+    font-family: ui-monospace, "SFMono-Regular", "JetBrains Mono", Consolas, monospace;
+    font-size: 10px;
+    font-weight: 700;
+    fill: var(--surface);
+    text-anchor: middle;
+    dominant-baseline: central;
+  }
+
+  .diagram-side {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 14px;
+    box-shadow: var(--shadow);
+  }
+  .diagram-side-label {
+    font-family: ui-monospace, "SFMono-Regular", "JetBrains Mono", Consolas, monospace;
+    font-size: 10.5px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+    margin: 0 0 8px;
+  }
+  .flow-list { display: flex; flex-direction: column; gap: 6px; margin-bottom: 4px; }
+  .flow-btn {
+    font-family: ui-monospace, "SFMono-Regular", "JetBrains Mono", Consolas, monospace;
+    font-size: 12.5px;
+    text-align: left;
+    color: var(--text);
+    background: var(--surface-alt);
+    border: 1px solid var(--border);
+    border-radius: 7px;
+    padding: 9px 11px;
+    cursor: pointer;
+  }
+  .flow-btn:hover { border-color: var(--border-strong); }
+  .flow-btn.active {
+    background: var(--accent-bg);
+    border-color: var(--accent);
+    color: var(--accent-strong);
+  }
+  .flow-btn .flow-count {
+    display: block;
+    font-size: 10.5px;
+    color: var(--text-faint);
+    margin-top: 2px;
+  }
+  .flow-btn.active .flow-count { color: var(--accent-strong); opacity: 0.75; }
+  ol.flow-steps {
+    list-style: none;
+    counter-reset: fstep;
+    margin: 10px 0 0;
+    padding: 10px 0 0;
+    border-top: 1px solid var(--border);
+    display: none;
+  }
+  ol.flow-steps.show { display: block; }
+  ol.flow-steps li {
+    counter-increment: fstep;
+    position: relative;
+    padding: 0 0 12px 24px;
+    font-size: 12.5px;
+    color: var(--text-muted);
+    line-height: 1.45;
+  }
+  ol.flow-steps li::before {
+    content: counter(fstep);
+    position: absolute;
+    left: 0; top: 0;
+    width: 16px; height: 16px;
+    border-radius: 50%;
+    background: var(--mono-accent);
+    color: var(--surface);
+    font-family: ui-monospace, "SFMono-Regular", "JetBrains Mono", Consolas, monospace;
+    font-size: 9.5px;
+    font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
   }
 
   /* generic panel/card */
@@ -460,6 +628,7 @@
 
   @media (max-width: 880px) {
     .shell { grid-template-columns: 1fr; }
+    .diagram-shell { grid-template-columns: 1fr; }
     nav.toc {
       position: relative;
       height: auto;
@@ -544,32 +713,24 @@
     </header>
 
     <section id="diagram">
-      <h2 class="section-title">System diagram</h2>
-      <div class="diagram-frame">
-<pre class="mermaid">
-flowchart LR
-    subgraph Device["Trainer's device"]
-        Game["Pokemon GO\n(unmodified, no integration)"]
-        Overlay["Native overlay window\nOverlayModule.kt"]
-        Capture["ScreenCaptureService.kt\nMediaProjection + native OCR poll loop"]
-        App["Mobile app (React Native)\nCompanion widget / Professor Mode / calculators"]
-    end
-    subgraph Cloud["Backend — NestJS, hosted on Render"]
-        API["REST API\nspecies · pvp · type-chart · raids"]
-        Companion["Companion AI service\n/suggest · /chat"]
-        KB[("Knowledge base\nPokeAPI-sourced, Gen 1+2")]
-    end
-    subgraph External["External (read-only)"]
-        LLM["Gemini\nflash-lite, free tier"]
-    end
-    Game -. "trainer looks at screen, no memory access" .-> Overlay
-    Overlay <--> Capture
-    Capture -- "recognized text" --> App
-    App -- "the only network call in the mobile app" --> API
-    App -- "Ask AI / Professor Mode" --> Companion
-    Companion --> LLM
-    Companion --> KB
-</pre>
+      <h2 class="section-title">System diagram <span class="section-hint">drag a node · click a flow</span></h2>
+      <div class="diagram-shell">
+        <div class="diagram-canvas-wrap">
+          <div class="legend">
+            <span class="legend-item"><i class="dot dot-native"></i>Native (Kotlin)</span>
+            <span class="legend-item"><i class="dot dot-mobile"></i>Mobile (RN)</span>
+            <span class="legend-item"><i class="dot dot-backend"></i>Backend</span>
+            <span class="legend-item"><i class="dot dot-data"></i>Bundled data</span>
+            <span class="legend-item"><i class="dot dot-external"></i>External</span>
+          </div>
+          <svg id="archSvg" viewBox="0 0 1340 620" role="img" aria-label="PTC architecture node graph — draggable, with selectable flows"></svg>
+        </div>
+        <aside class="diagram-side">
+          <p class="diagram-side-label">Flows</p>
+          <div id="flowList" class="flow-list"></div>
+          <p class="diagram-side-label" id="stepsLabel" style="display:none;">Steps</p>
+          <ol class="flow-steps" id="flowSteps"></ol>
+        </aside>
       </div>
     </section>
 
@@ -847,5 +1008,303 @@ flowchart LR
     }
     document.addEventListener('scroll', onScroll, { passive: true });
     onScroll();
+  })();
+</script>
+
+<script>
+  (function () {
+    var SVG_NS = 'http://www.w3.org/2000/svg';
+    var svg = document.getElementById('archSvg');
+    if (!svg) { return; }
+
+    var nodes = [
+      { id: 'gopogo',     label: 'Pokémon GO|(unmodified, no integration)', cat: 'external', x: 20,   y: 300, w: 170, h: 58 },
+      { id: 'overlay',    label: 'OverlayModule.kt|floating window + consent', cat: 'native', x: 230, y: 160, w: 190, h: 58 },
+      { id: 'capture',    label: 'ScreenCaptureService.kt|native OCR poll loop', cat: 'native', x: 230, y: 300, w: 190, h: 66 },
+      { id: 'pokedex',    label: 'Pokedex & calculators|offline screens', cat: 'mobile', x: 470, y: 30, w: 210, h: 58 },
+      { id: 'bundled',    label: 'Bundled JSON data|species · pvp · raids', cat: 'data', x: 750, y: 30, w: 190, h: 58 },
+      { id: 'analyze',    label: 'analyzeOcrText()|OverlayDemoScreen', cat: 'mobile', x: 470, y: 230, w: 210, h: 66 },
+      { id: 'widget',     label: 'CompanionWidget|floating avatar + Ask AI', cat: 'mobile', x: 470, y: 380, w: 210, h: 58 },
+      { id: 'professor',  label: 'ProfessorChatScreen|open-ended chat', cat: 'mobile', x: 470, y: 490, w: 210, h: 58 },
+      { id: 'client',     label: 'companionApiClient.ts|only network call in the app', cat: 'mobile', x: 750, y: 435, w: 210, h: 66 },
+      { id: 'controller', label: 'CompanionController|POST /suggest · /chat', cat: 'backend', x: 1010, y: 435, w: 210, h: 66 },
+      { id: 'kb',         label: 'Knowledge base|PokeAPI, Gen 1+2', cat: 'backend', x: 1010, y: 550, w: 210, h: 58 },
+      { id: 'gemini',     label: 'Gemini|flash-lite, free tier', cat: 'external', x: 1010, y: 300, w: 210, h: 58 }
+    ];
+    var nodeById = {};
+    nodes.forEach(function (n) { nodeById[n.id] = n; });
+
+    var edges = [
+      { from: 'gopogo', to: 'overlay', label: 'trainer looks at screen', dashed: true },
+      { from: 'overlay', to: 'capture', label: '' },
+      { from: 'capture', to: 'analyze', label: 'recognized text' },
+      { from: 'analyze', to: 'overlay', label: 'updateOverlayText()' },
+      { from: 'overlay', to: 'professor', label: 'tap → open', dashed: true },
+      { from: 'pokedex', to: 'bundled', label: 'read only' },
+      { from: 'widget', to: 'client', label: 'Ask AI' },
+      { from: 'professor', to: 'client', label: 'send message' },
+      { from: 'client', to: 'controller', label: '' },
+      { from: 'controller', to: 'kb', label: 'grounds the prompt' },
+      { from: 'controller', to: 'gemini', label: '' }
+    ];
+
+    var flows = [
+      {
+        id: 'live-overlay',
+        name: 'Live overlay capture',
+        path: ['gopogo', 'overlay', 'capture', 'analyze', 'overlay', 'professor'],
+        steps: [
+          'Trainer looks at their own screen — no login, no memory read, no Niantic API call.',
+          'OverlayModule.kt’s floating window sits on top of the game via SYSTEM_ALERT_WINDOW.',
+          'ScreenCaptureService.kt polls a live MediaProjection frame and runs ML Kit OCR natively in Kotlin — keeps working even while PTC is backgrounded.',
+          'JS runs analyzeOcrText() — the same species/IV/PvP/bulk pipeline the gallery-picker flow uses.',
+          'updateOverlayText() pushes a species/CP/PvP-league/bulk/tip summary back into the floating window.',
+          'Tapping the overlay brings PTC to the foreground and opens Professor Mode for a deeper answer.'
+        ]
+      },
+      {
+        id: 'ask-ai',
+        name: 'Ask AI / Professor Mode',
+        path: ['widget', 'professor', 'client', 'controller', 'kb', 'gemini'],
+        steps: [
+          'Trainer taps "Ask AI" on the Companion widget, or opens Professor Mode for open-ended chat.',
+          'companionApiClient.ts fires — the ONLY network call anywhere in the mobile app.',
+          'CompanionController: POST /suggest (one-shot tip) or POST /chat (multi-turn history).',
+          'The prompt is grounded in the knowledge base (PokeAPI facts, Gen 1+2) before it reaches the model.',
+          'Gemini flash-lite (free tier) generates the actual answer, returned back down the same path.'
+        ]
+      },
+      {
+        id: 'offline',
+        name: 'Offline calculators',
+        path: ['pokedex', 'bundled'],
+        steps: [
+          'Every calculator, the Pokedex, rankings, lore, and quiz mode read only bundled JSON.',
+          'Zero network dependency — works with the phone in airplane mode.'
+        ]
+      }
+    ];
+
+    var edgeEls = [];
+    var nodeEls = {};
+    var badgeLayer;
+
+    function textLines(label) { return label.split('|'); }
+
+    function edgeAnchor(n, side) {
+      if (side === 'right') { return { x: n.x + n.w, y: n.y + n.h / 2 }; }
+      return { x: n.x, y: n.y + n.h / 2 };
+    }
+
+    function computePath(edge) {
+      var n1 = nodeById[edge.from], n2 = nodeById[edge.to];
+      var forward = (n2.x + n2.w / 2) >= (n1.x + n1.w / 2);
+      var p1 = edgeAnchor(n1, forward ? 'right' : 'left');
+      var p2 = edgeAnchor(n2, forward ? 'left' : 'right');
+      if (!forward) {
+        // Backward edge (e.g. analyze -> overlay): loop underneath both nodes.
+        var loopY = Math.max(n1.y + n1.h, n2.y + n2.h) + 34;
+        return 'M ' + p1.x + ',' + p1.y +
+          ' C ' + p1.x + ',' + loopY + ' ' + p2.x + ',' + loopY + ' ' + p2.x + ',' + p2.y;
+      }
+      var dx = Math.max(36, (p2.x - p1.x) / 2);
+      return 'M ' + p1.x + ',' + p1.y +
+        ' C ' + (p1.x + dx) + ',' + p1.y + ' ' + (p2.x - dx) + ',' + p2.y + ' ' + p2.x + ',' + p2.y;
+    }
+
+    function midPoint(edge) {
+      var n1 = nodeById[edge.from], n2 = nodeById[edge.to];
+      var forward = (n2.x + n2.w / 2) >= (n1.x + n1.w / 2);
+      var p1 = edgeAnchor(n1, forward ? 'right' : 'left');
+      var p2 = edgeAnchor(n2, forward ? 'left' : 'right');
+      return { x: (p1.x + p2.x) / 2, y: forward ? (p1.y + p2.y) / 2 - 6 : Math.max(n1.y + n1.h, n2.y + n2.h) + 30 };
+    }
+
+    function el(tag, attrs) {
+      var e = document.createElementNS(SVG_NS, tag);
+      for (var k in attrs) { e.setAttribute(k, attrs[k]); }
+      return e;
+    }
+
+    function render() {
+      svg.innerHTML = '';
+      var edgeLayer = el('g', { class: 'edge-layer' });
+      var nodeLayer = el('g', { class: 'node-layer' });
+      badgeLayer = el('g', { class: 'badge-layer' });
+      svg.appendChild(edgeLayer);
+      svg.appendChild(nodeLayer);
+      svg.appendChild(badgeLayer);
+
+      edgeEls = edges.map(function (edge) {
+        var g = el('g', { class: 'edge' });
+        var path = el('path', {
+          class: 'edge-path' + (edge.dashed ? ' dashed' : ''),
+          d: computePath(edge)
+        });
+        g.appendChild(path);
+        var labelEl = null;
+        if (edge.label) {
+          var mid = midPoint(edge);
+          labelEl = el('text', { class: 'edge-label', x: mid.x, y: mid.y, 'text-anchor': 'middle' });
+          labelEl.textContent = edge.label;
+          g.appendChild(labelEl);
+        }
+        edgeLayer.appendChild(g);
+        return { edge: edge, path: path, label: labelEl };
+      });
+
+      nodeEls = {};
+      nodes.forEach(function (n) {
+        var g = el('g', { class: 'node', 'data-id': n.id, 'data-cat': n.cat, transform: 'translate(' + n.x + ',' + n.y + ')' });
+        var rect = el('rect', { class: 'node-rect', width: n.w, height: n.h, rx: 9, ry: 9 });
+        g.appendChild(rect);
+        var lines = textLines(n.label);
+        var text = el('text', { class: 'node-label', x: 12, y: n.h / 2 - (lines.length > 1 ? 5 : 0) });
+        lines.forEach(function (line, i) {
+          var tspan = el('tspan', { x: 12, dy: i === 0 ? 0 : 14 });
+          if (i > 0) { tspan.setAttribute('class', 'muted'); }
+          tspan.textContent = line;
+          text.appendChild(tspan);
+        });
+        g.appendChild(text);
+        nodeLayer.appendChild(g);
+        nodeEls[n.id] = g;
+        makeDraggable(g, n);
+      });
+    }
+
+    function updateEdgesFor(nodeId) {
+      edgeEls.forEach(function (item) {
+        if (item.edge.from === nodeId || item.edge.to === nodeId) {
+          item.path.setAttribute('d', computePath(item.edge));
+          if (item.label) {
+            var mid = midPoint(item.edge);
+            item.label.setAttribute('x', mid.x);
+            item.label.setAttribute('y', mid.y);
+          }
+        }
+      });
+      if (activeFlow) { renderBadges(activeFlow); }
+    }
+
+    function makeDraggable(g, n) {
+      var dragging = false, offsetX = 0, offsetY = 0;
+
+      function toSvgPoint(clientX, clientY) {
+        var rect = svg.getBoundingClientRect();
+        var vb = svg.viewBox.baseVal;
+        var scaleX = vb.width / rect.width;
+        var scaleY = vb.height / rect.height;
+        return { x: (clientX - rect.left) * scaleX + vb.x, y: (clientY - rect.top) * scaleY + vb.y };
+      }
+
+      function onDown(e) {
+        dragging = true;
+        g.setPointerCapture(e.pointerId);
+        var p = toSvgPoint(e.clientX, e.clientY);
+        offsetX = p.x - n.x;
+        offsetY = p.y - n.y;
+      }
+      function onMove(e) {
+        if (!dragging) { return; }
+        var p = toSvgPoint(e.clientX, e.clientY);
+        n.x = p.x - offsetX;
+        n.y = p.y - offsetY;
+        g.setAttribute('transform', 'translate(' + n.x + ',' + n.y + ')');
+        updateEdgesFor(n.id);
+      }
+      function onUp(e) {
+        dragging = false;
+        try { g.releasePointerCapture(e.pointerId); } catch (err) {}
+      }
+      g.addEventListener('pointerdown', onDown);
+      g.addEventListener('pointermove', onMove);
+      g.addEventListener('pointerup', onUp);
+      g.addEventListener('pointercancel', onUp);
+    }
+
+    var activeFlow = null;
+
+    function pathEdgeIndex(flow, fromId, toId) {
+      return edges.findIndex(function (e) { return e.from === fromId && e.to === toId; });
+    }
+
+    function renderBadges(flow) {
+      badgeLayer.innerHTML = '';
+      flow.path.forEach(function (nodeId, i) {
+        var n = nodeById[nodeId];
+        var cx = n.x + n.w - 10, cy = n.y - 2;
+        var g = el('g', { class: 'step-badge' });
+        var circle = el('circle', { cx: cx, cy: cy, r: 9 });
+        var text = el('text', { x: cx, y: cy + 1 });
+        text.textContent = String(i + 1);
+        g.appendChild(circle);
+        g.appendChild(text);
+        badgeLayer.appendChild(g);
+      });
+    }
+
+    function applyFlow(flow) {
+      activeFlow = flow;
+      svg.classList.toggle('flow-active', !!flow);
+      var nodeSet = {};
+      (flow ? flow.path : []).forEach(function (id) { nodeSet[id] = true; });
+
+      Object.keys(nodeEls).forEach(function (id) {
+        nodeEls[id].classList.toggle('hl', !!nodeSet[id]);
+      });
+
+      var edgeSet = {};
+      if (flow) {
+        for (var i = 0; i < flow.path.length - 1; i++) {
+          var idx = pathEdgeIndex(flow, flow.path[i], flow.path[i + 1]);
+          if (idx >= 0) { edgeSet[idx] = true; }
+        }
+      }
+      edgeEls.forEach(function (item, i) {
+        var isHl = !!edgeSet[i];
+        item.path.classList.toggle('hl', isHl);
+        if (item.label) { item.label.classList.toggle('hl', isHl); }
+      });
+
+      if (flow) { renderBadges(flow); } else { badgeLayer.innerHTML = ''; }
+
+      var stepsList = document.getElementById('flowSteps');
+      var stepsLabel = document.getElementById('stepsLabel');
+      stepsList.innerHTML = '';
+      if (flow) {
+        flow.steps.forEach(function (s) {
+          var li = document.createElement('li');
+          li.textContent = s;
+          stepsList.appendChild(li);
+        });
+        stepsList.classList.add('show');
+        stepsLabel.style.display = 'block';
+      } else {
+        stepsList.classList.remove('show');
+        stepsLabel.style.display = 'none';
+      }
+    }
+
+    var flowListEl = document.getElementById('flowList');
+    flows.forEach(function (flow) {
+      var btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'flow-btn';
+      btn.innerHTML = flow.name + '<span class="flow-count">' + flow.steps.length + ' steps</span>';
+      btn.addEventListener('click', function () {
+        var wasActive = btn.classList.contains('active');
+        Array.prototype.forEach.call(flowListEl.children, function (b) { b.classList.remove('active'); });
+        if (wasActive) {
+          applyFlow(null);
+        } else {
+          btn.classList.add('active');
+          applyFlow(flow);
+        }
+      });
+      flowListEl.appendChild(btn);
+    });
+
+    render();
   })();
 </script>
