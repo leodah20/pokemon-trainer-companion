@@ -281,6 +281,26 @@
   .dot-backend { background: var(--live); }
   .dot-data { background: var(--text-faint); }
   .dot-external { background: var(--warn); }
+  .legend-spacer { flex: 1; }
+  .save-status {
+    font-family: ui-monospace, "SFMono-Regular", "JetBrains Mono", Consolas, monospace;
+    font-size: 11px;
+    color: var(--live);
+    opacity: 0;
+    transition: opacity 200ms ease;
+  }
+  .save-status.show { opacity: 1; }
+  .reset-link {
+    font-family: ui-monospace, "SFMono-Regular", "JetBrains Mono", Consolas, monospace;
+    font-size: 11px;
+    color: var(--text-faint);
+    background: none;
+    border: none;
+    text-decoration: underline;
+    cursor: pointer;
+    padding: 0;
+  }
+  .reset-link:hover { color: var(--text-muted); }
 
   #archSvg {
     width: 100%;
@@ -722,6 +742,9 @@
             <span class="legend-item"><i class="dot dot-backend"></i>Backend</span>
             <span class="legend-item"><i class="dot dot-data"></i>Bundled data</span>
             <span class="legend-item"><i class="dot dot-external"></i>External</span>
+            <span class="legend-spacer"></span>
+            <span class="save-status" id="saveStatus">layout saved</span>
+            <button type="button" class="reset-link" id="resetLayout">Reset layout</button>
           </div>
           <svg id="archSvg" viewBox="0 0 1340 620" role="img" aria-label="PTC architecture node graph — draggable, with selectable flows"></svg>
         </div>
@@ -1085,6 +1108,55 @@
       }
     ];
 
+    // ---- Persistence: remembers dragged node positions + the active flow across reloads,
+    // the same "debounced autosave to localStorage" pattern the journey-mapper skill uses.
+    var STORAGE_KEY = 'ptc-architecture-map-v1';
+    var saveTimer = null;
+
+    function loadSavedState() {
+      try {
+        var raw = localStorage.getItem(STORAGE_KEY);
+        return raw ? JSON.parse(raw) : null;
+      } catch (err) {
+        return null;
+      }
+    }
+
+    function saveStateNow() {
+      try {
+        var positions = {};
+        nodes.forEach(function (n) { positions[n.id] = { x: n.x, y: n.y }; });
+        localStorage.setItem(STORAGE_KEY, JSON.stringify({
+          positions: positions,
+          activeFlowId: activeFlow ? activeFlow.id : null
+        }));
+        flashSaved();
+      } catch (err) {
+        // localStorage unavailable (private browsing, quota) -- fail silently, nothing breaks.
+      }
+    }
+
+    function scheduleSave() {
+      clearTimeout(saveTimer);
+      saveTimer = setTimeout(saveStateNow, 350);
+    }
+
+    function flashSaved() {
+      var el = document.getElementById('saveStatus');
+      if (!el) { return; }
+      el.classList.add('show');
+      clearTimeout(el._hideTimer);
+      el._hideTimer = setTimeout(function () { el.classList.remove('show'); }, 900);
+    }
+
+    var savedState = loadSavedState();
+    if (savedState && savedState.positions) {
+      nodes.forEach(function (n) {
+        var saved = savedState.positions[n.id];
+        if (saved) { n.x = saved.x; n.y = saved.y; }
+      });
+    }
+
     var edgeEls = [];
     var nodeEls = {};
     var badgeLayer;
@@ -1216,6 +1288,7 @@
       function onUp(e) {
         dragging = false;
         try { g.releasePointerCapture(e.pointerId); } catch (err) {}
+        scheduleSave();
       }
       g.addEventListener('pointerdown', onDown);
       g.addEventListener('pointermove', onMove);
@@ -1301,10 +1374,31 @@
           btn.classList.add('active');
           applyFlow(flow);
         }
+        saveStateNow();
       });
       flowListEl.appendChild(btn);
     });
 
     render();
+
+    // Restore whichever flow was active when the page was last saved.
+    if (savedState && savedState.activeFlowId) {
+      var savedFlow = flows.filter(function (f) { return f.id === savedState.activeFlowId; })[0];
+      var savedBtn = Array.prototype.filter.call(flowListEl.children, function (b, i) {
+        return flows[i] && flows[i].id === savedState.activeFlowId;
+      })[0];
+      if (savedFlow && savedBtn) {
+        savedBtn.classList.add('active');
+        applyFlow(savedFlow);
+      }
+    }
+
+    var resetBtn = document.getElementById('resetLayout');
+    if (resetBtn) {
+      resetBtn.addEventListener('click', function () {
+        try { localStorage.removeItem(STORAGE_KEY); } catch (err) {}
+        location.reload();
+      });
+    }
   })();
 </script>
