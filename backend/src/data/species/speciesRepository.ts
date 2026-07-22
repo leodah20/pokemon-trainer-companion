@@ -1,17 +1,20 @@
 import { Injectable } from '@nestjs/common';
 import { Species, SpeciesFilter, SpeciesCounter, EvolutionNode, EvolutionFamily } from '../../domain/species/types';
 import { ALL_SPECIES, EVOLUTION_FAMILIES, TYPE_EFFECTIVENESS } from './speciesDatabase';
+import { SPECIES_FORMS } from './speciesForms';
+
+const ALL_SPECIES_WITH_FORMS = [...ALL_SPECIES, ...SPECIES_FORMS];
 
 @Injectable()
 export class SpeciesRepository {
   private readonly speciesById: Map<number, Species>;
 
   constructor() {
-    this.speciesById = new Map(ALL_SPECIES.map((s) => [s.id, s]));
+    this.speciesById = new Map(ALL_SPECIES_WITH_FORMS.map((s) => [s.id, s]));
   }
 
   findAll(filter: SpeciesFilter): { data: Species[]; total: number } {
-    let filtered = [...ALL_SPECIES];
+    let filtered = [...ALL_SPECIES_WITH_FORMS];
 
     if (filter.name) {
       const q = filter.name.toLowerCase();
@@ -130,7 +133,7 @@ export class SpeciesRepository {
 
     const counts = new Map<string, { count: number; totalEffectiveness: number }>();
 
-    for (const candidate of ALL_SPECIES) {
+    for (const candidate of ALL_SPECIES_WITH_FORMS) {
       if (candidate.id === speciesId) continue;
 
       let effectiveness = 1;
@@ -157,7 +160,7 @@ export class SpeciesRepository {
     return sorted.map(([typeKey]) => {
       const type = typeKey.split('/')[0];
       const best = ALL_SPECIES
-        .filter((s) => s.types.includes(type) && s.id !== speciesId)
+        .filter((s) => s.types.includes(type) && s.id !== speciesId && !s.form)
         .sort((a, b) => (b.baseAttack + b.baseDefense) - (a.baseAttack + a.baseDefense))[0];
       return {
         speciesId: best?.id ?? 0,

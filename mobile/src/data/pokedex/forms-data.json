@@ -1,0 +1,2293 @@
+﻿[
+    {
+        "id":  20001,
+        "baseSpeciesId":  3,
+        "form":  "Mega",
+        "name":  "Venusaur",
+        "generation":  1,
+        "types":  [
+                      "Grass",
+                      "Poison"
+                  ],
+        "baseAttack":  241,
+        "baseDefense":  246,
+        "baseStamina":  190
+    },
+    {
+        "id":  20002,
+        "baseSpeciesId":  6,
+        "form":  "Mega X",
+        "name":  "Charizard",
+        "generation":  1,
+        "types":  [
+                      "Fire",
+                      "Dragon"
+                  ],
+        "baseAttack":  273,
+        "baseDefense":  213,
+        "baseStamina":  186
+    },
+    {
+        "id":  20003,
+        "baseSpeciesId":  6,
+        "form":  "Mega Y",
+        "name":  "Charizard",
+        "generation":  1,
+        "types":  [
+                      "Fire",
+                      "Flying"
+                  ],
+        "baseAttack":  319,
+        "baseDefense":  212,
+        "baseStamina":  186
+    },
+    {
+        "id":  20004,
+        "baseSpeciesId":  9,
+        "form":  "Mega",
+        "name":  "Blastoise",
+        "generation":  1,
+        "types":  [
+                      "Water"
+                  ],
+        "baseAttack":  223,
+        "baseDefense":  257,
+        "baseStamina":  188
+    },
+    {
+        "id":  20005,
+        "baseSpeciesId":  15,
+        "form":  "Mega",
+        "name":  "Beedrill",
+        "generation":  1,
+        "types":  [
+                      "Bug",
+                      "Poison"
+                  ],
+        "baseAttack":  303,
+        "baseDefense":  148,
+        "baseStamina":  163
+    },
+    {
+        "id":  20006,
+        "baseSpeciesId":  18,
+        "form":  "Mega",
+        "name":  "Pidgeot",
+        "generation":  1,
+        "types":  [
+                      "Normal",
+                      "Flying"
+                  ],
+        "baseAttack":  229,
+        "baseDefense":  204,
+        "baseStamina":  198
+    },
+    {
+        "id":  20007,
+        "baseSpeciesId":  65,
+        "form":  "Mega",
+        "name":  "Alakazam",
+        "generation":  1,
+        "types":  [
+                      "Psychic"
+                  ],
+        "baseAttack":  367,
+        "baseDefense":  207,
+        "baseStamina":  146
+    },
+    {
+        "id":  20008,
+        "baseSpeciesId":  80,
+        "form":  "Mega",
+        "name":  "Slowbro",
+        "generation":  1,
+        "types":  [
+                      "Water",
+                      "Psychic"
+                  ],
+        "baseAttack":  241,
+        "baseDefense":  294,
+        "baseStamina":  216
+    },
+    {
+        "id":  20009,
+        "baseSpeciesId":  94,
+        "form":  "Mega",
+        "name":  "Gengar",
+        "generation":  1,
+        "types":  [
+                      "Ghost",
+                      "Poison"
+                  ],
+        "baseAttack":  349,
+        "baseDefense":  199,
+        "baseStamina":  155
+    },
+    {
+        "id":  20010,
+        "baseSpeciesId":  115,
+        "form":  "Mega",
+        "name":  "Kangaskhan",
+        "generation":  1,
+        "types":  [
+                      "Normal"
+                  ],
+        "baseAttack":  246,
+        "baseDefense":  225,
+        "baseStamina":  233
+    },
+    {
+        "id":  20011,
+        "baseSpeciesId":  127,
+        "form":  "Mega",
+        "name":  "Pinsir",
+        "generation":  1,
+        "types":  [
+                      "Bug",
+                      "Flying"
+                  ],
+        "baseAttack":  305,
+        "baseDefense":  231,
+        "baseStamina":  163
+    },
+    {
+        "id":  20012,
+        "baseSpeciesId":  130,
+        "form":  "Mega",
+        "name":  "Gyarados",
+        "generation":  1,
+        "types":  [
+                      "Water",
+                      "Dark"
+                  ],
+        "baseAttack":  292,
+        "baseDefense":  247,
+        "baseStamina":  216
+    },
+    {
+        "id":  20013,
+        "baseSpeciesId":  142,
+        "form":  "Mega",
+        "name":  "Aerodactyl",
+        "generation":  1,
+        "types":  [
+                      "Rock",
+                      "Flying"
+                  ],
+        "baseAttack":  292,
+        "baseDefense":  219,
+        "baseStamina":  190
+    },
+    {
+        "id":  20014,
+        "baseSpeciesId":  150,
+        "form":  "Mega X",
+        "name":  "Mewtwo",
+        "generation":  1,
+        "types":  [
+                      "Psychic",
+                      "Fighting"
+                  ],
+        "baseAttack":  348,
+        "baseDefense":  242,
+        "baseStamina":  214
+    },
+    {
+        "id":  20015,
+        "baseSpeciesId":  150,
+        "form":  "Mega Y",
+        "name":  "Mewtwo",
+        "generation":  1,
+        "types":  [
+                      "Psychic"
+                  ],
+        "baseAttack":  363,
+        "baseDefense":  281,
+        "baseStamina":  214
+    },
+    {
+        "id":  20016,
+        "baseSpeciesId":  181,
+        "form":  "Mega",
+        "name":  "Ampharos",
+        "generation":  2,
+        "types":  [
+                      "Electric",
+                      "Dragon"
+                  ],
+        "baseAttack":  294,
+        "baseDefense":  203,
+        "baseStamina":  207
+    },
+    {
+        "id":  20017,
+        "baseSpeciesId":  208,
+        "form":  "Mega",
+        "name":  "Steelix",
+        "generation":  2,
+        "types":  [
+                      "Steel",
+                      "Ground"
+                  ],
+        "baseAttack":  212,
+        "baseDefense":  362,
+        "baseStamina":  181
+    },
+    {
+        "id":  20018,
+        "baseSpeciesId":  212,
+        "form":  "Mega",
+        "name":  "Scizor",
+        "generation":  2,
+        "types":  [
+                      "Bug",
+                      "Steel"
+                  ],
+        "baseAttack":  279,
+        "baseDefense":  226,
+        "baseStamina":  172
+    },
+    {
+        "id":  20019,
+        "baseSpeciesId":  214,
+        "form":  "Mega",
+        "name":  "Heracross",
+        "generation":  2,
+        "types":  [
+                      "Bug",
+                      "Fighting"
+                  ],
+        "baseAttack":  299,
+        "baseDefense":  217,
+        "baseStamina":  190
+    },
+    {
+        "id":  20020,
+        "baseSpeciesId":  229,
+        "form":  "Mega",
+        "name":  "Houndoom",
+        "generation":  2,
+        "types":  [
+                      "Dark",
+                      "Fire"
+                  ],
+        "baseAttack":  289,
+        "baseDefense":  216,
+        "baseStamina":  181
+    },
+    {
+        "id":  20021,
+        "baseSpeciesId":  248,
+        "form":  "Mega",
+        "name":  "Tyranitar",
+        "generation":  2,
+        "types":  [
+                      "Rock",
+                      "Dark"
+                  ],
+        "baseAttack":  309,
+        "baseDefense":  276,
+        "baseStamina":  225
+    },
+    {
+        "id":  20022,
+        "baseSpeciesId":  254,
+        "form":  "Mega",
+        "name":  "Sceptile",
+        "generation":  3,
+        "types":  [
+                      "Grass",
+                      "Dragon"
+                  ],
+        "baseAttack":  290,
+        "baseDefense":  203,
+        "baseStamina":  172
+    },
+    {
+        "id":  20023,
+        "baseSpeciesId":  257,
+        "form":  "Mega",
+        "name":  "Blaziken",
+        "generation":  3,
+        "types":  [
+                      "Fire",
+                      "Fighting"
+                  ],
+        "baseAttack":  329,
+        "baseDefense":  178,
+        "baseStamina":  190
+    },
+    {
+        "id":  20024,
+        "baseSpeciesId":  260,
+        "form":  "Mega",
+        "name":  "Swampert",
+        "generation":  3,
+        "types":  [
+                      "Water",
+                      "Ground"
+                  ],
+        "baseAttack":  283,
+        "baseDefense":  218,
+        "baseStamina":  225
+    },
+    {
+        "id":  20025,
+        "baseSpeciesId":  282,
+        "form":  "Mega",
+        "name":  "Gardevoir",
+        "generation":  3,
+        "types":  [
+                      "Psychic",
+                      "Fairy"
+                  ],
+        "baseAttack":  326,
+        "baseDefense":  229,
+        "baseStamina":  169
+    },
+    {
+        "id":  20026,
+        "baseSpeciesId":  302,
+        "form":  "Mega",
+        "name":  "Sableye",
+        "generation":  3,
+        "types":  [
+                      "Dark",
+                      "Ghost"
+                  ],
+        "baseAttack":  166,
+        "baseDefense":  247,
+        "baseStamina":  137
+    },
+    {
+        "id":  20027,
+        "baseSpeciesId":  303,
+        "form":  "Mega",
+        "name":  "Mawile",
+        "generation":  3,
+        "types":  [
+                      "Steel",
+                      "Fairy"
+                  ],
+        "baseAttack":  214,
+        "baseDefense":  246,
+        "baseStamina":  137
+    },
+    {
+        "id":  20028,
+        "baseSpeciesId":  306,
+        "form":  "Mega",
+        "name":  "Aggron",
+        "generation":  3,
+        "types":  [
+                      "Steel"
+                  ],
+        "baseAttack":  247,
+        "baseDefense":  362,
+        "baseStamina":  172
+    },
+    {
+        "id":  20029,
+        "baseSpeciesId":  308,
+        "form":  "Mega",
+        "name":  "Medicham",
+        "generation":  3,
+        "types":  [
+                      "Fighting",
+                      "Psychic"
+                  ],
+        "baseAttack":  204,
+        "baseDefense":  216,
+        "baseStamina":  155
+    },
+    {
+        "id":  20030,
+        "baseSpeciesId":  310,
+        "form":  "Mega",
+        "name":  "Manectric",
+        "generation":  3,
+        "types":  [
+                      "Electric"
+                  ],
+        "baseAttack":  286,
+        "baseDefense":  208,
+        "baseStamina":  172
+    },
+    {
+        "id":  20031,
+        "baseSpeciesId":  319,
+        "form":  "Mega",
+        "name":  "Sharpedo",
+        "generation":  3,
+        "types":  [
+                      "Water",
+                      "Dark"
+                  ],
+        "baseAttack":  309,
+        "baseDefense":  172,
+        "baseStamina":  172
+    },
+    {
+        "id":  20032,
+        "baseSpeciesId":  323,
+        "form":  "Mega",
+        "name":  "Camerupt",
+        "generation":  3,
+        "types":  [
+                      "Fire",
+                      "Ground"
+                  ],
+        "baseAttack":  253,
+        "baseDefense":  231,
+        "baseStamina":  172
+    },
+    {
+        "id":  20033,
+        "baseSpeciesId":  334,
+        "form":  "Mega",
+        "name":  "Altaria",
+        "generation":  3,
+        "types":  [
+                      "Dragon",
+                      "Fairy"
+                  ],
+        "baseAttack":  222,
+        "baseDefense":  249,
+        "baseStamina":  181
+    },
+    {
+        "id":  20034,
+        "baseSpeciesId":  354,
+        "form":  "Mega",
+        "name":  "Banette",
+        "generation":  3,
+        "types":  [
+                      "Ghost"
+                  ],
+        "baseAttack":  312,
+        "baseDefense":  191,
+        "baseStamina":  162
+    },
+    {
+        "id":  20035,
+        "baseSpeciesId":  359,
+        "form":  "Mega",
+        "name":  "Absol",
+        "generation":  3,
+        "types":  [
+                      "Dark"
+                  ],
+        "baseAttack":  314,
+        "baseDefense":  192,
+        "baseStamina":  163
+    },
+    {
+        "id":  20036,
+        "baseSpeciesId":  362,
+        "form":  "Mega",
+        "name":  "Glalie",
+        "generation":  3,
+        "types":  [
+                      "Ice"
+                  ],
+        "baseAttack":  222,
+        "baseDefense":  194,
+        "baseStamina":  190
+    },
+    {
+        "id":  20037,
+        "baseSpeciesId":  373,
+        "form":  "Mega",
+        "name":  "Salamence",
+        "generation":  3,
+        "types":  [
+                      "Dragon",
+                      "Flying"
+                  ],
+        "baseAttack":  329,
+        "baseDefense":  211,
+        "baseStamina":  216
+    },
+    {
+        "id":  20038,
+        "baseSpeciesId":  376,
+        "form":  "Mega",
+        "name":  "Metagross",
+        "generation":  3,
+        "types":  [
+                      "Steel",
+                      "Psychic"
+                  ],
+        "baseAttack":  279,
+        "baseDefense":  289,
+        "baseStamina":  190
+    },
+    {
+        "id":  20039,
+        "baseSpeciesId":  380,
+        "form":  "Mega",
+        "name":  "Latias",
+        "generation":  3,
+        "types":  [
+                      "Dragon",
+                      "Psychic"
+                  ],
+        "baseAttack":  256,
+        "baseDefense":  297,
+        "baseStamina":  190
+    },
+    {
+        "id":  20040,
+        "baseSpeciesId":  381,
+        "form":  "Mega",
+        "name":  "Latios",
+        "generation":  3,
+        "types":  [
+                      "Dragon",
+                      "Psychic"
+                  ],
+        "baseAttack":  309,
+        "baseDefense":  275,
+        "baseStamina":  190
+    },
+    {
+        "id":  20041,
+        "baseSpeciesId":  384,
+        "form":  "Mega",
+        "name":  "Rayquaza",
+        "generation":  3,
+        "types":  [
+                      "Dragon",
+                      "Flying"
+                  ],
+        "baseAttack":  368,
+        "baseDefense":  218,
+        "baseStamina":  213
+    },
+    {
+        "id":  20042,
+        "baseSpeciesId":  428,
+        "form":  "Mega",
+        "name":  "Lopunny",
+        "generation":  4,
+        "types":  [
+                      "Normal",
+                      "Fighting"
+                  ],
+        "baseAttack":  277,
+        "baseDefense":  204,
+        "baseStamina":  163
+    },
+    {
+        "id":  20043,
+        "baseSpeciesId":  445,
+        "form":  "Mega",
+        "name":  "Garchomp",
+        "generation":  4,
+        "types":  [
+                      "Dragon",
+                      "Ground"
+                  ],
+        "baseAttack":  339,
+        "baseDefense":  239,
+        "baseStamina":  239
+    },
+    {
+        "id":  20044,
+        "baseSpeciesId":  448,
+        "form":  "Mega",
+        "name":  "Lucario",
+        "generation":  4,
+        "types":  [
+                      "Fighting",
+                      "Steel"
+                  ],
+        "baseAttack":  310,
+        "baseDefense":  204,
+        "baseStamina":  172
+    },
+    {
+        "id":  20045,
+        "baseSpeciesId":  460,
+        "form":  "Mega",
+        "name":  "Abomasnow",
+        "generation":  4,
+        "types":  [
+                      "Grass",
+                      "Ice"
+                  ],
+        "baseAttack":  240,
+        "baseDefense":  218,
+        "baseStamina":  207
+    },
+    {
+        "id":  20046,
+        "baseSpeciesId":  475,
+        "form":  "Mega",
+        "name":  "Gallade",
+        "generation":  4,
+        "types":  [
+                      "Psychic",
+                      "Fighting"
+                  ],
+        "baseAttack":  296,
+        "baseDefense":  203,
+        "baseStamina":  169
+    },
+    {
+        "id":  20047,
+        "baseSpeciesId":  531,
+        "form":  "Mega",
+        "name":  "Audino",
+        "generation":  5,
+        "types":  [
+                      "Normal",
+                      "Fairy"
+                  ],
+        "baseAttack":  202,
+        "baseDefense":  226,
+        "baseStamina":  233
+    },
+    {
+        "id":  20048,
+        "baseSpeciesId":  719,
+        "form":  "Mega",
+        "name":  "Diancie",
+        "generation":  6,
+        "types":  [
+                      "Rock",
+                      "Fairy"
+                  ],
+        "baseAttack":  282,
+        "baseDefense":  326,
+        "baseStamina":  137
+    },
+    {
+        "id":  20049,
+        "baseSpeciesId":  382,
+        "form":  "Primal",
+        "name":  "Kyogre",
+        "generation":  3,
+        "types":  [
+                      "Water"
+                  ],
+        "baseAttack":  353,
+        "baseDefense":  268,
+        "baseStamina":  205
+    },
+    {
+        "id":  20050,
+        "baseSpeciesId":  383,
+        "form":  "Primal",
+        "name":  "Groudon",
+        "generation":  3,
+        "types":  [
+                      "Ground",
+                      "Fire"
+                  ],
+        "baseAttack":  353,
+        "baseDefense":  268,
+        "baseStamina":  205
+    },
+    {
+        "id":  20051,
+        "baseSpeciesId":  19,
+        "form":  "Alolan",
+        "name":  "Rattata",
+        "generation":  7,
+        "types":  [
+                      "Dark",
+                      "Normal"
+                  ],
+        "baseAttack":  103,
+        "baseDefense":  70,
+        "baseStamina":  100
+    },
+    {
+        "id":  20052,
+        "baseSpeciesId":  20,
+        "form":  "Alolan",
+        "name":  "Raticate",
+        "generation":  7,
+        "types":  [
+                      "Dark",
+                      "Normal"
+                  ],
+        "baseAttack":  161,
+        "baseDefense":  139,
+        "baseStamina":  146
+    },
+    {
+        "id":  20053,
+        "baseSpeciesId":  26,
+        "form":  "Alolan",
+        "name":  "Raichu",
+        "generation":  7,
+        "types":  [
+                      "Electric",
+                      "Psychic"
+                  ],
+        "baseAttack":  201,
+        "baseDefense":  154,
+        "baseStamina":  155
+    },
+    {
+        "id":  20054,
+        "baseSpeciesId":  27,
+        "form":  "Alolan",
+        "name":  "Sandshrew",
+        "generation":  7,
+        "types":  [
+                      "Ice",
+                      "Steel"
+                  ],
+        "baseAttack":  90,
+        "baseDefense":  139,
+        "baseStamina":  137
+    },
+    {
+        "id":  20055,
+        "baseSpeciesId":  28,
+        "form":  "Alolan",
+        "name":  "Sandslash",
+        "generation":  7,
+        "types":  [
+                      "Ice",
+                      "Steel"
+                  ],
+        "baseAttack":  182,
+        "baseDefense":  202,
+        "baseStamina":  181
+    },
+    {
+        "id":  20056,
+        "baseSpeciesId":  37,
+        "form":  "Alolan",
+        "name":  "Vulpix",
+        "generation":  7,
+        "types":  [
+                      "Ice"
+                  ],
+        "baseAttack":  96,
+        "baseDefense":  122,
+        "baseStamina":  116
+    },
+    {
+        "id":  20057,
+        "baseSpeciesId":  38,
+        "form":  "Alolan",
+        "name":  "Ninetales",
+        "generation":  7,
+        "types":  [
+                      "Ice",
+                      "Fairy"
+                  ],
+        "baseAttack":  199,
+        "baseDefense":  218,
+        "baseStamina":  177
+    },
+    {
+        "id":  20058,
+        "baseSpeciesId":  50,
+        "form":  "Alolan",
+        "name":  "Diglett",
+        "generation":  7,
+        "types":  [
+                      "Ground",
+                      "Steel"
+                  ],
+        "baseAttack":  109,
+        "baseDefense":  78,
+        "baseStamina":  67
+    },
+    {
+        "id":  20059,
+        "baseSpeciesId":  51,
+        "form":  "Alolan",
+        "name":  "Dugtrio",
+        "generation":  7,
+        "types":  [
+                      "Ground",
+                      "Steel"
+                  ],
+        "baseAttack":  201,
+        "baseDefense":  142,
+        "baseStamina":  111
+    },
+    {
+        "id":  20060,
+        "baseSpeciesId":  52,
+        "form":  "Alolan",
+        "name":  "Meowth",
+        "generation":  7,
+        "types":  [
+                      "Dark"
+                  ],
+        "baseAttack":  99,
+        "baseDefense":  88,
+        "baseStamina":  120
+    },
+    {
+        "id":  20061,
+        "baseSpeciesId":  53,
+        "form":  "Alolan",
+        "name":  "Persian",
+        "generation":  7,
+        "types":  [
+                      "Dark"
+                  ],
+        "baseAttack":  181,
+        "baseDefense":  147,
+        "baseStamina":  163
+    },
+    {
+        "id":  20062,
+        "baseSpeciesId":  74,
+        "form":  "Alolan",
+        "name":  "Geodude",
+        "generation":  7,
+        "types":  [
+                      "Rock",
+                      "Electric"
+                  ],
+        "baseAttack":  115,
+        "baseDefense":  122,
+        "baseStamina":  120
+    },
+    {
+        "id":  20063,
+        "baseSpeciesId":  75,
+        "form":  "Alolan",
+        "name":  "Graveler",
+        "generation":  7,
+        "types":  [
+                      "Rock",
+                      "Electric"
+                  ],
+        "baseAttack":  155,
+        "baseDefense":  144,
+        "baseStamina":  146
+    },
+    {
+        "id":  20064,
+        "baseSpeciesId":  76,
+        "form":  "Alolan",
+        "name":  "Golem",
+        "generation":  7,
+        "types":  [
+                      "Rock",
+                      "Electric"
+                  ],
+        "baseAttack":  211,
+        "baseDefense":  198,
+        "baseStamina":  190
+    },
+    {
+        "id":  20065,
+        "baseSpeciesId":  88,
+        "form":  "Alolan",
+        "name":  "Grimer",
+        "generation":  7,
+        "types":  [
+                      "Poison",
+                      "Dark"
+                  ],
+        "baseAttack":  135,
+        "baseDefense":  90,
+        "baseStamina":  190
+    },
+    {
+        "id":  20066,
+        "baseSpeciesId":  89,
+        "form":  "Alolan",
+        "name":  "Muk",
+        "generation":  7,
+        "types":  [
+                      "Poison",
+                      "Dark"
+                  ],
+        "baseAttack":  216,
+        "baseDefense":  195,
+        "baseStamina":  233
+    },
+    {
+        "id":  20067,
+        "baseSpeciesId":  103,
+        "form":  "Alolan",
+        "name":  "Exeggutor",
+        "generation":  7,
+        "types":  [
+                      "Grass",
+                      "Dragon"
+                  ],
+        "baseAttack":  271,
+        "baseDefense":  218,
+        "baseStamina":  216
+    },
+    {
+        "id":  20068,
+        "baseSpeciesId":  105,
+        "form":  "Alolan",
+        "name":  "Marowak",
+        "generation":  7,
+        "types":  [
+                      "Fire",
+                      "Ghost"
+                  ],
+        "baseAttack":  192,
+        "baseDefense":  213,
+        "baseStamina":  155
+    },
+    {
+        "id":  20069,
+        "baseSpeciesId":  52,
+        "form":  "Galarian",
+        "name":  "Meowth",
+        "generation":  8,
+        "types":  [
+                      "Steel"
+                  ],
+        "baseAttack":  115,
+        "baseDefense":  92,
+        "baseStamina":  137
+    },
+    {
+        "id":  20070,
+        "baseSpeciesId":  77,
+        "form":  "Galarian",
+        "name":  "Ponyta",
+        "generation":  8,
+        "types":  [
+                      "Psychic"
+                  ],
+        "baseAttack":  144,
+        "baseDefense":  99,
+        "baseStamina":  137
+    },
+    {
+        "id":  20071,
+        "baseSpeciesId":  78,
+        "form":  "Galarian",
+        "name":  "Rapidash",
+        "generation":  8,
+        "types":  [
+                      "Psychic",
+                      "Fairy"
+                  ],
+        "baseAttack":  210,
+        "baseDefense":  167,
+        "baseStamina":  163
+    },
+    {
+        "id":  20072,
+        "baseSpeciesId":  79,
+        "form":  "Galarian",
+        "name":  "Slowpoke",
+        "generation":  8,
+        "types":  [
+                      "Psychic"
+                  ],
+        "baseAttack":  109,
+        "baseDefense":  98,
+        "baseStamina":  207
+    },
+    {
+        "id":  20073,
+        "baseSpeciesId":  80,
+        "form":  "Galarian",
+        "name":  "Slowbro",
+        "generation":  8,
+        "types":  [
+                      "Poison",
+                      "Psychic"
+                  ],
+        "baseAttack":  198,
+        "baseDefense":  224,
+        "baseStamina":  216
+    },
+    {
+        "id":  20074,
+        "baseSpeciesId":  83,
+        "form":  "Galarian",
+        "name":  "Farfetchd",
+        "generation":  8,
+        "types":  [
+                      "Fighting"
+                  ],
+        "baseAttack":  161,
+        "baseDefense":  149,
+        "baseStamina":  144
+    },
+    {
+        "id":  20075,
+        "baseSpeciesId":  89,
+        "form":  "Galarian",
+        "name":  "Muk",
+        "generation":  8,
+        "types":  [
+                      "Poison",
+                      "Dark"
+                  ],
+        "baseAttack":  190,
+        "baseDefense":  185,
+        "baseStamina":  233
+    },
+    {
+        "id":  20076,
+        "baseSpeciesId":  110,
+        "form":  "Galarian",
+        "name":  "Weezing",
+        "generation":  8,
+        "types":  [
+                      "Poison",
+                      "Fairy"
+                  ],
+        "baseAttack":  215,
+        "baseDefense":  217,
+        "baseStamina":  163
+    },
+    {
+        "id":  20077,
+        "baseSpeciesId":  122,
+        "form":  "Galarian",
+        "name":  "Mr. Mime",
+        "generation":  8,
+        "types":  [
+                      "Ice",
+                      "Psychic"
+                  ],
+        "baseAttack":  222,
+        "baseDefense":  182,
+        "baseStamina":  137
+    },
+    {
+        "id":  20078,
+        "baseSpeciesId":  131,
+        "form":  "Galarian",
+        "name":  "Lapras",
+        "generation":  8,
+        "types":  [
+                      "Water",
+                      "Ice"
+                  ],
+        "baseAttack":  159,
+        "baseDefense":  177,
+        "baseStamina":  277
+    },
+    {
+        "id":  20079,
+        "baseSpeciesId":  144,
+        "form":  "Galarian",
+        "name":  "Articuno",
+        "generation":  8,
+        "types":  [
+                      "Psychic",
+                      "Flying"
+                  ],
+        "baseAttack":  237,
+        "baseDefense":  194,
+        "baseStamina":  207
+    },
+    {
+        "id":  20080,
+        "baseSpeciesId":  145,
+        "form":  "Galarian",
+        "name":  "Zapdos",
+        "generation":  8,
+        "types":  [
+                      "Fighting",
+                      "Flying"
+                  ],
+        "baseAttack":  253,
+        "baseDefense":  190,
+        "baseStamina":  207
+    },
+    {
+        "id":  20081,
+        "baseSpeciesId":  146,
+        "form":  "Galarian",
+        "name":  "Moltres",
+        "generation":  8,
+        "types":  [
+                      "Dark",
+                      "Flying"
+                  ],
+        "baseAttack":  251,
+        "baseDefense":  190,
+        "baseStamina":  207
+    },
+    {
+        "id":  20082,
+        "baseSpeciesId":  199,
+        "form":  "Galarian",
+        "name":  "Slowking",
+        "generation":  8,
+        "types":  [
+                      "Poison",
+                      "Psychic"
+                  ],
+        "baseAttack":  229,
+        "baseDefense":  206,
+        "baseStamina":  216
+    },
+    {
+        "id":  20083,
+        "baseSpeciesId":  222,
+        "form":  "Galarian",
+        "name":  "Corsola",
+        "generation":  8,
+        "types":  [
+                      "Ghost"
+                  ],
+        "baseAttack":  130,
+        "baseDefense":  188,
+        "baseStamina":  155
+    },
+    {
+        "id":  20084,
+        "baseSpeciesId":  263,
+        "form":  "Galarian",
+        "name":  "Zigzagoon",
+        "generation":  8,
+        "types":  [
+                      "Dark",
+                      "Normal"
+                  ],
+        "baseAttack":  84,
+        "baseDefense":  77,
+        "baseStamina":  116
+    },
+    {
+        "id":  20085,
+        "baseSpeciesId":  264,
+        "form":  "Galarian",
+        "name":  "Linoone",
+        "generation":  8,
+        "types":  [
+                      "Dark",
+                      "Normal"
+                  ],
+        "baseAttack":  142,
+        "baseDefense":  128,
+        "baseStamina":  186
+    },
+    {
+        "id":  20086,
+        "baseSpeciesId":  554,
+        "form":  "Galarian",
+        "name":  "Darumaka",
+        "generation":  8,
+        "types":  [
+                      "Ice"
+                  ],
+        "baseAttack":  153,
+        "baseDefense":  86,
+        "baseStamina":  172
+    },
+    {
+        "id":  20087,
+        "baseSpeciesId":  555,
+        "form":  "Galarian",
+        "name":  "Darmanitan",
+        "generation":  8,
+        "types":  [
+                      "Ice"
+                  ],
+        "baseAttack":  263,
+        "baseDefense":  163,
+        "baseStamina":  233
+    },
+    {
+        "id":  20088,
+        "baseSpeciesId":  562,
+        "form":  "Galarian",
+        "name":  "Yamask",
+        "generation":  8,
+        "types":  [
+                      "Ground",
+                      "Ghost"
+                  ],
+        "baseAttack":  87,
+        "baseDefense":  154,
+        "baseStamina":  116
+    },
+    {
+        "id":  20089,
+        "baseSpeciesId":  618,
+        "form":  "Galarian",
+        "name":  "Stunfisk",
+        "generation":  8,
+        "types":  [
+                      "Ground",
+                      "Steel"
+                  ],
+        "baseAttack":  144,
+        "baseDefense":  181,
+        "baseStamina":  240
+    },
+    {
+        "id":  20090,
+        "baseSpeciesId":  58,
+        "form":  "Hisuian",
+        "name":  "Growlithe",
+        "generation":  8,
+        "types":  [
+                      "Fire",
+                      "Rock"
+                  ],
+        "baseAttack":  147,
+        "baseDefense":  94,
+        "baseStamina":  155
+    },
+    {
+        "id":  20091,
+        "baseSpeciesId":  59,
+        "form":  "Hisuian",
+        "name":  "Arcanine",
+        "generation":  8,
+        "types":  [
+                      "Fire",
+                      "Rock"
+                  ],
+        "baseAttack":  243,
+        "baseDefense":  179,
+        "baseStamina":  216
+    },
+    {
+        "id":  20092,
+        "baseSpeciesId":  100,
+        "form":  "Hisuian",
+        "name":  "Voltorb",
+        "generation":  8,
+        "types":  [
+                      "Electric",
+                      "Grass"
+                  ],
+        "baseAttack":  109,
+        "baseDefense":  114,
+        "baseStamina":  120
+    },
+    {
+        "id":  20093,
+        "baseSpeciesId":  101,
+        "form":  "Hisuian",
+        "name":  "Electrode",
+        "generation":  8,
+        "types":  [
+                      "Electric",
+                      "Grass"
+                  ],
+        "baseAttack":  206,
+        "baseDefense":  179,
+        "baseStamina":  155
+    },
+    {
+        "id":  20094,
+        "baseSpeciesId":  157,
+        "form":  "Hisuian",
+        "name":  "Typhlosion",
+        "generation":  8,
+        "types":  [
+                      "Fire",
+                      "Ghost"
+                  ],
+        "baseAttack":  240,
+        "baseDefense":  186,
+        "baseStamina":  186
+    },
+    {
+        "id":  20095,
+        "baseSpeciesId":  211,
+        "form":  "Hisuian",
+        "name":  "Qwilfish",
+        "generation":  8,
+        "types":  [
+                      "Dark",
+                      "Poison"
+                  ],
+        "baseAttack":  171,
+        "baseDefense":  148,
+        "baseStamina":  163
+    },
+    {
+        "id":  20096,
+        "baseSpeciesId":  215,
+        "form":  "Hisuian",
+        "name":  "Sneasel",
+        "generation":  8,
+        "types":  [
+                      "Fighting",
+                      "Poison"
+                  ],
+        "baseAttack":  199,
+        "baseDefense":  135,
+        "baseStamina":  146
+    },
+    {
+        "id":  20097,
+        "baseSpeciesId":  503,
+        "form":  "Hisuian",
+        "name":  "Samurott",
+        "generation":  8,
+        "types":  [
+                      "Water",
+                      "Dark"
+                  ],
+        "baseAttack":  232,
+        "baseDefense":  178,
+        "baseStamina":  216
+    },
+    {
+        "id":  20098,
+        "baseSpeciesId":  549,
+        "form":  "Hisuian",
+        "name":  "Lilligant",
+        "generation":  8,
+        "types":  [
+                      "Grass",
+                      "Fighting"
+                  ],
+        "baseAttack":  214,
+        "baseDefense":  178,
+        "baseStamina":  172
+    },
+    {
+        "id":  20099,
+        "baseSpeciesId":  570,
+        "form":  "Hisuian",
+        "name":  "Zorua",
+        "generation":  8,
+        "types":  [
+                      "Normal",
+                      "Ghost"
+                  ],
+        "baseAttack":  117,
+        "baseDefense":  82,
+        "baseStamina":  111
+    },
+    {
+        "id":  20100,
+        "baseSpeciesId":  571,
+        "form":  "Hisuian",
+        "name":  "Zoroark",
+        "generation":  8,
+        "types":  [
+                      "Normal",
+                      "Ghost"
+                  ],
+        "baseAttack":  240,
+        "baseDefense":  130,
+        "baseStamina":  146
+    },
+    {
+        "id":  20101,
+        "baseSpeciesId":  628,
+        "form":  "Hisuian",
+        "name":  "Braviary",
+        "generation":  8,
+        "types":  [
+                      "Psychic",
+                      "Flying"
+                  ],
+        "baseAttack":  232,
+        "baseDefense":  159,
+        "baseStamina":  225
+    },
+    {
+        "id":  20102,
+        "baseSpeciesId":  705,
+        "form":  "Hisuian",
+        "name":  "Sliggoo",
+        "generation":  8,
+        "types":  [
+                      "Steel",
+                      "Dragon"
+                  ],
+        "baseAttack":  133,
+        "baseDefense":  186,
+        "baseStamina":  151
+    },
+    {
+        "id":  20103,
+        "baseSpeciesId":  706,
+        "form":  "Hisuian",
+        "name":  "Goodra",
+        "generation":  8,
+        "types":  [
+                      "Steel",
+                      "Dragon"
+                  ],
+        "baseAttack":  220,
+        "baseDefense":  242,
+        "baseStamina":  190
+    },
+    {
+        "id":  20104,
+        "baseSpeciesId":  713,
+        "form":  "Hisuian",
+        "name":  "Avalugg",
+        "generation":  8,
+        "types":  [
+                      "Ice",
+                      "Rock"
+                  ],
+        "baseAttack":  227,
+        "baseDefense":  269,
+        "baseStamina":  216
+    },
+    {
+        "id":  20105,
+        "baseSpeciesId":  724,
+        "form":  "Hisuian",
+        "name":  "Decidueye",
+        "generation":  8,
+        "types":  [
+                      "Grass",
+                      "Fighting"
+                  ],
+        "baseAttack":  210,
+        "baseDefense":  179,
+        "baseStamina":  186
+    },
+    {
+        "id":  20106,
+        "baseSpeciesId":  128,
+        "form":  "Paldean",
+        "name":  "Tauros",
+        "generation":  9,
+        "types":  [
+                      "Fighting"
+                  ],
+        "baseAttack":  213,
+        "baseDefense":  212,
+        "baseStamina":  181
+    },
+    {
+        "id":  20107,
+        "baseSpeciesId":  194,
+        "form":  "Paldean",
+        "name":  "Wooper",
+        "generation":  9,
+        "types":  [
+                      "Poison",
+                      "Ground"
+                  ],
+        "baseAttack":  107,
+        "baseDefense":  83,
+        "baseStamina":  146
+    },
+    {
+        "id":  20108,
+        "baseSpeciesId":  351,
+        "form":  "Sunny",
+        "name":  "Castform",
+        "generation":  3,
+        "types":  [
+                      "Fire"
+                  ],
+        "baseAttack":  139,
+        "baseDefense":  139,
+        "baseStamina":  172
+    },
+    {
+        "id":  20109,
+        "baseSpeciesId":  351,
+        "form":  "Rainy",
+        "name":  "Castform",
+        "generation":  3,
+        "types":  [
+                      "Water"
+                  ],
+        "baseAttack":  139,
+        "baseDefense":  139,
+        "baseStamina":  172
+    },
+    {
+        "id":  20110,
+        "baseSpeciesId":  351,
+        "form":  "Snowy",
+        "name":  "Castform",
+        "generation":  3,
+        "types":  [
+                      "Ice"
+                  ],
+        "baseAttack":  139,
+        "baseDefense":  139,
+        "baseStamina":  172
+    },
+    {
+        "id":  20111,
+        "baseSpeciesId":  386,
+        "form":  "Normal",
+        "name":  "Deoxys",
+        "generation":  3,
+        "types":  [
+                      "Psychic"
+                  ],
+        "baseAttack":  345,
+        "baseDefense":  115,
+        "baseStamina":  137
+    },
+    {
+        "id":  20112,
+        "baseSpeciesId":  386,
+        "form":  "Attack",
+        "name":  "Deoxys",
+        "generation":  3,
+        "types":  [
+                      "Psychic"
+                  ],
+        "baseAttack":  414,
+        "baseDefense":  46,
+        "baseStamina":  137
+    },
+    {
+        "id":  20113,
+        "baseSpeciesId":  386,
+        "form":  "Defense",
+        "name":  "Deoxys",
+        "generation":  3,
+        "types":  [
+                      "Psychic"
+                  ],
+        "baseAttack":  144,
+        "baseDefense":  330,
+        "baseStamina":  137
+    },
+    {
+        "id":  20114,
+        "baseSpeciesId":  386,
+        "form":  "Speed",
+        "name":  "Deoxys",
+        "generation":  3,
+        "types":  [
+                      "Psychic"
+                  ],
+        "baseAttack":  230,
+        "baseDefense":  218,
+        "baseStamina":  137
+    },
+    {
+        "id":  20115,
+        "baseSpeciesId":  412,
+        "form":  "Sandy",
+        "name":  "Wormadam",
+        "generation":  4,
+        "types":  [
+                      "Bug",
+                      "Ground"
+                  ],
+        "baseAttack":  141,
+        "baseDefense":  183,
+        "baseStamina":  155
+    },
+    {
+        "id":  20116,
+        "baseSpeciesId":  412,
+        "form":  "Trash",
+        "name":  "Wormadam",
+        "generation":  4,
+        "types":  [
+                      "Bug",
+                      "Steel"
+                  ],
+        "baseAttack":  141,
+        "baseDefense":  183,
+        "baseStamina":  155
+    },
+    {
+        "id":  20117,
+        "baseSpeciesId":  421,
+        "form":  "Sunshine",
+        "name":  "Cherrim",
+        "generation":  4,
+        "types":  [
+                      "Grass"
+                  ],
+        "baseAttack":  167,
+        "baseDefense":  179,
+        "baseStamina":  172
+    },
+    {
+        "id":  20118,
+        "baseSpeciesId":  479,
+        "form":  "Heat",
+        "name":  "Rotom",
+        "generation":  4,
+        "types":  [
+                      "Electric",
+                      "Fire"
+                  ],
+        "baseAttack":  203,
+        "baseDefense":  193,
+        "baseStamina":  137
+    },
+    {
+        "id":  20119,
+        "baseSpeciesId":  479,
+        "form":  "Wash",
+        "name":  "Rotom",
+        "generation":  4,
+        "types":  [
+                      "Electric",
+                      "Water"
+                  ],
+        "baseAttack":  203,
+        "baseDefense":  193,
+        "baseStamina":  137
+    },
+    {
+        "id":  20120,
+        "baseSpeciesId":  479,
+        "form":  "Frost",
+        "name":  "Rotom",
+        "generation":  4,
+        "types":  [
+                      "Electric",
+                      "Ice"
+                  ],
+        "baseAttack":  203,
+        "baseDefense":  193,
+        "baseStamina":  137
+    },
+    {
+        "id":  20121,
+        "baseSpeciesId":  479,
+        "form":  "Fan",
+        "name":  "Rotom",
+        "generation":  4,
+        "types":  [
+                      "Electric",
+                      "Flying"
+                  ],
+        "baseAttack":  203,
+        "baseDefense":  193,
+        "baseStamina":  137
+    },
+    {
+        "id":  20122,
+        "baseSpeciesId":  479,
+        "form":  "Mow",
+        "name":  "Rotom",
+        "generation":  4,
+        "types":  [
+                      "Electric",
+                      "Grass"
+                  ],
+        "baseAttack":  203,
+        "baseDefense":  193,
+        "baseStamina":  137
+    },
+    {
+        "id":  20123,
+        "baseSpeciesId":  487,
+        "form":  "Origin",
+        "name":  "Giratina",
+        "generation":  4,
+        "types":  [
+                      "Ghost",
+                      "Dragon"
+                  ],
+        "baseAttack":  225,
+        "baseDefense":  187,
+        "baseStamina":  284
+    },
+    {
+        "id":  20124,
+        "baseSpeciesId":  492,
+        "form":  "Sky",
+        "name":  "Shaymin",
+        "generation":  4,
+        "types":  [
+                      "Grass",
+                      "Flying"
+                  ],
+        "baseAttack":  261,
+        "baseDefense":  168,
+        "baseStamina":  225
+    },
+    {
+        "id":  20125,
+        "baseSpeciesId":  550,
+        "form":  "Blue",
+        "name":  "Basculin",
+        "generation":  5,
+        "types":  [
+                      "Water"
+                  ],
+        "baseAttack":  189,
+        "baseDefense":  129,
+        "baseStamina":  172
+    },
+    {
+        "id":  20126,
+        "baseSpeciesId":  555,
+        "form":  "Zen",
+        "name":  "Darmanitan",
+        "generation":  5,
+        "types":  [
+                      "Fire",
+                      "Psychic"
+                  ],
+        "baseAttack":  263,
+        "baseDefense":  163,
+        "baseStamina":  233
+    },
+    {
+        "id":  20127,
+        "baseSpeciesId":  641,
+        "form":  "Therian",
+        "name":  "Tornadus",
+        "generation":  5,
+        "types":  [
+                      "Flying"
+                  ],
+        "baseAttack":  238,
+        "baseDefense":  210,
+        "baseStamina":  188
+    },
+    {
+        "id":  20128,
+        "baseSpeciesId":  642,
+        "form":  "Therian",
+        "name":  "Thundurus",
+        "generation":  5,
+        "types":  [
+                      "Electric",
+                      "Flying"
+                  ],
+        "baseAttack":  266,
+        "baseDefense":  184,
+        "baseStamina":  188
+    },
+    {
+        "id":  20129,
+        "baseSpeciesId":  645,
+        "form":  "Therian",
+        "name":  "Landorus",
+        "generation":  5,
+        "types":  [
+                      "Ground",
+                      "Flying"
+                  ],
+        "baseAttack":  262,
+        "baseDefense":  190,
+        "baseStamina":  205
+    },
+    {
+        "id":  20130,
+        "baseSpeciesId":  646,
+        "form":  "White",
+        "name":  "Kyurem",
+        "generation":  5,
+        "types":  [
+                      "Dragon",
+                      "Ice"
+                  ],
+        "baseAttack":  310,
+        "baseDefense":  183,
+        "baseStamina":  245
+    },
+    {
+        "id":  20131,
+        "baseSpeciesId":  646,
+        "form":  "Black",
+        "name":  "Kyurem",
+        "generation":  5,
+        "types":  [
+                      "Dragon",
+                      "Ice"
+                  ],
+        "baseAttack":  310,
+        "baseDefense":  183,
+        "baseStamina":  245
+    },
+    {
+        "id":  20132,
+        "baseSpeciesId":  647,
+        "form":  "Resolute",
+        "name":  "Keldeo",
+        "generation":  5,
+        "types":  [
+                      "Water",
+                      "Fighting"
+                  ],
+        "baseAttack":  235,
+        "baseDefense":  189,
+        "baseStamina":  209
+    },
+    {
+        "id":  20133,
+        "baseSpeciesId":  648,
+        "form":  "Step",
+        "name":  "Meloetta",
+        "generation":  5,
+        "types":  [
+                      "Normal",
+                      "Fighting"
+                  ],
+        "baseAttack":  269,
+        "baseDefense":  190,
+        "baseStamina":  225
+    },
+    {
+        "id":  20134,
+        "baseSpeciesId":  800,
+        "form":  "Dusk Mane",
+        "name":  "Necrozma",
+        "generation":  7,
+        "types":  [
+                      "Psychic",
+                      "Steel"
+                  ],
+        "baseAttack":  277,
+        "baseDefense":  222,
+        "baseStamina":  219
+    },
+    {
+        "id":  20135,
+        "baseSpeciesId":  800,
+        "form":  "Dawn Wings",
+        "name":  "Necrozma",
+        "generation":  7,
+        "types":  [
+                      "Psychic",
+                      "Ghost"
+                  ],
+        "baseAttack":  277,
+        "baseDefense":  222,
+        "baseStamina":  219
+    },
+    {
+        "id":  20136,
+        "baseSpeciesId":  800,
+        "form":  "Ultra",
+        "name":  "Necrozma",
+        "generation":  7,
+        "types":  [
+                      "Psychic",
+                      "Dragon"
+                  ],
+        "baseAttack":  337,
+        "baseDefense":  196,
+        "baseStamina":  255
+    },
+    {
+        "id":  20137,
+        "baseSpeciesId":  745,
+        "form":  "Midnight",
+        "name":  "Lycanroc",
+        "generation":  7,
+        "types":  [
+                      "Rock"
+                  ],
+        "baseAttack":  231,
+        "baseDefense":  175,
+        "baseStamina":  181
+    },
+    {
+        "id":  20138,
+        "baseSpeciesId":  745,
+        "form":  "Dusk",
+        "name":  "Lycanroc",
+        "generation":  7,
+        "types":  [
+                      "Rock"
+                  ],
+        "baseAttack":  232,
+        "baseDefense":  177,
+        "baseStamina":  181
+    },
+    {
+        "id":  20139,
+        "baseSpeciesId":  849,
+        "form":  "Low Key",
+        "name":  "Toxtricity",
+        "generation":  8,
+        "types":  [
+                      "Electric",
+                      "Poison"
+                  ],
+        "baseAttack":  238,
+        "baseDefense":  158,
+        "baseStamina":  181
+    },
+    {
+        "id":  20140,
+        "baseSpeciesId":  876,
+        "form":  "Male",
+        "name":  "Indeedee",
+        "generation":  8,
+        "types":  [
+                      "Psychic",
+                      "Normal"
+                  ],
+        "baseAttack":  185,
+        "baseDefense":  166,
+        "baseStamina":  155
+    },
+    {
+        "id":  20141,
+        "baseSpeciesId":  888,
+        "form":  "Crowned Sword",
+        "name":  "Zacian",
+        "generation":  8,
+        "types":  [
+                      "Fairy",
+                      "Steel"
+                  ],
+        "baseAttack":  291,
+        "baseDefense":  228,
+        "baseStamina":  192
+    },
+    {
+        "id":  20142,
+        "baseSpeciesId":  889,
+        "form":  "Crowned Shield",
+        "name":  "Zamazenta",
+        "generation":  8,
+        "types":  [
+                      "Fighting",
+                      "Steel"
+                  ],
+        "baseAttack":  232,
+        "baseDefense":  291,
+        "baseStamina":  192
+    },
+    {
+        "id":  20143,
+        "baseSpeciesId":  892,
+        "form":  "Single Strike",
+        "name":  "Urshifu",
+        "generation":  8,
+        "types":  [
+                      "Fighting",
+                      "Dark"
+                  ],
+        "baseAttack":  261,
+        "baseDefense":  188,
+        "baseStamina":  225
+    },
+    {
+        "id":  20144,
+        "baseSpeciesId":  892,
+        "form":  "Rapid Strike",
+        "name":  "Urshifu",
+        "generation":  8,
+        "types":  [
+                      "Fighting",
+                      "Water"
+                  ],
+        "baseAttack":  261,
+        "baseDefense":  188,
+        "baseStamina":  225
+    },
+    {
+        "id":  20145,
+        "baseSpeciesId":  898,
+        "form":  "Ice Rider",
+        "name":  "Calyrex",
+        "generation":  8,
+        "types":  [
+                      "Psychic",
+                      "Ice"
+                  ],
+        "baseAttack":  280,
+        "baseDefense":  205,
+        "baseStamina":  225
+    },
+    {
+        "id":  20146,
+        "baseSpeciesId":  898,
+        "form":  "Shadow Rider",
+        "name":  "Calyrex",
+        "generation":  8,
+        "types":  [
+                      "Psychic",
+                      "Ghost"
+                  ],
+        "baseAttack":  323,
+        "baseDefense":  165,
+        "baseStamina":  225
+    },
+    {
+        "id":  20147,
+        "baseSpeciesId":  984,
+        "form":  "Paradox",
+        "name":  "Great Tusk",
+        "generation":  9,
+        "types":  [
+                      "Ground",
+                      "Fighting"
+                  ],
+        "baseAttack":  249,
+        "baseDefense":  209,
+        "baseStamina":  251
+    },
+    {
+        "id":  20148,
+        "baseSpeciesId":  985,
+        "form":  "Paradox",
+        "name":  "Scream Tail",
+        "generation":  9,
+        "types":  [
+                      "Fairy",
+                      "Psychic"
+                  ],
+        "baseAttack":  139,
+        "baseDefense":  234,
+        "baseStamina":  251
+    },
+    {
+        "id":  20149,
+        "baseSpeciesId":  986,
+        "form":  "Paradox",
+        "name":  "Brute Bonnet",
+        "generation":  9,
+        "types":  [
+                      "Grass",
+                      "Dark"
+                  ],
+        "baseAttack":  232,
+        "baseDefense":  190,
+        "baseStamina":  244
+    },
+    {
+        "id":  20150,
+        "baseSpeciesId":  987,
+        "form":  "Paradox",
+        "name":  "Flutter Mane",
+        "generation":  9,
+        "types":  [
+                      "Ghost",
+                      "Fairy"
+                  ],
+        "baseAttack":  280,
+        "baseDefense":  235,
+        "baseStamina":  146
+    },
+    {
+        "id":  20151,
+        "baseSpeciesId":  988,
+        "form":  "Paradox",
+        "name":  "Slither Wing",
+        "generation":  9,
+        "types":  [
+                      "Bug",
+                      "Fighting"
+                  ],
+        "baseAttack":  261,
+        "baseDefense":  193,
+        "baseStamina":  198
+    },
+    {
+        "id":  20152,
+        "baseSpeciesId":  989,
+        "form":  "Paradox",
+        "name":  "Sandy Shocks",
+        "generation":  9,
+        "types":  [
+                      "Electric",
+                      "Ground"
+                  ],
+        "baseAttack":  244,
+        "baseDefense":  195,
+        "baseStamina":  198
+    },
+    {
+        "id":  20153,
+        "baseSpeciesId":  990,
+        "form":  "Paradox",
+        "name":  "Iron Treads",
+        "generation":  9,
+        "types":  [
+                      "Ground",
+                      "Steel"
+                  ],
+        "baseAttack":  227,
+        "baseDefense":  216,
+        "baseStamina":  207
+    },
+    {
+        "id":  20154,
+        "baseSpeciesId":  991,
+        "form":  "Paradox",
+        "name":  "Iron Bundle",
+        "generation":  9,
+        "types":  [
+                      "Ice",
+                      "Water"
+                  ],
+        "baseAttack":  266,
+        "baseDefense":  211,
+        "baseStamina":  148
+    },
+    {
+        "id":  20155,
+        "baseSpeciesId":  992,
+        "form":  "Paradox",
+        "name":  "Iron Hands",
+        "generation":  9,
+        "types":  [
+                      "Fighting",
+                      "Electric"
+                  ],
+        "baseAttack":  245,
+        "baseDefense":  177,
+        "baseStamina":  319
+    },
+    {
+        "id":  20156,
+        "baseSpeciesId":  993,
+        "form":  "Paradox",
+        "name":  "Iron Jugulis",
+        "generation":  9,
+        "types":  [
+                      "Dark",
+                      "Flying"
+                  ],
+        "baseAttack":  249,
+        "baseDefense":  179,
+        "baseStamina":  214
+    },
+    {
+        "id":  20157,
+        "baseSpeciesId":  994,
+        "form":  "Paradox",
+        "name":  "Iron Moth",
+        "generation":  9,
+        "types":  [
+                      "Fire",
+                      "Poison"
+                  ],
+        "baseAttack":  281,
+        "baseDefense":  196,
+        "baseStamina":  190
+    },
+    {
+        "id":  20158,
+        "baseSpeciesId":  995,
+        "form":  "Paradox",
+        "name":  "Iron Thorns",
+        "generation":  9,
+        "types":  [
+                      "Rock",
+                      "Electric"
+                  ],
+        "baseAttack":  250,
+        "baseDefense":  200,
+        "baseStamina":  225
+    },
+    {
+        "id":  20159,
+        "baseSpeciesId":  1005,
+        "form":  "Paradox",
+        "name":  "Roaring Moon",
+        "generation":  9,
+        "types":  [
+                      "Dragon",
+                      "Dark"
+                  ],
+        "baseAttack":  280,
+        "baseDefense":  196,
+        "baseStamina":  233
+    },
+    {
+        "id":  20160,
+        "baseSpeciesId":  1006,
+        "form":  "Paradox",
+        "name":  "Iron Valiant",
+        "generation":  9,
+        "types":  [
+                      "Fairy",
+                      "Fighting"
+                  ],
+        "baseAttack":  279,
+        "baseDefense":  171,
+        "baseStamina":  179
+    },
+    {
+        "id":  20161,
+        "baseSpeciesId":  1009,
+        "form":  "Paradox",
+        "name":  "Walking Wake",
+        "generation":  9,
+        "types":  [
+                      "Water",
+                      "Dragon"
+                  ],
+        "baseAttack":  233,
+        "baseDefense":  171,
+        "baseStamina":  203
+    },
+    {
+        "id":  20162,
+        "baseSpeciesId":  1010,
+        "form":  "Paradox",
+        "name":  "Iron Leaves",
+        "generation":  9,
+        "types":  [
+                      "Grass",
+                      "Psychic"
+                  ],
+        "baseAttack":  236,
+        "baseDefense":  194,
+        "baseStamina":  189
+    },
+    {
+        "id":  20163,
+        "baseSpeciesId":  1020,
+        "form":  "Paradox",
+        "name":  "Gouging Fire",
+        "generation":  9,
+        "types":  [
+                      "Fire",
+                      "Dragon"
+                  ],
+        "baseAttack":  205,
+        "baseDefense":  208,
+        "baseStamina":  213
+    },
+    {
+        "id":  20164,
+        "baseSpeciesId":  1021,
+        "form":  "Paradox",
+        "name":  "Raging Bolt",
+        "generation":  9,
+        "types":  [
+                      "Electric",
+                      "Dragon"
+                  ],
+        "baseAttack":  235,
+        "baseDefense":  165,
+        "baseStamina":  245
+    },
+    {
+        "id":  20165,
+        "baseSpeciesId":  1022,
+        "form":  "Paradox",
+        "name":  "Iron Boulder",
+        "generation":  9,
+        "types":  [
+                      "Rock",
+                      "Psychic"
+                  ],
+        "baseAttack":  227,
+        "baseDefense":  195,
+        "baseStamina":  189
+    },
+    {
+        "id":  20166,
+        "baseSpeciesId":  1023,
+        "form":  "Paradox",
+        "name":  "Iron Crown",
+        "generation":  9,
+        "types":  [
+                      "Steel",
+                      "Psychic"
+                  ],
+        "baseAttack":  221,
+        "baseDefense":  200,
+        "baseStamina":  189
+    }
+]

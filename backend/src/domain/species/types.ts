@@ -1,6 +1,8 @@
 export interface Species {
   id: number;
   name: string;
+  form?: string;
+  baseSpeciesId?: number;
   generation: number;
   types: string[];
   baseAttack: number;

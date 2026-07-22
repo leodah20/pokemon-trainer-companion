@@ -1,13 +1,17 @@
 import { PokemonSpecies } from '../../domain/pokemon-species';
 import nationalPokedexData from './national-pokedex.json';
+import formsData from './forms-data.json';
 
 /**
- * Bundled offline snapshot (965 species, generations 1-9), merged from PoGo API's
+ * Bundled offline snapshot (1025 species + 166 forms, generations 1-9), merged from PoGo API's
  * pokemon_stats.json and pokemon_types.json. This is the "local cache" described in
  * docs/use-cases.md (UC-06) — a live scheduled sync job replaces this static file later without
  * changing the interface below.
  */
-const ALL_SPECIES = nationalPokedexData as readonly PokemonSpecies[];
+const ALL_SPECIES: readonly PokemonSpecies[] = [
+  ...(nationalPokedexData as PokemonSpecies[]),
+  ...(formsData as PokemonSpecies[]),
+];
 
 export function getAllSpecies(): readonly PokemonSpecies[] {
   return ALL_SPECIES;
