@@ -1,0 +1,140 @@
+{
+  "$schema": "architecture-map/v1",
+  "generatedFor": "future coding agents onboarding onto this repo — read this before exploring the codebase blind",
+  "lastUpdated": "2026-07-21",
+  "project": {
+    "name": "Pokemon Trainer Companion (PTC)",
+    "tagline": "Real-time AI-powered overlay for Pokemon GO",
+    "flagshipFeature": "A native Android floating window that reads the screen live (MediaProjection + on-device OCR) and shows species/CP/IV/PvP tips over the game, with an optional Gemini-backed AI layer. Everything else (Pokedex, calculators, rankings) is the foundation this sits on.",
+    "status": "v1.0 Beta, closed testing with friends",
+    "license": "MIT (source code only — Pokemon IP not covered)",
+    "repoRoots": {
+      "buildPath": "C:\\ptc (short path, required on Windows — MAX_PATH 260 chars breaks CMake/ninja otherwise)",
+      "githubSyncedClone": "C:\\Users\\Leonardo Build\\Documents\\GitHub\\pokemon-trainer-companion (kept in sync via commit+push from C:\\ptc, then git pull here)"
+    }
+  },
+  "stack": {
+    "mobile": {
+      "framework": "React Native 0.86.0, bare workflow (not Expo — needed for custom native overlay module + ML Kit OCR)",
+      "language": "TypeScript",
+      "navigation": "@react-navigation/native-stack + bottom-tabs",
+      "state": "Local only (useState/useMemo/useRef) — no Redux/Zustand, static data loaded from bundled JSON",
+      "i18n": "Custom lightweight system in src/i18n/ — typed dictionary + React Context, EN/PT-BR/ES",
+      "storage": "@react-native-async-storage/async-storage (language choice, last IV calc search)",
+      "networking": "fetch() only, used exclusively by src/data/companion/companionApiClient.ts — the ONLY network calls in the whole mobile app; everything else is offline-first",
+      "ocr": "@react-native-ml-kit/text-recognition (JS bridge) for gallery-picker flow; native ScreenCaptureService.kt calls the same ML Kit Android SDK directly in Kotlin for the live overlay loop",
+      "version": "0.0.1 (package.json) / native app versionName 1.0.0-beta.1, versionCode 2"
+    },
+    "backend": {
+      "framework": "NestJS 11",
+      "language": "TypeScript",
+      "orm": "Prisma 7 (schema-first; migrations exist but NOT required — backend works fully without DATABASE_URL, PrismaService logs a warning and JSON-backed features still work)",
+      "database": "PostgreSQL 16 (optional — only needed for future Trainer/SavedTeam persistence, not yet wired to any endpoint)",
+      "hosting": "Render.com free tier — https://pokemon-trainer-companion.onrender.com/api (sleeps after 15 min idle, ~30s cold start)",
+      "ai": "Google Gemini via direct REST calls (no SDK dependency), default model gemini-flash-lite-latest (free tier, 1500 req/day, no credit card). Configured via GEMINI_API_KEY env var; missing key degrades /api/companion/* to a clean 503, never a crash."
+    },
+    "native": {
+      "language": "Kotlin (the only non-TypeScript code in the repo)",
+      "location": "mobile/android/app/src/main/java/com/pokemontrainercompanionmobile/",
+      "purpose": "Floating overlay window + live screen capture — the flagship feature's native half"
+    }
+  },
+  "architectureLayers": {
+    "pattern": "Clean Architecture on both mobile and backend",
+    "layers": [
+      { "name": "domain", "description": "Pure business logic, zero framework dependency (no RN, no NestJS decorators). Fully unit-testable in isolation.", "mobilePath": "mobile/src/domain/", "backendPath": "backend/src/domain/" },
+      { "name": "use-cases", "description": "Orchestrates domain logic for a specific application flow.", "mobilePath": "mobile/src/use-cases/", "backendPath": "backend/src/use-cases/" },
+      { "name": "data", "description": "Repository implementations, bundled JSON data, external API clients.", "mobilePath": "mobile/src/data/", "backendPath": "backend/src/data/" },
+      { "name": "presentation", "description": "Mobile: screens/components/theme/navigation. Backend: controllers, DTOs, interceptors.", "mobilePath": "mobile/src/presentation/", "backendPath": "backend/src/presentation/" }
+    ]
+  },
+  "mobileModules": {
+    "domain": ["evolution", "iv-calculator", "lore", "ocr", "pokemon-species", "power-up", "pvp", "quiz", "raids", "type-effectiveness"],
+    "data": ["companion", "evolution", "lore", "ocr", "ocr-demo", "overlay", "pokedex", "power-up", "pvp", "raids", "storage", "type-effectiveness"],
+    "screens": [
+      "PokedexListScreen (home, list+search+filters+animated bg)",
+      "PokemonDetailScreen (stats, PvP moveset, lore, evolution link)",
+      "IvCalculatorScreen", "ComparisonScreen", "TypeChartScreen", "TopRankingsScreen",
+      "QuizScreen", "RaidCountersScreen", "EvolutionChainScreen",
+      "OverlayDemoScreen (native overlay controls + gallery-screenshot analysis demo)",
+      "ProfessorChatScreen (open-ended multi-turn AI chat)",
+      "ToolsHubScreen", "MoreScreen"
+    ],
+    "keyComponents": [
+      "CompanionWidget.tsx — floating draggable avatar, rule-based tips + Ask AI + Professor Mode entry point, rendered once at App root inside NavigationContainer",
+      "QuickActionsFab.tsx + BottomSheetMenu.tsx — Pokedex screen's floating action button + shortcut sheet",
+      "ErrorBoundary.tsx — app-wide crash fallback, wraps everything in App.tsx outside LanguageProvider"
+    ],
+    "onlyNetworkCallSite": "mobile/src/data/companion/companionApiClient.ts — every other feature is offline, reading bundled JSON in mobile/src/data/"
+  },
+  "backendModules": {
+    "controllers": [
+      { "path": "/api/species", "file": "backend/src/presentation/species/speciesController.ts", "routes": ["GET /", "GET /metadata", "GET /:id", "GET /:id/evolutions", "GET /:id/counters", "GET /:id/pvp-rankings"] },
+      { "path": "/api/type-chart", "file": "backend/src/presentation/type-chart/typeChartController.ts", "routes": ["GET /", "GET /weather/boosts", "GET /:type"] },
+      { "path": "/api/pvp", "file": "backend/src/presentation/pvp/pvpController.ts", "routes": ["GET /leagues", "GET /top/:league"] },
+      { "path": "/api/raids", "file": "backend/src/presentation/raids/raidsController.ts", "routes": ["GET /current", "GET /:id/counters"] },
+      { "path": "/api/companion", "file": "backend/src/presentation/companion/companionController.ts", "routes": ["POST /suggest (one-shot AI tip, Gemini-backed)", "POST /chat (multi-turn conversation, Gemini contents array)"] },
+      { "path": "/api", "file": "backend/src/app.controller.ts", "routes": ["GET / (health check)", "GET /system/version (data freshness / version metadata, see backend/src/data/dataVersion.ts)"] }
+    ],
+    "dataSources": {
+      "species": "backend/src/data/species/ — static, PokeAPI + PoGo API sourced, 965 species (mobile) / Gen 1+2 range (backend companion grounding)",
+      "pvp": "backend/src/data/pvp/ — PvPoke-sourced move rankings",
+      "raids": "backend/src/data/raids/ — curated mock boss rotation (11 Gen 1 bosses, tiers 1/3/5), NOT live-synced",
+      "knowledge": "backend/src/data/knowledge/ — PokeAPI-sourced genus/habitat/flavor-text facts for all 251 Gen 1+2 species, grounds the Companion AI's prompts. Ingested via backend/scripts/fetchKnowledgeBase.mjs (one-off script, re-run to extend generations)."
+    },
+    "prismaSchema": "backend/prisma/schema.prisma — Trainer, SavedTeam, Species, Type models defined but NOT wired to any endpoint yet (cross-device sync is post-beta, blocked on Google Sign-In OAuth credentials)"
+  },
+  "nativeOverlayModule": {
+    "files": {
+      "OverlayModule.kt": "React Native bridge module. Methods: hasOverlayPermission, requestOverlayPermission, showOverlay, hideOverlay, updateOverlayText, requestScreenCapturePermission, startLiveCapture, captureLiveFrame, stopLiveCapture. Emits events PTCOverlayTapped and PTCOverlayFrameText via a static ReactApplicationContext holder (reactApplicationContextHolder) so ScreenCaptureService can reach JS without an Activity reference.",
+      "OverlayPackage.kt": "Registers OverlayModule as a NativeModule.",
+      "ScreenCaptureService.kt": "Foreground service (foregroundServiceType=mediaProjection). Opens the real MediaProjection session, VirtualDisplay + ImageReader for frame capture, and runs its OWN native polling loop (startPolling, ~4s interval) that grabs a frame, runs ML Kit OCR directly in Kotlin, and emits recognized text to JS. This loop is native specifically so it keeps running while the RN Activity is backgrounded — a JS-side setInterval doing the same thing was found to stall once the app lost foreground."
+    },
+    "jsBridge": "mobile/src/data/overlay/overlayBridge.ts — thin wrapper, every function is a safe no-op on iOS or if the native module isn't linked",
+    "flowSummary": [
+      "1. requestOverlayPermission() — user grants SYSTEM_ALERT_WINDOW via system settings screen",
+      "2. requestScreenCapturePermission() — Android's real MediaProjectionManager consent dialog",
+      "3. startLiveCapture() — starts ScreenCaptureService, opens MediaProjection session, begins native polling",
+      "4. JS listens via onOverlayFrameText(text) — analyzeOcrText(text) from mobile/src/use-cases/analyzeScreenshot.ts runs species lookup + IV/PvP/bulk analysis (same pipeline as gallery-picker flow)",
+      "5. updateOverlayText(body) pushes a formatted result (species/CP/IV/PvP league/bulk/tip) into the floating window",
+      "6. On first detection of a NEW species, an async fetchCompanionSuggestion() call upgrades the rule-based tip to a Gemini-generated one (only once per species, not every poll tick, to bound cost/latency)",
+      "7. Tapping the overlay brings PTC to foreground (packageManager launch intent) and emits PTCOverlayTapped, which OverlayDemoScreen listens for and navigates to ProfessorChat"
+    ],
+    "knownGotchas": [
+      "All WindowManager/view mutations MUST run via Handler(Looper.getMainLooper()) — native module methods execute on RN's own native-modules thread, not the true Android UI thread; the view is attached from whichever thread calls showOverlay(), and any later mutation from a different thread throws CalledFromWrongThreadException",
+      "MediaProjection.registerCallback(...) must be called before createVirtualDisplay() on newer Android versions or it throws IllegalStateException",
+      "ML Kit's text-recognition Android artifact is only an `implementation` dependency of @react-native-ml-kit/text-recognition's own build.gradle, so it is NOT compile-visible to the app module by default — app/build.gradle needs its own explicit `implementation(\"com.google.mlkit:text-recognition:16.0.1\")` for ScreenCaptureService.kt to call the API directly",
+      "Testing 'share one app' MediaProjection consent from within the app that requested it is awkward — that shared app only produces frames while it's actually in the foreground, which conflicts with wanting to observe results from the requesting app's own UI. 'Share entire screen' avoids this for manual testing."
+    ]
+  },
+  "documentationMap": {
+    "docs/architecture.md": "System diagram + component status table + key architectural decisions",
+    "docs/use-cases.md": "UC-01 through UC-10, each with status and flows",
+    "docs/entity-relationship-diagram.md": "Prisma schema ERD",
+    "docs/coding-standards.md": "Clean Architecture conventions, how Kotlin native code relates to TS layering",
+    "docs/legal-compliance.md": "Why this stays ToS-safe (no login, no memory reads, no Niantic API calls) — §3 covers the Google Sign-In decision",
+    "docs/dev-setup.md": "Full local setup, adb/emulator troubleshooting table, native module rebuild instructions",
+    "docs/decisions-and-planning.md": "Living doc for Claude sessions — current state, architecture decisions, useful commands, action plan checklist",
+    "docs/deploy-backend-cloud.md": "Render free-tier deploy guide (5 min, no credit card)",
+    "docs/debug-log.md": "Real bugs hit + root causes, chronological, for pattern-matching before re-debugging the same class of issue",
+    "docs/changelog.md": "Full feature implementation history, newest first (README only keeps the 5 most recent inline)"
+  },
+  "standingConstraintsForAgents": [
+    "Keep the app lightweight — justify any new native dependency before adding one; prefer pure-JS libraries when they exist (e.g. react-native-markdown-display chosen specifically for having zero native code)",
+    "Prefer `adb install` over USB for physical-device testing rather than sharing APK files around",
+    "On 'usb conectado'/reconnect: check `adb devices` + Metro's http://localhost:8081/status BEFORE launching the app, not after hitting a red error screen — re-run `adb reverse tcp:8081 tcp:8081` and `tcp:3000 tcp:3000` every time",
+    "Always update README.md's progress table AND a relevant doc after implementing a feature — not just when reminded",
+    "Any change under mobile/android/ requires a full Gradle rebuild + reinstall; Metro's JS hot-reload does not pick up native changes",
+    "Never claim a UI fix works without live verification on-device/emulator — this codebase has a documented history of fixes that passed typecheck/tests but failed on a real device (see docs/debug-log.md)",
+    "Google Sign-In implementation is blocked pending the project owner creating OAuth client credentials in Google Cloud Console — do not attempt this on their behalf",
+    "GEMINI_API_KEY lives only in backend/.env (gitignored) — never commit it or expose it elsewhere"
+  ],
+  "postBetaRoadmap": [
+    "Feed live analysis results deeper inside the floating window itself (today: short species/CP/PvP/bulk/tip summary; full moveset/evolution detail still lives in-app)",
+    "Expand knowledge base past Gen 2 + richer community-sourced (Bulbapedia-style) facts",
+    "Cross-device sync + Google Sign-In auth (blocked on OAuth credentials)",
+    "Dark mode (COLORS is a static object imported by every screen's StyleSheet.create() — real theming needs a refactor to a reactive hook across every call site)",
+    "Migrate backend off Render free tier (Railway/Fly.io) to remove the 15-min sleep",
+    "Type effectiveness chart UI polish, Swagger docs exposure at /api/docs, test coverage across all 965 species"
+  ]
+}

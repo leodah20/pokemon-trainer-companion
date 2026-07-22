@@ -1,0 +1,851 @@
+<title>PTC — Architecture Map</title>
+<style>
+  :root {
+    --bg: #EEF5FC;
+    --surface: #FFFFFF;
+    --surface-alt: #F2F7FC;
+    --border: rgba(42,117,187,0.16);
+    --border-strong: rgba(42,117,187,0.32);
+    --text: #12161F;
+    --text-muted: #55606E;
+    --text-faint: #8592A3;
+    --accent: #2A75BB;
+    --accent-strong: #17527F;
+    --accent-bg: rgba(42,117,187,0.08);
+    --live: #00895F;
+    --live-bg: rgba(0,168,118,0.12);
+    --warn: #C7161E;
+    --warn-bg: rgba(238,28,37,0.07);
+    --mono-accent: #007B87;
+    --code-bg: rgba(42,117,187,0.06);
+    --shadow: 0 1px 2px rgba(18,22,31,0.04), 0 8px 24px rgba(18,22,31,0.06);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0A121C;
+      --surface: #101C2B;
+      --surface-alt: #142234;
+      --border: rgba(140,185,230,0.14);
+      --border-strong: rgba(140,185,230,0.28);
+      --text: #E7EEF6;
+      --text-muted: #9AACC0;
+      --text-faint: #62748B;
+      --accent: #74B6F5;
+      --accent-strong: #A8D4FF;
+      --accent-bg: rgba(116,182,245,0.10);
+      --live: #35E0A6;
+      --live-bg: rgba(53,224,166,0.14);
+      --warn: #FF7B7B;
+      --warn-bg: rgba(255,107,107,0.12);
+      --mono-accent: #4FE3EE;
+      --code-bg: rgba(116,182,245,0.08);
+      --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 12px 28px rgba(0,0,0,0.4);
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0A121C; --surface: #101C2B; --surface-alt: #142234;
+    --border: rgba(140,185,230,0.14); --border-strong: rgba(140,185,230,0.28);
+    --text: #E7EEF6; --text-muted: #9AACC0; --text-faint: #62748B;
+    --accent: #74B6F5; --accent-strong: #A8D4FF; --accent-bg: rgba(116,182,245,0.10);
+    --live: #35E0A6; --live-bg: rgba(53,224,166,0.14);
+    --warn: #FF7B7B; --warn-bg: rgba(255,107,107,0.12);
+    --mono-accent: #4FE3EE; --code-bg: rgba(116,182,245,0.08);
+    --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 12px 28px rgba(0,0,0,0.4);
+  }
+  :root[data-theme="light"] {
+    --bg: #EEF5FC; --surface: #FFFFFF; --surface-alt: #F2F7FC;
+    --border: rgba(42,117,187,0.16); --border-strong: rgba(42,117,187,0.32);
+    --text: #12161F; --text-muted: #55606E; --text-faint: #8592A3;
+    --accent: #2A75BB; --accent-strong: #17527F; --accent-bg: rgba(42,117,187,0.08);
+    --live: #00895F; --live-bg: rgba(0,168,118,0.12);
+    --warn: #C7161E; --warn-bg: rgba(238,28,37,0.07);
+    --mono-accent: #007B87; --code-bg: rgba(42,117,187,0.06);
+    --shadow: 0 1px 2px rgba(18,22,31,0.04), 0 8px 24px rgba(18,22,31,0.06);
+  }
+
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: ui-serif, "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, "Times New Roman", serif;
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  ::selection { background: var(--accent-bg); }
+
+  .mono {
+    font-family: ui-monospace, "SFMono-Regular", "JetBrains Mono", Consolas, "Liberation Mono", monospace;
+  }
+
+  a { color: var(--accent); }
+  a:focus-visible, button:focus-visible, summary:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+
+  .shell {
+    display: grid;
+    grid-template-columns: 248px minmax(0, 1fr);
+    max-width: 1240px;
+    margin: 0 auto;
+  }
+
+  /* ---------- Sidebar ---------- */
+  nav.toc {
+    position: sticky;
+    top: 0;
+    align-self: start;
+    height: 100vh;
+    overflow-y: auto;
+    padding: 28px 20px 40px 28px;
+    border-right: 1px solid var(--border);
+  }
+  .toc-brand {
+    font-family: ui-monospace, "SFMono-Regular", "JetBrains Mono", Consolas, monospace;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+    margin-bottom: 4px;
+  }
+  .toc-title {
+    font-family: ui-monospace, "SFMono-Regular", "JetBrains Mono", Consolas, monospace;
+    font-weight: 700;
+    font-size: 17px;
+    color: var(--text);
+    margin-bottom: 22px;
+    letter-spacing: -0.01em;
+  }
+  .toc-group { margin-bottom: 18px; }
+  .toc-group-label {
+    font-family: ui-monospace, "SFMono-Regular", "JetBrains Mono", Consolas, monospace;
+    font-size: 10.5px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+    margin: 0 0 6px;
+  }
+  .toc a {
+    display: block;
+    font-family: ui-monospace, "SFMono-Regular", "JetBrains Mono", Consolas, monospace;
+    font-size: 12.5px;
+    text-decoration: none;
+    color: var(--text-muted);
+    padding: 5px 8px;
+    margin: 0 -8px;
+    border-radius: 5px;
+    transition: background-color 120ms ease, color 120ms ease;
+    line-height: 1.3;
+  }
+  .toc a:hover { background: var(--surface-alt); color: var(--text); }
+  .toc a.active { background: var(--accent-bg); color: var(--accent-strong); }
+
+  .toc-toggle { display: none; }
+
+  /* ---------- Main content ---------- */
+  main {
+    padding: 44px 48px 100px;
+    min-width: 0;
+  }
+  .container { max-width: 760px; }
+  .container-wide { max-width: 100%; }
+
+  header.hero {
+    max-width: 100%;
+    margin-bottom: 40px;
+  }
+  .eyebrow {
+    font-family: ui-monospace, "SFMono-Regular", "JetBrains Mono", Consolas, monospace;
+    font-size: 11.5px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--mono-accent);
+    margin: 0 0 10px;
+  }
+  h1.title {
+    font-family: ui-monospace, "SFMono-Regular", "JetBrains Mono", Consolas, monospace;
+    font-weight: 700;
+    font-size: clamp(26px, 3.4vw, 38px);
+    letter-spacing: -0.015em;
+    margin: 0 0 10px;
+    text-wrap: balance;
+    color: var(--text);
+  }
+  p.tagline {
+    font-size: 18px;
+    font-style: italic;
+    color: var(--text-muted);
+    max-width: 62ch;
+    margin: 0 0 20px;
+    text-wrap: balance;
+  }
+  .badge-row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+  .badge {
+    font-family: ui-monospace, "SFMono-Regular", "JetBrains Mono", Consolas, monospace;
+    font-size: 11.5px;
+    letter-spacing: 0.02em;
+    padding: 5px 10px;
+    border-radius: 999px;
+    border: 1px solid var(--border-strong);
+    color: var(--text-muted);
+    background: var(--surface-alt);
+    white-space: nowrap;
+  }
+  .badge.live { color: var(--live); background: var(--live-bg); border-color: transparent; }
+  .badge.accent { color: var(--accent-strong); background: var(--accent-bg); border-color: transparent; }
+
+  section { margin-bottom: 52px; scroll-margin-top: 20px; }
+  h2.section-title {
+    font-family: ui-monospace, "SFMono-Regular", "JetBrains Mono", Consolas, monospace;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 0 0 4px;
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+  }
+  h2.section-title::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+  h3.subhead {
+    font-family: ui-monospace, "SFMono-Regular", "JetBrains Mono", Consolas, monospace;
+    font-weight: 700;
+    font-size: 15px;
+    color: var(--text);
+    margin: 26px 0 10px;
+    letter-spacing: -0.005em;
+  }
+  h3.subhead:first-child { margin-top: 0; }
+
+  p { max-width: 68ch; }
+  p.lede { font-size: 17px; color: var(--text-muted); max-width: 66ch; }
+
+  code, .inline-code {
+    font-family: ui-monospace, "SFMono-Regular", "JetBrains Mono", Consolas, monospace;
+    font-size: 0.88em;
+    background: var(--code-bg);
+    color: var(--mono-accent);
+    padding: 0.1em 0.4em;
+    border-radius: 4px;
+  }
+
+  /* mermaid diagram frame */
+  .diagram-frame {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: var(--shadow);
+    overflow-x: auto;
+  }
+
+  /* generic panel/card */
+  .panel {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 18px 20px;
+    box-shadow: var(--shadow);
+  }
+  .panel + .panel { margin-top: 12px; }
+
+  .grid-4 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+  }
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+  .layer-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-top: 3px solid var(--accent);
+    border-radius: 8px;
+    padding: 14px 16px;
+  }
+  .layer-card:nth-child(2) { border-top-color: var(--mono-accent); }
+  .layer-card:nth-child(3) { border-top-color: var(--live); }
+  .layer-card:nth-child(4) { border-top-color: var(--warn); }
+  .layer-card h4 {
+    font-family: ui-monospace, "SFMono-Regular", "JetBrains Mono", Consolas, monospace;
+    font-size: 13px;
+    margin: 0 0 6px;
+    color: var(--text);
+  }
+  .layer-card p { font-size: 13.5px; color: var(--text-muted); margin: 0; }
+  .layer-card .paths { margin-top: 10px; font-size: 11.5px; }
+  .layer-card .paths code { display: block; margin-bottom: 3px; word-break: break-all; }
+
+  ul.clean { list-style: none; margin: 0; padding: 0; }
+  ul.clean li {
+    padding: 9px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 14.5px;
+    color: var(--text);
+  }
+  ul.clean li:last-child { border-bottom: none; }
+  ul.clean li .lbl { color: var(--text-muted); font-size: 13px; }
+
+  .chip-list { display: flex; flex-wrap: wrap; gap: 7px; }
+  .chip {
+    font-family: ui-monospace, "SFMono-Regular", "JetBrains Mono", Consolas, monospace;
+    font-size: 12px;
+    padding: 5px 10px;
+    border-radius: 6px;
+    background: var(--surface-alt);
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13.5px;
+  }
+  .table-wrap {
+    overflow-x: auto;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: var(--surface);
+    box-shadow: var(--shadow);
+  }
+  th, td {
+    text-align: left;
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+  thead th {
+    font-family: ui-monospace, "SFMono-Regular", "JetBrains Mono", Consolas, monospace;
+    font-size: 10.5px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+    background: var(--surface-alt);
+    white-space: nowrap;
+  }
+  tbody tr:last-child td { border-bottom: none; }
+  td code { white-space: nowrap; }
+  .route-list { display: flex; flex-direction: column; gap: 4px; }
+  .route-list code { font-size: 12px; }
+  .method-get { color: var(--live); }
+  .method-post { color: var(--mono-accent); }
+
+  ol.flow {
+    list-style: none;
+    counter-reset: flow;
+    margin: 0;
+    padding: 0;
+  }
+  ol.flow li {
+    counter-increment: flow;
+    position: relative;
+    padding: 4px 0 20px 40px;
+    font-size: 14.5px;
+  }
+  ol.flow li::before {
+    content: counter(flow);
+    position: absolute;
+    left: 0; top: 2px;
+    width: 26px; height: 26px;
+    border-radius: 50%;
+    background: var(--accent-bg);
+    color: var(--accent-strong);
+    font-family: ui-monospace, "SFMono-Regular", "JetBrains Mono", Consolas, monospace;
+    font-size: 12px;
+    font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+  }
+  ol.flow li::after {
+    content: "";
+    position: absolute;
+    left: 13px; top: 30px; bottom: 0;
+    width: 1px;
+    background: var(--border);
+  }
+  ol.flow li:last-child::after { display: none; }
+  ol.flow li code { display: inline; }
+
+  .callout {
+    border-radius: 10px;
+    padding: 14px 16px;
+    font-size: 14px;
+    border: 1px solid var(--border);
+    margin-bottom: 10px;
+  }
+  .callout.warn { background: var(--warn-bg); border-color: transparent; }
+  .callout.warn .callout-label { color: var(--warn); }
+  .callout-label {
+    font-family: ui-monospace, "SFMono-Regular", "JetBrains Mono", Consolas, monospace;
+    font-size: 10.5px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 5px;
+  }
+
+  .constraint-list { display: flex; flex-direction: column; gap: 10px; }
+  .constraint {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 12px 14px;
+    font-size: 14px;
+  }
+  .constraint .mark {
+    font-family: ui-monospace, "SFMono-Regular", "JetBrains Mono", Consolas, monospace;
+    color: var(--accent);
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .doc-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+  .doc-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 12px 14px;
+  }
+  .doc-item code {
+    display: block;
+    margin-bottom: 4px;
+    font-size: 12.5px;
+  }
+  .doc-item span { font-size: 13px; color: var(--text-muted); }
+
+  .roadmap-list { display: flex; flex-direction: column; gap: 8px; }
+  .roadmap-item {
+    display: flex;
+    gap: 12px;
+    font-size: 14.5px;
+    padding: 10px 0;
+    border-bottom: 1px dashed var(--border);
+  }
+  .roadmap-item:last-child { border-bottom: none; }
+  .roadmap-item .tag {
+    font-family: ui-monospace, "SFMono-Regular", "JetBrains Mono", Consolas, monospace;
+    font-size: 10.5px;
+    color: var(--text-faint);
+    flex-shrink: 0;
+    padding-top: 2px;
+    width: 3ch;
+  }
+
+  footer.page-footer {
+    max-width: 760px;
+    margin-top: 60px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+    font-size: 12.5px;
+    color: var(--text-faint);
+  }
+  footer.page-footer code { font-size: 11.5px; }
+
+  @media (max-width: 880px) {
+    .shell { grid-template-columns: 1fr; }
+    nav.toc {
+      position: relative;
+      height: auto;
+      border-right: none;
+      border-bottom: 1px solid var(--border);
+      padding: 16px 20px;
+    }
+    .toc-groups { display: none; }
+    .toc-groups.open { display: block; }
+    .toc-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: ui-monospace, "SFMono-Regular", "JetBrains Mono", Consolas, monospace;
+      font-size: 12px;
+      color: var(--accent);
+      background: var(--accent-bg);
+      border: none;
+      border-radius: 6px;
+      padding: 7px 12px;
+      cursor: pointer;
+    }
+    main { padding: 32px 20px 80px; }
+    .grid-4 { grid-template-columns: 1fr 1fr; }
+    .doc-grid { grid-template-columns: 1fr; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; }
+  }
+</style>
+
+<div class="shell">
+  <nav class="toc" aria-label="Table of contents">
+    <p class="toc-brand">docs/architecture-map</p>
+    <p class="toc-title">PTC · Map</p>
+    <button class="toc-toggle" id="tocToggle" aria-expanded="false" aria-controls="tocGroups">☰ Sections</button>
+    <div class="toc-groups" id="tocGroups">
+      <div class="toc-group">
+        <p class="toc-group-label">Orient</p>
+        <a href="#overview" data-nav>Overview</a>
+        <a href="#diagram" data-nav>System diagram</a>
+        <a href="#stack" data-nav>Tech stack</a>
+        <a href="#layers" data-nav>Architecture layers</a>
+      </div>
+      <div class="toc-group">
+        <p class="toc-group-label">Mobile</p>
+        <a href="#mobile-screens" data-nav>Screens</a>
+        <a href="#mobile-modules" data-nav>Domain / data modules</a>
+      </div>
+      <div class="toc-group">
+        <p class="toc-group-label">Backend</p>
+        <a href="#backend-endpoints" data-nav>Endpoints</a>
+        <a href="#backend-data" data-nav>Data sources</a>
+      </div>
+      <div class="toc-group">
+        <p class="toc-group-label">Flagship overlay</p>
+        <a href="#overlay-files" data-nav>Native files</a>
+        <a href="#overlay-flow" data-nav>Capture flow</a>
+        <a href="#overlay-gotchas" data-nav>Gotchas</a>
+      </div>
+      <div class="toc-group">
+        <p class="toc-group-label">Working here</p>
+        <a href="#docs-map" data-nav>Documentation map</a>
+        <a href="#constraints" data-nav>Standing constraints</a>
+        <a href="#roadmap" data-nav>Post-beta roadmap</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <header class="hero container-wide" id="overview">
+      <p class="eyebrow">Architecture map · generated for agent onboarding</p>
+      <h1 class="title">Pokemon Trainer Companion</h1>
+      <p class="tagline">A real-time, AI-powered overlay for Pokémon GO — read a screen live, ground a Gemini answer in it, and hand back an actual tip. Everything else in the repo is the foundation that sits under it.</p>
+      <div class="badge-row">
+        <span class="badge live">v1.0 Beta — closed testing</span>
+        <span class="badge accent">RN 0.86 · bare workflow</span>
+        <span class="badge accent">NestJS 11 + Prisma 7</span>
+        <span class="badge accent">Kotlin native overlay</span>
+        <span class="badge">MIT licensed</span>
+      </div>
+    </header>
+
+    <section id="diagram">
+      <h2 class="section-title">System diagram</h2>
+      <div class="diagram-frame">
+<pre class="mermaid">
+flowchart LR
+    subgraph Device["Trainer's device"]
+        Game["Pokemon GO\n(unmodified, no integration)"]
+        Overlay["Native overlay window\nOverlayModule.kt"]
+        Capture["ScreenCaptureService.kt\nMediaProjection + native OCR poll loop"]
+        App["Mobile app (React Native)\nCompanion widget / Professor Mode / calculators"]
+    end
+    subgraph Cloud["Backend — NestJS, hosted on Render"]
+        API["REST API\nspecies · pvp · type-chart · raids"]
+        Companion["Companion AI service\n/suggest · /chat"]
+        KB[("Knowledge base\nPokeAPI-sourced, Gen 1+2")]
+    end
+    subgraph External["External (read-only)"]
+        LLM["Gemini\nflash-lite, free tier"]
+    end
+    Game -. "trainer looks at screen, no memory access" .-> Overlay
+    Overlay <--> Capture
+    Capture -- "recognized text" --> App
+    App -- "the only network call in the mobile app" --> API
+    App -- "Ask AI / Professor Mode" --> Companion
+    Companion --> LLM
+    Companion --> KB
+</pre>
+      </div>
+    </section>
+
+    <section id="stack">
+      <h2 class="section-title">Tech stack</h2>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Layer</th><th>Choice</th><th>Why</th></tr></thead>
+          <tbody>
+            <tr><td class="mono">Mobile</td><td>React Native 0.86, bare workflow, TypeScript</td><td>Bare, not Expo — the overlay + ML Kit OCR need custom native modules</td></tr>
+            <tr><td class="mono">Navigation</td><td>native-stack + bottom-tabs</td><td>5 bottom tabs, root stack pushes detail/tool screens over them</td></tr>
+            <tr><td class="mono">State</td><td>Local (useState/useMemo/useRef)</td><td>No Redux/Zustand — static data loaded from bundled JSON</td></tr>
+            <tr><td class="mono">Backend</td><td>NestJS 11, TypeScript</td><td>Clean Architecture-friendly module/DI structure</td></tr>
+            <tr><td class="mono">ORM</td><td>Prisma 7</td><td>Schema-first — optional, backend runs fine with no DATABASE_URL</td></tr>
+            <tr><td class="mono">AI</td><td>Gemini <code>flash-lite-latest</code> via raw REST</td><td>No SDK dependency; free tier, 1500 req/day, no card</td></tr>
+            <tr><td class="mono">Hosting</td><td>Render.com, free tier</td><td>Sleeps after 15 min idle — Railway/Fly.io is the planned upgrade</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="layers">
+      <h2 class="section-title">Architecture layers</h2>
+      <p class="lede">Clean Architecture on both sides of the stack — the same four layers, mirrored.</p>
+      <div class="grid-4">
+        <div class="layer-card">
+          <h4>domain</h4>
+          <p>Pure business logic. Zero framework dependency — no RN, no Nest decorators. Fully unit-testable alone.</p>
+          <div class="paths"><code>mobile/src/domain/</code><code>backend/src/domain/</code></div>
+        </div>
+        <div class="layer-card">
+          <h4>use-cases</h4>
+          <p>Orchestrates domain logic for one application flow — the glue, not the rules.</p>
+          <div class="paths"><code>mobile/src/use-cases/</code><code>backend/src/use-cases/</code></div>
+        </div>
+        <div class="layer-card">
+          <h4>data</h4>
+          <p>Repository implementations, bundled JSON, external API clients.</p>
+          <div class="paths"><code>mobile/src/data/</code><code>backend/src/data/</code></div>
+        </div>
+        <div class="layer-card">
+          <h4>presentation</h4>
+          <p>Mobile: screens/components/theme/nav. Backend: controllers, DTOs, interceptors.</p>
+          <div class="paths"><code>mobile/src/presentation/</code><code>backend/src/presentation/</code></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="mobile-screens">
+      <h2 class="section-title">Mobile — screens</h2>
+      <ul class="clean">
+        <li><strong>PokedexListScreen</strong> <span class="lbl">— home: search, gen/type filters, animated background</span></li>
+        <li><strong>PokemonDetailScreen</strong> <span class="lbl">— stats, PvP moveset, lore, evolution link</span></li>
+        <li><strong>IvCalculatorScreen</strong> · <strong>ComparisonScreen</strong> · <strong>TypeChartScreen</strong></li>
+        <li><strong>TopRankingsScreen</strong> · <strong>QuizScreen</strong> · <strong>RaidCountersScreen</strong> · <strong>EvolutionChainScreen</strong></li>
+        <li><strong>OverlayDemoScreen</strong> <span class="lbl">— native overlay controls + gallery-screenshot analysis demo</span></li>
+        <li><strong>ProfessorChatScreen</strong> <span class="lbl">— open-ended, multi-turn AI chat</span></li>
+        <li><strong>ToolsHubScreen</strong> · <strong>MoreScreen</strong></li>
+      </ul>
+      <h3 class="subhead">Key components</h3>
+      <ul class="clean">
+        <li><code>CompanionWidget.tsx</code> <span class="lbl">— floating draggable avatar; rule-based tips + Ask AI + Professor Mode entry, mounted once at the App root inside NavigationContainer</span></li>
+        <li><code>QuickActionsFab.tsx</code> + <code>BottomSheetMenu.tsx</code> <span class="lbl">— Pokedex screen's floating action button + shortcut sheet</span></li>
+        <li><code>ErrorBoundary.tsx</code> <span class="lbl">— app-wide crash fallback, wraps everything outside LanguageProvider</span></li>
+      </ul>
+    </section>
+
+    <section id="mobile-modules">
+      <h2 class="section-title">Mobile — domain &amp; data modules</h2>
+      <h3 class="subhead">domain/</h3>
+      <div class="chip-list">
+        <span class="chip">evolution</span><span class="chip">iv-calculator</span><span class="chip">lore</span><span class="chip">ocr</span>
+        <span class="chip">pokemon-species</span><span class="chip">power-up</span><span class="chip">pvp</span><span class="chip">quiz</span>
+        <span class="chip">raids</span><span class="chip">type-effectiveness</span>
+      </div>
+      <h3 class="subhead">data/</h3>
+      <div class="chip-list">
+        <span class="chip">companion</span><span class="chip">evolution</span><span class="chip">lore</span><span class="chip">ocr</span>
+        <span class="chip">ocr-demo</span><span class="chip">overlay</span><span class="chip">pokedex</span><span class="chip">power-up</span>
+        <span class="chip">pvp</span><span class="chip">raids</span><span class="chip">storage</span><span class="chip">type-effectiveness</span>
+      </div>
+      <div class="callout" style="margin-top:16px;">
+        <span class="callout-label">Only network call in the mobile app</span>
+        <code>mobile/src/data/companion/companionApiClient.ts</code> — every other feature reads bundled JSON and works fully offline.
+      </div>
+    </section>
+
+    <section id="backend-endpoints">
+      <h2 class="section-title">Backend — endpoints</h2>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Base path</th><th>Routes</th><th>File</th></tr></thead>
+          <tbody>
+            <tr>
+              <td class="mono">/api/species</td>
+              <td class="route-list">
+                <code><span class="method-get">GET</span> /</code><code><span class="method-get">GET</span> /metadata</code>
+                <code><span class="method-get">GET</span> /:id</code><code><span class="method-get">GET</span> /:id/evolutions</code>
+                <code><span class="method-get">GET</span> /:id/counters</code><code><span class="method-get">GET</span> /:id/pvp-rankings</code>
+              </td>
+              <td><code>speciesController.ts</code></td>
+            </tr>
+            <tr>
+              <td class="mono">/api/type-chart</td>
+              <td class="route-list"><code><span class="method-get">GET</span> /</code><code><span class="method-get">GET</span> /weather/boosts</code><code><span class="method-get">GET</span> /:type</code></td>
+              <td><code>typeChartController.ts</code></td>
+            </tr>
+            <tr>
+              <td class="mono">/api/pvp</td>
+              <td class="route-list"><code><span class="method-get">GET</span> /leagues</code><code><span class="method-get">GET</span> /top/:league</code></td>
+              <td><code>pvpController.ts</code></td>
+            </tr>
+            <tr>
+              <td class="mono">/api/raids</td>
+              <td class="route-list"><code><span class="method-get">GET</span> /current</code><code><span class="method-get">GET</span> /:id/counters</code></td>
+              <td><code>raidsController.ts</code></td>
+            </tr>
+            <tr>
+              <td class="mono">/api/companion</td>
+              <td class="route-list">
+                <code><span class="method-post">POST</span> /suggest</code> <span class="lbl" style="font-size:11.5px">one-shot tip</span>
+                <code><span class="method-post">POST</span> /chat</code> <span class="lbl" style="font-size:11.5px">multi-turn</span>
+              </td>
+              <td><code>companionController.ts</code></td>
+            </tr>
+            <tr>
+              <td class="mono">/api</td>
+              <td class="route-list"><code><span class="method-get">GET</span> /</code> <span class="lbl" style="font-size:11.5px">health</span><code><span class="method-get">GET</span> /system/version</code></td>
+              <td><code>app.controller.ts</code></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="backend-data">
+      <h2 class="section-title">Backend — data sources</h2>
+      <ul class="clean">
+        <li><strong>species</strong> <span class="lbl">— static, PokeAPI + PoGo API sourced, 965 species mobile-side / Gen 1+2 for backend grounding</span></li>
+        <li><strong>pvp</strong> <span class="lbl">— PvPoke-sourced move rankings</span></li>
+        <li><strong>raids</strong> <span class="lbl">— curated mock boss rotation (11 Gen 1 bosses, tiers 1/3/5) — not live-synced</span></li>
+        <li><strong>knowledge</strong> <span class="lbl">— PokeAPI genus/habitat/flavor-text for all 251 Gen 1+2 species, grounds the Companion AI prompt; re-run <code>fetchKnowledgeBase.mjs</code> to extend generations</span></li>
+      </ul>
+      <div class="callout" style="margin-top:14px;">
+        <span class="callout-label">Prisma schema</span>
+        <code>backend/prisma/schema.prisma</code> defines Trainer / SavedTeam / Species / Type — not wired to any endpoint yet. Cross-device sync is post-beta, blocked on Google Sign-In OAuth credentials.
+      </div>
+    </section>
+
+    <section id="overlay-files">
+      <h2 class="section-title">Flagship overlay — native files</h2>
+      <p class="lede">The only Kotlin in the repo, and the project's actual differentiator.</p>
+      <div class="panel">
+        <h3 class="subhead" style="margin-top:0">OverlayModule.kt</h3>
+        <p style="font-size:14px;">React Native bridge. <code>hasOverlayPermission</code>, <code>requestOverlayPermission</code>, <code>showOverlay</code>, <code>hideOverlay</code>, <code>updateOverlayText</code>, <code>requestScreenCapturePermission</code>, <code>startLiveCapture</code>, <code>captureLiveFrame</code>, <code>stopLiveCapture</code>. Emits <code>PTCOverlayTapped</code> and <code>PTCOverlayFrameText</code> via a static <code>reactApplicationContextHolder</code> — so the service can reach JS without an Activity reference.</p>
+      </div>
+      <div class="panel">
+        <h3 class="subhead" style="margin-top:0">ScreenCaptureService.kt</h3>
+        <p style="font-size:14px;">Foreground service (<code>foregroundServiceType=mediaProjection</code>). Opens the real MediaProjection session, a <code>VirtualDisplay</code> + <code>ImageReader</code> for frames, and runs its <strong>own native polling loop</strong> — grabs a frame, runs ML Kit OCR directly in Kotlin, emits recognized text. Native specifically because a JS-side <code>setInterval</code> doing the same thing stalled once the Activity lost foreground.</p>
+      </div>
+      <div class="panel">
+        <h3 class="subhead" style="margin-top:0">overlayBridge.ts</h3>
+        <p style="font-size:14px;"><code>mobile/src/data/overlay/overlayBridge.ts</code> — thin JS wrapper; every function is a safe no-op on iOS or if the native module isn't linked.</p>
+      </div>
+    </section>
+
+    <section id="overlay-flow">
+      <h2 class="section-title">Flagship overlay — capture flow</h2>
+      <ol class="flow">
+        <li><code>requestOverlayPermission()</code> — trainer grants <code>SYSTEM_ALERT_WINDOW</code> via the system settings screen</li>
+        <li><code>requestScreenCapturePermission()</code> — Android's real MediaProjection consent dialog</li>
+        <li><code>startLiveCapture()</code> — starts <code>ScreenCaptureService</code>, opens the MediaProjection session, begins native polling</li>
+        <li>JS listens via <code>onOverlayFrameText(text)</code> — <code>analyzeOcrText(text)</code> runs species lookup + IV/PvP/bulk analysis, the same pipeline the gallery-picker flow uses</li>
+        <li><code>updateOverlayText(body)</code> pushes a formatted result — species, CP, IV, best PvP league, bulk tier, tip — into the floating window</li>
+        <li>On the <strong>first</strong> detection of a new species, an async <code>fetchCompanionSuggestion()</code> call upgrades the rule-based tip to a Gemini one — once per species, not every poll tick, to bound cost and latency</li>
+        <li>Tapping the overlay brings PTC to the foreground and emits <code>PTCOverlayTapped</code>, which <code>OverlayDemoScreen</code> catches and navigates to Professor Mode</li>
+      </ol>
+    </section>
+
+    <section id="overlay-gotchas">
+      <h2 class="section-title">Flagship overlay — gotchas already paid for</h2>
+      <div class="callout warn">
+        <span class="callout-label">Wrong-thread crash</span>
+        Native module methods run on RN's own native-modules thread, not the true Android UI thread. The overlay view is attached from whichever thread calls <code>showOverlay()</code> — any later mutation from a different thread throws <code>CalledFromWrongThreadException</code>. Fix: every <code>WindowManager</code>/view op goes through <code>Handler(Looper.getMainLooper())</code>.
+      </div>
+      <div class="callout warn">
+        <span class="callout-label">MediaProjection callback ordering</span>
+        <code>registerCallback(...)</code> must be called before <code>createVirtualDisplay()</code> on newer Android versions, or it throws <code>IllegalStateException</code>.
+      </div>
+      <div class="callout warn">
+        <span class="callout-label">ML Kit not compile-visible</span>
+        <code>@react-native-ml-kit/text-recognition</code>'s own <code>build.gradle</code> declares ML Kit as <code>implementation</code>, which Gradle does not expose transitively. <code>app/build.gradle</code> needs its own explicit dependency for <code>ScreenCaptureService.kt</code> to call the API directly.
+      </div>
+      <div class="callout warn">
+        <span class="callout-label">Testing "share one app" from inside that app</span>
+        The shared app only produces frames while it's actually in the foreground — awkward when you want to watch results from the requesting app's own UI. <code>Share entire screen</code> sidesteps this for manual testing.
+      </div>
+    </section>
+
+    <section id="docs-map">
+      <h2 class="section-title">Documentation map</h2>
+      <div class="doc-grid">
+        <div class="doc-item"><code>docs/architecture.md</code><span>System diagram, component status, key decisions</span></div>
+        <div class="doc-item"><code>docs/use-cases.md</code><span>UC-01 → UC-10, each with status and flow</span></div>
+        <div class="doc-item"><code>docs/entity-relationship-diagram.md</code><span>Prisma schema ERD</span></div>
+        <div class="doc-item"><code>docs/coding-standards.md</code><span>Clean Architecture conventions, Kotlin ↔ TS layering</span></div>
+        <div class="doc-item"><code>docs/legal-compliance.md</code><span>Why this stays ToS-safe — §3 covers Google Sign-In</span></div>
+        <div class="doc-item"><code>docs/dev-setup.md</code><span>Local setup, adb/emulator troubleshooting table</span></div>
+        <div class="doc-item"><code>docs/decisions-and-planning.md</code><span>Living doc — current state, commands, action plan</span></div>
+        <div class="doc-item"><code>docs/deploy-backend-cloud.md</code><span>Render free-tier deploy guide, 5 min</span></div>
+        <div class="doc-item"><code>docs/debug-log.md</code><span>Real bugs hit + root causes, chronological</span></div>
+        <div class="doc-item"><code>docs/changelog.md</code><span>Full feature history, newest first</span></div>
+      </div>
+    </section>
+
+    <section id="constraints">
+      <h2 class="section-title">Standing constraints for agents</h2>
+      <div class="constraint-list">
+        <div class="constraint"><span class="mark">→</span>Keep the app lightweight — justify any new native dependency; prefer pure-JS libraries when one exists.</div>
+        <div class="constraint"><span class="mark">→</span>Prefer <code>adb install</code> over USB for physical-device testing rather than sharing APK files.</div>
+        <div class="constraint"><span class="mark">→</span>On a USB reconnect: check <code>adb devices</code> + Metro's <code>localhost:8081/status</code> <em>before</em> launching, not after a red error screen. Re-run both <code>adb reverse</code> tunnels every time.</div>
+        <div class="constraint"><span class="mark">→</span>Update README's progress table and a relevant doc after every feature — not just when reminded.</div>
+        <div class="constraint"><span class="mark">→</span>Any change under <code>mobile/android/</code> needs a full Gradle rebuild + reinstall — Metro's hot-reload does not pick up native changes.</div>
+        <div class="constraint"><span class="mark">→</span>Never claim a UI fix works without live on-device verification — this repo has a documented history of fixes that passed typecheck but failed for real.</div>
+        <div class="constraint"><span class="mark">→</span>Google Sign-In is blocked pending the project owner creating OAuth credentials in Google Cloud Console — do not attempt this on their behalf.</div>
+        <div class="constraint"><span class="mark">→</span><code>GEMINI_API_KEY</code> lives only in <code>backend/.env</code> (gitignored) — never commit or expose it.</div>
+      </div>
+    </section>
+
+    <section id="roadmap">
+      <h2 class="section-title">Post-beta roadmap</h2>
+      <div class="roadmap-list">
+        <div class="roadmap-item"><span class="tag">01</span>Feed live analysis results deeper inside the floating window itself — full moveset/evolution detail still lives in-app, one tap away.</div>
+        <div class="roadmap-item"><span class="tag">02</span>Expand the knowledge base past Gen 2 + richer, community-sourced (Bulbapedia-style) facts.</div>
+        <div class="roadmap-item"><span class="tag">03</span>Cross-device sync + Google Sign-In auth — blocked on OAuth credentials.</div>
+        <div class="roadmap-item"><span class="tag">04</span>Dark mode — <code>COLORS</code> is a static object imported by every screen's <code>StyleSheet.create()</code>; real theming needs a refactor to a reactive hook everywhere.</div>
+        <div class="roadmap-item"><span class="tag">05</span>Migrate the backend off Render's free tier (Railway/Fly.io) to remove the 15-minute sleep.</div>
+        <div class="roadmap-item"><span class="tag">06</span>Type effectiveness chart UI polish, Swagger at <code>/api/docs</code>, test coverage across all 965 species.</div>
+      </div>
+    </section>
+
+    <footer class="page-footer">
+      <p>Machine-readable twin of this page: <code>docs/architecture-map.json</code> — same content, structured for a coding agent to parse directly instead of re-deriving it from a cold read of the repo. Regenerate both after a structural change (new module, new endpoint, new native file).</p>
+    </footer>
+  </main>
+</div>
+
+<script>
+  (function () {
+    var toggle = document.getElementById('tocToggle');
+    var groups = document.getElementById('tocGroups');
+    if (toggle && groups) {
+      toggle.addEventListener('click', function () {
+        var open = groups.classList.toggle('open');
+        toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+    }
+
+    var links = Array.prototype.slice.call(document.querySelectorAll('a[data-nav]'));
+    var sections = links
+      .map(function (link) {
+        var id = link.getAttribute('href').slice(1);
+        return { link: link, el: document.getElementById(id) };
+      })
+      .filter(function (s) { return s.el; });
+
+    function onScroll() {
+      var pos = window.scrollY + 120;
+      var current = sections[0];
+      for (var i = 0; i < sections.length; i++) {
+        if (sections[i].el.offsetTop <= pos) current = sections[i];
+      }
+      sections.forEach(function (s) { s.link.classList.remove('active'); });
+      if (current) current.link.classList.add('active');
+    }
+    document.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  })();
+</script>
