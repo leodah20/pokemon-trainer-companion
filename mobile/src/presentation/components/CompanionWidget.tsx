@@ -407,7 +407,7 @@ const styles = StyleSheet.create({
   dot: {
     width: 5,
     height: 5,
-    borderRadius: 3,
+    borderRadius: RADIUS.full,
     backgroundColor: COLORS.border,
   },
   dotActive: {

@@ -14,7 +14,7 @@ import {
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Markdown from 'react-native-markdown-display';
 import { ChatMessage, CompanionApiError, fetchChatReply } from '../../data/companion/companionApiClient';
-import { COLORS, DISPLAY_FONT, FONT_SIZE, RADIUS, SHADOW, SPACING } from '../theme';
+import { COLORS, DISPLAY_FONT, FONT_SIZE, MONO_FONT, RADIUS, SHADOW, SPACING } from '../theme';
 import { useTranslation } from '../../i18n';
 
 interface DisplayMessage extends ChatMessage {
@@ -163,21 +163,21 @@ const markdownStyles = {
   list_item: { flexDirection: 'row' as const, marginBottom: 2 },
   code_inline: {
     backgroundColor: COLORS.glassSurface,
-    borderRadius: 4,
+    borderRadius: RADIUS.sm,
     paddingHorizontal: 4,
-    fontFamily: Platform.OS === 'ios' ? 'Courier' : 'monospace',
+    fontFamily: MONO_FONT,
   },
   code_block: {
     backgroundColor: COLORS.glassSurface,
     borderRadius: RADIUS.md,
     padding: SPACING.sm,
-    fontFamily: Platform.OS === 'ios' ? 'Courier' : 'monospace',
+    fontFamily: MONO_FONT,
   },
   fence: {
     backgroundColor: COLORS.glassSurface,
     borderRadius: RADIUS.md,
     padding: SPACING.sm,
-    fontFamily: Platform.OS === 'ios' ? 'Courier' : 'monospace',
+    fontFamily: MONO_FONT,
   },
   link: { color: COLORS.brandBlue },
   heading1: { fontSize: FONT_SIZE.lg, fontWeight: '800' as const, marginBottom: SPACING.xs },

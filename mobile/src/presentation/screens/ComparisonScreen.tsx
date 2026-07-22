@@ -263,13 +263,13 @@ const styles = StyleSheet.create({
   },
   comparisonLabel: {
     width: 90,
-    fontSize: 11,
+    fontSize: FONT_SIZE.xs,
     fontWeight: '700',
     color: COLORS.textSecondary,
     textAlign: 'center',
   },
   sourceText: {
-    fontSize: 10,
+    fontSize: FONT_SIZE.xs,
     color: COLORS.textMuted,
     marginTop: SPACING.sm,
     textAlign: 'center',

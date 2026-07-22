@@ -1,7 +1,7 @@
 import React from 'react';
 import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { Card, COLORS, DISPLAY_FONT, FONT_SIZE, SPACING } from '../theme';
+import { Card, COLORS, DISPLAY_FONT, FONT_SIZE, RETRO_FONT, SPACING } from '../theme';
 import { TabScreenProps } from '../navigation/types';
 import { TranslationKeys, useTranslation } from '../../i18n';
 
@@ -47,6 +47,7 @@ export function ToolsHubScreen({ navigation }: Props): React.JSX.Element {
   return (
     <SafeAreaView style={styles.screen} edges={['top', 'left', 'right']}>
       <ScrollView contentContainerStyle={styles.content}>
+        <Text style={styles.eyebrow}>{t('tools.eyebrow')}</Text>
         <Text style={styles.title}>{t('tools.title')}</Text>
         <Text style={styles.subtitle}>{t('tools.subtitle')}</Text>
 
@@ -58,11 +59,16 @@ export function ToolsHubScreen({ navigation }: Props): React.JSX.Element {
             accessibilityLabel={t(tool.titleKey)}
             accessibilityHint={t(tool.descriptionKey)}
           >
-            <Card style={styles.card} accentColor={COLORS.brandBlue}>
+            <Card style={styles.card} accentColor={COLORS.phosphorDim} backgroundColor={COLORS.inkPanel}>
               <View style={styles.cardRow}>
-                <Text style={styles.emoji}>{tool.emoji}</Text>
+                <View style={styles.emojiWell}>
+                  <Text style={styles.emoji}>{tool.emoji}</Text>
+                </View>
                 <View style={styles.cardText}>
-                  <Text style={styles.cardTitle}>{t(tool.titleKey)}</Text>
+                  <Text style={styles.cardTitle}>
+                    <Text style={styles.prompt}>{'> '}</Text>
+                    {t(tool.titleKey)}
+                  </Text>
                   <Text style={styles.cardDescription}>{t(tool.descriptionKey)}</Text>
                 </View>
               </View>
@@ -77,19 +83,26 @@ export function ToolsHubScreen({ navigation }: Props): React.JSX.Element {
 const styles = StyleSheet.create({
   screen: {
     flex: 1,
-    backgroundColor: COLORS.background,
+    backgroundColor: COLORS.inkBlack,
   },
   content: {
     padding: SPACING.lg,
   },
+  eyebrow: {
+    fontFamily: RETRO_FONT,
+    fontSize: 9,
+    color: COLORS.phosphor,
+    letterSpacing: 2,
+    marginBottom: SPACING.sm,
+  },
   title: {
     fontFamily: DISPLAY_FONT,
     fontSize: FONT_SIZE.xl,
-    color: COLORS.textPrimary,
+    color: COLORS.inkText,
   },
   subtitle: {
     fontSize: FONT_SIZE.sm,
-    color: COLORS.textSecondary,
+    color: COLORS.inkTextMuted,
     marginTop: SPACING.xs,
     marginBottom: SPACING.lg,
   },
@@ -101,20 +114,34 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     gap: SPACING.md,
   },
+  emojiWell: {
+    width: 52,
+    height: 52,
+    borderRadius: 26,
+    borderWidth: 1,
+    borderColor: COLORS.phosphorDim,
+    backgroundColor: COLORS.inkBlack,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
   emoji: {
-    fontSize: 32,
+    fontSize: 26,
   },
   cardText: {
     flex: 1,
   },
+  prompt: {
+    color: COLORS.phosphor,
+    fontWeight: '800',
+  },
   cardTitle: {
     fontFamily: DISPLAY_FONT,
     fontSize: FONT_SIZE.md,
-    color: COLORS.textPrimary,
+    color: COLORS.inkText,
   },
   cardDescription: {
     fontSize: FONT_SIZE.sm,
-    color: COLORS.textSecondary,
+    color: COLORS.inkTextMuted,
     marginTop: 2,
   },
 });

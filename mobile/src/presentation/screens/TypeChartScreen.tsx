@@ -1,9 +1,10 @@
 import React, { useMemo, useState } from 'react';
 import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import LinearGradient from 'react-native-linear-gradient';
 import { EffectivenessBucket, TypeMatchup } from '../../domain/type-effectiveness/types';
 import { ALL_TYPE_NAMES, getMatchupsForAttacker } from '../../data/type-effectiveness/typeEffectivenessRepository';
-import { COLORS, FONT_SIZE, getTypeColor, RADIUS, SHADOW, SPACING, TypeBadge } from '../theme';
+import { COLORS, FONT_SIZE, getTypeColor, getTypeGradient, RADIUS, SHADOW, SPACING, TypeBadge } from '../theme';
 import { useTranslation } from '../../i18n';
 
 const BUCKET_ORDER: EffectivenessBucket[] = ['superEffective', 'notVeryEffective', 'noEffect'];
@@ -20,6 +21,7 @@ export function TypeChartScreen(): React.JSX.Element {
   };
 
   const matchups = useMemo(() => getMatchupsForAttacker(attackerType), [attackerType]);
+  const gradient = useMemo(() => getTypeGradient(getTypeColor(attackerType)), [attackerType]);
 
   const groups = useMemo(() => {
     const byBucket = new Map<EffectivenessBucket, TypeMatchup[]>();
@@ -32,7 +34,8 @@ export function TypeChartScreen(): React.JSX.Element {
   }, [matchups]);
 
   return (
-    <SafeAreaView style={styles.screen} edges={['left', 'right', 'bottom']}>
+    <LinearGradient colors={gradient} style={styles.gradient}>
+      <SafeAreaView style={styles.screen} edges={['left', 'right', 'bottom']}>
       <Text style={styles.hint}>{t('typeChart.hint')}</Text>
 
       <View style={styles.typeRow}>
@@ -75,7 +78,8 @@ export function TypeChartScreen(): React.JSX.Element {
           );
         })}
       </ScrollView>
-    </SafeAreaView>
+      </SafeAreaView>
+    </LinearGradient>
   );
 }
 
@@ -84,9 +88,11 @@ function formatMultiplier(multiplier: number): string {
 }
 
 const styles = StyleSheet.create({
+  gradient: {
+    flex: 1,
+  },
   screen: {
     flex: 1,
-    backgroundColor: COLORS.background,
   },
   hint: {
     fontSize: FONT_SIZE.sm,

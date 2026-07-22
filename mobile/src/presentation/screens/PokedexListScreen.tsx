@@ -293,9 +293,9 @@ const styles = StyleSheet.create({
     paddingHorizontal: SPACING.lg,
     paddingTop: SPACING.xs,
     paddingBottom: SPACING.xs,
-    textShadowColor: COLORS.outline,
-    textShadowOffset: { width: 2, height: 2 },
-    textShadowRadius: 0,
+    textShadowColor: COLORS.phosphorGlow,
+    textShadowOffset: { width: 0, height: 0 },
+    textShadowRadius: 10,
   },
   search: {
     marginHorizontal: SPACING.lg,
@@ -334,7 +334,7 @@ const styles = StyleSheet.create({
     ...SHADOW.sm,
   },
   chipText: {
-    fontSize: 11,
+    fontSize: FONT_SIZE.xs,
     color: COLORS.textPrimary,
     fontWeight: '700',
     // No explicit lineHeight here on purpose — a value tighter than the font's natural box

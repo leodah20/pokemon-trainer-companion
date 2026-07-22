@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { Animated, Pressable, StyleSheet } from 'react-native';
-import { COLORS, PokeballIcon, SHADOW } from '../theme';
+import { COLORS, PokeballIcon, RADIUS, SHADOW } from '../theme';
 import { useTranslation } from '../../i18n';
 
 const PULSE_MIN_SCALE = 1;
@@ -75,7 +75,7 @@ const styles = StyleSheet.create({
   button: {
     width: 64,
     height: 64,
-    borderRadius: 32,
+    borderRadius: RADIUS.full,
     backgroundColor: COLORS.surface,
     alignItems: 'center',
     justifyContent: 'center',

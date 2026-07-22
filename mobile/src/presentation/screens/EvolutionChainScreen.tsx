@@ -4,7 +4,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { getAllSpecies, getSpriteUrl } from '../../data/pokedex/pokedexRepository';
 import { getEvolutionChain } from '../../use-cases/getEvolutionChain';
 import { EvolutionChainLink } from '../../domain/evolution/types';
-import { COLORS, DISPLAY_FONT, FONT_SIZE, RADIUS, SHADOW, SPACING, TypeBadge } from '../theme';
+import { COLORS, DISPLAY_FONT, FONT_SIZE, getTypeColor, RADIUS, SHADOW, SPACING, TypeBadge } from '../theme';
 import { RootStackScreenProps } from '../navigation/types';
 import { useTranslation } from '../../i18n';
 
@@ -56,8 +56,14 @@ export function EvolutionChainScreen({ route, navigation }: Props): React.JSX.El
 
 function EvolutionCard({ link, onPress }: { link: EvolutionChainLink; onPress: () => void }): React.JSX.Element {
   return (
-    <Pressable onPress={onPress} style={styles.card} accessibilityRole="button" accessibilityLabel={link.speciesName}>
+    <Pressable
+      onPress={onPress}
+      style={[styles.card, { borderColor: getTypeColor(link.types[0]) }]}
+      accessibilityRole="button"
+      accessibilityLabel={link.speciesName}
+    >
       <Image source={{ uri: getSpriteUrl(link.speciesId) }} style={styles.sprite} resizeMode="contain" />
+      <View style={[styles.typeAccent, { backgroundColor: getTypeColor(link.types[0]) }]} />
       <View style={styles.cardInfo}>
         <Text style={styles.cardName}>{link.speciesName}</Text>
         <View style={styles.typeRow}>
@@ -107,7 +113,7 @@ const styles = StyleSheet.create({
     fontWeight: '800',
   },
   candyText: {
-    fontSize: 11,
+    fontSize: FONT_SIZE.xs,
     color: COLORS.textMuted,
     fontWeight: '700',
   },
@@ -117,11 +123,15 @@ const styles = StyleSheet.create({
     width: '100%',
     backgroundColor: COLORS.glassSurface,
     borderRadius: RADIUS.lg + 6,
-    borderWidth: 1,
-    borderColor: COLORS.glassBorder,
+    borderWidth: 1.5,
     padding: SPACING.md,
     gap: SPACING.md,
     ...SHADOW.md,
+  },
+  typeAccent: {
+    width: 4,
+    alignSelf: 'stretch',
+    borderRadius: RADIUS.full,
   },
   sprite: {
     width: 64,
@@ -146,7 +156,7 @@ const styles = StyleSheet.create({
     marginTop: SPACING.xs,
   },
   statText: {
-    fontSize: 11,
+    fontSize: FONT_SIZE.xs,
     fontWeight: '700',
     color: COLORS.textSecondary,
   },

@@ -20,9 +20,20 @@ export const COLORS = {
   success: '#22C55E',
   danger: '#DC2626',
 
-  // Retro CRT-screen look, used for the lore/trivia card
+  // Retro CRT-screen look -- the app's signature accent. Originally scoped to the lore/trivia
+  // card only; now also the "PokeDex terminal" ground for utility screens (Tools/More/Rankings/
+  // Quiz), so the app has one distinctive identity instead of every non-flagship screen reading
+  // as a generic flat-blue card list.
   retroScreenGreen: '#C8E6C9',
   retroScreenGreenDark: '#1B4D1F',
+  inkBlack: '#14171C',
+  inkPanel: '#1D2129',
+  phosphor: '#39FF6A',
+  phosphorDim: '#1F8F44',
+  phosphorGlow: 'rgba(57, 255, 106, 0.35)',
+  // Body text on the dark terminal ground -- textPrimary/textSecondary above assume a light bg.
+  inkText: '#EAF2E9',
+  inkTextMuted: 'rgba(234, 242, 233, 0.62)',
 
   // Energetic HUD accents — mint/turquoise, for floating action buttons and glassy overlays
   mint: '#00E5A0',

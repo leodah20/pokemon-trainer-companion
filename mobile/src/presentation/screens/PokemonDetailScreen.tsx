@@ -322,9 +322,9 @@ const styles = StyleSheet.create({
     fontSize: FONT_SIZE.xxl,
     color: COLORS.surface,
     textAlign: 'center',
-    textShadowColor: COLORS.outline,
-    textShadowOffset: { width: 2, height: 2 },
-    textShadowRadius: 0,
+    textShadowColor: 'rgba(20, 23, 28, 0.45)',
+    textShadowOffset: { width: 0, height: 2 },
+    textShadowRadius: 4,
   },
   generation: {
     marginTop: SPACING.xs,
@@ -353,7 +353,7 @@ const styles = StyleSheet.create({
   },
   statLabel: {
     width: 36,
-    fontSize: 12,
+    fontSize: FONT_SIZE.xs,
     fontWeight: '800',
     color: COLORS.textSecondary,
   },
@@ -373,7 +373,7 @@ const styles = StyleSheet.create({
   },
   statValue: {
     width: 32,
-    fontSize: 12,
+    fontSize: FONT_SIZE.xs,
     textAlign: 'right',
     color: COLORS.textPrimary,
     fontWeight: '700',

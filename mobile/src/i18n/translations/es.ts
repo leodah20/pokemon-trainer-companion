@@ -17,6 +17,7 @@ export const es: TranslationKeys = {
   'pokedex.filterByGen': 'Filtrar por generación',
   'pokedex.filterByType': 'Filtrar por tipo',
 
+  'tools.eyebrow': 'TERMINAL PTC',
   'tools.title': 'Herramientas',
   'tools.subtitle': 'Calculadoras y herramientas de referencia para batallas.',
   'tools.ivCalculator.title': 'Calculadora de IV',

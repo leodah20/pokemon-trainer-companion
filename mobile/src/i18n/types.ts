@@ -28,6 +28,7 @@ export interface TranslationKeys {
   'pokedex.filterByGen': string;
   'pokedex.filterByType': string;
 
+  'tools.eyebrow': string;
   'tools.title': string;
   'tools.subtitle': string;
   'tools.ivCalculator.title': string;
