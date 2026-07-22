@@ -87,8 +87,8 @@
 
   .shell {
     display: grid;
-    grid-template-columns: 248px minmax(0, 1fr);
-    max-width: 1240px;
+    grid-template-columns: 260px minmax(0, 1fr);
+    max-width: 1920px;
     margin: 0 auto;
   }
 
@@ -239,7 +239,7 @@
   /* ---------- Interactive architecture node graph ---------- */
   .section-hint {
     font-family: ui-monospace, "SFMono-Regular", "JetBrains Mono", Consolas, monospace;
-    font-size: 13px;
+    font-size: 15px;
     letter-spacing: 0.04em;
     text-transform: none;
     color: var(--text-faint);
@@ -248,15 +248,15 @@
   }
   .diagram-shell {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) 250px;
-    gap: 14px;
+    grid-template-columns: minmax(0, 1fr) 260px;
+    gap: 18px;
     align-items: start;
   }
   .diagram-canvas-wrap {
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: 12px;
-    padding: 16px 16px 8px;
+    padding: 20px 22px 14px;
     box-shadow: var(--shadow);
   }
   .legend {
@@ -272,7 +272,7 @@
     align-items: center;
     gap: 6px;
     font-family: ui-monospace, "SFMono-Regular", "JetBrains Mono", Consolas, monospace;
-    font-size: 13.5px;
+    font-size: 15.5px;
     color: var(--text-muted);
   }
   .dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
@@ -284,7 +284,7 @@
   .legend-spacer { flex: 1; }
   .save-status {
     font-family: ui-monospace, "SFMono-Regular", "JetBrains Mono", Consolas, monospace;
-    font-size: 11px;
+    font-size: 13px;
     color: var(--live);
     opacity: 0;
     transition: opacity 200ms ease;
@@ -292,7 +292,7 @@
   .save-status.show { opacity: 1; }
   .reset-link {
     font-family: ui-monospace, "SFMono-Regular", "JetBrains Mono", Consolas, monospace;
-    font-size: 11px;
+    font-size: 13px;
     color: var(--text-faint);
     background: none;
     border: none;
@@ -306,7 +306,7 @@
     width: 100%;
     height: auto;
     display: block;
-    min-height: 340px;
+    min-height: 640px;
     touch-action: none;
   }
   #archSvg .node { cursor: grab; }
@@ -324,7 +324,7 @@
   #archSvg .node[data-cat="external"] .node-rect { stroke: var(--text-faint); stroke-dasharray: 2 3; }
   #archSvg .node-label {
     font-family: ui-monospace, "SFMono-Regular", "JetBrains Mono", Consolas, monospace;
-    font-size: 13.5px;
+    font-size: 15.5px;
     fill: var(--text);
     pointer-events: none;
   }
@@ -338,7 +338,7 @@
   #archSvg .edge-path.dashed { stroke-dasharray: 4 4; }
   #archSvg .edge-label {
     font-family: ui-monospace, "SFMono-Regular", "JetBrains Mono", Consolas, monospace;
-    font-size: 11.5px;
+    font-size: 13px;
     fill: var(--text-faint);
     pointer-events: none;
   }
@@ -356,7 +356,7 @@
   #archSvg .step-badge circle { fill: var(--mono-accent); }
   #archSvg .step-badge text {
     font-family: ui-monospace, "SFMono-Regular", "JetBrains Mono", Consolas, monospace;
-    font-size: 12.5px;
+    font-size: 14px;
     font-weight: 700;
     fill: var(--surface);
     text-anchor: middle;
@@ -372,7 +372,7 @@
   }
   .diagram-side-label {
     font-family: ui-monospace, "SFMono-Regular", "JetBrains Mono", Consolas, monospace;
-    font-size: 13px;
+    font-size: 15px;
     letter-spacing: 0.1em;
     text-transform: uppercase;
     color: var(--text-faint);
@@ -1041,16 +1041,16 @@
     if (!svg) { return; }
 
     var nodes = [
-      { id: 'gopogo',     label: 'Pokémon GO|(unmodified, no integration)', cat: 'external', x: 20,   y: 300, w: 170, h: 58 },
-      { id: 'overlay',    label: 'OverlayModule.kt|floating window + consent', cat: 'native', x: 230, y: 160, w: 190, h: 58 },
+      { id: 'gopogo',     label: 'Pokémon GO|(unmodified)', cat: 'external', x: 20,   y: 300, w: 170, h: 58 },
+      { id: 'overlay',    label: 'OverlayModule.kt|window + consent', cat: 'native', x: 230, y: 160, w: 210, h: 58 },
       { id: 'capture',    label: 'ScreenCaptureService.kt|native OCR poll loop', cat: 'native', x: 230, y: 300, w: 190, h: 66 },
       { id: 'pokedex',    label: 'Pokedex & calculators|offline screens', cat: 'mobile', x: 470, y: 30, w: 210, h: 58 },
       { id: 'bundled',    label: 'Bundled JSON data|species · pvp · raids', cat: 'data', x: 750, y: 30, w: 190, h: 58 },
       { id: 'analyze',    label: 'analyzeOcrText()|OverlayDemoScreen', cat: 'mobile', x: 470, y: 230, w: 210, h: 66 },
-      { id: 'widget',     label: 'CompanionWidget|floating avatar + Ask AI', cat: 'mobile', x: 470, y: 380, w: 210, h: 58 },
+      { id: 'widget',     label: 'CompanionWidget|avatar + Ask AI', cat: 'mobile', x: 470, y: 380, w: 210, h: 58 },
       { id: 'professor',  label: 'ProfessorChatScreen|open-ended chat', cat: 'mobile', x: 470, y: 490, w: 210, h: 58 },
-      { id: 'client',     label: 'companionApiClient.ts|only network call in the app', cat: 'mobile', x: 750, y: 435, w: 210, h: 66 },
-      { id: 'controller', label: 'CompanionController|POST /suggest · /chat', cat: 'backend', x: 1010, y: 435, w: 210, h: 66 },
+      { id: 'client',     label: 'companionApiClient.ts|only network call', cat: 'mobile', x: 750, y: 435, w: 230, h: 66 },
+      { id: 'controller', label: 'CompanionController|POST /suggest · /chat', cat: 'backend', x: 1010, y: 435, w: 240, h: 66 },
       { id: 'kb',         label: 'Knowledge base|PokeAPI, Gen 1+2', cat: 'backend', x: 1010, y: 550, w: 210, h: 58 },
       { id: 'gemini',     label: 'Gemini|flash-lite, free tier', cat: 'external', x: 1010, y: 300, w: 210, h: 58 }
     ];
